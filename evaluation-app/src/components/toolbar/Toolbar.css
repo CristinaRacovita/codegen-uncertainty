@@ -1,3 +1,6 @@
-.toolbar {
-    
+.toolbar-title {
+    margin-left: 10px;
+    font-weight: bold;
+    align-items: center;
+    display: flex;
 }

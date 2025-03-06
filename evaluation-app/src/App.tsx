@@ -1,10 +1,12 @@
 import './App.css';
-import Toolbar from './components/toolbar/Toolbar';
+import AppAppBar from './components/toolbar/Toolbar';
+import DescriptionContent from './components/description-content/DescriptionContent';
 
 function App() {
   return (
     <div className="App">
-            <Toolbar />
+            <AppAppBar />
+            <DescriptionContent />
     </div>
   );
 }

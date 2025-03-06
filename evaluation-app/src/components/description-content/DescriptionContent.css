@@ -1,0 +1,39 @@
+.main-content {}
+
+.description-content {
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.description-text {
+    width: 500px;
+    color: #203568;
+    margin-left: 50px;
+    text-align: justify;
+}
+
+.description-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.task-description {
+    margin-top: 20px;
+}
+
+.task-introduction {
+    font-size: 18px;
+    font-weight: bold;
+    color: #01adee;
+}
+
+.action-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.start-button {
+    margin-right: 80px;
+}
