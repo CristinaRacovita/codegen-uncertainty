@@ -1,7 +1,5 @@
-.main-content {}
-
 .description-content {
-    margin-top: 150px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
 }
@@ -35,5 +33,54 @@
 }
 
 .start-button {
-    margin-right: 80px;
+    margin-right: 80px !important;
+}
+
+.divier-content {
+    margin: 20px 350px !important;
+    color: #203568;
+    font-weight: bold;
+}
+
+.example-content {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.leetcode-example-problem-content {
+    width: 500px;
+    text-align: justify;
+    margin-right: 50px;
+    white-space: pre-wrap;
+    color: #203568;
+}
+
+.solutions-content {
+    width: 500px;
+}
+
+.leetcode-problem-title {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #01adee;
+}
+
+.important-word {
+    font-weight: bold;
+}
+
+.line-color-explanation-content {
+    color: #203568;
+    text-align: justify;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.image-content {
+    display: flex;
+    align-items: center;
 }

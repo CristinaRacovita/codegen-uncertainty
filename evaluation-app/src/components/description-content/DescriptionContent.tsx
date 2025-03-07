@@ -1,13 +1,15 @@
-import { Button } from '@mui/material';
+import { Button, Divider } from '@mui/material';
 import codeImage from '../../assets/explanation_code.png';
 import './DescriptionContent.css';
+import ExplanationSolutionTabs from '../explanation-solution-tabs/ExplanationSolutionTabs';
+
 
 export default function DescriptionContent() {
     return (
-        <div className='main-content'>
+        <div>
             <div className='description-content'>
                 <div className="image-content">
-                    <img src={codeImage} width={400} />
+                    <img src={codeImage} width={450} />
                 </div>
                 <div className='description-text'>
                     <div className='description-title'>
@@ -19,13 +21,65 @@ export default function DescriptionContent() {
                     <div className='task-description'>
                         <span className='task-introduction'>Your task is simple:</span> review the generated code, with or without explanations, and submit your solution. We'll measure how long it takes, how accurate your solution is, and how much of the original code you edit. By participating, you'll help us understand if these explanations truly improve coding efficiency and accuracy.
                     </div>
+
+                    <div className='task-description'>
+                        <span className='task-introduction'>Line Colors Explanation:</span>
+                        <ul>
+                            <li><strong>Yellow:</strong> High confidence – The model is very sure about this line.</li>
+                            <li><strong>Green:</strong> Moderate confidence – The model is reasonably confident, but there's some uncertainty.</li>
+                            <li><strong>Red:</strong> Low confidence – The model has low confidence, and this line might need further review.</li>
+                        </ul>
+                        <p>These colors help you quickly see where the model is more or less certain about its output.</p>
+                    </div>
                 </div>
             </div>
 
-            <div className='action-content'>
-                <Button className='start-button' variant="contained" sx={{ backgroundColor: '#01adee', textTransform: 'none', fontWeight: 'bold'}}>Start With Explanations</Button>
-                <Button variant="contained" sx={{ backgroundColor: '#203568', textTransform: 'none', fontWeight: 'bold'}}>Start Without Explanations</Button>
+            <Divider className='divier-content'>Example</Divider>
+
+            <div className='example-content'>
+                <div className='leetcode-example-problem-content'>
+                    <div className='leetcode-problem-title'>
+                        Maximum Subarray Sum After One Operation
+                    </div>
+                    You are given an integer array <span className='important-word'>nums</span>. You must perform exactly one operation where you can replace one element <span className='important-word'>nums[i]</span> with <span className='important-word'>nums[i] * nums[i]</span>.
+                    <br />
+                    <br />
+                    Return the maximum possible subarray sum after exactly one operation. The subarray must be non-empty.
+                    <br />
+                    <br />
+                    <span className='important-word'>Example 1:</span>
+                    <br />
+                    Input: nums = [2,-1,-4,-3]
+                    <br />
+                    Output: 17
+                    <br />
+                    Explanation: You can perform the operation on index 2 (0-indexed) to make nums = [2,-1,16,-3]. Now, the maximum subarray sum is 2 + -1 + 16 = 17.
+                    <br />
+                    <br />
+                    <span className='important-word'>Example 2:</span>
+                    <br />
+                    Input: nums = [1,-1,1,1,-1,-1,1]
+                    <br />
+                    Output: 4
+                    <br />
+                    Explanation: You can perform the operation on index 1 (0-indexed) to make nums = [1,1,1,1,-1,-1,1]. Now, the maximum subarray sum is 1 + 1 + 1 + 1 = 4.
+                    <br />
+                    <br />
+                    <span className='important-word'>Constraints:</span>
+                    <br />
+                    1 &le; nums.length &le; 105
+                    <br />
+                    -104 &le; nums[i] &le; 104
+                </div>
+                <div className='solutions-content'>
+                    <ExplanationSolutionTabs />
+                </div>
             </div>
+
+            {/* <div className='action-content'>
+                <Button className='start-button' variant="contained" sx={{ backgroundColor: '#01adee', textTransform: 'none', fontWeight: 'bold' }}>Start With Explanations</Button>
+                <Button variant="contained" sx={{ backgroundColor: '#203568', textTransform: 'none', fontWeight: 'bold' }}>Start Without Explanations</Button>
+            </div> */}
         </div>
 
     );
