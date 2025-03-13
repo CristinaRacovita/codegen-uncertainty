@@ -98,9 +98,9 @@ export default function DescriptionContent() {
                 color="primary"
                 aria-label="start evaluation"
                 onClick={handleOpen}
-                style={{ position: 'fixed', bottom: 16, right: 16 }}
+                style={{ position: 'fixed', bottom: 16, right: 320, backgroundColor: '#203568',  width: 80, height: 80, fontWeight: 'bold'}}
             >
-                <PlayArrow />
+                Start {/* <PlayArrow /> */}
             </Fab>
 
             {/* Modal Dialog */}
