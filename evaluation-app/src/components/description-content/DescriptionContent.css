@@ -84,3 +84,7 @@
     display: flex;
     align-items: center;
 }
+
+.evaluation-modes {
+    color: #203568;
+}

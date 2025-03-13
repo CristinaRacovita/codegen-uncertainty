@@ -1,15 +1,32 @@
-import { Button, Divider } from '@mui/material';
+import { useState } from 'react';
+import { Button, Divider, Fab, Dialog, DialogActions, DialogContent, DialogTitle, Radio, RadioGroup, FormControlLabel } from '@mui/material';
+import { PlayArrow } from '@mui/icons-material'; // Icon for FAB
 import codeImage from '../../assets/explanation_code.png';
 import './DescriptionContent.css';
 import ExplanationSolutionTabs from '../explanation-solution-tabs/ExplanationSolutionTabs';
 
-
 export default function DescriptionContent() {
+    const [open, setOpen] = useState(false); // Dialog open state
+    const [evaluationMode, setEvaluationMode] = useState('withAI'); // Default selected mode
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleStartEvaluation = () => {
+        console.log('Evaluation Mode:', evaluationMode);
+        setOpen(false);
+    };
+
     return (
         <div>
             <div className='description-content'>
                 <div className="image-content">
-                    <img src={codeImage} width={450} />
+                    <img src={codeImage} width={450} alt="Code Explanation" />
                 </div>
                 <div className='description-text'>
                     <div className='description-title'>
@@ -76,11 +93,45 @@ export default function DescriptionContent() {
                 </div>
             </div>
 
-            {/* <div className='action-content'>
-                <Button className='start-button' variant="contained" sx={{ backgroundColor: '#01adee', textTransform: 'none', fontWeight: 'bold' }}>Start With Explanations</Button>
-                <Button variant="contained" sx={{ backgroundColor: '#203568', textTransform: 'none', fontWeight: 'bold' }}>Start Without Explanations</Button>
-            </div> */}
-        </div>
+            {/* Floating Action Button */}
+            <Fab
+                color="primary"
+                aria-label="start evaluation"
+                onClick={handleOpen}
+                style={{ position: 'fixed', bottom: 16, right: 16 }}
+            >
+                <PlayArrow />
+            </Fab>
 
+            {/* Modal Dialog */}
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle className='leetcode-problem-title'>Select Evaluation Mode</DialogTitle>
+                <DialogContent className='evaluation-modes'>
+                    <RadioGroup
+                        value={evaluationMode}
+                        onChange={(e) => setEvaluationMode(e.target.value)}
+                    >
+                        <FormControlLabel
+                            value="withAI"
+                            control={<Radio />}
+                            label="With AI Hints"
+                        />
+                        <FormControlLabel
+                            value="withoutAI"
+                            control={<Radio />}
+                            label="Without AI Hints"
+                        />
+                    </RadioGroup>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} sx={{color: "#203568"}}>
+                        Cancel
+                    </Button>
+                    <Button onClick={handleStartEvaluation} sx={{color: "#01adee"}}>
+                        Start Evaluation
+                    </Button>
+                </DialogActions>
+            </Dialog>
+        </div>
     );
 }
