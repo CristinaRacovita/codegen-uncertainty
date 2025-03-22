@@ -96,6 +96,11 @@ export default function DeveloperProfile({ onProfileUpdate }: DeveloperProfilePr
                     value={profile.pythonExperience}
                     onChange={handleSelectChange('pythonExperience')}
                     label="Years Coding in Python"
+                    sx={{ 
+                        '& .MuiSelect-select': {
+                            textAlign: 'left'
+                        }
+                    }}
                 >
                     {PYTHON_EXPERIENCE_OPTIONS.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -110,6 +115,11 @@ export default function DeveloperProfile({ onProfileUpdate }: DeveloperProfilePr
                     value={profile.pythonFrequency}
                     onChange={handleSelectChange('pythonFrequency')}
                     label="How frequently do you code in Python?"
+                    sx={{ 
+                        '& .MuiSelect-select': {
+                            textAlign: 'left'
+                        }
+                    }}
                 >
                     {PYTHON_FREQUENCY_OPTIONS.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -124,6 +134,11 @@ export default function DeveloperProfile({ onProfileUpdate }: DeveloperProfilePr
                     value={profile.aiUsage}
                     onChange={handleSelectChange('aiUsage')}
                     label="How often do you use AI for code generation/completion?"
+                    sx={{ 
+                        '& .MuiSelect-select': {
+                            textAlign: 'left'
+                        }
+                    }}
                 >
                     {AI_USAGE_OPTIONS.map((option) => (
                         <MenuItem key={option} value={option}>
