@@ -1,40 +1,76 @@
-import { Box, TextField, FormControl, InputLabel, Select, MenuItem, Chip, OutlinedInput } from '@mui/material';
-import { useState } from 'react';
+import { Box, TextField, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
+import { useState, useEffect, ReactNode } from 'react';
 
 export interface DeveloperProfileData {
-    experience: string;
-    programmingLanguages: string[];
+    evaluationId: string;
+    pythonExperience: string;
+    pythonFrequency: string;
+    aiUsage: string;
 }
 
 interface DeveloperProfileProps {
     onProfileUpdate: (profile: DeveloperProfileData) => void;
 }
 
-const PROGRAMMING_LANGUAGES = [
-    'JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'C#',
-    'Go', 'Ruby', 'PHP', 'Swift', 'Kotlin', 'Rust'
+const PYTHON_EXPERIENCE_OPTIONS = [
+    '< 1 year',
+    '3-5 years',
+    'More then 5 years'
+];
+
+const PYTHON_FREQUENCY_OPTIONS = [
+    'Daily',
+    'Weekly',
+    'Once a week',
+    'When needed'
+];
+
+const AI_USAGE_OPTIONS = [
+    'Never',
+    'Weekly',
+    'Twice a week',
+    'When needed'
 ];
 
 export default function DeveloperProfile({ onProfileUpdate }: DeveloperProfileProps) {
-    const [profile, setProfile] = useState<DeveloperProfileData>({
-        experience: '',
-        programmingLanguages: [],
+    // Initialize profile from parent component's state
+    const [profile, setProfile] = useState<DeveloperProfileData>(() => {
+        const savedProfile = localStorage.getItem('evaluationProfileData');
+        return savedProfile ? JSON.parse(savedProfile) : {
+            evaluationId: '',
+            pythonExperience: '',
+            pythonFrequency: '',
+            aiUsage: ''
+        };
     });
 
-    const handleExperienceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // Sync with parent component on mount
+    useEffect(() => {
+        onProfileUpdate(profile);
+    }, []);
+
+    const handleTextChange = (field: keyof DeveloperProfileData) => (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        // Only allow numbers for evaluationId
+        if (field === 'evaluationId' && !/^\d*$/.test(event.target.value)) {
+            return;
+        }
         const newProfile = {
             ...profile,
-            experience: event.target.value,
+            [field]: event.target.value
         };
         setProfile(newProfile);
         onProfileUpdate(newProfile);
     };
 
-    const handleLanguagesChange = (event: any) => {
-        const value = event.target.value;
+    const handleSelectChange = (field: keyof DeveloperProfileData) => (
+        event: SelectChangeEvent<string>, 
+        child: ReactNode
+    ) => {
         const newProfile = {
             ...profile,
-            programmingLanguages: typeof value === 'string' ? value.split(',') : value,
+            [field]: event.target.value
         };
         setProfile(newProfile);
         onProfileUpdate(newProfile);
@@ -43,30 +79,55 @@ export default function DeveloperProfile({ onProfileUpdate }: DeveloperProfilePr
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             <TextField
-                label="Years of Experience"
-                type="number"
-                value={profile.experience}
-                onChange={handleExperienceChange}
+                label="Evaluation ID"
+                type="text"
+                inputMode="numeric"
+                value={profile.evaluationId}
+                onChange={handleTextChange('evaluationId')}
                 fullWidth
+                required
+                inputProps={{
+                    pattern: '[0-9]*'
+                }}
             />
-            <FormControl fullWidth>
-                <InputLabel>Programming Languages</InputLabel>
+            <FormControl fullWidth required>
+                <InputLabel>Years Coding in Python</InputLabel>
                 <Select
-                    multiple
-                    value={profile.programmingLanguages}
-                    onChange={handleLanguagesChange}
-                    input={<OutlinedInput label="Programming Languages" />}
-                    renderValue={(selected) => (
-                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                            {selected.map((value) => (
-                                <Chip key={value} label={value} />
-                            ))}
-                        </Box>
-                    )}
+                    value={profile.pythonExperience}
+                    onChange={handleSelectChange('pythonExperience')}
+                    label="Years Coding in Python"
                 >
-                    {PROGRAMMING_LANGUAGES.map((lang) => (
-                        <MenuItem key={lang} value={lang}>
-                            {lang}
+                    {PYTHON_EXPERIENCE_OPTIONS.map((option) => (
+                        <MenuItem key={option} value={option}>
+                            {option}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+            <FormControl fullWidth required>
+                <InputLabel>How frequently do you code in Python?</InputLabel>
+                <Select
+                    value={profile.pythonFrequency}
+                    onChange={handleSelectChange('pythonFrequency')}
+                    label="How frequently do you code in Python?"
+                >
+                    {PYTHON_FREQUENCY_OPTIONS.map((option) => (
+                        <MenuItem key={option} value={option}>
+                            {option}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+            <FormControl fullWidth required>
+                <InputLabel>How often do you use AI for code generation/completion?</InputLabel>
+                <Select
+                    value={profile.aiUsage}
+                    onChange={handleSelectChange('aiUsage')}
+                    label="How often do you use AI for code generation/completion?"
+                >
+                    {AI_USAGE_OPTIONS.map((option) => (
+                        <MenuItem key={option} value={option}>
+                            {option}
                         </MenuItem>
                     ))}
                 </Select>

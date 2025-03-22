@@ -1,16 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Stepper, Step, StepLabel, Paper, Container, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import DeveloperProfile, { DeveloperProfileData } from '../../components/developer-profile/DeveloperProfile';
 import CodeChallenge from '../../components/code-challenge/CodeChallenge';
 
+const STORAGE_KEY = 'evaluationProfileData';
+const CODE_STORAGE_KEY = 'evaluationCodeContent';
+
 export default function EvaluationPage() {
     const navigate = useNavigate();
     const [activeStep, setActiveStep] = useState(0);
-    const [profile, setProfile] = useState<DeveloperProfileData>({
-        experience: '',
-        programmingLanguages: [],
+    const [code, setCode] = useState(() => {
+        const savedCode = localStorage.getItem(CODE_STORAGE_KEY);
+        return savedCode ? savedCode : '';
     });
+    
+    // Initialize profile from localStorage or default values
+    const [profile, setProfile] = useState<DeveloperProfileData>(() => {
+        const savedProfile = localStorage.getItem(STORAGE_KEY);
+        return savedProfile ? JSON.parse(savedProfile) : {
+            evaluationId: '',
+            pythonExperience: '',
+            pythonFrequency: '',
+            aiUsage: ''
+        };
+    });
+
+    // Save profile to localStorage whenever it changes
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+    }, [profile]);
+
+    useEffect(() => {
+        localStorage.setItem(CODE_STORAGE_KEY, code);
+    }, [code]);
 
     const steps = ['Developer Profile', 'Code Challenge'];
 
@@ -28,7 +51,10 @@ export default function EvaluationPage() {
     };
 
     const handleFinish = () => {
-        // Navigate to done page, replace history, and pass state
+        // Clear the stored data
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(CODE_STORAGE_KEY);
+        // Navigate to done page
         navigate('/done', { 
             replace: true,
             state: { fromEvaluation: true }
@@ -37,6 +63,10 @@ export default function EvaluationPage() {
 
     const handleProfileUpdate = (newProfile: DeveloperProfileData) => {
         setProfile(newProfile);
+    };
+
+    const handleCodeChange = (newCode: string) => {
+        setCode(newCode);
     };
 
     // Mock problem data - this would come from your backend
@@ -57,7 +87,10 @@ export default function EvaluationPage() {
             case 1:
                 return (
                     <Paper sx={{ p: 3, mt: 2 }}>
-                        <CodeChallenge problem={mockProblem} />
+                        <CodeChallenge 
+                            problem={mockProblem} 
+                            onCodeChange={handleCodeChange}
+                        />
                     </Paper>
                 );
             default:
@@ -88,7 +121,7 @@ export default function EvaluationPage() {
                             <Button
                                 variant="contained"
                                 onClick={handleNext}
-                                disabled={!profile.experience || profile.programmingLanguages.length === 0}
+                                disabled={!profile.evaluationId || !profile.pythonExperience || !profile.pythonFrequency || !profile.aiUsage}
                             >
                                 Next
                             </Button>
