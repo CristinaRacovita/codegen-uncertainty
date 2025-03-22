@@ -3,15 +3,18 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import codeImage from '../../assets/explanation_code.png';
 import './DescriptionContent.css';
 import ExplanationSolutionTabs from '../explanation-solution-tabs/ExplanationSolutionTabs';
+import { useEffect } from 'react';
 
 export default function DescriptionContent() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const handleStart = () => {
-        // Set mode to 1 for hints page, 0 for no-hints page
+    useEffect(() => {
         const mode = location.pathname === '/hints' ? 1 : 0;
-        localStorage.setItem('mode', mode.toString());
+        localStorage.setItem('mode', mode.toString()); 
+    }, []);
+
+    const handleStart = () => {
         navigate('/evaluation');
     };
 
