@@ -1,0 +1,3488 @@
+title,line_number,line_text,token_prob
+Relative Ranks,0," To solve this problem, we need to determine the ranks of athletes based on their scores without using any built-in functions or libraries that simplify algorithmic steps. Here's a step-by-step approach to achieve this:
+
+1. **Create a List of Tuples**: Pair each score with its index to keep track of the original positions.
+2. **Sort the List**: Sort the list of tuples in descending order based on the scores.
+3. **Assign Ranks**: Assign ranks based on the sorted order.
+4. **Map Ranks Back to Original Positions**: Use the original indices to map the ranks back to the correct positions in the result array.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9999515989099861
+Relative Ranks,1,"using System;
+
+",0.9649343219900902
+Relative Ranks,2,"public class Solution
+",0.8979921280101429
+Relative Ranks,3,"{
+",0.999998927116394
+Relative Ranks,4,"    public string[] FindRelativeRanks(int[] score)
+",0.9987120367846364
+Relative Ranks,5,"    {
+",0.9999965429254232
+Relative Ranks,6,"        int n = score.Length;
+",0.9916301353989488
+Relative Ranks,7,"        string[] answer = new string[n];
+",0.8474840880296793
+Relative Ranks,8,"        
+",0.9405823349952698
+Relative Ranks,9,"        // Step 1: Create a list of tuples (score, index)
+",0.9999992847442627
+Relative Ranks,10,"        int[][] scoreIndexPairs = new int[n][];
+",0.8529294507610681
+Relative Ranks,11,"        for (int i = 0; i < n; i++)
+",0.999788689371902
+Relative Ranks,12,"        {
+",0.99999946355811
+Relative Ranks,13,"            scoreIndexPairs[i] = new int[2];
+",0.8724731830280793
+Relative Ranks,14,"            scoreIndexPairs[i][0] = score[i];
+",0.9901641634494706
+Relative Ranks,15,"            scoreIndexPairs[i][1] = i;
+",0.9999972148237342
+Relative Ranks,16,"        }
+",0.9994649947960416
+Relative Ranks,17,"        
+",0.9999899864196777
+Relative Ranks,18,"        // Step 2: Sort the list of tuples in descending order based on scores
+",0.9999996423721313
+Relative Ranks,19,"        for (int i = 0; i < n - 1; i++)
+",0.9718424599364459
+Relative Ranks,20,"        {
+",0.9999985098833672
+Relative Ranks,21,"            for (int j = 0; j < n - i - 1; j++)
+",0.9623387988873895
+Relative Ranks,22,"            {
+",0.9999994039535451
+Relative Ranks,23,"                if (scoreIndexPairs[j][0] < scoreIndexPairs[j + 1][0])
+",0.9999940792028471
+Relative Ranks,24,"                {
+",0.9999991655347173
+Relative Ranks,25,"                    // Swap
+",0.9999980926513672
+Relative Ranks,26,"                    int[] temp = scoreIndexPairs[j];
+",0.9997884365187347
+Relative Ranks,27,"                    scoreIndexPairs[j] = scoreIndexPairs[j + 1];
+",0.9999997695286496
+Relative Ranks,28,"                    scoreIndexPairs[j + 1] = temp;
+",0.99999973177898
+Relative Ranks,29,"                }
+",0.9999997615814209
+Relative Ranks,30,"            }
+",0.9999997615814209
+Relative Ranks,31,"        }
+",0.9999603025186345
+Relative Ranks,32,"        
+",0.9999891519546509
+Relative Ranks,33,"        // Step 3: Assign ranks based on the sorted order
+",0.9999997615814209
+Relative Ranks,34,"        for (int i = 0; i < n; i++)
+",0.9885861408358566
+Relative Ranks,35,"        {
+",0.99999946355811
+Relative Ranks,36,"            if (i == 0)
+",0.889661099472109
+Relative Ranks,37,"            {
+",0.9900566744815286
+Relative Ranks,38,"                answer[scoreIndexPairs[i][1]] = ""Gold Medal"";
+",0.9999806669474081
+Relative Ranks,39,"            }
+",0.999991834154711
+Relative Ranks,40,"            else if (i == 1)
+",0.9999996158810018
+Relative Ranks,41,"            {
+",0.9999991059303266
+Relative Ranks,42,"                answer[scoreIndexPairs[i][1]] = ""Silver Medal"";
+",0.9999988635356815
+Relative Ranks,43,"            }
+",0.9999983310696905
+Relative Ranks,44,"            else if (i == 2)
+",0.999999827808736
+Relative Ranks,45,"            {
+",0.9999995231628134
+Relative Ranks,46,"                answer[scoreIndexPairs[i][1]] = ""Bronze Medal"";
+",0.9999993592494719
+Relative Ranks,47,"            }
+",0.9999997019767601
+Relative Ranks,48,"            else
+",0.9999997615814019
+Relative Ranks,49,"            {
+",0.9999994635581952
+Relative Ranks,50,"                answer[scoreIndexPairs[i][1]] = (i + 1).ToString();
+",0.9986960824953506
+Relative Ranks,51,"            }
+",0.9999996423721029
+Relative Ranks,52,"        }
+",0.9999926686026848
+Relative Ranks,53,"        
+",0.9999969005584717
+Relative Ranks,54,"        return answer;
+",0.9876970882659273
+Relative Ranks,55,"    }
+",0.9617349200401937
+Relative Ranks,56,"}
+",0.38847097754478455
+Truncate Sentence,0," To solve this problem, we need to manually parse the input string `s` to extract the first `k` words and then construct the truncated sentence. Here's a step-by-step approach to achieve this:
+
+1. **Initialize Variables**: We'll need a `StringBuilder` to build our result string efficiently, a counter to keep track of the number of words processed, and a variable to store the current position in the string.
+
+2. **Iterate Through the String**: We'll loop through each character in the string `s`.
+
+3. **Count Words**: Whenever we encounter a space, it indicates the end of a word. We'll increment our word counter each time a space is found.
+
+4. **Stop When `k` Words are Found**: Once the word counter reaches `k`, we stop processing further characters.
+
+5. **Build the Result**: As we process each character, we'll append it to our `StringBuilder` until we reach the desired number of words.
+
+6. **Return the Result**: Finally, we'll convert the `StringBuilder` to a string and return it.
+
+Here's the implementation of the above logic in C#:
+
+```csharp
+",0.9999557318424885
+Truncate Sentence,1,"using System;
+
+",0.612859776217185
+Truncate Sentence,2,"public class Solution
+",0.9183958445982666
+Truncate Sentence,3,"{
+",0.9999992847442627
+Truncate Sentence,4,"    public string TruncateSentence(string s, int k)
+",0.9997311762707003
+Truncate Sentence,5,"    {
+",0.9999971985795195
+Truncate Sentence,6,"        // Initialize a StringBuilder to build the result
+",0.9999983310699463
+Truncate Sentence,7,"        var result = new System.Text.StringBuilder();
+",0.8980927113506354
+Truncate Sentence,8,"        
+",0.237359881401062
+Truncate Sentence,9,"        // Initialize a counter for the number of words processed
+",1.0
+Truncate Sentence,10,"        int wordCount = 0;
+",0.9999028619978926
+Truncate Sentence,11,"        
+",0.9971945285797119
+Truncate Sentence,12,"        // Iterate through each character in the string
+",1.0
+Truncate Sentence,13,"        for (int i = 0; i < s.Length; i++)
+",0.9995085060704035
+Truncate Sentence,14,"        {
+",0.9999964833197748
+Truncate Sentence,15,"            // Check if the current character is a space
+",0.9999997615814209
+Truncate Sentence,16,"            if (s[i] == ' ')
+",0.9999912710931309
+Truncate Sentence,17,"            {
+",0.9999993443488204
+Truncate Sentence,18,"                // Increment the word counter
+",0.9999998807907104
+Truncate Sentence,19,"                wordCount++;
+",0.9999659343547974
+Truncate Sentence,20,"                
+",0.9940150380134583
+Truncate Sentence,21,"                // If we have processed k words, break out of the loop
+",0.9999997615814209
+Truncate Sentence,22,"                if (wordCount == k)
+",0.9988468074080156
+Truncate Sentence,23,"                {
+",0.9978593355999498
+Truncate Sentence,24,"                    break;
+",0.9953804715025604
+Truncate Sentence,25,"                }
+",0.9999921917619738
+Truncate Sentence,26,"            }
+",0.967740168073275
+Truncate Sentence,27,"            
+",0.9967703819274902
+Truncate Sentence,28,"            // Append the current character to the result
+",0.9999996423721313
+Truncate Sentence,29,"            result.Append(s[i]);
+",0.9998685698524353
+Truncate Sentence,30,"        }
+",0.9993489863820078
+Truncate Sentence,31,"        
+",0.999990701675415
+Truncate Sentence,32,"        // Convert the StringBuilder to a string and return it
+",0.9999996423721313
+Truncate Sentence,33,"        return result.ToString();
+",0.9999602783877097
+Truncate Sentence,34,"    }
+",0.9263670645725619
+Truncate Sentence,35,"    
+",0.703960120677948
+Truncate Sentence,36,"    public static void Main()
+",0.8006955364941771
+Truncate Sentence,37,"    {
+",0.9999967217391639
+Truncate Sentence,38,"        Solution solution = new Solution();
+",0.9534939348534348
+Truncate Sentence,39,"        
+",0.9982742071151733
+Truncate Sentence,40,"        // Test cases
+",1.0
+Truncate Sentence,41,"        Console.WriteLine(solution.TruncateSentence(""Hello how are you Contestant"", 4)); // Output: ""Hello how are you""
+",0.9996883631960569
+Truncate Sentence,42,"        Console.WriteLine(solution.TruncateSentence(""What is the solution to this problem"", 4)); // Output: ""What is the solution""
+",0.9999986071305087
+Truncate Sentence,43,"        Console.WriteLine(solution.TruncateSentence(""chopper is not a tanuki"", 5)); // Output: ""chopper is not a tanuki""
+",0.999998776530108
+Truncate Sentence,44,"    }
+",0.9999871849222871
+Truncate Sentence,45,"}
+",0.9999970197677612
+Perform String Shifts,0," To solve this problem, we need to perform a series of left and right shifts on a given string based on the instructions provided in the `shift` matrix. The key is to efficiently compute the net effect of all these shifts and then apply it to the string.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Calculate Net Shift**: First, we calculate the net effect of all the shifts. A left shift by `x` is equivalent to a right shift by `len(s) - x`. Therefore, we can convert all left shifts into right shifts and sum them up. The net shift will be the total right shifts modulo the length of the string.
+
+2. **Apply Net Shift**: Once we have the net shift, we can apply it to the string. If the net shift is positive, we perform a right shift; if it's negative, we perform a left shift. Since a right shift by `n` is equivalent to a left shift by `len(s) - n`, we can handle both cases uniformly by using the modulo operation.
+
+3. **Construct the Result**: Finally, we construct the result string by slicing the original string according to the net shift.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9999415847432551
+Perform String Shifts,1,"using System;
+
+",0.8375825933867482
+Perform String Shifts,2,"public class Solution
+",0.7973863265541453
+Perform String Shifts,3,"{
+",0.9999994039535522
+Perform String Shifts,4,"    public string StringShift(string s, int[][] shift)
+",0.9992256706880406
+Perform String Shifts,5,"    {
+",0.9999974966017859
+Perform String Shifts,6,"        int n = s.Length;
+",0.8709340591084846
+Perform String Shifts,7,"        int netShift = 0;
+
+",0.9596303974186152
+Perform String Shifts,8,"        // Calculate net shift
+",0.9999990463256836
+Perform String Shifts,9,"        foreach (var sh in shift)
+",0.965319275507227
+Perform String Shifts,10,"        {
+",0.9999998807907104
+Perform String Shifts,11,"            int direction = sh[0];
+",0.918336326313087
+Perform String Shifts,12,"            int amount = sh[1];
+
+",0.8968339506616868
+Perform String Shifts,13,"            if (direction == 0)
+",0.9288375724264131
+Perform String Shifts,14,"            {
+",0.9998214117995388
+Perform String Shifts,15,"                // Left shift
+",0.9999996423721313
+Perform String Shifts,16,"                netShift += n - amount;
+",0.8211282853987264
+Perform String Shifts,17,"            }
+",0.9999911784777563
+Perform String Shifts,18,"            else
+",0.9664786181331652
+Perform String Shifts,19,"            {
+",0.9999982714646602
+Perform String Shifts,20,"                // Right shift
+",0.9999998807907104
+Perform String Shifts,21,"                netShift += amount;
+",0.9999935030078798
+Perform String Shifts,22,"            }
+",0.9999655479341043
+Perform String Shifts,23,"        }
+
+",0.9999961853009154
+Perform String Shifts,24,"        // Normalize net shift to be within the bounds of the string length
+",0.9999997615814209
+Perform String Shifts,25,"        netShift %= n;
+
+",0.7942541921741828
+Perform String Shifts,26,"        // If netShift is negative, convert it to a positive equivalent
+",0.9999992847442627
+Perform String Shifts,27,"        if (netShift < 0)
+",0.9999197842618209
+Perform String Shifts,28,"        {
+",0.9998753291140373
+Perform String Shifts,29,"            netShift += n;
+",0.9994307341383263
+Perform String Shifts,30,"        }
+
+",0.9999994039535238
+Perform String Shifts,31,"        // Apply the net shift
+",0.9999996423721313
+Perform String Shifts,32,"        string result = s.Substring(n - netShift) + s.Substring(0, n - netShift);
+
+",0.9216477843835589
+Perform String Shifts,33,"        return result;
+",0.9999994635581171
+Perform String Shifts,34,"    }
+
+",0.9107065572598518
+Perform String Shifts,35,"    public static void Main()
+",0.8231688423389144
+Perform String Shifts,36,"    {
+",0.9999997615814138
+Perform String Shifts,37,"        Solution solution = new Solution();
+
+",0.8849644477557396
+Perform String Shifts,38,"        // Example 1
+",0.9999996423721313
+Perform String Shifts,39,"        string s1 = ""abc"";
+",0.9947021210345109
+Perform String Shifts,40,"        int[][] shift1 = new int[][]
+",0.978925814537702
+Perform String Shifts,41,"        {
+",0.9999842642830487
+Perform String Shifts,42,"            new int[] { 0, 1 },
+",0.9930008759578784
+Perform String Shifts,43,"            new int[] { 1, 2 }
+",0.9999979517529352
+Perform String Shifts,44,"        };
+",0.9998313642610184
+Perform String Shifts,45,"        Console.WriteLine(solution.StringShift(s1, shift1)); // Output: ""cab""
+
+",0.9999862110732615
+Perform String Shifts,46,"        // Example 2
+",0.9999998807907104
+Perform String Shifts,47,"        string s2 = ""abcdefg"";
+",0.9999995364078692
+Perform String Shifts,48,"        int[][] shift2 = new int[][]
+",0.9999995231621726
+Perform String Shifts,49,"        {
+",0.9999996423721313
+Perform String Shifts,50,"            new int[] { 1, 1 },
+",0.9999981576716405
+Perform String Shifts,51,"            new int[] { 1, 1 },
+",0.9999992522322081
+Perform String Shifts,52,"            new int[] { 0, 2 },
+",0.9999995665115037
+Perform String Shifts,53,"            new int[] { 1, 3 }
+",0.9999991330214549
+Perform String Shifts,54,"        };
+",0.9999990463253354
+Perform String Shifts,55,"        Console.WriteLine(solution.StringShift(s2, shift2)); // Output: ""efgabcd""
+",0.9999996920426032
+Perform String Shifts,56,"    }
+",0.9999999403953534
+Perform String Shifts,57,"}
+",0.999998927116394
+Invert Binary Tree,0," To solve the problem of inverting a binary tree without using any built-in functions or libraries that simplify algorithmic steps, we can use a recursive approach. The idea is to swap the left and right children of each node in the tree.
+
+Here's a step-by-step breakdown of the solution:
+
+1. **Base Case**: If the `root` is `null`, there's nothing to invert, so return `null`.
+
+2. **Recursive Case**:
+   - Swap the left and right children of the current node.
+   - Recursively invert the left subtree.
+   - Recursively invert the right subtree.
+
+3. **Return the Root**: After inverting the subtrees, return the `root` of the inverted tree.
+
+Below is the C# implementation of the above logic:
+
+```csharp
+",0.9999743693670063
+Invert Binary Tree,1,"public class TreeNode {
+",0.7032515344194497
+Invert Binary Tree,2,"    public int val;
+",0.9998250703813382
+Invert Binary Tree,3,"    public TreeNode left;
+",0.9999896287166866
+Invert Binary Tree,4,"    public TreeNode right;
+",0.9995243458235964
+Invert Binary Tree,5,"    public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null) {
+",0.9831494716701131
+Invert Binary Tree,6,"        this.val = val;
+",0.9999971191064829
+Invert Binary Tree,7,"        this.left = left;
+",0.9999986886970947
+Invert Binary Tree,8,"        this.right = right;
+",0.999998986720208
+Invert Binary Tree,9,"    }
+",0.999997496602866
+Invert Binary Tree,10,"}
+
+",0.999996542930603
+Invert Binary Tree,11,"public class Solution {
+",0.998841274469466
+Invert Binary Tree,12,"    public TreeNode InvertTree(TreeNode root) {
+",0.9999638669559925
+Invert Binary Tree,13,"        // Base case: if the root is null, return null
+",0.9999986886978149
+Invert Binary Tree,14,"        if (root == null) {
+",0.9999899714608312
+Invert Binary Tree,15,"            return null;
+",0.9998818129676942
+Invert Binary Tree,16,"        }
+
+",0.5501940417452794
+Invert Binary Tree,17,"        // Swap the left and right children
+",0.9999996423721313
+Invert Binary Tree,18,"        TreeNode temp = root.left;
+",0.9999398110801764
+Invert Binary Tree,19,"        root.left = root.right;
+",0.9984580764584682
+Invert Binary Tree,20,"        root.right = temp;
+
+",0.9999994436896749
+Invert Binary Tree,21,"        // Recursively invert the left subtree
+",0.9999998807907104
+Invert Binary Tree,22,"        InvertTree(root.left);
+
+",0.9992549330846904
+Invert Binary Tree,23,"        // Recursively invert the right subtree
+",0.9999997615814209
+Invert Binary Tree,24,"        InvertTree(root.right);
+
+",0.9999994039534711
+Invert Binary Tree,25,"        // Return the root of the inverted tree
+",1.0
+Invert Binary Tree,26,"        return root;
+",0.9999997913837277
+Invert Binary Tree,27,"    }
+",0.9997274206769716
+Invert Binary Tree,28,"}
+",0.9997726082801819
+Merge Strings Alternately,0," To solve this problem, we need to merge two strings by alternating their characters. If one string is longer than the other, the remaining characters of the longer string should be appended to the result. Here's how you can implement this in C# without using any built-in functions or libraries that simplify algorithmic steps:
+
+```csharp
+",0.999977628263566
+Merge Strings Alternately,1,"using System;
+
+",0.967192865510172
+Merge Strings Alternately,2,"public class Solution {
+",0.4281710390197097
+Merge Strings Alternately,3,"    public string MergeAlternately(string word1, string word2) {
+",0.93672049813168
+Merge Strings Alternately,4,"        // Initialize an array to hold the merged characters
+",0.999992847442627
+Merge Strings Alternately,5,"        char[] merged = new char[word1.Length + word2.Length];
+",0.9922499854342962
+Merge Strings Alternately,6,"        
+",0.4391893148422241
+Merge Strings Alternately,7,"        // Initialize indices for word1, word2, and the merged array
+",0.9999998807907104
+Merge Strings Alternately,8,"        int i = 0, j = 0, k = 0;
+",0.9892160216680987
+Merge Strings Alternately,9,"        
+",0.9997268319129944
+Merge Strings Alternately,10,"        // Loop until we reach the end of either word1 or word2
+",0.9999997615814209
+Merge Strings Alternately,11,"        while (i < word1.Length && j < word2.Length) {
+",0.9932285926377618
+Merge Strings Alternately,12,"            // Add character from word1 to the merged array
+",0.9999992847442627
+Merge Strings Alternately,13,"            merged[k++] = word1[i++];
+",0.9921490789039977
+Merge Strings Alternately,14,"            // Add character from word2 to the merged array
+",0.993476927280426
+Merge Strings Alternately,15,"            merged[k++] = word2[j++];
+",0.999994767969763
+Merge Strings Alternately,16,"        }
+",0.9999957680617637
+Merge Strings Alternately,17,"        
+",0.9999977350234985
+Merge Strings Alternately,18,"        // If there are remaining characters in word1, add them to the merged array
+",1.0
+Merge Strings Alternately,19,"        while (i < word1.Length) {
+",0.9999919173396931
+Merge Strings Alternately,20,"            merged[k++] = word1[i++];
+",0.9999992317615698
+Merge Strings Alternately,21,"        }
+",0.9999995827674422
+Merge Strings Alternately,22,"        
+",0.9999973773956299
+Merge Strings Alternately,23,"        // If there are remaining characters in word2, add them to the merged array
+",0.9999998807907104
+Merge Strings Alternately,24,"        while (j < word2.Length) {
+",0.9999996900556778
+Merge Strings Alternately,25,"            merged[k++] = word2[j++];
+",0.9999995099172918
+Merge Strings Alternately,26,"        }
+",0.9999976158113668
+Merge Strings Alternately,27,"        
+",0.9999953508377075
+Merge Strings Alternately,28,"        // Convert the merged character array to a string and return it
+",1.0
+Merge Strings Alternately,29,"        return new string(merged);
+",0.9977960642024332
+Merge Strings Alternately,30,"    }
+
+",0.5557805347094567
+Merge Strings Alternately,31,"    public static void Main(string[] args) {
+",0.9899545721823119
+Merge Strings Alternately,32,"        Solution solution = new Solution();
+",0.998859042109901
+Merge Strings Alternately,33,"        
+",0.9576362371444702
+Merge Strings Alternately,34,"        // Test cases
+",0.9999998807907104
+Merge Strings Alternately,35,"        Console.WriteLine(solution.MergeAlternately(""abc"", ""pqr"")); // Output: ""apbqcr""
+",0.9997032068853425
+Merge Strings Alternately,36,"        Console.WriteLine(solution.MergeAlternately(""ab"", ""pqrs"")); // Output: ""apbqrs""
+",0.999995367803817
+Merge Strings Alternately,37,"        Console.WriteLine(solution.MergeAlternately(""abcd"", ""pq"")); // Output: ""apbqcd""
+",0.9999985694817372
+Merge Strings Alternately,38,"    }
+",0.9999901651864156
+Merge Strings Alternately,39,"}
+",0.9999984502792358
+Delete N Nodes After M Nodes of a Linked List,0," To solve this problem, we need to traverse the linked list and modify it in-place by keeping the first `m` nodes and then removing the next `n` nodes. We will continue this process until we reach the end of the list.
+
+Here's a step-by-step approach to implement this:
+
+1. **Initialize Pointers**: Start with a pointer `current` pointing to the head of the linked list.
+
+2. **Traverse and Modify**: Use a loop to traverse the list:
+   - For each segment, keep `m` nodes by moving the `current` pointer forward.
+   - Then, remove the next `n` nodes by adjusting the `next` pointers.
+
+3. **Continue Until End**: Repeat the above steps until there are fewer than `m` nodes left in the list.
+
+4. **Return the Modified List**: After processing all segments, return the head of the modified list.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9999564470173365
+Delete N Nodes After M Nodes of a Linked List,1,"public class ListNode {
+",0.7976995616647677
+Delete N Nodes After M Nodes of a Linked List,2,"    public int val;
+",0.9997928523018171
+Delete N Nodes After M Nodes of a Linked List,3,"    public ListNode next;
+",0.9999605882609052
+Delete N Nodes After M Nodes of a Linked List,4,"    public ListNode(int val = 0, ListNode next = null) {
+",0.9949549000359508
+Delete N Nodes After M Nodes of a Linked List,5,"        this.val = val;
+",0.9999958872632964
+Delete N Nodes After M Nodes of a Linked List,6,"        this.next = next;
+",0.9999988873795078
+Delete N Nodes After M Nodes of a Linked List,7,"    }
+",0.9999957680701765
+Delete N Nodes After M Nodes of a Linked List,8,"}
+
+",0.999997615814209
+Delete N Nodes After M Nodes of a Linked List,9,"public class Solution {
+",0.9847772080305671
+Delete N Nodes After M Nodes of a Linked List,10,"    public ListNode DeleteNodes(ListNode head, int m, int n) {
+",0.9999044821679446
+Delete N Nodes After M Nodes of a Linked List,11,"        ListNode current = head;
+
+",0.7801204029433323
+Delete N Nodes After M Nodes of a Linked List,12,"        while (current != null) {
+",0.9972028229469514
+Delete N Nodes After M Nodes of a Linked List,13,"            // Keep m nodes
+",0.9999996423721313
+Delete N Nodes After M Nodes of a Linked List,14,"            for (int i = 1; i < m && current != null; i++) {
+",0.9726935848715637
+Delete N Nodes After M Nodes of a Linked List,15,"                current = current.next;
+",0.9999924102451235
+Delete N Nodes After M Nodes of a Linked List,16,"            }
+
+",0.9560215562679006
+Delete N Nodes After M Nodes of a Linked List,17,"            if (current == null) {
+",0.8831064031978715
+Delete N Nodes After M Nodes of a Linked List,18,"                break;
+",0.9750457769681199
+Delete N Nodes After M Nodes of a Linked List,19,"            }
+
+",0.9999927878152997
+Delete N Nodes After M Nodes of a Linked List,20,"            // Remove n nodes
+",0.9999991655349731
+Delete N Nodes After M Nodes of a Linked List,21,"            ListNode temp = current;
+",0.9564061114465865
+Delete N Nodes After M Nodes of a Linked List,22,"            for (int i = 0; i <= n && temp != null; i++) {
+",0.9852665245830071
+Delete N Nodes After M Nodes of a Linked List,23,"                temp = temp.next;
+",0.9999798931223962
+Delete N Nodes After M Nodes of a Linked List,24,"            }
+
+",0.9788731870238412
+Delete N Nodes After M Nodes of a Linked List,25,"            current.next = temp;
+",0.9588754417896213
+Delete N Nodes After M Nodes of a Linked List,26,"            current = temp;
+",0.9936952943236202
+Delete N Nodes After M Nodes of a Linked List,27,"        }
+
+",0.9999945163613119
+Delete N Nodes After M Nodes of a Linked List,28,"        return head;
+",0.9999970197598422
+Delete N Nodes After M Nodes of a Linked List,29,"    }
+",0.9986912099469215
+Delete N Nodes After M Nodes of a Linked List,30,"}
+",0.9994943141937256
+Reverse Linked List,0," To solve the problem of reversing a singly linked list, we can implement two methods: an iterative approach and a recursive approach. Below, I'll provide the implementation for both methods without using any built-in functions or libraries that simplify the algorithmic steps.
+
+### Iterative Approach
+
+In the iterative approach, we traverse the linked list and reverse the direction of the links between the nodes.
+
+```csharp
+",0.9998909929450385
+Reverse Linked List,1,"public class ListNode
+",0.9647764297275752
+Reverse Linked List,2,"{
+",0.9999995231628418
+Reverse Linked List,3,"    public int val;
+",0.9980116429247097
+Reverse Linked List,4,"    public ListNode next;
+",0.9980940567042852
+Reverse Linked List,5,"    public ListNode(int val = 0, ListNode next = null)
+",0.9925410337687712
+Reverse Linked List,6,"    {
+",0.9999992251396019
+Reverse Linked List,7,"        this.val = val;
+",0.9999972780485643
+Reverse Linked List,8,"        this.next = next;
+",0.9999988476431962
+Reverse Linked List,9,"    }
+",0.999993145449137
+Reverse Linked List,10,"}
+
+",0.9999892711639404
+Reverse Linked List,11,"public class Solution
+",0.980948436793018
+Reverse Linked List,12,"{
+",0.9999969005584717
+Reverse Linked List,13,"    public ListNode ReverseListIterative(ListNode head)
+",0.9687694164280266
+Reverse Linked List,14,"    {
+",0.9999980330454274
+Reverse Linked List,15,"        ListNode prev = null;
+",0.9600425658783855
+Reverse Linked List,16,"        ListNode current = head;
+",0.9668388642038385
+Reverse Linked List,17,"        
+",0.6141520142555237
+Reverse Linked List,18,"        while (current != null)
+",0.9999433350822752
+Reverse Linked List,19,"        {
+",0.9999992847440069
+Reverse Linked List,20,"            ListNode nextNode = current.next; // Store the next node
+",0.9527050030023869
+Reverse Linked List,21,"            current.next = prev;              // Reverse the current node's pointer
+",0.7729193355221492
+Reverse Linked List,22,"            prev = current;                   // Move pointers one position ahead
+",0.8614382572971037
+Reverse Linked List,23,"            current = nextNode;
+",0.9990284942653994
+Reverse Linked List,24,"        }
+",0.9998843901636512
+Reverse Linked List,25,"        
+",0.9998815059661865
+Reverse Linked List,26,"        return prev; // New head of the reversed list
+",0.9980300942845184
+Reverse Linked List,27,"    }
+",0.9976654523890672
+Reverse Linked List,28,"}
+",0.9988898634910583
+How Many Numbers Are Smaller Than the Current Number,0," To solve this problem, we need to determine how many numbers in the array are smaller than each element. We can achieve this by following these steps:
+
+1. Create a copy of the original array and sort it.
+2. For each element in the original array, find its index in the sorted array. This index will tell us how many elements are smaller than the current element.
+3. Store the result in a new array.
+
+Here's the implementation in C#:
+
+```csharp
+",0.999945559611369
+How Many Numbers Are Smaller Than the Current Number,1,"using System;
+
+",0.8739451081746987
+How Many Numbers Are Smaller Than the Current Number,2,"public class Solution {
+",0.6332914972660577
+How Many Numbers Are Smaller Than the Current Number,3,"    public int[] SmallerNumbersThanCurrent(int[] nums) {
+",0.9991971059205264
+How Many Numbers Are Smaller Than the Current Number,4,"        // Step 1: Create a copy of the original array and sort it
+",0.9999721050262451
+How Many Numbers Are Smaller Than the Current Number,5,"        int[] sortedNums = new int[nums.Length];
+",0.9981921922393717
+How Many Numbers Are Smaller Than the Current Number,6,"        for (int i = 0; i < nums.Length; i++) {
+",0.998602227030735
+How Many Numbers Are Smaller Than the Current Number,7,"            sortedNums[i] = nums[i];
+",0.9999990820870922
+How Many Numbers Are Smaller Than the Current Number,8,"        }
+",0.9985532134599774
+How Many Numbers Are Smaller Than the Current Number,9,"        
+",0.5202164053916931
+How Many Numbers Are Smaller Than the Current Number,10,"        // Sort the copied array
+",0.9999992847442627
+How Many Numbers Are Smaller Than the Current Number,11,"        for (int i = 0; i < sortedNums.Length - 1; i++) {
+",0.9637406060743445
+How Many Numbers Are Smaller Than the Current Number,12,"            for (int j = i + 1; j < sortedNums.Length; j++) {
+",0.9973441026425067
+How Many Numbers Are Smaller Than the Current Number,13,"                if (sortedNums[i] > sortedNums[j]) {
+",0.9989379876447578
+How Many Numbers Are Smaller Than the Current Number,14,"                    // Swap elements
+",0.9999988079071045
+How Many Numbers Are Smaller Than the Current Number,15,"                    int temp = sortedNums[i];
+",0.9999993907077638
+How Many Numbers Are Smaller Than the Current Number,16,"                    sortedNums[i] = sortedNums[j];
+",0.9999997119107944
+How Many Numbers Are Smaller Than the Current Number,17,"                    sortedNums[j] = temp;
+",0.9999991125527474
+How Many Numbers Are Smaller Than the Current Number,18,"                }
+",0.9999991655349092
+How Many Numbers Are Smaller Than the Current Number,19,"            }
+",0.9999996423721029
+How Many Numbers Are Smaller Than the Current Number,20,"        }
+",0.9969184901876549
+How Many Numbers Are Smaller Than the Current Number,21,"        
+",0.9999836683273315
+How Many Numbers Are Smaller Than the Current Number,22,"        // Step 2: For each element in the original array, find its index in the sorted array
+",0.9999997615814209
+How Many Numbers Are Smaller Than the Current Number,23,"        int[] result = new int[nums.Length];
+",0.9997997342505636
+How Many Numbers Are Smaller Than the Current Number,24,"        for (int i = 0; i < nums.Length; i++) {
+",0.9999792107503115
+How Many Numbers Are Smaller Than the Current Number,25,"            int count = 0;
+",0.8778270477058427
+How Many Numbers Are Smaller Than the Current Number,26,"            for (int j = 0; j < sortedNums.Length; j++) {
+",0.9988223039281915
+How Many Numbers Are Smaller Than the Current Number,27,"                if (sortedNums[j] < nums[i]) {
+",0.9777015527799396
+How Many Numbers Are Smaller Than the Current Number,28,"                    count++;
+",0.9999416252547898
+How Many Numbers Are Smaller Than the Current Number,29,"                } else {
+",0.9466191220436578
+How Many Numbers Are Smaller Than the Current Number,30,"                    break; // Since the array is sorted, no need to check further
+",0.9824813546755989
+How Many Numbers Are Smaller Than the Current Number,31,"                }
+",0.9999995231627778
+How Many Numbers Are Smaller Than the Current Number,32,"            }
+",0.9999993443487636
+How Many Numbers Are Smaller Than the Current Number,33,"            result[i] = count;
+",0.9999988930555662
+How Many Numbers Are Smaller Than the Current Number,34,"        }
+",0.9999948739880152
+How Many Numbers Are Smaller Than the Current Number,35,"        
+",0.9999982118606567
+How Many Numbers Are Smaller Than the Current Number,36,"        return result;
+",0.7709533771560783
+How Many Numbers Are Smaller Than the Current Number,37,"    }
+",0.9211320190099545
+How Many Numbers Are Smaller Than the Current Number,38,"    
+",0.8959229588508606
+How Many Numbers Are Smaller Than the Current Number,39,"    public static void Main(string[] args) {
+",0.9911539923340384
+How Many Numbers Are Smaller Than the Current Number,40,"        Solution solution = new Solution();
+",0.9969300717884532
+How Many Numbers Are Smaller Than the Current Number,41,"        
+",0.799736499786377
+How Many Numbers Are Smaller Than the Current Number,42,"        // Example 1
+",0.9999998807907104
+How Many Numbers Are Smaller Than the Current Number,43,"        int[] nums1 = {8, 1, 2, 2, 3};
+",0.9929145659702122
+How Many Numbers Are Smaller Than the Current Number,44,"        int[] result1 = solution.SmallerNumbersThanCurrent(nums1);
+",0.9973646854902682
+How Many Numbers Are Smaller Than the Current Number,45,"        Console.WriteLine(string.Join("", "", result1)); // Output: 4, 0, 1, 1, 3
+        
+",0.9978694370132738
+How Many Numbers Are Smaller Than the Current Number,46,"        // Example 2
+",0.9999998807907104
+How Many Numbers Are Smaller Than the Current Number,47,"        int[] nums2 = {6, 5, 4, 8};
+",0.9999998609224777
+How Many Numbers Are Smaller Than the Current Number,48,"        int[] result2 = solution.SmallerNumbersThanCurrent(nums2);
+",0.9999992132181322
+How Many Numbers Are Smaller Than the Current Number,49,"        Console.WriteLine(string.Join("", "", result2)); // Output: 2, 1, 0, 3
+        
+",0.9999995112418014
+How Many Numbers Are Smaller Than the Current Number,50,"        // Example 3
+",0.9999998807907104
+How Many Numbers Are Smaller Than the Current Number,51,"        int[] nums3 = {7, 7, 7, 7};
+",0.9999998940361681
+How Many Numbers Are Smaller Than the Current Number,52,"        int[] result3 = solution.SmallerNumbersThanCurrent(nums3);
+",0.9999989430099674
+How Many Numbers Are Smaller Than the Current Number,53,"        Console.WriteLine(string.Join("", "", result3)); // Output: 0, 0, 0, 0
+",0.9999992728230672
+How Many Numbers Are Smaller Than the Current Number,54,"    }
+",0.9999998211860639
+How Many Numbers Are Smaller Than the Current Number,55,"}
+",0.9999985694885254
+Find All The Lonely Nodes,0," To solve the problem of finding lonely nodes in a binary tree without using any built-in functions or libraries that simplify algorithmic steps, we can use a depth-first search (DFS) approach. We'll traverse the tree recursively and keep track of whether a node is lonely by checking if it has only one child.
+
+Here's a step-by-step breakdown of the solution:
+
+1. **Define the TreeNode class**: This class will represent each node in the binary tree.
+2. **Implement the DFS function**: This function will traverse the tree and collect the values of lonely nodes.
+3. **Check for lonely nodes**: During the traversal, if a node has only one child, that child is considered lonely.
+4. **Return the result**: After traversing the entire tree, return the list of lonely node values.
+
+Here's the complete implementation in C#:
+
+```csharp
+",0.9999307151690976
+Find All The Lonely Nodes,1,"using System;
+",0.9353104870936604
+Find All The Lonely Nodes,2,"using System.Collections.Generic;
+
+",0.9997560723773576
+Find All The Lonely Nodes,3,"public class TreeNode
+",0.9319585898748483
+Find All The Lonely Nodes,4,"{
+",1.0
+Find All The Lonely Nodes,5,"    public int val;
+",0.9989726150070674
+Find All The Lonely Nodes,6,"    public TreeNode left;
+",0.9999769444267702
+Find All The Lonely Nodes,7,"    public TreeNode right;
+",0.9813958831569219
+Find All The Lonely Nodes,8,"    public TreeNode(int x) { val = x; }
+",0.911301911509269
+Find All The Lonely Nodes,9,"}
+
+",0.9961766004562378
+Find All The Lonely Nodes,10,"public class Solution
+",0.9993291870558237
+Find All The Lonely Nodes,11,"{
+",0.9999960660934448
+Find All The Lonely Nodes,12,"    public List<int> GetLonelyNodes(TreeNode root)
+",0.9702317091173617
+Find All The Lonely Nodes,13,"    {
+",0.9999991655347955
+Find All The Lonely Nodes,14,"        List<int> lonelyNodes = new List<int>();
+",0.9955551974608866
+Find All The Lonely Nodes,15,"        Dfs(root, lonelyNodes);
+",0.7905299016585294
+Find All The Lonely Nodes,16,"        return lonelyNodes;
+",0.9999953508184914
+Find All The Lonely Nodes,17,"    }
+
+",0.9999440892934985
+Find All The Lonely Nodes,18,"    private void Dfs(TreeNode node, List<int> lonelyNodes)
+",0.999274587718317
+Find All The Lonely Nodes,19,"    {
+",0.9999997615813925
+Find All The Lonely Nodes,20,"        if (node == null)
+",0.9961297690663369
+Find All The Lonely Nodes,21,"        {
+",0.9784985717103939
+Find All The Lonely Nodes,22,"            return;
+",0.9999907016165245
+Find All The Lonely Nodes,23,"        }
+
+",0.9999324060483535
+Find All The Lonely Nodes,24,"        // Check if the current node is lonely
+",0.9999984502792358
+Find All The Lonely Nodes,25,"        if (node.left != null && node.right == null)
+",0.9548128640026694
+Find All The Lonely Nodes,26,"        {
+",0.9999994039535451
+Find All The Lonely Nodes,27,"            lonelyNodes.Add(node.left.val);
+",0.9999454600631963
+Find All The Lonely Nodes,28,"        }
+",0.9998247501485992
+Find All The Lonely Nodes,29,"        else if (node.left == null && node.right != null)
+",0.9964368621098006
+Find All The Lonely Nodes,30,"        {
+",0.9999999403953534
+Find All The Lonely Nodes,31,"            lonelyNodes.Add(node.right.val);
+",0.9999995678662349
+Find All The Lonely Nodes,32,"        }
+
+",0.9999992251393177
+Find All The Lonely Nodes,33,"        // Traverse the left and right subtrees
+",0.9999998807907104
+Find All The Lonely Nodes,34,"        Dfs(node.left, lonelyNodes);
+",0.9999788254260447
+Find All The Lonely Nodes,35,"        Dfs(node.right, lonelyNodes);
+",0.9999993907075762
+Find All The Lonely Nodes,36,"    }
+
+",0.8171368602995435
+Find All The Lonely Nodes,37,"    public static void Main(string[] args)
+",0.9550956423140449
+Find All The Lonely Nodes,38,"    {
+",0.9999980330450153
+Find All The Lonely Nodes,39,"        // Example usage:
+",0.9999988079071045
+Find All The Lonely Nodes,40,"        TreeNode root = new TreeNode(1);
+",0.9434619013643981
+Find All The Lonely Nodes,41,"        root.left = new TreeNode(2);
+",0.9992942588540253
+Find All The Lonely Nodes,42,"        root.right = new TreeNode(3);
+",0.9995402927561055
+Find All The Lonely Nodes,43,"        root.left.right = new TreeNode(4);
+
+",0.990928010144745
+Find All The Lonely Nodes,44,"        Solution solution = new Solution();
+",0.9998504883681302
+Find All The Lonely Nodes,45,"        List<int> result = solution.GetLonelyNodes(root);
+
+",0.9247688162602439
+Find All The Lonely Nodes,46,"        Console.WriteLine(""Lonely nodes: "" + string.Join("", "", result));
+",0.9515013454862136
+Find All The Lonely Nodes,47,"    }
+",0.9905669460873384
+Find All The Lonely Nodes,48,"}
+",0.9999889135360718
+Maximum Ascending Subarray Sum,0," To solve this problem, we need to iterate through the array and keep track of the current ascending subarray sum. If the current element is greater than the previous one, we add it to the current sum. If not, we compare the current sum with the maximum sum found so far and update the maximum sum if necessary. Finally, we also need to check the last subarray after the loop ends.
+
+Here's the step-by-step implementation in C#:
+
+```csharp
+",0.9999674548659229
+Maximum Ascending Subarray Sum,1,"public class Solution {
+",0.7853378879719594
+Maximum Ascending Subarray Sum,2,"    public int MaxAscendingSum(int[] nums) {
+",0.9995464463874991
+Maximum Ascending Subarray Sum,3,"        // Initialize variables
+",0.9999834299087524
+Maximum Ascending Subarray Sum,4,"        int maxSum = 0; // To store the maximum sum of ascending subarrays
+",0.9185296313182333
+Maximum Ascending Subarray Sum,5,"        int currentSum = 0; // To store the current ascending subarray sum
+        
+",0.907792205570586
+Maximum Ascending Subarray Sum,6,"        // Iterate through the array
+",0.9999983310699463
+Maximum Ascending Subarray Sum,7,"        for (int i = 0; i < nums.Length; i++) {
+",0.9997871038761051
+Maximum Ascending Subarray Sum,8,"            // If it's the first element or the current element is greater than the previous one
+",0.9999957084655762
+Maximum Ascending Subarray Sum,9,"            if (i == 0 || nums[i] > nums[i - 1]) {
+",0.9999458602705218
+Maximum Ascending Subarray Sum,10,"                // Add the current element to the current sum
+",0.9999992847442627
+Maximum Ascending Subarray Sum,11,"                currentSum += nums[i];
+",0.9997777574202181
+Maximum Ascending Subarray Sum,12,"            } else {
+",0.9996982132075763
+Maximum Ascending Subarray Sum,13,"                // Compare the current sum with the max sum and update max sum if necessary
+",0.9999992847442627
+Maximum Ascending Subarray Sum,14,"                if (currentSum > maxSum) {
+",0.9998008783821345
+Maximum Ascending Subarray Sum,15,"                    maxSum = currentSum;
+",0.9999989441457172
+Maximum Ascending Subarray Sum,16,"                }
+",0.9999979138373885
+Maximum Ascending Subarray Sum,17,"                // Reset the current sum to the current element
+",0.9992814660072327
+Maximum Ascending Subarray Sum,18,"                currentSum = nums[i];
+",0.9999992677140873
+Maximum Ascending Subarray Sum,19,"            }
+",0.9999983310695981
+Maximum Ascending Subarray Sum,20,"        }
+",0.9999155384736796
+Maximum Ascending Subarray Sum,21,"        
+",0.9998158812522888
+Maximum Ascending Subarray Sum,22,"        // Final check to update max sum if the last subarray is the maximum
+",0.9999998807907104
+Maximum Ascending Subarray Sum,23,"        if (currentSum > maxSum) {
+",0.9999982833772163
+Maximum Ascending Subarray Sum,24,"            maxSum = currentSum;
+",0.9999429829322425
+Maximum Ascending Subarray Sum,25,"        }
+",0.9999774095844667
+Maximum Ascending Subarray Sum,26,"        
+",0.9999934434890747
+Maximum Ascending Subarray Sum,27,"        return maxSum;
+",0.8009201048557032
+Maximum Ascending Subarray Sum,28,"    }
+",0.9948183477466948
+Maximum Ascending Subarray Sum,29,"}
+",0.8785426616668701
+Maximum Subarray Sum After One Operation,0," To solve this problem, we need to find the maximum possible subarray sum after performing exactly one operation where we can replace one element `nums[i]` with `nums[i] * nums[i]`. The key challenge is to efficiently compute this without using any built-in functions or libraries that simplify algorithmic steps.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Initialize Variables**:
+   - We need two variables to keep track of the maximum subarray sum without any operation (`maxSumWithoutOp`) and with one operation (`maxSumWithOp`).
+   - We also need variables to track the current subarray sums without and with one operation (`currentSumWithoutOp` and `currentSumWithOp`).
+
+2. **Iterate Through the Array**:
+   - For each element in the array, update the current subarray sums.
+   - Update the maximum subarray sums based on the current subarray sums.
+
+3. **Update Current Subarray Sums**:
+   - For `currentSumWithoutOp`, it is simply the maximum of the current element itself or adding the current element to the previous `currentSumWithoutOp`.
+   - For `currentSumWithOp`, it is the maximum of:
+     - The current element squared plus the previous `currentSumWithoutOp`.
+     - The current element added to the previous `currentSumWithOp`.
+     - The current element squared (this handles the case where the operation is performed on the current element).
+
+4. **Update Maximum Subarray Sums**:
+   - Update `maxSumWithoutOp` with the maximum of itself and `currentSumWithoutOp`.
+   - Update `maxSumWithOp` with the maximum of itself and `currentSumWithOp`.
+
+5. **Return the Result**:
+   - The result will be the maximum of `maxSumWithoutOp` and `maxSumWithOp`.
+
+Here's the implementation of the above approach:
+
+```csharp
+",0.9999113602252421
+Maximum Subarray Sum After One Operation,1,"public class Solution {
+",0.8742350496709385
+Maximum Subarray Sum After One Operation,2,"    public int MaxSubarraySumAfterOperation(int[] nums) {
+",0.9431374796340999
+Maximum Subarray Sum After One Operation,3,"        if (nums == null || nums.Length == 0) {
+",0.927364392971042
+Maximum Subarray Sum After One Operation,4,"            return 0;
+",0.9795420549541107
+Maximum Subarray Sum After One Operation,5,"        }
+
+",0.9626301999399329
+Maximum Subarray Sum After One Operation,6,"        int maxSumWithoutOp = nums[0];
+",0.9852397449846513
+Maximum Subarray Sum After One Operation,7,"        int maxSumWithOp = nums[0] * nums[0];
+",0.9982145697719438
+Maximum Subarray Sum After One Operation,8,"        int currentSumWithoutOp = nums[0];
+",0.9990417558786562
+Maximum Subarray Sum After One Operation,9,"        int currentSumWithOp = nums[0] * nums[0];
+
+",0.9994618294244206
+Maximum Subarray Sum After One Operation,10,"        for (int i = 1; i < nums.Length; i++) {
+",0.9998378534947789
+Maximum Subarray Sum After One Operation,11,"            int num = nums[i];
+
+",0.857071062327224
+Maximum Subarray Sum After One Operation,12,"            // Update current subarray sums
+",0.9999990463256836
+Maximum Subarray Sum After One Operation,13,"            currentSumWithoutOp = Math.Max(num, currentSumWithoutOp + num);
+",0.9937871976248013
+Maximum Subarray Sum After One Operation,14,"            currentSumWithOp = Math.Max(
+",0.9600794756018817
+Maximum Subarray Sum After One Operation,15,"                num * num + currentSumWithoutOp,
+",0.9585378743211218
+Maximum Subarray Sum After One Operation,16,"                Math.Max(currentSumWithOp + num, num * num)
+",0.9725092953116607
+Maximum Subarray Sum After One Operation,17,"            );
+
+",0.9999967813489263
+Maximum Subarray Sum After One Operation,18,"            // Update maximum subarray sums
+",0.9999996423721313
+Maximum Subarray Sum After One Operation,19,"            maxSumWithoutOp = Math.Max(maxSumWithoutOp, currentSumWithoutOp);
+",0.9999861311759951
+Maximum Subarray Sum After One Operation,20,"            maxSumWithOp = Math.Max(maxSumWithOp, currentSumWithOp);
+",0.9999945559549631
+Maximum Subarray Sum After One Operation,21,"        }
+
+",0.9999996423721029
+Maximum Subarray Sum After One Operation,22,"        // Return the maximum of both sums
+",0.9999996423721313
+Maximum Subarray Sum After One Operation,23,"        return Math.Max(maxSumWithoutOp, maxSumWithOp);
+",0.9995532637745609
+Maximum Subarray Sum After One Operation,24,"    }
+",0.9657565022595955
+Maximum Subarray Sum After One Operation,25,"}
+",0.998700737953186
+Walls and Gates,0," To solve this problem, we can use a breadth-first search (BFS) approach starting from all gates simultaneously. This ensures that we find the shortest path to a gate for each empty room efficiently. Here's a step-by-step explanation of the approach:
+
+1. **Identify Gates**: Traverse the grid to find all cells that contain a gate (value `0`).
+
+2. **Initialize BFS Queue**: For each gate found, add its coordinates to a queue. This queue will be used to perform BFS.
+
+3. **BFS Traversal**: Perform BFS from all gates simultaneously. During BFS, update the distance of each empty room (value `INF`) to the nearest gate. The distance is incremented by 1 for each step in BFS.
+
+4. **Update Distances**: For each cell, if the new distance calculated during BFS is smaller than the current value, update the cell with the new distance.
+
+5. **Stop Condition**: BFS stops naturally when all reachable empty rooms have been updated with their distances to the nearest gate.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9999403925807583
+Walls and Gates,1,"using System;
+",0.8152169150935804
+Walls and Gates,2,"using System.Collections.Generic;
+
+",0.9926370019591679
+Walls and Gates,3,"public class Solution {
+",0.7108757152177122
+Walls and Gates,4,"    public void WallsAndGates(int[][] rooms) {
+",0.9214195705253945
+Walls and Gates,5,"        if (rooms == null || rooms.Length == 0 || rooms[0].Length == 0) {
+",0.9738824206854656
+Walls and Gates,6,"            return;
+",0.99997905854914
+Walls and Gates,7,"        }
+
+",0.9564045678479137
+Walls and Gates,8,"        int m = rooms.Length;
+",0.965820490118718
+Walls and Gates,9,"        int n = rooms[0].Length;
+",0.9942465997051757
+Walls and Gates,10,"        int INF = 2147483647;
+
+",0.8974128904017451
+Walls and Gates,11,"        // Directions for moving up, down, left, right
+",0.9999966621398926
+Walls and Gates,12,"        int[] dRow = { -1, 1, 0, 0 };
+",0.8579534955577652
+Walls and Gates,13,"        int[] dCol = { 0, 0, -1, 1 };
+
+",0.99997899178324
+Walls and Gates,14,"        // Queue for BFS
+",0.9999988079071045
+Walls and Gates,15,"        Queue<int[]> queue = new Queue<int[]>();
+
+",0.9625246600862022
+Walls and Gates,16,"        // Add all gates to the queue
+",0.9999970197677612
+Walls and Gates,17,"        for (int i = 0; i < m; i++) {
+",0.9963415847286106
+Walls and Gates,18,"            for (int j = 0; j < n; j++) {
+",0.9999996125697064
+Walls and Gates,19,"                if (rooms[i][j] == 0) {
+",0.9999973682058017
+Walls and Gates,20,"                    queue.Enqueue(new int[] { i, j });
+",0.9995377239485413
+Walls and Gates,21,"                }
+",0.9999890923050975
+Walls and Gates,22,"            }
+",0.999999046325506
+Walls and Gates,23,"        }
+
+",0.9999989271159393
+Walls and Gates,24,"        // Perform BFS from all gates
+",0.999998927116394
+Walls and Gates,25,"        while (queue.Count > 0) {
+",0.9998823317344753
+Walls and Gates,26,"            int[] current = queue.Dequeue();
+",0.9864791544000927
+Walls and Gates,27,"            int row = current[0];
+",0.9727886242612382
+Walls and Gates,28,"            int col = current[1];
+
+",0.9968791747670704
+Walls and Gates,29,"            // Explore all four directions
+",0.9999982118606567
+Walls and Gates,30,"            for (int k = 0; k < 4; k++) {
+",0.9157095735869991
+Walls and Gates,31,"                int newRow = row + dRow[k];
+",0.9955480786741618
+Walls and Gates,32,"                int newCol = col + dCol[k];
+
+",0.9999952640618341
+Walls and Gates,33,"                // Check boundaries and if the cell is an empty room
+",0.9999992847442627
+Walls and Gates,34,"                if (newRow >= 0 && newRow < m && newCol >= 0 && newCol < n && rooms[newRow][newCol] == INF) {
+",0.9989729055145112
+Walls and Gates,35,"                    // Update the distance
+",0.9999814033508301
+Walls and Gates,36,"                    rooms[newRow][newCol] = rooms[row][col] + 1;
+",0.9997325734471678
+Walls and Gates,37,"                    // Add the new cell to the queue for further exploration
+",0.9999656677246094
+Walls and Gates,38,"                    queue.Enqueue(new int[] { newRow, newCol });
+",0.999999095995511
+Walls and Gates,39,"                }
+",0.999999165534966
+Walls and Gates,40,"            }
+",0.9999985694883478
+Walls and Gates,41,"        }
+",0.9997275994746757
+Walls and Gates,42,"    }
+",0.9490972355640755
+Walls and Gates,43,"}
+",0.9821569323539734
+Longest Common Subsequence,0," To solve the problem of finding the length of the longest common subsequence (LCS) between two strings `text1` and `text2`, we can use dynamic programming. This approach involves creating a 2D array to store the lengths of LCS for different substrings of `text1` and `text2`.
+
+Here's a step-by-step explanation of the approach:
+
+1. **Initialize a 2D Array**: Create a 2D array `dp` where `dp[i][j]` will store the length of the LCS of the substrings `text1[0...i-1]` and `text2[0...j-1]`. The dimensions of this array will be `(m+1) x (n+1)` where `m` is the length of `text1` and `n` is the length of `text2`.
+
+2. **Base Case**: Initialize the first row and the first column of the `dp` array to 0. This is because the LCS of any string with an empty string is 0.
+
+3. **Fill the DP Table**:
+   - Iterate over each character of `text1` using index `i`.
+   - For each character in `text1`, iterate over each character of `text2` using index `j`.
+   - If `text1[i-1]` is equal to `text2[j-1]`, then `dp[i][j] = dp[i-1][j-1] + 1`. This means we have found a matching character and can extend the LCS by 1.
+   - If `text1[i-1]` is not equal to `text2[j-1]`, then `dp[i][j] = max(dp[i-1][j], dp[i][j-1])`. This means we take the maximum LCS length by either excluding the current character of `text1` or `text2`.
+
+4. **Result**: The value at `dp[m][n]` will be the length of the LCS of `text1` and `text2`.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9999552948501569
+Longest Common Subsequence,1,"public class Solution {
+",0.8284694668711612
+Longest Common Subsequence,2,"    public int LongestCommonSubsequence(string text1, string text2) {
+",0.9999610522506822
+Longest Common Subsequence,3,"        int m = text1.Length;
+",0.9997040271940801
+Longest Common Subsequence,4,"        int n = text2.Length;
+",0.9990262284449497
+Longest Common Subsequence,5,"        
+",0.9944955706596375
+Longest Common Subsequence,6,"        // Create a 2D array to store lengths of longest common subsequence.
+",0.9999998807907104
+Longest Common Subsequence,7,"        int[,] dp = new int[m + 1, n + 1];
+",0.9990153350767015
+Longest Common Subsequence,8,"        
+",0.9999909400939941
+Longest Common Subsequence,9,"        // Fill dp array
+",0.9999992847442627
+Longest Common Subsequence,10,"        for (int i = 1; i <= m; i++) {
+",0.9998789694542398
+Longest Common Subsequence,11,"            for (int j = 1; j <= n; j++) {
+",0.9999991208284299
+Longest Common Subsequence,12,"                if (text1[i - 1] == text2[j - 1]) {
+",0.9998581636279817
+Longest Common Subsequence,13,"                    dp[i, j] = dp[i - 1, j - 1] + 1;
+",0.9996011213568181
+Longest Common Subsequence,14,"                } else {
+",0.999999493360376
+Longest Common Subsequence,15,"                    dp[i, j] = Math.Max(dp[i - 1, j], dp[i, j - 1]);
+",0.9998237802575739
+Longest Common Subsequence,16,"                }
+",0.9999998807907104
+Longest Common Subsequence,17,"            }
+",0.9999999403953534
+Longest Common Subsequence,18,"        }
+",0.9999982714638076
+Longest Common Subsequence,19,"        
+",0.999996542930603
+Longest Common Subsequence,20,"        // The length of the longest common subsequence is in the bottom-right cell.
+",1.0
+Longest Common Subsequence,21,"        return dp[m, n];
+",0.9999992677140385
+Longest Common Subsequence,22,"    }
+",0.9967296306674788
+Longest Common Subsequence,23,"}
+",0.9533296823501587
+Satisfiability of Equality Equations,0,"
+
+
+To solve this problem, we can use the Union-Find data structure, also known as Disjoint Set Union (DSU). This data structure is particularly useful for managing equivalence relations, which is exactly what we need here to handle the `==` relationships.
+
+Here's a step-by-step explanation of how we can implement the solution:
+
+1. **Initialize Union-Find Structure**: Create an array `parent` where each element points to itself initially. This array will help us keep track of the parent of each variable.
+
+2. **Union Operation**: For each equation of the form `a==b`, perform a union operation to connect the sets containing `a` and `b`.
+
+3. **Find Operation**: Implement a find function that returns the root parent of a variable. Use path compression to flatten the structure during the find operation to speed up future queries.
+
+4. **Check Inequalities**: After processing all `==` equations, iterate through all `!=` equations. For each `a!=b`, check if they have the same root parent. If they do, return `false` because it violates the inequality constraint.
+
+5. **Return True**: If no contradictions are found, return `true`.
+
+Here's the implementation in C#:
+
+```csharp
+",0.999689149809075
+Satisfiability of Equality Equations,1,"public class Solution {
+",0.7217535315661795
+Satisfiability of Equality Equations,2,"    public bool EquationsPossible(string[] equations) {
+",0.9851855984784873
+Satisfiability of Equality Equations,3,"        // Initialize parent array for Union-Find
+",0.9999030828475952
+Satisfiability of Equality Equations,4,"        int[] parent = new int[26];
+",0.997831851210033
+Satisfiability of Equality Equations,5,"        for (int i = 0; i < 26; i++) {
+",0.9999026125556055
+Satisfiability of Equality Equations,6,"            parent[i] = i;
+",0.9970589000382484
+Satisfiability of Equality Equations,7,"        }
+
+",0.9759260708596743
+Satisfiability of Equality Equations,8,"        // First pass: process all ""=="" equations
+",0.9999901056289673
+Satisfiability of Equality Equations,9,"        foreach (var eq in equations) {
+",0.8681658800096602
+Satisfiability of Equality Equations,10,"            if (eq[1] == '=') {
+",0.9995320354655197
+Satisfiability of Equality Equations,11,"                int x = eq[0] - 'a';
+",0.828523045904261
+Satisfiability of Equality Equations,12,"                int y = eq[3] - 'a';
+",0.9999874822942776
+Satisfiability of Equality Equations,13,"                Union(parent, x, y);
+",0.9927436411118618
+Satisfiability of Equality Equations,14,"            }
+",0.9999979734418218
+Satisfiability of Equality Equations,15,"        }
+
+",0.9999945759632548
+Satisfiability of Equality Equations,16,"        // Second pass: process all ""!="" equations
+",0.9999991655349731
+Satisfiability of Equality Equations,17,"        foreach (var eq in equations) {
+",0.9999927678642188
+Satisfiability of Equality Equations,18,"            if (eq[1] == '!') {
+",0.999965345141656
+Satisfiability of Equality Equations,19,"                int x = eq[0] - 'a';
+",0.9998286830730174
+Satisfiability of Equality Equations,20,"                int y = eq[3] - 'a';
+",0.9999990860603604
+Satisfiability of Equality Equations,21,"                if (Find(parent, x) == Find(parent, y)) {
+",0.9996409440471026
+Satisfiability of Equality Equations,22,"                    return false; // Found a contradiction
+",0.8054569189507692
+Satisfiability of Equality Equations,23,"                }
+",0.9999997615813925
+Satisfiability of Equality Equations,24,"            }
+",0.9999992847442343
+Satisfiability of Equality Equations,25,"        }
+
+",0.999975681009225
+Satisfiability of Equality Equations,26,"        return true; // No contradictions found
+",0.9019107611681019
+Satisfiability of Equality Equations,27,"    }
+
+",0.9999922513697397
+Satisfiability of Equality Equations,28,"    private void Union(int[] parent, int x, int y) {
+",0.9385603612266019
+Satisfiability of Equality Equations,29,"        int rootX = Find(parent, x);
+",0.9982553129919389
+Satisfiability of Equality Equations,30,"        int rootY = Find(parent, y);
+",0.9994742085388213
+Satisfiability of Equality Equations,31,"        if (rootX != rootY) {
+",0.9981674330706035
+Satisfiability of Equality Equations,32,"            parent[rootX] = rootY;
+",0.895613749949482
+Satisfiability of Equality Equations,33,"        }
+",0.9999961853001693
+Satisfiability of Equality Equations,34,"    }
+
+",0.9999991655349731
+Satisfiability of Equality Equations,35,"    private int Find(int[] parent, int x) {
+",0.9996192940361209
+Satisfiability of Equality Equations,36,"        while (parent[x] != x) {
+",0.8746197060595889
+Satisfiability of Equality Equations,37,"            parent[x] = parent[parent[x]]; // Path compression
+",0.9747034425408067
+Satisfiability of Equality Equations,38,"            x = parent[x];
+",0.9999981125179255
+Satisfiability of Equality Equations,39,"        }
+",0.9999998211860639
+Satisfiability of Equality Equations,40,"        return x;
+",0.9993072198369656
+Satisfiability of Equality Equations,41,"    }
+",0.99991988816754
+Satisfiability of Equality Equations,42,"}
+",0.9983538389205933
+Check Completeness of a Binary Tree,0," To determine if a binary tree is a complete binary tree, we need to ensure that:
+
+1. All levels except possibly the last are completely filled.
+2. All nodes in the last level are as far left as possible.
+
+To achieve this, we can use a level-order traversal (BFS) approach. We will traverse the tree level by level and check the conditions for completeness. Here's how you can implement this in C#:
+
+```csharp
+",0.9999461545380581
+Check Completeness of a Binary Tree,1,"using System;
+",0.6522539545706445
+Check Completeness of a Binary Tree,2,"using System.Collections.Generic;
+
+",0.9965385273178594
+Check Completeness of a Binary Tree,3,"public class TreeNode {
+",0.6906696574438214
+Check Completeness of a Binary Tree,4,"    public int val;
+",0.9995149961670405
+Check Completeness of a Binary Tree,5,"    public TreeNode left;
+",0.9999512761861128
+Check Completeness of a Binary Tree,6,"    public TreeNode right;
+",0.9998787839144656
+Check Completeness of a Binary Tree,7,"    public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null) {
+",0.9747086915374692
+Check Completeness of a Binary Tree,8,"        this.val = val;
+",0.9999955296421944
+Check Completeness of a Binary Tree,9,"        this.left = left;
+",0.9999983906736561
+Check Completeness of a Binary Tree,10,"        this.right = right;
+",0.9999434276433637
+Check Completeness of a Binary Tree,11,"    }
+",0.999997138976795
+Check Completeness of a Binary Tree,12,"}
+
+",0.999994158744812
+Check Completeness of a Binary Tree,13,"public class Solution {
+",0.9987882048305846
+Check Completeness of a Binary Tree,14,"    public bool IsCompleteTree(TreeNode root) {
+",0.9999284820487713
+Check Completeness of a Binary Tree,15,"        if (root == null) {
+",0.9329485326828744
+Check Completeness of a Binary Tree,16,"            return true;
+",0.9944107233932076
+Check Completeness of a Binary Tree,17,"        }
+
+",0.9914377358791047
+Check Completeness of a Binary Tree,18,"        Queue<TreeNode> queue = new Queue<TreeNode>();
+",0.9163600903514182
+Check Completeness of a Binary Tree,19,"        queue.Enqueue(root);
+",0.9555707796544001
+Check Completeness of a Binary Tree,20,"        bool end = false; // Flag to indicate if we have encountered a null node
+
+",0.919257457049283
+Check Completeness of a Binary Tree,21,"        while (queue.Count > 0) {
+",0.99991639320658
+Check Completeness of a Binary Tree,22,"            TreeNode current = queue.Dequeue();
+
+",0.8628089013116481
+Check Completeness of a Binary Tree,23,"            if (current.left != null) {
+",0.960365835989935
+Check Completeness of a Binary Tree,24,"                if (end) {
+",0.996416972032031
+Check Completeness of a Binary Tree,25,"                    // If we have already seen a null node and now we see a non-null node, it's not complete
+",0.9999994039535522
+Check Completeness of a Binary Tree,26,"                    return false;
+",0.9999993443487352
+Check Completeness of a Binary Tree,27,"                }
+",0.9999983906732961
+Check Completeness of a Binary Tree,28,"                queue.Enqueue(current.left);
+",0.9999695696591034
+Check Completeness of a Binary Tree,29,"            } else {
+",0.9999908208333138
+Check Completeness of a Binary Tree,30,"                // Mark that we have seen a null node
+",0.9999991655349731
+Check Completeness of a Binary Tree,31,"                end = true;
+",0.9999989747993692
+Check Completeness of a Binary Tree,32,"            }
+
+",0.9999987483023727
+Check Completeness of a Binary Tree,33,"            if (current.right != null) {
+",0.9999968740433599
+Check Completeness of a Binary Tree,34,"                if (end) {
+",0.9999988277729025
+Check Completeness of a Binary Tree,35,"                    // If we have already seen a null node and now we see a non-null node, it's not complete
+",0.9999994039535522
+Check Completeness of a Binary Tree,36,"                    return false;
+",0.9999996721744382
+Check Completeness of a Binary Tree,37,"                }
+",0.9999996423721313
+Check Completeness of a Binary Tree,38,"                queue.Enqueue(current.right);
+",0.9999993642169384
+Check Completeness of a Binary Tree,39,"            } else {
+",0.9999994635581526
+Check Completeness of a Binary Tree,40,"                // Mark that we have seen a null node
+",0.9999998807907104
+Check Completeness of a Binary Tree,41,"                end = true;
+",0.9999996423720858
+Check Completeness of a Binary Tree,42,"            }
+",0.9999896883650317
+Check Completeness of a Binary Tree,43,"        }
+
+",0.9999529708294008
+Check Completeness of a Binary Tree,44,"        return true;
+",0.9762342384413242
+Check Completeness of a Binary Tree,45,"    }
+",0.9044693491422282
+Check Completeness of a Binary Tree,46,"}
+",0.8399585485458374
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,0," To solve this problem, we need to find the maximum number of non-overlapping subarrays whose sum equals the given target. We will use a prefix sum approach combined with a hash set to efficiently track the sums we have seen so far.
+
+Here's a step-by-step explanation of the approach:
+
+1. **Initialize Variables**:
+   - `prefixSum` to keep track of the cumulative sum as we iterate through the array.
+   - `count` to count the number of valid subarrays found.
+   - `seenSums` as a hash set to store the prefix sums we have encountered so far.
+
+2. **Iterate Through the Array**:
+   - For each element in the array, update the `prefixSum` by adding the current element.
+   - Check if `prefixSum` itself is equal to `target`. If it is, it means the subarray from the start to the current index sums to `target`, so increment `count` and clear the `seenSums` set to ensure non-overlapping subarrays.
+   - Check if `prefixSum - target` exists in `seenSums`. If it does, it means there is a subarray ending at the current index that sums to `target`, so increment `count` and clear the `seenSums` set.
+   - Add the current `prefixSum` to the `seenSums` set.
+
+3. **Return the Count**:
+   - After iterating through the array, return the `count` which represents the maximum number of non-overlapping subarrays with the sum equal to `target`.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9999289499249711
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,1,"using System;
+",0.8826456162722113
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,2,"using System.Collections.Generic;
+
+",0.9997534649736406
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,3,"public class Solution {
+",0.6363382158663475
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,4,"    public int MaxNonOverlappingSubarrays(int[] nums, int target) {
+",0.95640351634154
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,5,"        int prefixSum = 0;
+",0.9896527115816909
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,6,"        int count = 0;
+",0.9999723929636555
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,7,"        HashSet<int> seenSums = new HashSet<int>();
+",0.9801931765852628
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,8,"        
+",0.7077823877334595
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,9,"        for (int i = 0; i < nums.Length; i++) {
+",0.9724263200185222
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,10,"            prefixSum += nums[i];
+",0.997130807080495
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,11,"            
+",0.9998987913131714
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,12,"            // Check if the current prefix sum is equal to the target
+",0.9999985694885254
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,13,"            if (prefixSum == target) {
+",0.9993670383115507
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,14,"                count++;
+",0.9999562497165474
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,15,"                seenSums.Clear();
+",0.839030066176071
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,16,"            } else {
+",0.9177679395256169
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,17,"                // Check if there is a previous prefix sum such that
+",0.9999986886978149
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,18,"                // prefixSum - previousPrefixSum = target
+",0.9999998807907104
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,19,"                if (seenSums.Contains(prefixSum - target)) {
+",0.9701917622098399
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,20,"                    count++;
+",0.999996383980363
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,21,"                    seenSums.Clear();
+",0.9998778643856434
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,22,"                }
+",0.9999236435982589
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,23,"            }
+",0.9992598620439908
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,24,"            
+",0.9994493126869202
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,25,"            // Add the current prefix sum to the set
+",0.9999998807907104
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,26,"            seenSums.Add(prefixSum);
+",0.9999680413793849
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,27,"        }
+",0.9999963641147342
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,28,"        
+",0.9999985694885254
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,29,"        return count;
+",0.9999993741509905
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,30,"    }
+",0.9658562068147099
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,31,"}
+",0.5156176090240479
+Find Nearest Right Node in Binary Tree,0," To solve this problem, we need to traverse the binary tree level by level and find the node `u`. Once we find `u`, we should return the next node on the same level. If `u` is the rightmost node on its level, we should return `null`.
+
+We can achieve this using a breadth-first search (BFS) approach. Here's how we can implement it:
+
+1. Use a queue to perform BFS.
+2. Traverse each level of the tree.
+3. Keep track of the current node's position in the level.
+4. If the current node is `u`, check if there is a node to its right on the same level.
+5. If there is a node to the right, return it; otherwise, return `null`.
+
+Here's the implementation in C#:
+
+```csharp
+",0.999884476673854
+Find Nearest Right Node in Binary Tree,1,"using System;
+",0.8669708114975108
+Find Nearest Right Node in Binary Tree,2,"using System.Collections.Generic;
+
+",0.9967502562473745
+Find Nearest Right Node in Binary Tree,3,"public class TreeNode {
+",0.749944645998171
+Find Nearest Right Node in Binary Tree,4,"    public int val;
+",0.9998444974614766
+Find Nearest Right Node in Binary Tree,5,"    public TreeNode left;
+",0.9999492147934989
+Find Nearest Right Node in Binary Tree,6,"    public TreeNode right;
+",0.9999827618321395
+Find Nearest Right Node in Binary Tree,7,"    public TreeNode(int x) { val = x; }
+",0.9565402784547027
+Find Nearest Right Node in Binary Tree,8,"}
+
+",0.9999054670333862
+Find Nearest Right Node in Binary Tree,9,"public class Solution {
+",0.9998978506159601
+Find Nearest Right Node in Binary Tree,10,"    public TreeNode FindNearestRightNode(TreeNode root, TreeNode u) {
+",0.9996905102423964
+Find Nearest Right Node in Binary Tree,11,"        if (root == null) return null;
+
+",0.9409154845767224
+Find Nearest Right Node in Binary Tree,12,"        Queue<TreeNode> queue = new Queue<TreeNode>();
+",0.882368348161971
+Find Nearest Right Node in Binary Tree,13,"        queue.Enqueue(root);
+
+",0.9989431644263326
+Find Nearest Right Node in Binary Tree,14,"        while (queue.Count > 0) {
+",0.99935436397465
+Find Nearest Right Node in Binary Tree,15,"            int levelSize = queue.Count;
+",0.9886916299881622
+Find Nearest Right Node in Binary Tree,16,"            bool foundU = false;
+
+",0.9327755784536369
+Find Nearest Right Node in Binary Tree,17,"            for (int i = 0; i < levelSize; i++) {
+",0.9998601488723422
+Find Nearest Right Node in Binary Tree,18,"                TreeNode currentNode = queue.Dequeue();
+
+",0.9720402006024216
+Find Nearest Right Node in Binary Tree,19,"                if (foundU) {
+",0.9852687618651325
+Find Nearest Right Node in Binary Tree,20,"                    // If we have already found u, then the current node is the nearest right node
+",0.999994158744812
+Find Nearest Right Node in Binary Tree,21,"                    return currentNode;
+",0.9999769921737088
+Find Nearest Right Node in Binary Tree,22,"                }
+
+",0.9979609923361329
+Find Nearest Right Node in Binary Tree,23,"                if (currentNode == u) {
+",0.9976989215028813
+Find Nearest Right Node in Binary Tree,24,"                    foundU = true;
+",0.9195167743983226
+Find Nearest Right Node in Binary Tree,25,"                }
+
+",0.934690862183987
+Find Nearest Right Node in Binary Tree,26,"                // Add children to the queue for the next level
+",0.9999994039535522
+Find Nearest Right Node in Binary Tree,27,"                if (currentNode.left != null) {
+",0.9990627609728878
+Find Nearest Right Node in Binary Tree,28,"                    queue.Enqueue(currentNode.left);
+",0.999995759522761
+Find Nearest Right Node in Binary Tree,29,"                }
+",0.9916609119779355
+Find Nearest Right Node in Binary Tree,30,"                if (currentNode.right != null) {
+",0.9999960898951836
+Find Nearest Right Node in Binary Tree,31,"                    queue.Enqueue(currentNode.right);
+",0.9999985183982109
+Find Nearest Right Node in Binary Tree,32,"                }
+",0.9999871849207808
+Find Nearest Right Node in Binary Tree,33,"            }
+
+",0.9672706066854874
+Find Nearest Right Node in Binary Tree,34,"            // If we exit the loop without finding a node to the right of u, return null
+",0.999996542930603
+Find Nearest Right Node in Binary Tree,35,"            if (foundU) {
+",0.9854104795733306
+Find Nearest Right Node in Binary Tree,36,"                return null;
+",0.99968714072229
+Find Nearest Right Node in Binary Tree,37,"            }
+",0.999995946877327
+Find Nearest Right Node in Binary Tree,38,"        }
+
+",0.9999983310685536
+Find Nearest Right Node in Binary Tree,39,"        return null;
+",0.9905575692992841
+Find Nearest Right Node in Binary Tree,40,"    }
+",0.9901528155738617
+Find Nearest Right Node in Binary Tree,41,"}
+",0.9965707063674927
+Put Boxes Into the Warehouse II,0," To solve this problem, we need to determine the maximum number of boxes that can be placed into the warehouse according to the given rules. The key is to efficiently manage the placement of boxes from both ends of the warehouse while respecting the height constraints of each room.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Sort the Boxes**: Start by sorting the boxes in ascending order of their heights. This allows us to attempt placing the smallest boxes first, which increases the chances of fitting more boxes into the warehouse.
+
+2. **Preprocess the Warehouse Heights**: 
+   - Calculate the minimum height encountered when moving from the left to the right (`left_min`) and from the right to the left (`right_min`). These arrays will help us determine the effective height of each room considering the constraints from both directions.
+   - Initialize two arrays, `left_min` and `right_min`, of the same length as the warehouse. Each element in these arrays will represent the minimum height up to that point when viewed from the respective direction.
+
+3. **Fill the `left_min` and `right_min` Arrays**:
+   - Traverse the warehouse array from left to right, updating `left_min[i]` to be the minimum of `left_min[i-1]` and `warehouse[i]`.
+   - Traverse the warehouse array from right to left, updating `right_min[i]` to be the minimum of `right_min[i+1]` and `warehouse[i]`.
+
+4. **Determine Effective Heights**:
+   - For each room, the effective height is the maximum of `left_min[i]` and `right_min[i]`. This represents the tallest box that can be placed in that room considering the constraints from both ends.
+
+5. **Place the Boxes**:
+   - Use two pointers, one starting at the beginning (`left`) and one at the end (`right`) of the warehouse.
+   - Try to place the smallest available box in the room with the highest effective height between the two pointers.
+   - If a box fits, move the pointer corresponding to the chosen side (either left or right) inward and mark the box as used.
+   - Continue this process until all boxes are considered or no more boxes can fit.
+
+6. **Count the Placed Boxes**: The number of boxes successfully placed is the answer.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9999554940610098
+Put Boxes Into the Warehouse II,1,"public class Solution {
+",0.6209377437743289
+Put Boxes Into the Warehouse II,2,"    public int MaxBoxesInWarehouse(int[] boxes, int[] warehouse) {
+",0.9999751291293998
+Put Boxes Into the Warehouse II,3,"        // Step 1: Sort the boxes
+",0.9999697208404541
+Put Boxes Into the Warehouse II,4,"        Array.Sort(boxes);
+",0.9638343505378008
+Put Boxes Into the Warehouse II,5,"        
+",0.9664185643196106
+Put Boxes Into the Warehouse II,6,"        int n = warehouse.Length;
+",0.9423600526979208
+Put Boxes Into the Warehouse II,7,"        int[] left_min = new int[n];
+",0.9517702078417196
+Put Boxes Into the Warehouse II,8,"        int[] right_min = new int[n];
+",0.9999578469515231
+Put Boxes Into the Warehouse II,9,"        
+",0.9996912479400635
+Put Boxes Into the Warehouse II,10,"        // Step 2: Fill the left_min array
+",0.9999996423721313
+Put Boxes Into the Warehouse II,11,"        left_min[0] = warehouse[0];
+",0.9997248702036845
+Put Boxes Into the Warehouse II,12,"        for (int i = 1; i < n; i++) {
+",0.9999634255936841
+Put Boxes Into the Warehouse II,13,"            left_min[i] = Math.Min(left_min[i - 1], warehouse[i]);
+",0.9997659906381742
+Put Boxes Into the Warehouse II,14,"        }
+",0.9999921321577856
+Put Boxes Into the Warehouse II,15,"        
+",0.9999963045120239
+Put Boxes Into the Warehouse II,16,"        // Step 3: Fill the right_min array
+",0.9999996423721313
+Put Boxes Into the Warehouse II,17,"        right_min[n - 1] = warehouse[n - 1];
+",0.9999988714816788
+Put Boxes Into the Warehouse II,18,"        for (int i = n - 2; i >= 0; i--) {
+",0.999998625945043
+Put Boxes Into the Warehouse II,19,"            right_min[i] = Math.Min(right_min[i + 1], warehouse[i]);
+",0.9999989271138383
+Put Boxes Into the Warehouse II,20,"        }
+",0.9999823568716026
+Put Boxes Into the Warehouse II,21,"        
+",0.999991774559021
+Put Boxes Into the Warehouse II,22,"        // Step 4: Determine effective heights
+",0.9999997615814209
+Put Boxes Into the Warehouse II,23,"        int[] effective_heights = new int[n];
+",0.9664534931496236
+Put Boxes Into the Warehouse II,24,"        for (int i = 0; i < n; i++) {
+",0.9999887563641825
+Put Boxes Into the Warehouse II,25,"            effective_heights[i] = Math.Max(left_min[i], right_min[i]);
+",0.9994061063752042
+Put Boxes Into the Warehouse II,26,"        }
+",0.9999856352562924
+Put Boxes Into the Warehouse II,27,"        
+",0.9999889135360718
+Put Boxes Into the Warehouse II,28,"        // Step 5: Place the boxes
+",0.9999997615814209
+Put Boxes Into the Warehouse II,29,"        int boxIndex = 0;
+",0.9485189820323559
+Put Boxes Into the Warehouse II,30,"        int left = 0;
+",0.9563460937567198
+Put Boxes Into the Warehouse II,31,"        int right = n - 1;
+",0.999996662127398
+Put Boxes Into the Warehouse II,32,"        int placedBoxes = 0;
+",0.9592866609359114
+Put Boxes Into the Warehouse II,33,"        
+",0.9998307228088379
+Put Boxes Into the Warehouse II,34,"        while (boxIndex < boxes.Length && left <= right) {
+",0.9857705965604884
+Put Boxes Into the Warehouse II,35,"            int currentBoxHeight = boxes[boxIndex];
+",0.7152519959901591
+Put Boxes Into the Warehouse II,36,"            
+",0.42577826976776123
+Put Boxes Into the Warehouse II,37,"            // Choose the side with the higher effective height
+",0.9999970197677612
+Put Boxes Into the Warehouse II,38,"            if (effective_heights[left] >= effective_heights[right]) {
+",0.9848256357396625
+Put Boxes Into the Warehouse II,39,"                if (currentBoxHeight <= effective_heights[left]) {
+",0.9410575356269326
+Put Boxes Into the Warehouse II,40,"                    placedBoxes++;
+",0.9743462765785461
+Put Boxes Into the Warehouse II,41,"                    left++;
+",0.9052396266288164
+Put Boxes Into the Warehouse II,42,"                }
+",0.9703109204056772
+Put Boxes Into the Warehouse II,43,"            } else {
+",0.9904100383412474
+Put Boxes Into the Warehouse II,44,"                if (currentBoxHeight <= effective_heights[right]) {
+",0.9999993856135186
+Put Boxes Into the Warehouse II,45,"                    placedBoxes++;
+",0.9999986290923584
+Put Boxes Into the Warehouse II,46,"                    right--;
+",0.9999953905560405
+Put Boxes Into the Warehouse II,47,"                }
+",0.999997079368482
+Put Boxes Into the Warehouse II,48,"            }
+",0.9999929070253851
+Put Boxes Into the Warehouse II,49,"            
+",0.8795422911643982
+Put Boxes Into the Warehouse II,50,"            boxIndex++;
+",0.9741275738844026
+Put Boxes Into the Warehouse II,51,"        }
+",0.999992489812456
+Put Boxes Into the Warehouse II,52,"        
+",0.9999983310699463
+Put Boxes Into the Warehouse II,53,"        return placedBoxes;
+",0.8250703072430174
+Put Boxes Into the Warehouse II,54,"    }
+",0.9999671573169545
+Put Boxes Into the Warehouse II,55,"}
+",0.9998648166656494
+Minimum Swaps to Group All 1's Together,0," To solve this problem, we need to determine the minimum number of swaps required to group all `1`s together in a binary array. The key observation here is that the total number of `1`s in the array remains constant, and they should be grouped together in a contiguous subarray of the same length.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Count the Total Number of 1s**: First, we need to count how many `1`s are present in the array. This will determine the size of the window we need to consider for grouping all `1`s together.
+
+2. **Sliding Window Technique**: We will use a sliding window of size equal to the total number of `1`s. This window will slide across the array, and for each position, we will count how many `0`s are inside the window. The number of `0`s in the window represents the number of swaps needed to group all `1`s together at that position.
+
+3. **Find the Minimum Swaps**: As we slide the window across the array, we keep track of the minimum number of `0`s found in any window position. This minimum value will be our answer, as it represents the fewest swaps needed to group all `1`s together.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9999679714420349
+Minimum Swaps to Group All 1's Together,1,"public class Solution
+",0.799107378412251
+Minimum Swaps to Group All 1's Together,2,"{
+",0.9999997615814209
+Minimum Swaps to Group All 1's Together,3,"    public int MinSwaps(int[] data)
+",0.998799978209761
+Minimum Swaps to Group All 1's Together,4,"    {
+",0.9999995827673995
+Minimum Swaps to Group All 1's Together,5,"        // Step 1: Count the total number of 1s in the array
+",0.9999992847442627
+Minimum Swaps to Group All 1's Together,6,"        int totalOnes = 0;
+",0.9987262048395271
+Minimum Swaps to Group All 1's Together,7,"        for (int i = 0; i < data.Length; i++)
+",0.9857054307330823
+Minimum Swaps to Group All 1's Together,8,"        {
+",0.9999995827673995
+Minimum Swaps to Group All 1's Together,9,"            if (data[i] == 1)
+",0.9893656403767164
+Minimum Swaps to Group All 1's Together,10,"            {
+",0.9996623423258778
+Minimum Swaps to Group All 1's Together,11,"                totalOnes++;
+",0.9999821180088133
+Minimum Swaps to Group All 1's Together,12,"            }
+",0.9999996423721242
+Minimum Swaps to Group All 1's Together,13,"        }
+
+",0.9981571150688495
+Minimum Swaps to Group All 1's Together,14,"        // If there are no 1s or only one 1, no swaps are needed
+",0.9999997615814209
+Minimum Swaps to Group All 1's Together,15,"        if (totalOnes <= 1)
+",0.9991324613718483
+Minimum Swaps to Group All 1's Together,16,"        {
+",0.9999942779377305
+Minimum Swaps to Group All 1's Together,17,"            return 0;
+",0.9999990463244699
+Minimum Swaps to Group All 1's Together,18,"        }
+
+",0.9999993443488204
+Minimum Swaps to Group All 1's Together,19,"        // Step 2: Initialize the sliding window
+",0.9999997615814209
+Minimum Swaps to Group All 1's Together,20,"        int minSwaps = int.MaxValue;
+",0.7950031648783119
+Minimum Swaps to Group All 1's Together,21,"        int currentZeros = 0;
+
+",0.9762953520497721
+Minimum Swaps to Group All 1's Together,22,"        // Count the number of 0s in the initial window
+",0.9999998807907104
+Minimum Swaps to Group All 1's Together,23,"        for (int i = 0; i < totalOnes; i++)
+",0.9999240913568034
+Minimum Swaps to Group All 1's Together,24,"        {
+",0.9999999403953534
+Minimum Swaps to Group All 1's Together,25,"            if (data[i] == 0)
+",0.9999982833800327
+Minimum Swaps to Group All 1's Together,26,"            {
+",0.9999989867206391
+Minimum Swaps to Group All 1's Together,27,"                currentZeros++;
+",0.9999990701667956
+Minimum Swaps to Group All 1's Together,28,"            }
+",0.9999991059303266
+Minimum Swaps to Group All 1's Together,29,"        }
+
+",0.9607587961917035
+Minimum Swaps to Group All 1's Together,30,"        // Step 3: Slide the window across the array
+",0.9999995231628418
+Minimum Swaps to Group All 1's Together,31,"        for (int i = 0; i <= data.Length - totalOnes; i++)
+",0.9258927239129602
+Minimum Swaps to Group All 1's Together,32,"        {
+",0.9999997615813925
+Minimum Swaps to Group All 1's Together,33,"            // Update the minimum swaps needed
+",0.9999997615814209
+Minimum Swaps to Group All 1's Together,34,"            minSwaps = Math.Min(minSwaps, currentZeros);
+
+",0.9764718516329248
+Minimum Swaps to Group All 1's Together,35,"            // Slide the window to the right
+",0.9999998807907104
+Minimum Swaps to Group All 1's Together,36,"            if (i + totalOnes < data.Length)
+",0.997693143808619
+Minimum Swaps to Group All 1's Together,37,"            {
+",0.9999997615814138
+Minimum Swaps to Group All 1's Together,38,"                if (data[i] == 0)
+",0.9660966063594126
+Minimum Swaps to Group All 1's Together,39,"                {
+",0.9999974369975728
+Minimum Swaps to Group All 1's Together,40,"                    currentZeros--;
+",0.9680399411538314
+Minimum Swaps to Group All 1's Together,41,"                }
+",0.9996037595083384
+Minimum Swaps to Group All 1's Together,42,"                if (data[i + totalOnes] == 0)
+",0.9999993443484031
+Minimum Swaps to Group All 1's Together,43,"                {
+",0.9999998807907033
+Minimum Swaps to Group All 1's Together,44,"                    currentZeros++;
+",0.9999993562697237
+Minimum Swaps to Group All 1's Together,45,"                }
+",0.9999995231627778
+Minimum Swaps to Group All 1's Together,46,"            }
+",0.9999921321749453
+Minimum Swaps to Group All 1's Together,47,"        }
+
+",0.9914337430593255
+Minimum Swaps to Group All 1's Together,48,"        return minSwaps;
+",0.9996654927675654
+Minimum Swaps to Group All 1's Together,49,"    }
+",0.9682445784306887
+Minimum Swaps to Group All 1's Together,50,"}
+",0.9962276220321655
+Minimum Remove to Make Valid Parentheses,0,"
+
+To solve this problem, we need to ensure that every opening parenthesis `'('` has a corresponding closing parenthesis `')'` and that they are correctly nested. The goal is to remove the minimum number of parentheses to achieve this.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **First Pass (Left to Right):**
+   - Traverse the string from left to right.
+   - Use a counter to keep track of the balance of parentheses.
+   - If you encounter an opening parenthesis `'('`, increment the counter.
+   - If you encounter a closing parenthesis `')'`, decrement the counter.
+   - If the counter becomes negative, it means there are more closing parentheses than opening ones up to that point. In this case, we need to remove the current closing parenthesis `')'` to maintain a valid sequence.
+
+2. **Second Pass (Right to Left):**
+   - Traverse the string from right to left.
+   - Use another counter to keep track of the balance of parentheses.
+   - If you encounter a closing parenthesis `')'`, increment the counter.
+   - If you encounter an opening parenthesis `'('`, decrement the counter.
+   - If the counter becomes negative, it means there are more opening parentheses than closing ones up to that point. In this case, we need to remove the current opening parenthesis `'('` to maintain a valid sequence.
+
+3. **Build the Result:**
+   - After both passes, construct the result string by including only those characters that were not marked for removal.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9999395775462756
+Minimum Remove to Make Valid Parentheses,1,"public class Solution {
+",0.6346130795822731
+Minimum Remove to Make Valid Parentheses,2,"    public string MinRemoveToMakeValid(string s) {
+",0.9999500103577373
+Minimum Remove to Make Valid Parentheses,3,"        char[] result = new char[s.Length];
+",0.7839055072667878
+Minimum Remove to Make Valid Parentheses,4,"        int openCount = 0;
+",0.7035327989640822
+Minimum Remove to Make Valid Parentheses,5,"        int closeCount = 0;
+",0.9618660308626307
+Minimum Remove to Make Valid Parentheses,6,"        int index = 0;
+
+",0.7772693555543797
+Minimum Remove to Make Valid Parentheses,7,"        // First pass: left to right
+",0.999997615814209
+Minimum Remove to Make Valid Parentheses,8,"        for (int i = 0; i < s.Length; i++) {
+",0.992338567480576
+Minimum Remove to Make Valid Parentheses,9,"            char c = s[i];
+",0.9772659940071619
+Minimum Remove to Make Valid Parentheses,10,"            if (c == '(') {
+",0.996299416625117
+Minimum Remove to Make Valid Parentheses,11,"                openCount++;
+",0.9640836610966941
+Minimum Remove to Make Valid Parentheses,12,"            } else if (c == ')') {
+",0.907860796256676
+Minimum Remove to Make Valid Parentheses,13,"                if (openCount > 0) {
+",0.9359780483207328
+Minimum Remove to Make Valid Parentheses,14,"                    openCount--;
+",0.9939117711333267
+Minimum Remove to Make Valid Parentheses,15,"                } else {
+",0.9888281061732582
+Minimum Remove to Make Valid Parentheses,16,"                    continue; // Skip this closing parenthesis
+",0.9862597808767744
+Minimum Remove to Make Valid Parentheses,17,"                }
+",0.9999992847442627
+Minimum Remove to Make Valid Parentheses,18,"            }
+",0.9998148509654061
+Minimum Remove to Make Valid Parentheses,19,"            result[index++] = c;
+",0.9960580304832444
+Minimum Remove to Make Valid Parentheses,20,"        }
+
+",0.9999434336457216
+Minimum Remove to Make Valid Parentheses,21,"        // Second pass: right to left
+",0.9999980926513672
+Minimum Remove to Make Valid Parentheses,22,"        index = result.Length - 1;
+",0.8500918467594439
+Minimum Remove to Make Valid Parentheses,23,"        for (int i = result.Length - 1; i >= 0; i--) {
+",0.9447788835612303
+Minimum Remove to Make Valid Parentheses,24,"            char c = result[i];
+",0.9830892140916835
+Minimum Remove to Make Valid Parentheses,25,"            if (c == ')') {
+",0.944136147388058
+Minimum Remove to Make Valid Parentheses,26,"                closeCount++;
+",0.9998000563552474
+Minimum Remove to Make Valid Parentheses,27,"            } else if (c == '(') {
+",0.9999175370024783
+Minimum Remove to Make Valid Parentheses,28,"                if (closeCount > 0) {
+",0.9999875660521894
+Minimum Remove to Make Valid Parentheses,29,"                    closeCount--;
+",0.9999925195724282
+Minimum Remove to Make Valid Parentheses,30,"                } else {
+",0.9996092787413056
+Minimum Remove to Make Valid Parentheses,31,"                    result[i] = '\0'; // Mark this opening parenthesis for removal
+",0.9252151676946152
+Minimum Remove to Make Valid Parentheses,32,"                }
+",0.9306587026190064
+Minimum Remove to Make Valid Parentheses,33,"            }
+",0.9982150554385636
+Minimum Remove to Make Valid Parentheses,34,"        }
+
+",0.9913255094713992
+Minimum Remove to Make Valid Parentheses,35,"        // Build the final result string
+",0.9999992847442627
+Minimum Remove to Make Valid Parentheses,36,"        StringBuilder finalResult = new StringBuilder();
+",0.9064545772172686
+Minimum Remove to Make Valid Parentheses,37,"        for (int i = 0; i < result.Length; i++) {
+",0.9967029084511548
+Minimum Remove to Make Valid Parentheses,38,"            if (result[i] != '\0') {
+",0.999807758450226
+Minimum Remove to Make Valid Parentheses,39,"                finalResult.Append(result[i]);
+",0.9999982459178822
+Minimum Remove to Make Valid Parentheses,40,"            }
+",0.9999914169219437
+Minimum Remove to Make Valid Parentheses,41,"        }
+
+",0.999976932752666
+Minimum Remove to Make Valid Parentheses,42,"        return finalResult.ToString();
+",0.9999988079065764
+Minimum Remove to Make Valid Parentheses,43,"    }
+",0.9962039965832127
+Minimum Remove to Make Valid Parentheses,44,"}
+",0.9990456700325012
+Trapping Rain Water,0," To solve the problem of calculating the amount of water trapped after raining given an elevation map, we can use a two-pointer approach. This method efficiently computes the trapped water without relying on any built-in functions or libraries that simplify algorithmic steps.
+
+Here's a step-by-step explanation of the approach:
+
+1. **Initialize Two Pointers**: Start with two pointers, `left` at the beginning of the array and `right` at the end of the array.
+
+2. **Track Maximum Heights**: Maintain two variables, `maxLeft` and `maxRight`, to keep track of the maximum height encountered so far from the left and right sides, respectively.
+
+3. **Move Pointers Towards Each Other**:
+   - Compare the heights at the `left` and `right` pointers.
+   - If the height at `left` is less than or equal to the height at `right`:
+     - Move the `left` pointer one step to the right.
+     - Update `maxLeft` if the current height at `left` is greater than `maxLeft`.
+     - Calculate the water trapped at the current `left` position as `maxLeft - height[left]` and add it to the total water trapped.
+   - Otherwise:
+     - Move the `right` pointer one step to the left.
+     - Update `maxRight` if the current height at `right` is greater than `maxRight`.
+     - Calculate the water trapped at the current `right` position as `maxRight - height[right]` and add it to the total water trapped.
+
+4. **Stop When Pointers Meet**: Continue this process until the `left` pointer is no longer less than the `right` pointer.
+
+5. **Return the Total Water Trapped**: After the loop completes, the total water trapped will be stored in the variable used to accumulate the water.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9999819990796509
+Trapping Rain Water,1,"public class Solution {
+",0.8005746543577602
+Trapping Rain Water,2,"    public int Trap(int[] height) {
+",0.974861437212906
+Trapping Rain Water,3,"        if (height == null || height.Length == 0) {
+",0.9870170090748146
+Trapping Rain Water,4,"            return 0;
+",0.9999997615813555
+Trapping Rain Water,5,"        }
+
+",0.9657098072426608
+Trapping Rain Water,6,"        int left = 0, right = height.Length - 1;
+",0.936487214204482
+Trapping Rain Water,7,"        int maxLeft = 0, maxRight = 0;
+",0.9978483807128298
+Trapping Rain Water,8,"        int waterTrapped = 0;
+
+",0.9628749874855593
+Trapping Rain Water,9,"        while (left < right) {
+",0.9997088818602606
+Trapping Rain Water,10,"            if (height[left] <= height[right]) {
+",0.9999433619107141
+Trapping Rain Water,11,"                if (height[left] >= maxLeft) {
+",0.9932463541846597
+Trapping Rain Water,12,"                    maxLeft = height[left];
+",0.9999991825641906
+Trapping Rain Water,13,"                } else {
+",0.9998241797481162
+Trapping Rain Water,14,"                    waterTrapped += maxLeft - height[left];
+",0.9998797895163022
+Trapping Rain Water,15,"                }
+",0.9999998807907104
+Trapping Rain Water,16,"                left++;
+",0.9999951521421035
+Trapping Rain Water,17,"            } else {
+",0.9999997317790759
+Trapping Rain Water,18,"                if (height[right] >= maxRight) {
+",0.999999729069675
+Trapping Rain Water,19,"                    maxRight = height[right];
+",0.999999829701003
+Trapping Rain Water,20,"                } else {
+",1.0
+Trapping Rain Water,21,"                    waterTrapped += maxRight - height[right];
+",0.9999998157674418
+Trapping Rain Water,22,"                }
+",0.9999999403953534
+Trapping Rain Water,23,"                right--;
+",0.9999996423720034
+Trapping Rain Water,24,"            }
+",0.9999999403953534
+Trapping Rain Water,25,"        }
+
+",0.9999986886969552
+Trapping Rain Water,26,"        return waterTrapped;
+",0.999999503294268
+Trapping Rain Water,27,"    }
+",0.9900325302980449
+Trapping Rain Water,28,"}
+",0.9983869791030884
+Minimum Cost to Make at Least One Valid Path in a Grid,0," To solve this problem, we need to find the minimum cost to modify the grid such that there exists at least one valid path from the top-left cell to the bottom-right cell. The valid path follows the signs on the grid, and modifying a cell's sign costs 1 unit.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Initialize Data Structures**:
+   - Use a queue to perform a breadth-first search (BFS) to explore the grid.
+   - Use a 2D array `cost` to keep track of the minimum cost to reach each cell.
+   - Initialize the `cost` array with a large value (e.g., `int.MaxValue`) except for the starting cell `(0, 0)`, which is initialized to 0.
+
+2. **Define Directions**:
+   - Define the possible directions based on the sign values:
+     - `1` -> right
+     - `2` -> left
+     - `3` -> down
+     - `4` -> up
+
+3. **BFS Traversal**:
+   - Start BFS from the top-left cell `(0, 0)`.
+   - For each cell `(i, j)`, check the direction indicated by `grid[i][j]`.
+   - If moving in the indicated direction leads to a valid cell within bounds and hasn't been visited with a lower cost, update the cost and add the cell to the queue.
+   - Also, check all other directions (right, left, down, up) and calculate the cost to move in those directions. If the new cost is lower than the current recorded cost, update the cost and add the cell to the queue.
+
+4. **Check for Valid Path**:
+   - After processing all cells, the cost at the bottom-right cell `(m-1, n-1)` will be the minimum cost required to make a valid path from the top-left to the bottom-right.
+
+5. **Edge Cases**:
+   - If the grid is empty or has only one cell, the cost is 0.
+   - If the initial path from `(0, 0)` to `(m-1, n-1)` is already valid, the cost is 0.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9999457173728096
+Minimum Cost to Make at Least One Valid Path in a Grid,1,"using System;
+",0.8720738999166353
+Minimum Cost to Make at Least One Valid Path in a Grid,2,"using System.Collections.Generic;
+
+",0.9952240608921319
+Minimum Cost to Make at Least One Valid Path in a Grid,3,"public class Solution {
+",0.6955796663689766
+Minimum Cost to Make at Least One Valid Path in a Grid,4,"    public int MinCost(int[][] grid) {
+",0.9885549245802577
+Minimum Cost to Make at Least One Valid Path in a Grid,5,"        int m = grid.Length;
+",0.9634508805481884
+Minimum Cost to Make at Least One Valid Path in a Grid,6,"        int n = grid[0].Length;
+",0.9833189018851277
+Minimum Cost to Make at Least One Valid Path in a Grid,7,"        
+",0.8924314975738525
+Minimum Cost to Make at Least One Valid Path in a Grid,8,"        // Directions: right, left, down, up
+",0.9999988079071045
+Minimum Cost to Make at Least One Valid Path in a Grid,9,"        int[][] directions = new int[][] {
+",0.9131824983703933
+Minimum Cost to Make at Least One Valid Path in a Grid,10,"            new int[] {0, 1},  // right
+",0.9129084870483851
+Minimum Cost to Make at Least One Valid Path in a Grid,11,"            new int[] {0, -1}, // left
+",0.9999971628102657
+Minimum Cost to Make at Least One Valid Path in a Grid,12,"            new int[] {1, 0},  // down
+",0.9999872331480122
+Minimum Cost to Make at Least One Valid Path in a Grid,13,"            new int[] {-1, 0}  // up
+",0.9994413120509082
+Minimum Cost to Make at Least One Valid Path in a Grid,14,"        };
+",0.9979863466002505
+Minimum Cost to Make at Least One Valid Path in a Grid,15,"        
+",0.9999847412109375
+Minimum Cost to Make at Least One Valid Path in a Grid,16,"        // Queue for BFS
+",0.9999994039535522
+Minimum Cost to Make at Least One Valid Path in a Grid,17,"        Queue<int[]> queue = new Queue<int[]>();
+",0.9866908085331372
+Minimum Cost to Make at Least One Valid Path in a Grid,18,"        queue.Enqueue(new int[] {0, 0});
+",0.9823401236437845
+Minimum Cost to Make at Least One Valid Path in a Grid,19,"        
+",0.9999682903289795
+Minimum Cost to Make at Least One Valid Path in a Grid,20,"        // Cost array initialized to max value
+",0.9999997615814209
+Minimum Cost to Make at Least One Valid Path in a Grid,21,"        int[,] cost = new int[m, n];
+",0.959341334579723
+Minimum Cost to Make at Least One Valid Path in a Grid,22,"        for (int i = 0; i < m; i++) {
+",0.9999136478348821
+Minimum Cost to Make at Least One Valid Path in a Grid,23,"            for (int j = 0; j < n; j++) {
+",0.9999989569170862
+Minimum Cost to Make at Least One Valid Path in a Grid,24,"                cost[i, j] = int.MaxValue;
+",0.9984736209689489
+Minimum Cost to Make at Least One Valid Path in a Grid,25,"            }
+",0.9999981522550723
+Minimum Cost to Make at Least One Valid Path in a Grid,26,"        }
+",0.9999995827674706
+Minimum Cost to Make at Least One Valid Path in a Grid,27,"        cost[0, 0] = 0;
+",0.9994781236766566
+Minimum Cost to Make at Least One Valid Path in a Grid,28,"        
+",0.9999347925186157
+Minimum Cost to Make at Least One Valid Path in a Grid,29,"        while (queue.Count > 0) {
+",0.9200707476993489
+Minimum Cost to Make at Least One Valid Path in a Grid,30,"            int[] current = queue.Dequeue();
+",0.9984923839525274
+Minimum Cost to Make at Least One Valid Path in a Grid,31,"            int i = current[0];
+",0.9328044975491331
+Minimum Cost to Make at Least One Valid Path in a Grid,32,"            int j = current[1];
+",0.9999945907926314
+Minimum Cost to Make at Least One Valid Path in a Grid,33,"            
+",0.9141848683357239
+Minimum Cost to Make at Least One Valid Path in a Grid,34,"            // Check the direction indicated by the current cell
+",0.9999977350234985
+Minimum Cost to Make at Least One Valid Path in a Grid,35,"            int dirIndex = grid[i][j] - 1;
+",0.8129459588501619
+Minimum Cost to Make at Least One Valid Path in a Grid,36,"            int[] dir = directions[dirIndex];
+",0.8805861134089704
+Minimum Cost to Make at Least One Valid Path in a Grid,37,"            int ni = i + dir[0];
+",0.9708572875982383
+Minimum Cost to Make at Least One Valid Path in a Grid,38,"            int nj = j + dir[1];
+",0.9999944686462974
+Minimum Cost to Make at Least One Valid Path in a Grid,39,"            
+",0.8076213002204895
+Minimum Cost to Make at Least One Valid Path in a Grid,40,"            if (ni >= 0 && ni < m && nj >= 0 && nj < n) {
+",0.9189533306054365
+Minimum Cost to Make at Least One Valid Path in a Grid,41,"                if (cost[ni, nj] > cost[i, j]) {
+",0.9663789168198322
+Minimum Cost to Make at Least One Valid Path in a Grid,42,"                    cost[ni, nj] = cost[i, j];
+",0.9999790092042246
+Minimum Cost to Make at Least One Valid Path in a Grid,43,"                    queue.Enqueue(new int[] {ni, nj});
+",0.9998476527983846
+Minimum Cost to Make at Least One Valid Path in a Grid,44,"                }
+",0.9999770521250003
+Minimum Cost to Make at Least One Valid Path in a Grid,45,"            }
+",0.9997831684557272
+Minimum Cost to Make at Least One Valid Path in a Grid,46,"            
+",0.9999682903289795
+Minimum Cost to Make at Least One Valid Path in a Grid,47,"            // Check all other directions
+",0.9999996423721313
+Minimum Cost to Make at Least One Valid Path in a Grid,48,"            for (int d = 0; d < 4; d++) {
+",0.9854826407568684
+Minimum Cost to Make at Least One Valid Path in a Grid,49,"                if (d == dirIndex) continue; // Skip the direction already checked
+                
+",0.9546692608911382
+Minimum Cost to Make at Least One Valid Path in a Grid,50,"                dir = directions[d];
+",0.883114197481518
+Minimum Cost to Make at Least One Valid Path in a Grid,51,"                ni = i + dir[0];
+",0.9999736455669617
+Minimum Cost to Make at Least One Valid Path in a Grid,52,"                nj = j + dir[1];
+",0.9999974833539537
+Minimum Cost to Make at Least One Valid Path in a Grid,53,"                
+",0.9996471405029297
+Minimum Cost to Make at Least One Valid Path in a Grid,54,"                if (ni >= 0 && ni < m && nj >= 0 && nj < n) {
+",0.9999787166605207
+Minimum Cost to Make at Least One Valid Path in a Grid,55,"                    if (cost[ni, nj] > cost[i, j] + 1) {
+",0.9940642586919269
+Minimum Cost to Make at Least One Valid Path in a Grid,56,"                        cost[ni, nj] = cost[i, j] + 1;
+",0.999998723755401
+Minimum Cost to Make at Least One Valid Path in a Grid,57,"                        queue.Enqueue(new int[] {ni, nj});
+",0.9999951882227506
+Minimum Cost to Make at Least One Valid Path in a Grid,58,"                    }
+",0.9999987483024153
+Minimum Cost to Make at Least One Valid Path in a Grid,59,"                }
+",0.9999995827674848
+Minimum Cost to Make at Least One Valid Path in a Grid,60,"            }
+",0.9999989271163656
+Minimum Cost to Make at Least One Valid Path in a Grid,61,"        }
+",0.9999976754184541
+Minimum Cost to Make at Least One Valid Path in a Grid,62,"        
+",0.9999978542327881
+Minimum Cost to Make at Least One Valid Path in a Grid,63,"        return cost[m - 1, n - 1];
+",0.9802273943997079
+Minimum Cost to Make at Least One Valid Path in a Grid,64,"    }
+",0.9910331754572809
+Minimum Cost to Make at Least One Valid Path in a Grid,65,"}
+",0.910431444644928
+Pizza With 3n Slices,0," To solve this problem, we need to maximize the sum of pizza slices that we can pick, given the constraints of picking slices in an alternating pattern with our friends Alice and Bob. The key challenge is to handle the circular nature of the pizza slices and ensure that we do not pick two adjacent slices in the same turn.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Understand the Problem**: We need to pick slices such that we maximize our sum. Alice picks the next slice in the anti-clockwise direction, and Bob picks the next slice in the clockwise direction. This means we cannot pick two adjacent slices in the same turn.
+
+2. **Circular Array Handling**: Since the array is circular, we need to consider two scenarios:
+   - Exclude the first slice and solve the problem for the remaining slices.
+   - Exclude the last slice and solve the problem for the remaining slices.
+   - Take the maximum of these two scenarios.
+
+3. **Dynamic Programming Approach**: Use dynamic programming to keep track of the maximum sum we can achieve by picking slices up to a certain index, ensuring we do not pick two adjacent slices.
+
+4. **Implementation**: Implement the above logic in C#.
+
+Here's the C# code implementing the solution:
+
+```csharp
+",0.9999639975869263
+Pizza With 3n Slices,1,"using System;
+
+",0.884612237762895
+Pizza With 3n Slices,2,"public class PizzaProblem
+",0.746754474590726
+Pizza With 3n Slices,3,"{
+",0.9999996423721313
+Pizza With 3n Slices,4,"    public int MaxPizzaSum(int[] slices)
+",0.8640280248230625
+Pizza With 3n Slices,5,"    {
+",0.9999986290925289
+Pizza With 3n Slices,6,"        int n = slices.Length;
+",0.9917577541718757
+Pizza With 3n Slices,7,"        if (n == 1) return slices[0];
+",0.920903914927681
+Pizza With 3n Slices,8,"        
+",0.6783928871154785
+Pizza With 3n Slices,9,"        // Helper function to calculate the maximum sum without considering the first or last slice
+",0.9999990463256836
+Pizza With 3n Slices,10,"        int CalculateMaxSum(int[] s, int start, int end)
+",0.768353904529619
+Pizza With 3n Slices,11,"        {
+",0.9999974369972886
+Pizza With 3n Slices,12,"            int len = end - start + 1;
+",0.9245130810668798
+Pizza With 3n Slices,13,"            if (len == 1) return s[start];
+",0.8559601601982587
+Pizza With 3n Slices,14,"            if (len == 2) return Math.Max(s[start], s[end]);
+",0.9763825047248466
+Pizza With 3n Slices,15,"            
+",0.9943085312843323
+Pizza With 3n Slices,16,"            int[] dp = new int[len];
+",0.9631643410801091
+Pizza With 3n Slices,17,"            dp[0] = s[start];
+",0.9988590926150727
+Pizza With 3n Slices,18,"            dp[1] = Math.Max(s[start], s[start + 1]);
+",0.9985688337851588
+Pizza With 3n Slices,19,"            
+",0.9585681557655334
+Pizza With 3n Slices,20,"            for (int i = 2; i < len; i++)
+",0.9995155700080945
+Pizza With 3n Slices,21,"            {
+",0.9999856352059566
+Pizza With 3n Slices,22,"                dp[i] = Math.Max(dp[i - 1], dp[i - 2] + s[start + i]);
+",0.9816466196296721
+Pizza With 3n Slices,23,"            }
+",0.9998450165695115
+Pizza With 3n Slices,24,"            
+",0.9879676699638367
+Pizza With 3n Slices,25,"            return dp[len - 1];
+",0.9997711734898692
+Pizza With 3n Slices,26,"        }
+",0.9999516594819079
+Pizza With 3n Slices,27,"        
+",0.9999886751174927
+Pizza With 3n Slices,28,"        // Calculate the maximum sum excluding the first slice and excluding the last slice
+",0.999998927116394
+Pizza With 3n Slices,29,"        int maxSumExcludingFirst = CalculateMaxSum(slices, 1, n - 1);
+",0.9246618326598124
+Pizza With 3n Slices,30,"        int maxSumExcludingLast = CalculateMaxSum(slices, 0, n - 2);
+",0.9999947275899121
+Pizza With 3n Slices,31,"        
+",0.9999967813491821
+Pizza With 3n Slices,32,"        // Return the maximum of the two scenarios
+",0.9999992847442627
+Pizza With 3n Slices,33,"        return Math.Max(maxSumExcludingFirst, maxSumExcludingLast);
+",0.9999982416576603
+Pizza With 3n Slices,34,"    }
+
+",0.6440513773464741
+Pizza With 3n Slices,35,"    public static void Main(string[] args)
+",0.9735365347726875
+Pizza With 3n Slices,36,"    {
+",0.9999996423721029
+Pizza With 3n Slices,37,"        PizzaProblem pp = new PizzaProblem();
+",0.7699336577586997
+Pizza With 3n Slices,38,"        
+",0.7816786170005798
+Pizza With 3n Slices,39,"        Console.WriteLine(pp.MaxPizzaSum(new int[] { 1, 2, 3, 4, 5, 6 })); // Output: 10
+",0.9692349127585215
+Pizza With 3n Slices,40,"        Console.WriteLine(pp.MaxPizzaSum(new int[] { 8, 9, 8, 6, 1, 1 })); // Output: 16
+",0.9999989549277523
+Pizza With 3n Slices,41,"        Console.WriteLine(pp.MaxPizzaSum(new int[] { 4, 1, 2, 5, 8, 3, 1, 9, 7 })); // Output: 21
+",0.9999990616050587
+Pizza With 3n Slices,42,"        Console.WriteLine(pp.MaxPizzaSum(new int[] { 3, 1, 2 })); // Output: 3
+",0.9999983140362552
+Pizza With 3n Slices,43,"    }
+",0.9999993443487636
+Pizza With 3n Slices,44,"}
+",0.9999954700469971
+Number of Ways to Wear Different Hats to Each Other,0," To solve this problem, we can use dynamic programming with bit masking. The idea is to represent the state of which people have been assigned hats using a bitmask. Here's a step-by-step explanation of the approach:
+
+1. **Reverse Mapping**: First, create a reverse mapping from hats to people. This will help us quickly find out which people prefer a particular hat.
+
+2. **Dynamic Programming Table**: Use a 2D array `dp` where `dp[mask][hat]` represents the number of ways to assign hats to people represented by the bitmask `mask` using the first `hat` hats.
+
+3. **Bitmasking**: Use bitmasks to represent the state of people who have been assigned hats. If the i-th bit in the mask is set, it means the i-th person has been assigned a hat.
+
+4. **Initialization**: Initialize the DP table such that `dp[0][0] = 1`, meaning there's one way to assign no hats to no people.
+
+5. **Filling the DP Table**: Iterate over each hat and each possible state (bitmask). For each state, consider two cases:
+   - Do not assign the current hat to anyone.
+   - Assign the current hat to each person who prefers it and hasn't been assigned a hat yet.
+
+6. **Result**: The result will be in `dp[(1 << n) - 1][40]`, which represents all people having been assigned hats using all hats.
+
+Here's the implementation of the above approach:
+
+```csharp
+",0.9998426836480355
+Number of Ways to Wear Different Hats to Each Other,1,"using System;
+
+",0.8713702330245943
+Number of Ways to Wear Different Hats to Each Other,2,"public class Solution {
+",0.7756534748343515
+Number of Ways to Wear Different Hats to Each Other,3,"    public int NumberWays(int[][] hats) {
+",0.9406046646044901
+Number of Ways to Wear Different Hats to Each Other,4,"        const int MOD = 1_000_000_007;
+",0.9032784758033305
+Number of Ways to Wear Different Hats to Each Other,5,"        int n = hats.Length;
+",0.9732896486632105
+Number of Ways to Wear Different Hats to Each Other,6,"        
+",0.792495846748352
+Number of Ways to Wear Different Hats to Each Other,7,"        // Reverse mapping from hats to people
+",0.9999985694885254
+Number of Ways to Wear Different Hats to Each Other,8,"        int[] hatToPeople = new int[41];
+",0.8414863991995315
+Number of Ways to Wear Different Hats to Each Other,9,"        for (int i = 0; i < n; i++) {
+",0.981740006473054
+Number of Ways to Wear Different Hats to Each Other,10,"            foreach (int hat in hats[i]) {
+",0.950822595906023
+Number of Ways to Wear Different Hats to Each Other,11,"                hatToPeople[hat] |= (1 << i);
+",0.9517522380562232
+Number of Ways to Wear Different Hats to Each Other,12,"            }
+",0.9999804495291726
+Number of Ways to Wear Different Hats to Each Other,13,"        }
+",0.9900307566457848
+Number of Ways to Wear Different Hats to Each Other,14,"        
+",0.9999486207962036
+Number of Ways to Wear Different Hats to Each Other,15,"        // DP table
+",0.9999992847442627
+Number of Ways to Wear Different Hats to Each Other,16,"        int[,] dp = new int[1 << n, 41];
+",0.9488918672654294
+Number of Ways to Wear Different Hats to Each Other,17,"        dp[0, 0] = 1;
+",0.9703643652636071
+Number of Ways to Wear Different Hats to Each Other,18,"        
+",0.9999351501464844
+Number of Ways to Wear Different Hats to Each Other,19,"        // Fill the DP table
+",0.9999985694885254
+Number of Ways to Wear Different Hats to Each Other,20,"        for (int hat = 1; hat <= 40; hat++) {
+",0.9985819852915823
+Number of Ways to Wear Different Hats to Each Other,21,"            for (int mask = 0; mask < (1 << n); mask++) {
+",0.9925821957721896
+Number of Ways to Wear Different Hats to Each Other,22,"                dp[mask, hat] = dp[mask, hat - 1]; // Case 1: Do not use this hat
+",0.9431568217605805
+Number of Ways to Wear Different Hats to Each Other,23,"                int peopleWhoLikeThisHat = hatToPeople[hat];
+",0.9212905326049271
+Number of Ways to Wear Different Hats to Each Other,24,"                for (int person = 0; person < n; person++) {
+",0.9773957836549001
+Number of Ways to Wear Different Hats to Each Other,25,"                    if ((peopleWhoLikeThisHat & (1 << person)) != 0 && (mask & (1 << person)) == 0) {
+",0.9566875200351856
+Number of Ways to Wear Different Hats to Each Other,26,"                        // Case 2: Assign this hat to this person
+",0.999993085861206
+Number of Ways to Wear Different Hats to Each Other,27,"                        int newMask = mask | (1 << person);
+",0.8968148501610611
+Number of Ways to Wear Different Hats to Each Other,28,"                        dp[newMask, hat] = (dp[newMask, hat] + dp[mask, hat - 1]) % MOD;
+",0.9996861649085358
+Number of Ways to Wear Different Hats to Each Other,29,"                    }
+",0.9999874233617565
+Number of Ways to Wear Different Hats to Each Other,30,"                }
+",0.9999991059303124
+Number of Ways to Wear Different Hats to Each Other,31,"            }
+",0.9999952316236147
+Number of Ways to Wear Different Hats to Each Other,32,"        }
+",0.9999667999156996
+Number of Ways to Wear Different Hats to Each Other,33,"        
+",0.9999872446060181
+Number of Ways to Wear Different Hats to Each Other,34,"        return dp[(1 << n) - 1, 40];
+",0.9747499314015957
+Number of Ways to Wear Different Hats to Each Other,35,"    }
+",0.9574110614032442
+Number of Ways to Wear Different Hats to Each Other,36,"    
+",0.34806710481643677
+Number of Ways to Wear Different Hats to Each Other,37,"    public static void Main(string[] args) {
+",0.9948700505855484
+Number of Ways to Wear Different Hats to Each Other,38,"        Solution solution = new Solution();
+",0.9671616297475423
+Number of Ways to Wear Different Hats to Each Other,39,"        int[][] hats1 = new int[][] { new int[] { 3, 4 }, new int[] { 4, 5 }, new int[] { 5 } };
+",0.9465001505970435
+Number of Ways to Wear Different Hats to Each Other,40,"        Console.WriteLine(solution.NumberWays(hats1)); // Output: 1
+        
+",0.9465611025639538
+Number of Ways to Wear Different Hats to Each Other,41,"        int[][] hats2 = new int[][] { new int[] { 3, 5, 1 }, new int[] { 3, 5 } };
+",0.9999935170034255
+Number of Ways to Wear Different Hats to Each Other,42,"        Console.WriteLine(solution.NumberWays(hats2)); // Output: 4
+        
+",0.9999993389301107
+Number of Ways to Wear Different Hats to Each Other,43,"        int[][] hats3 = new int[][] { new int[] { 1, 2, 3, 4 }, new int[] { 1, 2, 3, 4 }, new int[] { 1, 2, 3, 4 }, new int[] { 1, 2, 3, 4 } };
+",0.9990302654982355
+Number of Ways to Wear Different Hats to Each Other,44,"        Console.WriteLine(solution.NumberWays(hats3)); // Output: 24
+        
+",0.9999993389297683
+Number of Ways to Wear Different Hats to Each Other,45,"        int[][] hats4 = new int[][] { new int[] { 1, 2, 3 }, new int[] { 2, 3, 5, 6 }, new int[] { 1, 3, 7, 9 }, new int[] { 1, 8, 9 }, new int[] { 2, 5, 7 } };
+",0.9999942167016599
+Number of Ways to Wear Different Hats to Each Other,46,"        Console.WriteLine(solution.NumberWays(hats4)); // Output: 111
+",0.9999988404180261
+Number of Ways to Wear Different Hats to Each Other,47,"    }
+",0.9999994635581952
+Number of Ways to Wear Different Hats to Each Other,48,"}
+",0.9999966621398926
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,0," To solve this problem, we can use a min-heap (priority queue) to efficiently find the k-th smallest sum. The idea is to iteratively combine the sums of elements from each row while maintaining the smallest sums at the top of the heap.
+
+Here's a step-by-step approach:
+
+1. **Initialize the Heap**: Start with the first row of the matrix. Each element of the first row is a valid initial sum, so push these sums into the heap.
+
+2. **Iterate Over Rows**: For each subsequent row, pop the smallest sum from the heap, add each element of the current row to this sum, and push the new sums back into the heap.
+
+3. **Limit the Heap Size**: Since we only need the k-th smallest sum, we can limit the size of the heap to k. This helps in reducing the computational complexity.
+
+4. **Extract the k-th Smallest Sum**: After processing all rows, the k-th smallest sum will be at the top of the heap.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9999168486209355
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,1,"using System;
+",0.9957732374933693
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,2,"using System.Collections.Generic;
+
+",0.9984047968014477
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,3,"public class Solution
+",0.9485245696665384
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,4,"{
+",0.9999991655349731
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,5,"    public int KthSmallest(int[][] mat, int k)
+",0.9943111536088112
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,6,"    {
+",0.9999995231627778
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,7,"        // Min-heap to store the sums
+",0.9999973773956299
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,8,"        var minHeap = new PriorityQueue<int>();
+
+",0.6955769254888178
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,9,"        // Initialize the heap with the first row
+",0.9999991655349731
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,10,"        foreach (var num in mat[0])
+",0.9239227976574824
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,11,"        {
+",0.9999645942226317
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,12,"            minHeap.Push(num);
+",0.9285835329017174
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,13,"        }
+
+",0.9879130851672611
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,14,"        // Process each row
+",0.9999995231628418
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,15,"        for (int i = 1; i < mat.Length; i++)
+",0.9990475767631934
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,16,"        {
+",0.9999998807907033
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,17,"            // Temporary heap to store the new sums
+",0.9999995231628418
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,18,"            var tempHeap = new PriorityQueue<int>();
+
+",0.9920101858077653
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,19,"            // Get the smallest k elements from the current heap
+",0.9999973773956299
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,20,"            for (int j = 0; j < Math.Min(k, minHeap.Count); j++)
+",0.8972706898568764
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,21,"            {
+",0.9999997615814138
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,22,"                int currentSum = minHeap.Pop();
+
+",0.9061696934045881
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,23,"                // Add each element of the current row to the current sum
+",0.9999984502792358
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,24,"                foreach (var num in mat[i])
+",0.9960970175135992
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,25,"                {
+",0.9999998807907104
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,26,"                    int newSum = currentSum + num;
+",0.9276965823600836
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,27,"                    tempHeap.Push(newSum);
+",0.9874069581089608
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,28,"                }
+",0.9995045280176144
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,29,"            }
+
+",0.9999932646749965
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,30,"            // Replace the minHeap with the tempHeap
+",0.9999998807907104
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,31,"            minHeap = tempHeap;
+",0.9961000911805918
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,32,"        }
+
+",0.9999573818010566
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,33,"        // The k-th smallest sum is at the top of the heap
+",0.9999998807907104
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,34,"        return minHeap.Peek();
+",0.8199085874500284
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,35,"    }
+
+",0.8423339088278176
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,36,"    // Priority Queue implementation
+",0.999998927116394
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,37,"    private class PriorityQueue<T> where T : IComparable<T>
+",0.9313444564916038
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,38,"    {
+",0.9999996423721242
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,39,"        private List<T> items = new List<T>();
+
+",0.8158260151636845
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,40,"        public void Push(T item)
+",0.9570253904829334
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,41,"        {
+",0.9999999403953534
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,42,"            items.Add(item);
+",0.9982449023090547
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,43,"            int childIndex = items.Count - 1;
+",0.8582053824455582
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,44,"            while (childIndex > 0)
+",0.9721362110102431
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,45,"            {
+",0.9999998211860639
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,46,"                int parentIndex = (childIndex - 1) / 2;
+",0.9998067384854082
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,47,"                if (items[parentIndex].CompareTo(items[childIndex]) <= 0)
+",0.9677214863988702
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,48,"                    break;
+
+",0.5674273729304897
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,49,"                Swap(parentIndex, childIndex);
+",0.8974106473345095
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,50,"                childIndex = parentIndex;
+",0.9999994550430694
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,51,"            }
+",0.9999977946264362
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,52,"        }
+
+",0.9999977946278431
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,53,"        public T Pop()
+",0.9975146316115694
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,54,"        {
+",0.9999998211860497
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,55,"            T root = items[0];
+",0.7392332072314725
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,56,"            items[0] = items[items.Count - 1];
+",0.975351077488451
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,57,"            items.RemoveAt(items.Count - 1);
+
+",0.8675107804345185
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,58,"            int parentIndex = 0;
+",0.9655493289287933
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,59,"            while (true)
+",0.9567406912356203
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,60,"            {
+",0.9999998807907104
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,61,"                int leftChildIndex = 2 * parentIndex + 1;
+",0.9669759758883285
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,62,"                int rightChildIndex = 2 * parentIndex + 2;
+",0.9830808834337972
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,63,"                int smallerChildIndex = leftChildIndex;
+
+",0.7843289039209356
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,64,"                if (rightChildIndex < items.Count && items[rightChildIndex].CompareTo(items[leftChildIndex]) < 0)
+",0.9895153351533972
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,65,"                {
+",0.7363783746205943
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,66,"                    smallerChildIndex = rightChildIndex;
+",0.9999998467309098
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,67,"                }
+
+",0.999883257502711
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,68,"                if (smallerChildIndex >= items.Count || items[parentIndex].CompareTo(items[smallerChildIndex]) <= 0)
+",0.9908770706377485
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,69,"                    break;
+
+",0.9587743178733654
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,70,"                Swap(parentIndex, smallerChildIndex);
+",0.9998130115832187
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,71,"                parentIndex = smallerChildIndex;
+",0.9999997445514037
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,72,"            }
+
+",0.9990786543262558
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,73,"            return root;
+",0.9999983906734524
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,74,"        }
+
+",0.9999995231627281
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,75,"        public T Peek()
+",0.9923842956596541
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,76,"        {
+",0.9999999403953534
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,77,"            return items[0];
+",0.9880825447721489
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,78,"        }
+
+",0.99999946355811
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,79,"        public int Count => items.Count;
+
+",0.843930005559161
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,80,"        private void Swap(int i, int j)
+",0.9786977957775465
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,81,"        {
+",0.9999999403953534
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,82,"            T temp = items[i];
+",0.9976432851517326
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,83,"            items[i] = items[j];
+",0.9999998807907016
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,84,"            items[j] = temp;
+",0.9999997615814025
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,85,"        }
+",0.9999669188749692
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,86,"    }
+",0.893805830589078
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,87,"}
+",0.979310154914856
+Remove Max Number of Edges to Keep Graph Fully Traversable,0," To solve this problem, we need to ensure that both Alice and Bob can traverse the entire graph after removing the maximum number of edges. This requires us to use a strategy that ensures both graphs (one for Alice and one for Bob) remain connected while minimizing the number of removed edges.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Initialize Union-Find Data Structures**: We'll use two separate union-find structures to manage the connectivity for Alice and Bob. Each structure will help us determine if adding an edge connects components in the respective graph.
+
+2. **Process Type 3 Edges First**: Since these edges can be used by both Alice and Bob, they are the most efficient to use first. By processing them first, we maximize the chance of reducing the number of required edges for both Alice and Bob.
+
+3. **Process Type 1 and Type 2 Edges**: After processing type 3 edges, we process type 1 edges for Alice and type 2 edges for Bob. This ensures that each person has their own set of connections.
+
+4. **Count the Number of Edges Added**: As we add edges, we count how many edges are added to keep both graphs connected.
+
+5. **Check Connectivity**: After processing all edges, we check if both Alice and Bob can traverse the entire graph. If either cannot, return `-1`.
+
+6. **Calculate Removable Edges**: The number of removable edges is the total number of edges minus the number of edges added.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9998791778469671
+Remove Max Number of Edges to Keep Graph Fully Traversable,1,"public class Solution {
+",0.620356068489049
+Remove Max Number of Edges to Keep Graph Fully Traversable,2,"    public int MaxNumEdgesToRemove(int n, int[][] edges) {
+",0.9944405523920539
+Remove Max Number of Edges to Keep Graph Fully Traversable,3,"        // Initialize union-find structures for Alice and Bob
+",0.9997479319572449
+Remove Max Number of Edges to Keep Graph Fully Traversable,4,"        UnionFind aliceUF = new UnionFind(n);
+",0.9218180935682467
+Remove Max Number of Edges to Keep Graph Fully Traversable,5,"        UnionFind bobUF = new UnionFind(n);
+
+",0.9510215296191507
+Remove Max Number of Edges to Keep Graph Fully Traversable,6,"        int edgesUsed = 0;
+
+",0.830422565545214
+Remove Max Number of Edges to Keep Graph Fully Traversable,7,"        // Process type 3 edges first
+",0.9999988079071045
+Remove Max Number of Edges to Keep Graph Fully Traversable,8,"        foreach (var edge in edges) {
+",0.9923138736064352
+Remove Max Number of Edges to Keep Graph Fully Traversable,9,"            if (edge[0] == 3) {
+",0.9979466111516176
+Remove Max Number of Edges to Keep Graph Fully Traversable,10,"                if (aliceUF.Union(edge[1], edge[2]) || bobUF.Union(edge[1], edge[2])) {
+",0.9529232115147478
+Remove Max Number of Edges to Keep Graph Fully Traversable,11,"                    edgesUsed++;
+",0.9998254196664719
+Remove Max Number of Edges to Keep Graph Fully Traversable,12,"                }
+",0.9991926604693785
+Remove Max Number of Edges to Keep Graph Fully Traversable,13,"            }
+",0.99986948740652
+Remove Max Number of Edges to Keep Graph Fully Traversable,14,"        }
+
+",0.9999933838640923
+Remove Max Number of Edges to Keep Graph Fully Traversable,15,"        // Process type 1 edges for Alice
+",0.9999988079071045
+Remove Max Number of Edges to Keep Graph Fully Traversable,16,"        foreach (var edge in edges) {
+",0.9999911649755604
+Remove Max Number of Edges to Keep Graph Fully Traversable,17,"            if (edge[0] == 1) {
+",0.9915459881735509
+Remove Max Number of Edges to Keep Graph Fully Traversable,18,"                if (aliceUF.Union(edge[1], edge[2])) {
+",0.9999885182090448
+Remove Max Number of Edges to Keep Graph Fully Traversable,19,"                    edgesUsed++;
+",0.9999985396859672
+Remove Max Number of Edges to Keep Graph Fully Traversable,20,"                }
+",0.9999936818984451
+Remove Max Number of Edges to Keep Graph Fully Traversable,21,"            }
+",0.9999964237211998
+Remove Max Number of Edges to Keep Graph Fully Traversable,22,"        }
+
+",0.9999990463255699
+Remove Max Number of Edges to Keep Graph Fully Traversable,23,"        // Process type 2 edges for Bob
+",0.9999994039535522
+Remove Max Number of Edges to Keep Graph Fully Traversable,24,"        foreach (var edge in edges) {
+",0.9999996423719624
+Remove Max Number of Edges to Keep Graph Fully Traversable,25,"            if (edge[0] == 2) {
+",0.9999985694814887
+Remove Max Number of Edges to Keep Graph Fully Traversable,26,"                if (bobUF.Union(edge[1], edge[2])) {
+",0.9999995306131324
+Remove Max Number of Edges to Keep Graph Fully Traversable,27,"                    edgesUsed++;
+",0.9999984800812727
+Remove Max Number of Edges to Keep Graph Fully Traversable,28,"                }
+",0.9999992847441987
+Remove Max Number of Edges to Keep Graph Fully Traversable,29,"            }
+",0.9999992847442556
+Remove Max Number of Edges to Keep Graph Fully Traversable,30,"        }
+
+",0.9999982714638076
+Remove Max Number of Edges to Keep Graph Fully Traversable,31,"        // Check if both Alice and Bob can traverse the entire graph
+",0.9999990463256836
+Remove Max Number of Edges to Keep Graph Fully Traversable,32,"        if (aliceUF.GetComponents() != 1 || bobUF.GetComponents() != 1) {
+",0.8837222568853926
+Remove Max Number of Edges to Keep Graph Fully Traversable,33,"            return -1;
+",0.9997269932224133
+Remove Max Number of Edges to Keep Graph Fully Traversable,34,"        }
+
+",0.9999989271158185
+Remove Max Number of Edges to Keep Graph Fully Traversable,35,"        // Calculate the number of removable edges
+",0.9999997615814209
+Remove Max Number of Edges to Keep Graph Fully Traversable,36,"        return edges.Length - edgesUsed;
+",0.9968951003374013
+Remove Max Number of Edges to Keep Graph Fully Traversable,37,"    }
+
+",0.8903230131478225
+Remove Max Number of Edges to Keep Graph Fully Traversable,38,"    private class UnionFind {
+",0.9434976163720084
+Remove Max Number of Edges to Keep Graph Fully Traversable,39,"        private int[] parent;
+",0.9820971526195116
+Remove Max Number of Edges to Keep Graph Fully Traversable,40,"        private int[] rank;
+
+",0.8070981851081988
+Remove Max Number of Edges to Keep Graph Fully Traversable,41,"        public UnionFind(int n) {
+",0.9887340234704267
+Remove Max Number of Edges to Keep Graph Fully Traversable,42,"            parent = new int[n + 1];
+",0.9997943717000438
+Remove Max Number of Edges to Keep Graph Fully Traversable,43,"            rank = new int[n + 1];
+",0.9964973837194979
+Remove Max Number of Edges to Keep Graph Fully Traversable,44,"            for (int i = 1; i <= n; i++) {
+",0.9986702935708994
+Remove Max Number of Edges to Keep Graph Fully Traversable,45,"                parent[i] = i;
+",0.9999983651263251
+Remove Max Number of Edges to Keep Graph Fully Traversable,46,"                rank[i] = 1;
+",0.8959972677060111
+Remove Max Number of Edges to Keep Graph Fully Traversable,47,"            }
+",0.9999988675117333
+Remove Max Number of Edges to Keep Graph Fully Traversable,48,"        }
+
+",0.9999989867210228
+Remove Max Number of Edges to Keep Graph Fully Traversable,49,"        public bool Union(int u, int v) {
+",0.9367179135660578
+Remove Max Number of Edges to Keep Graph Fully Traversable,50,"            int rootU = Find(u);
+",0.9942910709118903
+Remove Max Number of Edges to Keep Graph Fully Traversable,51,"            int rootV = Find(v);
+
+",0.9656235170180597
+Remove Max Number of Edges to Keep Graph Fully Traversable,52,"            if (rootU == rootV) {
+",0.9957231922066451
+Remove Max Number of Edges to Keep Graph Fully Traversable,53,"                return false; // Already connected
+",0.9316023790985952
+Remove Max Number of Edges to Keep Graph Fully Traversable,54,"            }
+
+",0.9999954104323603
+Remove Max Number of Edges to Keep Graph Fully Traversable,55,"            if (rank[rootU] > rank[rootV]) {
+",0.9833071331883865
+Remove Max Number of Edges to Keep Graph Fully Traversable,56,"                parent[rootV] = rootU;
+",0.9999918009510439
+Remove Max Number of Edges to Keep Graph Fully Traversable,57,"            } else if (rank[rootU] < rank[rootV]) {
+",0.9992432122358447
+Remove Max Number of Edges to Keep Graph Fully Traversable,58,"                parent[rootU] = rootV;
+",0.9999995099172982
+Remove Max Number of Edges to Keep Graph Fully Traversable,59,"            } else {
+",0.999998867510973
+Remove Max Number of Edges to Keep Graph Fully Traversable,60,"                parent[rootV] = rootU;
+",0.9989691407390255
+Remove Max Number of Edges to Keep Graph Fully Traversable,61,"                rank[rootU]++;
+",0.9996420382124865
+Remove Max Number of Edges to Keep Graph Fully Traversable,62,"            }
+
+",0.9926901810231423
+Remove Max Number of Edges to Keep Graph Fully Traversable,63,"            return true;
+",0.9632925888199719
+Remove Max Number of Edges to Keep Graph Fully Traversable,64,"        }
+
+",0.9999996423720674
+Remove Max Number of Edges to Keep Graph Fully Traversable,65,"        public int Find(int u) {
+",0.9842974175421606
+Remove Max Number of Edges to Keep Graph Fully Traversable,66,"            if (parent[u] != u) {
+",0.9355612840740296
+Remove Max Number of Edges to Keep Graph Fully Traversable,67,"                parent[u] = Find(parent[u]); // Path compression
+",0.9842111734884327
+Remove Max Number of Edges to Keep Graph Fully Traversable,68,"            }
+",0.9996426959411977
+Remove Max Number of Edges to Keep Graph Fully Traversable,69,"            return parent[u];
+",0.9999977588631924
+Remove Max Number of Edges to Keep Graph Fully Traversable,70,"        }
+
+",0.9999876021570334
+Remove Max Number of Edges to Keep Graph Fully Traversable,71,"        public int GetComponents() {
+",0.9998989974871157
+Remove Max Number of Edges to Keep Graph Fully Traversable,72,"            int count = 0;
+",0.8799304220696474
+Remove Max Number of Edges to Keep Graph Fully Traversable,73,"            for (int i = 1; i < parent.Length; i++) {
+",0.9979970614857263
+Remove Max Number of Edges to Keep Graph Fully Traversable,74,"                if (parent[i] == i) {
+",0.9986932004960161
+Remove Max Number of Edges to Keep Graph Fully Traversable,75,"                    count++;
+",0.9999964237140233
+Remove Max Number of Edges to Keep Graph Fully Traversable,76,"                }
+",0.9999986886975591
+Remove Max Number of Edges to Keep Graph Fully Traversable,77,"            }
+",0.9999986290929552
+Remove Max Number of Edges to Keep Graph Fully Traversable,78,"            return count;
+",0.9999976754147557
+Remove Max Number of Edges to Keep Graph Fully Traversable,79,"        }
+",0.9999973773921909
+Remove Max Number of Edges to Keep Graph Fully Traversable,80,"    }
+",0.999922093722381
+Remove Max Number of Edges to Keep Graph Fully Traversable,81,"}
+",0.9998856782913208
+Minimum Operations to Make a Subsequence,0," To solve this problem, we need to determine the minimum number of insertions required to make the `target` array a subsequence of the `arr` array. The key insight is that the problem can be reduced to finding the longest common subsequence (LCS) between `target` and `arr`. Once we have the length of the LCS, the minimum number of insertions required is simply the difference between the lengths of `target` and the LCS.
+
+Here's a step-by-step breakdown of the approach:
+
+1. **Map Values to Indices**: Create a mapping from each value in `target` to its index. This will help us quickly find the position of any element from `target` in `arr`.
+
+2. **Transform `arr`**: Using the mapping created in step 1, transform `arr` into a sequence of indices corresponding to the positions of elements in `target`. If an element in `arr` is not found in `target`, it can be ignored for the purpose of finding the LCS.
+
+3. **Find Longest Increasing Subsequence (LIS)**: The transformed sequence from step 2 can be treated as a sequence of indices. The problem now reduces to finding the longest increasing subsequence (LIS) in this sequence. The LIS will represent the longest subsequence of `target` that can be formed from `arr`.
+
+4. **Calculate Minimum Insertions**: The minimum number of insertions required is the difference between the length of `target` and the length of the LIS found in step 3.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9999454794427758
+Minimum Operations to Make a Subsequence,1,"using System;
+
+",0.6967482230195376
+Minimum Operations to Make a Subsequence,2,"public class Solution
+",0.8888471637107999
+Minimum Operations to Make a Subsequence,3,"{
+",0.9999984502792358
+Minimum Operations to Make a Subsequence,4,"    public int MinOperations(int[] target, int[] arr)
+",0.9937786328563498
+Minimum Operations to Make a Subsequence,5,"    {
+",0.9999973773921909
+Minimum Operations to Make a Subsequence,6,"        // Step 1: Map values in target to their indices
+",0.9999979734420776
+Minimum Operations to Make a Subsequence,7,"        int n = target.Length;
+",0.8314110634628741
+Minimum Operations to Make a Subsequence,8,"        var valueToIndex = new System.Collections.Generic.Dictionary<int, int>();
+",0.8349909498229898
+Minimum Operations to Make a Subsequence,9,"        for (int i = 0; i < n; i++)
+",0.9997712491257922
+Minimum Operations to Make a Subsequence,10,"        {
+",0.9999938607027427
+Minimum Operations to Make a Subsequence,11,"            valueToIndex[target[i]] = i;
+",0.9998817971896881
+Minimum Operations to Make a Subsequence,12,"        }
+
+",0.9998892783347263
+Minimum Operations to Make a Subsequence,13,"        // Step 2: Transform arr into a sequence of indices
+",0.9999994039535522
+Minimum Operations to Make a Subsequence,14,"        var transformedArr = new System.Collections.Generic.List<int>();
+",0.9003978078795973
+Minimum Operations to Make a Subsequence,15,"        foreach (var num in arr)
+",0.7671621876558757
+Minimum Operations to Make a Subsequence,16,"        {
+",0.9999991655347173
+Minimum Operations to Make a Subsequence,17,"            if (valueToIndex.ContainsKey(num))
+",0.9869926909246612
+Minimum Operations to Make a Subsequence,18,"            {
+",0.9999753233899895
+Minimum Operations to Make a Subsequence,19,"                transformedArr.Add(valueToIndex[num]);
+",0.9999918406734465
+Minimum Operations to Make a Subsequence,20,"            }
+",0.9999962449016078
+Minimum Operations to Make a Subsequence,21,"        }
+
+",0.999994993201625
+Minimum Operations to Make a Subsequence,22,"        // Step 3: Find the length of the longest increasing subsequence (LIS)
+",0.999998927116394
+Minimum Operations to Make a Subsequence,23,"        int lisLength = LengthOfLIS(transformedArr);
+
+",0.8425846850980596
+Minimum Operations to Make a Subsequence,24,"        // Step 4: Calculate the minimum number of insertions
+",0.9999998807907104
+Minimum Operations to Make a Subsequence,25,"        return n - lisLength;
+",0.9988083423190178
+Minimum Operations to Make a Subsequence,26,"    }
+
+",0.9999991059299287
+Minimum Operations to Make a Subsequence,27,"    private int LengthOfLIS(System.Collections.Generic.List<int> nums)
+",0.9964505555580588
+Minimum Operations to Make a Subsequence,28,"    {
+",0.9999921917610501
+Minimum Operations to Make a Subsequence,29,"        if (nums.Count == 0) return 0;
+
+",0.9790437302794249
+Minimum Operations to Make a Subsequence,30,"        // Use a list to store the smallest tail of all increasing subsequences
+",0.9999997615814209
+Minimum Operations to Make a Subsequence,31,"        var tails = new System.Collections.Generic.List<int>();
+
+",0.7624586830308638
+Minimum Operations to Make a Subsequence,32,"        foreach (var num in nums)
+",0.9578284089377722
+Minimum Operations to Make a Subsequence,33,"        {
+",0.9999997615813925
+Minimum Operations to Make a Subsequence,34,"            int left = 0, right = tails.Count;
+
+",0.870157065416282
+Minimum Operations to Make a Subsequence,35,"            // Binary search to find the insertion point
+",0.9999992847442627
+Minimum Operations to Make a Subsequence,36,"            while (left < right)
+",0.9999639192834102
+Minimum Operations to Make a Subsequence,37,"            {
+",0.9999998807907033
+Minimum Operations to Make a Subsequence,38,"                int mid = left + (right - left) / 2;
+",0.9865535633818981
+Minimum Operations to Make a Subsequence,39,"                if (tails[mid] < num)
+",0.9951398660062595
+Minimum Operations to Make a Subsequence,40,"                {
+",0.9995384344837527
+Minimum Operations to Make a Subsequence,41,"                    left = mid + 1;
+",0.9999954998274386
+Minimum Operations to Make a Subsequence,42,"                }
+",0.9999997615814138
+Minimum Operations to Make a Subsequence,43,"                else
+",0.9999944368688726
+Minimum Operations to Make a Subsequence,44,"                {
+",0.9999998211860497
+Minimum Operations to Make a Subsequence,45,"                    right = mid;
+",0.9999994516371327
+Minimum Operations to Make a Subsequence,46,"                }
+",0.9999999403953534
+Minimum Operations to Make a Subsequence,47,"            }
+
+",0.9999991059300282
+Minimum Operations to Make a Subsequence,48,"            // If left == tails.Count, it means num is greater than any element in tails
+",0.9999995231628418
+Minimum Operations to Make a Subsequence,49,"            if (left == tails.Count)
+",0.9814733918655811
+Minimum Operations to Make a Subsequence,50,"            {
+",0.9999902843957051
+Minimum Operations to Make a Subsequence,51,"                tails.Add(num);
+",0.9999840017765871
+Minimum Operations to Make a Subsequence,52,"            }
+",0.9999994039534883
+Minimum Operations to Make a Subsequence,53,"            else
+",0.9991709005555681
+Minimum Operations to Make a Subsequence,54,"            {
+",0.9999943375446757
+Minimum Operations to Make a Subsequence,55,"                tails[left] = num; // Replace the element at the found position
+",0.833110231584516
+Minimum Operations to Make a Subsequence,56,"            }
+",0.9999979734416229
+Minimum Operations to Make a Subsequence,57,"        }
+
+",0.999932644483021
+Minimum Operations to Make a Subsequence,58,"        return tails.Count;
+",0.9397009009952808
+Minimum Operations to Make a Subsequence,59,"    }
+
+",0.8077360786788674
+Minimum Operations to Make a Subsequence,60,"    public static void Main()
+",0.8129799247229138
+Minimum Operations to Make a Subsequence,61,"    {
+",0.9999998807907033
+Minimum Operations to Make a Subsequence,62,"        Solution solution = new Solution();
+",0.9087077609169566
+Minimum Operations to Make a Subsequence,63,"        
+",0.42347073554992676
+Minimum Operations to Make a Subsequence,64,"        // Example 1
+",0.9999996423721313
+Minimum Operations to Make a Subsequence,65,"        int[] target1 = { 5, 1, 3 };
+",0.9972305203895326
+Minimum Operations to Make a Subsequence,66,"        int[] arr1 = { 9, 4, 2, 3, 4 };
+",0.99999920888302
+Minimum Operations to Make a Subsequence,67,"        Console.WriteLine(solution.MinOperations(target1, arr1)); // Output: 2
+
+",0.9999437106974112
+Minimum Operations to Make a Subsequence,68,"        // Example 2
+",0.9999938011169434
+Minimum Operations to Make a Subsequence,69,"        int[] target2 = { 6, 4, 8, 1, 3, 2 };
+",0.9999994516366508
+Minimum Operations to Make a Subsequence,70,"        int[] arr2 = { 4, 7, 6, 2, 3, 8, 6, 1 };
+",0.9999996962083257
+Minimum Operations to Make a Subsequence,71,"        Console.WriteLine(solution.MinOperations(target2, arr2)); // Output: 3
+",0.9999993046121393
+Minimum Operations to Make a Subsequence,72,"    }
+",0.9999997615814138
+Minimum Operations to Make a Subsequence,73,"}
+",0.9999959468841553
+Edit Distance,0," To solve this problem, we can use dynamic programming. The idea is to build a 2D table where each cell `(i, j)` represents the minimum number of operations required to convert the first `i` characters of `word1` to the first `j` characters of `word2`.
+
+Here's a step-by-step breakdown of the approach:
+
+1. **Initialize a 2D array**: Create a 2D array `dp` of size `(m+1) x (n+1)` where `m` is the length of `word1` and `n` is the length of `word2`. Initialize all elements to zero.
+
+2. **Base cases**:
+   - If `word1` is empty, the only way to make it equal to `word2` is by inserting all characters of `word2`. So, `dp[i][0] = i` for all `i`.
+   - If `word2` is empty, the only way to make it equal to `word1` is by deleting all characters of `word1`. So, `dp[0][j] = j` for all `j`.
+
+3. **Fill the DP table**:
+   - For each character in `word1` and `word2`, compare the characters.
+   - If they are the same, no new operation is needed, so `dp[i][j] = dp[i-1][j-1]`.
+   - If they are different, consider the minimum cost among insert, delete, and replace operations:
+     - Insert: `dp[i][j-1] + 1`
+     - Delete: `dp[i-1][j] + 1`
+     - Replace: `dp[i-1][j-1] + 1`
+
+4. **Result**: The value at `dp[m][n]` will be the minimum number of operations required to convert `word1` to `word2`.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9999506848534476
+Edit Distance,1,"public class Solution {
+",0.8221405094402687
+Edit Distance,2,"    public int MinDistance(string word1, string word2) {
+",0.999973614801978
+Edit Distance,3,"        int m = word1.Length;
+",0.9995502957299495
+Edit Distance,4,"        int n = word2.Length;
+",0.9972822884350777
+Edit Distance,5,"        
+",0.9900534749031067
+Edit Distance,6,"        // Create a 2D array to store the minimum edit distances
+",0.9999995231628418
+Edit Distance,7,"        int[,] dp = new int[m + 1, n + 1];
+",0.999037973340875
+Edit Distance,8,"        
+",0.9999947547912598
+Edit Distance,9,"        // Initialize the base cases
+",0.9999997615814209
+Edit Distance,10,"        for (int i = 0; i <= m; i++) {
+",0.9861532975008229
+Edit Distance,11,"            dp[i, 0] = i; // Deleting all characters from word1
+",0.8811637942859085
+Edit Distance,12,"        }
+",0.9999924897940387
+Edit Distance,13,"        for (int j = 0; j <= n; j++) {
+",0.997357084748795
+Edit Distance,14,"            dp[0, j] = j; // Inserting all characters into word1
+",0.9999998331069845
+Edit Distance,15,"        }
+",0.9999898075538004
+Edit Distance,16,"        
+",0.9999951124191284
+Edit Distance,17,"        // Fill the DP table
+",1.0
+Edit Distance,18,"        for (int i = 1; i <= m; i++) {
+",0.9999970942204697
+Edit Distance,19,"            for (int j = 1; j <= n; j++) {
+",0.9999951495220175
+Edit Distance,20,"                if (word1[i - 1] == word2[j - 1]) {
+",0.9999217901294003
+Edit Distance,21,"                    dp[i, j] = dp[i - 1, j - 1]; // Characters match, no operation needed
+",0.990557071309618
+Edit Distance,22,"                } else {
+",0.9999987483011221
+Edit Distance,23,"                    // Minimum of insert, delete, and replace operations
+",0.999997615814209
+Edit Distance,24,"                    dp[i, j] = Math.Min(dp[i - 1, j], Math.Min(dp[i, j - 1], dp[i - 1, j - 1])) + 1;
+",0.9325459642966284
+Edit Distance,25,"                }
+",0.9999960660866165
+Edit Distance,26,"            }
+",0.9999997615814209
+Edit Distance,27,"        }
+",0.9999970197633203
+Edit Distance,28,"        
+",0.9999983310699463
+Edit Distance,29,"        // The answer is in the bottom-right corner of the DP table
+",0.9999998807907104
+Edit Distance,30,"        return dp[m, n];
+",0.9999990633550817
+Edit Distance,31,"    }
+",0.9989444707703172
+Edit Distance,32,"}
+",0.9947401881217957
+Maximum Profit in Job Scheduling,0," To solve this problem, we can use a dynamic programming approach combined with sorting. The idea is to sort the jobs by their end times and then use a DP array to keep track of the maximum profit we can achieve up to each job.
+
+Here's a step-by-step breakdown of the solution:
+
+1. **Sort the Jobs**: First, we need to sort the jobs based on their end times. This helps us in efficiently finding the next non-overlapping job.
+
+2. **Dynamic Programming Array**: We'll use a DP array where `dp[i]` represents the maximum profit we can achieve by considering the first `i` jobs.
+
+3. **Iterate Over Jobs**: For each job, we need to decide whether to include it in our optimal solution or not. If we include it, we need to find the last non-overlapping job and add its profit to the current job's profit.
+
+4. **Binary Search for Non-Overlapping Job**: To efficiently find the last non-overlapping job, we can use binary search. Since the jobs are sorted by their end times, we can binary search for the largest index `j` such that the end time of the `j`-th job is less than or equal to the start time of the current job.
+
+5. **Update DP Array**: For each job, update the DP array as follows:
+   - `dp[i] = max(dp[i-1], dp[j] + profit[i])` where `j` is the index found using binary search.
+
+6. **Result**: The value of `dp[n-1]` will give us the maximum profit we can achieve.
+
+Here's the implementation of the above approach:
+
+```csharp
+",0.9997928954196875
+Maximum Profit in Job Scheduling,1,"using System;
+
+",0.9025612749016831
+Maximum Profit in Job Scheduling,2,"public class Solution {
+",0.49512697434572167
+Maximum Profit in Job Scheduling,3,"    public int JobScheduling(int[] startTime, int[] endTime, int[] profit) {
+",0.9993842379643197
+Maximum Profit in Job Scheduling,4,"        int n = startTime.Length;
+",0.9963692235657141
+Maximum Profit in Job Scheduling,5,"        
+",0.5191134214401245
+Maximum Profit in Job Scheduling,6,"        // Create an array of jobs where each job is represented as (start, end, profit)
+",0.9999992847442627
+Maximum Profit in Job Scheduling,7,"        Job[] jobs = new Job[n];
+",0.881828097310113
+Maximum Profit in Job Scheduling,8,"        for (int i = 0; i < n; i++) {
+",0.9999019336138918
+Maximum Profit in Job Scheduling,9,"            jobs[i] = new Job(startTime[i], endTime[i], profit[i]);
+",0.9988587539312499
+Maximum Profit in Job Scheduling,10,"        }
+",0.9999213187922601
+Maximum Profit in Job Scheduling,11,"        
+",0.9999934434890747
+Maximum Profit in Job Scheduling,12,"        // Sort jobs by their end times
+",0.9999998807907104
+Maximum Profit in Job Scheduling,13,"        Array.Sort(jobs, (a, b) => a.End.CompareTo(b.End));
+",0.9328793478374069
+Maximum Profit in Job Scheduling,14,"        
+",0.9999765157699585
+Maximum Profit in Job Scheduling,15,"        // Initialize DP array
+",0.9999992847442627
+Maximum Profit in Job Scheduling,16,"        int[] dp = new int[n];
+",0.983141825597245
+Maximum Profit in Job Scheduling,17,"        dp[0] = jobs[0].Profit;
+",0.9869315179604842
+Maximum Profit in Job Scheduling,18,"        
+",0.9999450445175171
+Maximum Profit in Job Scheduling,19,"        // Fill DP array
+",0.9999971389770508
+Maximum Profit in Job Scheduling,20,"        for (int i = 1; i < n; i++) {
+",0.9999991357304361
+Maximum Profit in Job Scheduling,21,"            // Find the last non-overlapping job using binary search
+",0.999994158744812
+Maximum Profit in Job Scheduling,22,"            int j = BinarySearch(jobs, i);
+",0.8132559752703988
+Maximum Profit in Job Scheduling,23,"            
+",0.872979998588562
+Maximum Profit in Job Scheduling,24,"            // Calculate the maximum profit including the current job
+",0.9999988079071045
+Maximum Profit in Job Scheduling,25,"            if (j != -1) {
+",0.7500038939957541
+Maximum Profit in Job Scheduling,26,"                dp[i] = Math.Max(dp[i - 1], dp[j] + jobs[i].Profit);
+",0.9946490704592152
+Maximum Profit in Job Scheduling,27,"            } else {
+",0.9999977648232901
+Maximum Profit in Job Scheduling,28,"                dp[i] = Math.Max(dp[i - 1], jobs[i].Profit);
+",0.9999726068201354
+Maximum Profit in Job Scheduling,29,"            }
+",0.9999994039534883
+Maximum Profit in Job Scheduling,30,"        }
+",0.9999580972093687
+Maximum Profit in Job Scheduling,31,"        
+",0.9999983310699463
+Maximum Profit in Job Scheduling,32,"        // The maximum profit is stored in dp[n-1]
+",0.9999996423721313
+Maximum Profit in Job Scheduling,33,"        return dp[n - 1];
+",0.999834362982181
+Maximum Profit in Job Scheduling,34,"    }
+",0.9985546208463204
+Maximum Profit in Job Scheduling,35,"    
+",0.9999966621398926
+Maximum Profit in Job Scheduling,36,"    private int BinarySearch(Job[] jobs, int i) {
+",0.9416024970059905
+Maximum Profit in Job Scheduling,37,"        int low = 0;
+",0.8762792862296613
+Maximum Profit in Job Scheduling,38,"        int high = i - 1;
+",0.9988809389997955
+Maximum Profit in Job Scheduling,39,"        
+",0.7235205769538879
+Maximum Profit in Job Scheduling,40,"        while (low <= high) {
+",0.9929780751691083
+Maximum Profit in Job Scheduling,41,"            int mid = low + (high - low) / 2;
+",0.9834652342617684
+Maximum Profit in Job Scheduling,42,"            if (jobs[mid].End <= jobs[i].Start) {
+",0.995354695223472
+Maximum Profit in Job Scheduling,43,"                if (jobs[mid + 1].End <= jobs[i].Start) {
+",0.9747707119557502
+Maximum Profit in Job Scheduling,44,"                    low = mid + 1;
+",0.9999727362788442
+Maximum Profit in Job Scheduling,45,"                } else {
+",0.9999966323304563
+Maximum Profit in Job Scheduling,46,"                    return mid;
+",0.9999192575188326
+Maximum Profit in Job Scheduling,47,"                }
+",0.999998450278035
+Maximum Profit in Job Scheduling,48,"            } else {
+",0.999994933573587
+Maximum Profit in Job Scheduling,49,"                high = mid - 1;
+",0.9999997168778966
+Maximum Profit in Job Scheduling,50,"            }
+",0.9999995231628347
+Maximum Profit in Job Scheduling,51,"        }
+",0.9999991059299287
+Maximum Profit in Job Scheduling,52,"        
+",0.9983792304992676
+Maximum Profit in Job Scheduling,53,"        return -1;
+",0.9633352819183256
+Maximum Profit in Job Scheduling,54,"    }
+",0.9999237627804751
+Maximum Profit in Job Scheduling,55,"    
+",0.8726997971534729
+Maximum Profit in Job Scheduling,56,"    private class Job {
+",0.9791163363759408
+Maximum Profit in Job Scheduling,57,"        public int Start { get; }
+",0.8481103382201488
+Maximum Profit in Job Scheduling,58,"        public int End { get; }
+",0.9999911336470361
+Maximum Profit in Job Scheduling,59,"        public int Profit { get; }
+",0.9999374464293604
+Maximum Profit in Job Scheduling,60,"        
+",0.9999176263809204
+Maximum Profit in Job Scheduling,61,"        public Job(int start, int end, int profit) {
+",0.9999950114263628
+Maximum Profit in Job Scheduling,62,"            Start = start;
+",0.99750375678529
+Maximum Profit in Job Scheduling,63,"            End = end;
+",0.9999992847441119
+Maximum Profit in Job Scheduling,64,"            Profit = profit;
+",0.9999981641742561
+Maximum Profit in Job Scheduling,65,"        }
+",0.9999995827674422
+Maximum Profit in Job Scheduling,66,"    }
+",0.9999369964990976
+Maximum Profit in Job Scheduling,67,"}
+",0.9200559258460999
+Cherry Pickup II,0," To solve this problem, we can use dynamic programming with memoization. The idea is to recursively explore all possible paths for both robots and keep track of the maximum number of cherries collected. We'll use a 3D array to store the results of subproblems to avoid redundant calculations.
+
+Here's a step-by-step breakdown of the solution:
+
+1. **Define the State**: 
+   - Let `dp[row][col1][col2]` represent the maximum number of cherries collected when Robot #1 is at `(row, col1)` and Robot #2 is at `(row, col2)`.
+
+2. **Base Case**:
+   - If either robot moves out of bounds (`col1 < 0` or `col1 >= cols` or `col2 < 0` or `col2 >= cols`), return `-infinity` to indicate an invalid state.
+   - If both robots reach the last row (`row == rows`), return 0 because there are no more cherries to collect.
+
+3. **Recursive Case**:
+   - Calculate the cherries collected at the current positions. If `col1 == col2`, add the cherries from one cell; otherwise, add the cherries from both cells.
+   - For each robot, consider all possible moves to the next row: `(row+1, col-1)`, `(row+1, col)`, and `(row+1, col+1)`.
+   - Compute the maximum cherries collected by exploring all combinations of these moves for both robots.
+   - Store the result in `dp[row][col1][col2]` to avoid recomputation.
+
+4. **Result**:
+   - Start the recursion from the initial positions `(0, 0)` for Robot #1 and `(0, cols-1)` for Robot #2.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9999503668235948
+Cherry Pickup II,1,"using System;
+
+",0.8347610182397545
+Cherry Pickup II,2,"public class Solution {
+",0.6797191729518812
+Cherry Pickup II,3,"    private int[][][] dp;
+",0.6705698595118095
+Cherry Pickup II,4,"    private int rows, cols;
+",0.7553286913011913
+Cherry Pickup II,5,"    private int[][] grid;
+
+",0.9483090920653603
+Cherry Pickup II,6,"    public int CherryPickup(int[][] grid) {
+",0.9741242154221269
+Cherry Pickup II,7,"        this.grid = grid;
+",0.9916328669416518
+Cherry Pickup II,8,"        rows = grid.Length;
+",0.9429250588843928
+Cherry Pickup II,9,"        cols = grid[0].Length;
+",0.9992823445256539
+Cherry Pickup II,10,"        dp = new int[rows][][];
+",0.854755604321679
+Cherry Pickup II,11,"        
+",0.5570554733276367
+Cherry Pickup II,12,"        // Initialize dp array with -1
+",0.9999990463256836
+Cherry Pickup II,13,"        for (int i = 0; i < rows; i++) {
+",0.9997255058355974
+Cherry Pickup II,14,"            dp[i] = new int[cols][];
+",0.999971100436534
+Cherry Pickup II,15,"            for (int j = 0; j < cols; j++) {
+",0.9999977052147311
+Cherry Pickup II,16,"                dp[i][j] = new int[cols];
+",0.9999707869255002
+Cherry Pickup II,17,"                for (int k = 0; k < cols; k++) {
+",0.9999576759355877
+Cherry Pickup II,18,"                    dp[i][j][k] = -1;
+",0.9981305920046468
+Cherry Pickup II,19,"                }
+",0.9999970793718926
+Cherry Pickup II,20,"            }
+",0.9999978542317649
+Cherry Pickup II,21,"        }
+",0.9831574191054998
+Cherry Pickup II,22,"        
+",0.9999606609344482
+Cherry Pickup II,23,"        return MaxCherries(0, 0, cols - 1);
+",0.9682774805114491
+Cherry Pickup II,24,"    }
+
+",0.9447774217500978
+Cherry Pickup II,25,"    private int MaxCherries(int row, int col1, int col2) {
+",0.999991046423755
+Cherry Pickup II,26,"        // Base case: if out of bounds, return -infinity
+",0.9999920129776001
+Cherry Pickup II,27,"        if (col1 < 0 || col1 >= cols || col2 < 0 || col2 >= cols) {
+",0.9907696443014227
+Cherry Pickup II,28,"            return int.MinValue;
+",0.9922683239923593
+Cherry Pickup II,29,"        }
+",0.9996584071239903
+Cherry Pickup II,30,"        
+",0.8140262961387634
+Cherry Pickup II,31,"        // Base case: if reached the last row, return 0
+",0.9999998807907104
+Cherry Pickup II,32,"        if (row == rows) {
+",0.9999477004199855
+Cherry Pickup II,33,"            return 0;
+",0.9999984025947793
+Cherry Pickup II,34,"        }
+",0.9997187159232614
+Cherry Pickup II,35,"        
+",0.9999761581420898
+Cherry Pickup II,36,"        // Return cached result if already computed
+",1.0
+Cherry Pickup II,37,"        if (dp[row][col1][col2] != -1) {
+",0.9999903225402353
+Cherry Pickup II,38,"            return dp[row][col1][col2];
+",0.9999992088832033
+Cherry Pickup II,39,"        }
+",0.9997400601930814
+Cherry Pickup II,40,"        
+",0.9999849796295166
+Cherry Pickup II,41,"        // Calculate cherries collected at current positions
+",0.9999997615814209
+Cherry Pickup II,42,"        int cherries = grid[row][col1];
+",0.9290469274583247
+Cherry Pickup II,43,"        if (col1 != col2) {
+",0.9999703279833043
+Cherry Pickup II,44,"            cherries += grid[row][col2];
+",0.9999984860392445
+Cherry Pickup II,45,"        }
+",0.9999672765223787
+Cherry Pickup II,46,"        
+",0.9999901056289673
+Cherry Pickup II,47,"        // Explore all possible moves for both robots
+",0.9999992847442627
+Cherry Pickup II,48,"        int maxCherries = 0;
+",0.9346313735502937
+Cherry Pickup II,49,"        for (int d1 = -1; d1 <= 1; d1++) {
+",0.9523692779791397
+Cherry Pickup II,50,"            for (int d2 = -1; d2 <= 1; d2++) {
+",0.9997731256751214
+Cherry Pickup II,51,"                int nextCol1 = col1 + d1;
+",0.8671284855161894
+Cherry Pickup II,52,"                int nextCol2 = col2 + d2;
+",0.9999994635579726
+Cherry Pickup II,53,"                maxCherries = Math.Max(maxCherries, MaxCherries(row + 1, nextCol1, nextCol2));
+",0.9943285093410862
+Cherry Pickup II,54,"            }
+",0.9999991059301845
+Cherry Pickup II,55,"        }
+",0.9999934434675807
+Cherry Pickup II,56,"        
+",0.9999966621398926
+Cherry Pickup II,57,"        // Store the result in dp array
+",1.0
+Cherry Pickup II,58,"        dp[row][col1][col2] = cherries + maxCherries;
+",0.9983546621625858
+Cherry Pickup II,59,"        return dp[row][col1][col2];
+",0.9967614473782112
+Cherry Pickup II,60,"    }
+",0.8806745923212911
+Cherry Pickup II,61,"}
+",0.8007569909095764
