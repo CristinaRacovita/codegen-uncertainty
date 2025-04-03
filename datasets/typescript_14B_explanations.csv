@@ -1,0 +1,729 @@
+title,explanation
+Relative Ranks,"[Line 1]: Explanation: Define a function named `findRelativeRanks` that takes an array of numbers (`score`) as input and returns an array of strings.
+[Line 2]: Explanation: Declare a constant `n` and assign it the length of the `score` array, representing the number of athletes.
+[Line 3]: Explanation: Create a copy of the `score` array and assign it to the constant `sortedScores`. This array will be used to sort the scores in descending order.
+[Line 4]: Explanation: Start a `for` loop that iterates `n` times, where `n` is the length of the `score` array. This loop is used to perform the sorting of the `sortedScores` array.
+[Line 5]: Explanation: Start another `for` loop that iterates `n - i - 1` times. This inner loop is used to compare adjacent elements in the `sortedScores` array during each iteration of the outer loop.
+[Line 6]: Explanation: Check if the current element (`sortedScores[j]`) is less than the next element (`sortedScores[j + 1]`). If this condition is true, it means the elements are out of order.
+[Line 7]: Explanation: Declare a temporary variable `temp` and assign it the value of `sortedScores[j]`. This variable will be used to swap the values of the two elements.
+[Line 8]: Explanation: Assign the value of `sortedScores[j + 1]` to `sortedScores[j]`. This step swaps the values of the two elements.
+[Line 9]: Explanation: Assign the value stored in `temp` to `sortedScores[j + 1]`. This completes the swapping of the two elements.
+[Line 10]: Explanation: End the `if` statement.
+[Line 11]: Explanation: End the inner `for` loop.
+[Line 12]: Explanation: End the outer `for` loop.
+[Line 13]: Explanation: Declare an empty object `rankMap` that will be used to map each score to its corresponding rank.
+[Line 14]: Explanation: Declare an array `medals` containing the strings ""Gold Medal"", ""Silver Medal"", and ""Bronze Medal"". These strings will be used to assign ranks to the top three scores.
+[Line 15]: Explanation: Start a `for` loop that iterates `n` times, where `n` is the length of the `score` array. This loop is used to populate the `rankMap` with the appropriate ranks for each score.
+[Line 16]: Explanation: Check if the current index `i` is less than 3. If this condition is true, it means we are dealing with one of the top three scores.
+[Line 17]: Explanation: Assign the corresponding medal from the `medals` array to the `rankMap` object, using the current score (`sortedScores[i]`) as the key.
+[Line 18]: Explanation: End the `if` statement.
+[Line 19]: Explanation: If the current index `i` is not less than 3, it means we are dealing with a score that is not in the top three. In this case, assign the string representation of the current index plus one (`(i + 1).toString()`) to the `rankMap` object, using the current score (`sortedScores[i]`) as the key.
+[Line 20]: Explanation: End the `else` block.
+[Line 21]: Explanation: End the `for` loop.
+[Line 22]: Explanation: Declare an empty array `result` that will be used to store the final ranks of the athletes.
+[Line 23]: Explanation: Start a `for` loop that iterates `n` times, where `n` is the length of the `score` array. This loop is used to populate the `result` array with the ranks corresponding to each athlete's score.
+[Line 24]: Explanation: Use the `push` method to add the rank of the current athlete (retrieved from the `rankMap` object using the current score (`score[i]`) as the key) to the `result` array.
+[Line 25]: Explanation: End the `for` loop.
+[Line 26]: Explanation: Return the `result` array, which contains the ranks of all athletes in the correct order.
+[Line 27]: Explanation: End the function definition.
+[Line 28]: Explanation: Call the `findRelativeRanks` function with the input `[5, 4, 3, 2, 1]` and log the returned array to the console.
+[Line 29]: Explanation: Call the `findRelativeRanks` function with the input `[10, 3, 8, 9, 4]` and log the returned array to the console."
+Truncate Sentence,"[Line 1]: Explanation: Define a function named `truncateSentence` that takes two parameters: `s` (a string representing the sentence) and `k` (an integer representing the number of words to keep).
+        [Line 2]: Explanation: Initialize an empty string variable `result` to store the truncated sentence.
+        [Line 3]: Explanation: Initialize a counter variable `wordCount` to keep track of the number of words encountered.
+        [Line 4]: Explanation: Initialize a loop control variable `i` to iterate over the characters of the string `s`.
+        [Line 5]: Explanation: Start a `while` loop that continues as long as `i` is less than the length of the string `s`.
+        [Line 6]: Explanation: Check if the current character `s[i]` is a space.
+        [Line 7]: Explanation: If a space is found, increment the `wordCount` by 1.
+        [Line 8]: Explanation: Check if the `wordCount` has reached the value of `k`.
+        [Line 9]: Explanation: If `wordCount` equals `k`, break out of the `while` loop.
+        [Line 10]: Explanation: End of the `if` block checking for `wordCount` equal to `k`.
+        [Line 11]: Explanation: Check if `wordCount` is less than `k`.
+        [Line 12]: Explanation: If `wordCount` is less than `k`, append the current character `s[i]` to the `result` string.
+        [Line 13]: Explanation: End of the `if` block appending characters to `result`.
+        [Line 14]: Explanation: Increment the loop control variable `i` by 1 to move to the next character.
+        [Line 15]: Explanation: End of the `while` loop.
+        [Line 16]: Explanation: Return the `result` string, which contains the truncated sentence.
+        [Line 17]: Explanation: Call the `truncateSentence` function with the arguments `""Hello how are you Contestant""` and `4`, and print the result.
+        [Line 18]: Explanation: Call the `truncateSentence` function with the arguments `""What is the solution to this problem""` and `4`, and print the result.
+        [Line 19]: Explanation: Call the `truncateSentence` function with the arguments `""chopper is not a tanuki""` and `5`, and print the result.
+
+Assistant: [Line 1]: Explanation: Define a function named `truncateSentence` that takes two parameters: `s` (a string representing the sentence) and `k` (an integer representing the number of words to keep).
+[Line 2]: Explanation: Initialize an empty string variable `result` to store the truncated sentence.
+[Line 3]: Explanation: Initialize a counter variable `wordCount` to keep track of the number of words encountered.
+[Line 4]: Explanation: Initialize a loop control variable `i` to iterate over the characters of the string `s`.
+[Line 5]: Explanation: Start a `while` loop that continues as long as `i` is less than the length of the string `s`.
+[Line 6]: Explanation: Check if the current character `s[i]` is a space.
+[Line 7]: Explanation: If a space is found, increment the `wordCount` by 1.
+[Line 8]: Explanation: Check if the `wordCount` has reached the value of `k`.
+[Line 9]: Explanation: If `wordCount` equals `k`, break out of the `while` loop.
+[Line 10]: Explanation: End of the `if` block checking for `wordCount` equal to `k`.
+[Line 11]: Explanation: Check if `wordCount` is less than `k`.
+[Line 12]: Explanation: If `wordCount` is less than `k`, append the current character `s[i]` to the `result` string.
+[Line 13]: Explanation: End of the `if` block appending characters to `result`.
+[Line 14]: Explanation: Increment the loop control variable `i` by 1 to move to the next character.
+[Line 15]: Explanation: End of the `while` loop.
+[Line 16]: Explanation: Return the `result` string, which contains the truncated sentence.
+[Line 17]: Explanation: Call the `truncateSentence` function with the arguments `""Hello how are you Contestant""` and `4`, and print the result.
+[Line 18]: Explanation: Call the `truncateSentence` function with the arguments `""What is the solution to this problem""` and `4`, and print the result.
+[Line 19]: Explanation: Call the `truncateSentence` function with the arguments `""chopper is not a tanuki""` and `5`, and print the result."
+Perform String Shifts,```
+Invert Binary Tree,```
+Merge Strings Alternately,"``` [Line 1]: Explanation: Define a function named `mergeAlternately` that takes two parameters, `word1` and `word2`, both of which are strings. This function will merge these two strings alternately.
+[Line 2]: Explanation: Declare an empty array `merged` of type `string[]`. This array will be used to store the characters of the merged string.
+[Line 3]: Explanation: Calculate the length of `word1` and store it in the constant variable `len1`.
+[Line 4]: Explanation: Calculate the length of `word2` and store it in the constant variable `len2`.
+[Line 5]: Explanation: Determine the minimum length between `len1` and `len2` and store it in the constant variable `minLength`. This helps in iterating through the characters of both strings up to the shortest length.
+[Line 6]: Explanation: Start a `for` loop that iterates from `0` to `minLength - 1`. This loop will handle the merging of characters from both `word1` and `word2` up to the length of the shorter string.
+[Line 7]: Explanation: Inside the loop, push the character at index `i` of `word1` into the `merged` array.
+[Line 8]: Explanation: Push the character at index `i` of `word2` into the `merged` array.
+[Line 9]: Explanation: Close the first `for` loop.
+[Line 10]: Explanation: Start another `for` loop that iterates from `minLength` to `len1 - 1`. This loop handles the case where `word1` is longer than `word2`.
+[Line 11]: Explanation: Inside this loop, push the remaining characters of `word1` (from index `minLength` to `len1 - 1`) into the `merged` array.
+[Line 12]: Explanation: Close the second `for` loop.
+[Line 13]: Explanation: Start a third `for` loop that iterates from `minLength` to `len2 - 1`. This loop handles the case where `word2` is longer than `word1`.
+[Line 14]: Explanation: Inside this loop, push the remaining characters of `word2` (from index `minLength` to `len2 - 1`) into the `merged` array.
+[Line 15]: Explanation: Close the third `for` loop.
+[Line 16]: Explanation: Declare an empty string `result` that will be used to concatenate the characters from the `merged` array into a single string.
+[Line 17]: Explanation: Start a `for...of` loop that iterates over each character in the `merged` array.
+[Line 18]: Explanation: Inside the loop, concatenate each character to the `result` string.
+[Line 19]: Explanation: Close the `for...of` loop.
+[Line 20]: Explanation: Return the final merged string stored in `result`.
+[Line 21]: Explanation: Close the function definition.
+[Line 22]: Explanation: Call the `mergeAlternately` function with the arguments `""abc""` and `""pqr""`, and log the returned value to the console.
+[Line 23]: Explanation: Call the `mergeAlternately` function with the arguments `""ab""` and `""pqrs""`, and log the returned value to the console.
+[Line 24]: Explanation: Call the `mergeAlternately` function with the arguments `""abcd""` and `""pq""`, and log the returned value to the console.]"
+Delete N Nodes After M Nodes of a Linked List,"[Line 1]: Explanation: Defines a class named `ListNode` which represents a node in a singly linked list.
+[Line 2]: Explanation: Declares a property `val` of type `number` to store the value of the node.
+[Line 3]: Explanation: Declares a property `next` of type `ListNode | null` to reference the next node in the list.
+[Line 4]: Explanation: Defines a constructor for the `ListNode` class.
+[Line 5]: Explanation: Initializes the `val` property with the provided value or `0` if no value is given.
+[Line 6]: Explanation: Initializes the `next` property with the provided next node or `null` if no next node is given.
+[Line 7]: Explanation: Closes the constructor definition.
+[Line 8]: Explanation: Closes the `ListNode` class definition.
+[Line 9]: Explanation: Defines a function named `deleteNodes` that takes three parameters: `head` of type `ListNode | null`, `m` of type `number`, and `n` of type `number`.
+[Line 10]: Explanation: Initializes a variable `current` with the value of `head`, representing the current node being processed.
+[Line 11]: Explanation: Enters a while loop that continues as long as `current` is not `null`.
+[Line 12]: Explanation: Starts a for loop that iterates `m-1` times (from `1` to `m-1`) to move `current` to the `m`-th node.
+[Line 13]: Explanation: Moves `current` to the next node in the list.
+[Line 14]: Explanation: Checks if `current` is still not `null` after moving. If it is `null`, the loop breaks.
+[Line 15]: Explanation: Creates a temporary variable `temp` and assigns it the value of `current`.
+[Line 16]: Explanation: Starts another for loop that iterates `n+1` times (from `0` to `n`) to move `temp` past the `n` nodes to be removed.
+[Line 17]: Explanation: Moves `temp` to the next node in the list.
+[Line 18]: Explanation: Checks if `temp` is still not `null` after moving. If it is `null`, the loop continues.
+[Line 19]: Explanation: Sets the `next` property of `current` to `temp`, effectively skipping the `n` nodes.
+[Line 20]: Explanation: Updates `current` to `temp`, moving the processing to the next segment of the list.
+[Line 21]: Explanation: Ends the while loop.
+[Line 22]: Explanation: Returns the modified `head` of the linked list.
+[Line 23]: Explanation: Closes the `deleteNodes` function definition."
+Reverse Linked List,": [Line 1]: Explanation: Defines a class named `ListNode`.
+[Line 2]: Explanation: Declares a property `val` of type `number` within the `ListNode` class.
+[Line 3]: Explanation: Declares a property `next` of type `ListNode | null` within the `ListNode` class, indicating that it can point to another `ListNode` or be `null`.
+[Line 4]: Explanation: Starts the constructor method for the `ListNode` class, which initializes the node with a value and a reference to the next node.
+[Line 5]: Explanation: Assigns the value of `val` to the `val` property of the node. If `val` is `undefined`, it defaults to `0`.
+[Line 6]: Explanation: Assigns the value of `next` to the `next` property of the node. If `next` is `undefined`, it defaults to `null`.
+[Line 7]: Explanation: Ends the constructor method.
+[Line 8]: Explanation: Ends the definition of the `ListNode` class.
+[Line 9]: Explanation: Declares a function named `reverseListIteratively` that takes a parameter `head` of type `ListNode | null` and returns a `ListNode | null`.
+[Line 10]: Explanation: Initializes a variable `prev` to `null`. This will eventually hold the new head of the reversed list.
+[Line 11]: Explanation: Initializes a variable `current` to the `head` of the list. This will be used to traverse the original list.
+[Line 12]: Explanation: Starts a `while` loop that continues as long as `current` is not `null`, meaning there are more nodes to process in the list.
+[Line 13]: Explanation: Creates a temporary variable `nextNode` and assigns it the value of `current.next`. This temporarily stores the reference to the next node before changing `current.next`.
+[Line 14]: Explanation: Reverses the link by setting `current.next` to `prev`. This effectively points the current node backwards to the previous node.
+[Line 15]: Explanation: Moves `prev` to `current`, advancing it to the current node in the reversed list.
+[Line 16]: Explanation: Moves `current` to `nextNode`, advancing it to the next node in the original list.
+[Line 17]: Explanation: Ends the `while` loop once all nodes have been processed.
+[Line 18]: Explanation: Returns `prev`, which now holds the head of the reversed list.
+[Line 19]: Explanation: Ends the definition of the `reverseListIteratively` function."
+How Many Numbers Are Smaller Than the Current Number,"Assistant: [Line 1]: Explanation: Define a function named `smallerNumbersThanCurrent` that takes an array of numbers as input and returns an array of numbers.
+[Line 2]: Explanation: Initialize an empty array named `result` to store the counts of smaller numbers for each element in the input array.
+[Line 3]: Explanation: Start a for loop with variable `i` initialized to 0, which will iterate over each element in the input array `nums`.
+[Line 4]: Explanation: Initialize a variable `count` to 0. This variable will be used to count how many numbers in the array are smaller than the current number `nums[i]`.
+[Line 5]: Explanation: Start a nested for loop with variable `j` initialized to 0, which will iterate over each element in the input array `nums` to compare with `nums[i]`.
+[Line 6]: Explanation: Check if the current element `nums[j]` is less than `nums[i]` and `j` is not equal to `i`. If both conditions are true, increment the `count` variable by 1.
+[Line 7]: Explanation: If the condition in line 6 is true, increment the `count` variable by 1.
+[Line 8]: Explanation: End the if statement.
+[Line 9]: Explanation: End the nested for loop.
+[Line 10]: Explanation: After the inner loop completes, push the value of `count` into the `result` array.
+[Line 11]: Explanation: End the outer for loop.
+[Line 12]: Explanation: Return the `result` array containing the counts of smaller numbers for each element in the input array.
+[Line 13]: Explanation: End the function definition.
+[Line 14]: Explanation: Call the `smallerNumbersThanCurrent` function with the input `[8, 1, 2, 2, 3]` and log the result to the console.
+[Line 15]: Explanation: Call the `smallerNumbersThanCurrent` function with the input `[6, 5, 4, 8]` and log the result to the console.
+[Line 16]: Explanation: Call the `smallerNumbersThanCurrent` function with the input `[7, 7, 7, 7]` and log the result to the console."
+Find All The Lonely Nodes,"[Line 1]: Explanation: Define a class named `TreeNode`.
+[Line 2]: Explanation: Declare a property `val` of type `number` to store the value of the node.
+[Line 3]: Explanation: Declare a property `left` of type `TreeNode | null` to store the reference to the left child node.
+[Line 4]: Explanation: Declare a property `right` of type `TreeNode | null` to store the reference to the right child node.
+[Line 5]: Explanation: Define a constructor for the `TreeNode` class.
+[Line 6]: Explanation: Initialize the `val` property with the provided value, defaulting to `0` if not provided.
+[Line 7]: Explanation: Initialize the `left` property with the provided left child node, defaulting to `null` if not provided.
+[Line 8]: Explanation: Initialize the `right` property with the provided right child node, defaulting to `null` if not provided.
+[Line 9]: Explanation: Close the constructor definition.
+[Line 10]: Explanation: Close the `TreeNode` class definition.
+[Line 11]: Explanation: Define a function named `getLonelyNodes` that takes a parameter `root` of type `TreeNode | null` and returns an array of numbers.
+[Line 12]: Explanation: Declare a constant `lonelyNodes` of type `number[]` to store the values of lonely nodes.
+[Line 13]: Explanation: Define a nested function named `traverse` that takes two parameters: `node` of type `TreeNode | null` and `parentHasOnlyOneChild` of type `boolean`.
+[Line 14]: Explanation: Check if the current `node` is `null`. If it is, return immediately.
+[Line 15]: Explanation: Close the `if` block.
+[Line 16]: Explanation: If the `parentHasOnlyOneChild` is `true`, push the value of the current `node` to the `lonelyNodes` array.
+[Line 17]: Explanation: Close the `if` block.
+[Line 18]: Explanation: Determine if the current `node` has only one child by checking if either the left child is `null` and the right child is not `null`, or vice versa. Store the result in the constant `hasOnlyOneChild`.
+[Line 19]: Explanation: Recursively call the `traverse` function on the left child of the current `node`, passing the `hasOnlyOneChild` value.
+[Line 20]: Explanation: Recursively call the `traverse` function on the right child of the current `node`, passing the `hasOnlyOneChild` value.
+[Line 21]: Explanation: Close the `traverse` function definition.
+[Line 22]: Explanation: Call the `traverse` function starting from the `root` node, with `parentHasOnlyOneChild` set to `false` because the root node is not lonely.
+[Line 23]: Explanation: Return the `lonelyNodes` array containing the values of all lonely nodes.
+[Line 24]: Explanation: Close the `getLonelyNodes` function definition.
+[Line 25]: Explanation: Create a new `TreeNode` instance representing the root of the first example tree.
+[Line 26]: Explanation: Call the `getLonelyNodes` function with the first example tree and log the result to the console.
+[Line 27]: Explanation: Create a new `TreeNode` instance representing the root of the second example tree.
+[Line 28]: Explanation: Call the `getLonelyNodes` function with the second example tree and log the result to the console.
+[Line 29]: Explanation: Create a new `TreeNode` instance representing the root of the third example tree.
+[Line 30]: Explanation: Call the `getLonelyNodes` function with the third example tree and log the result to the console.
+[Line 31]: Explanation: Create a new `TreeNode` instance representing the root of the fourth example tree.
+[Line 32]: Explanation: Call the `getLonelyNodes` function with the fourth example tree and log the result to the console.
+[Line 33]: Explanation: Create a new `TreeNode` instance representing the root of the fifth example tree.
+[Line 34]: Explanation: Call the `getLonelyNodes` function with the fifth example tree and log the result to the console."
+Maximum Ascending Subarray Sum,"[Line 1]: Explanation: Define a function named `maxAscendingSum` that takes an array of numbers `nums` as its parameter.
+[Line 2]: Explanation: Initialize a variable `maxSum` to 0. This variable will store the maximum sum of any ascending subarray found in `nums`.
+[Line 3]: Explanation: Initialize a variable `currentSum` to 0. This variable will keep track of the sum of the current ascending subarray being evaluated.
+[Line 4]: Explanation: Start a `for` loop that iterates over each element in the `nums` array using the index `i`.
+[Line 5]: Explanation: Check if the current index `i` is 0 (meaning it's the first element of the array) or if the current element `nums[i]` is greater than the previous element `nums[i - 1]`. This condition ensures that the current element can be part of an ascending subarray.
+[Line 6]: Explanation: If the condition in line 5 is true, add the current element `nums[i]` to `currentSum`. This extends the current ascending subarray by including the current element.
+[Line 7]: Explanation: If the condition in line 5 is false, it means the current element cannot be part of the ascending subarray that ended at the previous element. Therefore, this block of code handles the end of an ascending subarray.
+[Line 8]: Explanation: Check if `currentSum` is greater than `maxSum`. If it is, update `maxSum` to be equal to `currentSum`. This ensures that `maxSum` always holds the maximum sum encountered so far.
+[Line 9]: Explanation: Reset `currentSum` to be equal to `nums[i]`. This starts a new ascending subarray with the current element as its first element.
+[Line 10]: Explanation: End the `if` block started on line 7.
+[Line 11]: Explanation: Continue the `for` loop to the next element in the array.
+[Line 12]: Explanation: End the `for` loop after all elements have been processed.
+[Line 13]: Explanation: After the loop, check one last time if `currentSum` is greater than `maxSum`. This is necessary because the last ascending subarray might not have been followed by a non-ascending element, so its sum might not have been compared yet.
+[Line 14]: Explanation: If the condition in line 13 is true, update `maxSum` to be equal to `currentSum`.
+[Line 15]: Explanation: End the `if` block started on line 13.
+[Line 16]: Explanation: Return the value of `maxSum`, which now contains the maximum sum of any ascending subarray in `nums`.
+[Line 17]: Explanation: End the function definition.
+[Line 18]: Explanation: Call the `maxAscendingSum` function with the input `[10, 20, 30, 5, 10, 50]` and print the result to the console.
+[Line 19]: Explanation: Call the `maxAscendingSum` function with the input `[10, 20, 30, 40, 50]` and print the result to the console.
+[Line 20]: Explanation: Call the `maxAscendingSum` function with the input `[12, 17, 15, 13, 10, 11, 12]` and print the result to the console.
+[Line 21]: Explanation: Call the `maxAscendingSum` function with the input `[100, 10, 1]` and print the result to the console.
+[Line 22]: Explanation: End the script."
+Maximum Subarray Sum After One Operation,"[Line 1]: Explanation: Declare a function named `maxSubarraySumAfterOperation` that takes an array of numbers (`nums`) as input and returns a number.
+[Line 2]: Explanation: Check if the length of `nums` is zero. If true, return 0 because there are no elements to form a subarray.
+[Line 3]: Explanation: Initialize a variable `max_ending_here` with the first element of `nums`. This variable keeps track of the maximum subarray sum ending at the current position without any operation.
+[Line 4]: Explanation: Initialize a variable `max_ending_here_with_op` with the square of the first element of `nums`. This variable keeps track of the maximum subarray sum ending at the current position with one operation performed.
+[Line 5]: Explanation: Initialize a variable `max_so_far` with the maximum value between `max_ending_here` and `max_ending_here_with_op`. This variable keeps track of the overall maximum subarray sum found so far.
+[Line 6]: Explanation: Start a loop from the second element of `nums` (index 1) to the last element.
+[Line 7]: Explanation: Assign the current element of `nums` to the variable `num`.
+[Line 8]: Explanation: Calculate the square of the current element `num` and assign it to the variable `squared_num`.
+[Line 9]: Explanation: Update `max_ending_here` to be the maximum of the current element `num` itself or the sum of `max_ending_here` and `num`. This step decides whether to start a new subarray at the current element or to extend the existing subarray.
+[Line 10]: Explanation: Update `max_ending_here_with_op` to be the maximum of three values:
+    - The square of the current element `squared_num`.
+    - The sum of `max_ending_here` and `squared_num`, representing the case where the operation is applied to the current element.
+    - The sum of `max_ending_here_with_op` and `num`, representing the case where the operation has already been applied to a previous element and we are extending the subarray.
+[Line 11]: Explanation: Calculate the square of the current element `num` and assign it to the variable `squared_num`.
+[Line 12]: Explanation: Compare `squared_num` with the sum of `max_ending_here` and `squared_num`, and update `max_ending_here_with_op` with the larger value.
+[Line 13]: Explanation: Compare the current value of `max_ending_here_with_op` with the sum of `max_ending_here_with_op` and `num`, and update `max_ending_here_with_op` with the larger value.
+[Line 14]: Explanation: Update `max_so_far` to be the maximum of its current value, `max_ending_here`, and `max_ending_here_with_op`. This ensures that `max_so_far` always holds the highest subarray sum found so far.
+[Line 15]: Explanation: Continue the loop until all elements in `nums` have been processed.
+[Line 16]: Explanation: Return the value of `max_so_far`, which represents the maximum possible subarray sum after performing exactly one operation.
+[Line 17]: Explanation: Call the `maxSubarraySumAfterOperation` function with the input `[2, -1, -4, -3]` and print the result to the console.
+[Line 18]: Explanation: Call the `maxSubarraySumAfterOperation` function with the input `[1, -1, 1, 1, -1, -1, 1]` and print the result to the console."
+Walls and Gates,"[Line 1]: Explanation: Defines a function named `wallsAndGates` that takes a 2D array `rooms` as input and modifies it in place.
+[Line 2]: Explanation: Assigns the constant `INF` with the value `2147483647`, representing infinity or an empty room.
+[Line 3]: Explanation: Initializes an array `directions` containing four pairs of numbers representing the four possible directions (right, down, left, up) for movement within the grid.
+[Line 4]: Explanation: The first pair `[0, 1]` represents moving one step to the right.
+[Line 5]: Explanation: The second pair `[1, 0]` represents moving one step downwards.
+[Line 6]: Explanation: The third pair `[0, -1]` represents moving one step to the left.
+[Line 7]: Explanation: The fourth pair `[-1, 0]` represents moving one step upwards.
+[Line 8]: Explanation: Ends the initialization of the `directions` array.
+[Line 9]: Explanation: Retrieves the number of rows in the `rooms` grid and assigns it to the constant `numRows`.
+[Line 10]: Explanation: Checks if `numRows` is zero, indicating an empty grid. If true, the function returns immediately without further execution.
+[Line 11]: Explanation: Retrieves the number of columns in the `rooms` grid and assigns it to the constant `numCols`.
+[Line 12]: Explanation: Initializes an empty array `queue` to store the coordinates of gates (cells with value `0`).
+[Line 13]: Explanation: Begins a nested loop to iterate over each cell in the `rooms` grid.
+[Line 14]: Explanation: The outer loop iterates over each row in the grid.
+[Line 15]: Explanation: The inner loop iterates over each column in the current row.
+[Line 16]: Explanation: Checks if the current cell has a value of `0`, indicating it is a gate.
+[Line 17]: Explanation: If the current cell is a gate, its coordinates `[row, col]` are added to the `queue`.
+[Line 18]: Explanation: Ends the inner loop.
+[Line 19]: Explanation: Ends the outer loop.
+[Line 20]: Explanation: Begins a `while` loop that continues until the `queue` is empty.
+[Line 21]: Explanation: Dequeues the first element from the `queue`, which is an array containing the coordinates `[currentRow, currentCol]` of the current gate.
+[Line 22]: Explanation: Retrieves the distance of the current gate from the `rooms` grid and assigns it to the constant `currentDistance`.
+[Line 23]: Explanation: Iterates over each direction in the `directions` array.
+[Line 24]: Explanation: Calculates the new row index by adding the row component of the current direction (`dRow`) to the current row index (`currentRow`).
+[Line 25]: Explanation: Calculates the new column index by adding the column component of the current direction (`dCol`) to the current column index (`currentCol`).
+[Line 26]: Explanation: Checks if the new row index is within the valid range (i.e., not less than 0 and not greater than or equal to `numRows`).
+[Line 27]: Explanation: Checks if the new column index is within the valid range (i.e., not less than 0 and not greater than or equal to `numCols`).
+[Line 28]: Explanation: Checks if the cell at the new coordinates `[newRow, newCol]` has a value of `INF`, indicating it is an empty room.
+[Line 29]: Explanation: Updates the value of the cell at the new coordinates to `currentDistance + 1`, representing the distance from the current gate.
+[Line 30]: Explanation: Adds the new coordinates `[newRow, newCol]` to the `queue` to be processed"
+Longest Common Subsequence,```
+Satisfiability of Equality Equations,"``` [Line 1]: Explanation: Define a class named UnionFind which will be used to manage the union-find data structure.
+[Line 2]: Explanation: Declare a property `parent` which will store the parent of each node in the union-find structure.
+[Line 3]: Explanation: Constructor for the UnionFind class which takes a parameter `size`.
+[Line 4]: Explanation: Initialize the `parent` array with the given `size`.
+[Line 5]: Explanation: Start a loop that runs from 0 to `size - 1`.
+[Line 6]: Explanation: Set the parent of each node to itself, indicating that initially, each node is its own parent.
+[Line 7]: Explanation: Increment the loop counter by 1.
+[Line 8]: Explanation: End the loop after all nodes have been initialized.
+[Line 9]: Explanation: Define a method `find` that takes a parameter `x` and returns the root of the set containing `x`.
+[Line 10]: Explanation: Check if the current node `x` is not its own parent.
+[Line 11]: Explanation: Recursively call `find` on the parent of `x` and update the parent of `x` to be the root found, implementing path compression.
+[Line 12]: Explanation: Return the root of the set containing `x`.
+[Line 13]: Explanation: End the `find` method.
+[Line 14]: Explanation: Define a method `union` that takes parameters `x` and `y` and merges the sets containing `x` and `y`.
+[Line 15]: Explanation: Find the root of the set containing `x` and store it in `rootX`.
+[Line 16]: Explanation: Find the root of the set containing `y` and store it in `rootY`.
+[Line 17]: Explanation: Check if `rootX` is not equal to `rootY`, meaning `x` and `y` are in different sets.
+[Line 18]: Explanation: Set the parent of `rootX` to `rootY`, merging the two sets.
+[Line 19]: Explanation: End the `union` method.
+[Line 20]: Explanation: End the UnionFind class definition.
+[Line 21]: Explanation: Define a function `equationsPossible` that takes an array of strings `equations` and returns a boolean.
+[Line 22]: Explanation: Create an instance of the UnionFind class with a size of 26 (for each letter of the alphabet).
+[Line 23]: Explanation: Start a loop that iterates over each equation in the `equations` array.
+[Line 24]: Explanation: Check if the second character of the equation is '='.
+[Line 25]: Explanation: Calculate the index of the first variable in the equation by subtracting the ASCII value of 'a' from the ASCII value of the first character.
+[Line 26]: Explanation: Calculate the index of the second variable in the equation by subtracting the ASCII value of 'a' from the ASCII value of the fourth character.
+[Line 27]: Explanation: Call the `union` method on the UnionFind instance to merge the sets containing the two variables.
+[Line 28]: Explanation: End the loop after processing all equations with '='.
+[Line 29]: Explanation: Start another loop that iterates over each equation in the `equations` array.
+[Line 30]: Explanation: Check if the second character of the equation is '!'.
+[Line 31]: Explanation: Calculate the index of the first variable in the equation by subtracting the ASCII value of 'a' from the ASCII value of the first character.
+[Line 32]: Explanation: Calculate the index of the second variable in the equation by subtracting the ASCII value of 'a' from the ASCII value of the fourth character.
+[Line 33]: Explanation: Call the `find` method on the UnionFind instance to get the root of the set containing the first variable.
+[Line 34]: Explanation: Call the `find` method on the UnionFind instance to get the root of the set containing the second variable.
+[Line 35]: Explanation: Check if the roots of the two variables are equal, meaning they are in the same set.
+[Line 36]: Explanation: If the roots are equal, return `false` because the equation `a != b` cannot be satisfied.
+[Line 37]: Explanation: End the loop after processing all equations with '!'.
+[Line 38]: Explanation: If all equations are satisfied, return `true`.
+[Line 39]: Explanation: End the `equationsPossible` function.
+[Line 40]: Explanation: Test the `equationsPossible` function with the input [""a==b"", ""b!=a""] and log the result to the console.
+[Line 41]: Explanation: Test the `equationsPossible`"
+Check Completeness of a Binary Tree,"[Line 1]: Explanation: Defines the TreeNode class, which represents a node in a binary tree.
+[Line 2]: Explanation: Declares a property `val` of type `number` to store the value of the node.
+[Line 3]: Explanation: Declares a property `left` of type `TreeNode | null` to store the reference to the left child node.
+[Line 4]: Explanation: Declares a property `right` of type `TreeNode | null` to store the reference to the right child node.
+[Line 5]: Explanation: Defines the constructor for the TreeNode class, which initializes the properties of the node.
+[Line 6]: Explanation: Initializes the `val` property with the provided value or defaults to `0` if no value is provided.
+[Line 7]: Explanation: Initializes the `left` property with the provided left child node or defaults to `null` if no left child node is provided.
+[Line 8]: Explanation: Initializes the `right` property with the provided right child node or defaults to `null` if no right child node is provided.
+[Line 9]: Explanation: Closes the constructor definition.
+[Line 10]: Explanation: Closes the TreeNode class definition.
+[Line 11]: Explanation: Defines the `isCompleteTree` function, which takes a `TreeNode` or `null` as input and returns a boolean indicating whether the tree is complete.
+[Line 12]: Explanation: Checks if the `root` is `null`. If it is, the function returns `true` because an empty tree is considered complete.
+[Line 13]: Explanation: Initializes an empty array `queue` to be used as a queue for breadth-first traversal of the tree.
+[Line 14]: Explanation: Initializes a boolean variable `encounteredMissingChild` to `false`. This variable is used to track whether a missing child node has been encountered during the traversal.
+[Line 15]: Explanation: Adds the `root` node to the `queue` for traversal.
+[Line 16]: Explanation: Starts a while loop that continues as long as there are nodes in the `queue`.
+[Line 17]: Explanation: Removes the first node from the `queue` using `shift()` and assigns it to `currentNode`.
+[Line 18]: Explanation: Checks if the `currentNode` has a left child node. If it does, the code proceeds to the next step.
+[Line 19]: Explanation: Checks if a missing child node has already been encountered (`encounteredMissingChild` is `true`). If so, the function returns `false` because a complete binary tree cannot have a node with a left child after a node with a missing child.
+[Line 20]: Explanation: Returns `false` if a left child node is found after a missing child node.
+[Line 21]: Explanation: If the `currentNode` has a left child, the left child node is added to the `queue` for further traversal.
+[Line 22]: Explanation: Closes the if block for checking the left child.
+[Line 23]: Explanation: If the `currentNode` does not have a left child, the `encounteredMissingChild` variable is set to `true`, indicating that a missing child node has been encountered.
+[Line 24]: Explanation: Closes the else block for handling the absence of a left child.
+[Line 25]: Explanation: Checks if the `currentNode` has a right child node. If it does, the code proceeds to the next step.
+[Line 26]: Explanation: Checks if a missing child node has already been encountered (`encounteredMissingChild` is `true`). If so, the function returns `false` because a complete binary tree cannot have a node with a right child after a node with a missing child.
+[Line 27]: Explanation: Returns `false` if a right child node is found after a missing child node.
+[Line 28]: Explanation: If the `currentNode` has a right child, the right child node is added to the `queue` for further traversal.
+[Line 29]: Explanation: Closes the if block for checking the right child.
+[Line 30]: Explanation: If the `currentNode` does not have a right child, the `encounteredMissingChild` variable is set to `true`, indicating that a missing child node has been encountered.
+[Line 31]: Explanation: Closes the else block for handling the absence of a right child.
+[Line 32]: Explanation: Closes the while loop that processes nodes in the `queue`.
+[Line 33]: Explanation: Returns `true` if the traversal completes without finding any violations of the complete binary tree property.
+[Line 34]: Explanation: Closes the `isCompleteTree` function definition.
+[Line 35]: Explanation: Ends the file."
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,"[Line 1]: Explanation: Define a function named `maxNonOverlapping` that takes an array of numbers `nums` and a target number `target` as parameters.
+[Line 2]: Explanation: Initialize a variable `current_sum` to 0. This variable will keep track of the cumulative sum of elements as we iterate through the array.
+[Line 3]: Explanation: Create a Set named `seen_sums` to store cumulative sums encountered during the iteration. Sets are used here because they allow for fast look-up times.
+[Line 4]: Explanation: Initialize a variable `count` to 0. This variable will keep track of the number of non-overlapping subarrays whose sum equals the target.
+[Line 5]: Explanation: Start a for loop that iterates over each element in the `nums` array using the index `i`.
+[Line 6]: Explanation: Add the current element `nums[i]` to `current_sum`, updating it with the cumulative sum up to the current index.
+[Line 7]: Explanation: Check if `current_sum` is equal to the `target`. If true, it means we have found a subarray starting from the beginning of the current segment that sums up to the target.
+[Line 8]: Explanation: Increment the `count` by 1, indicating that we have found a valid subarray.
+[Line 9]: Explanation: Reset `current_sum` to 0 to start fresh for the next potential subarray.
+[Line 10]: Explanation: Clear the `seen_sums` set to remove all previously stored sums, as we are starting a new segment.
+[Line 11]: Explanation: Continue to the next iteration of the loop, skipping the rest of the current iteration.
+[Line 12]: Explanation: Check if `current_sum - target` exists in the `seen_sums` set. This condition checks if there is a previous cumulative sum that, when subtracted from the current cumulative sum, equals the target.
+[Line 13]: Explanation: If the condition in Line 12 is true, increment the `count` by 1, indicating that we have found another valid subarray.
+[Line 14]: Explanation: Reset `current_sum` to 0 to start fresh for the next potential subarray.
+[Line 15]: Explanation: Clear the `seen_sums` set to remove all previously stored sums, as we are starting a new segment.
+[Line 16]: Explanation: Continue to the next iteration of the loop, skipping the rest of the current iteration.
+[Line 17]: Explanation: Add the current `current_sum` to the `seen_sums` set. This step stores the cumulative sum for future reference.
+[Line 18]: Explanation: End the for loop after iterating through all elements in the `nums` array.
+[Line 19]: Explanation: Return the `count`, which represents the maximum number of non-overlapping subarrays whose sum equals the target.
+[Line 20]: Explanation: End the function definition.
+[Line 21]: Explanation: Call the `maxNonOverlapping` function with the input `[1, 1, 1, 1, 1]` and target `2`, and log the result to the console.
+[Line 22]: Explanation: Call the `maxNonOverlapping` function with the input `[-1, 3, 5, 1, 4, 2, -9]` and target `6`, and log the result to the console.
+[Line 23]: Explanation: Call the `maxNonOverlapping` function with the input `[-2, 6, 6, 3, 5, 4, 1, 2, 8]` and target `10`, and log the result to the console.
+[Line 24]: Explanation: Call the `maxNonOverlapping` function with the input `[0, 0, 0]` and target `0`, and log the result to the console."
+Find Nearest Right Node in Binary Tree,"``` [Line 1]: Explanation: Definition of the TreeNode class starts.
+[Line 2]: Explanation: Property 'val' of type number is declared.
+[Line 3]: Explanation: Property 'left' of type TreeNode or null is declared.
+[Line 4]: Explanation: Property 'right' of type TreeNode or null is declared.
+[Line 5]: Explanation: Constructor method for TreeNode is defined with optional parameters.
+[Line 6]: Explanation: Initializes 'val' property with provided value or default to 0.
+[Line 7]: Explanation: Initializes 'left' property with provided value or default to null.
+[Line 8]: Explanation: Initializes 'right' property with provided value or default to null.
+[Line 9]: Explanation: Definition of the TreeNode class ends.
+[Line 11]: Explanation: Function 'findNearestRightNode' is declared with parameters 'root' of type TreeNode or null, and 'u' of type TreeNode.
+[Line 12]: Explanation: If 'root' is null, the function returns null immediately.
+[Line 13]: Explanation: A queue array is initialized with the 'root' node to start BFS.
+[Line 14]: Explanation: While loop begins, running as long as there are nodes in the queue.
+[Line 15]: Explanation: 'levelSize' variable stores the number of nodes at the current level.
+[Line 16]: Explanation: For loop iterates over each node at the current level.
+[Line 17]: Explanation: 'currentNode' is dequeued from the front of the queue.
+[Line 18]: Explanation: If 'currentNode' is the target node 'u', the function checks if it's not the last node in the level.
+[Line 19]: Explanation: If 'currentNode' is not the last node in the level, the next node in the queue is returned as the nearest right node.
+[Line 20]: Explanation: The next node in the queue is dequeued and returned.
+[Line 21]: Explanation: If 'currentNode' is the last node in the level, the function returns null as there are no nodes to the right.
+[Line 22]: Explanation: Definition of the function ends.
+[Line 23]: Explanation: If 'currentNode' is not the target node 'u', the function checks if 'currentNode' has a left child.
+[Line 24]: Explanation: If 'currentNode' has a left child, it is enqueued to the end of the queue.
+[Line 25]: Explanation: If 'currentNode' is not the target node 'u', the function checks if 'currentNode' has a right child.
+[Line 26]: Explanation: If 'currentNode' has a right child, it is enqueued to the end of the queue.
+[Line 27]: Explanation: End of the for loop.
+[Line 28]: Explanation: End of the while loop.
+[Line 29]: Explanation: If the target node 'u' is not found in the tree, the function returns null.
+[Line 30]: Explanation: Definition of the function ends."
+Put Boxes Into the Warehouse II,"``` [Line 1]: Explanation: Define a function named `maxBoxesInWarehouse` that takes two parameters, `boxes` and `warehouse`, both of which are arrays of numbers.
+[Line 2]: Explanation: Initialize a variable `n` with the length of the `warehouse` array.
+[Line 3]: Explanation: Create an array `leftMinHeights` of length `n` and fill it with `Number.MAX_SAFE_INTEGER`. This array will store the minimum height encountered from the left up to each position in the warehouse.
+[Line 4]: Explanation: Create an array `rightMinHeights` of length `n` and fill it with `Number.MAX_SAFE_INTEGER`. This array will store the minimum height encountered from the right up to each position in the warehouse.
+[Line 5]: Explanation: Set the first element of `leftMinHeights` to the height of the first room in the warehouse.
+[Line 6]: Explanation: Start a loop from the second room to the last room in the warehouse.
+[Line 7]: Explanation: Update the current room's height in `leftMinHeights` to be the minimum of the previous room's height in `leftMinHeights` and the current room's height in the warehouse.
+[Line 8]: Explanation: End the loop after processing all rooms from left to right.
+[Line 9]: Explanation: Set the last element of `rightMinHeights` to the height of the last room in the warehouse.
+[Line 10]: Explanation: Start a loop from the second-to-last room to the first room in the warehouse.
+[Line 11]: Explanation: Update the current room's height in `rightMinHeights` to be the minimum of the next room's height in `rightMinHeights` and the current room's height in the warehouse.
+[Line 12]: Explanation: End the loop after processing all rooms from right to left.
+[Line 13]: Explanation: Create an array `effectiveHeights` of length `n` to store the effective height at each position in the warehouse.
+[Line 14]: Explanation: Start a loop from the first room to the last room in the warehouse.
+[Line 15]: Explanation: Set the effective height at the current position to be the maximum of the corresponding values in `leftMinHeights` and `rightMinHeights`.
+[Line 16]: Explanation: End the loop after processing all rooms.
+[Line 17]: Explanation: Sort the `boxes` array in ascending order.
+[Line 18]: Explanation: Initialize a variable `boxIndex` to 0, which will be used to track the current index in the `boxes` array.
+[Line 19]: Explanation: Initialize a variable `left` to 0, which will be used to track the current leftmost room in the warehouse.
+[Line 20]: Explanation: Initialize a variable `right` to `n - 1`, which will be used to track the current rightmost room in the warehouse.
+[Line 21]: Explanation: Initialize a variable `insertedBoxes` to 0, which will count the number of boxes successfully inserted into the warehouse.
+[Line 22]: Explanation: Start a while loop that continues as long as there are boxes left to process and there are still rooms available in the warehouse.
+[Line 23]: Explanation: Check if the current box can fit into the leftmost room based on its effective height.
+[Line 24]: Explanation: Increment the `insertedBoxes` counter since the box was successfully inserted.
+[Line 25]: Explanation: Move to the next box in the `boxes` array.
+[Line 26]: Explanation: Move to the next room from the left.
+[Line 27]: Explanation: If the current box cannot fit into the leftmost room, check if it can fit into the rightmost room.
+[Line 28]: Explanation: Increment the `insertedBoxes` counter since the box was successfully inserted.
+[Line 29]: Explanation: Move to the next box"
+Minimum Swaps to Group All 1's Together,"[Line 1]: Explanation: Function definition for `minSwaps` which takes an array of numbers (`data`) as input and returns a number.
+        [Line 2]: Explanation: Initialize a variable `totalOnes` to count the total number of `1`s in the array.
+        [Line 3]: Explanation: Start a loop to iterate through each element in the array.
+        [Line 4]: Explanation: Check if the current element is `1`.
+        [Line 5]: Explanation: If the current element is `1`, increment the `totalOnes` counter.
+        [Line 6]: Explanation: End of the `if` block.
+        [Line 7]: Explanation: End of the loop that counts the total number of `1`s.
+        [Line 8]: Explanation: Check if the total number of `1`s is less than or equal to `1`.
+        [Line 9]: Explanation: If the total number of `1`s is `0` or `1`, return `0` because no swaps are needed.
+        [Line 10]: Explanation: End of the `if` block.
+        [Line 11]: Explanation: Initialize a variable `maxOnesInWindow` to keep track of the maximum number of `1`s found in any window of size equal to the total number of `1`s.
+        [Line 12]: Explanation: Initialize a variable `currentOnesInWindow` to count the number of `1`s in the current window.
+        [Line 13]: Explanation: Start a loop to iterate through each element in the array again.
+        [Line 14]: Explanation: Check if the current element is `1`.
+        [Line 15]: Explanation: If the current element is `1`, increment the `currentOnesInWindow` counter.
+        [Line 16]: Explanation: End of the `if` block.
+        [Line 17]: Explanation: Check if the current index `i` is greater than or equal to the total number of `1`s and if the element at the start of the window (`i - totalOnes`) is `1`.
+        [Line 18]: Explanation: If the condition is true, decrement the `currentOnesInWindow` counter because the window is sliding and the element at the start of the previous window is no longer part of the current window.
+        [Line 19]: Explanation: End of the `if` block.
+        [Line 20]: Explanation: Check if the `currentOnesInWindow` is greater than `maxOnesInWindow`.
+        [Line 21]: Explanation: If the condition is true, update `maxOnesInWindow` with the value of `currentOnesInWindow`.
+        [Line 22]: Explanation: End of the `if` block.
+        [Line 23]: Explanation: End of the loop that slides the window across the array.
+        [Line 24]: Explanation: Return the difference between the total number of `1`s and the maximum number of `1`s found in any window. This difference represents the minimum number of swaps needed.
+        [Line 25]: Explanation: End of the `minSwaps` function.
+        [Line 26]: Explanation: Call the `minSwaps` function with the input `[1, 0, 1, 0, 1]` and print the result.
+        [Line 27]: Explanation: Call the `minSwaps` function with the input `[0, 0, 0, 1, 0]` and print the result.
+        [Line 28]: Explanation: Call the `minSwaps` function with the input `[1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1]` and print the result.
+        [Line 29]: Explanation: Call the `minSwaps` function with the input `[1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1]` and print the result."
+Minimum Remove to Make Valid Parentheses,"[Line 1]: Explanation: Define a function named `minRemoveToMakeValid` that takes a single parameter `s` of type string and returns a string.
+[Line 2]: Explanation: Convert the input string `s` into an array of characters called `result`.
+[Line 3]: Explanation: Initialize a variable `balance` to 0. This variable will keep track of the balance between opening and closing parentheses.
+[Line 4]: Explanation: Start a for loop that iterates over each character in the `result` array from left to right.
+[Line 5]: Explanation: Check if the current character is an opening parenthesis `'('`.
+[Line 6]: Explanation: If it is an opening parenthesis, increment the `balance` by 1.
+[Line 7]: Explanation: Check if the current character is a closing parenthesis `')'`.
+[Line 8]: Explanation: If it is a closing parenthesis, check if the `balance` is greater than 0.
+[Line 9]: Explanation: If the `balance` is greater than 0, decrement the `balance` by 1, indicating a matching opening parenthesis has been found.
+[Line 10]: Explanation: If the `balance` is not greater than 0, it means there is no matching opening parenthesis for this closing parenthesis.
+[Line 11]: Explanation: Set the current character in the `result` array to an empty string `''`, effectively removing this closing parenthesis.
+[Line 12]: Explanation: End the if-else block checking for closing parentheses.
+[Line 13]: Explanation: End the for loop iterating from left to right.
+[Line 14]: Explanation: Reset the `balance` to 0. This is necessary to check for unmatched opening parentheses.
+[Line 15]: Explanation: Start another for loop that iterates over each character in the `result` array from right to left.
+[Line 16]: Explanation: Check if the current character is a closing parenthesis `')'`.
+[Line 17]: Explanation: If it is a closing parenthesis, increment the `balance` by 1.
+[Line 18]: Explanation: Check if the current character is an opening parenthesis `'('`.
+[Line 19]: Explanation: If it is an opening parenthesis, check if the `balance` is greater than 0.
+[Line 20]: Explanation: If the `balance` is greater than 0, decrement the `balance` by 1, indicating a matching closing parenthesis has been found.
+[Line 21]: Explanation: If the `balance` is not greater than 0, it means there is no matching closing parenthesis for this opening parenthesis.
+[Line 22]: Explanation: Set the current character in the `result` array to an empty string `''`, effectively removing this opening parenthesis.
+[Line 23]: Explanation: End the if-else block checking for opening parentheses.
+[Line 24]: Explanation: End the for loop iterating from right to left.
+[Line 25]: Explanation: Convert the `result` array back into a string using the `join` method and return it.
+[Line 26]: Explanation: Call the `minRemoveToMakeValid` function with the string `""lee(t(c)o)de)""` and log the result to the console.
+[Line 27]: Explanation: Call the `minRemoveToMakeValid` function with the string `""a)b(c)d""` and log the result to the console.
+[Line 28]: Explanation: Call the `minRemoveToMakeValid` function with the string `""))((""` and log the result to the console.
+[Line 29]: Explanation: Call the `minRemoveToMakeValid` function with the string `""(a(b(c)d)""` and log the result to the console."
+Trapping Rain Water,"[Line 1]: Explanation: Define a function named `trap` that takes an array of numbers (`height`) as input and returns a number.
+        [Line 2]: Explanation: Check if the length of the `height` array is 0. If true, return 0 because no water can be trapped in an empty array.
+        [Line 3]: Explanation: Initialize a variable `left` to 0. This variable will be used to traverse the array from the left side.
+        [Line 4]: Explanation: Initialize a variable `right` to the last index of the `height` array. This variable will be used to traverse the array from the right side.
+        [Line 5]: Explanation: Initialize a variable `maxLeft` to 0. This variable will keep track of the maximum height encountered from the left side.
+        [Line 6]: Explanation: Initialize a variable `maxRight` to 0. This variable will keep track of the maximum height encountered from the right side.
+        [Line 7]: Explanation: Initialize a variable `totalWater` to 0. This variable will accumulate the total amount of water trapped.
+        [Line 8]: Explanation: Start a while loop that continues as long as `left` is less than `right`. This loop will traverse the array from both ends towards the center.
+        [Line 9]: Explanation: Check if the height at the `left` index is less than or equal to the height at the `right` index.
+        [Line 10]: Explanation: If the height at the `left` index is greater than or equal to `maxLeft`, update `maxLeft` to the height at the `left` index. This means we have found a new higher boundary on the left side.
+        [Line 11]: Explanation: If the height at the `left` index is less than `maxLeft`, calculate the water trapped at this position by subtracting the current height from `maxLeft` and add it to `totalWater`.
+        [Line 12]: Explanation: Increment the `left` pointer to move one step to the right.
+        [Line 13]: Explanation: If the height at the `left` index is greater than the height at the `right` index, check if the height at the `right` index is greater than or equal to `maxRight`.
+        [Line 14]: Explanation: If the height at the `right` index is greater than or equal to `maxRight`, update `maxRight` to the height at the `right` index. This means we have found a new higher boundary on the right side.
+        [Line 15]: Explanation: If the height at the `right` index is less than `maxRight`, calculate the water trapped at this position by subtracting the current height from `maxRight` and add it to `totalWater`.
+        [Line 16]: Explanation: Decrement the `right` pointer to move one step to the left.
+        [Line 17]: Explanation: After exiting the while loop, return the accumulated `totalWater`, which represents the total amount of water trapped.
+        [Line 18]: Explanation: Call the `trap` function with the input `[0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]` and print the result to the console.
+        [Line 19]: Explanation: Call the `trap` function with the input `[4, 2, 0, 3, 2, 5]` and print the result to the console."
+Minimum Cost to Make at Least One Valid Path in a Grid,"[Line 1]: Explanation: Define a type alias `Cell` as a tuple containing three numbers, representing the cost and coordinates of a cell.
+         [Line 2]: Explanation: Declare a function `minCost` that takes a 2D array `grid` as input and returns a number.
+         [Line 3]: Explanation: Assign the length of the `grid` array to the variable `m`, representing the number of rows.
+         [Line 4]: Explanation: Assign the length of the first sub-array in `grid` to the variable `n`, representing the number of columns.
+         [Line 5]: Explanation: Define an array `directions` containing four sub-arrays, each representing a direction (right, left, down, up) in terms of row and column changes.
+         [Line 6]: Explanation: The first sub-array `[0, 1]` represents moving right.
+         [Line 7]: Explanation: The second sub-array `[0, -1]` represents moving left.
+         [Line 8]: Explanation: The third sub-array `[1, 0]` represents moving down.
+         [Line 9]: Explanation: The fourth sub-array `[-1, 0]` represents moving up.
+         [Line 10]: Explanation: Close the `directions` array definition.
+         [Line 11]: Explanation: Initialize an empty array `pq` to act as a priority queue for storing cells.
+         [Line 12]: Explanation: Create a 2D array `dist` initialized with `Infinity` values, having dimensions `m` by `n`, to store the minimum cost to reach each cell.
+         [Line 13]: Explanation: Set the distance to the starting cell `(0, 0)` to `0`.
+         [Line 14]: Explanation: Push the starting cell `(0, 0, 0)` into the priority queue `pq`.
+         [Line 15]: Explanation: Enter a while loop that continues as long as the priority queue `pq` is not empty.
+         [Line 16]: Explanation: Dequeue the first element from `pq` and assign its values to `cost`, `i`, and `j`.
+         [Line 17]: Explanation: If the current `cost` is greater than the recorded `dist[i][j]`, skip the rest of the loop iteration.
+         [Line 18]: Explanation: Start a for loop that iterates over the four possible directions.
+         [Line 19]: Explanation: Assign the current direction's row and column changes to `di` and `dj`.
+         [Line 20]: Explanation: Calculate the new row index `ni` by adding `di` to the current row index `i`.
+         [Line 21]: Explanation: Calculate the new column index `nj` by adding `dj` to the current column index `j`.
+         [Line 22]: Explanation: Check if the new indices `ni` and `nj` are within the bounds of the grid.
+         [Line 23]: Explanation: Initialize `newCost` with the current `cost`.
+         [Line 24]: Explanation: Check if the direction represented by `k + 1` does not match the sign in the current cell `grid[i][j]`.
+         [Line 25]: Explanation: If the direction does not match, increment `newCost` by 1 to account for changing the sign.
+         [Line 26]: Explanation: Close the if condition checking for direction mismatch.
+         [Line 27"
+Pizza With 3n Slices,"``` [Line 1]: Explanation: Function declaration for `maxSizeSlices` that takes an array of numbers (`slices`) as input and returns a number.
+[Line 2]: Explanation: Variable `n` is assigned the length of the `slices` array.
+[Line 3]: Explanation: Declaration of a helper function `maxNonAdjacentSum` that calculates the maximum sum of non-adjacent elements in a subarray of `slices` from index `start` to `end`.
+[Line 4]: Explanation: Initialization of a dynamic programming array `dp` with a length equal to the number of elements in the subarray from `start` to `end`, filled with zeros.
+[Line 5]: Explanation: If `start` is equal to `end`, the function returns the value of the single element at `slices[start]`.
+[Line 6]: Explanation: The first element of the `dp` array is set to the value of the element at `slices[start]`.
+[Line 7]: Explanation: The second element of the `dp` array is set to the maximum of the first two elements in the subarray (`slices[start]` and `slices[start + 1]`).
+[Line 8]: Explanation: Start of a loop that iterates from 2 to `end - start`, inclusive.
+[Line 9]: Explanation: For each iteration, the current element of the `dp` array is set to the maximum of the previous element (`dp[i - 1]`) and the sum of the element two positions before the current element (`dp[i - 2]`) plus the current element in the subarray (`slices[start + i]`).
+[Line 10]: Explanation: End of the loop.
+[Line 11]: Explanation: Return the last element of the `dp` array, which contains the maximum sum of non-adjacent elements in the subarray from `start` to `end`.
+[Line 12]: Explanation: Return the maximum of two calls to `maxNonAdjacentSum`: one starting from index 0 to `n - 2` and the other starting from index 1 to `n - 1`. This handles the circular nature of the problem by considering two scenarios.
+[Line 13]: Explanation: Function call to `maxSizeSlices` with the input `[1, 2, 3, 4, 5, 6]` and logging the result.
+[Line 14]: Explanation: Function call to `maxSizeSlices` with the input `[8, 9, 8, 6, 1, 1]` and logging the result.
+[Line 15]: Explanation: Function call to `maxSizeSlices` with the input `[4, 1, 2, 5, 8, 3, 1, 9, 7]` and logging the result.
+[Line 16]: Explanation: Function call to `maxSizeSlices` with the input `[3, 1, 2]` and logging the result.```"
+Number of Ways to Wear Different Hats to Each Other,"[Line 1]: Explanation: The function `numberWays` is defined to take an array of arrays `hats` as input, representing the preferences of each person for different hats.
+[Line 2]: Explanation: A constant `MOD` is initialized to \(10^9 + 7\) to handle large numbers by taking results modulo \(10^9 + 7\).
+[Line 3]: Explanation: The variable `n` is assigned the length of the `hats` array, representing the number of people.
+[Line 4]: Explanation: An array `hat_to_people` is created with a length of 41 (to accommodate hats numbered from 1 to 40) to map each hat to the list of people who prefer it.
+[Line 5]: Explanation: A loop iterates over each person (from 0 to `n-1`).
+[Line 6]: Explanation: Another loop iterates over each hat preferred by the current person.
+[Line 7]: Explanation: The current person's index is added to the list of people who prefer the current hat in the `hat_to_people` array.
+[Line 8]: Explanation: The loop ends after processing all hats for the current person.
+[Line 9]: Explanation: The loop ends after processing all people.
+[Line 10]: Explanation: An array `dp` is initialized with a length of \(2^n\) (to represent all possible subsets of people) and filled with zeros. This array will store the number of ways to assign hats to the subset of people represented by the bitmask.
+[Line 11]: Explanation: The base case is set where `dp[0]` is 1, indicating there is one way to assign hats to no people (the empty subset).
+[Line 12]: Explanation: A loop iterates over each hat from 1 to 40.
+[Line 13]: Explanation: A nested loop iterates over each bitmask `mask` from \(2^n - 1\) down to 0. This ensures that each subset of people is processed in reverse order to avoid using updated values prematurely.
+[Line 14]: Explanation: A loop iterates over each person who prefers the current hat.
+[Line 15]: Explanation: A condition checks if the current person is not included in the current subset (`mask`) using bitwise AND operation.
+[Line 16]: Explanation: A new bitmask `new_mask` is created by including the current person in the subset using bitwise OR operation.
+[Line 17]: Explanation: The number of ways to assign hats to the new subset (`new_mask`) is updated by adding the number of ways to assign hats to the current subset (`mask`). The result is taken modulo \(10^9 + 7\) to prevent overflow.
+[Line 18]: Explanation: The loop ends after processing all people who prefer the current hat.
+[Line 19]: Explanation: The loop ends after processing all subsets of people.
+[Line 20]: Explanation: The loop ends after processing all hats.
+[Line 21]: Explanation: The function returns the value of `dp[(1 << n) - 1]`, which represents the number of ways to assign hats to all people.
+[Line 22]: Explanation: The function `numberWays` is called with the input `[[3, 4], [4, 5], [5]]` and the result is logged to the console.
+[Line 23]: Explanation: The function `numberWays` is called with the input `[[3, 5, 1], [3, 5]]` and the result is logged to the console.
+[Line 24]: Explanation: The function `numberWays` is called with the input `[[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]` and the result is logged to the console.
+[Line 25]: Explanation: The function `numberWays` is called with the input `[[1, 2, 3], [2, 3, 5, 6], [1, 3, 7, 9], [1, 8, 9], [2, 5, 7]]` and the result is logged to the console."
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,"``` [Line 1]: Explanation: Definition of a class named MinHeap.
+[Line 2]: Explanation: Private property `heap` initialized as an empty array to store elements of the heap.
+[Line 3]: Explanation: Constructor method for the MinHeap class.
+[Line 4]: Explanation: Initialization of the `heap` property with an empty array.
+[Line 5]: Explanation: End of the constructor method.
+[Line 6]: Explanation: Private method `getParentIndex` to calculate the index of the parent node.
+[Line 7]: Explanation: Formula to find the parent index of a given node index.
+[Line 8]: Explanation: End of the `getParentIndex` method.
+[Line 9]: Explanation: Private method `getLeftChildIndex` to calculate the index of the left child node.
+[Line 10]: Explanation: Formula to find the left child index of a given node index.
+[Line 11]: Explanation: End of the `getLeftChildIndex` method.
+[Line 12]: Explanation: Private method `getRightChildIndex` to calculate the index of the right child node.
+[Line 13]: Explanation: Formula to find the right child index of a given node index.
+[Line 14]: Explanation: End of the `getRightChildIndex` method.
+[Line 15]: Explanation: Private method `swap` to swap two elements in the heap.
+[Line 16]: Explanation: Temporary variable `temp` to hold the value at `index1`.
+[Line 17]: Explanation: Assigning the value at `index2` to `index1`.
+[Line 18]: Explanation: Assigning the value stored in `temp` (original value at `index1`) to `index2`.
+[Line 19]: Explanation: End of the `swap` method.
+[Line 20]: Explanation: Public method `insert` to add a new value to the heap.
+[Line 21]: Explanation: Adding the new value to the end of the heap array.
+[Line 22]: Explanation: Variable `index` initialized to the last index of the heap (where the new value was added).
+[Line 23]: Explanation: While loop to maintain the min-heap property by comparing the new value with its parent.
+[Line 24]: Explanation: Calling the `swap` method to move the new value up the heap if it's smaller than its parent.
+[Line 25]: Explanation: Updating `index` to the parent index to continue the comparison.
+[Line 26]: Explanation: End of the while loop.
+["
+Remove Max Number of Edges to Keep Graph Fully Traversable,"[Line 1]: Explanation: Definition of the UnionFind class, which is used to manage the connected components in the graph.
+[Line 2]: Explanation: Declaration of the parent array, which will store the parent of each node.
+[Line 3]: Explanation: Declaration of the rank array, which will store the rank of each node for path compression.
+[Line 4]: Explanation: Constructor for the UnionFind class, initializes the parent and rank arrays.
+[Line 5]: Explanation: Initializes the parent array where each node is its own parent initially.
+[Line 6]: Explanation: Initializes the rank array with zeros.
+[Line 7]: Explanation: End of the constructor.
+[Line 8]: Explanation: Method to find the root of a node with path compression.
+[Line 9]: Explanation: Checks if the node is not its own parent.
+[Line 10]: Explanation: Recursively finds the root of the parent node and performs path compression by setting the parent of the current node to the root.
+[Line 11]: Explanation: Returns the root of the node.
+[Line 12]: Explanation: End of the find method.
+[Line 13]: Explanation: Method to union two sets of nodes.
+[Line 14]: Explanation: Finds the root of the first node.
+[Line 15]: Explanation: Finds the root of the second node.
+[Line 16]: Explanation: Checks if both nodes already belong to the same set.
+[Line 17]: Explanation: If they are in the same set, no union is needed, returns false indicating no change.
+[Line 18]: Explanation: End of the union check.
+[Line 19]: Explanation: Compares the ranks of the roots to decide which tree becomes the subtree of the other.
+[Line 20]: Explanation: If the rank of the first root is greater, the second root's parent is set to the first root.
+[Line 21]: Explanation: End of the first rank comparison.
+[Line 22]: Explanation: If the rank of the second root is greater, the first root's parent is set to the second root.
+[Line 23]: Explanation: End of the second rank comparison.
+[Line 24]: Explanation: If the ranks are equal, either root can become the parent, here the second root's parent is set to the first root.
+[Line 25]: Explanation: Sets the parent of the second root to the first root.
+[Line 26]: Explanation: Increases the rank of the first root since two trees of the same height were merged.
+[Line 27]: Explanation: Ends the union operation.
+[Line 28]: Explanation: Returns true indicating a successful union.
+[Line 29]: Explanation: End of the union method.
+[Line 30]: Explanation: End of the UnionFind class.
+[Line 31]: Explanation: Function to calculate the maximum number of removable edges.
+[Line 32]: Explanation: Creates an instance of UnionFind for Alice, managing her connected components.
+[Line 33]: Explanation: Creates an instance of UnionFind for Bob, managing his connected components.
+[Line 34]: Explanation: Initializes a counter for redundant edges.
+[Line 35]: Explanation: Iterates over all edges.
+[Line 36]: Explanation: Checks if the edge is of type 3 (usable by both Alice and Bob).
+[Line"
+Minimum Operations to Make a Subsequence,```
+Edit Distance,"``` [Line 1]: Explanation: Define a function `minDistance` that takes two strings `word1` and `word2` as parameters and returns a number.
+[Line 2]: Explanation: Initialize a constant `m` with the length of `word1`.
+[Line 3]: Explanation: Initialize a constant `n` with the length of `word2`.
+[Line 4]: Explanation: Create a 2D array `dp` of size `(m+1) x (n+1)` filled with zeros. This array will store the minimum edit distances between substrings of `word1` and `word2`.
+[Line 5]: Explanation: Start a loop from `1` to `m` (inclusive) to fill the first column of the `dp` array.
+[Line 6]: Explanation: Set `dp[i][0]` to `i`. This represents the cost of converting a substring of `word1` of length `i` to an empty string by deleting all characters.
+[Line 7]: Explanation: Close the loop that fills the first column of the `dp` array.
+[Line 8]: Explanation: Start a loop from `1` to `n` (inclusive) to fill the first row of the `dp` array.
+[Line 9]: Explanation: Set `dp[0][j]` to `j`. This represents the cost of converting an empty string to a substring of `word2` of length `j` by inserting all characters.
+[Line 10]: Explanation: Close the loop that fills the first row of the `dp` array.
+[Line 11]: Explanation: Start a nested loop where the outer loop iterates from `1` to `m` (inclusive) and the inner loop iterates from `1` to `n` (inclusive).
+[Line 12]: Explanation: Check if the characters at positions `i-1` in `word1` and `j-1` in `word2` are the same.
+[Line 13]: Explanation: If the characters are the same, set `dp[i][j]` to `dp[i-1][j-1]`. This means no new operation is needed as the characters match.
+[Line 14]: Explanation: If the characters are different, calculate the cost of each possible operation:
+    - Insert a character: `dp[i][j-1] + 1`
+    - Delete a character: `dp[i-1][j] + 1`
+    - Replace a character: `dp[i-1][j-1] + 1`
+[Line 15]: Explanation: Set `dp[i][j]` to the minimum of the three calculated costs. This represents the minimum number of operations needed to convert the substrings `word1[0...i-1]` and `word2[0...j-1]` to each other.
+[Line 16]: Explanation: Close the inner loop.
+[Line 17]: Explanation: Close the outer loop.
+[Line 18]: Explanation: Return `dp[m][n]`, which contains the minimum number of operations needed to convert `word1` to `word2`.
+[Line 19]: Explanation: Call the `minDistance` function with the example inputs ""horse"" and ""ros"" and log the result to the console.
+[Line 20]: Explanation: Call the `minDistance` function with the example inputs ""intention"" and ""execution"" and log the result to the console.```"
+Maximum Profit in Job Scheduling,"[Line 1]: Explanation: Define a function named `jobScheduling` that takes three parameters: `startTime`, `endTime`, and `profit`, all of which are arrays of numbers. This function calculates the maximum profit that can be obtained by scheduling non-overlapping jobs.
+        
+        [Line 2]: Explanation: Initialize a variable `n` to store the length of the `startTime` array, which represents the number of jobs.
+        
+        [Line 3]: Explanation: Declare an empty array `jobs` to store tuples (arrays) representing each job with its start time, end time, and profit.
+        
+        [Line 4]: Explanation: Start a loop that iterates over each job from index `0` to `n-1`.
+        
+        [Line 5]: Explanation: Inside the loop, push a tuple `[startTime[i], endTime[i], profit[i]]` into the `jobs` array, representing the current job's start time, end time, and profit.
+        
+        [Line 6]: Explanation: End the loop after processing all jobs.
+        
+        [Line 7]: Explanation: Sort the `jobs` array in ascending order based on the end times of the jobs. This sorting helps in efficiently finding the next non-overlapping job.
+        
+        [Line 8]: Explanation: Create an array `memo` of size `n` initialized with `-1`. This array will be used for memoization to store the maximum profit obtainable starting from each job index.
+        
+        [Line 9]: Explanation: Define a recursive function `maxProfit` that takes an integer `index` as a parameter. This function calculates the maximum profit starting from the job at the given index.
+        
+        [Line 10]: Explanation: Check if the `index` is greater than or equal to `n` (the total number of jobs). If true, return `0` because there are no more jobs to consider.
+        
+        [Line 11]: Explanation: End the if statement.
+        
+        [Line 12]: Explanation: Check if the value at `memo[index]` is not `-1`. If it's not `-1`, it means the result for this index has already been computed, so return the stored value to avoid redundant calculations.
+        
+        [Line 13]: Explanation: End the if statement.
+        
+        [Line 14]: Explanation: Initialize a variable `nextIndex` to `n`. This variable will store the index of the next non-overlapping job.
+        
+        [Line 15]: Explanation: Start a loop that iterates over the jobs starting from `index + 1` to `n-1`.
+        
+        [Line 16]: Explanation: Inside the loop, check if the start time of the current job (`jobs[i][0]`) is greater than or equal to the end time of the job at the given `index` (`jobs[index][1]`). If true, it means the current job does not overlap with the job at the given `index`.
+        
+        [Line 17]: Explanation: If the condition in line 16 is true, update `nextIndex` to the current job index `i` and break out of the loop because we found the next non-overlapping job.
+        
+        [Line 18]: Explanation: End the if statement.
+        
+        [Line 19]: Explanation: Continue the loop until a non-overlapping job is found or all jobs are checked.
+        
+        [Line 20]: Explanation: End the loop.
+        
+        [Line 21]: Explanation: Calculate the profit if the current job is included in the schedule. This is done by adding the profit of the current job (`jobs[index][2]`) to the maximum profit obtainable starting from the next non-overlapping job (`maxProfit(nextIndex)`).
+        
+        [Line 22]: Explanation: Calculate the profit if the current job is excluded from the schedule. This is done by calling `maxProfit(index + 1)`, which calculates the maximum profit starting from the next job.
+        
+        [Line 23]: Explanation: Store the maximum of including or excluding the current job in the `memo` array at the current `index`.
+        
+        [Line 24]: Explanation: Return the value stored in `memo[index]`, which represents the maximum profit obtainable starting from the job at the given `index`.
+        
+        [Line 25]: Explanation: End the `maxProfit` function.
+        
+        [Line 26]: Explanation: Call the `maxProfit` function starting from index `0` and return its result, which represents the maximum profit obtainable for all jobs.
+        
+        [Line 27]: Explanation: End the `jobScheduling` function.
+        
+        [Line 28]: Explanation: Call the `jobScheduling` function with the example input `[1, 2, 3, 3]`, `[3, 4, 5, 6]`, and `[50, 10, 40, 70]` and log the result to the console.
+        
+        [Line 29]: Explanation: Call the `jobScheduling` function with another example input `[1, 2, 3,"
+Cherry Pickup II,"``` [Line 1]: Explanation: Define a function `cherryPickup` that takes a 2D array `grid` as input and returns a number representing the maximum number of cherries collected.
+[Line 2]: Explanation: Get the number of rows in the grid by accessing the length of the grid array.
+[Line 3]: Explanation: Get the number of columns in the grid by accessing the length of the first row of the grid array.
+[Line 4]: Explanation: Initialize a 3D array `dp` with dimensions `[rows][cols][cols]` to store the maximum cherries collected for each state. The initial value of each element is set to `-1`.
+[Line 5]: Explanation: Create the outer array of `dp` with a length equal to the number of rows.
+[Line 6]: Explanation: Create the middle array of `dp` with a length equal to the number of columns.
+[Line 7]: Explanation: Fill the innermost array of `dp` with `-1` values, indicating that these states have not been computed yet.
+[Line 8]: Explanation: Close the initialization of the `dp` array.
+[Line 9]: Explanation: Define a recursive function `dfs` that takes three parameters: `i` (current row), `j1` (current column of robot 1), and `j2` (current column of robot 2).
+[Line 10]: Explanation: Check if the current row `i` is equal to the total number of rows. If true, return `0` because there are no more rows to process.
+[Line 11]: Explanation: If the value of `dp[i][j1][j2]` is not `-1`, it means this state has already been computed. Return the stored value to avoid redundant calculations.
+[Line 12]: Explanation: Initialize a variable `cherries` with the number of cherries in the current cell for robot 1 (`grid[i][j1]`).
+[Line 13]: Explanation: Check if robot 1 and robot 2 are not in the same cell (`j1 !== j2`). If true, add the number of cherries in the current cell for robot 2 (`grid[i][j2]`) to `cherries`.
+[Line 14]: Explanation: Initialize a variable `maxNext` to `0`. This variable will store the maximum cherries collected in the next row.
+[Line 15]: Explanation: Start a nested loop to iterate over all possible moves for robot 1 (`dj1` ranging from `-1` to `1`).
+[Line 16]: Explanation: Start another nested loop to iterate over all possible moves for robot 2 (`dj2` ranging from `-1` to `1`).
+[Line 17]: Explanation: Calculate the new column position for robot 1 after the move (`newJ1 = j1 + dj1`).
+[Line 18]: Explanation: Calculate the new column position for robot 2 after the move (`newJ2 = j2 + dj2`).
+[Line 19]: Explanation: Check if the new positions for both robots are within the bounds of the grid (`newJ1 >= 0 && newJ1 < cols && newJ2 >= 0 && newJ2 < cols`). If true, proceed to the next step.
+["

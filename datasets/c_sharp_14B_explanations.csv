@@ -1,0 +1,866 @@
+title,explanation
+Relative Ranks,"``` [Line 1]: Explanation: Using the System namespace to access basic input/output classes and functionalities.
+[Line 2]: Explanation: Declaring a public class named Solution.
+[Line 3]: Explanation: Opening the body of the Solution class.
+[Line 4]: Explanation: Defining a public method named FindRelativeRanks that takes an array of integers (score) as a parameter and returns an array of strings.
+[Line 5]: Explanation: Opening the body of the FindRelativeRanks method.
+[Line 6]: Explanation: Initializing an integer variable n with the length of the score array, representing the number of athletes.
+[Line 7]: Explanation: Declaring a string array named answer of size n to store the final ranks of the athletes.
+[Line 8]: Explanation: Declaring an integer array named sortedScores of size n to store a copy of the scores for sorting purposes.
+[Line 9]: Explanation: Starting a for loop that iterates from 0 to n-1.
+[Line 10]: Explanation: Inside the loop, assigning the value of score[i] to sortedScores[i], copying each score into the sortedScores array.
+[Line 11]: Explanation: Closing the for loop after copying all scores.
+[Line 12]: Explanation: Starting another for loop that iterates from 0 to n-1.
+[Line 13]: Explanation: Starting an inner for loop that iterates from 0 to n-i-2.
+[Line 14]: Explanation: Inside the inner loop, checking if the current element (sortedScores[j]) is less than the next element (sortedScores[j+1]).
+[Line 15]: Explanation: If the condition is true, swapping the values of sortedScores[j] and sortedScores[j+1] using a temporary variable temp.
+[Line 16]: Explanation: Assigning the value of sortedScores[j+1] to temp.
+[Line 17]: Explanation: Assigning the value of temp to sortedScores[j].
+[Line 18]: Explanation: Assigning the value of sortedScores[j] to sortedScores[j+1].
+[Line 19]: Explanation: Closing the if block after the swap.
+[Line 20]: Explanation: Closing the inner for loop after completing one pass through the sortedScores array.
+[Line 21]: Explanation: Closing the outer for loop after sorting the entire sortedScores array in descending order.
+[Line 22]: Explanation: Declaring a string array named ranks of size n to store the rank names corresponding to the sorted scores.
+[Line 23]: Explanation: Assigning the string ""Gold Medal"" to the first element of the ranks array.
+[Line 24]: Explanation: Checking if the number of athletes (n) is greater than 1.
+[Line 25]: Explanation: If the condition is true, assigning the string ""Silver Medal"" to the second element of the ranks array.
+[Line 26]: Explanation: Checking if the number of athletes (n) is greater than 2.
+[Line 27]: Explanation: If the condition is true, assigning the string ""Bronze Medal"" to the third element of the ranks array.
+[Line 28]: Explanation: Starting a for loop that iterates from 3 to n-1.
+[Line 29]: Explanation: Inside the loop, assigning the string representation of (i + 1) to ranks[i], setting the rank for athletes beyond the top three.
+[Line 30]: Explanation: Closing the for loop after assigning ranks to all athletes.
+[Line 31]: Explanation: Declaring a string array named rankMap of size 1000001 to map each score to its corresponding rank.
+[Line 32]: Explanation: Starting a for loop that iterates from 0 to n-1.
+[Line 33]: Explanation: Inside the loop, assigning the value of ranks[i] to rankMap[sortedScores[i]], mapping each sorted score to its rank.
+[Line 34]: Explanation: Closing the for loop after mapping all scores to their ranks.
+[Line 35]: Explanation: Starting another for loop that iterates from 0 to n-1.
+[Line 36]: Explanation: Inside the loop, assigning the value of rankMap[score[i]] to answer[i], setting the rank for each athlete in the original order.
+[Line 37]: Explanation: Closing the for loop after setting ranks for all athletes.
+[Line 38]: Explanation: Returning the answer array containing the ranks of all athletes.
+[Line 39]: Explanation: Closing the body of the FindRelativeRanks method.
+[Line 40]: Explanation: Closing the body of the Solution class.
+[Line 41]: Explanation: Closing the body of the program.```"
+Truncate Sentence,"*/
+[Line 1]: Explanation: Defines a public class named Solution.
+[Line 2]: Explanation: Declares a public method named TruncateSentence that takes a string `s` and an integer `k` as parameters and returns a string.
+[Line 3]: Explanation: Initializes an integer variable `length` with the value of the length of the string `s`.
+[Line 4]: Explanation: Initializes an integer variable `spaceCount` to 0. This variable will be used to count the number of spaces encountered in the string.
+[Line 5]: Explanation: Starts a for loop that iterates over each character in the string `s` from index 0 to `length - 1`.
+[Line 6]: Explanation: Checks if the current character `s[i]` is a space character (' ').
+[Line 7]: Explanation: If the current character is a space, increments the `spaceCount` variable by 1.
+[Line 8]: Explanation: Checks if the `spaceCount` has reached the value of `k`, meaning `k` spaces have been found.
+[Line 9]: Explanation: If `spaceCount` equals `k`, returns a substring of `s` from the beginning (index 0) to the current index `i`, effectively truncating the sentence at the `k`-th word.
+[Line 10]: Explanation: Ends the if block.
+[Line 11]: Explanation: Continues the loop to the next character.
+[Line 12]: Explanation: Ends the for loop.
+[Line 13]: Explanation: If the loop completes without finding `k` spaces (meaning there are fewer than `k` words in the string), returns the original string `s`.
+[Line 14]: Explanation: Ends the method.
+[Line 15]: Explanation: Ends the class."
+Perform String Shifts,"``` [Line 1]: Explanation: The code begins with the declaration of the System namespace, which is essential for basic functionalities like input/output operations.
+[Line 2]: Explanation: This line defines a public class named Solution. In C#, classes are used to encapsulate data and methods that operate on that data.
+[Line 3]: Explanation: This method signature declares a public method named StringShift that takes a string `s` and a two-dimensional integer array `shift` as parameters. It returns a string.
+[Line 4]: Explanation: An integer variable `netShift` is initialized to 0. This variable will store the net effect of all shifts combined.
+[Line 5]: Explanation: A foreach loop iterates over each element in the `shift` array. Each element is an array of two integers representing a direction and an amount.
+[Line 6]: Explanation: An if statement checks if the direction (`sh[0]`) is 0, indicating a left shift.
+[Line 7]: Explanation: If the direction is 0, the amount (`sh[1]`) is subtracted from `netShift`. This effectively accumulates the total left shift.
+[Line 8]: Explanation: If the direction is not 0 (i.e., it's 1), the amount (`sh[1]`) is added to `netShift`. This accumulates the total right shift.
+[Line 9]: Explanation: After processing all shifts, `netShift` holds the net effect of all shifts combined.
+[Line 10]: Explanation: The modulo operation ensures that `netShift` is within the bounds of the string length. This is important because shifting by the length of the string results in the same string.
+[Line 11]: Explanation: An if statement checks if `netShift` is 0. If it is, the original string `s` is returned without any changes.
+[Line 12]: Explanation: A character array `result` is created to store the characters of the final shifted string. Its length is the same as the input string `s`.
+[Line 13]: Explanation: The length of the input string `s` is stored in the integer variable `n`.
+[Line 14]: Explanation: An if statement checks if `netShift` is greater than 0, indicating a net right shift.
+[Line 15]: Explanation: A for loop iterates over each character in the input string `s`.
+[Line 16]: Explanation: Inside the loop, each character is placed in its new position in the `result` array based on the net shift. The modulo operation ensures that the index wraps around correctly.
+[Line 17]: Explanation: If `netShift` is not greater than 0 (i.e., it's less than or equal to 0), indicating a net left shift.
+[Line 18]: Explanation: Another for loop iterates over each character in the input string `s`.
+[Line 19]: Explanation: Inside the loop, each character is placed in its new position in the `result` array based on the net shift. The modulo operation ensures that the index wraps around correctly.
+[Line 20]: Explanation: After processing all characters, the `result` array is converted back to a string and returned.
+[Line 21]: Explanation: The Main method is the entry point of the program. It creates an instance of the Solution class.
+[Line 22]: Explanation: The first test case is executed, calling the StringShift method with the string ""abc"" and a shift array that specifies a left shift followed by a right shift.
+[Line 23]: Explanation: The second test case is executed, calling the StringShift method with the string ""abcdefg"" and a shift array that specifies multiple right and left shifts.
+[Line 24]: Explanation: The output of both test cases is printed to the console."
+Invert Binary Tree,"``` [Line 1]: Explanation: Definition of the TreeNode class starts.
+[Line 2]: Explanation: Public integer variable `val` to store the value of the node.
+[Line 3]: Explanation: Public TreeNode variable `left` to reference the left child node.
+[Line 4]: Explanation: Public TreeNode variable `right` to reference the right child node.
+[Line 5]: Explanation: Constructor for the TreeNode class that initializes the `val` variable with the provided value `x`.
+[Line 6]: Explanation: Definition of the Solution class starts.
+[Line 7]: Explanation: Definition of the public method `InvertTree` that takes a TreeNode `root` as a parameter and returns a TreeNode.
+[Line 8]: Explanation: Start of the `InvertTree` method body.
+[Line 9]: Explanation: If statement checks if the `root` is null. If true, it means there's no tree to invert.
+[Line 10]: Explanation: If the `root` is null, the method returns null immediately.
+[Line 11]: Explanation: End of the if statement block.
+[Line 12]: Explanation: Declaration of a temporary TreeNode variable `temp` and assignment of the `left` child of the current `root` to it.
+[Line 13]: Explanation: The `left` child of the current `root` is reassigned to the `right` child of the current `root`, effectively swapping the left and right children.
+[Line 14]: Explanation: The `right` child of the current `root` is reassigned to the `temp` variable, completing the swap of the left and right children.
+[Line 15]: Explanation: Recursive call to `InvertTree` on the `left` child of the current `root`. This will invert the left subtree.
+[Line 16]: Explanation: Recursive call to `InvertTree` on the `right` child of the current `root`. This will invert the right subtree.
+[Line 17]: Explanation: After inverting both subtrees, the method returns the current `root`, which now has its left and right children swapped.
+[Line 18]: Explanation: End of the `InvertTree` method body.
+[Line 19]: Explanation: End of the Solution class definition.```"
+Merge Strings Alternately,"``` [Line 1]: Explanation: Using the System namespace which contains fundamental classes and base classes that define commonly-used values and reference data types.
+[Line 2]: Explanation: Defining a class named Program which serves as the entry point for the application.
+[Line 3]: Explanation: Opening the body of the Program class.
+[Line 4]: Explanation: Defining the Main method, which is the entry point of the console application.
+[Line 5]: Explanation: Opening the body of the Main method.
+[Line 6]: Explanation: Declaring and initializing a string variable named word1 with the value ""abc"".
+[Line 7]: Explanation: Declaring and initializing a string variable named word2 with the value ""pqr"".
+[Line 8]: Explanation: Calling the MergeStrings method with word1 and word2 as arguments and printing the result to the console.
+[Line 9]: Explanation: Reassigning the value of word1 to ""ab"".
+[Line 10]: Explanation: Reassigning the value of word2 to ""pqrs"".
+[Line 11]: Explanation: Calling the MergeStrings method with the updated values of word1 and word2 and printing the result to the console.
+[Line 12]: Explanation: Reassigning the value of word1 to ""abcd"".
+[Line 13]: Explanation: Reassigning the value of word2 to ""pq"".
+[Line 14]: Explanation: Calling the MergeStrings method with the updated values of word1 and word2 and printing the result to the console.
+[Line 15]: Explanation: Closing the body of the Main method.
+[Line 16]: Explanation: Defining a static method named MergeStrings that takes two string parameters, word1 and word2.
+[Line 17]: Explanation: Opening the body of the MergeStrings method.
+[Line 18]: Explanation: Calling the GetStringLength method with word1 as an argument and storing the result in the integer variable length1.
+[Line 19]: Explanation: Calling the GetStringLength method with word2 as an argument and storing the result in the integer variable length2.
+[Line 20]: Explanation: Determining the maximum length between length1 and length2 and storing it in the integer variable maxLength.
+[Line 21]: Explanation: Declaring and initializing a character array named mergedArray with a length equal to the sum of length1 and length2.
+[Line 22]: Explanation: Starting a for loop that iterates from 0 to maxLength - 1.
+[Line 23]: Explanation: Opening the body of the for loop.
+[Line 24]: Explanation: Checking if the current index i is less than length1.
+[Line 25]: Explanation: Opening the body of the if statement.
+[Line 26]: Explanation: Assigning the character at index i of word1 to the position i * 2 in the mergedArray.
+[Line 27]: Explanation: Closing the body of the if statement.
+[Line 28]: Explanation: Checking if the current index i is less than length2.
+[Line 29]: Explanation: Opening the body of the if statement.
+[Line 30]: Explanation: Assigning the character at index i of word2 to the position i * 2 + 1 in the mergedArray.
+[Line 31]: Explanation: Closing the body of the if statement.
+[Line 32]: Explanation: Closing the body of the for loop.
+[Line 33]: Explanation: Returning a new string created from the mergedArray.
+[Line 34]: Explanation: Closing the body of the MergeStrings method.
+[Line 35]: Explanation: Defining a static method named GetStringLength that takes a single string parameter, str.
+[Line 36]: Explanation: Opening the body of the GetStringLength method.
+[Line 37]: Explanation: Declaring and initializing an integer variable named length to 0.
+[Line 38]: Explanation: Starting a while loop that continues until the character at index length in str is the null terminator ('\0').
+[Line 39]: Explanation: Opening the body of the while loop.
+[Line 40]: Explanation: Incrementing the length variable by 1.
+[Line 41]: Explanation: Closing the body of the while loop.
+[Line 42]: Explanation: Returning the value of length.
+[Line 43]: Explanation: Closing the body of the GetStringLength method.
+[Line 44]: Explanation: Closing the body of the Program class.```"
+Delete N Nodes After M Nodes of a Linked List,"[Line 1]: Explanation: Define a public class named `ListNode`.
+[Line 2]: Explanation: Declare a public integer variable `val` to store the value of the node.
+[Line 3]: Explanation: Declare a public reference to another `ListNode` named `next` to point to the next node in the list.
+[Line 4]: Explanation: Define a constructor for the `ListNode` class that takes two parameters: `val` and `next`, with default values of `0` and `null`, respectively.
+[Line 5]: Explanation: Initialize the `val` property of the node with the provided `val` parameter.
+[Line 6]: Explanation: Initialize the `next` property of the node with the provided `next` parameter.
+[Line 7]: Explanation: End the constructor definition.
+[Line 8]: Explanation: End the `ListNode` class definition.
+[Line 9]: Explanation: Define a public class named `Solution`.
+[Line 10]: Explanation: Define a public method named `DeleteNodes` that takes three parameters: `head` (a `ListNode`), `m` (an integer), and `n` (an integer). The method returns a `ListNode`.
+[Line 11]: Explanation: Check if the `head` is `null`. If it is, return `null` because there is no list to process.
+[Line 12]: Explanation: Initialize a `ListNode` variable named `current` with the value of `head`. This variable will be used to traverse the linked list.
+[Line 13]: Explanation: Initialize a `ListNode` variable named `prev` with the value of `null`. This variable will keep track of the previous node during the traversal.
+[Line 14]: Explanation: Start a `while` loop that continues as long as `current` is not `null`. This loop will traverse the entire linked list.
+[Line 15]: Explanation: Start a `for` loop that iterates `m` times or until `current` becomes `null`. This loop is used to keep the first `m` nodes.
+[Line 16]: Explanation: Check if `prev` is `null`. If it is, set `prev` to `current`. This handles the case where the first node is being processed.
+[Line 17]: Explanation: If `prev` is not `null`, set the `next` property of `prev` to `current`. This connects the previous node to the current node.
+[Line 18]: Explanation: Update `prev` to `current`. This moves the `prev` pointer to the current node.
+[Line 19]: Explanation: Move `current` to the next node in the list. This advances the traversal.
+[Line 20]: Explanation: End the `for` loop that keeps the first `m` nodes.
+[Line 21]: Explanation: Start another `for` loop that iterates `n` times or until `current` becomes `null`. This loop is used to skip the next `n` nodes.
+[Line 22]: Explanation: Move `current` to the next node in the list. This advances the traversal and effectively skips the node.
+[Line 23]: Explanation: End the `for` loop that skips the next `n` nodes.
+[Line 24]: Explanation: Check if `prev` is not `null`. If it is not, set the `next` property of `prev` to `current`. This connects the last kept node to the node after the skipped nodes.
+[Line 25]: Explanation: End the `while` loop that traverses the entire linked list.
+[Line 26]: Explanation: Return the modified `head` of the linked list.
+[Line 27]: Explanation: End the `DeleteNodes` method definition.
+[Line 28]: Explanation: End the `Solution` class definition."
+Reverse Linked List,"``` [Line 1]: Explanation: Defines the beginning of the ListNode class.
+[Line 2]: Explanation: Opens the ListNode class definition.
+[Line 3]: Explanation: Declares an integer variable `val` to store the value of the node.
+[Line 4]: Explanation: Declares a ListNode variable `next` to reference the next node in the list.
+[Line 5]: Explanation: Defines the constructor for the ListNode class.
+[Line 6]: Explanation: Opens the constructor definition with parameters `val` and `next`, both optional.
+[Line 7]: Explanation: Initializes the `val` property with the provided value or default to 0.
+[Line 8]: Explanation: Initializes the `next` property with the provided ListNode reference or default to null.
+[Line 9]: Explanation: Closes the constructor definition.
+[Line 10]: Explanation: Closes the ListNode class definition.
+[Line 11]: Explanation: Defines the beginning of the Solution class.
+[Line 12]: Explanation: Opens the Solution class definition.
+[Line 13]: Explanation: Declares a method `ReverseListIterative` that takes a ListNode `head` as a parameter and returns a ListNode.
+[Line 14]: Explanation: Opens the method definition for `ReverseListIterative`.
+[Line 15]: Explanation: Initializes a ListNode variable `prev` to null, which will eventually point to the new head of the reversed list.
+[Line 16]: Explanation: Initializes a ListNode variable `current` to the head of the original list, which will traverse the list.
+[Line 17]: Explanation: Begins a while loop that continues as long as `current` is not null.
+[Line 18]: Explanation: Inside the loop, initializes a ListNode variable `nextNode` to the next node of `current`.
+[Line 19]: Explanation: Reverses the link by setting the `next` property of `current` to point to `prev`.
+[Line 20]: Explanation: Moves `prev` to the current node.
+[Line 21]: Explanation: Moves `current` to the next node stored in `nextNode`.
+[Line 22]: Explanation: Ends the while loop.
+[Line 23]: Explanation: Returns the new head of the reversed list, which is stored in `prev`.
+[Line 24]: Explanation: Closes the method definition.
+[Line 25]: Explanation: Closes the Solution class definition.```"
+How Many Numbers Are Smaller Than the Current Number,"[Line 1]: Explanation: Defines a public class named `Solution`.
+         [Line 2]: Explanation: Declares a public method named `SmallerNumbersThanCurrent` that takes an integer array `nums` as a parameter and returns an integer array.
+         [Line 3]: Explanation: Retrieves the length of the input array `nums` and assigns it to the variable `n`.
+         [Line 4]: Explanation: Initializes a new integer array named `result` with a length equal to `n` to store the final results.
+         [Line 5]: Explanation: Starts a for loop that iterates over each element in the input array `nums` using the index `i`.
+         [Line 6]: Explanation: Initializes a variable `count` to 0. This variable will be used to count the number of elements in `nums` that are smaller than the current element `nums[i]`.
+         [Line 7]: Explanation: Starts a nested for loop that also iterates over each element in the input array `nums` using the index `j`.
+         [Line 8]: Explanation: Checks if the indices `i` and `j` are not the same and if the element at index `j` (`nums[j]`) is less than the element at index `i` (`nums[i]`). If both conditions are true, the code inside the if statement is executed.
+         [Line 9]: Explanation: Increments the `count` variable by 1. This step counts the number of elements in `nums` that are smaller than the current element `nums[i]`.
+         [Line 10]: Explanation: Ends the if statement.
+         [Line 11]: Explanation: Ends the nested for loop.
+         [Line 12]: Explanation: Assigns the value of `count` to the element at index `i` in the `result` array. This stores the count of smaller numbers for the current element `nums[i]`.
+         [Line 13]: Explanation: Ends the outer for loop.
+         [Line 14]: Explanation: Returns the `result` array, which contains the count of smaller numbers for each element in the input array `nums`.
+         [Line 15]: Explanation: Ends the method `SmallerNumbersThanCurrent`.
+         [Line 16]: Explanation: Ends the class `Solution`."
+Find All The Lonely Nodes,"[Line 1]: Explanation: Using the System namespace which provides fundamental classes and base classes that define commonly-used value and reference data types.
+        [Line 2]: Explanation: Using the System.Collections.Generic namespace which contains generic collections, such as lists and dictionaries.
+        [Line 3]: Explanation: Defining a public class named TreeNode.
+        [Line 4]: Explanation: Declaring a public integer variable named val to store the value of the node.
+        [Line 5]: Explanation: Declaring a public TreeNode variable named left to reference the left child of the current node.
+        [Line 6]: Explanation: Declaring a public TreeNode variable named right to reference the right child of the current node.
+        [Line 7]: Explanation: Defining a constructor for the TreeNode class that initializes the node with a value and optionally sets its left and right children.
+        [Line 8]: Explanation: Assigning the value passed to the constructor to the val property of the node.
+        [Line 9]: Explanation: Assigning the left child node passed to the constructor to the left property of the node.
+        [Line 10]: Explanation: Assigning the right child node passed to the constructor to the right property of the node.
+        [Line 11]: Explanation: Closing the constructor definition.
+        [Line 12]: Explanation: Closing the TreeNode class definition.
+        [Line 13]: Explanation: Defining a public class named Solution.
+        [Line 14]: Explanation: Declaring a private List of integers named lonelyNodes to store the values of lonely nodes found during traversal.
+        [Line 15]: Explanation: Defining a public method named GetLonelyNodes that takes a TreeNode parameter root and returns an array of integers.
+        [Line 16]: Explanation: Checking if the root is null. If it is, return an empty array of integers.
+        [Line 17]: Explanation: Returning an empty array of integers if the root is null.
+        [Line 18]: Explanation: Calling the private method Dfs (Depth-First Search) on the root node with false indicating that the root node does not have a sibling.
+        [Line 19]: Explanation: Creating a new integer array named result with a length equal to the count of elements in the lonelyNodes list.
+        [Line 20]: Explanation: Initializing a for loop that iterates over each element in the lonelyNodes list.
+        [Line 21]: Explanation: Assigning the value of the current element in the lonelyNodes list to the corresponding index in the result array.
+        [Line 22]: Explanation: Closing the for loop.
+        [Line 23]: Explanation: Returning the result array containing the values of lonely nodes.
+        [Line 24]: Explanation: Closing the GetLonelyNodes method definition.
+        [Line 25]: Explanation: Defining a private method named Dfs that takes a TreeNode parameter node and a boolean parameter hasSibling.
+        [Line 26]: Explanation: Checking if the current node is null. If it is, return immediately.
+        [Line 27]: Explanation: Checking if the current node does not have a sibling (hasSibling is false) and if it has at least one child (either left or right is not null).
+        [Line 28]: Explanation: If the current node is lonely (no sibling and has at least one child), add its value to the lonelyNodes list.
+        [Line 29]: Explanation: Recursively calling the Dfs method on the left child of the current node, passing true if the current node has a right child (indicating that the left child has a sibling).
+        [Line 30]: Explanation: Recursively calling the Dfs method on the right child of the current node, passing true if the current node has a left child (indicating that the right child has a sibling).
+        [Line 31]: Explanation: Closing the Dfs method definition.
+        [Line 32]: Explanation: Defining a public static Main method that serves as the entry point of the program.
+        [Line 33]: Explanation: Creating a new instance of the Solution class named solution.
+        [Line 34]: Explanation: Creating a new TreeNode named root1 with the value 1.
+        [Line 35]: Explanation: Setting the left child of root1 to a new TreeNode with the value 2.
+        [Line 36]: Explanation: Setting the right child of root1 to a new TreeNode with the value 3.
+        [Line 37]: Explanation: Setting the right child of the left child of root1 (node with value 2) to a new"
+Maximum Ascending Subarray Sum,"``` [Line 1]: Explanation: Defines a public class named Solution.
+[Line 2]: Explanation: Declares a public method named MaxAscendingSum that takes an array of integers (nums) as input and returns an integer.
+[Line 3]: Explanation: Initializes a variable maxSum to 0. This variable will store the maximum sum of an ascending subarray found so far.
+[Line 4]: Explanation: Initializes a variable currentSum to 0. This variable will store the sum of the current ascending subarray being processed.
+[Line 5]: Explanation: Starts a for loop that iterates over each element in the nums array using the index i.
+[Line 6]: Explanation: Checks if the current index i is 0 (the first element) or if the current element nums[i] is greater than the previous element nums[i - 1]. This condition determines if the current element can be part of an ascending subarray.
+[Line 7]: Explanation: If the condition in line 6 is true, adds the current element nums[i] to currentSum, extending the current ascending subarray.
+[Line 8]: Explanation: If the condition in line 6 is false, it means the current element cannot be part of the current ascending subarray. Therefore, this block of code handles the end of an ascending subarray.
+[Line 9]: Explanation: Checks if currentSum is greater than maxSum. If true, updates maxSum with the value of currentSum, ensuring that maxSum always holds the maximum sum found so far.
+[Line 10]: Explanation: If the condition in line 9 is true, assigns the value of currentSum to maxSum.
+[Line 11]: Explanation: Resets currentSum to the value of the current element nums[i], starting a new ascending subarray with this element.
+[Line 12]: Explanation: Continues the loop to process the next element in the array.
+[Line 13]: Explanation: Ends the for loop after processing all elements in the nums array.
+[Line 14]: Explanation: After the loop, checks one last time if currentSum is greater than maxSum. This ensures that the final ascending subarray's sum is considered if it is the largest.
+[Line 15]: Explanation: If the condition in line 14 is true, assigns the value of currentSum to maxSum.
+[Line 16]: Explanation: Returns the value of maxSum, which now contains the maximum sum of an ascending subarray in the nums array.
+[Line 17]: Explanation: Ends the method MaxAscendingSum.
+[Line 18]: Explanation: Ends the class Solution.```"
+Maximum Subarray Sum After One Operation,"[Line 1]: Explanation: Public class declaration named Solution.
+         [Line 2]: Explanation: Public method declaration named MaxSubarraySumAfterOperation that takes an integer array nums as input and returns an integer.
+         [Line 3]: Explanation: Checks if the input array nums is null or has zero length. If true, returns 0 as there are no elements to process.
+         [Line 4]: Explanation: Returns 0 as explained in the previous line.
+         [Line 5]: Explanation: Returns 0 as explained in the previous line.
+         [Line 6]: Explanation: Initializes variable max_ending_here with the first element of the array nums. This variable will keep track of the maximum subarray sum ending at the current position without any operation.
+         [Line 7]: Explanation: Initializes variable max_ending_here_with_op with the square of the first element of the array nums. This variable will keep track of the maximum subarray sum ending at the current position with one operation performed.
+         [Line 8]: Explanation: Initializes variable result with the maximum value between max_ending_here and max_ending_here_with_op. This variable will store the overall maximum subarray sum found so far.
+         [Line 9]: Explanation: Starts a for loop that iterates through the array nums starting from the second element (index 1).
+         [Line 10]: Explanation: Checks if max_ending_here is greater than 0. If true, it means we can extend the existing subarray by adding the current element nums[i].
+         [Line 11]: Explanation: Adds the current element nums[i] to max_ending_here, extending the subarray sum.
+         [Line 12]: Explanation: If max_ending_here is not greater than 0, it means starting a new subarray from the current element nums[i] would yield a higher sum.
+         [Line 13]: Explanation: Sets max_ending_here to the current element nums[i], starting a new subarray.
+         [Line 14]: Explanation: Calculates the square of the current element nums[i] and stores it in the variable op_value. This represents the operation of squaring the current element.
+         [Line 15]: Explanation: Checks if max_ending_here_with_op is greater than 0. If true, it means we can extend the existing subarray with the operation by adding the current element nums[i].
+         [Line 16]: Explanation: Adds the current element nums[i] to max_ending_here_with_op, extending the subarray sum with the operation.
+         [Line 17]: Explanation: If max_ending_here_with_op is not greater than 0, it means starting a new subarray from the current element nums[i] with the operation would yield a higher sum.
+         [Line 18]: Explanation: Sets max_ending_here_with_op to op_value, starting a new subarray with the operation.
+         [Line 19]: Explanation: Calculates the potential new subarray sum if we were to perform the operation at the current position and add it to the existing subarray sum without the operation. This is stored in new_op_value.
+         [Line 20]: Explanation: Checks if new_op_value is greater than max_ending_here_with_op. If true, it means performing the operation at the current position yields a higher sum.
+         [Line 21]: Explanation: Updates max_ending_here_with_op to new_op_value, reflecting the new maximum subarray sum with the operation.
+         [Line 22]: Explanation: Checks if max_ending_here_with_op is greater than the current result. If true, it means we have found a new maximum subarray sum.
+         [Line 23]: Explanation: Updates result to max_ending_here_with_op, reflecting the new overall maximum subarray sum.
+         [Line 24]: Explanation: Ends the if statement checking if max_ending_here_with_op is greater than the current result.
+         [Line 25]: Explanation: Ends the for loop iterating through the array nums.
+         [Line 26]: Explanation: Returns the final result, which is the maximum possible subarray sum after exactly one operation.
+         [Line 27]: Explanation: Ends the method MaxSubarraySumAfterOperation.
+         [Line 28]: Explanation: Ends the class Solution."
+Walls and Gates,"``` [Line 1]: Explanation: This line imports the System namespace which provides fundamental classes for basic input and output operations.
+[Line 2]: Explanation: This line imports the System.Collections.Generic namespace which contains generic collections like Queue.
+[Line 3]: Explanation: This line defines a public class named Solution.
+[Line 4]: Explanation: This line declares a public method named WallsAndGates that takes a 2D array of integers named rooms as a parameter.
+[Line 5]: Explanation: This line checks if the rooms array is null or if either dimension of the array is zero. If any of these conditions are true, the method returns without performing any further actions.
+[Line 6]: Explanation: This line is the closing brace for the if statement on line 5.
+[Line 7]: Explanation: This line declares an integer variable named m and assigns it the number of rows in the rooms array by calling GetLength(0).
+[Line 8]: Explanation: This line declares an integer variable named n and assigns it the number of columns in the rooms array by calling GetLength(1).
+[Line 9]: Explanation: This line declares a Queue of integer arrays named queue. This queue will be used to perform a breadth-first search (BFS).
+[Line 10]: Explanation: This line starts a for loop that iterates over each row index i from 0 to m-1.
+[Line 11]: Explanation: This line starts a nested for loop that iterates over each column index j from 0 to n-1.
+[Line 12]: Explanation: This line checks if the current element at position (i, j) in the rooms array is equal to 0 (indicating a gate). If it is, the following code block executes.
+[Line 13]: Explanation: This line creates a new integer array containing the current row and column indices (i, j) and enqueues it into the queue.
+[Line 14]: Explanation: This line is the closing brace for the if statement on line 12.
+[Line 15]: Explanation: This line is the closing brace for the nested for loop started on line 11.
+[Line 16]: Explanation: This line is the closing brace for the outer for loop started on line 10.
+[Line 17]: Explanation: This line starts a while loop that continues as long as there are elements in the queue.
+[Line 18]: Explanation: This line dequeues the front element from the queue and assigns it to the variable current.
+[Line 19]: Explanation: This line extracts the row index from the current element and assigns it to the variable row.
+[Line 20]: Explanation: This line extracts the column index from the current element and assigns it to the variable col.
+[Line 21]: Explanation: This line declares an integer array named rowDirections containing the row offsets for the four possible directions (up, down, left, right).
+[Line 22]: Explanation: This line declares an integer array named colDirections containing the column offsets for the four possible directions (up, down, left, right).
+[Line 23]: Explanation: This line starts a for loop that iterates over each direction index d from 0 to 3.
+[Line 24]: Explanation: This line calculates the new row index by adding the row offset for the current direction to the current row index.
+[Line 25]: Explanation: This line calculates the new column index by adding the column offset for the current direction to the current column index.
+[Line 26]: Explanation: This line checks if the new row index is within the valid range (0 to m-1) and if the new column index is within the valid range (0 to n-1). It also checks if the element at the new position (newRow, newCol) in the rooms array is equal to int.MaxValue (indicating an empty room). If all these conditions are true, the following code block executes.
+[Line 27]: Explanation: This line updates the element at the new position (newRow, newCol) in the rooms array to be one more than the value of the current element (row, col).
+[Line 28]: Explanation: This line creates a new integer array containing the new row and column indices (newRow, newCol) and enqueues it into the queue.
+[Line 29]: Explanation: This line is the closing brace for the if statement on line 26.
+[Line 30]: Explanation: This line is the closing brace for the for loop started on line 23.
+[Line 31]: Explanation: This line is the closing brace for the while loop started on line 17.
+[Line 32]: Explanation: This line is the closing brace for the method WallsAndGates.
+[Line 33]: Explanation: This line is the closing brace for the class Solution.```"
+Longest Common Subsequence,"``` [Line 1]: Explanation: Defines a public class named Solution.
+[Line 2]: Explanation: Declares a public method LongestCommonSubsequence that takes two string parameters, text1 and text2, and returns an integer.
+[Line 3]: Explanation: Retrieves the length of the first input string text1 and assigns it to the variable m.
+[Line 4]: Explanation: Retrieves the length of the second input string text2 and assigns it to the variable n.
+[Line 5]: Explanation: Initializes a 2D array dp with dimensions (m+1) x (n+1) to store the lengths of the longest common subsequences for substrings of text1 and text2.
+[Line 6]: Explanation: Starts a for loop that iterates over each character in text1, from index 1 to m.
+[Line 7]: Explanation: Starts a nested for loop that iterates over each character in text2, from index 1 to n.
+[Line 8]: Explanation: Checks if the current characters of text1 and text2 are equal.
+[Line 9]: Explanation: If the characters are equal, sets the value of dp[i, j] to dp[i-1, j-1] + 1, indicating that the current characters can be part of a longer common subsequence.
+[Line 10]: Explanation: If the characters are not equal, executes the else block.
+[Line 11]: Explanation: Sets the value of dp[i, j] to the maximum value between dp[i-1, j] and dp[i, j-1], representing the longest common subsequence without including the current characters.
+[Line 12]: Explanation: Ends the else block.
+[Line 13]: Explanation: Ends the nested for loop iterating over text2.
+[Line 14]: Explanation: Ends the for loop iterating over text1.
+[Line 15]: Explanation: Returns the value of dp[m, n], which represents the length of the longest common subsequence of text1 and text2.
+[Line 16]: Explanation: Ends the method LongestCommonSubsequence.
+[Line 17]: Explanation: Ends the class Solution.```"
+Satisfiability of Equality Equations,"[Line 1]: Explanation: Define a public class named Solution.
+         [Line 2]: Explanation: Declare a public method named EquationsPossible that takes an array of strings as input and returns a boolean value.
+         [Line 3]: Explanation: Initialize an integer array named parent with a size of 26 to represent the parent of each character from 'a' to 'z'.
+         [Line 4]: Explanation: Start a for loop that iterates from 0 to 25.
+         [Line 5]: Explanation: Set the parent of each character (represented by its index) to itself, indicating that initially, each character is its own parent.
+         [Line 6]: Explanation: End the for loop.
+         [Line 7]: Explanation: Define a private method named Find that takes an integer x as input and returns an integer.
+         [Line 8]: Explanation: Start a while loop that continues as long as the parent of x is not equal to x.
+         [Line 9]: Explanation: Update x to be its parent, effectively moving up the tree until the root is found.
+         [Line 10]: Explanation: End the while loop.
+         [Line 11]: Explanation: Return the root of x, which is the representative of the set containing x.
+         [Line 12]: Explanation: End the Find method.
+         [Line 13]: Explanation: Define a private method named Union that takes two integers x and y as input.
+         [Line 14]: Explanation: Call the Find method to get the root of x and store it in rootX.
+         [Line 15]: Explanation: Call the Find method to get the root of y and store it in rootY.
+         [Line 16]: Explanation: Check if rootX is not equal to rootY.
+         [Line 17]: Explanation: If they are not equal, set the parent of rootX to rootY, effectively merging the sets containing x and y.
+         [Line 18]: Explanation: End the if statement.
+         [Line 19]: Explanation: End the Union method.
+         [Line 20]: Explanation: Start a foreach loop that iterates over each string in the equations array.
+         [Line 21]: Explanation: Check if the second character of the current string is '='.
+         [Line 22]: Explanation: Convert the first character of the current string to its corresponding index (0 for 'a', 1 for 'b', etc.) and store it in var1.
+         [Line 23]: Explanation: Convert the fourth character of the current string to its corresponding index and store it in var2.
+         [Line 24]: Explanation: Call the Union method with var1 and var2 as arguments, indicating that the variables represented by these indices are equal.
+         [Line 25]: Explanation: End the if statement.
+         [Line 26]: Explanation: End the foreach loop.
+         [Line 27]: Explanation: Start another foreach loop that iterates over each string in the equations array.
+         [Line 28]: Explanation: Check if the second character of the current string is '!'.
+         [Line 29]: Explanation: Convert the first character of the current string to its corresponding index and store it in var1.
+         [Line 30]: Explanation: Convert the fourth character of the current string to its corresponding index and store it in var2.
+         [Line 31]: Explanation: Call the Find method to get the root of var1 and compare it with the root of var2.
+         [Line 32]: Explanation: If the roots are equal, it means the variables are in the same set, which contradicts the inequality, so return false.
+         [Line 33]: Explanation: End the if statement.
+         [Line 34]: Explanation: End the foreach loop.
+         [Line 35]: Explanation: If no contradictions were found, return true, indicating that it is possible to assign values to the variables to satisfy all equations.
+         [Line 36]: Explanation: End the EquationsPossible method.
+         [Line 37]: Explanation: End the Solution class."
+Check Completeness of a Binary Tree,"[Line 1]: Explanation: Definition of the TreeNode class, which represents a node in the binary tree.
+[Line 2]: Explanation: Public integer variable `val` to store the value of the node.
+[Line 3]: Explanation: Public TreeNode variable `left` to reference the left child node.
+[Line 4]: Explanation: Public TreeNode variable `right` to reference the right child node.
+[Line 5]: Explanation: Constructor for the TreeNode class that initializes the node's value.
+[Line 6]: Explanation: End of the TreeNode class definition.
+[Line 7]: Explanation: Definition of the Solution class.
+[Line 8]: Explanation: Method `IsCompleteTree` that takes a TreeNode `root` as input and returns a boolean indicating whether the tree is complete.
+[Line 9]: Explanation: If the root is null, the tree is trivially complete, so return true.
+[Line 10]: Explanation: Create a queue to facilitate level-order traversal of the tree.
+[Line 11]: Explanation: Enqueue the root node into the queue to start the traversal.
+[Line 12]: Explanation: Boolean variable `end` initialized to false. This flag indicates whether we have encountered a node that does not have both children.
+[Line 13]: Explanation: While there are nodes in the queue, continue the traversal.
+[Line 14]: Explanation: Dequeue the front node from the queue to process it.
+[Line 15]: Explanation: Check if the current node has a left child.
+[Line 16]: Explanation: If `end` is true and the current node has a left child, it means the tree is not complete because a node with children appears after a node without children. Return false.
+[Line 17]: Explanation: If the current node has a left child, enqueue it into the queue for further processing.
+[Line 18]: Explanation: If the current node does not have a left child, set `end` to true. This indicates that all subsequent nodes should not have children.
+[Line 19]: Explanation: Check if the current node has a right child.
+[Line 20]: Explanation: If `end` is true and the current node has a right child, it means the tree is not complete because a node with children appears after a node without children. Return false.
+[Line 21]: Explanation: If the current node has a right child, enqueue it into the queue for further processing.
+[Line 22]: Explanation: If the current node does not have a right child, set `end` to true. This indicates that all subsequent nodes should not have children.
+[Line 23]: Explanation: End of the while loop, indicating that all nodes have been processed.
+[Line 24]: Explanation: If the loop completes without returning false, the tree is complete, so return true.
+[Line 25]: Explanation: End of the `IsCompleteTree` method.
+[Line 26]: Explanation: End of the Solution class definition."
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,"``` [Line 1]: Explanation: Using the System namespace which contains fundamental classes for basic input and output operations.
+[Line 2]: Explanation: Using the System.Collections.Generic namespace which provides generic collections like HashSet.
+[Line 3]: Explanation: Declaring a public class named Solution.
+[Line 4]: Explanation: Opening the body of the Solution class.
+[Line 5]: Explanation: Defining a public method MaxNonOverlapping that takes an array of integers nums and an integer target as parameters and returns an integer.
+[Line 6]: Explanation: Opening the body of the MaxNonOverlapping method.
+[Line 7]: Explanation: Initializing a variable count to 0 to keep track of the number of non-overlapping subarrays found.
+[Line 8]: Explanation: Initializing a variable currentSum to 0 to store the cumulative sum of elements as we iterate through the array.
+[Line 9]: Explanation: Creating a HashSet named seenSums to store cumulative sums encountered so far.
+[Line 10]: Explanation: Adding 0 to the seenSums HashSet to handle the case where a subarray starting from the beginning of nums has a sum equal to target.
+[Line 11]: Explanation: Starting a foreach loop to iterate through each element in the nums array.
+[Line 12]: Explanation: Adding the current element num to the currentSum.
+[Line 13]: Explanation: Checking if the difference between currentSum and target exists in the seenSums HashSet.
+[Line 14]: Explanation: If the difference exists, it means there is a subarray ending at the current index whose sum is equal to target.
+[Line 15]: Explanation: Incrementing the count by 1 to account for the found subarray.
+[Line 16]: Explanation: Resetting currentSum to 0 to start looking for the next subarray.
+[Line 17]: Explanation: Clearing the seenSums HashSet to start fresh for the next potential subarray.
+[Line 18]: Explanation: Adding 0 back to the seenSums HashSet to handle the case for the next subarray starting from the beginning.
+[Line 19]: Explanation: If the difference does not exist in the seenSums HashSet, it means no subarray ending at the current index has a sum equal to target.
+[Line 20]: Explanation: Adding the currentSum to the seenSums HashSet to keep track of cumulative sums encountered so far.
+[Line 21]: Explanation: Closing the else block.
+[Line 22]: Explanation: Closing the foreach loop.
+[Line 23]: Explanation: Returning the count which represents the maximum number of non-overlapping subarrays with a sum equal to target.
+[Line 24]: Explanation: Closing the body of the MaxNonOverlapping method.
+[Line 25]: Explanation: Defining a public static Main method that serves as the entry point of the program.
+[Line 26]: Explanation: Opening the body of the Main method.
+[Line 27]: Explanation: Creating an instance of the Solution class.
+[Line 28]: Explanation: Calling the MaxNonOverlapping method with different test cases and printing the results to the console.
+[Line 29]: Explanation: Printing the result of the first test case.
+[Line 30]: Explanation: Printing the result of the second test case.
+[Line 31]: Explanation: Printing the result of the third test case.
+[Line 32]: Explanation: Printing the result of the fourth test case.
+[Line 33]: Explanation: Closing the body of the Main method.
+[Line 34]: Explanation: Closing the body of the Solution class.
+[Line 35]: Explanation: Closing the body of the program.```"
+Find Nearest Right Node in Binary Tree,"``` [Line 1]: Explanation: Importing the System.Collections.Generic namespace to use the Queue data structure.
+[Line 2]: Explanation: Defining the TreeNode class which represents each node in the binary tree.
+[Line 3]: Explanation: Declaring an integer variable `val` to store the value of the node.
+[Line 4]: Explanation: Declaring a TreeNode variable `left` to reference the left child of the current node.
+[Line 5]: Explanation: Declaring a TreeNode variable `right` to reference the right child of the current node.
+[Line 6]: Explanation: Constructor for the TreeNode class that initializes the `val` property with the given value `x`.
+[Line 7]: Explanation: Closing the TreeNode class definition.
+[Line 8]: Explanation: Defining the Solution class which contains the method to solve the problem.
+[Line 9]: Explanation: Defining the method `FindNearestRightNode` which takes two parameters: `root` (the root of the binary tree) and `u` (the target node).
+[Line 10]: Explanation: Checking if the `root` is null. If it is, return null as there are no nodes in the tree.
+[Line 11]: Explanation: Creating a new instance of the Queue class to hold nodes for level-order traversal.
+[Line 12]: Explanation: Enqueuing the `root` node into the queue to start the level-order traversal.
+[Line 13]: Explanation: Entering a while loop that continues as long as there are nodes in the queue.
+[Line 14]: Explanation: Getting the number of nodes at the current level by checking the count of the queue.
+[Line 15]: Explanation: Initializing a boolean variable `foundU` to false. This variable will track whether the target node `u` has been found at the current level.
+[Line 16]: Explanation: Starting a for loop that iterates over all nodes at the current level.
+[Line 17]: Explanation: Dequeuing the first node from the queue and assigning it to the `currentNode` variable.
+[Line 18]: Explanation: Checking if the `foundU` flag is true. If it is, this means that the previous node was the target node `u`, so the current node is the nearest right node.
+[Line 19]: Explanation: Returning the `currentNode` as the nearest right node.
+[Line 20]: Explanation: Closing the if block that handles the case when the nearest right node is found.
+[Line 21]: Explanation: Checking if the `currentNode` is equal to the target node `u`. If it is, set `foundU` to true to indicate that the target node has been found.
+[Line 22]: Explanation: Closing the if block that handles the case when the current node is the target node.
+[Line 23]: Explanation: Opening an else block that executes when the current node is not the target node.
+[Line 24]: Explanation: Checking if the left child of the `currentNode` is not null.
+[Line 25]: Explanation: Enqueuing the left child of the `currentNode` into the queue for processing in the next level.
+[Line 26]: Explanation: Closing the if block that checks for the left child.
+[Line 27]: Explanation: Checking if the right child of the `currentNode` is not null.
+[Line 28]: Explanation: Enqueuing the right child of the `currentNode` into the queue for processing in the next level.
+[Line 29]: Explanation: Closing the if block that checks for the right child.
+[Line 30]: Explanation: Closing the else block that handles nodes other than the target node.
+[Line 31]: Explanation: Closing the for loop that iterates over all nodes at the current level.
+[Line 32]: Explanation: Checking if the `foundU` flag is still true after iterating through all nodes at the current level. This indicates that the target node `u` was found but had no right neighbor at the same level.
+[Line 33]: Explanation: Returning null to indicate that there is no nearest right node for the target node `u`.
+[Line 34]: Explanation: Closing the if block that handles the case when the target node `u` is the rightmost node at its level.
+[Line 35]: Explanation: Closing the while loop that processes all levels of the tree.
+[Line 36]: Explanation: Returning null as a default case, although this line should never be reached due to the logic within the while loop.
+[Line 37]: Explanation: Closing the `FindNearestRightNode` method.
+[Line 38]: Explanation: Closing the Solution class definition.```"
+Put Boxes Into the Warehouse II,"[Line 1]: Explanation: The start of the Solution class definition.
+        [Line 2]: Explanation: Method definition for MaxBoxesInWarehouse which takes two integer arrays, boxes and warehouse, as parameters and returns an integer.
+        [Line 3]: Explanation: Sorts the boxes array in ascending order.
+        [Line 4]: Explanation: Initializes the variable n with the length of the warehouse array.
+        [Line 5]: Explanation: Declares an integer array left_max of size n to store the maximum heights from the left side of the warehouse.
+        [Line 6]: Explanation: Declares an integer array right_max of size n to store the maximum heights from the right side of the warehouse.
+        [Line 7]: Explanation: Sets the first element of left_max to the height of the first room in the warehouse.
+        [Line 8]: Explanation: Iterates through the warehouse array starting from the second element to populate the left_max array with the maximum heights encountered from the left.
+        [Line 9]: Explanation: Updates the current element of left_max to be the maximum of the previous element in left_max and the current warehouse height.
+        [Line 10]: Explanation: Ends the for loop that populates the left_max array.
+        [Line 11]: Explanation: Sets the last element of right_max to the height of the last room in the warehouse.
+        [Line 12]: Explanation: Iterates through the warehouse array starting from the second-to-last element to populate the right_max array with the maximum heights encountered from the right.
+        [Line 13]: Explanation: Updates the current element of right_max to be the maximum of the next element in right_max and the current warehouse height.
+        [Line 14]: Explanation: Ends the for loop that populates the right_max array.
+        [Line 15]: Explanation: Initializes the variable left to 0, representing the leftmost room in the warehouse.
+        [Line 16]: Explanation: Initializes the variable right to n-1, representing the rightmost room in the warehouse.
+        [Line 17]: Explanation: Initializes the variable boxIndex to 0, representing the current index in the sorted boxes array.
+        [Line 18]: Explanation: Initializes the variable count to 0, representing the number of boxes successfully placed in the warehouse.
+        [Line 19]: Explanation: Starts a while loop that continues as long as there are boxes left to place and there are rooms available in the warehouse.
+        [Line 20]: Explanation: Retrieves the current box height from the boxes array using boxIndex.
+        [Line 21]: Explanation: Checks if the current box can fit in both the leftmost and rightmost available rooms.
+        [Line 22]: Explanation: If the box can fit in both rooms, checks which side has the larger maximum height.
+        [Line 23]: Explanation: If the left side has the larger maximum height, increments the left pointer to move to the next room on the left.
+        [Line 24]: Explanation: If the right side has the larger maximum height, decrements the right pointer to move to the next room on the right.
+        [Line 25]: Explanation: Increments the count of successfully placed boxes.
+        [Line 26]: Explanation: Ends the if block checking if the box fits in both rooms.
+        [Line 27]: Explanation: Checks if the box can fit in the leftmost available room.
+        [Line 28]: Explanation: If the box can fit in the leftmost room, increments the left pointer to move to the next room on the left.
+        [Line 29]: Explanation: Ends the if block checking if the box fits in the leftmost room.
+        [Line 30]: Explanation: Checks if the box can fit in the rightmost available room.
+        [Line 31]: Explanation: If the box can fit in the rightmost room, decrements the right pointer to move to the next room on the right.
+        [Line 32]: Explanation: Ends the if block checking if the box can fit in the rightmost room.
+        [Line 33]: Explanation: If the box cannot fit in either room, increments the boxIndex to try the next box.
+        [Line 34]: Explanation: Ends the else block.
+        [Line 35]: Explanation: Ends the while loop.
+        [Line 36]: Explanation: Returns the count of successfully placed boxes.
+        [Line 37]: Explanation: Ends the method definition.
+        [Line 38]: Explanation: Ends the Solution class definition."
+Minimum Swaps to Group All 1's Together,"[Line 1]: Explanation: Defines the Solution class which contains the method MinSwaps.
+[Line 2]: Explanation: Declares the MinSwaps method which takes an integer array `data` as input and returns an integer.
+[Line 3]: Explanation: Initializes a variable `totalOnes` to count the total number of 1s in the array.
+[Line 4]: Explanation: Starts a for loop that iterates over each element in the `data` array.
+[Line 5]: Explanation: Checks if the current element is equal to 1.
+[Line 6]: Explanation: If the current element is 1, increments the `totalOnes` counter by 1.
+[Line 7]: Explanation: Ends the if statement.
+[Line 8]: Explanation: Ends the for loop.
+[Line 9]: Explanation: Checks if the total number of 1s (`totalOnes`) is less than or equal to 1.
+[Line 10]: Explanation: If true, returns 0 because no swaps are needed.
+[Line 11]: Explanation: Ends the if statement.
+[Line 12]: Explanation: Initializes a variable `maxOnesInWindow` to keep track of the maximum number of 1s found in any window of size `totalOnes`.
+[Line 13]: Explanation: Initializes a variable `currentOnesInWindow` to count the number of 1s in the current window.
+[Line 14]: Explanation: Initializes a variable `left` to represent the left boundary of the sliding window.
+[Line 15]: Explanation: Starts a for loop that iterates over each element in the `data` array with the index `right` representing the right boundary of the sliding window.
+[Line 16]: Explanation: Checks if the current element (at index `right`) is equal to 1.
+[Line 17]: Explanation: If the current element is 1, increments the `currentOnesInWindow` counter by 1.
+[Line 18]: Explanation: Ends the if statement.
+[Line 19]: Explanation: Checks if the size of the current window (`right - left + 1`) is greater than the total number of 1s (`totalOnes`).
+[Line 20]: Explanation: If true, checks if the element at the left boundary of the window (at index `left`) is equal to 1.
+[Line 21]: Explanation: If true, decrements the `currentOnesInWindow` counter by 1.
+[Line 22]: Explanation: Moves the left boundary of the window to the right by incrementing the `left` variable by 1.
+[Line 23]: Explanation: Ends the if statement.
+[Line 24]: Explanation: Ends the if statement.
+[Line 25]: Explanation: Updates `maxOnesInWindow` with the maximum value between the current `maxOnesInWindow` and `currentOnesInWindow`.
+[Line 26]: Explanation: Ends the for loop.
+[Line 27]: Explanation: Returns the difference between the total number of 1s (`totalOnes`) and the maximum number of 1s found in any window (`maxOnesInWindow`), which represents the minimum number of swaps required.
+[Line 28]: Explanation: Ends the MinSwaps method.
+[Line 29]: Explanation: Ends the Solution class."
+Minimum Remove to Make Valid Parentheses,"[Line 1]: Explanation: Defines a public class named `Solution`.
+[Line 2]: Explanation: Declares a public method named `MinRemoveToMakeValid` that takes a single string parameter `s` and returns a string.
+[Line 3]: Explanation: Converts the input string `s` into a character array `chars` to allow modification of individual characters.
+[Line 4]: Explanation: Initializes an integer variable `balance` to 0. This variable will be used to track the balance of parentheses.
+[Line 5]: Explanation: Starts a for loop that iterates over each character in the `chars` array from left to right.
+[Line 6]: Explanation: Checks if the current character is an opening parenthesis `'('`.
+[Line 7]: Explanation: Increments the `balance` variable by 1 when an opening parenthesis is encountered.
+[Line 8]: Explanation: Checks if the current character is a closing parenthesis `')'`.
+[Line 9]: Explanation: Checks if there is an unmatched opening parenthesis available by verifying if `balance` is greater than 0.
+[Line 10]: Explanation: Decrements the `balance` variable by 1 when a matching opening parenthesis is found for the current closing parenthesis.
+[Line 11]: Explanation: Executes if there is no matching opening parenthesis for the current closing parenthesis.
+[Line 12]: Explanation: Replaces the current closing parenthesis with a placeholder character `'*'` to mark it for removal.
+[Line 13]: Explanation: Ends the if-else block checking for closing parentheses.
+[Line 14]: Explanation: Ends the first for loop that processes characters from left to right.
+[Line 15]: Explanation: Resets the `balance` variable to 0 for the second pass.
+[Line 16]: Explanation: Starts a for loop that iterates over each character in the `chars` array from right to left.
+[Line 17]: Explanation: Checks if the current character is a closing parenthesis `')'`.
+[Line 18]: Explanation: Increments the `balance` variable by 1 when a closing parenthesis is encountered.
+[Line 19]: Explanation: Checks if the current character is an opening parenthesis `'('`.
+[Line 20]: Explanation: Checks if there is an unmatched closing parenthesis available by verifying if `balance` is greater than 0.
+[Line 21]: Explanation: Decrements the `balance` variable by 1 when a matching closing parenthesis is found for the current opening parenthesis.
+[Line 22]: Explanation: Executes if there is no matching closing parenthesis for the current opening parenthesis.
+[Line 23]: Explanation: Replaces the current opening parenthesis with a placeholder character `'*'` to mark it for removal.
+[Line 24]: Explanation: Ends the if-else block checking for opening parentheses.
+[Line 25]: Explanation: Ends the second for loop that processes characters from right to left.
+[Line 26]: Explanation: Initializes a `StringBuilder` object named `result` to build the final valid string.
+[Line 27]: Explanation: Iterates over each character in the `chars` array.
+[Line 28]: Explanation: Checks if the current character is not the placeholder character `'*'`.
+[Line 29]: Explanation: Appends the current character to the `result` `StringBuilder` if it is not marked for removal.
+[Line 30]: Explanation: Ends the if condition checking for non-placeholder characters.
+[Line 31]: Explanation: Ends the foreach loop iterating over the `chars` array.
+[Line 32]: Explanation: Converts the `StringBuilder` object `result` to a string and returns it as the final valid string.
+[Line 33]: Explanation: Ends the `MinRemoveToMakeValid` method.
+[Line 34]: Explanation: Ends the `Solution` class."
+Trapping Rain Water,"```
+
+
+: 
+: 
+: 
+: 
+: 
+: 
+: 
+: 
+: 
+: 
+: 
+: 
+: 
+: 
+: 
+: 
+:"
+Minimum Cost to Make at Least One Valid Path in a Grid,"[Line 1]: Explanation: Using the System namespace, which provides fundamental classes and base classes that define commonly-used values and reference data types.
+[Line 2]: Explanation: Using the System.Collections.Generic namespace, which contains interfaces and classes that define generic collections.
+[Line 3]: Explanation: Declaring a public class named Solution.
+[Line 4]: Explanation: Opening the body of the Solution class.
+[Line 5]: Explanation: Defining a public method named MinCost that takes a 2D jagged array of integers (grid) as input and returns an integer.
+[Line 6]: Explanation: Opening the body of the MinCost method.
+[Line 7]: Explanation: Assigning the length of the grid array to the variable m, representing the number of rows.
+[Line 8]: Explanation: Assigning the length of the first row of the grid array to the variable n, representing the number of columns.
+[Line 9]: Explanation: Initializing a 2D jagged array named directions with four sub-arrays, each containing two integers. This array represents the possible directions of movement in the grid: right, left, down, and up.
+[Line 10]: Explanation: Opening the initialization of the directions array.
+[Line 11]: Explanation: Initializing the first sub-array with the values {0, 1}, representing movement to the right.
+[Line 12]: Explanation: Initializing the second sub-array with the values {0, -1}, representing movement to the left.
+[Line 13]: Explanation: Initializing the third sub-array with the values {1, 0}, representing movement downwards.
+[Line 14]: Explanation: Initializing the fourth sub-array with the values {-1, 0}, representing movement upwards.
+[Line 15]: Explanation: Closing the initialization of the directions array.
+[Line 16]: Explanation: Initializing a 2D array named dist with dimensions m by n, where each element is of type int. This array will store the minimum cost to reach each cell in the grid.
+[Line 17]: Explanation: Opening a nested for loop to initialize the dist array.
+[Line 18]: Explanation: The outer loop iterates over each row of the grid.
+[Line 19]: Explanation: The inner loop iterates over each column of the grid.
+[Line 20]: Explanation: Opening the body of the inner loop.
+[Line 21]: Explanation: Setting the value of dist[i, j] to int.MaxValue, indicating that initially, the cost to reach each"
+Pizza With 3n Slices,"[Line 1]: Explanation: Defines a class named Solution.
+         [Line 2]: Explanation: Defines a method named maxSizeSlices that takes an integer array slices as input and returns an integer.
+         [Line 3]: Explanation: Retrieves the length of the input array slices and assigns it to the variable n.
+         [Line 4]: Explanation: Checks if the length of the array is 1. If true, it returns the only element in the array as the result.
+         [Line 5]: Explanation: Defines a nested method named MaxSizeSlicesLinear that takes an integer array arr and an integer k as input and returns an integer.
+         [Line 6]: Explanation: Retrieves the length of the input array arr and assigns it to the variable len.
+         [Line 7]: Explanation: Initializes a 2D array dp with dimensions (len + 1) x (k + 1) to store intermediate results for dynamic programming.
+         [Line 8]: Explanation: Starts a loop that iterates over the range from 1 to len (inclusive) for the variable i.
+         [Line 9]: Explanation: Starts a nested loop that iterates over the range from 1 to k (inclusive) for the variable j.
+         [Line 10]: Explanation: Checks if the current index i is equal to 1. If true, it sets dp[i][j] to the value of the first element in the array arr.
+         [Line 11]: Explanation: Sets dp[i][j] to the value of the first element in the array arr.
+         [Line 12]: Explanation: If the current index i is not equal to 1, it calculates the maximum value between two options: (a) the value of dp[i - 1][j] (skipping the current element) and (b) the value of dp[i - 2][j - 1] plus the current element's value (selecting the current element).
+         [Line 13]: Explanation: Sets dp[i][j] to the calculated maximum value.
+         [Line 14]: Explanation: Ends the inner loop.
+         [Line 15]: Explanation: Ends the outer loop.
+         [Line 16]: Explanation: Returns the value stored in dp[len][k], which represents the maximum possible sum of slice sizes that can be selected from the array arr with k picks.
+         [Line 17]: Explanation: Calls the MaxSizeSlicesLinear method with the original slices array and n/3 as arguments, and assigns the result to the variable case1.
+         [Line 18]: Explanation: Creates a new integer array with a length of n - 1 by excluding the last element of the original slices array.
+         [Line 19]: Explanation: Calls the MaxSizeSlicesLinear method with the newly created array and n/3 as arguments, and assigns the result to the variable case2.
+         [Line 20]: Explanation: Returns the maximum value between case1 and case2, which represents the maximum possible sum of slice sizes that can be selected from the pizza slices.
+         [Line 21]: Explanation: Ends the method maxSizeSlices.
+         [Line 22]: Explanation: Ends the class Solution."
+Number of Ways to Wear Different Hats to Each Other,"[Line 1]: Explanation: Using the System namespace which provides fundamental classes and base classes that define commonly-used value and reference data types.
+        [Line 2]: Explanation: Using the System.Collections.Generic namespace which provides generic collections such as List.
+        [Line 3]: Explanation: Declaring a public class named Solution.
+        [Line 4]: Explanation: Defining a public method named NumberWays that takes a List of Lists of integers (hats) as input and returns an integer.
+        [Line 5]: Explanation: Defining a constant MOD with the value 1_000_000_007 to handle large numbers and prevent overflow.
+        [Line 6]: Explanation: Getting the number of people (n) by getting the count of the hats list.
+        [Line 7]: Explanation: Creating a dictionary named personByHat to map each hat to a list of people who prefer it.
+        [Line 8]: Explanation: Starting a loop that iterates over each person (i) from 0 to n-1.
+        [Line 9]: Explanation: Starting a nested loop that iterates over each hat in the current person's list of preferred hats.
+        [Line 10]: Explanation: Checking if the current hat is not already a key in the personByHat dictionary.
+        [Line 11]: Explanation: If the hat is not a key, adding it to the dictionary with a new List<int> as its value.
+        [Line 12]: Explanation: Adding the current person's index (i) to the list of people who prefer the current hat.
+        [Line 13]: Explanation: Ending the nested loop.
+        [Line 14]: Explanation: Ending the outer loop.
+        [Line 15]: Explanation: Creating an array named dp of size 2^n to store the number of ways to assign hats to people for each subset of people.
+        [Line 16]: Explanation: Initializing the first element of the dp array to 1, representing the base case where no hats are assigned to any people.
+        [Line 17]: Explanation: Starting a loop that iterates over each hat from 1 to 40.
+        [Line 18]: Explanation: Starting a nested loop that iterates over each mask from 2^n - 1 down to 0. The mask represents a subset of people.
+        [Line 19]: Explanation: Checking if the current hat is a key in the personByHat dictionary.
+        [Line 20]: Explanation: Starting a nested loop that iterates over each person in the list of people who prefer the current hat.
+        [Line 21]: Explanation: Checking if the current person is not included in the current subset of people represented by the mask.
+        [Line 22]: Explanation: Updating the dp array at the index mask | (1 << person) by adding the value of dp[mask] to it and taking the result modulo MOD. This represents assigning the current hat to the current person.
+        [Line 23]: Explanation: Ending the nested loop.
+        [Line 24]: Explanation: Ending the nested loop.
+        [Line 25]: Explanation: Ending the outer loop.
+        [Line 26]: Explanation: Returning the value of dp[(1 << n) - 1], which represents the total number of ways to assign hats to all people.
+        [Line 27]: Explanation: Ending the method.
+        [Line 28]: Explanation: Ending the class.
+        [Line 29]: Explanation: Closing the namespace."
+Find the Kth Smallest Sum of a Matrix With Sorted Rows,"``` [Line 1]: Explanation: The `using System;` directive includes the System namespace, which provides fundamental classes for basic input and output operations, exceptions, events, and interfaces.
+[Line 2]: Explanation: The `using System.Collections.Generic;` directive includes the System.Collections.Generic namespace, which contains generic collections that allow you to store and manipulate strongly typed data.
+[Line 3]: Explanation: The `public class Solution` declares a public class named Solution, which will contain the method to solve the problem.
+[Line 4]: Explanation: The opening brace `{` marks the start of the Solution class.
+[Line 5]: Explanation: The `public int KthSmallest(int[][] mat, int k)` method is declared as public, with the return type of int. It takes two parameters: `mat`, a 2D jagged array of integers representing the matrix, and `k`, an integer representing the k-th smallest sum to find.
+[Line 6]: Explanation: The opening brace `{` marks the start of the KthSmallest method.
+[Line 7]: Explanation: A new instance of the `PriorityQueue<int>` class is created and assigned to the variable `pq`. This priority queue will be used to keep track of the smallest sums.
+[Line 8]: Explanation: The `foreach` loop iterates over each element `num` in the first row of the matrix `mat[0]`.
+[Line 9]: Explanation: The `pq.Enqueue(num)` method adds the current element `num` to the priority queue `pq`.
+[Line 10]: Explanation: The closing brace `}` marks the end of the foreach loop.
+[Line 11]: Explanation: A for loop starts, iterating from `i = 1` to `i < mat.Length`. This loop processes each row of the matrix starting from the second row.
+[Line 12]: Explanation: The opening brace `{` marks the start of the for loop.
+[Line 13]: Explanation: A new instance of the `PriorityQueue<int>` class is created and assigned to the variable `newPq`. This new priority queue will be used to store the updated sums for the current row.
+[Line 14]: Explanation: The opening brace `{` marks the start of a while loop that continues as long as there are elements in `pq` and the count of `newPq` is less than `k`.
+[Line 15]: Explanation: The closing brace `}` marks the end of the while loop condition.
+[Line 16]: Explanation: The `pq.Dequeue()` method removes and returns the smallest element from the priority queue `pq`, which is assigned to the variable `currentSum`.
+[Line 17]: Explanation: The `foreach` loop iterates over each element `num` in the current row of the matrix `mat[i]`.
+[Line 18]: Explanation: The opening brace `{` marks the start of the foreach loop.
+[Line 19]: Explanation: The `currentSum` is added to each element `num` in the current row, resulting in a new sum `newSum`.
+[Line 20]: Explanation: The opening brace `{` marks the start of an if statement that checks if the count of `newPq` is less than `k`.
+[Line 21]: Explanation: The closing brace `}` marks the end of the if statement condition.
+[Line 22]: Explanation: The `newPq.Enqueue(newSum)` method adds the new sum `newSum` to the priority queue `newPq`.
+[Line 23]: Explanation: The closing brace `}` marks the end of the if block.
+[Line 24]: Explanation: An else if statement starts, checking if `newSum` is less than the smallest element in `newPq` (retrieved by `newPq.Peek()`).
+[Line 25]: Explanation: The opening brace `{` marks the start of the else if block.
+[Line 26]: Explanation: The `newPq.Dequeue()` method removes the smallest element from `newPq`.
+[Line 27]: Explanation: The `newPq.Enqueue(newSum)` method adds the new sum `newSum` to `newPq`.
+[Line 28]: Explanation: The closing brace `}` marks the end of the else if block.
+[Line 29]: Explanation: The closing brace `}` marks the end of the else if statement.
+[Line 30]: Explanation: The closing brace `}` marks the end of the foreach loop.
+[Line 31]: Explanation: The closing brace `}` marks the end of the while loop.
+[Line 32]: Explanation: The priority queue `pq` is reassigned to `newPq`, updating it with the sums for the current row.
+["
+Remove Max Number of Edges to Keep Graph Fully Traversable,"[Line 1]: Explanation: Importing the System namespace which contains fundamental classes for basic input and output operations.
+        [Line 2]: Explanation: Declaring a public class named 'Solution'.
+        [Line 3]: Explanation: Defining a public method 'MaxNumEdgesToRemove' that takes two parameters: an integer 'n' representing the number of nodes and a 2D integer array 'edges' representing the edges.
+        [Line 4]: Explanation: Creating an instance of the 'UnionFind' class named 'aliceUF' with 'n' nodes. This instance will manage the connectivity of the graph for Alice.
+        [Line 5]: Explanation: Creating another instance of the 'UnionFind' class named 'bobUF' with 'n' nodes. This instance will manage the connectivity of the graph for Bob.
+        [Line 6]: Explanation: Initializing an integer variable 'redundantEdges' to 0. This variable will count the number of edges that can be removed without affecting the connectivity of the graph for both Alice and Bob.
+        [Line 7]: Explanation: Starting a foreach loop to iterate over each edge in the 'edges' array.
+        [Line 8]: Explanation: Checking if the type of the current edge is 3 (both Alice and Bob can traverse).
+        [Line 9]: Explanation: Attempting to union the nodes connected by the current edge in the 'aliceUF' instance. If the union operation fails (meaning the nodes are already connected), it increments the 'redundantEdges' counter.
+        [Line 10]: Explanation: Incrementing the 'redundantEdges' counter if the union operation for Alice fails.
+        [Line 11]: Explanation: Performing a union operation for Bob regardless of whether the union for Alice was successful or not.
+        [Line 12]: Explanation: Continuing the iteration over the edges.
+        [Line 13]: Explanation: Starting another foreach loop to iterate over each edge in the 'edges' array.
+        [Line 14]: Explanation: Checking if the type of the current edge is 1 (only Alice can traverse).
+        [Line 15]: Explanation: Attempting to union the nodes connected by the current edge in the 'aliceUF' instance. If the union operation fails, it increments the 'redundantEdges' counter.
+        [Line 16]: Explanation: Incrementing the 'redundantEdges' counter if the union operation for Alice fails.
+        [Line 17]: Explanation: Continuing the iteration over the edges.
+        [Line 18]: Explanation: Starting yet another foreach loop to iterate over each edge in the 'edges' array.
+        [Line 19]: Explanation: Checking if the type of the current edge is 2 (only Bob can traverse).
+        [Line 20]: Explanation: Attempting to union the nodes connected by the current edge in the 'bobUF' instance. If the union operation fails, it increments the 'redundantEdges' counter.
+        [Line 21]: Explanation: Continuing the iteration over the edges.
+        [Line 22]: Explanation: After processing all edges, checking if the number of connected components in 'aliceUF' is not equal to 1, indicating that Alice cannot traverse the entire graph.
+        [Line 23"
+Minimum Operations to Make a Subsequence,"``` [Line 1]: Explanation: Importing the System namespace which provides fundamental classes and base classes that define commonly-used value and reference data types.
+[Line 2]: Explanation: Importing the System.Collections.Generic namespace which contains generic collection classes such as Dictionary and List.
+[Line 3]: Explanation: Defining a public class named Solution.
+[Line 4]: Explanation: Declaring a public method named MinOperations that takes two integer arrays, target and arr, as parameters and returns an integer.
+[Line 5]: Explanation: Creating a Dictionary to map each element of the target array to its index. This helps in quickly finding the position of any element in the target array.
+[Line 6]: Explanation: Starting a for loop that iterates over the length of the target array.
+[Line 7]: Explanation: Inside the loop, assigning the current index of the target element to its corresponding value in the dictionary.
+[Line 8]: Explanation: Ending the for loop after populating the dictionary with all target elements and their indices.
+[Line 9]: Explanation: Initializing a List named transformedArr to store the indices of elements from arr that are also present in target.
+[Line 10]: Explanation: Starting a foreach loop that iterates over each element in the arr array.
+[Line 11]: Explanation: Checking if the current element of arr exists in the targetIndexMap dictionary.
+[Line 12]: Explanation: If the element exists in the dictionary, adding its index from the target array to the transformedArr list.
+[Line 13]: Explanation: Ending the foreach loop after processing all elements in arr.
+[Line 14]: Explanation: Calling the LengthOfLIS method to find the length of the longest increasing subsequence (LIS) in the transformedArr list.
+[Line 15]: Explanation: Calculating the minimum number of operations needed by subtracting the length of the LIS from the length of the target array and returning the result.
+[Line 16]: Explanation: Ending the MinOperations method.
+[Line 17]: Explanation: Declaring a private method named LengthOfLIS that takes a List of integers as a parameter and returns an integer representing the length of the LIS.
+[Line 18]: Explanation: Checking if the input list nums is empty. If it is, returning 0 as there is no LIS in an empty list.
+[Line 19]: Explanation: Initializing a List named lis to store the elements of the LIS found so far.
+[Line 20]: Explanation: Adding the first element of the nums list to the lis list as it forms the start of the LIS.
+[Line 21]: Explanation: Starting a for loop that iterates over the remaining elements in the nums list starting from the second element.
+[Line 22]: Explanation: Assigning the current element of nums to a variable named num.
+[Line 23]: Explanation: Checking if the current num is greater than the last element of the lis list.
+[Line 24]: Explanation: If num is greater, appending it to the lis list as it extends the current LIS.
+[Line 25]: Explanation: Ending the if block after adding num to the lis list.
+[Line 26]: Explanation: Starting an else block where num is not greater than the last element of the lis list.
+[Line 27]: Explanation: Initializing two variables, left and right, to represent the bounds of a binary search within the lis list.
+[Line 28]: Explanation: Starting a while loop that continues as long as left is less than right, indicating that the binary search has not narrowed down to a single element.
+[Line 29]: Explanation: Calculating the middle index mid of the current bounds using integer division.
+[Line 30]: Explanation: Checking if the element at the mid index of the lis list is less than the current num.
+[Line 31]: Explanation: If the mid element is less than num, updating left to mid + 1 to search in the right half of the lis list.
+[Line 32]: Explanation: Ending the if block after updating left.
+[Line 33]: Explanation: Starting an else block where the mid element is not less than num.
+[Line 34]: Explanation: Updating right to mid to search in the left half of the lis list.
+[Line 35]: Explanation: Ending the else block after updating right.
+[Line 36]: Explanation: Ending the while loop after narrowing down the search to a single element.
+[Line 37]: Explanation: Replacing the element at the left index of the lis list with the current num. This step ensures that the lis list remains sorted and represents the smallest possible LIS up to the current num.
+[Line 38]: Explanation: Ending the else block after replacing the element in the lis list.
+[Line 39]: Explanation: Ending the for loop after processing all elements in nums.
+[Line 40]: Explanation: Returning the count of elements in the lis list, which represents the length of the LIS.
+[Line 41]: Explanation: Ending the LengthOfLIS method.
+[Line 42]: Explanation: Ending the Solution class.```"
+Edit Distance,"``` [Line 1]: Explanation: Definition of the Solution class.
+[Line 2]: Explanation: Declaration of the MinDistance method which takes two strings, word1 and word2, as parameters and returns an integer.
+[Line 3]: Explanation: Calculation of the length of word1 and storing it in the variable m.
+[Line 4]: Explanation: Calculation of the length of word2 and storing it in the variable n.
+[Line 5]: Explanation: Initialization of a 2D array dp with dimensions (m+1) x (n+1) to store the minimum edit distances between substrings of word1 and word2.
+[Line 6]: Explanation: Start of a for loop that iterates from 0 to m (inclusive) to initialize the first column of the dp array.
+[Line 7]: Explanation: Setting the value of dp[i, 0] to i, which represents the cost of converting a substring of word1 of length i to an empty string by deleting all characters.
+[Line 8]: Explanation: End of the for loop that initializes the first column of the dp array.
+[Line 9]: Explanation: Start of a for loop that iterates from 0 to n (inclusive) to initialize the first row of the dp array.
+[Line 10]: Explanation: Setting the value of dp[0, j] to j, which represents the cost of converting an empty string to a substring of word2 of length j by inserting all characters.
+[Line 11]: Explanation: End of the for loop that initializes the first row of the dp array.
+[Line 12]: Explanation: Start of a nested for loop that iterates from 1 to m (inclusive) for the outer loop and from 1 to n (inclusive) for the inner loop to fill in the rest of the dp array.
+[Line 13]: Explanation: Start of the inner loop that iterates from 1 to n (inclusive).
+[Line 14]: Explanation: Check if the characters at positions i-1 in word1 and j-1 in word2 are equal.
+[Line 15]: Explanation: If the characters are equal, set dp[i, j] to dp[i-1, j-1], indicating no additional operation is needed as the characters match.
+[Line 16]: Explanation: If the characters are not equal, start of the else block where we calculate the costs of the three possible operations.
+[Line 17]: Explanation: Calculation of the cost of inserting a character into word1 to match word2, which is done by taking the value from dp[i, j-1] (cost of matching up to the previous character in word2) and adding 1.
+[Line 18]: Explanation: Calculation of the cost of deleting a character from word1, which is done by taking the value from dp[i-1, j] (cost of matching up to the previous character in word1) and adding 1.
+[Line 19]: Explanation: Calculation of the cost of replacing a character in word1 with a character in word2, which is done by taking the value from dp[i-1, j-1] (cost of matching up to the previous characters in both words) and adding 1.
+[Line 20]: Explanation: Setting dp[i, j] to the minimum of the three calculated costs (insert, delete, replace) using Math.Min.
+[Line 21]: Explanation: End of the inner loop that iterates from 1 to n (inclusive).
+[Line 22]: Explanation: End of the outer loop that iterates from 1 to m (inclusive).
+[Line 23]: Explanation: Return the value of dp[m, n], which represents the minimum number of operations required to convert word1 to word2.
+[Line 24]: Explanation: End of the MinDistance method.
+[Line 25]: Explanation: End of the Solution class.```"
+Maximum Profit in Job Scheduling,"``` [Line 1]: Explanation: Using the System namespace which contains fundamental classes and base classes that define commonly-used value and reference data types.
+[Line 2]: Explanation: Declaring a public class named Solution.
+[Line 3]: Explanation: Defining a public method named JobScheduling which takes three integer arrays as parameters: startTime, endTime, and profit.
+[Line 4]: Explanation: Initializing an integer variable n with the length of the startTime array, representing the number of jobs.
+[Line 5]: Explanation: Creating an array of Job objects named jobs with a size equal to n.
+[Line 6]: Explanation: Starting a for loop that iterates from 0 to n-1.
+[Line 7]: Explanation: Inside the loop, creating a new Job object with the current startTime, endTime, and profit values and assigning it to the i-th element of the jobs array.
+[Line 8]: Explanation: Ending the for loop.
+[Line 9]: Explanation: Sorting the jobs array based on the end time of each job using a custom comparison function that compares the end times of two jobs.
+[Line 10]: Explanation: Creating an integer array named dp with a size of n+1 to store the maximum profit up to each job.
+[Line 11]: Explanation: Starting a for loop that iterates from 1 to n.
+[Line 12]: Explanation: Assigning the value of dp[i-1] to dp[i], indicating that initially, the maximum profit up to the i-th job is the same as up to the (i-1)-th job.
+[Line 13]: Explanation: Calling the FindLastNonOverlapJob method to find the index of the last non-overlapping job before the i-th job and storing it in lastNonOverlapIndex.
+[Line 14]: Explanation: Checking if lastNonOverlapIndex is not -1, meaning a non-overlapping job was found.
+[Line 15]: Explanation: Updating dp[i] to be the maximum of its current value and the sum of the profit of the i-th job and the maximum profit up to the last non-overlapping job (dp[lastNonOverlapIndex + 1]).
+[Line 16]: Explanation: If no non-overlapping job was found (lastNonOverlapIndex is -1), updating dp[i] to be the maximum of its current value and the profit of the i-th job.
+[Line 17]: Explanation: Ending the if-else block.
+[Line 18]: Explanation: Ending the for loop.
+[Line 19]: Explanation: Returning the maximum profit up to the n-th job, which is stored in dp[n].
+[Line 20]: Explanation: Ending the JobScheduling method.
+[Line 21]: Explanation: Defining a private method named FindLastNonOverlapJob which takes an array of Job objects and an integer index as parameters.
+[Line 22]: Explanation: Initializing an integer variable low with 0, representing the lower bound of the binary search range.
+[Line 23]: Explanation: Initializing an integer variable high with index - 1, representing the upper bound of the binary search range.
+[Line 24]: Explanation: Starting a while loop that continues as long as low is less than or equal to high.
+[Line 25]: Explanation: Calculating the middle index mid by taking the average of low and high.
+[Line 26]: Explanation: Checking if the end time of the job at mid is less than or equal to the start time of the job at index.
+[Line 27]: Explanation: Checking if mid + 1 is less than index and if the end time of the job at mid + 1 is also less than or equal to the start time of the job at index.
+[Line 28]: Explanation: If both conditions are true, updating low to mid + 1 to search in the right half of the range.
+[Line 29]: Explanation: If the conditions are not met, returning mid as the index of the last non-overlapping job.
+[Line 30]: Explanation: Ending the if-else block.
+[Line 31]: Explanation: If the end time of the job at mid is greater than the start time of the job at index, updating high to mid - 1 to search in the left half of the range.
+[Line 32]: Explanation: Ending the if-else block.
+[Line 33]: Explanation: Ending the while loop.
+[Line 34]: Explanation: Returning -1 if no non-overlapping job was found.
+[Line 35]: Explanation: Ending the FindLastNonOverlapJob method.
+[Line 36]: Explanation: Defining a private inner class named Job.
+[Line 37]: Explanation: Declaring a public integer field named start to store the start time of a job."
+Cherry Pickup II,"[Line 1]: Explanation: Importing the System namespace which contains fundamental classes and base classes that define commonly-used value and reference data types.
+        [Line 2]: Explanation: Importing the System.Collections.Generic namespace which contains generic collections such as List, Dictionary, etc.
+        [Line 3]: Explanation: Defining a public class named Solution.
+        [Line 4]: Explanation: Opening the body of the Solution class.
+        [Line 5]: Explanation: Declaring a public method named CherryPickup which takes a 2D integer array grid as input and returns an integer.
+        [Line 6]: Explanation: Opening the body of the CherryPickup method.
+        [Line 7]: Explanation: Assigning the length of the grid (number of rows) to the variable rows.
+        [Line 8]: Explanation: Assigning the length of the first row of the grid (number of columns) to the variable cols.
+        [Line 9]: Explanation: Initializing a Dictionary to store memoized results with keys as a tuple of integers (row, pos1, pos2) and values as integers.
+        [Line 10]: Explanation: Calling the CollectCherries method with initial parameters and returning its result.
+        [Line 11]: Explanation: Declaring a private method named CollectCherries which takes the grid, memo dictionary, current row, position of robot 1 (pos1), and position of robot 2 (pos2) as parameters and returns an integer.
+        [Line 12]: Explanation: Opening the body of the CollectCherries method.
+        [Line 13]: Explanation: Checking if the current row is equal to the total number of rows in the grid.
+        [Line 14]: Explanation: If true, return 0 as there are no more rows to process.
+        [Line 15]: Explanation: Checking if the memo dictionary already contains the result for the current state (row, pos1, pos2).
+        [Line 16]: Explanation: If true, return the stored result from the memo dictionary.
+        [Line 17]: Explanation: Initializing a variable cherries to 0 to keep track of the cherries collected in the current row.
+        [Line 18]: Explanation: Adding the cherries from the current cell of robot 1 to the cherries variable.
+        [Line 19]: Explanation: Checking if robot 1 and robot 2 are not in the same cell.
+        [Line 20]: Explanation: If true, adding the cherries from the current cell of robot 2 to the cherries variable.
+        [Line 21]: Explanation: Initializing a variable maxCherries to 0 to keep track of the maximum cherries collected from the next row.
+        [Line 22]: Explanation: Starting a nested loop to iterate over possible moves for robot 1 (-1, 0, 1).
+        [Line 23]: Explanation: Starting another nested loop to iterate over possible moves for robot 2 (-1, 0, 1).
+        [Line 24]: Explanation: Calculating the new position for robot 1 after moving.
+        [Line 25]: Explanation: Calculating the new position for robot 2 after moving.
+        [Line 26]: Explanation: Checking if the new positions for both robots are within the grid boundaries.
+        [Line 27]: Explanation: If true, recursively calling CollectCherries for the next row with the new positions and updating maxCherries with the maximum result.
+        [Line 28]: Explanation: Closing the inner loop.
+        [Line 29]: Explanation: Closing the outer loop.
+        [Line 30]: Explanation: Calculating the total cherries collected by adding the cherries collected in the current row to the maximum cherries collected from"
