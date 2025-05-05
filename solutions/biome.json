@@ -1,0 +1,24 @@
+{
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "no-debugger": "error",
+      "complexity": ["error", { "max": 10 }],
+      "no-unused-vars": "error",
+      "no-implicit-any": "error",
+      "max-len": ["error", { "code": 80 }],
+      "require-await": "error",
+      "no-empty": "error", 
+      "no-shadow": "error", 
+      "consistent-return": "error", 
+      "no-unsafe-finally": "error", 
+      "prefer-const": "error",
+      "eqeqeq": "error",
+      "no-magic-numbers": "error", 
+      "curly": "error", 
+      "object-curly-spacing": ["error", "always"], 
+      "no-trailing-spaces": "error", 
+      "space-before-function-paren": ["error", "always"]
+    }
+  }
+}

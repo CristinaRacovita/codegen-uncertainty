@@ -1,0 +1,25 @@
+test1.py:1:1: D100 Missing docstring in public module
+test1.py:1:5: N802 Function name `minCost` should be lowercase
+  |
+1 | def minCost(grid):
+  |     ^^^^^^^ N802
+2 |     m, n = len(grid), len(grid[0])
+  |
+
+test1.py:1:13: ANN001 Missing type annotation for function argument `grid`
+  |
+1 | def minCost(grid):
+  |             ^^^^ ANN001
+2 |     m, n = len(grid), len(grid[0])
+  |
+
+test1.py:39:89: E501 Line too long (111 > 88)
+   |
+37 |                     pq.append((new_cost, ni, nj))
+38 |
+39 |     # If we exhaust the queue without reaching the end, return -1 (though the problem guarantees a path exists)
+   |                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^ E501
+40 |     return -1
+   |
+
+Found 4 errors.

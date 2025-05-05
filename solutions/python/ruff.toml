@@ -1,0 +1,90 @@
+# ruff.toml – Maximum strictness
+
+# Target Python version (adjust if needed)
+target-version = "py311"
+
+# Include all rule sets
+lint.select = [
+  "E",    # pycodestyle (errors)
+  "W",    # pycodestyle (warnings)
+  "F",    # pyflakes
+  "I",    # isort
+  "C90",  # mccabe (complexity)
+  "N",    # pep8-naming
+  "D",    # pydocstyle
+  "UP",   # pyupgrade
+  "YTT",  # flake8-2020
+  "ANN",  # flake8-annotations
+  "ASYNC",# flake8-async
+  "S",    # flake8-bandit
+  "BLE",  # flake8-blind-except
+  "FBT",  # flake8-boolean-trap
+  "B",    # flake8-bugbear
+  "A",    # flake8-builtins
+  "COM",  # flake8-commas
+  "C4",   # flake8-comprehensions
+  "DTZ",  # flake8-datetimez
+  "T10",  # flake8-debugger
+  "EM",   # flake8-errmsg
+  "EXE",  # flake8-executable
+  "FA",   # flake8-future-annotations
+  "ICN",  # flake8-import-conventions
+  "INP",  # flake8-no-pep420
+  "PIE",  # flake8-pie
+  "T20",  # flake8-print
+  "PT",   # flake8-pytest-style
+  "Q",    # flake8-quotes
+  "RET",  # flake8-return
+  "SIM",  # flake8-simplify
+  "SLF",  # flake8-self
+  "TID",  # flake8-tidy-imports
+  "INT",  # flake8-gettext
+  "ARG",  # flake8-unused-arguments
+  "PTH",  # flake8-use-pathlib
+  "ERA",  # eradicate (commented-out code)
+  "PL",   # pylint rules
+  "TRY",  # tryceratops
+  "FLY",  # flynt (f-string suggestions)
+  "NPY",  # numpy rules
+  "PERF", # Perflint
+  "RUF",  # Ruff-specific rules
+]
+
+# Optionally exclude specific rules (remove if you want everything)
+lint.ignore = [
+  "ANN201",  # self argument missing type (can be verbose)
+  "D103",    # Missing docstring in __init__ (can be redundant)
+  "T201"
+]
+
+# Show full path for clarity
+output-format = "full"
+
+# Set max line length
+line-length = 88
+
+# Ban commented-out code
+lint.preview = true  # Enables unstable/experimental rules
+
+# Allow autofix for everything that is safe
+fix = true
+
+# Run isort-like import sorting
+[lint.isort]
+known-first-party = ["your_project_name"]  # replace with your module name
+lines-after-imports = 2
+force-sort-within-sections = true
+
+# Restrict cyclomatic complexity
+[lint.mccabe]
+max-complexity = 10
+
+# Configure pydocstyle to Google style (or use "numpy" or "pep257")
+[lint.pydocstyle]
+convention = "google"
+
+# Set typing requirement for functions
+[lint.flake8-annotations]
+suppress-none-returning = false
+suppress-dummy-args = false
+allow-star-arg-any = false

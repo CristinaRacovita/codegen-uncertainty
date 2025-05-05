@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4"
+  },
+  "dependencies": {
+    "punycode": "^2.3.1"
+  }
+}
