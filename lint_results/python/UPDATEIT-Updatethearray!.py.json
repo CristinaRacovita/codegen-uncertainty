@@ -1,0 +1,102 @@
+[
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 11,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/UPDATEIT-Updatethearray!.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import sys\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 2
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "A001",
+    "end_location": {
+      "column": 6,
+      "row": 2
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/UPDATEIT-Updatethearray!.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 2
+    },
+    "message": "Variable `input` is shadowing a Python builtin",
+    "noqa_row": 2,
+    "url": "https://docs.astral.sh/ruff/rules/builtin-variable-shadowing"
+  },
+  {
+    "cell": null,
+    "code": "E741",
+    "end_location": {
+      "column": 10,
+      "row": 15
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/UPDATEIT-Updatethearray!.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 15
+    },
+    "message": "Ambiguous variable name: `l`",
+    "noqa_row": 15,
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-variable-name"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 18,
+      "row": 30
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/UPDATEIT-Updatethearray!.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 18,
+            "row": 30
+          },
+          "location": {
+            "column": 18,
+            "row": 30
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 18,
+      "row": 30
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 30,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

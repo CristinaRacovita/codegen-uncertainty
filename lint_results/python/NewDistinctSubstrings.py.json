@@ -1,0 +1,503 @@
+[
+  {
+    "cell": null,
+    "code": "D101",
+    "end_location": {
+      "column": 15,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 7,
+      "row": 1
+    },
+    "message": "Missing docstring in public class",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/undocumented-public-class"
+  },
+  {
+    "cell": null,
+    "code": "ANN204",
+    "end_location": {
+      "column": 17,
+      "row": 2
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": " -> None",
+          "end_location": {
+            "column": 23,
+            "row": 2
+          },
+          "location": {
+            "column": 23,
+            "row": 2
+          }
+        }
+      ],
+      "message": "Add return type annotation: `None`"
+    },
+    "location": {
+      "column": 9,
+      "row": 2
+    },
+    "message": "Missing return type annotation for special method `__init__`",
+    "noqa_row": 2,
+    "url": "https://docs.astral.sh/ruff/rules/missing-return-type-special-method"
+  },
+  {
+    "cell": null,
+    "code": "D107",
+    "end_location": {
+      "column": 17,
+      "row": 2
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 2
+    },
+    "message": "Missing docstring in `__init__`",
+    "noqa_row": 2,
+    "url": "https://docs.astral.sh/ruff/rules/undocumented-public-init"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 6,
+      "row": 5
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 5
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 5
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 5,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "D101",
+    "end_location": {
+      "column": 11,
+      "row": 5
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 7,
+      "row": 5
+    },
+    "message": "Missing docstring in public class",
+    "noqa_row": 5,
+    "url": "https://docs.astral.sh/ruff/rules/undocumented-public-class"
+  },
+  {
+    "cell": null,
+    "code": "ANN204",
+    "end_location": {
+      "column": 17,
+      "row": 6
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": " -> None",
+          "end_location": {
+            "column": 23,
+            "row": 6
+          },
+          "location": {
+            "column": 23,
+            "row": 6
+          }
+        }
+      ],
+      "message": "Add return type annotation: `None`"
+    },
+    "location": {
+      "column": 9,
+      "row": 6
+    },
+    "message": "Missing return type annotation for special method `__init__`",
+    "noqa_row": 6,
+    "url": "https://docs.astral.sh/ruff/rules/missing-return-type-special-method"
+  },
+  {
+    "cell": null,
+    "code": "D107",
+    "end_location": {
+      "column": 17,
+      "row": 6
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 6
+    },
+    "message": "Missing docstring in `__init__`",
+    "noqa_row": 6,
+    "url": "https://docs.astral.sh/ruff/rules/undocumented-public-init"
+  },
+  {
+    "cell": null,
+    "code": "E301",
+    "end_location": {
+      "column": 8,
+      "row": 8
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 1,
+            "row": 8
+          },
+          "location": {
+            "column": 1,
+            "row": 8
+          }
+        }
+      ],
+      "message": "Add missing blank line"
+    },
+    "location": {
+      "column": 5,
+      "row": 8
+    },
+    "message": "Expected 1 blank line, found 0",
+    "noqa_row": 8,
+    "url": "https://docs.astral.sh/ruff/rules/blank-line-between-methods"
+  },
+  {
+    "cell": null,
+    "code": "D102",
+    "end_location": {
+      "column": 15,
+      "row": 8
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 8
+    },
+    "message": "Missing docstring in public method",
+    "noqa_row": 8,
+    "url": "https://docs.astral.sh/ruff/rules/undocumented-public-method"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 26,
+      "row": 8
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 22,
+      "row": 8
+    },
+    "message": "Missing type annotation for function argument `word`",
+    "noqa_row": 8,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E301",
+    "end_location": {
+      "column": 8,
+      "row": 15
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 1,
+            "row": 15
+          },
+          "location": {
+            "column": 1,
+            "row": 15
+          }
+        }
+      ],
+      "message": "Add missing blank line"
+    },
+    "location": {
+      "column": 5,
+      "row": 15
+    },
+    "message": "Expected 1 blank line, found 0",
+    "noqa_row": 15,
+    "url": "https://docs.astral.sh/ruff/rules/blank-line-between-methods"
+  },
+  {
+    "cell": null,
+    "code": "D102",
+    "end_location": {
+      "column": 27,
+      "row": 15
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 15
+    },
+    "message": "Missing docstring in public method",
+    "noqa_row": 15,
+    "url": "https://docs.astral.sh/ruff/rules/undocumented-public-method"
+  },
+  {
+    "cell": null,
+    "code": "ANN202",
+    "end_location": {
+      "column": 16,
+      "row": 16
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 16
+    },
+    "message": "Missing return type annotation for private function `dfs`",
+    "noqa_row": 16,
+    "url": "https://docs.astral.sh/ruff/rules/missing-return-type-private-function"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 21,
+      "row": 16
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 17,
+      "row": 16
+    },
+    "message": "Missing type annotation for function argument `node`",
+    "noqa_row": 16,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 22
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 22
+          },
+          "location": {
+            "column": 1,
+            "row": 22
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 22
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 22,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 32,
+      "row": 22
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 31,
+      "row": 22
+    },
+    "message": "Missing type annotation for function argument `s`",
+    "noqa_row": 22,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 7,
+      "row": 30
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 30
+          },
+          "location": {
+            "column": 1,
+            "row": 30
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 30
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 30,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 11,
+      "row": 30
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 30
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 30,
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 11,
+      "row": 30
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import sys\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 31
+          },
+          "location": {
+            "column": 1,
+            "row": 30
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 30
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "noqa_row": 30,
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "A001",
+    "end_location": {
+      "column": 6,
+      "row": 31
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 31
+    },
+    "message": "Variable `input` is shadowing a Python builtin",
+    "noqa_row": 31,
+    "url": "https://docs.astral.sh/ruff/rules/builtin-variable-shadowing"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 18,
+      "row": 41
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/NewDistinctSubstrings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 18,
+            "row": 41
+          },
+          "location": {
+            "column": 18,
+            "row": 41
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 18,
+      "row": 41
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 41,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

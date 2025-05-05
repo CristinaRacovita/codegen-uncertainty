@@ -1,0 +1,300 @@
+[
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 20,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/A.WayTooLongWords.py",
+    "fix": null,
+    "location": {
+      "column": 16,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `word`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "PLR2004",
+    "end_location": {
+      "column": 22,
+      "row": 2
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/A.WayTooLongWords.py",
+    "fix": null,
+    "location": {
+      "column": 20,
+      "row": 2
+    },
+    "message": "Magic value used in comparison, consider replacing `10` with a constant variable",
+    "noqa_row": 2,
+    "url": "https://docs.astral.sh/ruff/rules/magic-value-comparison"
+  },
+  {
+    "cell": null,
+    "code": "RET504",
+    "end_location": {
+      "column": 32,
+      "row": 7
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/A.WayTooLongWords.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "return",
+          "end_location": {
+            "column": 27,
+            "row": 6
+          },
+          "location": {
+            "column": 9,
+            "row": 6
+          }
+        },
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 8
+          },
+          "location": {
+            "column": 1,
+            "row": 7
+          }
+        }
+      ],
+      "message": "Remove unnecessary assignment"
+    },
+    "location": {
+      "column": 16,
+      "row": 7
+    },
+    "message": "Unnecessary assignment to `abbreviated_word` before `return` statement",
+    "noqa_row": 7,
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-assign"
+  },
+  {
+    "cell": null,
+    "code": "RET505",
+    "end_location": {
+      "column": 9,
+      "row": 8
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/A.WayTooLongWords.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "    return word",
+          "end_location": {
+            "column": 20,
+            "row": 9
+          },
+          "location": {
+            "column": 1,
+            "row": 8
+          }
+        }
+      ],
+      "message": "Remove unnecessary `else`"
+    },
+    "location": {
+      "column": 5,
+      "row": 8
+    },
+    "message": "Unnecessary `else` after `return` statement",
+    "noqa_row": 8,
+    "url": "https://docs.astral.sh/ruff/rules/superfluous-else-return"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 10
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/A.WayTooLongWords.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 10
+          },
+          "location": {
+            "column": 1,
+            "row": 10
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 10
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 10,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PERF401",
+    "end_location": {
+      "column": 38,
+      "row": 14
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/A.WayTooLongWords.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 13
+          },
+          "location": {
+            "column": 1,
+            "row": 12
+          }
+        },
+        {
+          "content": "words = [input().strip() for _ in range(n)]",
+          "end_location": {
+            "column": 38,
+            "row": 14
+          },
+          "location": {
+            "column": 5,
+            "row": 13
+          }
+        }
+      ],
+      "message": "Replace for loop with list comprehension"
+    },
+    "location": {
+      "column": 9,
+      "row": 14
+    },
+    "message": "Use a list comprehension to create a transformed list",
+    "noqa_row": 14,
+    "url": "https://docs.astral.sh/ruff/rules/manual-list-comprehension"
+  },
+  {
+    "cell": null,
+    "code": "PERF401",
+    "end_location": {
+      "column": 41,
+      "row": 17
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/A.WayTooLongWords.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 16
+          },
+          "location": {
+            "column": 1,
+            "row": 15
+          }
+        },
+        {
+          "content": "results = [abbreviate(word) for word in words]",
+          "end_location": {
+            "column": 41,
+            "row": 17
+          },
+          "location": {
+            "column": 5,
+            "row": 16
+          }
+        }
+      ],
+      "message": "Replace for loop with list comprehension"
+    },
+    "location": {
+      "column": 9,
+      "row": 17
+    },
+    "message": "Use a list comprehension to create a transformed list",
+    "noqa_row": 17,
+    "url": "https://docs.astral.sh/ruff/rules/manual-list-comprehension"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 3,
+      "row": 20
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/A.WayTooLongWords.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 20
+          },
+          "location": {
+            "column": 1,
+            "row": 20
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 20
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 20,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 11,
+      "row": 21
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/A.WayTooLongWords.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 11,
+            "row": 21
+          },
+          "location": {
+            "column": 11,
+            "row": 21
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 11,
+      "row": 21
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

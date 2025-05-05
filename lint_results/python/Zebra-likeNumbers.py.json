@@ -1,0 +1,286 @@
+[
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 20,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `n`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "SIM110",
+    "end_location": {
+      "column": 16,
+      "row": 11
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "return all(bin_rep[i] != bin_rep[i + 1] for i in range(len(bin_rep) - 1))",
+          "end_location": {
+            "column": 16,
+            "row": 11
+          },
+          "location": {
+            "column": 5,
+            "row": 8
+          }
+        }
+      ],
+      "message": "Replace with `return all(bin_rep[i] != bin_rep[i + 1] for i in range(len(bin_rep) - 1))`"
+    },
+    "location": {
+      "column": 5,
+      "row": 8
+    },
+    "message": "Use `return all(bin_rep[i] != bin_rep[i + 1] for i in range(len(bin_rep) - 1))` instead of `for` loop",
+    "noqa_row": 8,
+    "url": "https://docs.astral.sh/ruff/rules/reimplemented-builtin"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 12
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 12
+          },
+          "location": {
+            "column": 1,
+            "row": 12
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 12
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 12,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 18,
+      "row": 12
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": null,
+    "location": {
+      "column": 17,
+      "row": 12
+    },
+    "message": "Missing type annotation for function argument `n`",
+    "noqa_row": 12,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 21
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 21
+          },
+          "location": {
+            "column": 1,
+            "row": 21
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 21
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "E741",
+    "end_location": {
+      "column": 38,
+      "row": 21
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": null,
+    "location": {
+      "column": 37,
+      "row": 21
+    },
+    "message": "Ambiguous variable name: `l`",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-variable-name"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 38,
+      "row": 21
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": null,
+    "location": {
+      "column": 37,
+      "row": 21
+    },
+    "message": "Missing type annotation for function argument `l`",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 41,
+      "row": 21
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": null,
+    "location": {
+      "column": 40,
+      "row": 21
+    },
+    "message": "Missing type annotation for function argument `r`",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 44,
+      "row": 21
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": null,
+    "location": {
+      "column": 43,
+      "row": 21
+    },
+    "message": "Missing type annotation for function argument `k`",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 2,
+      "row": 27
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 27
+          },
+          "location": {
+            "column": 1,
+            "row": 27
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 27
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 27,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "E741",
+    "end_location": {
+      "column": 6,
+      "row": 30
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 30
+    },
+    "message": "Ambiguous variable name: `l`",
+    "noqa_row": 30,
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-variable-name"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 18,
+      "row": 33
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Zebra-likeNumbers.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 18,
+            "row": 33
+          },
+          "location": {
+            "column": 18,
+            "row": 33
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 18,
+      "row": 33
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 33,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

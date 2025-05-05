@@ -1,0 +1,314 @@
+[
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 13,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `node`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 21,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": null,
+    "location": {
+      "column": 15,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `parent`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 28,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": null,
+    "location": {
+      "column": 23,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `graph`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 36,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `depths`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 9
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 9
+          },
+          "location": {
+            "column": 1,
+            "row": 9
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 9
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 9,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 23,
+      "row": 9
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": null,
+    "location": {
+      "column": 22,
+      "row": 9
+    },
+    "message": "Missing type annotation for function argument `n`",
+    "noqa_row": 9,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 30,
+      "row": 9
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 9
+    },
+    "message": "Missing type annotation for function argument `edges`",
+    "noqa_row": 9,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "RET504",
+    "end_location": {
+      "column": 23,
+      "row": 18
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "return",
+          "end_location": {
+            "column": 18,
+            "row": 17
+          },
+          "location": {
+            "column": 5,
+            "row": 17
+          }
+        },
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 19
+          },
+          "location": {
+            "column": 1,
+            "row": 18
+          }
+        }
+      ],
+      "message": "Remove unnecessary assignment"
+    },
+    "location": {
+      "column": 12,
+      "row": 18
+    },
+    "message": "Unnecessary assignment to `optimal_ttl` before `return` statement",
+    "noqa_row": 18,
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-assign"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 19
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 19
+          },
+          "location": {
+            "column": 1,
+            "row": 19
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 19
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 19,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 15,
+      "row": 20
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 20
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 20,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "A001",
+    "end_location": {
+      "column": 10,
+      "row": 21
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 21
+    },
+    "message": "Variable `input` is shadowing a Python builtin",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/builtin-variable-shadowing"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 3,
+      "row": 40
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 40
+          },
+          "location": {
+            "column": 1,
+            "row": 40
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 40
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 40,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 11,
+      "row": 41
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Timetolive.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 11,
+            "row": 41
+          },
+          "location": {
+            "column": 11,
+            "row": 41
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 11,
+      "row": 41
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 41,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

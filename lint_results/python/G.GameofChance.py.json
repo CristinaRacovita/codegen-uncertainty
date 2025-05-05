@@ -1,0 +1,196 @@
+[
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 24,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/G.GameofChance.py",
+    "fix": null,
+    "location": {
+      "column": 23,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `n`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 6
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/G.GameofChance.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 6
+          },
+          "location": {
+            "column": 1,
+            "row": 6
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 6
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 6,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 30,
+      "row": 6
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/G.GameofChance.py",
+    "fix": null,
+    "location": {
+      "column": 29,
+      "row": 6
+    },
+    "message": "Missing type annotation for function argument `n`",
+    "noqa_row": 6,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 41,
+      "row": 6
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/G.GameofChance.py",
+    "fix": null,
+    "location": {
+      "column": 32,
+      "row": 6
+    },
+    "message": "Missing type annotation for function argument `luckiness`",
+    "noqa_row": 6,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "RET504",
+    "end_location": {
+      "column": 36,
+      "row": 31
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/G.GameofChance.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "return",
+          "end_location": {
+            "column": 31,
+            "row": 30
+          },
+          "location": {
+            "column": 5,
+            "row": 30
+          }
+        },
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 32
+          },
+          "location": {
+            "column": 1,
+            "row": 31
+          }
+        }
+      ],
+      "message": "Remove unnecessary assignment"
+    },
+    "location": {
+      "column": 12,
+      "row": 31
+    },
+    "message": "Unnecessary assignment to `normalized_probabilities` before `return` statement",
+    "noqa_row": 31,
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-assign"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 2,
+      "row": 32
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/G.GameofChance.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 32
+          },
+          "location": {
+            "column": 1,
+            "row": 32
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 32
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 32,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 8,
+      "row": 37
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/G.GameofChance.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 8,
+            "row": 37
+          },
+          "location": {
+            "column": 8,
+            "row": 37
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 8,
+      "row": 37
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 37,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

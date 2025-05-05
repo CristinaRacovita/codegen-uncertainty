@@ -1,0 +1,303 @@
+[
+  {
+    "cell": null,
+    "code": "N803",
+    "end_location": {
+      "column": 20,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 1
+    },
+    "message": "Argument name `N` should be lowercase",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/invalid-argument-name"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 20,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `N`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 35,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": null,
+    "location": {
+      "column": 22,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `friday_matrix`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 52,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": null,
+    "location": {
+      "column": 37,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `saturday_matrix`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN202",
+    "end_location": {
+      "column": 28,
+      "row": 2
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 2
+    },
+    "message": "Missing return type annotation for private function `calculate_happiness`",
+    "noqa_row": 2,
+    "url": "https://docs.astral.sh/ruff/rules/missing-return-type-private-function"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 40,
+      "row": 2
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": null,
+    "location": {
+      "column": 29,
+      "row": 2
+    },
+    "message": "Missing type annotation for function argument `friday_perm`",
+    "noqa_row": 2,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 55,
+      "row": 2
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": null,
+    "location": {
+      "column": 42,
+      "row": 2
+    },
+    "message": "Missing type annotation for function argument `saturday_perm`",
+    "noqa_row": 2,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 39,
+      "row": 8
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 8
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 8,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLR1730",
+    "end_location": {
+      "column": 50,
+      "row": 16
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "max_happiness = max(max_happiness, current_happiness)",
+          "end_location": {
+            "column": 50,
+            "row": 16
+          },
+          "location": {
+            "column": 13,
+            "row": 15
+          }
+        }
+      ],
+      "message": "Replace with `max` call"
+    },
+    "location": {
+      "column": 13,
+      "row": 15
+    },
+    "message": "Replace `if` statement with `max` call",
+    "noqa_row": 15,
+    "url": "https://docs.astral.sh/ruff/rules/if-stmt-min-max"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 2,
+      "row": 18
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 18
+          },
+          "location": {
+            "column": 1,
+            "row": 18
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 18
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 18,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "COM812",
+    "end_location": {
+      "column": 17,
+      "row": 23
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "],",
+          "end_location": {
+            "column": 17,
+            "row": 23
+          },
+          "location": {
+            "column": 16,
+            "row": 23
+          }
+        }
+      ],
+      "message": "Add trailing comma"
+    },
+    "location": {
+      "column": 17,
+      "row": 23
+    },
+    "message": "Trailing comma missing",
+    "noqa_row": 23,
+    "url": "https://docs.astral.sh/ruff/rules/missing-trailing-comma"
+  },
+  {
+    "cell": null,
+    "code": "COM812",
+    "end_location": {
+      "column": 17,
+      "row": 29
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "],",
+          "end_location": {
+            "column": 17,
+            "row": 29
+          },
+          "location": {
+            "column": 16,
+            "row": 29
+          }
+        }
+      ],
+      "message": "Add trailing comma"
+    },
+    "location": {
+      "column": 17,
+      "row": 29
+    },
+    "message": "Trailing comma missing",
+    "noqa_row": 29,
+    "url": "https://docs.astral.sh/ruff/rules/missing-trailing-comma"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 56,
+      "row": 31
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Party.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 56,
+            "row": 31
+          },
+          "location": {
+            "column": 56,
+            "row": 31
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 56,
+      "row": 31
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 31,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

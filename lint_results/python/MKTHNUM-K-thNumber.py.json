@@ -1,0 +1,702 @@
+[
+  {
+    "cell": null,
+    "code": "D101",
+    "end_location": {
+      "column": 18,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 7,
+      "row": 1
+    },
+    "message": "Missing docstring in public class",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/undocumented-public-class"
+  },
+  {
+    "cell": null,
+    "code": "ANN204",
+    "end_location": {
+      "column": 17,
+      "row": 2
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": " -> None",
+          "end_location": {
+            "column": 28,
+            "row": 2
+          },
+          "location": {
+            "column": 28,
+            "row": 2
+          }
+        }
+      ],
+      "message": "Add return type annotation: `None`"
+    },
+    "location": {
+      "column": 9,
+      "row": 2
+    },
+    "message": "Missing return type annotation for special method `__init__`",
+    "noqa_row": 2,
+    "url": "https://docs.astral.sh/ruff/rules/missing-return-type-special-method"
+  },
+  {
+    "cell": null,
+    "code": "D107",
+    "end_location": {
+      "column": 17,
+      "row": 2
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 2
+    },
+    "message": "Missing docstring in `__init__`",
+    "noqa_row": 2,
+    "url": "https://docs.astral.sh/ruff/rules/undocumented-public-init"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 27,
+      "row": 2
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 24,
+      "row": 2
+    },
+    "message": "Missing type annotation for function argument `arr`",
+    "noqa_row": 2,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E301",
+    "end_location": {
+      "column": 8,
+      "row": 6
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 1,
+            "row": 6
+          },
+          "location": {
+            "column": 1,
+            "row": 6
+          }
+        }
+      ],
+      "message": "Add missing blank line"
+    },
+    "location": {
+      "column": 5,
+      "row": 6
+    },
+    "message": "Expected 1 blank line, found 0",
+    "noqa_row": 6,
+    "url": "https://docs.astral.sh/ruff/rules/blank-line-between-methods"
+  },
+  {
+    "cell": null,
+    "code": "D102",
+    "end_location": {
+      "column": 14,
+      "row": 6
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 6
+    },
+    "message": "Missing docstring in public method",
+    "noqa_row": 6,
+    "url": "https://docs.astral.sh/ruff/rules/undocumented-public-method"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 24,
+      "row": 6
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 21,
+      "row": 6
+    },
+    "message": "Missing type annotation for function argument `arr`",
+    "noqa_row": 6,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 30,
+      "row": 6
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 26,
+      "row": 6
+    },
+    "message": "Missing type annotation for function argument `node`",
+    "noqa_row": 6,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 37,
+      "row": 6
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 32,
+      "row": 6
+    },
+    "message": "Missing type annotation for function argument `start`",
+    "noqa_row": 6,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 42,
+      "row": 6
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 39,
+      "row": 6
+    },
+    "message": "Missing type annotation for function argument `end`",
+    "noqa_row": 6,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E301",
+    "end_location": {
+      "column": 8,
+      "row": 14
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 1,
+            "row": 14
+          },
+          "location": {
+            "column": 1,
+            "row": 14
+          }
+        }
+      ],
+      "message": "Add missing blank line"
+    },
+    "location": {
+      "column": 5,
+      "row": 14
+    },
+    "message": "Expected 1 blank line, found 0",
+    "noqa_row": 14,
+    "url": "https://docs.astral.sh/ruff/rules/blank-line-between-methods"
+  },
+  {
+    "cell": null,
+    "code": "D102",
+    "end_location": {
+      "column": 14,
+      "row": 14
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 14
+    },
+    "message": "Missing docstring in public method",
+    "noqa_row": 14,
+    "url": "https://docs.astral.sh/ruff/rules/undocumented-public-method"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 25,
+      "row": 14
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 21,
+      "row": 14
+    },
+    "message": "Missing type annotation for function argument `node`",
+    "noqa_row": 14,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 37,
+      "row": 14
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 14
+    },
+    "message": "Missing type annotation for function argument `left_child`",
+    "noqa_row": 14,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 50,
+      "row": 14
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 39,
+      "row": 14
+    },
+    "message": "Missing type annotation for function argument `right_child`",
+    "noqa_row": 14,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E301",
+    "end_location": {
+      "column": 8,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 1,
+            "row": 26
+          },
+          "location": {
+            "column": 1,
+            "row": 26
+          }
+        }
+      ],
+      "message": "Add missing blank line"
+    },
+    "location": {
+      "column": 5,
+      "row": 26
+    },
+    "message": "Expected 1 blank line, found 0",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/blank-line-between-methods"
+  },
+  {
+    "cell": null,
+    "code": "PLR0913",
+    "end_location": {
+      "column": 14,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 26
+    },
+    "message": "Too many arguments in function definition (6 > 5)",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/too-many-arguments"
+  },
+  {
+    "cell": null,
+    "code": "PLR0917",
+    "end_location": {
+      "column": 14,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 26
+    },
+    "message": "Too many positional arguments (6/5)",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/too-many-positional-arguments"
+  },
+  {
+    "cell": null,
+    "code": "D102",
+    "end_location": {
+      "column": 14,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 26
+    },
+    "message": "Missing docstring in public method",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/undocumented-public-method"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 25,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 21,
+      "row": 26
+    },
+    "message": "Missing type annotation for function argument `node`",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 32,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 26
+    },
+    "message": "Missing type annotation for function argument `start`",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 37,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 34,
+      "row": 26
+    },
+    "message": "Missing type annotation for function argument `end`",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E741",
+    "end_location": {
+      "column": 40,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 39,
+      "row": 26
+    },
+    "message": "Ambiguous variable name: `l`",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/ambiguous-variable-name"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 40,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 39,
+      "row": 26
+    },
+    "message": "Missing type annotation for function argument `l`",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 43,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 42,
+      "row": 26
+    },
+    "message": "Missing type annotation for function argument `r`",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 46,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 45,
+      "row": 26
+    },
+    "message": "Missing type annotation for function argument `k`",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E501",
+    "end_location": {
+      "column": 91,
+      "row": 35
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 89,
+      "row": 35
+    },
+    "message": "Line too long (90 > 88)",
+    "noqa_row": 35,
+    "url": "https://docs.astral.sh/ruff/rules/line-too-long"
+  },
+  {
+    "cell": null,
+    "code": "RET504",
+    "end_location": {
+      "column": 28,
+      "row": 36
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "return",
+          "end_location": {
+            "column": 23,
+            "row": 35
+          },
+          "location": {
+            "column": 9,
+            "row": 35
+          }
+        },
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 37
+          },
+          "location": {
+            "column": 1,
+            "row": 36
+          }
+        }
+      ],
+      "message": "Remove unnecessary assignment"
+    },
+    "location": {
+      "column": 16,
+      "row": 36
+    },
+    "message": "Unnecessary assignment to `right_result` before `return` statement",
+    "noqa_row": 36,
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-assign"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 37
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 37
+          },
+          "location": {
+            "column": 1,
+            "row": 37
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 37
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 37,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "PLC0415",
+    "end_location": {
+      "column": 15,
+      "row": 38
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 38
+    },
+    "message": "`import` should be at the top-level of a file",
+    "noqa_row": 38,
+    "url": "https://docs.astral.sh/ruff/rules/import-outside-top-level"
+  },
+  {
+    "cell": null,
+    "code": "A001",
+    "end_location": {
+      "column": 10,
+      "row": 39
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 39
+    },
+    "message": "Variable `input` is shadowing a Python builtin",
+    "noqa_row": 39,
+    "url": "https://docs.astral.sh/ruff/rules/builtin-variable-shadowing"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 3,
+      "row": 58
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 58
+          },
+          "location": {
+            "column": 1,
+            "row": 58
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 58
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 58,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 11,
+      "row": 59
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/MKTHNUM-K-thNumber.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 11,
+            "row": 59
+          },
+          "location": {
+            "column": 11,
+            "row": 59
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 11,
+      "row": 59
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 59,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

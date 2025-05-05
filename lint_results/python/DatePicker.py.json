@@ -1,0 +1,550 @@
+[
+  {
+    "cell": null,
+    "code": "PERF401",
+    "end_location": {
+      "column": 39,
+      "row": 4
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 3
+          },
+          "location": {
+            "column": 1,
+            "row": 2
+          }
+        },
+        {
+          "content": "matrix = [input().strip() for _ in range(7)]",
+          "end_location": {
+            "column": 39,
+            "row": 4
+          },
+          "location": {
+            "column": 5,
+            "row": 3
+          }
+        }
+      ],
+      "message": "Replace for loop with list comprehension"
+    },
+    "location": {
+      "column": 9,
+      "row": 4
+    },
+    "message": "Use a list comprehension to create a transformed list",
+    "noqa_row": 4,
+    "url": "https://docs.astral.sh/ruff/rules/manual-list-comprehension"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 7
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 7
+          },
+          "location": {
+            "column": 1,
+            "row": 7
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 7
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 7,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 41,
+      "row": 7
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": null,
+    "location": {
+      "column": 35,
+      "row": 7
+    },
+    "message": "Missing type annotation for function argument `matrix`",
+    "noqa_row": 7,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "Q000",
+    "end_location": {
+      "column": 27,
+      "row": 12
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\".\"",
+          "end_location": {
+            "column": 27,
+            "row": 12
+          },
+          "location": {
+            "column": 24,
+            "row": 12
+          }
+        }
+      ],
+      "message": "Replace single quotes with double quotes"
+    },
+    "location": {
+      "column": 24,
+      "row": 12
+    },
+    "message": "Single quotes found but double quotes preferred",
+    "noqa_row": 12,
+    "url": "https://docs.astral.sh/ruff/rules/bad-quotes-inline-string"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 16
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 16
+          },
+          "location": {
+            "column": 1,
+            "row": 16
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 16
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 16,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 41,
+      "row": 16
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": null,
+    "location": {
+      "column": 35,
+      "row": 16
+    },
+    "message": "Missing type annotation for function argument `matrix`",
+    "noqa_row": 16,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "Q000",
+    "end_location": {
+      "column": 31,
+      "row": 20
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\".\"",
+          "end_location": {
+            "column": 31,
+            "row": 20
+          },
+          "location": {
+            "column": 28,
+            "row": 20
+          }
+        }
+      ],
+      "message": "Replace single quotes with double quotes"
+    },
+    "location": {
+      "column": 28,
+      "row": 20
+    },
+    "message": "Single quotes found but double quotes preferred",
+    "noqa_row": 20,
+    "url": "https://docs.astral.sh/ruff/rules/bad-quotes-inline-string"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 23
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 23
+          },
+          "location": {
+            "column": 1,
+            "row": 23
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 23
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 23,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 35,
+      "row": 23
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 23
+    },
+    "message": "Missing type annotation for function argument `elements`",
+    "noqa_row": 23,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 38,
+      "row": 23
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": null,
+    "location": {
+      "column": 37,
+      "row": 23
+    },
+    "message": "Missing type annotation for function argument `k`",
+    "noqa_row": 23,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "RET504",
+    "end_location": {
+      "column": 25,
+      "row": 26
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "return",
+          "end_location": {
+            "column": 20,
+            "row": 25
+          },
+          "location": {
+            "column": 5,
+            "row": 25
+          }
+        },
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 27
+          },
+          "location": {
+            "column": 1,
+            "row": 26
+          }
+        }
+      ],
+      "message": "Remove unnecessary assignment"
+    },
+    "location": {
+      "column": 12,
+      "row": 26
+    },
+    "message": "Unnecessary assignment to `top_k_indices` before `return` statement",
+    "noqa_row": 26,
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-assign"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 27
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 27
+          },
+          "location": {
+            "column": 1,
+            "row": 27
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 27
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 27,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 33,
+      "row": 27
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 27
+    },
+    "message": "Missing type annotation for function argument `matrix`",
+    "noqa_row": 27,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 36,
+      "row": 27
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": null,
+    "location": {
+      "column": 35,
+      "row": 27
+    },
+    "message": "Missing type annotation for function argument `d`",
+    "noqa_row": 27,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 39,
+      "row": 27
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": null,
+    "location": {
+      "column": 38,
+      "row": 27
+    },
+    "message": "Missing type annotation for function argument `h`",
+    "noqa_row": 27,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "Q000",
+    "end_location": {
+      "column": 40,
+      "row": 36
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\".\"",
+          "end_location": {
+            "column": 40,
+            "row": 36
+          },
+          "location": {
+            "column": 37,
+            "row": 36
+          }
+        }
+      ],
+      "message": "Replace single quotes with double quotes"
+    },
+    "location": {
+      "column": 37,
+      "row": 36
+    },
+    "message": "Single quotes found but double quotes preferred",
+    "noqa_row": 36,
+    "url": "https://docs.astral.sh/ruff/rules/bad-quotes-inline-string"
+  },
+  {
+    "cell": null,
+    "code": "RET504",
+    "end_location": {
+      "column": 23,
+      "row": 39
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "return",
+          "end_location": {
+            "column": 18,
+            "row": 38
+          },
+          "location": {
+            "column": 5,
+            "row": 38
+          }
+        },
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 40
+          },
+          "location": {
+            "column": 1,
+            "row": 39
+          }
+        }
+      ],
+      "message": "Remove unnecessary assignment"
+    },
+    "location": {
+      "column": 12,
+      "row": 39
+    },
+    "message": "Unnecessary assignment to `probability` before `return` statement",
+    "noqa_row": 39,
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-assign"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 3,
+      "row": 40
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 40
+          },
+          "location": {
+            "column": 1,
+            "row": 40
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 40
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 40,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 23,
+      "row": 43
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/DatePicker.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 23,
+            "row": 43
+          },
+          "location": {
+            "column": 23,
+            "row": 43
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 23,
+      "row": 43
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 43,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 25,
+      "row": 7
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/A+BAgain?.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 25,
+            "row": 7
+          },
+          "location": {
+            "column": 25,
+            "row": 7
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 25,
+      "row": 7
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 7,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

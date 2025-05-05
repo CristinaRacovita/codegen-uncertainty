@@ -1,0 +1,168 @@
+[
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 10,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/SolidusFraction.py",
+    "fix": null,
+    "location": {
+      "column": 9,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `a`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 13,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/SolidusFraction.py",
+    "fix": null,
+    "location": {
+      "column": 12,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `b`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 5
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/SolidusFraction.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 5
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 5
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 5,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "F841",
+    "end_location": {
+      "column": 13,
+      "row": 7
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/SolidusFraction.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 16,
+            "row": 7
+          },
+          "location": {
+            "column": 5,
+            "row": 7
+          }
+        }
+      ],
+      "message": "Remove assignment to unused variable `vinculum`"
+    },
+    "location": {
+      "column": 5,
+      "row": 7
+    },
+    "message": "Local variable `vinculum` is assigned to but never used",
+    "noqa_row": 7,
+    "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 3,
+      "row": 18
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/SolidusFraction.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 18
+          },
+          "location": {
+            "column": 1,
+            "row": 18
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 18
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 18,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 11,
+      "row": 19
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/SolidusFraction.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 11,
+            "row": 19
+          },
+          "location": {
+            "column": 11,
+            "row": 19
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 11,
+      "row": 19
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 19,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

@@ -1,0 +1,338 @@
+[
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 26,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 20,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `stalls`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "N803",
+    "end_location": {
+      "column": 29,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 28,
+      "row": 1
+    },
+    "message": "Argument name `C` should be lowercase",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/invalid-argument-name"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 29,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 28,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `C`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 39,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 31,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `min_dist`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E302",
+    "end_location": {
+      "column": 4,
+      "row": 11
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 11
+          },
+          "location": {
+            "column": 1,
+            "row": 11
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 11
+    },
+    "message": "Expected 2 blank lines, found 0",
+    "noqa_row": 11,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-top-level"
+  },
+  {
+    "cell": null,
+    "code": "N803",
+    "end_location": {
+      "column": 31,
+      "row": 11
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 11
+    },
+    "message": "Argument name `N` should be lowercase",
+    "noqa_row": 11,
+    "url": "https://docs.astral.sh/ruff/rules/invalid-argument-name"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 31,
+      "row": 11
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 11
+    },
+    "message": "Missing type annotation for function argument `N`",
+    "noqa_row": 11,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ARG001",
+    "end_location": {
+      "column": 31,
+      "row": 11
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 11
+    },
+    "message": "Unused function argument: `N`",
+    "noqa_row": 11,
+    "url": "https://docs.astral.sh/ruff/rules/unused-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "N803",
+    "end_location": {
+      "column": 34,
+      "row": 11
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 33,
+      "row": 11
+    },
+    "message": "Argument name `C` should be lowercase",
+    "noqa_row": 11,
+    "url": "https://docs.astral.sh/ruff/rules/invalid-argument-name"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 34,
+      "row": 11
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 33,
+      "row": 11
+    },
+    "message": "Missing type annotation for function argument `C`",
+    "noqa_row": 11,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 42,
+      "row": 11
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 36,
+      "row": 11
+    },
+    "message": "Missing type annotation for function argument `stalls`",
+    "noqa_row": 11,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 7,
+      "row": 22
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 22
+          },
+          "location": {
+            "column": 1,
+            "row": 22
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 22
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 22,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 11,
+      "row": 22
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 22
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 22,
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 11,
+      "row": 22
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import sys\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 23
+          },
+          "location": {
+            "column": 1,
+            "row": 22
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 22
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "noqa_row": 22,
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "A001",
+    "end_location": {
+      "column": 6,
+      "row": 23
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 23
+    },
+    "message": "Variable `input` is shadowing a Python builtin",
+    "noqa_row": 23,
+    "url": "https://docs.astral.sh/ruff/rules/builtin-variable-shadowing"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 18,
+      "row": 40
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/AggressiveCows.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 18,
+            "row": 40
+          },
+          "location": {
+            "column": 18,
+            "row": 40
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 18,
+      "row": 40
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 40,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

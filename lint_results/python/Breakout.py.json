@@ -1,0 +1,523 @@
+[
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 26,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `b`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ARG001",
+    "end_location": {
+      "column": 26,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 1
+    },
+    "message": "Unused function argument: `b`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/unused-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 29,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": null,
+    "location": {
+      "column": 28,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `w`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 32,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": null,
+    "location": {
+      "column": 31,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `h`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 39,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": null,
+    "location": {
+      "column": 34,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `balls`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "E226",
+    "end_location": {
+      "column": 27,
+      "row": 10
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": " ",
+          "end_location": {
+            "column": 26,
+            "row": 10
+          },
+          "location": {
+            "column": 26,
+            "row": 10
+          }
+        },
+        {
+          "content": " ",
+          "end_location": {
+            "column": 27,
+            "row": 10
+          },
+          "location": {
+            "column": 27,
+            "row": 10
+          }
+        }
+      ],
+      "message": "Add missing whitespace"
+    },
+    "location": {
+      "column": 26,
+      "row": 10
+    },
+    "message": "Missing whitespace around arithmetic operator",
+    "noqa_row": 10,
+    "url": "https://docs.astral.sh/ruff/rules/missing-whitespace-around-arithmetic-operator"
+  },
+  {
+    "cell": null,
+    "code": "E226",
+    "end_location": {
+      "column": 28,
+      "row": 12
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": " ",
+          "end_location": {
+            "column": 27,
+            "row": 12
+          },
+          "location": {
+            "column": 27,
+            "row": 12
+          }
+        },
+        {
+          "content": " ",
+          "end_location": {
+            "column": 28,
+            "row": 12
+          },
+          "location": {
+            "column": 28,
+            "row": 12
+          }
+        }
+      ],
+      "message": "Add missing whitespace"
+    },
+    "location": {
+      "column": 27,
+      "row": 12
+    },
+    "message": "Missing whitespace around arithmetic operator",
+    "noqa_row": 12,
+    "url": "https://docs.astral.sh/ruff/rules/missing-whitespace-around-arithmetic-operator"
+  },
+  {
+    "cell": null,
+    "code": "PLW2901",
+    "end_location": {
+      "column": 14,
+      "row": 13
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": null,
+    "location": {
+      "column": 13,
+      "row": 13
+    },
+    "message": "`for` loop variable `t` overwritten by assignment target",
+    "noqa_row": 13,
+    "url": "https://docs.astral.sh/ruff/rules/redefined-loop-name"
+  },
+  {
+    "cell": null,
+    "code": "RET507",
+    "end_location": {
+      "column": 17,
+      "row": 16
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "            break",
+          "end_location": {
+            "column": 22,
+            "row": 17
+          },
+          "location": {
+            "column": 1,
+            "row": 16
+          }
+        }
+      ],
+      "message": "Remove unnecessary `else`"
+    },
+    "location": {
+      "column": 13,
+      "row": 16
+    },
+    "message": "Unnecessary `else` after `continue` statement",
+    "noqa_row": 16,
+    "url": "https://docs.astral.sh/ruff/rules/superfluous-else-continue"
+  },
+  {
+    "cell": null,
+    "code": "E226",
+    "end_location": {
+      "column": 30,
+      "row": 19
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": " ",
+          "end_location": {
+            "column": 29,
+            "row": 19
+          },
+          "location": {
+            "column": 29,
+            "row": 19
+          }
+        },
+        {
+          "content": " ",
+          "end_location": {
+            "column": 30,
+            "row": 19
+          },
+          "location": {
+            "column": 30,
+            "row": 19
+          }
+        }
+      ],
+      "message": "Add missing whitespace"
+    },
+    "location": {
+      "column": 29,
+      "row": 19
+    },
+    "message": "Missing whitespace around arithmetic operator",
+    "noqa_row": 19,
+    "url": "https://docs.astral.sh/ruff/rules/missing-whitespace-around-arithmetic-operator"
+  },
+  {
+    "cell": null,
+    "code": "E226",
+    "end_location": {
+      "column": 28,
+      "row": 21
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": " ",
+          "end_location": {
+            "column": 27,
+            "row": 21
+          },
+          "location": {
+            "column": 27,
+            "row": 21
+          }
+        },
+        {
+          "content": " ",
+          "end_location": {
+            "column": 28,
+            "row": 21
+          },
+          "location": {
+            "column": 28,
+            "row": 21
+          }
+        }
+      ],
+      "message": "Add missing whitespace"
+    },
+    "location": {
+      "column": 27,
+      "row": 21
+    },
+    "message": "Missing whitespace around arithmetic operator",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/missing-whitespace-around-arithmetic-operator"
+  },
+  {
+    "cell": null,
+    "code": "E226",
+    "end_location": {
+      "column": 28,
+      "row": 23
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": " ",
+          "end_location": {
+            "column": 27,
+            "row": 23
+          },
+          "location": {
+            "column": 27,
+            "row": 23
+          }
+        },
+        {
+          "content": " ",
+          "end_location": {
+            "column": 28,
+            "row": 23
+          },
+          "location": {
+            "column": 28,
+            "row": 23
+          }
+        }
+      ],
+      "message": "Add missing whitespace"
+    },
+    "location": {
+      "column": 27,
+      "row": 23
+    },
+    "message": "Missing whitespace around arithmetic operator",
+    "noqa_row": 23,
+    "url": "https://docs.astral.sh/ruff/rules/missing-whitespace-around-arithmetic-operator"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 7,
+      "row": 27
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 27
+          },
+          "location": {
+            "column": 1,
+            "row": 27
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 27
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 27,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "E402",
+    "end_location": {
+      "column": 11,
+      "row": 27
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 27
+    },
+    "message": "Module level import not at top of file",
+    "noqa_row": 27,
+    "url": "https://docs.astral.sh/ruff/rules/module-import-not-at-top-of-file"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 11,
+      "row": 27
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import sys\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 28
+          },
+          "location": {
+            "column": 1,
+            "row": 27
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 27
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "noqa_row": 27,
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "A001",
+    "end_location": {
+      "column": 6,
+      "row": 28
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": null,
+    "location": {
+      "column": 1,
+      "row": 28
+    },
+    "message": "Variable `input` is shadowing a Python builtin",
+    "noqa_row": 28,
+    "url": "https://docs.astral.sh/ruff/rules/builtin-variable-shadowing"
+  },
+  {
+    "cell": null,
+    "code": "B007",
+    "end_location": {
+      "column": 6,
+      "row": 35
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "_i",
+          "end_location": {
+            "column": 6,
+            "row": 35
+          },
+          "location": {
+            "column": 5,
+            "row": 35
+          }
+        }
+      ],
+      "message": "Rename unused `i` to `_i`"
+    },
+    "location": {
+      "column": 5,
+      "row": 35
+    },
+    "message": "Loop control variable `i` not used within loop body",
+    "noqa_row": 35,
+    "url": "https://docs.astral.sh/ruff/rules/unused-loop-control-variable"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 18,
+      "row": 43
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/Breakout.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 18,
+            "row": 43
+          },
+          "location": {
+            "column": 18,
+            "row": 43
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 18,
+      "row": 43
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 43,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]

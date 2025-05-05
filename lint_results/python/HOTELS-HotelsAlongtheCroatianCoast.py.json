@@ -1,0 +1,203 @@
+[
+  {
+    "cell": null,
+    "code": "N803",
+    "end_location": {
+      "column": 22,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/HOTELS-HotelsAlongtheCroatianCoast.py",
+    "fix": null,
+    "location": {
+      "column": 21,
+      "row": 1
+    },
+    "message": "Argument name `N` should be lowercase",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/invalid-argument-name"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 22,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/HOTELS-HotelsAlongtheCroatianCoast.py",
+    "fix": null,
+    "location": {
+      "column": 21,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `N`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "N803",
+    "end_location": {
+      "column": 25,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/HOTELS-HotelsAlongtheCroatianCoast.py",
+    "fix": null,
+    "location": {
+      "column": 24,
+      "row": 1
+    },
+    "message": "Argument name `M` should be lowercase",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/invalid-argument-name"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 25,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/HOTELS-HotelsAlongtheCroatianCoast.py",
+    "fix": null,
+    "location": {
+      "column": 24,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `M`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "ANN001",
+    "end_location": {
+      "column": 39,
+      "row": 1
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/HOTELS-HotelsAlongtheCroatianCoast.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 1
+    },
+    "message": "Missing type annotation for function argument `hotel_values`",
+    "noqa_row": 1,
+    "url": "https://docs.astral.sh/ruff/rules/missing-type-function-argument"
+  },
+  {
+    "cell": null,
+    "code": "PLR1730",
+    "end_location": {
+      "column": 34,
+      "row": 11
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/HOTELS-HotelsAlongtheCroatianCoast.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "max_sum = max(max_sum, current_sum)",
+          "end_location": {
+            "column": 34,
+            "row": 11
+          },
+          "location": {
+            "column": 9,
+            "row": 10
+          }
+        }
+      ],
+      "message": "Replace with `max_sum = max(max_sum, current_sum)`"
+    },
+    "location": {
+      "column": 9,
+      "row": 10
+    },
+    "message": "Replace `if` statement with `max_sum = max(max_sum, current_sum)`",
+    "noqa_row": 10,
+    "url": "https://docs.astral.sh/ruff/rules/if-stmt-min-max"
+  },
+  {
+    "cell": null,
+    "code": "E305",
+    "end_location": {
+      "column": 3,
+      "row": 13
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/HOTELS-HotelsAlongtheCroatianCoast.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n\n",
+          "end_location": {
+            "column": 1,
+            "row": 13
+          },
+          "location": {
+            "column": 1,
+            "row": 13
+          }
+        }
+      ],
+      "message": "Add missing blank line(s)"
+    },
+    "location": {
+      "column": 1,
+      "row": 13
+    },
+    "message": "Expected 2 blank lines after class or function definition, found (0)",
+    "noqa_row": 13,
+    "url": "https://docs.astral.sh/ruff/rules/blank-lines-after-function-or-class"
+  },
+  {
+    "cell": null,
+    "code": "A001",
+    "end_location": {
+      "column": 10,
+      "row": 15
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/HOTELS-HotelsAlongtheCroatianCoast.py",
+    "fix": null,
+    "location": {
+      "column": 5,
+      "row": 15
+    },
+    "message": "Variable `input` is shadowing a Python builtin",
+    "noqa_row": 15,
+    "url": "https://docs.astral.sh/ruff/rules/builtin-variable-shadowing"
+  },
+  {
+    "cell": null,
+    "code": "W292",
+    "end_location": {
+      "column": 18,
+      "row": 21
+    },
+    "filename": "/home/jovyan/thesis/solutions/python/HOTELS-HotelsAlongtheCroatianCoast.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\n",
+          "end_location": {
+            "column": 18,
+            "row": 21
+          },
+          "location": {
+            "column": 18,
+            "row": 21
+          }
+        }
+      ],
+      "message": "Add trailing newline"
+    },
+    "location": {
+      "column": 18,
+      "row": 21
+    },
+    "message": "No newline at end of file",
+    "noqa_row": 21,
+    "url": "https://docs.astral.sh/ruff/rules/missing-newline-at-end-of-file"
+  }
+]
