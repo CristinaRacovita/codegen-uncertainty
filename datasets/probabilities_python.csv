@@ -1,82 +1,4 @@
 title,line_number,line_text,token_prob
-Relative Ranks,0," To solve this problem without using any built-in functions or libraries that simplify algorithmic steps, we can manually sort the scores and then map them back to their original positions to assign ranks. Here's a step-by-step approach:
-
-1. **Copy the Original Scores**: First, create a copy of the original scores to keep track of their original indices.
-2. **Sort the Scores**: Implement a sorting algorithm (like bubble sort, selection sort, or insertion sort) to sort the scores in descending order.
-3. **Assign Ranks**: Create a dictionary to map each score to its rank based on its position in the sorted list.
-4. **Map Ranks Back to Original Indices**: Use the dictionary to map each original score to its corresponding rank.
-
-Here's the implementation in Python:
-
-```python
-",0.9999997615814138
-Relative Ranks,1,"def findRelativeRanks(score):
-",0.9726151143963095
-Relative Ranks,2,"    # Step 1: Copy the original scores with their indices
-",0.9999970197677612
-Relative Ranks,3,"    indexed_scores = []
-",0.9156591257882504
-Relative Ranks,4,"    for i in range(len(score)):
-",0.9793446619828923
-Relative Ranks,5,"        indexed_scores.append((score[i], i))
-",0.9991961516216655
-Relative Ranks,6,"    
-",0.9999804496765137
-Relative Ranks,7,"    # Step 2: Sort the scores in descending order using a simple sorting algorithm
-",0.9999994039535522
-Relative Ranks,8,"    n = len(indexed_scores)
-",0.8915952804174329
-Relative Ranks,9,"    for i in range(n):
-",0.9989650740662971
-Relative Ranks,10,"        for j in range(0, n-i-1):
-",0.9808542183820218
-Relative Ranks,11,"            if indexed_scores[j][0] < indexed_scores[j+1][0]:
-",0.999950457715048
-Relative Ranks,12,"                indexed_scores[j], indexed_scores[j+1] = indexed_scores[j+1], indexed_scores[j]
-",0.9509572945943249
-Relative Ranks,13,"    
-",0.9999947547912598
-Relative Ranks,14,"    # Step 3: Assign ranks
-",0.9999996423721313
-Relative Ranks,15,"    rank_dict = {}
-",0.7864573608993202
-Relative Ranks,16,"    for rank, (_, index) in enumerate(indexed_scores):
-",0.8227720726101541
-Relative Ranks,17,"        if rank == 0:
-",0.998918554440298
-Relative Ranks,18,"            rank_dict[index] = ""Gold Medal""
-",0.9999224986756419
-Relative Ranks,19,"        elif rank == 1:
-",0.9999996764318902
-Relative Ranks,20,"            rank_dict[index] = ""Silver Medal""
-",0.9999994754789224
-Relative Ranks,21,"        elif rank == 2:
-",0.9999998467309038
-Relative Ranks,22,"            rank_dict[index] = ""Bronze Medal""
-",0.9999995231626471
-Relative Ranks,23,"        else:
-",0.9999998410542695
-Relative Ranks,24,"            rank_dict[index] = str(rank + 1)
-",0.9999876317884783
-Relative Ranks,25,"    
-",0.9999996423721313
-Relative Ranks,26,"    # Step 4: Map ranks back to original indices
-",0.9999998807907104
-Relative Ranks,27,"    answer = []
-",0.729855272483848
-Relative Ranks,28,"    for i in range(len(score)):
-",0.9709220748261798
-Relative Ranks,29,"        answer.append(rank_dict[i])
-",0.9999922002663885
-Relative Ranks,30,"    
-",0.999998927116394
-Relative Ranks,31,"    return answer
-
-",0.9999601222198138
-Relative Ranks,33,"print(findRelativeRanks([5, 4, 3, 2, 1]))  # Output: [""Gold Medal"", ""Silver Medal"", ""Bronze Medal"", ""4"", ""5""]
-",0.9627450314637824
-Relative Ranks,34,"print(findRelativeRanks([10, 3, 8, 9, 4]))  # Output: [""Gold Medal"", ""5"", ""Bronze Medal"", ""Silver Medal"", ""4""]
-",0.9993795723287441
 Relative Ranks,0," To solve this problem, we need to determine the ranks of athletes based on their scores without using any built-in functions or libraries that simplify algorithmic steps. Here's a step-by-step approach to achieve this:
 
 1. **Copy and Sort the Scores**: First, create a copy of the `score` array and sort it in descending order. This will help us determine the ranks based on the highest scores first.
@@ -88,66 +10,66 @@ Relative Ranks,0," To solve this problem, we need to determine the ranks of athl
 Here's the implementation of the above approach:
 
 ```python
-",0.9999997019767317
+",0.999999702
 Relative Ranks,1,"def findRelativeRanks(score):
-",0.9841218902409915
+",0.9841218902
 Relative Ranks,2,"    # Step 1: Copy and sort the scores in descending order
-",0.9999988079071045
+",0.9999988079
 Relative Ranks,3,"    sorted_scores = score[:]
-",0.9278092583282677
+",0.9278092583
 Relative Ranks,4,"    for i in range(len(sorted_scores)):
-",0.8417413391467174
+",0.8417413391
 Relative Ranks,5,"        for j in range(i + 1, len(sorted_scores)):
-",0.9998799741550626
+",0.9998799742
 Relative Ranks,6,"            if sorted_scores[i] < sorted_scores[j]:
-",0.9988312308372017
+",0.9988312308
 Relative Ranks,7,"                # Swap elements
-",0.9999991655349731
+",0.9999991655
 Relative Ranks,8,"                sorted_scores[i], sorted_scores[j] = sorted_scores[j], sorted_scores[i]
-",0.9920488739787913
+",0.992048874
 Relative Ranks,9,"    
-",0.999921441078186
+",0.9999214411
 Relative Ranks,10,"    # Step 2: Create a rank mapping
-",0.9999996423721313
+",0.9999996424
 Relative Ranks,11,"    rank_mapping = {}
-",0.9835756954919422
+",0.9835756955
 Relative Ranks,12,"    for i in range(len(sorted_scores)):
-",0.8978053800776896
+",0.8978053801
 Relative Ranks,13,"        if i == 0:
-",0.9998840826220413
+",0.9998840826
 Relative Ranks,14,"            rank_mapping[sorted_scores[i]] = ""Gold Medal""
-",0.999989023138623
+",0.9999890231
 Relative Ranks,15,"        elif i == 1:
-",0.9999995912823509
+",0.9999995913
 Relative Ranks,16,"            rank_mapping[sorted_scores[i]] = ""Silver Medal""
-",0.9999990554947629
+",0.9999990555
 Relative Ranks,17,"        elif i == 2:
-",0.999999642371977
+",0.9999996424
 Relative Ranks,18,"            rank_mapping[sorted_scores[i]] = ""Bronze Medal""
-",0.9999993613784764
+",0.9999993614
 Relative Ranks,19,"        else:
-",0.9999998013178302
+",0.9999998013
 Relative Ranks,20,"            rank_mapping[sorted_scores[i]] = str(i + 1)
-",0.9999625238756168
+",0.9999625239
 Relative Ranks,21,"    
-",0.9999995231628418
+",0.9999995232
 Relative Ranks,22,"    # Step 3: Assign ranks based on the original score array
-",0.9999998807907104
+",0.9999998808
 Relative Ranks,23,"    answer = []
-",0.9731437535701941
+",0.9731437536
 Relative Ranks,24,"    for s in score:
-",0.9798192663791426
+",0.9798192664
 Relative Ranks,25,"        answer.append(rank_mapping[s])
-",0.9999847917404316
+",0.9999847917
 Relative Ranks,26,"    
-",0.9999995231628418
+",0.9999995232
 Relative Ranks,27,"    return answer
 
-",0.9999416570408942
+",0.999941657
 Relative Ranks,29,"print(findRelativeRanks([5, 4, 3, 2, 1]))  # Output: [""Gold Medal"", ""Silver Medal"", ""Bronze Medal"", ""4"", ""5""]
-",0.9651469835215906
+",0.9651469835
 Relative Ranks,30,"print(findRelativeRanks([10, 3, 8, 9, 4]))  # Output: [""Gold Medal"", ""5"", ""Bronze Medal"", ""Silver Medal"", ""4""]
-",0.9992228614981095
+",0.9992228615
 Truncate Sentence,0," To solve this problem, we need to manually parse the input string `s` to extract the first `k` words and then construct a new string from these words. We will iterate through the string character by character, keeping track of spaces to identify word boundaries. Here's a step-by-step approach to achieve this:
 
 1. Initialize an empty list to store the words.
@@ -162,62 +84,62 @@ Truncate Sentence,0," To solve this problem, we need to manually parse the input
 Here's the implementation of the above logic:
 
 ```python
-",0.9999994039533746
+",0.999999404
 Truncate Sentence,1,"def truncate_sentence(s, k):
-",0.9807211402988392
+",0.9807211403
 Truncate Sentence,2,"    words = []
-",0.9634587137566146
+",0.9634587138
 Truncate Sentence,3,"    current_word = """"
-",0.993225681042664
+",0.993225681
 Truncate Sentence,4,"    
-",0.9562051296234131
+",0.9562051296
 Truncate Sentence,5,"    for char in s:
-",0.9782368329663818
+",0.978236833
 Truncate Sentence,6,"        if char != ' ':
-",0.989640457816748
+",0.9896404578
 Truncate Sentence,7,"            current_word += char
-",0.9986217432278758
+",0.9986217432
 Truncate Sentence,8,"        else:
-",0.9888768314552812
+",0.9888768315
 Truncate Sentence,9,"            if current_word:
-",0.962954664478154
+",0.9629546645
 Truncate Sentence,10,"                words.append(current_word)
-",0.9999942182981102
+",0.9999942183
 Truncate Sentence,11,"                current_word = """"
-",0.9998294168115236
+",0.9998294168
 Truncate Sentence,12,"    
-",0.9998759031295776
+",0.9998759031
 Truncate Sentence,13,"    # Add the last word if it exists
-",0.9999977350234985
+",0.999997735
 Truncate Sentence,14,"    if current_word:
-",0.9999995231627223
+",0.9999995232
 Truncate Sentence,15,"        words.append(current_word)
-",0.9999975760732986
+",0.9999975761
 Truncate Sentence,16,"    
-",0.999991774559021
+",0.9999917746
 Truncate Sentence,17,"    # Construct the truncated sentence
-",1.0
+",1
 Truncate Sentence,18,"    truncated_sentence = """"
-",0.9990545259343815
+",0.9990545259
 Truncate Sentence,19,"    for i in range(k):
-",0.9948634073980308
+",0.9948634074
 Truncate Sentence,20,"        if i > 0:
-",0.8493418503114587
+",0.8493418503
 Truncate Sentence,21,"            truncated_sentence += "" ""
-",0.951276058315277
+",0.9512760583
 Truncate Sentence,22,"        truncated_sentence += words[i]
-",0.9999975647213244
+",0.9999975647
 Truncate Sentence,23,"    
-",0.999997615814209
+",0.9999976158
 Truncate Sentence,24,"    return truncated_sentence
 
-",0.999964103669677
+",0.9999641037
 Truncate Sentence,26,"print(truncate_sentence(""Hello how are you Contestant"", 4))  # Output: ""Hello how are you""
-",0.9968093362428061
+",0.9968093362
 Truncate Sentence,27,"print(truncate_sentence(""What is the solution to this problem"", 4))  # Output: ""What is the solution""
-",0.9999928262428949
+",0.9999928262
 Truncate Sentence,28,"print(truncate_sentence(""chopper is not a tanuki"", 5))  # Output: ""chopper is not a tanuki""
-",0.9997265646602925
+",0.9997265647
 Perform String Shifts,0," To solve this problem, we need to perform a series of left and right shifts on the given string `s` based on the instructions provided in the `shift` matrix. The key is to efficiently compute the net effect of all these shifts and then apply that net shift to the string.
 
 Here's a step-by-step breakdown of the approach:
@@ -238,73 +160,73 @@ Here's a step-by-step breakdown of the approach:
 Here's the implementation of the above logic:
 
 ```python
-",0.9999989271158185
+",0.9999989271
 Perform String Shifts,1,"def stringShift(s, shift):
-",0.9166198966303541
+",0.9166198966
 Perform String Shifts,2,"    # Calculate net shift
-",0.9999926090240479
+",0.999992609
 Perform String Shifts,3,"    net_shift = 0
-",0.9587213114728393
+",0.9587213115
 Perform String Shifts,4,"    for direction, amount in shift:
-",0.9784878637346495
+",0.9784878637
 Perform String Shifts,5,"        if direction == 0:  # Left shift
-",0.9027191849305773
+",0.9027191849
 Perform String Shifts,6,"            net_shift -= amount
-",0.998397995032858
+",0.998397995
 Perform String Shifts,7,"        else:  # Right shift
-",0.9707927255108314
+",0.9707927255
 Perform String Shifts,8,"            net_shift += amount
     
-",0.9888097603423479
+",0.9888097603
 Perform String Shifts,9,"    # Normalize net shift within the bounds of the string length
-",0.9999990463256836
+",0.9999990463
 Perform String Shifts,10,"    n = len(s)
-",0.9688030797600877
+",0.9688030798
 Perform String Shifts,11,"    net_shift %= n
     
-",0.800653961747699
+",0.8006539617
 Perform String Shifts,12,"    # If net shift is negative, convert it to equivalent positive shift
-",0.9999973773956299
+",0.9999973774
 Perform String Shifts,13,"    if net_shift < 0:
-",0.9999502975891412
+",0.9999502976
 Perform String Shifts,14,"        net_shift += n
     
-",0.9973348418224787
+",0.9973348418
 Perform String Shifts,15,"    # Apply the net shift
-",0.9999984502792358
+",0.9999984503
 Perform String Shifts,16,"    if net_shift == 0:
-",0.9561784158509461
+",0.9561784159
 Perform String Shifts,17,"        return s
     
-",0.9459738967726427
+",0.9459738968
 Perform String Shifts,18,"    # Perform the shift
-",0.9999990463256836
+",0.9999990463
 Perform String Shifts,19,"    result = [''] * n
-",0.7839251285930531
+",0.7839251286
 Perform String Shifts,20,"    for i in range(n):
-",0.9981102203912554
+",0.9981102204
 Perform String Shifts,21,"        new_index = (i + net_shift) % n
-",0.9246378902568665
+",0.9246378903
 Perform String Shifts,22,"        result[new_index] = s[i]
-",0.9999590804529181
+",0.9999590805
 Perform String Shifts,23,"    
-",0.9999983310699463
+",0.9999983311
 Perform String Shifts,24,"    return ''.join(result)
 
-",0.9992532081554597
+",0.9992532082
 Perform String Shifts,26,"s1 = ""abc""
-",0.9252270472204314
+",0.9252270472
 Perform String Shifts,27,"shift1 = [[0, 1], [1, 2]]
-",0.9770906687055154
+",0.9770906687
 Perform String Shifts,28,"print(stringShift(s1, shift1))  # Output: ""cab""
 
-",0.9998717008270435
+",0.9998717008
 Perform String Shifts,29,"s2 = ""abcdefg""
-",0.999999625342098
+",0.9999996253
 Perform String Shifts,30,"shift2 = [[1, 1], [1, 1], [0, 2], [1, 3]]
-",0.9999967547603648
+",0.9999967548
 Perform String Shifts,31,"print(stringShift(s2, shift2))  # Output: ""efgabcd""
-",0.9999993443485021
+",0.9999993443
 Invert Binary Tree,0," To solve the problem of inverting a binary tree without using any built-in functions or libraries that simplify algorithmic steps, we can use a recursive approach. The idea is to swap the left and right children of each node in the tree.
 
 Here's a step-by-step breakdown of the solution:
@@ -321,108 +243,108 @@ Here's a step-by-step breakdown of the solution:
 Here's the implementation of the above logic in Python:
 
 ```python
-",0.9999990463253354
+",0.9999990463
 Invert Binary Tree,1,"class TreeNode:
-",0.987117200484677
+",0.9871172005
 Invert Binary Tree,2,"    def __init__(self, val=0, left=None, right=None):
-",0.9997968867775983
+",0.9997968868
 Invert Binary Tree,3,"        self.val = val
-",0.9999990860619578
+",0.9999990861
 Invert Binary Tree,4,"        self.left = left
-",0.9999992847439216
+",0.9999992847
 Invert Binary Tree,5,"        self.right = right
 
-",0.9999984502760431
+",0.9999984503
 Invert Binary Tree,6,"def invertTree(root):
-",0.9547602110724989
+",0.9547602111
 Invert Binary Tree,7,"    # Base case: if the current node is None, return None
-",0.9999988079071045
+",0.9999988079
 Invert Binary Tree,8,"    if root is None:
-",0.9987277053776722
+",0.9987277054
 Invert Binary Tree,9,"        return None
     
-",0.9989971208772342
+",0.9989971209
 Invert Binary Tree,10,"    # Recursively invert the left and right subtrees
-",0.9999998807907104
+",0.9999998808
 Invert Binary Tree,11,"    left_inverted = invertTree(root.left)
-",0.9245679279878734
+",0.924567928
 Invert Binary Tree,12,"    right_inverted = invertTree(root.right)
-",0.9999981641719838
+",0.9999981642
 Invert Binary Tree,13,"    
-",0.9999998807907104
+",0.9999998808
 Invert Binary Tree,14,"    # Swap the left and right children
-",0.9999996423721313
+",0.9999996424
 Invert Binary Tree,15,"    root.left = right_inverted
-",0.9992422917618924
+",0.9992422918
 Invert Binary Tree,16,"    root.right = left_inverted
     
-",0.9999983012611211
+",0.9999983013
 Invert Binary Tree,17,"    # Return the current node
-",0.9999998807907104
+",0.9999998808
 Invert Binary Tree,18,"    return root
-",0.9037704807082746
+",0.9037704807
 Merge Strings Alternately,0," ```python
-",0.9622775973447056
+",0.9622775973
 Merge Strings Alternately,1,"def merge_strings(word1, word2):
-",0.9217762872567472
+",0.9217762873
 Merge Strings Alternately,2,"    # Initialize pointers for both words
-",0.9999853372573853
+",0.9999853373
 Merge Strings Alternately,3,"    i, j = 0, 0
-",0.9862278689036658
+",0.9862278689
 Merge Strings Alternately,4,"    # Initialize the result string
-",0.9999990463256836
+",0.9999990463
 Merge Strings Alternately,5,"    merged = """"
-",0.8973176449605194
+",0.897317645
 Merge Strings Alternately,6,"    
-",0.9948773980140686
+",0.994877398
 Merge Strings Alternately,7,"    # Loop until we reach the end of one of the words
-",0.9999997615814209
+",0.9999997616
 Merge Strings Alternately,8,"    while i < len(word1) and j < len(word2):
-",0.9973119740679772
+",0.9973119741
 Merge Strings Alternately,9,"        # Add character from word1
-",0.9999992847442627
+",0.9999992847
 Merge Strings Alternately,10,"        merged += word1[i]
-",0.999786448236902
+",0.9997864482
 Merge Strings Alternately,11,"        # Move pointer for word1
-",0.9999936819076538
+",0.9999936819
 Merge Strings Alternately,12,"        i += 1
-",0.9992676515055456
+",0.9992676515
 Merge Strings Alternately,13,"        # Add character from word2
-",0.9999903440475464
+",0.999990344
 Merge Strings Alternately,14,"        merged += word2[j]
-",0.9999962023257478
+",0.9999962023
 Merge Strings Alternately,15,"        # Move pointer for word2
-",0.9999977350234985
+",0.999997735
 Merge Strings Alternately,16,"        j += 1
     
-",0.9999610446632429
+",0.9999610447
 Merge Strings Alternately,17,"    # Append remaining characters from word1, if any
-",0.9999991655349731
+",0.9999991655
 Merge Strings Alternately,18,"    while i < len(word1):
-",0.9999414270091201
+",0.999941427
 Merge Strings Alternately,19,"        merged += word1[i]
-",0.999926653588106
+",0.9999266536
 Merge Strings Alternately,20,"        i += 1
     
-",0.9999807071221019
+",0.9999807071
 Merge Strings Alternately,21,"    # Append remaining characters from word2, if any
-",0.9999994039535522
+",0.999999404
 Merge Strings Alternately,22,"    while j < len(word2):
-",0.9999987035978651
+",0.9999987036
 Merge Strings Alternately,23,"        merged += word2[j]
-",0.9999982799785478
+",0.99999828
 Merge Strings Alternately,24,"        j += 1
     
-",0.9999890920957792
+",0.9999890921
 Merge Strings Alternately,25,"    return merged
 
-",0.9890421112290818
+",0.9890421112
 Merge Strings Alternately,27,"print(merge_strings(""abc"", ""pqr""))  # Output: ""apbqcr""
-",0.9857185984528788
+",0.9857185985
 Merge Strings Alternately,28,"print(merge_strings(""ab"", ""pqrs""))  # Output: ""apbqrs""
-",0.9733431256457592
+",0.9733431256
 Merge Strings Alternately,29,"print(merge_strings(""abcd"", ""pq""))  # Output: ""apbqcd""
-",0.9954637346642605
+",0.9954637347
 Delete N Nodes After M Nodes of a Linked List,0," To solve this problem, we need to traverse the linked list and modify it in place by keeping every `m` nodes and removing the next `n` nodes. Here's a step-by-step approach to achieve this:
 
 1. **Initialize Pointers**: We'll use two pointers, `current` and `previous`, to keep track of our position in the list. `current` will help us traverse the list, and `previous` will help us link the nodes after removing the required ones.
@@ -440,59 +362,59 @@ Delete N Nodes After M Nodes of a Linked List,0," To solve this problem, we need
 Here's the implementation of the above logic:
 
 ```python
-",0.9999932646540354
+",0.9999932647
 Delete N Nodes After M Nodes of a Linked List,1,"class ListNode:
-",0.9969677794650595
+",0.9969677795
 Delete N Nodes After M Nodes of a Linked List,2,"    def __init__(self, val=0, next=None):
-",0.9870148292060763
+",0.9870148292
 Delete N Nodes After M Nodes of a Linked List,3,"        self.val = val
-",0.9999990661935565
+",0.9999990662
 Delete N Nodes After M Nodes of a Linked List,4,"        self.next = next
 
-",0.9999922513114168
+",0.9999922513
 Delete N Nodes After M Nodes of a Linked List,5,"def deleteNodes(head, m, n):
-",0.9699815427237002
+",0.9699815427
 Delete N Nodes After M Nodes of a Linked List,6,"    current = head
-",0.8970793459031033
+",0.8970793459
 Delete N Nodes After M Nodes of a Linked List,7,"    previous = None
     
-",0.8955055554230286
+",0.8955055554
 Delete N Nodes After M Nodes of a Linked List,8,"    while current:
-",0.8697466809481814
+",0.8697466809
 Delete N Nodes After M Nodes of a Linked List,9,"        # Keep m nodes
-",0.9999997615814209
+",0.9999997616
 Delete N Nodes After M Nodes of a Linked List,10,"        keep_count = 0
-",0.9885145196971404
+",0.9885145197
 Delete N Nodes After M Nodes of a Linked List,11,"        while current and keep_count < m:
-",0.9892170381565025
+",0.9892170382
 Delete N Nodes After M Nodes of a Linked List,12,"            previous = current
-",0.9867320033842402
+",0.9867320034
 Delete N Nodes After M Nodes of a Linked List,13,"            current = current.next
-",0.9999959866009579
+",0.9999959866
 Delete N Nodes After M Nodes of a Linked List,14,"            keep_count += 1
         
-",0.9999321661400038
+",0.9999321661
 Delete N Nodes After M Nodes of a Linked List,15,"        # Remove n nodes
-",0.999998927116394
+",0.9999989271
 Delete N Nodes After M Nodes of a Linked List,16,"        remove_count = 0
-",0.9997593091031582
+",0.9997593091
 Delete N Nodes After M Nodes of a Linked List,17,"        while current and remove_count < n:
-",0.9999895624066637
+",0.9999895624
 Delete N Nodes After M Nodes of a Linked List,18,"            current = current.next
-",0.9999889531892108
+",0.9999889532
 Delete N Nodes After M Nodes of a Linked List,19,"            remove_count += 1
         
-",0.9999542178143126
+",0.9999542178
 Delete N Nodes After M Nodes of a Linked List,20,"        # Link the previous node to the current node
-",0.999883770942688
+",0.9998837709
 Delete N Nodes After M Nodes of a Linked List,21,"        if previous:
-",0.9986427853621297
+",0.9986427854
 Delete N Nodes After M Nodes of a Linked List,22,"            previous.next = current
     
-",0.99856821226746
+",0.9985682123
 Delete N Nodes After M Nodes of a Linked List,23,"    return head
 
-",0.9566690257230407
+",0.9566690257
 Reverse Linked List,0," To solve the problem of reversing a singly linked list, we need to understand the structure of a linked list and how to manipulate its pointers. A linked list consists of nodes where each node contains a value and a pointer to the next node. The head of the list is the first node.
 
 ### Iterative Approach
@@ -502,34 +424,34 @@ In the iterative approach, we traverse the list and reverse the direction of the
 Here's the implementation:
 
 ```python
-",0.9999933838648455
+",0.9999933839
 Reverse Linked List,1,"class ListNode:
-",0.9970101360897523
+",0.9970101361
 Reverse Linked List,2,"    def __init__(self, val=0, next=None):
-",0.999122265386378
+",0.9991222654
 Reverse Linked List,3,"        self.val = val
-",0.9999989469845227
+",0.999998947
 Reverse Linked List,4,"        self.next = next
 
-",0.9999920923919915
+",0.9999920924
 Reverse Linked List,5,"def reverseListIterative(head):
-",0.8999969579747681
+",0.899996958
 Reverse Linked List,6,"    prev = None
-",0.99877591499826
+",0.998775915
 Reverse Linked List,7,"    current = head
-",0.9929239756890776
+",0.9929239757
 Reverse Linked List,8,"    while current:
-",0.7804954224495344
+",0.7804954224
 Reverse Linked List,9,"        next_node = current.next  # Store the next node
-",0.9894387851129847
+",0.9894387851
 Reverse Linked List,10,"        current.next = prev       # Reverse the current node's pointer
-",0.9484669796354264
+",0.9484669796
 Reverse Linked List,11,"        prev = current            # Move prev to current
-",0.9508024537754554
+",0.9508024538
 Reverse Linked List,12,"        current = next_node       # Move to the next node
-",0.9915093589730098
+",0.991509359
 Reverse Linked List,13,"    return prev  # New head of the reversed list
-",0.928137627115252
+",0.9281376271
 How Many Numbers Are Smaller Than the Current Number,0," To solve this problem, we need to determine how many numbers in the array are smaller than each element without using any built-in functions or libraries that simplify algorithmic steps. Here's a step-by-step approach to achieve this:
 
 1. **Initialize an empty list** to store the results.
@@ -541,50 +463,50 @@ How Many Numbers Are Smaller Than the Current Number,0," To solve this problem, 
 Here's the implementation of the above logic:
 
 ```python
-",0.9999992847440069
+",0.9999992847
 How Many Numbers Are Smaller Than the Current Number,1,"def smaller_numbers_than_current(nums):
-",0.9625891081060892
+",0.9625891081
 How Many Numbers Are Smaller Than the Current Number,2,"    # Initialize the result list
-",0.9999996423721313
+",0.9999996424
 How Many Numbers Are Smaller Than the Current Number,3,"    result = []
-",0.9996968723150508
+",0.9996968723
 How Many Numbers Are Smaller Than the Current Number,4,"    
-",0.9994028806686401
+",0.9994028807
 How Many Numbers Are Smaller Than the Current Number,5,"    # Iterate through each element in nums
-",0.9999997615814209
+",0.9999997616
 How Many Numbers Are Smaller Than the Current Number,6,"    for i in range(len(nums)):
-",0.9999495344047982
+",0.9999495344
 How Many Numbers Are Smaller Than the Current Number,7,"        # Initialize a counter for smaller numbers
-",0.9999967813491821
+",0.9999967813
 How Many Numbers Are Smaller Than the Current Number,8,"        count = 0
         
-",0.9252068341610222
+",0.9252068342
 How Many Numbers Are Smaller Than the Current Number,9,"        # Compare with each other element in nums
-",0.9999994039535522
+",0.999999404
 How Many Numbers Are Smaller Than the Current Number,10,"        for j in range(len(nums)):
-",0.9999986439923046
+",0.999998644
 How Many Numbers Are Smaller Than the Current Number,11,"            # Check if the current element is smaller than nums[j]
-",0.9999983310699463
+",0.9999983311
 How Many Numbers Are Smaller Than the Current Number,12,"            if nums[j] < nums[i]:
-",0.8620032964282685
+",0.8620032964
 How Many Numbers Are Smaller Than the Current Number,13,"                count += 1
         
-",0.9835797012768267
+",0.9835797013
 How Many Numbers Are Smaller Than the Current Number,14,"        # Append the count to the result list
-",0.9999997615814209
+",0.9999997616
 How Many Numbers Are Smaller Than the Current Number,15,"        result.append(count)
-",0.9999983310689345
+",0.9999983311
 How Many Numbers Are Smaller Than the Current Number,16,"    
-",0.9999994039535522
+",0.999999404
 How Many Numbers Are Smaller Than the Current Number,17,"    return result
 
-",0.5916862297783158
+",0.5916862298
 How Many Numbers Are Smaller Than the Current Number,19,"print(smaller_numbers_than_current([8, 1, 2, 2, 3]))  # Output: [4, 0, 1, 1, 3]
-",0.9755100828934845
+",0.9755100829
 How Many Numbers Are Smaller Than the Current Number,20,"print(smaller_numbers_than_current([6, 5, 4, 8]))     # Output: [2, 1, 0, 3]
-",0.9722953406498855
+",0.9722953406
 How Many Numbers Are Smaller Than the Current Number,21,"print(smaller_numbers_than_current([7, 7, 7, 7]))     # Output: [0, 0, 0, 0]
-",0.9998725308732407
+",0.9998725309
 Find All The Lonely Nodes,0," To solve the problem of finding lonely nodes in a binary tree without using any built-in functions or libraries that simplify algorithmic steps, we can use a depth-first search (DFS) approach. We'll traverse the tree and keep track of each node's parent to determine if it is a lonely node.
 
 Here's a step-by-step explanation of the approach:
@@ -602,131 +524,131 @@ Here's a step-by-step explanation of the approach:
 Here's the implementation of the above approach:
 
 ```python
-",0.999998033044788
+",0.999998033
 Find All The Lonely Nodes,1,"class TreeNode:
-",0.9814032393601488
+",0.9814032394
 Find All The Lonely Nodes,2,"    def __init__(self, val=0, left=None, right=None):
-",0.9841596127198872
+",0.9841596127
 Find All The Lonely Nodes,3,"        self.val = val
-",0.99999783436105
+",0.9999978344
 Find All The Lonely Nodes,4,"        self.left = left
-",0.9999984900123412
+",0.99999849
 Find All The Lonely Nodes,5,"        self.right = right
 
-",0.9999958872670718
+",0.9999958873
 Find All The Lonely Nodes,6,"def getLonelyNodes(root):
-",0.9268684549399389
+",0.9268684549
 Find All The Lonely Nodes,7,"    lonely_nodes = []
-",0.806877817283047
+",0.8068778173
 Find All The Lonely Nodes,8,"    
-",0.9995014667510986
+",0.9995014668
 Find All The Lonely Nodes,9,"    def dfs(node, parent):
-",0.9798932465539636
+",0.9798932466
 Find All The Lonely Nodes,10,"        if node is None:
-",0.9622115824189689
+",0.9622115824
 Find All The Lonely Nodes,11,"            return
         
-",0.9822045888922702
+",0.9822045889
 Find All The Lonely Nodes,12,"        # Check if the current node is a lonely node
-",0.9999988079071045
+",0.9999988079
 Find All The Lonely Nodes,13,"        if parent is not None:
-",0.9344218123837281
+",0.9344218124
 Find All The Lonely Nodes,14,"            if (parent.left is not None and parent.right is None) or \
-",0.8643276641380792
+",0.8643276641
 Find All The Lonely Nodes,15,"               (parent.left is None and parent.right is not None):
-",0.98993528703584
+",0.989935287
 Find All The Lonely Nodes,16,"                lonely_nodes.append(node.val)
-",0.9989786794808851
+",0.9989786795
 Find All The Lonely Nodes,17,"        
-",0.9999494552612305
+",0.9999494553
 Find All The Lonely Nodes,18,"        # Traverse the left and right subtrees
-",0.9999994039535522
+",0.999999404
 Find All The Lonely Nodes,19,"        dfs(node.left, node)
-",0.999356250956571
+",0.999356251
 Find All The Lonely Nodes,20,"        dfs(node.right, node)
-",0.9999912975129394
+",0.9999912975
 Find All The Lonely Nodes,21,"    
-",0.9999853372573853
+",0.9999853373
 Find All The Lonely Nodes,22,"    # Start DFS from the root with no parent
-",0.9999996423721313
+",0.9999996424
 Find All The Lonely Nodes,23,"    dfs(root, None)
-",0.9999259820005213
+",0.999925982
 Find All The Lonely Nodes,24,"    
-",0.9715715646743774
+",0.9715715647
 Find All The Lonely Nodes,25,"    return lonely_nodes
 
-",0.9913689172633979
+",0.9913689173
 Find All The Lonely Nodes,28,"root = TreeNode(1)
-",0.9215478552459622
+",0.9215478552
 Find All The Lonely Nodes,29,"root.left = TreeNode(2)
-",0.9999640392280409
+",0.9999640392
 Find All The Lonely Nodes,30,"root.right = TreeNode(3)
-",0.9999039399120339
+",0.9999039399
 Find All The Lonely Nodes,31,"root.left.right = TreeNode(4)
 
-",0.980632442402429
+",0.9806324424
 Find All The Lonely Nodes,32,"print(getLonelyNodes(root))  # Output: [4]
-",0.9795473661418346
+",0.9795473661
 Maximum Ascending Subarray Sum,0," To solve this problem, we need to iterate through the array and keep track of the current ascending subarray's sum. If the next element is greater than the current one, we add it to the current sum. If not, we compare the current sum with the maximum sum found so far and update the maximum sum if necessary. Finally, we also need to check the last ascending subarray after the loop ends.
 
 Here's the step-by-step implementation:
 
 ```python
-",0.9999987483016763
+",0.9999987483
 Maximum Ascending Subarray Sum,1,"def max_ascending_sum(nums):
-",0.806981212734204
+",0.8069812127
 Maximum Ascending Subarray Sum,2,"    # Initialize variables to keep track of the maximum sum and the current sum
-",0.9999998807907104
+",0.9999998808
 Maximum Ascending Subarray Sum,3,"    max_sum = 0
-",0.9937702115086924
+",0.9937702115
 Maximum Ascending Subarray Sum,4,"    current_sum = nums[0]
-",0.8683519663133091
+",0.8683519663
 Maximum Ascending Subarray Sum,5,"    
-",0.92082679271698
+",0.9208267927
 Maximum Ascending Subarray Sum,6,"    # Iterate through the array starting from the second element
-",0.9999996423721313
+",0.9999996424
 Maximum Ascending Subarray Sum,7,"    for i in range(1, len(nums)):
-",0.9992029966008723
+",0.9992029966
 Maximum Ascending Subarray Sum,8,"        # Check if the current element is greater than the previous one
-",0.999995231628418
+",0.9999952316
 Maximum Ascending Subarray Sum,9,"        if nums[i] > nums[i - 1]:
-",0.9999707025422659
+",0.9999707025
 Maximum Ascending Subarray Sum,10,"            # Add the current element to the current sum
-",0.9999998807907104
+",0.9999998808
 Maximum Ascending Subarray Sum,11,"            current_sum += nums[i]
-",0.9999485789510222
+",0.999948579
 Maximum Ascending Subarray Sum,12,"        else:
-",0.9999930858166354
+",0.9999930858
 Maximum Ascending Subarray Sum,13,"            # Compare the current sum with the maximum sum and update if necessary
-",0.9999995231628418
+",0.9999995232
 Maximum Ascending Subarray Sum,14,"            if current_sum > max_sum:
-",0.9998044715841522
+",0.9998044716
 Maximum Ascending Subarray Sum,15,"                max_sum = current_sum
-",0.9971821110900554
+",0.9971821111
 Maximum Ascending Subarray Sum,16,"            # Reset the current sum to the current element
-",0.9999910593032837
+",0.9999910593
 Maximum Ascending Subarray Sum,17,"            current_sum = nums[i]
-",0.9999988419647399
+",0.999998842
 Maximum Ascending Subarray Sum,18,"    
-",0.9999960660934448
+",0.9999960661
 Maximum Ascending Subarray Sum,19,"    # After the loop, compare the last current sum with the maximum sum
-",0.9999996423721313
+",0.9999996424
 Maximum Ascending Subarray Sum,20,"    if current_sum > max_sum:
-",0.9999845317918791
+",0.9999845318
 Maximum Ascending Subarray Sum,21,"        max_sum = current_sum
     
-",0.9999936477692878
+",0.9999936478
 Maximum Ascending Subarray Sum,22,"    return max_sum
 
-",0.9957594087964848
+",0.9957594088
 Maximum Ascending Subarray Sum,24,"print(max_ascending_sum([10, 20, 30, 5, 10, 50]))  # Output: 65
-",0.9973879838031798
+",0.9973879838
 Maximum Ascending Subarray Sum,25,"print(max_ascending_sum([10, 20, 30, 40, 50]))  # Output: 150
-",0.9653499336395989
+",0.9653499336
 Maximum Ascending Subarray Sum,26,"print(max_ascending_sum([12, 17, 15, 13, 10, 11, 12]))  # Output: 33
-",0.9999993899269868
+",0.9999993899
 Maximum Ascending Subarray Sum,27,"print(max_ascending_sum([100, 10, 1]))  # Output: 100
-",0.9999975959090209
+",0.9999975959
 Maximum Subarray Sum After One Operation,0," To solve this problem, we need to find the maximum possible subarray sum after performing exactly one operation where we can replace one element `nums[i]` with `nums[i] * nums[i]`. We will use a dynamic programming approach to keep track of two states as we iterate through the array:
 
 1. `max_ending_here`: This represents the maximum subarray sum ending at the current index without any operation.
@@ -748,57 +670,57 @@ Here's the step-by-step approach:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999989867205255
+",0.9999989867
 Maximum Subarray Sum After One Operation,1,"def max_subarray_sum_after_one_operation(nums):
-",0.6922932939806551
+",0.692293294
 Maximum Subarray Sum After One Operation,2,"    if not nums:
-",0.9324875502161531
+",0.9324875502
 Maximum Subarray Sum After One Operation,3,"        return 0
 
-",0.8011061685380136
+",0.8011061685
 Maximum Subarray Sum After One Operation,4,"    n = len(nums)
-",0.9540129589666129
+",0.954012959
 Maximum Subarray Sum After One Operation,5,"    max_ending_here = nums[0]
-",0.973299318069943
+",0.9732993181
 Maximum Subarray Sum After One Operation,6,"    max_with_op_ending_here = nums[0]
-",0.977842626710363
+",0.9778426267
 Maximum Subarray Sum After One Operation,7,"    result = nums[0]
 
-",0.6578156141428764
+",0.6578156141
 Maximum Subarray Sum After One Operation,8,"    for i in range(1, n):
-",0.9999739447802899
+",0.9999739448
 Maximum Subarray Sum After One Operation,9,"        # Calculate max subarray sum ending at i without operation
-",0.9999994039535522
+",0.999999404
 Maximum Subarray Sum After One Operation,10,"        max_ending_here = max(nums[i], max_ending_here + nums[i])
-",0.973584381503049
+",0.9735843815
 Maximum Subarray Sum After One Operation,11,"        
-",0.9996237754821777
+",0.9996237755
 Maximum Subarray Sum After One Operation,12,"        # Calculate max subarray sum ending at i with one operation
-",0.9999997615814209
+",0.9999997616
 Maximum Subarray Sum After One Operation,13,"        max_with_op_ending_here = max(
-",0.9923438775903761
+",0.9923438776
 Maximum Subarray Sum After One Operation,14,"            nums[i] * nums[i],  # Operation on current element
-",0.9817025712197109
+",0.9817025712
 Maximum Subarray Sum After One Operation,15,"            max_ending_here + nums[i] * nums[i],  # Operation on current element and extend previous subarray
-",0.9996839780612775
+",0.9996839781
 Maximum Subarray Sum After One Operation,16,"            max_with_op_ending_here + nums[i]  # Extend previous subarray with operation already performed
-",0.9980573508906885
+",0.9980573509
 Maximum Subarray Sum After One Operation,17,"        )
-",0.9994163897732422
+",0.9994163898
 Maximum Subarray Sum After One Operation,18,"        
-",0.9999926090240479
+",0.999992609
 Maximum Subarray Sum After One Operation,19,"        # Update the result with the maximum value of max_with_op_ending_here
-",0.9999998807907104
+",0.9999998808
 Maximum Subarray Sum After One Operation,20,"        result = max(result, max_with_op_ending_here)
 
-",0.9991516924376722
+",0.9991516924
 Maximum Subarray Sum After One Operation,21,"    return result
 
-",0.9999666200908462
+",0.9999666201
 Maximum Subarray Sum After One Operation,23,"print(max_subarray_sum_after_one_operation([2, -1, -4, -3]))  # Output: 17
-",0.9711054308425451
+",0.9711054308
 Maximum Subarray Sum After One Operation,24,"print(max_subarray_sum_after_one_operation([1, -1, 1, 1, -1, -1, 1]))  # Output: 4
-",0.9999990185093209
+",0.9999990185
 Walls and Gates,0," To solve this problem, we can use a breadth-first search (BFS) approach starting from all gates simultaneously. This ensures that each empty room is filled with the shortest distance to any gate. Here's how we can implement this:
 
 1. **Identify all gates**: Traverse the grid to find all cells that contain a gate (value `0`).
@@ -812,96 +734,96 @@ Walls and Gates,0," To solve this problem, we can use a breadth-first search (BF
 Here's the implementation of the above approach:
 
 ```python
-",0.9999957084578384
+",0.9999957085
 Walls and Gates,1,"def wallsAndGates(rooms):
-",0.9562366164968108
+",0.9562366165
 Walls and Gates,2,"    if not rooms or not rooms[0]:
-",0.9898848964060023
+",0.9898848964
 Walls and Gates,3,"        return
 
-",0.7136806178355172
+",0.7136806178
 Walls and Gates,4,"    m, n = len(rooms), len(rooms[0])
-",0.9607489052016291
+",0.9607489052
 Walls and Gates,5,"    INF = 2147483647
 
-",0.9081207068824804
+",0.9081207069
 Walls and Gates,6,"    # Directions for moving up, down, left, right
-",0.9999963045120239
+",0.9999963045
 Walls and Gates,7,"    directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
-",0.9927748343095246
+",0.9927748343
 Walls and Gates,8,"    # Find all gates
-",0.9999977350234985
+",0.999997735
 Walls and Gates,9,"    gates = []
-",0.9765103546415748
+",0.9765103546
 Walls and Gates,10,"    for i in range(m):
-",0.9997165098387385
+",0.9997165098
 Walls and Gates,11,"        for j in range(n):
-",0.9999995401927109
+",0.9999995402
 Walls and Gates,12,"            if rooms[i][j] == 0:
-",0.9999980167770348
+",0.9999980168
 Walls and Gates,13,"                gates.append((i, j))
 
-",0.9999886301799208
+",0.9999886302
 Walls and Gates,14,"    # Perform BFS from each gate
-",0.9999974966049194
+",0.9999974966
 Walls and Gates,15,"    for gate in gates:
-",0.9774812221684566
+",0.9774812222
 Walls and Gates,16,"        queue = [gate]
-",0.967372615937553
+",0.9673726159
 Walls and Gates,17,"        while queue:
-",0.8228452456875186
+",0.8228452457
 Walls and Gates,18,"            x, y = queue.pop(0)
-",0.9869194485568173
+",0.9869194486
 Walls and Gates,19,"            for dx, dy in directions:
-",0.9966129270174822
+",0.996612927
 Walls and Gates,20,"                nx, ny = x + dx, y + dy
-",0.9994740029474468
+",0.9994740029
 Walls and Gates,21,"                if 0 <= nx < m and 0 <= ny < n and rooms[nx][ny] == INF:
-",0.9762742364208884
+",0.9762742364
 Walls and Gates,22,"                    rooms[nx][ny] = rooms[x][y] + 1
-",0.9912105972200833
+",0.9912105972
 Walls and Gates,23,"                    queue.append((nx, ny))
 
-",0.9999522153474006
+",0.9999522153
 Walls and Gates,25,"rooms1 = [
-",0.9059093414905561
+",0.9059093415
 Walls and Gates,26,"    [2147483647, -1, 0, 2147483647],
-",0.9998984735658317
+",0.9998984736
 Walls and Gates,27,"    [2147483647, 2147483647, 2147483647, -1],
-",0.9999992221575638
+",0.9999992222
 Walls and Gates,28,"    [2147483647, -1, 2147483647, -1],
-",0.9999991539956455
+",0.999999154
 Walls and Gates,29,"    [0, -1, 2147483647, 2147483647]
-",0.9999941892472746
+",0.9999941892
 Walls and Gates,30,"]
 
-",0.16280347108840942
+",0.1628034711
 Walls and Gates,31,"wallsAndGates(rooms1)
-",0.9765577439622686
+",0.976557744
 Walls and Gates,32,"print(rooms1)
 
-",0.7770825057281939
+",0.7770825057
 Walls and Gates,33,"rooms2 = [[-1]]
-",0.9628569356369026
+",0.9628569356
 Walls and Gates,34,"wallsAndGates(rooms2)
-",0.9995077541073086
+",0.9995077541
 Walls and Gates,35,"print(rooms2)
 
-",0.9987338753732325
+",0.9987338754
 Walls and Gates,36,"rooms3 = [[2147483647]]
-",0.9999948262698244
+",0.9999948263
 Walls and Gates,37,"wallsAndGates(rooms3)
-",0.999997571108466
+",0.9999975711
 Walls and Gates,38,"print(rooms3)
 
-",0.9999914883624162
+",0.9999914884
 Walls and Gates,39,"rooms4 = [[0]]
-",0.9999973972616624
+",0.9999973973
 Walls and Gates,40,"wallsAndGates(rooms4)
-",0.9999987781046014
+",0.9999987781
 Walls and Gates,41,"print(rooms4)
-",0.9999924659066299
+",0.9999924659
 Longest Common Subsequence,0," To solve the problem of finding the length of the longest common subsequence (LCS) between two strings `text1` and `text2`, we can use dynamic programming. The idea is to build a 2D table where each cell `(i, j)` contains the length of the LCS of the substrings `text1[0:i]` and `text2[0:j]`.
 
 Here's a step-by-step explanation of the approach:
@@ -921,50 +843,50 @@ Here's a step-by-step explanation of the approach:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999986290922305
+",0.9999986291
 Longest Common Subsequence,1,"def longestCommonSubsequence(text1, text2):
-",0.9745652109242557
+",0.9745652109
 Longest Common Subsequence,2,"    # Get the lengths of the input strings
-",0.9999998807907104
+",0.9999998808
 Longest Common Subsequence,3,"    m = len(text1)
-",0.9533645954387199
+",0.9533645954
 Longest Common Subsequence,4,"    n = len(text2)
-",0.9999828500220723
+",0.99998285
 Longest Common Subsequence,5,"    
-",0.9999995231628418
+",0.9999995232
 Longest Common Subsequence,6,"    # Create a 2D array to store the lengths of LCS
-",0.9999997615814209
+",0.9999997616
 Longest Common Subsequence,7,"    dp = [[0] * (n + 1) for _ in range(m + 1)]
-",0.9984931952243989
+",0.9984931952
 Longest Common Subsequence,8,"    
-",0.9999996423721313
+",0.9999996424
 Longest Common Subsequence,9,"    # Fill the dp array
-",0.9999998807907104
+",0.9999998808
 Longest Common Subsequence,10,"    for i in range(1, m + 1):
-",0.9999802011580979
+",0.9999802012
 Longest Common Subsequence,11,"        for j in range(1, n + 1):
-",0.999999642371693
+",0.9999996424
 Longest Common Subsequence,12,"            if text1[i - 1] == text2[j - 1]:
-",0.9998061377704073
+",0.9998061378
 Longest Common Subsequence,13,"                dp[i][j] = dp[i - 1][j - 1] + 1
-",0.9993211315260747
+",0.9993211315
 Longest Common Subsequence,14,"            else:
-",0.9999996821085312
+",0.9999996821
 Longest Common Subsequence,15,"                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
-",0.9999895588205818
+",0.9999895588
 Longest Common Subsequence,16,"    
-",0.9999963045120239
+",0.9999963045
 Longest Common Subsequence,17,"    # The length of the longest common subsequence is in the bottom-right cell
-",1.0
+",1
 Longest Common Subsequence,18,"    return dp[m][n]
 
-",0.9997809074046103
+",0.9997809074
 Longest Common Subsequence,20,"print(longestCommonSubsequence(""abcde"", ""ace""))  # Output: 3
-",0.9935067752192402
+",0.9935067752
 Longest Common Subsequence,21,"print(longestCommonSubsequence(""abc"", ""abc""))    # Output: 3
-",0.9994654976290958
+",0.9994654976
 Longest Common Subsequence,22,"print(longestCommonSubsequence(""abc"", ""def""))    # Output: 0
-",0.9999948280555657
+",0.9999948281
 Satisfiability of Equality Equations,0,"
 
 
@@ -987,87 +909,87 @@ Here's a step-by-step implementation:
 Here's the implementation in Python:
 
 ```python
-",0.9999719855065747
+",0.9999719855
 Satisfiability of Equality Equations,1,"class Solution:
-",0.6917164978785378
+",0.6917164979
 Satisfiability of Equality Equations,2,"    def equationsPossible(self, equations):
-",0.978805396270836
+",0.9788053963
 Satisfiability of Equality Equations,3,"        # Step 1: Initialize Union-Find structure
-",0.9986417889595032
+",0.998641789
 Satisfiability of Equality Equations,4,"        parent = list(range(26))  # Each variable points to itself initially
         
-",0.9042986672970482
+",0.9042986673
 Satisfiability of Equality Equations,5,"        # Find function with path compression
-",0.9999861717224121
+",0.9999861717
 Satisfiability of Equality Equations,6,"        def find(x):
-",0.9989351003653152
+",0.9989351004
 Satisfiability of Equality Equations,7,"            if parent[x] != x:
-",0.9875183375666129
+",0.9875183376
 Satisfiability of Equality Equations,8,"                parent[x] = find(parent[x])
-",0.8942588022586597
+",0.8942588023
 Satisfiability of Equality Equations,9,"            return parent[x]
-",0.9999716030329915
+",0.999971603
 Satisfiability of Equality Equations,10,"        
-",0.9999128580093384
+",0.999912858
 Satisfiability of Equality Equations,11,"        # Union function
-",0.9999988079071045
+",0.9999988079
 Satisfiability of Equality Equations,12,"        def union(x, y):
-",0.9991202036567894
+",0.9991202037
 Satisfiability of Equality Equations,13,"            rootX = find(x)
-",0.992277396614726
+",0.9922773966
 Satisfiability of Equality Equations,14,"            rootY = find(y)
-",0.9999995061328166
+",0.9999995061
 Satisfiability of Equality Equations,15,"            if rootX != rootY:
-",0.9945967168801354
+",0.9945967169
 Satisfiability of Equality Equations,16,"                parent[rootY] = rootX
         
-",0.868704222646162
+",0.8687042226
 Satisfiability of Equality Equations,17,"        # Step 2: Process all ""=="" equations
-",0.9999972581863403
+",0.9999972582
 Satisfiability of Equality Equations,18,"        for eq in equations:
-",0.8669231439442465
+",0.8669231439
 Satisfiability of Equality Equations,19,"            if eq[1] == '=':
-",0.9996578865253093
+",0.9996578865
 Satisfiability of Equality Equations,20,"                var1 = ord(eq[0]) - ord('a')
-",0.8987150483994861
+",0.8987150484
 Satisfiability of Equality Equations,21,"                var2 = ord(eq[3]) - ord('a')
-",0.9999786802145143
+",0.9999786802
 Satisfiability of Equality Equations,22,"                union(var1, var2)
-",0.9999960064726084
+",0.9999960065
 Satisfiability of Equality Equations,23,"        
-",0.9999490976333618
+",0.9999490976
 Satisfiability of Equality Equations,24,"        # Step 3: Process all ""!="" equations
-",0.9999980926513672
+",0.9999980927
 Satisfiability of Equality Equations,25,"        for eq in equations:
-",0.9999991059296371
+",0.9999991059
 Satisfiability of Equality Equations,26,"            if eq[1] == '!':
-",0.9999385118751698
+",0.9999385119
 Satisfiability of Equality Equations,27,"                var1 = ord(eq[0]) - ord('a')
-",0.9999991995928036
+",0.9999991996
 Satisfiability of Equality Equations,28,"                var2 = ord(eq[3]) - ord('a')
-",0.9999990122625667
+",0.9999990123
 Satisfiability of Equality Equations,29,"                if find(var1) == find(var2):
-",0.9998595016428613
+",0.9998595016
 Satisfiability of Equality Equations,30,"                    return False
         
-",0.9994944317215236
+",0.9994944317
 Satisfiability of Equality Equations,31,"        # Step 4: If all inequalities are satisfied, return True
-",0.9999994039535522
+",0.999999404
 Satisfiability of Equality Equations,32,"        return True
 
-",0.9542569236134926
+",0.9542569236
 Satisfiability of Equality Equations,34,"sol = Solution()
-",0.9093554363710935
+",0.9093554364
 Satisfiability of Equality Equations,35,"print(sol.equationsPossible([""a==b"", ""b!=a""]))  # Output: False
-",0.9862584139519949
+",0.986258414
 Satisfiability of Equality Equations,36,"print(sol.equationsPossible([""b==a"", ""a==b""]))  # Output: True
-",0.9997420848650269
+",0.9997420849
 Satisfiability of Equality Equations,37,"print(sol.equationsPossible([""a==b"", ""b==c"", ""a==c""]))  # Output: True
-",0.9999760256769016
+",0.9999760257
 Satisfiability of Equality Equations,38,"print(sol.equationsPossible([""a==b"", ""b!=c"", ""c==a""]))  # Output: False
-",0.9999921888870531
+",0.9999921889
 Satisfiability of Equality Equations,39,"print(sol.equationsPossible([""c==c"", ""b==d"", ""x!=z""]))  # Output: True
-",0.9999820582186492
+",0.9999820582
 Check Completeness of a Binary Tree,0,"
 
 
@@ -1092,91 +1014,91 @@ Here's a step-by-step breakdown of the approach:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999824761124977
+",0.9999824761
 Check Completeness of a Binary Tree,1,"class TreeNode:
-",0.994976840473922
+",0.9949768405
 Check Completeness of a Binary Tree,2,"    def __init__(self, val=0, left=None, right=None):
-",0.9997483423867495
+",0.9997483424
 Check Completeness of a Binary Tree,3,"        self.val = val
-",0.9999989469843901
+",0.999998947
 Check Completeness of a Binary Tree,4,"        self.left = left
-",0.9999993642168626
+",0.9999993642
 Check Completeness of a Binary Tree,5,"        self.right = right
 
-",0.9999940792241161
+",0.9999940792
 Check Completeness of a Binary Tree,6,"def is_complete_tree(root):
-",0.9198312695144132
+",0.9198312695
 Check Completeness of a Binary Tree,7,"    if not root:
-",0.9408258364263402
+",0.9408258364
 Check Completeness of a Binary Tree,8,"        return True
     
-",0.9565591211139839
+",0.9565591211
 Check Completeness of a Binary Tree,9,"    # Initialize the queue for BFS
-",0.9999998807907104
+",0.9999998808
 Check Completeness of a Binary Tree,10,"    queue = [root]
-",0.9742635956823451
+",0.9742635957
 Check Completeness of a Binary Tree,11,"    null_encountered = False
     
-",0.9965047666454656
+",0.9965047666
 Check Completeness of a Binary Tree,12,"    while queue:
-",0.9957722365627393
+",0.9957722366
 Check Completeness of a Binary Tree,13,"        current = queue.pop(0)
-",0.7549350357133746
+",0.7549350357
 Check Completeness of a Binary Tree,14,"        
-",0.9994556307792664
+",0.9994556308
 Check Completeness of a Binary Tree,15,"        if current is None:
-",0.9027481867175539
+",0.9027481867
 Check Completeness of a Binary Tree,16,"            null_encountered = True
-",0.9986893673545104
+",0.9986893674
 Check Completeness of a Binary Tree,17,"        else:
-",0.951991231358434
+",0.9519912314
 Check Completeness of a Binary Tree,18,"            if null_encountered:
-",0.9933757689682183
+",0.993375769
 Check Completeness of a Binary Tree,19,"                # If we encounter a non-null node after a null node
-",0.9999994039535522
+",0.999999404
 Check Completeness of a Binary Tree,20,"                return False
-",0.9961832800566525
+",0.9961832801
 Check Completeness of a Binary Tree,21,"            # Add left and right children to the queue
-",0.9999827146530151
+",0.9999827147
 Check Completeness of a Binary Tree,22,"            queue.append(current.left)
-",0.9999534667350297
+",0.9999534667
 Check Completeness of a Binary Tree,23,"            queue.append(current.right)
-",0.9999956885715837
+",0.9999956886
 Check Completeness of a Binary Tree,24,"    
-",0.9999938011169434
+",0.9999938011
 Check Completeness of a Binary Tree,25,"    return True
 
-",0.9031871850886788
+",0.9031871851
 Check Completeness of a Binary Tree,28,"root1 = TreeNode(1)
-",0.991522106851118
+",0.9915221069
 Check Completeness of a Binary Tree,29,"root1.left = TreeNode(2)
-",0.9998236650679933
+",0.9998236651
 Check Completeness of a Binary Tree,30,"root1.right = TreeNode(3)
-",0.9999945311835341
+",0.9999945312
 Check Completeness of a Binary Tree,31,"root1.left.left = TreeNode(4)
-",0.999999708599495
+",0.9999997086
 Check Completeness of a Binary Tree,32,"root1.left.right = TreeNode(5)
-",0.9999993509712543
+",0.999999351
 Check Completeness of a Binary Tree,33,"root1.right.left = TreeNode(6)
 
-",0.9990687419163853
+",0.9990687419
 Check Completeness of a Binary Tree,35,"root2 = TreeNode(1)
-",0.9999994380131043
+",0.999999438
 Check Completeness of a Binary Tree,36,"root2.left = TreeNode(2)
-",0.9999993443486108
+",0.9999993443
 Check Completeness of a Binary Tree,37,"root2.right = TreeNode(3)
-",0.9999990761276227
+",0.9999990761
 Check Completeness of a Binary Tree,38,"root2.left.left = TreeNode(4)
-",0.9999992847440164
+",0.9999992847
 Check Completeness of a Binary Tree,39,"root2.left.right = TreeNode(5)
-",0.9999965694053482
+",0.9999965694
 Check Completeness of a Binary Tree,40,"root2.right.right = TreeNode(7)
 
-",0.9998449369968494
+",0.999844937
 Check Completeness of a Binary Tree,41,"print(is_complete_tree(root1))  # Output: True
-",0.9773515977267117
+",0.9773515977
 Check Completeness of a Binary Tree,42,"print(is_complete_tree(root2))  # Output: False
-",0.9999994933603653
+",0.9999994934
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,0," To solve this problem, we need to find the maximum number of non-overlapping subarrays whose sum equals the given target. We can achieve this by using a prefix sum approach combined with a hash set to track the sums we have seen so far.
 
 Here's a step-by-step explanation of the approach:
@@ -1198,57 +1120,57 @@ Here's a step-by-step explanation of the approach:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999995231627281
+",0.9999995232
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,1,"def maxNonOverlapping(nums, target):
-",0.9574342969359637
+",0.9574342969
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,2,"    prefix_sum = 0
-",0.9986124270341405
+",0.998612427
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,3,"    seen_sums = set()
-",0.9954520135210575
+",0.9954520135
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,4,"    count = 0
     
-",0.9906493721494393
+",0.9906493721
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,5,"    for num in nums:
-",0.9994979686566736
+",0.9994979687
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,6,"        prefix_sum += num
         
-",0.9941420449976426
+",0.994142045
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,7,"        # Check if the current prefix sum is equal to the target
-",0.9999992847442627
+",0.9999992847
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,8,"        if prefix_sum == target:
-",0.9998330060052264
+",0.999833006
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,9,"            count += 1
-",0.9999397110272727
+",0.999939711
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,10,"            seen_sums = set()  # Reset seen sums to start new subarrays
-",0.9264608960687121
+",0.9264608961
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,11,"        else:
-",0.9379331302549269
+",0.9379331303
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,12,"            # Check if there is a previous prefix sum that makes the current subarray sum to target
-",0.9999990463256836
+",0.9999990463
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,13,"            if prefix_sum - target in seen_sums:
-",0.9739691940429837
+",0.973969194
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,14,"                count += 1
-",0.9999942778775982
+",0.9999942779
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,15,"                seen_sums = set()  # Reset seen sums to start new subarrays
         
-",0.999982684373155
+",0.9999826844
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,16,"        # Add the current prefix sum to the set of seen sums
-",0.9999949932098389
+",0.9999949932
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,17,"        seen_sums.add(prefix_sum)
-",0.9999657316730919
+",0.9999657317
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,18,"    
-",0.9999728202819824
+",0.9999728203
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,19,"    return count
 
-",0.9997903648798139
+",0.9997903649
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,21,"print(maxNonOverlapping([1,1,1,1,1], 2))  # Output: 2
-",0.977504790721748
+",0.9775047907
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,22,"print(maxNonOverlapping([-1,3,5,1,4,2,-9], 6))  # Output: 2
-",0.9999927228302632
+",0.9999927228
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,23,"print(maxNonOverlapping([-2,6,6,3,5,4,1,2,8], 10))  # Output: 3
-",0.9999992395264645
+",0.9999992395
 Maximum Number of Non-Overlapping Subarrays With Sum Equals Target,24,"print(maxNonOverlapping([0,0,0], 0))  # Output: 3
-",0.9999982193065668
+",0.9999982193
 Find Nearest Right Node in Binary Tree,0," To solve this problem, we need to traverse the binary tree level by level to find the nearest node to the right of the given node `u`. Since we cannot use any built-in functions or libraries that simplify algorithmic steps, we will implement a custom level-order traversal using a queue.
 
 Here's a step-by-step approach to solve the problem:
@@ -1268,88 +1190,88 @@ Here's a step-by-step approach to solve the problem:
 Here's the implementation of the above logic:
 
 ```python
-",0.9999976754171467
+",0.9999976754
 Find Nearest Right Node in Binary Tree,1,"class TreeNode:
-",0.9958902781990944
+",0.9958902782
 Find Nearest Right Node in Binary Tree,2,"    def __init__(self, val=0, left=None, right=None):
-",0.9998672705184414
+",0.9998672705
 Find Nearest Right Node in Binary Tree,3,"        self.val = val
-",0.9999993840852439
+",0.9999993841
 Find Nearest Right Node in Binary Tree,4,"        self.left = left
-",0.9999995430309633
+",0.999999543
 Find Nearest Right Node in Binary Tree,5,"        self.right = right
 
-",0.999994158715786
+",0.9999941587
 Find Nearest Right Node in Binary Tree,6,"def findNearestRightNode(root, u):
-",0.9704422883928514
+",0.9704422884
 Find Nearest Right Node in Binary Tree,7,"    if not root:
-",0.9443896077497105
+",0.9443896077
 Find Nearest Right Node in Binary Tree,8,"        return None
     
-",0.9743469908974473
+",0.9743469909
 Find Nearest Right Node in Binary Tree,9,"    # Initialize the queue with the root node
-",0.9999996423721313
+",0.9999996424
 Find Nearest Right Node in Binary Tree,10,"    queue = [root]
-",0.9998074737898783
+",0.9998074738
 Find Nearest Right Node in Binary Tree,11,"    
-",0.9952902793884277
+",0.9952902794
 Find Nearest Right Node in Binary Tree,12,"    while queue:
-",0.9919959570697717
+",0.9919959571
 Find Nearest Right Node in Binary Tree,13,"        level_size = len(queue)
-",0.9521243677484661
+",0.9521243677
 Find Nearest Right Node in Binary Tree,14,"        
-",0.8547970652580261
+",0.8547970653
 Find Nearest Right Node in Binary Tree,15,"        for i in range(level_size):
-",0.9933632417203991
+",0.9933632417
 Find Nearest Right Node in Binary Tree,16,"            node = queue.pop(0)
-",0.9657962850871962
+",0.9657962851
 Find Nearest Right Node in Binary Tree,17,"            
-",0.9998419284820557
+",0.9998419285
 Find Nearest Right Node in Binary Tree,18,"            # Check if the current node is the target node 'u'
-",0.9999984502792358
+",0.9999984503
 Find Nearest Right Node in Binary Tree,19,"            if node == u:
-",0.9933309809028084
+",0.9933309809
 Find Nearest Right Node in Binary Tree,20,"                # If 'u' is not the last node in the current level, return the next node
-",0.9999939203262329
+",0.9999939203
 Find Nearest Right Node in Binary Tree,21,"                if i < level_size - 1:
-",0.9903048863491805
+",0.9903048863
 Find Nearest Right Node in Binary Tree,22,"                    return queue.pop(0)
-",0.9927318229020895
+",0.9927318229
 Find Nearest Right Node in Binary Tree,23,"                else:
-",0.9943804573957832
+",0.9943804574
 Find Nearest Right Node in Binary Tree,24,"                    # If 'u' is the last node, return None
-",0.9999905824661255
+",0.9999905825
 Find Nearest Right Node in Binary Tree,25,"                    return None
             
-",0.9997410682122743
+",0.9997410682
 Find Nearest Right Node in Binary Tree,26,"            # Add the children of the current node to the queue
-",0.9999966621398926
+",0.9999966621
 Find Nearest Right Node in Binary Tree,27,"            if node.left:
-",0.9999801155499551
+",0.9999801155
 Find Nearest Right Node in Binary Tree,28,"                queue.append(node.left)
-",0.9999973575193162
+",0.9999973575
 Find Nearest Right Node in Binary Tree,29,"            if node.right:
-",0.9999896762708947
+",0.9999896763
 Find Nearest Right Node in Binary Tree,30,"                queue.append(node.right)
 
-",0.7838621205590768
+",0.7838621206
 Find Nearest Right Node in Binary Tree,33,"root = TreeNode(1)
-",0.9848615909781223
+",0.984861591
 Find Nearest Right Node in Binary Tree,34,"root.left = TreeNode(2)
-",0.9972410635903933
+",0.9972410636
 Find Nearest Right Node in Binary Tree,35,"root.right = TreeNode(3)
-",0.9996587483124717
+",0.9996587483
 Find Nearest Right Node in Binary Tree,36,"root.left.right = TreeNode(4)
-",0.9929979655823907
+",0.9929979656
 Find Nearest Right Node in Binary Tree,37,"root.right.left = TreeNode(5)
-",0.9999804789579384
+",0.999980479
 Find Nearest Right Node in Binary Tree,38,"root.right.right = TreeNode(6)
 
-",0.9844816580586806
+",0.9844816581
 Find Nearest Right Node in Binary Tree,39,"u = root.left.right  # Node with value 4
-",0.9416010307215786
+",0.9416010307
 Find Nearest Right Node in Binary Tree,40,"print(findNearestRightNode(root, u).val)  # Output: 5
-",0.9036558129254355
+",0.9036558129
 Put Boxes Into the Warehouse II,0," To solve this problem, we need to determine the maximum number of boxes that can be placed into the warehouse while adhering to the given rules. The key is to efficiently manage the placement of boxes from both ends of the warehouse to maximize the number of boxes that fit.
 
 Here's a step-by-step approach to solve the problem:
@@ -1375,70 +1297,70 @@ Here's a step-by-step approach to solve the problem:
 Here's the implementation of the above approach:
 
 ```python
-",0.999998450278035
+",0.9999984503
 Put Boxes Into the Warehouse II,1,"def maxBoxesInWarehouse(boxes, warehouse):
-",0.97382037847685
+",0.9738203785
 Put Boxes Into the Warehouse II,2,"    # Sort the boxes in ascending order
-",0.999997615814209
+",0.9999976158
 Put Boxes Into the Warehouse II,3,"    boxes.sort()
-",0.9948371727178734
+",0.9948371727
 Put Boxes Into the Warehouse II,4,"    
-",0.9657377600669861
+",0.9657377601
 Put Boxes Into the Warehouse II,5,"    n = len(warehouse)
-",0.9834824366813939
+",0.9834824367
 Put Boxes Into the Warehouse II,6,"    left_min = [0] * n
-",0.8817477234215976
+",0.8817477234
 Put Boxes Into the Warehouse II,7,"    right_min = [0] * n
     
-",0.9998969236039509
+",0.9998969236
 Put Boxes Into the Warehouse II,8,"    # Fill left_min array
-",0.9999996423721313
+",0.9999996424
 Put Boxes Into the Warehouse II,9,"    left_min[0] = warehouse[0]
-",0.9980878804223756
+",0.9980878804
 Put Boxes Into the Warehouse II,10,"    for i in range(1, n):
-",0.9999988675102397
+",0.9999988675
 Put Boxes Into the Warehouse II,11,"        left_min[i] = min(left_min[i - 1], warehouse[i])
-",0.9927757764917009
+",0.9927757765
 Put Boxes Into the Warehouse II,12,"    
-",0.9999996423721313
+",0.9999996424
 Put Boxes Into the Warehouse II,13,"    # Fill right_min array
-",0.9999998807907104
+",0.9999998808
 Put Boxes Into the Warehouse II,14,"    right_min[n - 1] = warehouse[n - 1]
-",0.9960726618153609
+",0.9960726618
 Put Boxes Into the Warehouse II,15,"    for i in range(n - 2, -1, -1):
-",0.999992348064753
+",0.9999923481
 Put Boxes Into the Warehouse II,16,"        right_min[i] = min(right_min[i + 1], warehouse[i])
-",0.9999990463242767
+",0.9999990463
 Put Boxes Into the Warehouse II,17,"    
-",0.9999994039535522
+",0.999999404
 Put Boxes Into the Warehouse II,18,"    # Determine effective heights
-",0.9999997615814209
+",0.9999997616
 Put Boxes Into the Warehouse II,19,"    effective_heights = [max(left_min[i], right_min[i]) for i in range(n)]
-",0.908695250354029
+",0.9086952504
 Put Boxes Into the Warehouse II,20,"    
-",0.9996278285980225
+",0.9996278286
 Put Boxes Into the Warehouse II,21,"    # Place boxes
-",0.9999997615814209
+",0.9999997616
 Put Boxes Into the Warehouse II,22,"    box_index = 0
-",0.9865769245761402
+",0.9865769246
 Put Boxes Into the Warehouse II,23,"    for height in effective_heights:
-",0.8297255579862873
+",0.829725558
 Put Boxes Into the Warehouse II,24,"        if box_index < len(boxes) and boxes[box_index] <= height:
-",0.9864774624093152
+",0.9864774624
 Put Boxes Into the Warehouse II,25,"            box_index += 1
     
-",0.9932242525110633
+",0.9932242525
 Put Boxes Into the Warehouse II,26,"    return box_index
 
-",0.9806579437452934
+",0.9806579437
 Put Boxes Into the Warehouse II,28,"print(maxBoxesInWarehouse([1, 2, 2, 3, 4], [3, 4, 1, 2]))  # Output: 4
-",0.9730100276999364
+",0.9730100277
 Put Boxes Into the Warehouse II,29,"print(maxBoxesInWarehouse([3, 5, 5, 2], [2, 1, 3, 4, 5]))  # Output: 3
-",0.9990730271582413
+",0.9990730272
 Put Boxes Into the Warehouse II,30,"print(maxBoxesInWarehouse([1, 2, 3], [1, 2, 3, 4]))  # Output: 3
-",0.9781268084564999
+",0.9781268085
 Put Boxes Into the Warehouse II,31,"print(maxBoxesInWarehouse([4, 5, 6], [3, 3, 3, 3, 3]))  # Output: 0
-",0.9999972780123743
+",0.999997278
 Minimum Swaps to Group All 1's Together,0," To solve this problem, we need to find the minimum number of swaps required to group all `1`s together in the binary array. The key insight is to use a sliding window approach to efficiently count the number of zeros within a window of size equal to the total number of `1`s in the array. This window size represents the maximum contiguous block of `1`s that can be achieved by swapping.
 
 Here's a step-by-step breakdown of the approach:
@@ -1458,86 +1380,86 @@ Here's a step-by-step breakdown of the approach:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999992847440069
+",0.9999992847
 Minimum Swaps to Group All 1's Together,1,"def min_swaps(data):
-",0.6936082990491199
+",0.693608299
 Minimum Swaps to Group All 1's Together,2,"    # Step 1: Count the total number of 1's in the array
-",0.9999996423721313
+",0.9999996424
 Minimum Swaps to Group All 1's Together,3,"    total_ones = 0
-",0.9972956591692029
+",0.9972956592
 Minimum Swaps to Group All 1's Together,4,"    for num in data:
-",0.9747969998676964
+",0.9747969999
 Minimum Swaps to Group All 1's Together,5,"        if num == 1:
-",0.9389132460589105
+",0.9389132461
 Minimum Swaps to Group All 1's Together,6,"            total_ones += 1
     
-",0.9952060674883547
+",0.9952060675
 Minimum Swaps to Group All 1's Together,7,"    # If there are no 1's or only one 1, no swaps are needed
-",0.9999997615814209
+",0.9999997616
 Minimum Swaps to Group All 1's Together,8,"    if total_ones <= 1:
-",0.9986799893932717
+",0.9986799894
 Minimum Swaps to Group All 1's Together,9,"        return 0
     
-",0.9999252928391775
+",0.9999252928
 Minimum Swaps to Group All 1's Together,10,"    # Step 2: Initialize variables for the sliding window
-",0.9999997615814209
+",0.9999997616
 Minimum Swaps to Group All 1's Together,11,"    window_size = total_ones
-",0.8867871880298864
+",0.886787188
 Minimum Swaps to Group All 1's Together,12,"    current_zeros = 0
-",0.923820709615081
+",0.9238207096
 Minimum Swaps to Group All 1's Together,13,"    min_zeros = float('inf')
-",0.9730394113271185
+",0.9730394113
 Minimum Swaps to Group All 1's Together,14,"    
-",0.8224929571151733
+",0.8224929571
 Minimum Swaps to Group All 1's Together,15,"    # Step 3: Count the number of zeros in the initial window
-",0.9999984502792358
+",0.9999984503
 Minimum Swaps to Group All 1's Together,16,"    for i in range(window_size):
-",0.999969660749069
+",0.9999696607
 Minimum Swaps to Group All 1's Together,17,"        if data[i] == 0:
-",0.9999861180232668
+",0.999986118
 Minimum Swaps to Group All 1's Together,18,"            current_zeros += 1
     
-",0.9988924109542093
+",0.998892411
 Minimum Swaps to Group All 1's Together,19,"    # Update the minimum zeros encountered
-",0.9999992847442627
+",0.9999992847
 Minimum Swaps to Group All 1's Together,20,"    min_zeros = min(min_zeros, current_zeros)
-",0.9759847000610632
+",0.9759847001
 Minimum Swaps to Group All 1's Together,21,"    
-",0.9999992847442627
+",0.9999992847
 Minimum Swaps to Group All 1's Together,22,"    # Step 4: Slide the window across the array
-",0.9999991655349731
+",0.9999991655
 Minimum Swaps to Group All 1's Together,23,"    for i in range(window_size, len(data)):
-",0.9932470709036796
+",0.9932470709
 Minimum Swaps to Group All 1's Together,24,"        # Slide the window: remove the element going out and add the new element coming in
-",0.9999994039535522
+",0.999999404
 Minimum Swaps to Group All 1's Together,25,"        if data[i - window_size] == 0:
-",0.9998533295274054
+",0.9998533295
 Minimum Swaps to Group All 1's Together,26,"            current_zeros -= 1
-",0.999812046339362
+",0.9998120463
 Minimum Swaps to Group All 1's Together,27,"        if data[i] == 0:
-",0.9999998278087977
+",0.9999998278
 Minimum Swaps to Group All 1's Together,28,"            current_zeros += 1
         
-",0.9999326507063414
+",0.9999326507
 Minimum Swaps to Group All 1's Together,29,"        # Update the minimum zeros encountered
-",0.9999998807907104
+",0.9999998808
 Minimum Swaps to Group All 1's Together,30,"        min_zeros = min(min_zeros, current_zeros)
-",0.9999948956131639
+",0.9999948956
 Minimum Swaps to Group All 1's Together,31,"    
-",0.9998573064804077
+",0.9998573065
 Minimum Swaps to Group All 1's Together,32,"    # Step 5: Return the minimum number of zeros (swaps) needed
-",0.9999996423721313
+",0.9999996424
 Minimum Swaps to Group All 1's Together,33,"    return min_zeros
 
-",0.999964974444725
+",0.9999649744
 Minimum Swaps to Group All 1's Together,35,"print(min_swaps([1, 0, 1, 0, 1]))  # Output: 1
-",0.9817462151613066
+",0.9817462152
 Minimum Swaps to Group All 1's Together,36,"print(min_swaps([0, 0, 0, 1, 0]))  # Output: 0
-",0.9998253358193068
+",0.9998253358
 Minimum Swaps to Group All 1's Together,37,"print(min_swaps([1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1]))  # Output: 3
-",0.99999708561193
+",0.9999970856
 Minimum Swaps to Group All 1's Together,38,"print(min_swaps([1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1]))  # Output: 8
-",0.9994487571991443
+",0.9994487572
 Minimum Remove to Make Valid Parentheses,0,"
 
 To solve the problem of removing the minimum number of parentheses to make the string valid, we can use a two-pass approach. This method ensures that we handle both unmatched opening and closing parentheses correctly.
@@ -1570,82 +1492,82 @@ To solve the problem of removing the minimum number of parentheses to make the s
 Here's the Python code implementing the above approach:
 
 ```python
-",0.999998867511108
+",0.9999988675
 Minimum Remove to Make Valid Parentheses,1,"def minRemoveToMakeValid(s):
-",0.9598041238159477
+",0.9598041238
 Minimum Remove to Make Valid Parentheses,2,"    # First pass: remove unmatched ')'
-",0.9999971389770508
+",0.999997139
 Minimum Remove to Make Valid Parentheses,3,"    result = []
-",0.9729603864006269
+",0.9729603864
 Minimum Remove to Make Valid Parentheses,4,"    open_count = 0
-",0.960189750076914
+",0.9601897501
 Minimum Remove to Make Valid Parentheses,5,"    for char in s:
-",0.9998129792283018
+",0.9998129792
 Minimum Remove to Make Valid Parentheses,6,"        if char == '(':
-",0.9999495209062755
+",0.9999495209
 Minimum Remove to Make Valid Parentheses,7,"            open_count += 1
-",0.9995594450464006
+",0.999559445
 Minimum Remove to Make Valid Parentheses,8,"            result.append(char)
-",0.9372137627653039
+",0.9372137628
 Minimum Remove to Make Valid Parentheses,9,"        elif char == ')':
-",0.9999304542824259
+",0.9999304543
 Minimum Remove to Make Valid Parentheses,10,"            if open_count > 0:
-",0.9999676683413382
+",0.9999676683
 Minimum Remove to Make Valid Parentheses,11,"                open_count -= 1
-",0.9998934356615197
+",0.9998934357
 Minimum Remove to Make Valid Parentheses,12,"                result.append(char)
-",0.9999975204431296
+",0.9999975204
 Minimum Remove to Make Valid Parentheses,13,"        else:
-",0.9954962604235985
+",0.9954962604
 Minimum Remove to Make Valid Parentheses,14,"            result.append(char)
-",0.9674400928207352
+",0.9674400928
 Minimum Remove to Make Valid Parentheses,15,"    
-",0.9999701976776123
+",0.9999701977
 Minimum Remove to Make Valid Parentheses,16,"    # Second pass: remove unmatched '('
-",0.9999997615814209
+",0.9999997616
 Minimum Remove to Make Valid Parentheses,17,"    close_count = 0
-",0.7646962881557132
+",0.7646962882
 Minimum Remove to Make Valid Parentheses,18,"    final_result = []
-",0.981882105676567
+",0.9818821057
 Minimum Remove to Make Valid Parentheses,19,"    for char in reversed(result):
-",0.9746024999124582
+",0.9746024999
 Minimum Remove to Make Valid Parentheses,20,"        if char == ')':
-",0.9969348713202093
+",0.9969348713
 Minimum Remove to Make Valid Parentheses,21,"            close_count += 1
-",0.9999986716670711
+",0.9999986717
 Minimum Remove to Make Valid Parentheses,22,"            final_result.append(char)
-",0.999768922034713
+",0.999768922
 Minimum Remove to Make Valid Parentheses,23,"        elif char == '(':
-",0.9999370877449502
+",0.9999370877
 Minimum Remove to Make Valid Parentheses,24,"            if close_count > 0:
-",0.9999992251389003
+",0.9999992251
 Minimum Remove to Make Valid Parentheses,25,"                close_count -= 1
-",0.9999994039532069
+",0.999999404
 Minimum Remove to Make Valid Parentheses,26,"                final_result.append(char)
-",0.9999993046123344
+",0.9999993046
 Minimum Remove to Make Valid Parentheses,27,"        else:
-",0.9999800919490776
+",0.9999800919
 Minimum Remove to Make Valid Parentheses,28,"            final_result.append(char)
-",0.9999471239713156
+",0.999947124
 Minimum Remove to Make Valid Parentheses,29,"    
-",0.9999465942382812
+",0.9999465942
 Minimum Remove to Make Valid Parentheses,30,"    # The final result is in reverse order, so reverse it again
-",0.9999990463256836
+",0.9999990463
 Minimum Remove to Make Valid Parentheses,31,"    final_result.reverse()
-",0.921264802680745
+",0.9212648027
 Minimum Remove to Make Valid Parentheses,32,"    
-",0.8127071261405945
+",0.8127071261
 Minimum Remove to Make Valid Parentheses,33,"    return ''.join(final_result)
 
-",0.9761055950739069
+",0.9761055951
 Minimum Remove to Make Valid Parentheses,35,"print(minRemoveToMakeValid(""lee(t(c)o)de)""))  # Output: ""lee(t(c)o)de""
-",0.9981642455479935
+",0.9981642455
 Minimum Remove to Make Valid Parentheses,36,"print(minRemoveToMakeValid(""a)b(c)d""))       # Output: ""ab(c)d""
-",0.920036858086082
+",0.9200368581
 Minimum Remove to Make Valid Parentheses,37,"print(minRemoveToMakeValid(""))((""))          # Output: """"
-",0.9881175351368847
+",0.9881175351
 Minimum Remove to Make Valid Parentheses,38,"print(minRemoveToMakeValid(""(a(b(c)d)""))      # Output: ""a(b(c)d)""
-",0.9193144993670127
+",0.9193144994
 Trapping Rain Water,0," To solve the problem of calculating the amount of water trapped after raining given an elevation map, we can use a two-pointer approach. This method avoids using any built-in functions or libraries that simplify algorithmic steps and ensures an efficient solution with a time complexity of O(n).
 
 Here's a step-by-step explanation of the approach:
@@ -1672,60 +1594,60 @@ Here's a step-by-step explanation of the approach:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999992251393177
+",0.9999992251
 Trapping Rain Water,1,"def trap(height):
-",0.9982310128091381
+",0.9982310128
 Trapping Rain Water,2,"    if not height:
-",0.9929299911662797
+",0.9929299912
 Trapping Rain Water,3,"        return 0
 
-",0.9690869814331615
+",0.9690869814
 Trapping Rain Water,4,"    left, right = 0, len(height) - 1
-",0.9802797653134653
+",0.9802797653
 Trapping Rain Water,5,"    max_left, max_right = height[left], height[right]
-",0.9391754831248609
+",0.9391754831
 Trapping Rain Water,6,"    water_trapped = 0
 
-",0.9786228119066761
+",0.9786228119
 Trapping Rain Water,7,"    while left < right:
-",0.9994715490933207
+",0.9994715491
 Trapping Rain Water,8,"        if height[left] <= height[right]:
-",0.9999470879254668
+",0.9999470879
 Trapping Rain Water,9,"            left += 1
-",0.9706082577893036
+",0.9706082578
 Trapping Rain Water,10,"            if height[left] > max_left:
-",0.9876451351202881
+",0.9876451351
 Trapping Rain Water,11,"                max_left = height[left]
-",0.999999829701007
+",0.9999998297
 Trapping Rain Water,12,"            else:
-",0.8901198829811475
+",0.890119883
 Trapping Rain Water,13,"                water_trapped += max_left - height[left]
-",0.999957765712355
+",0.9999577657
 Trapping Rain Water,14,"        else:
-",0.9999998013178113
+",0.9999998013
 Trapping Rain Water,15,"            right -= 1
-",0.9999998410542671
+",0.9999998411
 Trapping Rain Water,16,"            if height[right] > max_right:
-",0.9999993244799522
+",0.9999993245
 Trapping Rain Water,17,"                max_right = height[right]
-",0.9999998637607989
+",0.9999998638
 Trapping Rain Water,18,"            else:
-",0.9999999205271339
+",0.9999999205
 Trapping Rain Water,19,"                water_trapped += max_right - height[right]
 
-",0.9999977458394015
+",0.9999977458
 Trapping Rain Water,20,"    return water_trapped
 
-",0.9997408907549344
+",0.9997408908
 Trapping Rain Water,22,"height1 = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
-",0.985835405488639
+",0.9858354055
 Trapping Rain Water,23,"print(trap(height1))  # Output: 6
 
-",0.8593039702496669
+",0.8593039702
 Trapping Rain Water,24,"height2 = [4, 2, 0, 3, 2, 5]
-",0.9999999375570311
+",0.9999999376
 Trapping Rain Water,25,"print(trap(height2))  # Output: 9
-",0.9999988930555866
+",0.9999988931
 Minimum Cost to Make at Least One Valid Path in a Grid,0," To solve this problem, we can use a modified version of Dijkstra's algorithm. The idea is to treat each cell in the grid as a node in a graph, where the edges between nodes represent the direction indicated by the sign in the grid. We need to find the shortest path from the top-left corner to the bottom-right corner, allowing for modifications to the signs with a cost of 1.
 
 Here's a step-by-step breakdown of the approach:
@@ -1751,90 +1673,90 @@ Here's a step-by-step breakdown of the approach:
 Here's the implementation of the solution:
 
 ```python
-",0.9999952316236147
+",0.9999952316
 Minimum Cost to Make at Least One Valid Path in a Grid,1,"def minCost(grid):
-",0.9276495694055994
+",0.9276495694
 Minimum Cost to Make at Least One Valid Path in a Grid,2,"    import heapq
     
-",0.6149604793558165
+",0.6149604794
 Minimum Cost to Make at Least One Valid Path in a Grid,3,"    # Directions: right, left, down, up
-",0.9999988079071045
+",0.9999988079
 Minimum Cost to Make at Least One Valid Path in a Grid,4,"    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-",0.9947564436037518
+",0.9947564436
 Minimum Cost to Make at Least One Valid Path in a Grid,5,"    
-",0.9925923943519592
+",0.9925923944
 Minimum Cost to Make at Least One Valid Path in a Grid,6,"    m, n = len(grid), len(grid[0])
-",0.9364919154261312
+",0.9364919154
 Minimum Cost to Make at Least One Valid Path in a Grid,7,"    
-",0.8153476119041443
+",0.8153476119
 Minimum Cost to Make at Least One Valid Path in a Grid,8,"    # Distance matrix initialized to infinity
-",0.9999995231628418
+",0.9999995232
 Minimum Cost to Make at Least One Valid Path in a Grid,9,"    dist = [[float('inf')] * n for _ in range(m)]
-",0.93259071133381
+",0.9325907113
 Minimum Cost to Make at Least One Valid Path in a Grid,10,"    dist[0][0] = 0
     
-",0.9990232041443602
+",0.9990232041
 Minimum Cost to Make at Least One Valid Path in a Grid,11,"    # Priority queue (min-heap)
-",0.9999994039535522
+",0.999999404
 Minimum Cost to Make at Least One Valid Path in a Grid,12,"    pq = [(0, 0, 0)]  # (cost, row, col)
-",0.9890708910425922
+",0.989070891
 Minimum Cost to Make at Least One Valid Path in a Grid,13,"    
-",0.9990621209144592
+",0.9990621209
 Minimum Cost to Make at Least One Valid Path in a Grid,14,"    while pq:
-",0.9964676219428921
+",0.9964676219
 Minimum Cost to Make at Least One Valid Path in a Grid,15,"        cost, r, c = heapq.heappop(pq)
-",0.8984864981993831
+",0.8984864982
 Minimum Cost to Make at Least One Valid Path in a Grid,16,"        
-",0.9999185800552368
+",0.9999185801
 Minimum Cost to Make at Least One Valid Path in a Grid,17,"        # If we reached the bottom-right corner, return the cost
-",0.9999994039535522
+",0.999999404
 Minimum Cost to Make at Least One Valid Path in a Grid,18,"        if r == m - 1 and c == n - 1:
-",0.9999204391730308
+",0.9999204392
 Minimum Cost to Make at Least One Valid Path in a Grid,19,"            return cost
         
-",0.9999411684272168
+",0.9999411684
 Minimum Cost to Make at Least One Valid Path in a Grid,20,"        # Check all possible directions
-",0.9999974966049194
+",0.9999974966
 Minimum Cost to Make at Least One Valid Path in a Grid,21,"        for i, (dr, dc) in enumerate(directions):
-",0.9429778184336461
+",0.9429778184
 Minimum Cost to Make at Least One Valid Path in a Grid,22,"            nr, nc = r + dr, c + dc
             
-",0.9806624078072137
+",0.9806624078
 Minimum Cost to Make at Least One Valid Path in a Grid,23,"            # Check if the new position is within bounds
-",0.9999972581863403
+",0.9999972582
 Minimum Cost to Make at Least One Valid Path in a Grid,24,"            if 0 <= nr < m and 0 <= nc < n:
-",0.9988199708472937
+",0.9988199708
 Minimum Cost to Make at Least One Valid Path in a Grid,25,"                # Calculate the new cost
-",0.9999594688415527
+",0.9999594688
 Minimum Cost to Make at Least One Valid Path in a Grid,26,"                new_cost = cost + (1 if i != grid[r][c] - 1 else 0)
-",0.956498993954969
+",0.956498994
 Minimum Cost to Make at Least One Valid Path in a Grid,27,"                
-",0.997916042804718
+",0.9979160428
 Minimum Cost to Make at Least One Valid Path in a Grid,28,"                # If the new cost is lower, update and push to the heap
-",0.9999992847442627
+",0.9999992847
 Minimum Cost to Make at Least One Valid Path in a Grid,29,"                if new_cost < dist[nr][nc]:
-",0.999997702507723
+",0.9999977025
 Minimum Cost to Make at Least One Valid Path in a Grid,30,"                    dist[nr][nc] = new_cost
-",0.9999991872082088
+",0.9999991872
 Minimum Cost to Make at Least One Valid Path in a Grid,31,"                    heapq.heappush(pq, (new_cost, nr, nc))
-",0.9992261422394316
+",0.9992261422
 Minimum Cost to Make at Least One Valid Path in a Grid,32,"    
-",0.9986334443092346
+",0.9986334443
 Minimum Cost to Make at Least One Valid Path in a Grid,33,"    # If we exhaust the queue without reaching the end, return -1 (should not happen with valid input)
-",0.9999707937240601
+",0.9999707937
 Minimum Cost to Make at Least One Valid Path in a Grid,34,"    return -1
 
-",0.9983391834721147
+",0.9983391835
 Minimum Cost to Make at Least One Valid Path in a Grid,36,"print(minCost([[1,1,1,1],[2,2,2,2],[1,1,1,1],[2,2,2,2]]))  # Output: 3
-",0.9563385135888978
+",0.9563385136
 Minimum Cost to Make at Least One Valid Path in a Grid,37,"print(minCost([[1,1,3],[3,2,2],[1,1,4]]))                   # Output: 0
-",0.9062654293044777
+",0.9062654293
 Minimum Cost to Make at Least One Valid Path in a Grid,38,"print(minCost([[1,2],[4,3]]))                                # Output: 1
-",0.934276410744937
+",0.9342764107
 Minimum Cost to Make at Least One Valid Path in a Grid,39,"print(minCost([[2,2,2],[2,2,2]]))                            # Output: 3
-",0.9696110200535252
+",0.9696110201
 Minimum Cost to Make at Least One Valid Path in a Grid,40,"print(minCost([[4]]))                                         # Output: 0
-",0.9144768500747473
+",0.9144768501
 Pizza With 3n Slices,0," To solve this problem, we need to maximize the sum of pizza slices we can pick, given the constraints that Alice picks the next slice in an anti-clockwise direction and Bob picks the next slice in a clockwise direction. The key challenge here is to handle the circular nature of the array and ensure that we don't pick adjacent slices (since Alice and Bob will pick the adjacent slices).
 
 Here's a step-by-step approach to solve the problem:
@@ -1853,64 +1775,64 @@ Here's a step-by-step approach to solve the problem:
 5. **Implementation**: Let's implement this approach in Python.
 
 ```python
-",0.9999996423721242
+",0.9999996424
 Pizza With 3n Slices,1,"def maxSizeSlices(slices):
-",0.996624528772862
+",0.9966245288
 Pizza With 3n Slices,2,"    def maxNonCircular(s):
-",0.514612919991872
+",0.51461292
 Pizza With 3n Slices,3,"        n = len(s)
-",0.9969624423912454
+",0.9969624424
 Pizza With 3n Slices,4,"        k = n // 3
-",0.8984341999545559
+",0.8984342
 Pizza With 3n Slices,5,"        dp = [[0] * (k + 1) for _ in range(n + 1)]
-",0.9906070240719088
+",0.9906070241
 Pizza With 3n Slices,6,"        
-",0.9963390827178955
+",0.9963390827
 Pizza With 3n Slices,7,"        for i in range(1, n + 1):
-",0.9996804910701804
+",0.9996804911
 Pizza With 3n Slices,8,"            for j in range(1, k + 1):
-",0.9999033567346975
+",0.9999033567
 Pizza With 3n Slices,9,"                # If we pick the i-th slice, we cannot pick the (i-1)-th slice
-",0.9999953508377075
+",0.9999953508
 Pizza With 3n Slices,10,"                if i > 1:
-",0.851850751864827
+",0.8518507519
 Pizza With 3n Slices,11,"                    dp[i][j] = max(dp[i][j], dp[i-1][j])
-",0.9094037547177171
+",0.9094037547
 Pizza With 3n Slices,12,"                # If we do not pick the i-th slice, we can consider the (i-1)-th slice
-",0.9977565407752991
+",0.9977565408
 Pizza With 3n Slices,13,"                if i > 2:
-",0.9199840291671213
+",0.9199840292
 Pizza With 3n Slices,14,"                    dp[i][j] = max(dp[i][j], dp[i-2][j-1] + s[i-1])
-",0.9997771103664097
+",0.9997771104
 Pizza With 3n Slices,15,"        
-",0.4316866099834442
+",0.43168661
 Pizza With 3n Slices,16,"        return dp[n][k]
-",0.9982154759636616
+",0.998215476
 Pizza With 3n Slices,17,"    
-",0.9999897480010986
+",0.999989748
 Pizza With 3n Slices,18,"    # Case 1: Exclude the first slice
-",0.9999992847442627
+",0.9999992847
 Pizza With 3n Slices,19,"    case1 = maxNonCircular(slices[1:])
-",0.9820608777800176
+",0.9820608778
 Pizza With 3n Slices,20,"    # Case 2: Exclude the last slice
-",0.6870430707931519
+",0.6870430708
 Pizza With 3n Slices,21,"    case2 = maxNonCircular(slices[:-1])
-",0.9999778656650972
+",0.9999778657
 Pizza With 3n Slices,22,"    
-",0.999306321144104
+",0.9993063211
 Pizza With 3n Slices,23,"    # Return the maximum of the two cases
-",0.9999996423721313
+",0.9999996424
 Pizza With 3n Slices,24,"    return max(case1, case2)
 
-",0.9999851644276463
+",0.9999851644
 Pizza With 3n Slices,26,"print(maxSizeSlices([1,2,3,4,5,6]))  # Output: 10
-",0.9240226550227396
+",0.924022655
 Pizza With 3n Slices,27,"print(maxSizeSlices([8,9,8,6,1,1]))  # Output: 16
-",0.9998972015908746
+",0.9998972016
 Pizza With 3n Slices,28,"print(maxSizeSlices([4,1,2,5,8,3,1,9,7]))  # Output: 21
-",0.9999940679111607
+",0.9999940679
 Pizza With 3n Slices,29,"print(maxSizeSlices([3,1,2]))  # Output: 3
-",0.9999704104617146
+",0.9999704105
 Number of Ways to Wear Different Hats to Each Other,0," To solve this problem, we need to count the number of ways to assign hats to people such that each person gets exactly one hat and no two people get the same hat. Given the constraints, a dynamic programming approach is suitable.
 
 Here's a step-by-step breakdown of the approach:
@@ -1938,75 +1860,75 @@ Here's a step-by-step breakdown of the approach:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999969005547129
+",0.9999969006
 Number of Ways to Wear Different Hats to Each Other,1,"def numberWays(hats):
-",0.9634574686713239
+",0.9634574687
 Number of Ways to Wear Different Hats to Each Other,2,"    MOD = 10**9 + 7
-",0.9841135040228005
+",0.984113504
 Number of Ways to Wear Different Hats to Each Other,3,"    n = len(hats)
-",0.9998856254986258
+",0.9998856255
 Number of Ways to Wear Different Hats to Each Other,4,"    
-",0.9644466042518616
+",0.9644466043
 Number of Ways to Wear Different Hats to Each Other,5,"    # Create a list of people who prefer each hat
-",0.9999996423721313
+",0.9999996424
 Number of Ways to Wear Different Hats to Each Other,6,"    hat_to_people = [[] for _ in range(41)]
-",0.9784679869722874
+",0.978467987
 Number of Ways to Wear Different Hats to Each Other,7,"    for person in range(n):
-",0.8438444699086834
+",0.8438444699
 Number of Ways to Wear Different Hats to Each Other,8,"        for hat in hats[person]:
-",0.9999971836766745
+",0.9999971837
 Number of Ways to Wear Different Hats to Each Other,9,"            hat_to_people[hat].append(person)
-",0.9998439743679691
+",0.9998439744
 Number of Ways to Wear Different Hats to Each Other,10,"    
-",0.999994158744812
+",0.9999941587
 Number of Ways to Wear Different Hats to Each Other,11,"    # Initialize the DP table
-",0.9999996423721313
+",0.9999996424
 Number of Ways to Wear Different Hats to Each Other,12,"    dp = [[0] * 41 for _ in range(1 << n)]
-",0.9956647723570231
+",0.9956647724
 Number of Ways to Wear Different Hats to Each Other,13,"    dp[0][0] = 1
     
-",0.9950634114944804
+",0.9950634115
 Number of Ways to Wear Different Hats to Each Other,14,"    # Fill the DP table
-",0.9999994039535522
+",0.999999404
 Number of Ways to Wear Different Hats to Each Other,15,"    for hat in range(1, 41):
-",0.9937767831218572
+",0.9937767831
 Number of Ways to Wear Different Hats to Each Other,16,"        for mask in range(1 << n):
-",0.9907689003112391
+",0.9907689003
 Number of Ways to Wear Different Hats to Each Other,17,"            dp[mask][hat] = dp[mask][hat - 1]  # Option to skip this hat
-",0.9738245106786763
+",0.9738245107
 Number of Ways to Wear Different Hats to Each Other,18,"            for person in hat_to_people[hat]:
-",0.999779461814397
+",0.9997794618
 Number of Ways to Wear Different Hats to Each Other,19,"                if mask & (1 << person) == 0:  # If person hasn't got a hat yet
-",0.9841911337100252
+",0.9841911337
 Number of Ways to Wear Different Hats to Each Other,20,"                    new_mask = mask | (1 << person)
-",0.9412655493411494
+",0.9412655493
 Number of Ways to Wear Different Hats to Each Other,21,"                    dp[new_mask][hat] = (dp[new_mask][hat] + dp[mask][hat - 1]) % MOD
     
-",0.998994830860866
+",0.9989948309
 Number of Ways to Wear Different Hats to Each Other,22,"    # The result is the number of ways to assign all hats to all people
-",0.9999995231628418
+",0.9999995232
 Number of Ways to Wear Different Hats to Each Other,23,"    return dp[(1 << n) - 1][40]
 
-",0.9989852645976856
+",0.9989852646
 Number of Ways to Wear Different Hats to Each Other,25,"hats1 = [[3, 4], [4, 5], [5]]
-",0.9363302149720153
+",0.936330215
 Number of Ways to Wear Different Hats to Each Other,26,"print(numberWays(hats1))  # Output: 1
 
-",0.8615816281605456
+",0.8615816282
 Number of Ways to Wear Different Hats to Each Other,27,"hats2 = [[3, 5, 1], [3, 5]]
-",0.9999765902953439
+",0.9999765903
 Number of Ways to Wear Different Hats to Each Other,28,"print(numberWays(hats2))  # Output: 4
 
-",0.9999986357127677
+",0.9999986357
 Number of Ways to Wear Different Hats to Each Other,29,"hats3 = [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]
-",0.9999782489694895
+",0.999978249
 Number of Ways to Wear Different Hats to Each Other,30,"print(numberWays(hats3))  # Output: 24
 
-",0.9999996291266051
+",0.9999996291
 Number of Ways to Wear Different Hats to Each Other,31,"hats4 = [[1, 2, 3], [2, 3, 5, 6], [1, 3, 7, 9], [1, 8, 9], [2, 5, 7]]
-",0.9999973101816376
+",0.9999973102
 Number of Ways to Wear Different Hats to Each Other,32,"print(numberWays(hats4))  # Output: 111
-",0.9999987814136488
+",0.9999987814
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,0," To solve this problem, we can use a min-heap (priority queue) to efficiently find the k-th smallest sum. The idea is to iteratively combine the smallest sums from the rows while maintaining a heap of the smallest possible sums.
 
 Here's a step-by-step approach:
@@ -2022,77 +1944,77 @@ Here's a step-by-step approach:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999985098836657
+",0.9999985099
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,1,"def kthSmallest(mat, k):
-",0.9343075897575043
+",0.9343075898
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,2,"    import heapq
     
-",0.7996207445175492
+",0.7996207445
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,3,"    # Initialize the heap with the first row elements
-",0.9999995231628418
+",0.9999995232
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,4,"    heap = []
-",0.8230333041804595
+",0.8230333042
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,5,"    for num in mat[0]:
-",0.9948507906903264
+",0.9948507907
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,6,"        heapq.heappush(heap, num)
-",0.9904310421106177
+",0.9904310421
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,7,"    
-",0.999798595905304
+",0.9997985959
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,8,"    # Process each row
-",0.9999997615814209
+",0.9999997616
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,9,"    for row in mat[1:]:
-",0.983950288619055
+",0.9839502886
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,10,"        new_heap = []
-",0.9770019079530747
+",0.977001908
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,11,"        for num in row:
-",0.7222517528043974
+",0.7222517528
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,12,"            # Combine the current number with the smallest sums in the heap
-",0.9999974966049194
+",0.9999974966
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,13,"            while heap and len(new_heap) < k:
-",0.9557892478784835
+",0.9557892479
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,14,"                smallest_sum = heapq.heappop(heap)
-",0.8771405142892414
+",0.8771405143
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,15,"                new_sum = smallest_sum + num
-",0.9469095103821137
+",0.9469095104
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,16,"                heapq.heappush(new_heap, new_sum)
-",0.9997534448368344
+",0.9997534448
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,17,"        # Update the heap with the new sums
-",0.5332849621772766
+",0.5332849622
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,18,"        heap = new_heap
     
-",0.9885389253977127
+",0.9885389254
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,19,"    # The k-th smallest sum is now at the top of the heap
-",0.9999994039535522
+",0.999999404
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,20,"    return heapq.nsmallest(k, heap)[-1]
 
-",0.881389192812125
+",0.8813891928
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,22,"mat1 = [[1,3,11],[2,4,6]]
-",0.9602702499647486
+",0.96027025
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,23,"k1 = 5
-",0.9962162201786009
+",0.9962162202
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,24,"print(kthSmallest(mat1, k1))  # Output: 7
 
-",0.9999545711642285
+",0.9999545712
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,25,"mat2 = [[1,3,11],[2,4,6]]
-",0.9996832367132766
+",0.9996832367
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,26,"k2 = 9
-",0.9999930658816997
+",0.9999930659
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,27,"print(kthSmallest(mat2, k2))  # Output: 17
 
-",0.9999905524106697
+",0.9999905524
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,28,"mat3 = [[1,10,10],[1,4,5],[2,3,6]]
-",0.9999982664951417
+",0.9999982665
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,29,"k3 = 7
-",0.9999994635580057
+",0.9999994636
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,30,"print(kthSmallest(mat3, k3))  # Output: 9
 
-",0.9999971389525251
+",0.999997139
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,31,"mat4 = [[1,1,10],[2,2,9]]
-",0.9999987377826706
+",0.9999987378
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,32,"k4 = 7
-",0.9999939003789674
+",0.9999939004
 Find the Kth Smallest Sum of a Matrix With Sorted Rows,33,"print(kthSmallest(mat4, k4))  # Output: 12
-",0.9999948540358622
+",0.999994854
 Remove Max Number of Edges to Keep Graph Fully Traversable,0," To solve this problem, we need to ensure that both Alice and Bob can traverse the entire graph after removing the maximum number of edges possible. This can be achieved using a Union-Find data structure, also known as Disjoint Set Union (DSU). The idea is to prioritize using Type 3 edges first because they can be used by both Alice and Bob, thus maximizing the potential for removing other edges.
 
 Here's a step-by-step approach to solve the problem:
@@ -2110,121 +2032,121 @@ Here's a step-by-step approach to solve the problem:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999960064821902
+",0.9999960065
 Remove Max Number of Edges to Keep Graph Fully Traversable,1,"class UnionFind:
-",0.961960567506301
+",0.9619605675
 Remove Max Number of Edges to Keep Graph Fully Traversable,2,"    def __init__(self, n):
-",0.9533183016713161
+",0.9533183017
 Remove Max Number of Edges to Keep Graph Fully Traversable,3,"        self.parent = list(range(n))
-",0.9859786675184983
+",0.9859786675
 Remove Max Number of Edges to Keep Graph Fully Traversable,4,"        self.rank = [0] * n
-",0.9014765941714388
+",0.9014765942
 Remove Max Number of Edges to Keep Graph Fully Traversable,5,"        self.size = [1] * n
 
-",0.886712368679549
+",0.8867123687
 Remove Max Number of Edges to Keep Graph Fully Traversable,6,"    def find(self, u):
-",0.9461077207557356
+",0.9461077208
 Remove Max Number of Edges to Keep Graph Fully Traversable,7,"        if self.parent[u] != u:
-",0.9817164705967455
+",0.9817164706
 Remove Max Number of Edges to Keep Graph Fully Traversable,8,"            self.parent[u] = self.find(self.parent[u])
-",0.9774882401946383
+",0.9774882402
 Remove Max Number of Edges to Keep Graph Fully Traversable,9,"        return self.parent[u]
 
-",0.9999946355655541
+",0.9999946356
 Remove Max Number of Edges to Keep Graph Fully Traversable,10,"    def union(self, u, v):
-",0.9998137442829449
+",0.9998137443
 Remove Max Number of Edges to Keep Graph Fully Traversable,11,"        root_u = self.find(u)
-",0.8634044084063907
+",0.8634044084
 Remove Max Number of Edges to Keep Graph Fully Traversable,12,"        root_v = self.find(v)
-",0.9983058016312616
+",0.9983058016
 Remove Max Number of Edges to Keep Graph Fully Traversable,13,"        if root_u != root_v:
-",0.9544332685551395
+",0.9544332686
 Remove Max Number of Edges to Keep Graph Fully Traversable,14,"            if self.rank[root_u] > self.rank[root_v]:
-",0.9969767352651576
+",0.9969767353
 Remove Max Number of Edges to Keep Graph Fully Traversable,15,"                self.parent[root_v] = root_u
-",0.999936869413959
+",0.9999368694
 Remove Max Number of Edges to Keep Graph Fully Traversable,16,"                self.size[root_u] += self.size[root_v]
-",0.9994181650976869
+",0.9994181651
 Remove Max Number of Edges to Keep Graph Fully Traversable,17,"            elif self.rank[root_u] < self.rank[root_v]:
-",0.9988733372483399
+",0.9988733372
 Remove Max Number of Edges to Keep Graph Fully Traversable,18,"                self.parent[root_u] = root_v
-",0.9999988555897159
+",0.9999988556
 Remove Max Number of Edges to Keep Graph Fully Traversable,19,"                self.size[root_v] += self.size[root_u]
-",0.999998788037214
+",0.999998788
 Remove Max Number of Edges to Keep Graph Fully Traversable,20,"            else:
-",0.9999969402926214
+",0.9999969403
 Remove Max Number of Edges to Keep Graph Fully Traversable,21,"                self.parent[root_v] = root_u
-",0.9991851220743758
+",0.9991851221
 Remove Max Number of Edges to Keep Graph Fully Traversable,22,"                self.size[root_u] += self.size[root_v]
-",0.9853826081883567
+",0.9853826082
 Remove Max Number of Edges to Keep Graph Fully Traversable,23,"                self.rank[root_u] += 1
-",0.9898492471421962
+",0.9898492471
 Remove Max Number of Edges to Keep Graph Fully Traversable,24,"            return True
-",0.9992544848194439
+",0.9992544848
 Remove Max Number of Edges to Keep Graph Fully Traversable,25,"        return False
 
-",0.9999151897758777
+",0.9999151898
 Remove Max Number of Edges to Keep Graph Fully Traversable,26,"def maxNumEdgesToRemove(n, edges):
-",0.9667389217595739
+",0.9667389218
 Remove Max Number of Edges to Keep Graph Fully Traversable,27,"    alice_uf = UnionFind(n)
-",0.8578172104970215
+",0.8578172105
 Remove Max Number of Edges to Keep Graph Fully Traversable,28,"    bob_uf = UnionFind(n)
-",0.9929253646619938
+",0.9929253647
 Remove Max Number of Edges to Keep Graph Fully Traversable,29,"    
-",0.8136665225028992
+",0.8136665225
 Remove Max Number of Edges to Keep Graph Fully Traversable,30,"    # Process type 3 edges first
-",0.9999995231628418
+",0.9999995232
 Remove Max Number of Edges to Keep Graph Fully Traversable,31,"    edges_used = 0
-",0.844176163995157
+",0.844176164
 Remove Max Number of Edges to Keep Graph Fully Traversable,32,"    for t, u, v in edges:
-",0.828442159203784
+",0.8284421592
 Remove Max Number of Edges to Keep Graph Fully Traversable,33,"        if t == 3:
-",0.9953550980462449
+",0.995355098
 Remove Max Number of Edges to Keep Graph Fully Traversable,34,"            if alice_uf.union(u - 1, v - 1):
-",0.9781623709483649
+",0.9781623709
 Remove Max Number of Edges to Keep Graph Fully Traversable,35,"                bob_uf.union(u - 1, v - 1)
-",0.9856519413803287
+",0.9856519414
 Remove Max Number of Edges to Keep Graph Fully Traversable,36,"                edges_used += 1
     
-",0.9801457573553236
+",0.9801457574
 Remove Max Number of Edges to Keep Graph Fully Traversable,37,"    # Process type 1 edges
-",0.9999966621398926
+",0.9999966621
 Remove Max Number of Edges to Keep Graph Fully Traversable,38,"    for t, u, v in edges:
-",0.9999627536335557
+",0.9999627536
 Remove Max Number of Edges to Keep Graph Fully Traversable,39,"        if t == 1:
-",0.9820842467805704
+",0.9820842468
 Remove Max Number of Edges to Keep Graph Fully Traversable,40,"            if alice_uf.union(u - 1, v - 1):
-",0.9999676052280346
+",0.9999676052
 Remove Max Number of Edges to Keep Graph Fully Traversable,41,"                edges_used += 1
     
-",0.9998253962134147
+",0.9998253962
 Remove Max Number of Edges to Keep Graph Fully Traversable,42,"    # Process type 2 edges
-",0.999998927116394
+",0.9999989271
 Remove Max Number of Edges to Keep Graph Fully Traversable,43,"    for t, u, v in edges:
-",0.9999995470046132
+",0.999999547
 Remove Max Number of Edges to Keep Graph Fully Traversable,44,"        if t == 2:
-",0.9999971219243162
+",0.9999971219
 Remove Max Number of Edges to Keep Graph Fully Traversable,45,"            if bob_uf.union(u - 1, v - 1):
-",0.9999987333992993
+",0.9999987334
 Remove Max Number of Edges to Keep Graph Fully Traversable,46,"                edges_used += 1
     
-",0.9998884515768968
+",0.9998884516
 Remove Max Number of Edges to Keep Graph Fully Traversable,47,"    # Check if both Alice and Bob can traverse the entire graph
-",0.9999984502792358
+",0.9999984503
 Remove Max Number of Edges to Keep Graph Fully Traversable,48,"    if alice_uf.size[alice_uf.find(0)] != n or bob_uf.size[bob_uf.find(0)] != n:
-",0.9937793775297568
+",0.9937793775
 Remove Max Number of Edges to Keep Graph Fully Traversable,49,"        return -1
     
-",0.9999669530282793
+",0.999966953
 Remove Max Number of Edges to Keep Graph Fully Traversable,50,"    return len(edges) - edges_used
 
-",0.9490188364118003
+",0.9490188364
 Remove Max Number of Edges to Keep Graph Fully Traversable,52,"print(maxNumEdgesToRemove(4, [[3,1,2],[3,2,3],[1,1,3],[1,2,4],[1,1,2],[2,3,4]]))  # Output: 2
-",0.9782149846863066
+",0.9782149847
 Remove Max Number of Edges to Keep Graph Fully Traversable,53,"print(maxNumEdgesToRemove(4, [[3,1,2],[3,2,3],[1,1,4],[2,1,4]]))  # Output: 0
-",0.9950202775838306
+",0.9950202776
 Remove Max Number of Edges to Keep Graph Fully Traversable,54,"print(maxNumEdgesToRemove(4, [[3,2,3],[1,1,2],[2,3,4]]))  # Output: -1
-",0.9999940886996244
+",0.9999940887
 Minimum Operations to Make a Subsequence,0," To solve this problem, we need to determine the minimum number of insertions required to make the `target` array a subsequence of the `arr` array. The key observation here is that the longest increasing subsequence (LIS) of `arr` that matches the order of `target` will help us minimize the number of insertions.
 
 Here's a step-by-step approach to solve the problem:
@@ -2240,97 +2162,97 @@ Here's a step-by-step approach to solve the problem:
 Let's implement this solution:
 
 ```python
-",0.9999950528069785
+",0.9999950528
 Minimum Operations to Make a Subsequence,1,"def min_operations_to_subsequence(target, arr):
-",0.8514876283400584
+",0.8514876283
 Minimum Operations to Make a Subsequence,2,"    # Step 1: Map elements of target to their indices
-",0.9999895095825195
+",0.9999895096
 Minimum Operations to Make a Subsequence,3,"    target_map = {}
-",0.8357385999076516
+",0.8357385999
 Minimum Operations to Make a Subsequence,4,"    for i, num in enumerate(target):
-",0.9062960460614651
+",0.9062960461
 Minimum Operations to Make a Subsequence,5,"        target_map[num] = i
     
-",0.9370135190473151
+",0.937013519
 Minimum Operations to Make a Subsequence,6,"    # Step 2: Transform arr into a sequence of indices from target
-",0.9999998807907104
+",0.9999998808
 Minimum Operations to Make a Subsequence,7,"    transformed_arr = []
-",0.9186876256431711
+",0.9186876256
 Minimum Operations to Make a Subsequence,8,"    for num in arr:
-",0.9999901254220874
+",0.9999901254
 Minimum Operations to Make a Subsequence,9,"        if num in target_map:
-",0.9999967983697554
+",0.9999967984
 Minimum Operations to Make a Subsequence,10,"            transformed_arr.append(target_map[num])
-",0.9999754719028614
+",0.9999754719
 Minimum Operations to Make a Subsequence,11,"    
-",0.999988317489624
+",0.9999883175
 Minimum Operations to Make a Subsequence,12,"    # Step 3: Find the length of the LIS in the transformed sequence
-",0.9999996423721313
+",0.9999996424
 Minimum Operations to Make a Subsequence,13,"    def length_of_lis(sequence):
-",0.9025838716202516
+",0.9025838716
 Minimum Operations to Make a Subsequence,14,"        if not sequence:
-",0.9843597889520038
+",0.984359789
 Minimum Operations to Make a Subsequence,15,"            return 0
         
-",0.9957779904270977
+",0.9957779904
 Minimum Operations to Make a Subsequence,16,"        # This will store the smallest tail of all increasing subsequences
-",0.9999995231628418
+",0.9999995232
 Minimum Operations to Make a Subsequence,17,"        # with different lengths
-",0.9999972581863403
+",0.9999972582
 Minimum Operations to Make a Subsequence,18,"        lis = []
-",0.9280541184227091
+",0.9280541184
 Minimum Operations to Make a Subsequence,19,"        
-",0.9919731616973877
+",0.9919731617
 Minimum Operations to Make a Subsequence,20,"        for num in sequence:
-",0.9984450725216121
+",0.9984450725
 Minimum Operations to Make a Subsequence,21,"            # Find the position where this number can replace or extend the LIS
-",0.9999992847442627
+",0.9999992847
 Minimum Operations to Make a Subsequence,22,"            pos = 0
-",0.886563051048775
+",0.886563051
 Minimum Operations to Make a Subsequence,23,"            while pos < len(lis) and lis[pos] < num:
-",0.9941505594114607
+",0.9941505594
 Minimum Operations to Make a Subsequence,24,"                pos += 1
             
-",0.9973656100545718
+",0.9973656101
 Minimum Operations to Make a Subsequence,25,"            # If pos is equal to the length of lis, it means we can extend the LIS
-",0.9999994039535522
+",0.999999404
 Minimum Operations to Make a Subsequence,26,"            if pos == len(lis):
-",0.9990558388089791
+",0.9990558388
 Minimum Operations to Make a Subsequence,27,"                lis.append(num)
-",0.9999553057797972
+",0.9999553058
 Minimum Operations to Make a Subsequence,28,"            else:
-",0.9967908428896058
+",0.9967908429
 Minimum Operations to Make a Subsequence,29,"                # Otherwise, replace the element at pos
-",0.9954818487167358
+",0.9954818487
 Minimum Operations to Make a Subsequence,30,"                lis[pos] = num
         
-",0.9995651479045925
+",0.9995651479
 Minimum Operations to Make a Subsequence,31,"        return len(lis)
-",0.9771621638555991
+",0.9771621639
 Minimum Operations to Make a Subsequence,32,"    
-",0.999998927116394
+",0.9999989271
 Minimum Operations to Make a Subsequence,33,"    lis_length = length_of_lis(transformed_arr)
-",0.9920744551165234
+",0.9920744551
 Minimum Operations to Make a Subsequence,34,"    
-",0.9999996423721313
+",0.9999996424
 Minimum Operations to Make a Subsequence,35,"    # Step 4: Calculate the minimum number of insertions
-",0.9999998807907104
+",0.9999998808
 Minimum Operations to Make a Subsequence,36,"    return len(target) - lis_length
 
-",0.9890148647377798
+",0.9890148647
 Minimum Operations to Make a Subsequence,38,"target1 = [5, 1, 3]
-",0.9782625659439588
+",0.9782625659
 Minimum Operations to Make a Subsequence,39,"arr1 = [9, 4, 2, 3, 4]
-",0.999999615881012
+",0.9999996159
 Minimum Operations to Make a Subsequence,40,"print(min_operations_to_subsequence(target1, arr1))  # Output: 2
 
-",0.9999671425412194
+",0.9999671425
 Minimum Operations to Make a Subsequence,41,"target2 = [6, 4, 8, 1, 3, 2]
-",0.9999998069944479
+",0.999999807
 Minimum Operations to Make a Subsequence,42,"arr2 = [4, 7, 6, 2, 3, 8, 6, 1]
-",0.9999999028664878
+",0.9999999029
 Minimum Operations to Make a Subsequence,43,"print(min_operations_to_subsequence(target2, arr2))  # Output: 3
-",0.9999983218943554
+",0.9999983219
 Edit Distance,0," To solve this problem, we can use dynamic programming to find the minimum number of operations required to convert one string to another. The idea is to build a table where each cell `(i, j)` represents the minimum number of operations needed to convert the first `i` characters of `word1` to the first `j` characters of `word2`.
 
 Here's a step-by-step breakdown of the approach:
@@ -2354,58 +2276,58 @@ Here's a step-by-step breakdown of the approach:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999983310685536
+",0.9999983311
 Edit Distance,1,"def minDistance(word1, word2):
-",0.9951120733244079
+",0.9951120733
 Edit Distance,2,"    m, n = len(word1), len(word2)
-",0.9427963787878804
+",0.9427963788
 Edit Distance,3,"    
-",0.9936345815658569
+",0.9936345816
 Edit Distance,4,"    # Create a 2D array to store the minimum operations
-",0.9999997615814209
+",0.9999997616
 Edit Distance,5,"    dp = [[0] * (n + 1) for _ in range(m + 1)]
-",0.9993785250727324
+",0.9993785251
 Edit Distance,6,"    
-",0.9999998807907104
+",0.9999998808
 Edit Distance,7,"    # Initialize the base cases
-",0.9999997615814209
+",0.9999997616
 Edit Distance,8,"    for i in range(1, m + 1):
-",0.9045281928980996
+",0.9045281929
 Edit Distance,9,"        dp[i][0] = i  # Deleting all characters from word1
-",0.9532738420104154
+",0.953273842
 Edit Distance,10,"    for j in range(1, n + 1):
-",0.9999964970349441
+",0.999996497
 Edit Distance,11,"        dp[0][j] = j  # Inserting all characters into word1
     
-",0.9999992251370965
+",0.9999992251
 Edit Distance,12,"    # Fill the DP table
-",0.9999997615814209
+",0.9999997616
 Edit Distance,13,"    for i in range(1, m + 1):
-",0.9999979000758634
+",0.9999979001
 Edit Distance,14,"        for j in range(1, n + 1):
-",0.9999997890911737
+",0.9999997891
 Edit Distance,15,"            if word1[i - 1] == word2[j - 1]:
-",0.9998112228338552
+",0.9998112228
 Edit Distance,16,"                dp[i][j] = dp[i - 1][j - 1]
-",0.9512429812493652
+",0.9512429812
 Edit Distance,17,"            else:
-",0.9999995231626144
+",0.9999995232
 Edit Distance,18,"                dp[i][j] = min(dp[i - 1][j - 1],  # Replace
-",0.9046374093617054
+",0.9046374094
 Edit Distance,19,"                               dp[i - 1][j],      # Delete
-",0.9391151072830064
+",0.9391151073
 Edit Distance,20,"                               dp[i][j - 1]) + 1   # Insert
     
-",0.9096586225100821
+",0.9096586225
 Edit Distance,21,"    # The answer is in the bottom-right corner of the table
-",0.9999996423721313
+",0.9999996424
 Edit Distance,22,"    return dp[m][n]
 
-",0.9997096692392302
+",0.9997096692
 Edit Distance,24,"print(minDistance(""horse"", ""ros""))  # Output: 3
-",0.9272660483247875
+",0.9272660483
 Edit Distance,25,"print(minDistance(""intention"", ""execution""))  # Output: 5
-",0.9999984394359411
+",0.9999984394
 Maximum Profit in Job Scheduling,0," To solve this problem, we can use a dynamic programming approach combined with a custom sorting mechanism. The key idea is to sort the jobs by their end times and then use a DP array to keep track of the maximum profit we can achieve up to each job.
 
 Here's a step-by-step breakdown of the solution:
@@ -2423,64 +2345,64 @@ Here's a step-by-step breakdown of the solution:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999982714640065
+",0.9999982715
 Maximum Profit in Job Scheduling,1,"def jobScheduling(startTime, endTime, profit):
-",0.9921834000531763
+",0.9921834001
 Maximum Profit in Job Scheduling,2,"    # Combine start times, end times, and profits into a list of tuples
-",0.9999963045120239
+",0.9999963045
 Maximum Profit in Job Scheduling,3,"    jobs = [(s, e, p) for s, e, p in zip(startTime, endTime, profit)]
-",0.9313206776270442
+",0.9313206776
 Maximum Profit in Job Scheduling,4,"    
-",0.8387486338615417
+",0.8387486339
 Maximum Profit in Job Scheduling,5,"    # Sort jobs by their end times
-",0.9999996423721313
+",0.9999996424
 Maximum Profit in Job Scheduling,6,"    jobs.sort(key=lambda x: x[1])
-",0.9931011826745516
+",0.9931011827
 Maximum Profit in Job Scheduling,7,"    
-",0.9998730421066284
+",0.9998730421
 Maximum Profit in Job Scheduling,8,"    n = len(jobs)
-",0.9433713408993336
+",0.9433713409
 Maximum Profit in Job Scheduling,9,"    dp = [0] * (n + 1)
-",0.9134514765233899
+",0.9134514765
 Maximum Profit in Job Scheduling,10,"    
-",0.99981290102005
+",0.999812901
 Maximum Profit in Job Scheduling,11,"    for i in range(1, n + 1):
-",0.9370752210160554
+",0.937075221
 Maximum Profit in Job Scheduling,12,"        # Current job details
-",0.9999953508377075
+",0.9999953508
 Maximum Profit in Job Scheduling,13,"        s, e, p = jobs[i - 1]
-",0.9529395728413198
+",0.9529395728
 Maximum Profit in Job Scheduling,14,"        
-",0.9955636262893677
+",0.9955636263
 Maximum Profit in Job Scheduling,15,"        # Find the last job that finishes before the current job starts
-",0.9999984502792358
+",0.9999984503
 Maximum Profit in Job Scheduling,16,"        j = i - 1
-",0.8299512555704398
+",0.8299512556
 Maximum Profit in Job Scheduling,17,"        while j > 0 and jobs[j - 1][1] > s:
-",0.9541148653104521
+",0.9541148653
 Maximum Profit in Job Scheduling,18,"            j -= 1
         
-",0.9999144103087946
+",0.9999144103
 Maximum Profit in Job Scheduling,19,"        # Calculate the profit if we include the current job
-",0.9999985694885254
+",0.9999985695
 Maximum Profit in Job Scheduling,20,"        include_current = dp[j] + p
         
-",0.9433599998169419
+",0.9433599998
 Maximum Profit in Job Scheduling,21,"        # Update the DP array
-",0.9999996423721313
+",0.9999996424
 Maximum Profit in Job Scheduling,22,"        dp[i] = max(dp[i - 1], include_current)
-",0.99497912645508
+",0.9949791265
 Maximum Profit in Job Scheduling,23,"    
-",0.9999829530715942
+",0.9999829531
 Maximum Profit in Job Scheduling,24,"    return dp[n]
 
-",0.9634748020719508
+",0.9634748021
 Maximum Profit in Job Scheduling,26,"print(jobScheduling([1, 2, 3, 3], [3, 4, 5, 6], [50, 10, 40, 70]))  # Output: 120
-",0.9707135041588094
+",0.9707135042
 Maximum Profit in Job Scheduling,27,"print(jobScheduling([1, 2, 3, 4, 6], [3, 5, 10, 6, 9], [20, 20, 100, 70, 60]))  # Output: 150
-",0.9999947545443395
+",0.9999947545
 Maximum Profit in Job Scheduling,28,"print(jobScheduling([1, 1, 1], [2, 3, 4], [5, 6, 4]))  # Output: 6
-",0.9999970420818552
+",0.9999970421
 Cherry Pickup II,0,"
 
 To solve this problem, we need to simulate the movement of two robots starting from opposite corners of the grid and moving towards the bottom row. The goal is to maximize the number of cherries collected by both robots while adhering to the movement constraints.
@@ -2502,91 +2424,91 @@ Here's a step-by-step approach to solve the problem:
 Here's the implementation of the above approach:
 
 ```python
-",0.9999986886972394
+",0.9999986887
 Cherry Pickup II,1,"def cherryPickup(grid):
-",0.9978634902510027
+",0.9978634903
 Cherry Pickup II,2,"    rows, cols = len(grid), len(grid[0])
-",0.9056902869165364
+",0.9056902869
 Cherry Pickup II,3,"    
-",0.7373095154762268
+",0.7373095155
 Cherry Pickup II,4,"    # Initialize the dp table with -1
-",0.9999996423721313
+",0.9999996424
 Cherry Pickup II,5,"    dp = [[[-1] * cols for _ in range(cols)] for _ in range(rows)]
-",0.9686213053835201
+",0.9686213054
 Cherry Pickup II,6,"    
-",0.999993085861206
+",0.9999930859
 Cherry Pickup II,7,"    # Base case: starting positions of the robots
-",0.9999995231628418
+",0.9999995232
 Cherry Pickup II,8,"    dp[0][0][cols-1] = grid[0][0] + grid[0][cols-1]
-",0.9921233736524524
+",0.9921233737
 Cherry Pickup II,9,"    
-",0.9953239560127258
+",0.995323956
 Cherry Pickup II,10,"    # Fill the dp table
-",0.9999985694885254
+",0.9999985695
 Cherry Pickup II,11,"    for row in range(1, rows):
-",0.9908658754282192
+",0.9908658754
 Cherry Pickup II,12,"        for col1 in range(cols):
-",0.9982963566646945
+",0.9982963567
 Cherry Pickup II,13,"            for col2 in range(cols):
-",0.9998254813032121
+",0.9998254813
 Cherry Pickup II,14,"                if dp[row-1][col1][col2] == -1:
-",0.8774468240954338
+",0.8774468241
 Cherry Pickup II,15,"                    continue
                 
-",0.8521496685611862
+",0.8521496686
 Cherry Pickup II,16,"                # Calculate the cherries collected in the current cell
-",0.9999963045120239
+",0.9999963045
 Cherry Pickup II,17,"                cherries = grid[row][col1]
-",0.9109893109202218
+",0.9109893109
 Cherry Pickup II,18,"                if col1 != col2:
-",0.9999691090603964
+",0.9999691091
 Cherry Pickup II,19,"                    cherries += grid[row][col2]
-",0.9999976873294851
+",0.9999976873
 Cherry Pickup II,20,"                
-",0.9993602633476257
+",0.9993602633
 Cherry Pickup II,21,"                # Update dp[row][col1][col2] with the maximum cherries collected
-",0.9999967813491821
+",0.9999967813
 Cherry Pickup II,22,"                for new_col1 in [col1-1, col1, col1+1]:
-",0.9375995486173542
+",0.9375995486
 Cherry Pickup II,23,"                    for new_col2 in [col2-1, col2, col2+1]:
-",0.9942510215797151
+",0.9942510216
 Cherry Pickup II,24,"                        if 0 <= new_col1 < cols and 0 <= new_col2 < cols:
-",0.9997159242760923
+",0.9997159243
 Cherry Pickup II,25,"                            dp[row][new_col1][new_col2] = max(dp[row][new_col1][new_col2], dp[row-1][col1][col2] + cherries)
-",0.9907253239468969
+",0.9907253239
 Cherry Pickup II,26,"    
-",0.9997273087501526
+",0.9997273088
 Cherry Pickup II,27,"    # Find the maximum cherries collected in the last row
-",0.9999997615814209
+",0.9999997616
 Cherry Pickup II,28,"    max_cherries = 0
-",0.9951744951298931
+",0.9951744951
 Cherry Pickup II,29,"    for col1 in range(cols):
-",0.9999533533067836
+",0.9999533533
 Cherry Pickup II,30,"        for col2 in range(cols):
-",0.999997511491121
+",0.9999975115
 Cherry Pickup II,31,"            max_cherries = max(max_cherries, dp[rows-1][col1][col2])
-",0.9995015179894148
+",0.999501518
 Cherry Pickup II,32,"    
-",0.9999977350234985
+",0.999997735
 Cherry Pickup II,33,"    return max_cherries
 
-",0.9993756380211299
+",0.999375638
 Cherry Pickup II,35,"grid1 = [[3,1,1],[2,5,1],[1,5,5],[2,1,1]]
-",0.9986882345742858
+",0.9986882346
 Cherry Pickup II,36,"print(cherryPickup(grid1))  # Output: 24
 
-",0.8419261017735452
+",0.8419261018
 Cherry Pickup II,37,"grid2 = [[1,0,0,0,0,0,1],[2,0,0,0,0,3,0],[2,0,9,0,0,0,0],[0,3,0,5,4,0,0],[1,0,2,3,0,0,6]]
-",0.9999964156324348
+",0.9999964156
 Cherry Pickup II,38,"print(cherryPickup(grid2))  # Output: 28
 
-",0.9999973376392367
+",0.9999973376
 Cherry Pickup II,39,"grid3 = [[1,0,0,3],[0,0,0,3],[0,0,3,3],[9,0,3,3]]
-",0.9999971753874236
+",0.9999971754
 Cherry Pickup II,40,"print(cherryPickup(grid3))  # Output: 22
 
-",0.9999974701021334
+",0.9999974701
 Cherry Pickup II,41,"grid4 = [[1,1],[1,1]]
-",0.999998887379007
+",0.9999988874
 Cherry Pickup II,42,"print(cherryPickup(grid4))  # Output: 4
-",0.999993973191136
+",0.9999939732

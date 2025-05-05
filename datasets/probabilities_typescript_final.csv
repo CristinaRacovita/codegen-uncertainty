@@ -1,0 +1,4090 @@
+title,line_number,line_text,token_prob
+Sports Rank,0,"
+
+Explanation
+Data Set 1: Dense ranking gives ranks [1, 2, 2] while competition ranking gives [1, 2, 3]. No one benefits.
+Data Set 2: Dense ranking gives ranks [1, 2, 3, 4, 2, 1, 1, 1, 1, 5, 6] while competition ranking gives [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]. Participants 2 and 4 benefit.
+Data Set 3: Dense ranking gives ranks [1, 1, 1, 1, 1] while competition ranking gives [1, 2, 3, 4, 5]. No one benefits.
+
+To solve this problem, we need to implement both competition ranking and dense ranking systems and then compare them to determine how many participants benefit from dense ranking. Here's a step-by-step approach to achieve this:
+
+1. **Parse the Input**: Read the number of data sets and for each data set, read the number of scores followed by the scores themselves.
+2. **Implement Competition Ranking**: For each score, assign a rank based on the number of participants ranked above them.
+3. **Implement Dense Ranking**: For each score, assign a rank based on the number of distinct ranks above them.
+4. **Compare Rankings**: Count how many participants have a higher rank in dense ranking than in competition ranking.
+5. **Output the Result**: For each data set, output the count of participants who benefit from dense ranking.
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.9999567263002658
+Sports Rank,1,"function parseInput(input: string): { d: number, datasets: { n: number, scores: number[] }[] } {
+",0.838554332954373
+Sports Rank,2,"    const lines = input.trim().split('\n');
+",0.9622112661412846
+Sports Rank,3,"    const d = parseInt(lines[0], 10);
+",0.9939168294061392
+Sports Rank,4,"    const datasets: { n: number, scores: number[] }[] = [];
+
+",0.9862520480948932
+Sports Rank,5,"    for (let i = 1; i <= d; i++) {
+",0.9997328797319737
+Sports Rank,6,"        const parts = lines[i].trim().split(' ');
+",0.8717728512427697
+Sports Rank,7,"        const n = parseInt(parts[0], 10);
+",0.9999962953215169
+Sports Rank,8,"        const scores = parts.slice(1).map(Number);
+",0.8961364133475481
+Sports Rank,9,"        datasets.push({ n, scores });
+",0.9999886152834325
+Sports Rank,10,"    }
+
+",0.9999976754173598
+Sports Rank,11,"    return { d, datasets };
+",0.9999960660775505
+Sports Rank,12,"}
+
+",0.9999988079071045
+Sports Rank,13,"function competitionRanking(scores: number[]): number[] {
+",0.9875685478104439
+Sports Rank,14,"    const sortedScores = [...scores].sort((a, b) => b - a);
+",0.96488439851442
+Sports Rank,15,"    const rankMap: { [key: number]: number } = {};
+",0.9159627697755346
+Sports Rank,16,"    let rank = 1;
+
+",0.9601349300941577
+Sports Rank,17,"    for (let i = 0; i < sortedScores.length; i++) {
+",0.9965840365415112
+Sports Rank,18,"        if (!rankMap[sortedScores[i]]) {
+",0.9937919667301773
+Sports Rank,19,"            rankMap[sortedScores[i]] = rank;
+",0.9997943552341514
+Sports Rank,20,"        }
+",0.9984878401893766
+Sports Rank,21,"        rank++;
+",0.9988961864201326
+Sports Rank,22,"    }
+
+",0.9999975562078571
+Sports Rank,23,"    return scores.map(score => rankMap[score]);
+",0.9976480313592485
+Sports Rank,24,"}
+
+",0.9999982118606567
+Sports Rank,25,"function denseRanking(scores: number[]): number[] {
+",0.9999992305579983
+Sports Rank,26,"    const sortedScores = [...scores].sort((a, b) => b - a);
+",0.9994274716776541
+Sports Rank,27,"    const rankMap: { [key: number]: number } = {};
+",0.9993648889804337
+Sports Rank,28,"    let rank = 1;
+
+",0.9780236027778293
+Sports Rank,29,"    for (let i = 0; i < sortedScores.length; i++) {
+",0.9999547058705748
+Sports Rank,30,"        if (!rankMap[sortedScores[i]]) {
+",0.9983052588606515
+Sports Rank,31,"            rankMap[sortedScores[i]] = rank;
+",0.9998536488983886
+Sports Rank,32,"        }
+",0.9535104875968354
+Sports Rank,33,"        if (i > 0 && sortedScores[i] !== sortedScores[i - 1]) {
+",0.9861311955841329
+Sports Rank,34,"            rank++;
+",0.9999668984934326
+Sports Rank,35,"        }
+",0.9999957680617637
+Sports Rank,36,"    }
+
+",0.9999986290927705
+Sports Rank,37,"    return scores.map(score => rankMap[score]);
+",0.9999990138132724
+Sports Rank,38,"}
+
+",0.9999994039535522
+Sports Rank,39,"function countBeneficiaries(competitionRanks: number[], denseRanks: number[]): number {
+",0.9826746812733006
+Sports Rank,40,"    let count = 0;
+",0.9874519653211323
+Sports Rank,41,"    for (let i = 0; i < competitionRanks.length; i++) {
+",0.999991360175871
+Sports Rank,42,"        if (denseRanks[i] < competitionRanks[i]) {
+",0.9990802086437526
+Sports Rank,43,"            count++;
+",0.9999992847439643
+Sports Rank,44,"        }
+",0.9999997019767601
+Sports Rank,45,"    }
+",0.9999989271159393
+Sports Rank,46,"    return count;
+",0.999999910593028
+Sports Rank,47,"}
+
+",0.9999995231628418
+Sports Rank,48,"function processDatasets(datasets: { n: number, scores: number[] }[]): number[] {
+",0.8867450476541382
+Sports Rank,49,"    const results: number[] = [];
+
+",0.922043351791648
+Sports Rank,50,"    for (const dataset of datasets) {
+",0.9293707926965259
+Sports Rank,51,"        const competitionRanks = competitionRanking(dataset.scores);
+",0.9849599416444924
+Sports Rank,52,"        const denseRanks = denseRanking(dataset.scores);
+",0.9999990830043476
+Sports Rank,53,"        const beneficiaries = countBeneficiaries(competitionRanks, denseRanks);
+",0.9967583067892496
+Sports Rank,54,"        results.push(beneficiaries);
+",0.9999967217286547
+Sports Rank,55,"    }
+
+",0.9999998211860497
+Sports Rank,56,"    return results;
+",0.9999998509883867
+Sports Rank,57,"}
+
+",0.9999974966049194
+Sports Rank,59,"const input = `
+",0.9129466096180257
+Sports Rank,60,"3
+",0.9999197693008373
+Sports Rank,61,"3 80 70 70
+",0.9999969005512641
+Sports Rank,62,"10 50 60 70 10 20 30 40 30 80 90
+",0.9999935010889972
+Sports Rank,63,"5 50 50 50 50 50
+",0.9999828072523927
+Sports Rank,64,"`;
+
+",0.9168710112571716
+Sports Rank,65,"const parsedInput = parseInput(input);
+",0.7725115231099823
+Sports Rank,66,"const results = processDatasets(parsedInput.datasets);
+",0.9859859204316652
+Sports Rank,67,"console.log(results.join('\n')); // Output: 0 2 0
+",0.9763797715579648
+Solidus Fraction,0,"
+
+Sample Input 3
+  7
+ ---
+   7
+
+Sample Output 3
+1
+
+To solve this problem, we need to parse the input to extract the numerator and denominator, then compute the greatest common divisor (GCD) to reduce the fraction, and finally format the output correctly. Here's a step-by-step breakdown of how to achieve this:
+
+1. **Parse the Input**: Read the three lines of input to get the numerator, vinculum, and denominator.
+2. **Extract Numerator and Denominator**: Trim any leading or trailing whitespace from the numerator and denominator strings.
+3. **Compute GCD**: Implement a function to compute the greatest common divisor using the Euclidean algorithm.
+4. **Reduce the Fraction**: Divide both the numerator and denominator by their GCD to get the reduced fraction.
+5. **Format the Output**: Determine if the fraction should be written as a whole number or with a solidus.
+
+Here's the TypeScript code implementing the solution:
+
+```typescript
+",0.999973535369203
+Solidus Fraction,1,"function gcd(a: bigint, b: bigint): bigint {
+",0.7819745594739909
+Solidus Fraction,2,"    while (b !== BigInt(0)) {
+",0.9487935266767585
+Solidus Fraction,3,"        const temp = b;
+",0.9967591955442239
+Solidus Fraction,4,"        b = a % b;
+",0.9999950953608253
+Solidus Fraction,5,"        a = temp;
+",0.9999998807907047
+Solidus Fraction,6,"    }
+",0.9999998807907104
+Solidus Fraction,7,"    return a;
+",0.9988974849728783
+Solidus Fraction,8,"}
+
+",0.9999997615814209
+Solidus Fraction,9,"function parseNumber(input: string): bigint {
+",0.7419449963107047
+Solidus Fraction,10,"    let numStr = '';
+",0.5519269146873963
+Solidus Fraction,11,"    for (const char of input) {
+",0.910042572499274
+Solidus Fraction,12,"        if (char === '-' || char >= '0' && char <= '9') {
+",0.9156036358925397
+Solidus Fraction,13,"            numStr += char;
+",0.9999963044875003
+Solidus Fraction,14,"        }
+",0.9988620475091845
+Solidus Fraction,15,"    }
+",0.9999930262460291
+Solidus Fraction,16,"    return BigInt(numStr);
+",0.9997667069661448
+Solidus Fraction,17,"}
+
+",0.9999982118606567
+Solidus Fraction,18,"function main() {
+",0.8953703693033267
+Solidus Fraction,19,"    const numeratorLine = readline();
+",0.7151871290877698
+Solidus Fraction,20,"    const vinculumLine = readline();
+",0.9987926051135169
+Solidus Fraction,21,"    const denominatorLine = readline();
+
+",0.9999314241114126
+Solidus Fraction,22,"    const numerator = parseNumber(numeratorLine);
+",0.9751557334159315
+Solidus Fraction,23,"    const denominator = parseNumber(denominatorLine);
+
+",0.9999695677824776
+Solidus Fraction,24,"    const gcdValue = gcd(BigInt(Math.abs(Number(numerator))), BigInt(Math.abs(Number(denominator))));
+",0.8213946311967414
+Solidus Fraction,25,"    const reducedNumerator = numerator / gcdValue;
+",0.9949877965384497
+Solidus Fraction,26,"    const reducedDenominator = denominator / gcdValue;
+
+",0.9999972906892017
+Solidus Fraction,27,"    if (reducedDenominator === BigInt(1)) {
+",0.9869116427966914
+Solidus Fraction,28,"        console.log(reducedNumerator.toString());
+",0.9950817115458968
+Solidus Fraction,29,"    } else {
+",0.9810075808087586
+Solidus Fraction,30,"        console.log(`${reducedNumerator.toString()}/${reducedDenominator.toString()}`);
+",0.9819865230063362
+Solidus Fraction,31,"    }
+",0.9999778268289549
+Solidus Fraction,32,"}
+
+",0.9985138773918152
+Solidus Fraction,34,"function readline(): string {
+",0.85968203216424
+Solidus Fraction,35,"    // This function should be replaced with actual input reading in a real environment
+",0.999997615814209
+Solidus Fraction,36,"    return process.stdin.readLine();
+",0.6656415308764236
+Solidus Fraction,37,"}
+
+",0.9994427561759949
+Solidus Fraction,38,"main();
+",0.7578444210949091
+Breakout,0,"
+
+To solve this problem, we need to simulate the behavior of multiple bouncing balls on a brick wall. Here's a step-by-step breakdown of how we can achieve this:
+
+1. **Initialize the Wall**: Create a 2D array to represent the wall, where each element indicates whether a brick exists at that position.
+
+2. **Process Each Ball**: For each ball, calculate its path and determine how many bricks it bounces off before disappearing.
+
+3. **Simulate Ball Movement**:
+   - Start from the given target position.
+   - Calculate the range of bricks that will be destroyed based on the ball's power.
+   - Check if the calculated positions are within the wall boundaries.
+   - Destroy the bricks and update the wall accordingly.
+   - Adjust the target position based on the ball's adjustment value.
+   - Repeat until the ball either disappears or stops bouncing.
+
+4. **Update the Wall**: After each ball's movement, update the wall to account for the fallen bricks.
+
+5. **Output the Results**: For each ball, output the number of bricks it bounced off.
+
+Here's the implementation of the solution in TypeScript:
+
+```typescript
+",0.9998489238420831
+Breakout,1,"function simulateBreakout(b: number, w: number, h: number, balls: { t: number, p: number, d: number }[]): number[] {
+",0.9601031189926056
+Breakout,2,"    // Initialize the wall
+",0.9998660087585449
+Breakout,3,"    const wall = Array.from({ length: h }, () => Array(w).fill(true));
+
+",0.9177035455508668
+Breakout,4,"    const results: number[] = [];
+
+",0.8559369109069404
+Breakout,5,"    for (const { t, p, d } of balls) {
+",0.9524381414839997
+Breakout,6,"        let target = t;
+",0.8863801517888367
+Breakout,7,"        let bounces = 0;
+
+",0.9497224362568417
+Breakout,8,"        while (true) {
+",0.9487626396847317
+Breakout,9,"            // Determine the range of bricks to destroy
+",0.9999995231628418
+Breakout,10,"            const start = Math.max(0, target - p);
+",0.9388075733554125
+Breakout,11,"            const end = Math.min(w - 1, target + p);
+
+",0.9946063397342225
+Breakout,12,"            // Check if there are any bricks in the range
+",0.9999994039535522
+Breakout,13,"            let destroyed = false;
+",0.920489083016821
+Breakout,14,"            for (let i = start; i <= end; i++) {
+",0.9308228514386743
+Breakout,15,"                if (wall[h - 1][i]) {
+",0.9704469651301701
+Breakout,16,"                    destroyed = true;
+",0.8754823853515338
+Breakout,17,"                    break;
+",0.7050161413975494
+Breakout,18,"                }
+",0.9999994039535238
+Breakout,19,"            }
+
+",0.999901200502707
+Breakout,20,"            if (!destroyed) {
+",0.8974828287156853
+Breakout,21,"                // No bricks to destroy, ball disappears
+",0.9999996423721313
+Breakout,22,"                break;
+",0.9943602755037723
+Breakout,23,"            }
+
+",0.999964534615889
+Breakout,24,"            // Destroy the bricks and update the wall
+",0.9999997615814209
+Breakout,25,"            for (let i = start; i <= end; i++) {
+",0.9915428612647842
+Breakout,26,"                if (wall[h - 1][i]) {
+",0.9945601977301347
+Breakout,27,"                    wall[h - 1][i] = false;
+",0.9684360965535643
+Breakout,28,"                    bounces++;
+",0.9953087710026681
+Breakout,29,"                }
+",0.9851889613223155
+Breakout,30,"            }
+
+",0.9998826021336473
+Breakout,31,"            // Update the wall to account for fallen bricks
+",0.9999990463256836
+Breakout,32,"            for (let col = 0; col < w; col++) {
+",0.9681022643010806
+Breakout,33,"                let fallCount = 0;
+",0.6126397284444141
+Breakout,34,"                for (let row = h - 1; row >= 0; row--) {
+",0.9591396812633344
+Breakout,35,"                    if (!wall[row][col]) {
+",0.9565534675914892
+Breakout,36,"                        fallCount++;
+",0.9993876650705509
+Breakout,37,"                    } else {
+",0.9359201799249284
+Breakout,38,"                        wall[row + fallCount][col] = true;
+",0.8376782089511979
+Breakout,39,"                        if (fallCount > 0) {
+",0.9638944079113957
+Breakout,40,"                            wall[row][col] = false;
+",0.9999765207288405
+Breakout,41,"                        }
+",0.9989036391643762
+Breakout,42,"                    }
+",0.9987798651203127
+Breakout,43,"                }
+",0.9999465339397101
+Breakout,44,"            }
+
+",0.99009920320229
+Breakout,45,"            // Adjust the target position
+",0.9999991655349731
+Breakout,46,"            target += d;
+
+",0.9839517899366722
+Breakout,47,"            // Check if the ball disappears
+",0.9999985694885254
+Breakout,48,"            if (target < 0 || target >= w) {
+",0.9958951140347312
+Breakout,49,"                break;
+",0.9999742901107629
+Breakout,50,"            }
+",0.9791403667828054
+Breakout,51,"        }
+
+",0.9999138678509645
+Breakout,52,"        results.push(bounces);
+",0.9980153062750298
+Breakout,53,"    }
+
+",0.9999965429268443
+Breakout,54,"    return results;
+",0.999998956918406
+Breakout,55,"}
+
+",0.9999914169311523
+Breakout,57,"const input = `4 10 5
+",0.8848087218927707
+Breakout,58,"1 1 4
+",0.9998599809089153
+Breakout,59,"0 1 1
+",0.9999989867205726
+Breakout,60,"1 4 4
+",0.9999960859565619
+Breakout,61,"4 10 0`;
+
+",0.9406268020127038
+Breakout,62,"const lines = input.split('\n');
+",0.9223071992607607
+Breakout,63,"const [b, w, h] = lines[0].split(' ').map(Number);
+",0.999118101113947
+Breakout,64,"const balls: { t: number, p: number, d: number }[] = [];
+
+",0.9383056883240333
+Breakout,65,"for (let i = 1; i <= b; i++) {
+",0.9994748075572667
+Breakout,66,"    const [t, p, d] = lines[i].split(' ').map(Number);
+",0.999997797761581
+Breakout,67,"    balls.push({ t, p, d });
+",0.999998748300538
+Breakout,68,"}
+
+",0.9999998807907104
+Breakout,69,"const results = simulateBreakout(b, w, h, balls);
+",0.9755401728971479
+Breakout,70,"console.log(results.join('\n'));
+",0.9695629779435105
+Passport Dates,0,"
+
+To solve this problem, we need to convert a date string from a specific format to the ISO-8601 format. The input format is `dd ISM /ENM yy`, where:
+
+- `dd` is the day of the month.
+- `ISM` is a three-letter abbreviation of a month in Icelandic.
+- `ENM` is a three-letter abbreviation of a month in English.
+- `yy` are the last two digits of the year.
+
+The output should be in the format `yyyy-mm-dd`.
+
+Here's how we can achieve this step-by-step:
+
+1. Parse the input string to extract the day (`dd`), the year (`yy`), and the month abbreviations (`ISM` and `ENM`).
+2. Use the month abbreviations to determine the month number (`mm`).
+3. Convert the two-digit year (`yy`) to a four-digit year (`yyyy`), considering the range 2015 to 2035.
+4. Format the day and month to ensure they are two digits.
+5. Construct the ISO-8601 date string.
+
+Let's implement this in TypeScript:
+
+```typescript
+",0.9999431359034494
+Passport Dates,1,"function convertDate(input: string): string {
+",0.6940504807839275
+Passport Dates,2,"    // Split the input string into parts
+",0.9998694658279419
+Passport Dates,3,"    const parts = input.split(' ');
+
+",0.8351028379560282
+Passport Dates,4,"    // Extract day, year, and month abbreviations
+",0.9999995231628418
+Passport Dates,5,"    const day = parts[0];
+",0.9437461786865312
+Passport Dates,6,"    const yearTwoDigits = parts[3];
+",0.7656527819397384
+Passport Dates,7,"    const icelandicMonth = parts[1];
+",0.853625977652062
+Passport Dates,8,"    const englishMonth = parts[2];
+
+",0.9563932782311173
+Passport Dates,9,"    // Map Icelandic month abbreviations to month numbers
+",0.9999997615814209
+Passport Dates,10,"    const monthMapIcelandic: { [key: string]: number } = {
+",0.8322397823079577
+Passport Dates,11,"        'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4, 'MAÍ': 5, 'JÚN': 6,
+",0.9842382532782873
+Passport Dates,12,"        'JÚL': 7, 'ÁGÚ': 8, 'SEP': 9, 'OKT': 10, 'NÓV': 11, 'DES': 12
+",0.9999428997593495
+Passport Dates,13,"    };
+
+",0.9999646538418627
+Passport Dates,14,"    // Map English month abbreviations to month numbers (for validation)
+",0.9999992847442627
+Passport Dates,15,"    const monthMapEnglish: { [key: string]: number } = {
+",0.9999074595500681
+Passport Dates,16,"        'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4, 'MAY': 5, 'JUN': 6,
+",0.9999945021055882
+Passport Dates,17,"        'JUL': 7, 'AUG': 8, 'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12
+",0.9999991465689307
+Passport Dates,18,"    };
+
+",0.9999951124123001
+Passport Dates,19,"    // Get the month number using the Icelandic month abbreviation
+",0.9999995231628418
+Passport Dates,20,"    const monthNumber = monthMapIcelandic[icelandicMonth];
+
+",0.9840741742867014
+Passport Dates,21,"    // Validate that the month numbers match between Icelandic and English
+",0.9999996423721313
+Passport Dates,22,"    if (monthNumber !== monthMapEnglish[englishMonth]) {
+",0.9581563632588374
+Passport Dates,23,"        throw new Error(""Invalid month abbreviations"");
+",0.8251374279812255
+Passport Dates,24,"    }
+
+",0.9999989867205255
+Passport Dates,25,"    // Convert the two-digit year to a four-digit year
+",0.9999996423721313
+Passport Dates,26,"    const currentYear = new Date().getFullYear();
+",0.9075445284743752
+Passport Dates,27,"    const century = Math.floor(currentYear / 100) * 100;
+",0.8558099100615135
+Passport Dates,28,"    let yearFourDigits = parseInt(yearTwoDigits, 10) + century;
+
+",0.8991179952470195
+Passport Dates,29,"    // Ensure the year is within the valid range (2015-2035)
+",0.9999992847442627
+Passport Dates,30,"    if (yearFourDigits < 2015 || yearFourDigits > 2035) {
+",0.9728858658072288
+Passport Dates,31,"        throw new Error(""Year out of valid range"");
+",0.9266477629504084
+Passport Dates,32,"    }
+
+",0.9984099147821432
+Passport Dates,33,"    // Format the day and month to ensure they are two digits
+",0.9999978542327881
+Passport Dates,34,"    const formattedDay = day.padStart(2, '0');
+",0.9711051550123374
+Passport Dates,35,"    const formattedMonth = monthNumber.toString().padStart(2, '0');
+
+",0.999310469046649
+Passport Dates,36,"    // Construct the ISO-8601 date string
+",0.9999998807907104
+Passport Dates,37,"    return `${yearFourDigits}-${formattedMonth}-${formattedDay}`;
+",0.9222355180235527
+Passport Dates,38,"}
+
+",0.9999678134918213
+Passport Dates,40,"const input = ""08 OKT /OCT 24"";
+",0.9919567914512367
+Passport Dates,41,"const output = convertDate(input);
+",0.9818368899064293
+Passport Dates,42,"console.log(output); // Output: 2024-10-08
+",0.9999932646394689
+Weather Forecast,0,"
+
+To solve this problem, we need to predict the weather based on historical data. We will use a simple linear regression approach to predict the next `m` data points. This involves calculating the average change in each parameter over the given `n` data points and using these averages to predict future values.
+
+Here's a step-by-step breakdown of the solution:
+
+1. **Parse the Input**: Read the input values and store them in appropriate data structures.
+2. **Calculate Averages**: Compute the average change in temperature, wind direction, wind speed, and humidity over the given data points.
+3. **Predict Future Values**: Use the calculated averages to predict the next `m` data points.
+4. **Format the Output**: Print the predicted values in the required format.
+
+Let's implement this in TypeScript:
+
+```typescript
+",0.9999183986532075
+Weather Forecast,1,"function parseInput(input: string): {
+",0.8367290906104706
+Weather Forecast,2,"    n: number;
+",0.8582820537183872
+Weather Forecast,3,"    m: number;
+",0.9999989271160701
+Weather Forecast,4,"    latitude: number;
+",0.7737388363296248
+Weather Forecast,5,"    longitude: number;
+",0.9999985933286427
+Weather Forecast,6,"    height: number;
+",0.9973304576830608
+Weather Forecast,7,"    initialDate: string;
+",0.99055436924598
+Weather Forecast,8,"    initialTime: string;
+",0.9999076621209975
+Weather Forecast,9,"    measurements: { temperature: number | null; windDirection: number | null; windSpeed: number | null; humidity: number | null }[];
+",0.9051951256654098
+Weather Forecast,10,"} {
+",0.9999642962901384
+Weather Forecast,11,"    const lines = input.split('\n');
+",0.9471431411468755
+Weather Forecast,12,"    const [nStr, mStr] = lines[0].split(' ');
+",0.9458028645799497
+Weather Forecast,13,"    const n = parseInt(nStr, 10);
+",0.936748908355088
+Weather Forecast,14,"    const m = parseInt(mStr, 10);
+
+",0.9807683585487982
+Weather Forecast,15,"    const [latitudeStr, longitudeStr, heightStr, initialDate, initialTime] = lines[1].split(' ');
+",0.992324787099502
+Weather Forecast,16,"    const latitude = parseFloat(latitudeStr);
+",0.999988719711989
+Weather Forecast,17,"    const longitude = parseFloat(longitudeStr);
+",0.9999978807182578
+Weather Forecast,18,"    const height = parseFloat(heightStr);
+
+",0.9999800464006676
+Weather Forecast,19,"    const measurements: { temperature: number | null; windDirection: number | null; windSpeed: number | null; humidity: number | null }[] = [];
+
+",0.9934080041597405
+Weather Forecast,20,"    for (let i = 2; i < 2 + n; i++) {
+",0.9527119105710085
+Weather Forecast,21,"        const [temperatureStr, windDirectionStr, windSpeedStr, humidityStr] = lines[i].split(' ');
+
+",0.9319787079086328
+Weather Forecast,22,"        const temperature = temperatureStr === '-' ? null : parseFloat(temperatureStr);
+",0.9956213207027583
+Weather Forecast,23,"        const windDirection = windDirectionStr === '-' ? null : parseInt(windDirectionStr, 10);
+",0.9996661254546391
+Weather Forecast,24,"        const windSpeed = windSpeedStr === '-' ? null : parseFloat(windSpeedStr);
+",0.9999913665092495
+Weather Forecast,25,"        const humidity = humidityStr === '-' ? null : parseInt(humidityStr, 10);
+
+",0.9999933121934231
+Weather Forecast,26,"        measurements.push({ temperature, windDirection, windSpeed, humidity });
+",0.9987367869183422
+Weather Forecast,27,"    }
+
+",0.999998986721037
+Weather Forecast,28,"    return { n, m, latitude, longitude, height, initialDate, initialTime, measurements };
+",0.9788155731964606
+Weather Forecast,29,"}
+
+",0.9999958276748657
+Weather Forecast,30,"function calculateAverages(measurements: { temperature: number | null; windDirection: number | null; windSpeed: number | null; humidity: number | null }[]): {
+",0.959543093626746
+Weather Forecast,31,"    tempChange: number;
+",0.5570128888509309
+Weather Forecast,32,"    windDirChange: number;
+",0.9864145992310658
+Weather Forecast,33,"    windSpeedChange: number;
+",0.9995335952298479
+Weather Forecast,34,"    humidityChange: number;
+",0.99802327823173
+Weather Forecast,35,"} {
+",0.990712460681871
+Weather Forecast,36,"    let tempSum = 0;
+",0.9366397323598664
+Weather Forecast,37,"    let windDirSum = 0;
+",0.9966065860616221
+Weather Forecast,38,"    let windSpeedSum = 0;
+",0.9999950858963742
+Weather Forecast,39,"    let humiditySum = 0;
+",0.9943928402697443
+Weather Forecast,40,"    let count = 0;
+
+",0.922179399902072
+Weather Forecast,41,"    for (let i = 1; i < measurements.length; i++) {
+",0.994347540680614
+Weather Forecast,42,"        if (measurements[i].temperature !== null && measurements[i - 1].temperature !== null) {
+",0.9251239295154187
+Weather Forecast,43,"            tempSum += measurements[i].temperature - measurements[i - 1].temperature;
+",0.9980090324470381
+Weather Forecast,44,"            count++;
+",0.9705790103815383
+Weather Forecast,45,"        }
+",0.9287891917820639
+Weather Forecast,46,"        if (measurements[i].windDirection !== null && measurements[i - 1].windDirection !== null) {
+",0.9999638621272599
+Weather Forecast,47,"            const dirDiff = (measurements[i].windDirection - measurements[i - 1].windDirection + 180) % 360 - 180;
+",0.8954176471623471
+Weather Forecast,48,"            windDirSum += dirDiff;
+",0.999683401000544
+Weather Forecast,49,"            count++;
+",0.8833671610761507
+Weather Forecast,50,"        }
+",0.9999887942868138
+Weather Forecast,51,"        if (measurements[i].windSpeed !== null && measurements[i - 1].windSpeed !== null) {
+",0.999997888996113
+Weather Forecast,52,"            windSpeedSum += measurements[i].windSpeed - measurements[i - 1].windSpeed;
+",0.9999942420022011
+Weather Forecast,53,"            count++;
+",0.9995621343572465
+Weather Forecast,54,"        }
+",0.9999979734413671
+Weather Forecast,55,"        if (measurements[i].humidity !== null && measurements[i - 1].humidity !== null) {
+",0.9999981468334681
+Weather Forecast,56,"            humiditySum += measurements[i].humidity - measurements[i - 1].humidity;
+",0.9998879722030894
+Weather Forecast,57,"            count++;
+",0.9999821183844977
+Weather Forecast,58,"        }
+",0.9999974369983402
+Weather Forecast,59,"    }
+
+",0.9999974369989797
+Weather Forecast,60,"    return {
+",0.9110613499401702
+Weather Forecast,61,"        tempChange: count > 0 ? tempSum / count : 0,
+",0.9819883601883298
+Weather Forecast,62,"        windDirChange: count > 0 ? windDirSum / count : 0,
+",0.9999629754844738
+Weather Forecast,63,"        windSpeedChange: count > 0 ? windSpeedSum / count : 0,
+",0.9999995733561503
+Weather Forecast,64,"        humidityChange: count > 0 ? humiditySum / count : 0,
+",0.9950872468794577
+Weather Forecast,65,"    };
+",0.9999916553241517
+Weather Forecast,66,"}
+
+",0.9999974966049194
+Weather Forecast,67,"function predictWeather(
+",0.811612857145417
+Weather Forecast,68,"    measurements: { temperature: number | null; windDirection: number | null; windSpeed: number | null; humidity: number | null }[],
+",0.9834481223847521
+Weather Forecast,69,"    averages: { tempChange: number; windDirChange: number; windSpeedChange: number; humidityChange: number; },
+",0.9738781913717109
+Weather Forecast,70,"    m: number
+",0.9961350759197861
+Weather Forecast,71,"): { temperature: number | null; windDirection: number | null; windSpeed: number | null; humidity: number | null }[] {
+",0.9739416028690251
+Weather Forecast,72,"    const predictions: { temperature: number | null; windDirection: number | null; windSpeed: number | null; humidity: number | null }[] = [];
+
+",0.9942158929004806
+Weather Forecast,73,"    for (let i = 0; i < m; i++) {
+",0.9903477068979115
+Weather Forecast,74,"        const lastMeasurement = measurements[measurements.length - 1];
+
+",0.9453284790311025
+Weather Forecast,75,"        let temperature: number | null = null;
+",0.8825886402474716
+Weather Forecast,76,"        if (lastMeasurement.temperature !== null) {
+",0.9657610527836257
+Weather Forecast,77,"            temperature = Math.max(-50, Math.min(50, lastMeasurement.temperature + averages.tempChange));
+",0.9290090346582119
+Weather Forecast,78,"        }
+
+",0.9913016898208381
+Weather Forecast,79,"        let windDirection: number | null = null;
+",0.9999670247755286
+Weather Forecast,80,"        if (lastMeasurement.windDirection !== null) {
+",0.9999951773918897
+Weather Forecast,81,"            windDirection = ((lastMeasurement.windDirection + averages.windDirChange + 360) % 360);
+",0.9378960627165367
+Weather Forecast,82,"        }
+
+",0.9609020217189809
+Weather Forecast,83,"        let windSpeed: number | null = null;
+",0.9999948414393567
+Weather Forecast,84,"        if (lastMeasurement.windSpeed !== null) {
+",0.9999825514224688
+Weather Forecast,85,"            windSpeed = Math.max(0, lastMeasurement.windSpeed + averages.windSpeedChange);
+",0.9943099698163909
+Weather Forecast,86,"        }
+
+",0.9999703761736954
+Weather Forecast,87,"        let humidity: number | null = null;
+",0.9999960422330249
+Weather Forecast,88,"        if (lastMeasurement.humidity !== null) {
+",0.9999969222224794
+Weather Forecast,89,"            humidity = Math.max(0, Math.min(110, lastMeasurement.humidity + averages.humidityChange));
+",0.9980863728917899
+Weather Forecast,90,"        }
+
+",0.9999960064868656
+Weather Forecast,91,"        predictions.push({ temperature, windDirection, windSpeed, humidity });
+",0.9999658514628484
+Weather Forecast,92,"    }
+
+",0.9957366054812465
+Weather Forecast,93,"    return predictions;
+",0.9999956488421959
+Weather Forecast,94,"}
+
+",0.9999980926513672
+Weather Forecast,95,"function formatPredictions(predictions: { temperature: number | null; windDirection: number | null; windSpeed: number | null; humidity: number | null }[]): string[] {
+",0.9534897080340685
+Weather Forecast,96,"    return predictions.map(prediction => {
+",0.9209891113660195
+Weather Forecast,97,"        const temperature = prediction.temperature !== null ? prediction.temperature.toFixed(1) : '-';
+",0.9104257780280428
+Weather Forecast,98,"        const windDirection = prediction.windDirection !== null ? prediction.windDirection.toString() : '-';
+",0.9930010255644215
+Weather Forecast,99,"        const windSpeed = prediction.windSpeed !== null ? prediction.windSpeed.toFixed(1) : '-';
+",0.9999947845146406
+Weather Forecast,100,"        const humidity = prediction.humidity !== null ? prediction.humidity.toString() : '-';
+
+",0.9376879245832777
+Weather Forecast,101,"        return `${temperature} ${windDirection} ${windSpeed} ${humidity}`;
+",0.9987337521666044
+Weather Forecast,102,"    });
+",0.9999924301849583
+Weather Forecast,103,"}
+
+",0.999994158744812
+Weather Forecast,104,"function main(input: string): string {
+",0.9079643204926032
+Weather Forecast,105,"    const parsedInput = parseInput(input);
+",0.8815702249814296
+Weather Forecast,106,"    const averages = calculateAverages(parsedInput.measurements);
+",0.9984515349613285
+Weather Forecast,107,"    const predictions = predictWeather(parsedInput.measurements, averages, parsedInput.m);
+",0.9999682116715304
+Weather Forecast,108,"    return formatPredictions(predictions).join('\n');
+",0.9686512845188007
+Weather Forecast,109,"}
+
+",0.999944806098938
+Weather Forecast,111,"const sampleInput = `
+",0.6462945776577881
+Weather Forecast,112,"72 1
+",0.9998912895756116
+Weather Forecast,113,"63.9829 22.600517 50.9 2024-02-26 16:00:00
+",0.9999883348124532
+Weather Forecast,114,"5.4 187 4.1 93
+",0.999878989099506
+Weather Forecast,115,"5.2 186 3.9 94
+",0.9996526061729742
+Weather Forecast,116,"4.6 187 3.0 94
+",0.9981203182055166
+Weather Forecast,117,"3.9 173 2.0 95
+",0.9990357041947132
+Weather Forecast,118,"3.2 77 0.7 95
+",0.9996589912389733
+Weather Forecast,119,"2.7 353 2.4 96
+",0.9995711389369953
+Weather Forecast,120,"3.8 302 8.1 91
+",0.9994316418635102
+Weather Forecast,121,"3.4 305 9.4 88
+",0.9998331870296389
+Weather Forecast,122,"3.8 296 11.3 85
+",0.9998940721418649
+Weather Forecast,123,"3.5 284 10.2 85
+",0.9999064272912883
+Weather Forecast,124,"2.9 276 10.7 87
+",0.9999599027857756
+Weather Forecast,125,"3.0 269 10.1 82
+",0.9999477205118661
+Weather Forecast,126,"2.6 290 10.0 83
+",0.9999847365392541
+Weather Forecast,127,"2.1 281 11.7 83
+",0.9999742901147548
+Weather Forecast,128,"1.2 274 12.9 92
+",0.9999902322094751
+Weather Forecast,129,"1.8 260 12.6 90
+",0.9999884440361206
+Weather Forecast,130,"2.4 263 12.8 72
+",0.9999836457472804
+Weather Forecast,131,"2.1 262 12.8 78
+",0.9999848379246175
+Weather Forecast,132,"2.2 257 15.6 74
+",0.9999858735928974
+Weather Forecast,133,"2.1 260 14.9 75
+",0.9999878927058783
+Weather Forecast,134,"2.4 263 14.1 69
+",0.9999879076506059
+Weather Forecast,135,"2.4 266 14.3 72
+",0.9999919980474672
+Weather Forecast,136,"2.5 271 14.5 85
+",0.9999912380892827
+Weather Forecast,137,"2.4 277 12.9 79
+",0.9999883994101412
+Weather Forecast,138,"1.8 293 14.3 86
+",0.9999873712327929
+Weather Forecast,139,"0.9 300 10.7 93
+",0.9999847485946287
+Weather Forecast,140,"0.7 304 8.4 89
+",0.9999889691401649
+Weather Forecast,141,"0.8 308 6.3 85
+",0.9999885479119139
+Weather Forecast,142,"0.8 302 5.5 82
+",0.9999882459149397
+Weather Forecast,143,"0.4 324 5.7 79
+",0.999970382849751
+Weather Forecast,144,"0.0 312 5.1 78
+",0.9999520524014268
+Weather Forecast,145,"-0.3 301 5.7 77
+",0.9999744515021985
+Weather Forecast,146,"0.0 308 4.9 70
+",0.9999792334273795
+Weather Forecast,147,"-0.7 296 4.3 72
+",0.9999818949705208
+Weather Forecast,148,"-0.9 314 2.2 73
+",0.99997712642012
+Weather Forecast,149,"-1.3 45 2.7 83
+",0.9999726611618788
+Weather Forecast,150,"-1.2 45 2.7 83
+",0.9999804335847005
+Weather Forecast,151,"-1.6 55 3.0 84
+",0.9999474166463731
+Weather Forecast,152,"-2.0 102 2.3 86
+",0.999977216001933
+Weather Forecast,153,"-2.1 80 2.5 88
+",0.9999589357340415
+Weather Forecast,154,"-1.6 88 3.2 86
+",0.9996928745754736
+Weather Forecast,155,"-1.2 83 3.6 85
+",0.9999715085155805
+Weather Forecast,156,"-0.6 60 3.9 84
+",0.9999717392268777
+Weather Forecast,157,"-0.3 82 3.8 83
+",0.9999610417489907
+Weather Forecast,158,"-0.1 77 2.8 77
+",0.9999750374349898
+Weather Forecast,159,"0.9 61 3.9 70
+",0.9999761749074588
+Weather Forecast,160,"0.7 73 4.7 74
+",0.9999825015641608
+Weather Forecast,161,"1.1 79 3.1 71
+",0.9999750424176325
+Weather Forecast,162,"1.1 71 2.3 73
+",0.999975238346467
+Weather Forecast,163,"1.1 49 1.8 70
+",0.9999531189743285
+Weather Forecast,164,"0.3 39 2.1 78
+",0.9999726155301975
+Weather Forecast,165,"-0.2 14 2.5 77
+",0.9999790188997342
+Weather Forecast,166,"-0.3 21 2.2 75
+",0.9999761895606931
+Weather Forecast,167,"-0.4 29 2.4 71
+",0.9999798772221571
+Weather Forecast,168,"-0.8 23 2.4 72
+",0.9999797023222877
+Weather Forecast,169,"-1.3 4 2.1 71
+",0.9999709637068394
+Weather Forecast,170,"-1.7 21 2.8 73
+",0.9999808707381524
+Weather Forecast,171,"-2.3 31 2.2 72
+",0.9999791859012517
+Weather Forecast,172,"-2.4 59 2.7 67
+",0.9999732332398227
+Weather Forecast,173,"-2.0 40 2.7 67
+",0.9999761340754169
+Weather Forecast,174,"-1.9 38 2.7 68
+",0.9999713416216494
+Weather Forecast,175,"-2.1 30 2.6 64
+",0.9999722954174279
+Weather Forecast,176,"-2.1 44 3.4 60
+",0.9999699350764218
+Weather Forecast,177,"-2.7 30 3.3 62
+",0.9999729392130954
+Weather Forecast,178,"-2.8 30 3.9 64
+",0.9999843755050077
+Weather Forecast,179,"-2.6 27 4.1 62
+",0.9999794640223341
+Weather Forecast,180,"-1.8 27 4.8 53
+",0.999971063636779
+Weather Forecast,181,"-1.4 11 6.0 54
+",0.999978065353435
+Weather Forecast,182,"-0.9 18 6.6 58
+",0.9999685838191221
+Weather Forecast,183,"-1.0 22 8.3 55
+",0.9999762692661411
+Weather Forecast,184,"-1.0 10 8.1 52
+",0.9999694265601327
+Weather Forecast,185,"-1.5 4 9.2 62
+",0.9986393445076268
+Weather Forecast,186,"`;
+
+",0.9855308532714844
+Weather Forecast,187,"console.log(main(sampleInput));
+",0.8777282497478373
+Type Faster,0,"8
+To solve this problem, we need to determine the minimum typing speed (words per minute) required to beat the top team's time penalty \( T \). Here's a step-by-step breakdown of the approach:
+
+### Problem Analysis
+
+1. **Understanding Time Penalty**:
+   - For each problem, the time penalty is the ceiling of the number of words divided by the typing speed.
+   - If you type at \( v \) words per minute, the time penalty for a problem with \( w_i \) words is \( \left\lceil \frac{w_i}{v} \right\rceil \).
+
+2. **Objective**:
+   - Find the minimum typing speed \( v \) such that the total time penalty for all problems is strictly less than \( T \).
+
+3. **Constraints**:
+   - \( n \) (number of problems) can be up to 100,000.
+   - \( T \) (top team's time penalty) can be as large as \( 10^{18} \).
+   - Each \( w_i \) (number of words in a problem) can be up to \( 10^9 \).
+
+### Approach
+
+1. **Binary Search**:
+   - Since the number of words per minute can range from 1 to a very large number, we can use binary search to efficiently find the minimum typing speed.
+   - Define the search space for \( v \) from 1 to \( \text{max}(w_i) \).
+
+2. **Feasibility Check**:
+   - For a given \( v \), calculate the total time penalty by summing up \( \left\lceil \frac{w_i}{v} \right\rceil \) for all \( i \).
+   - If the total time penalty is less than \( T \), then \( v \) is feasible.
+   - Otherwise, \( v \) is not feasible.
+
+3. **Binary Search Execution**:
+   - Initialize `low` to 1 and `high` to the maximum word count among all problems.
+   - Perform binary search:
+     - Calculate the midpoint `mid`.
+     - Check if `mid` is feasible.
+     - If feasible, update `high` to `mid - 1` to search for a potentially smaller feasible value.
+     - If not feasible, update `low` to `mid + 1`.
+
+4. **Result**:
+   - The smallest feasible \( v \) found during the binary search is the answer.
+
+### Implementation
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.9991366823796152
+Type Faster,1,"function main() {
+",0.6183288249567579
+Type Faster,2,"    const input = require('fs').readFileSync(0, 'utf-8').trim().split('\n');
+",0.8727219000646398
+Type Faster,3,"    const [n, T] = input[0].split(' ').map(Number);
+",0.9934399828225104
+Type Faster,4,"    const words = input[1].split(' ').map(Number);
+
+",0.986897281415326
+Type Faster,5,"    let low = 1;
+",0.8594157242738665
+Type Faster,6,"    let high = Math.max(...words);
+
+",0.9832022493303207
+Type Faster,7,"    while (low < high) {
+",0.828816299980481
+Type Faster,8,"        const mid = Math.floor((low + high) / 2);
+",0.9940203616081374
+Type Faster,9,"        if (isFeasible(mid, words, T)) {
+",0.9701474199126736
+Type Faster,10,"            high = mid;
+",0.9990264715704742
+Type Faster,11,"        } else {
+",0.9999998509883548
+Type Faster,12,"            low = mid + 1;
+",0.9999997615813854
+Type Faster,13,"        }
+",0.9999994039533746
+Type Faster,14,"    }
+
+",0.9999209611362719
+Type Faster,15,"    console.log(low);
+",0.9960626037658328
+Type Faster,16,"}
+
+",0.9999805688858032
+Type Faster,17,"function isFeasible(v: number, words: number[], T: number): boolean {
+",0.9984113394924886
+Type Faster,18,"    let totalPenalty = 0;
+",0.9794936871349776
+Type Faster,19,"    for (const w of words) {
+",0.9280502874692956
+Type Faster,20,"        totalPenalty += Math.floor((w + v - 1) / v); // Equivalent to Math.ceil(w / v)
+",0.9626317708793921
+Type Faster,21,"    }
+",0.9619419184330137
+Type Faster,22,"    return totalPenalty < T;
+",0.9999558131351005
+Type Faster,23,"}
+
+",0.9993914365768433
+Type Faster,24,"main();
+",0.9900982586857959
+Marathon,0,"
+
+To solve this problem, we need to simulate Konni's run through the marathon, taking into account the refilling stations, his running and jogging speeds, and the time it takes to refill his water pouch. Here's a step-by-step breakdown of how we can approach this:
+
+1. **Initialize Variables**:
+   - Total distance of the marathon (42195 meters).
+   - Current position (start at 0 meters).
+   - Current time (start at 0 seconds).
+   - Current amount of water in the pouch (start at X ml).
+
+2. **Simulate the Run**:
+   - Iterate through each meter of the marathon.
+   - For each meter, check if Konni needs to refill his pouch (i.e., if he drinks 1 ml of water and the pouch becomes empty).
+   - If Konni needs to refill, find the nearest refilling station and calculate the time to reach it.
+   - Calculate the time to refill the pouch.
+   - Update the current position, time, and water level accordingly.
+   - If Konni reaches a refilling station, update the water level to X ml.
+
+3. **Calculate Jogging Time**:
+   - If Konni runs out of water before reaching the next refilling station, he needs to jog until he reaches the next refilling station.
+   - Calculate the time spent jogging and update the current time and position.
+
+4. **Output the Result**:
+   - Convert the total time from seconds to hours, minutes, and seconds.
+   - Print the result in the format ""hh:mm:ss"".
+
+Here's the implementation of the above logic in TypeScript:
+
+```typescript
+",0.999919232970375
+Marathon,1,"function formatTime(seconds: number): string {
+",0.9333472942682286
+Marathon,2,"    const hours = Math.floor(seconds / 3600);
+",0.9955667915155082
+Marathon,3,"    const minutes = Math.floor((seconds % 3600) / 60);
+",0.9990412772877373
+Marathon,4,"    const secs = seconds % 60;
+",0.9850295205066204
+Marathon,5,"    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+",0.9926120566128879
+Marathon,6,"}
+
+",0.9999985694885254
+Marathon,7,"function marathon(N: number, X: number, Y: number, H: number, S: number, stations: number[]): string {
+",0.9117658263583153
+Marathon,8,"    const totalDistance = 42195;
+",0.9935804256662009
+Marathon,9,"    let currentPosition = 0;
+",0.9925160067755464
+Marathon,10,"    let currentTime = 0;
+",0.9998199159992454
+Marathon,11,"    let currentWater = X;
+
+",0.9482347208875597
+Marathon,12,"    // Sort the stations to process them in order
+",0.9999995231628418
+Marathon,13,"    stations.sort((a, b) => a - b);
+
+",0.9978127661461368
+Marathon,14,"    for (let i = 0; i < totalDistance; i++) {
+",0.9317778444632856
+Marathon,15,"        if (currentWater === 0) {
+",0.8384351258868522
+Marathon,16,"            // Find the nearest refilling station
+",0.9999992847442627
+Marathon,17,"            let nextStationIndex = 0;
+",0.7886239941829944
+Marathon,18,"            while (nextStationIndex < stations.length && stations[nextStationIndex] <= currentPosition) {
+",0.9340290901757768
+Marathon,19,"                nextStationIndex++;
+",0.9999883649916385
+Marathon,20,"            }
+
+",0.751360666474027
+Marathon,21,"            if (nextStationIndex >= stations.length) {
+",0.9262414838474228
+Marathon,22,"                // No more refilling stations, Konni needs to jog to the end
+",0.9999996423721313
+Marathon,23,"                const remainingDistance = totalDistance - currentPosition;
+",0.8947736377644581
+Marathon,24,"                currentTime += remainingDistance / S;
+",0.8334423226518015
+Marathon,25,"                break;
+",0.9806882523267186
+Marathon,26,"            }
+
+",0.9936929537980306
+Marathon,27,"            const nextStation = stations[nextStationIndex];
+",0.9721383119191976
+Marathon,28,"            const distanceToStation = nextStation - currentPosition;
+",0.8650009032708212
+Marathon,29,"            currentTime += distanceToStation / S; // Jogging time
+",0.9308883056721459
+Marathon,30,"            currentPosition = nextStation;
+",0.9780447667022245
+Marathon,31,"            currentWater = X; // Refill the pouch
+",0.9521433901401001
+Marathon,32,"            currentTime += Y; // Time to refill
+",0.979207232784542
+Marathon,33,"        } else {
+",0.6992421421820937
+Marathon,34,"            // Running time
+",0.9999997615814209
+Marathon,35,"            currentTime += 1 / H;
+",0.9474590582847227
+Marathon,36,"            currentPosition++;
+",0.8648741710782915
+Marathon,37,"            currentWater--;
+",0.9826638880741599
+Marathon,38,"        }
+",0.9919095853681787
+Marathon,39,"    }
+
+",0.9999865293310675
+Marathon,40,"    return formatTime(currentTime);
+",0.9924175340354549
+Marathon,41,"}
+
+",0.9999924898147583
+Marathon,43,"console.log(marathon(1, 1000, 40, 10, 5, [1000])); // Output: ""02:17:59""
+
+",0.9648157312941396
+Marathon,45,"console.log(marathon(5, 500, 20, 8, 3, [100, 800, 1200, 20000, 30000])); // Output: ""03:47:24""
+",0.9999961695023776
+Diggy Hole,0,"4
+
+To solve this problem, we need to determine the rate at which workers dig holes and then use that rate to calculate how long it will take a different number of workers to dig a different amount of holes.
+
+Here's the step-by-step approach:
+
+1. **Calculate the rate of digging for one worker**: 
+   - If `n` workers take `h` hours to dig `x` cubic meters, then the total work done is `x` cubic meters.
+   - The rate of digging for one worker is therefore `x / (n * h)` cubic meters per hour.
+
+2. **Calculate the total work required**:
+   - For `m` workers to dig `y` cubic meters, the total work required is `y` cubic meters.
+
+3. **Calculate the time required**:
+   - The combined rate of `m` workers is `m * (x / (n * h))` cubic meters per hour.
+   - The time required to complete `y` cubic meters of work is `y / (m * (x / (n * h)))`.
+
+Let's implement this in TypeScript:
+
+```typescript
+",0.9999239419912871
+Diggy Hole,1,"function calculateTime(n: number, h: number, x: number, m: number, y: number): number {
+",0.9555886133012856
+Diggy Hole,2,"    // Calculate the rate of digging for one worker
+",0.9998923540115356
+Diggy Hole,3,"    const ratePerWorker = x / (n * h);
+",0.9927706168489784
+Diggy Hole,4,"    
+",0.9998562335968018
+Diggy Hole,5,"    // Calculate the combined rate of m workers
+",1.0
+Diggy Hole,6,"    const combinedRate = m * ratePerWorker;
+",0.9993519838437889
+Diggy Hole,7,"    
+",0.9999997615814209
+Diggy Hole,8,"    // Calculate the time required for m workers to dig y cubic meters
+",1.0
+Diggy Hole,9,"    const timeRequired = y / combinedRate;
+",0.9998769286289874
+Diggy Hole,10,"    
+",0.9999866485595703
+Diggy Hole,11,"    return timeRequired;
+",0.999916360842606
+Diggy Hole,12,"}
+
+",0.9999995231628418
+Diggy Hole,14,"const n = parseInt(readline());
+",0.8277898517549016
+Diggy Hole,15,"const h = parseInt(readline());
+",0.9999979053201005
+Diggy Hole,16,"const x = parseInt(readline());
+",0.9999947376996514
+Diggy Hole,17,"const m = parseInt(readline());
+",0.9999992336539726
+Diggy Hole,18,"const y = parseInt(readline());
+
+",0.9999291747782705
+Diggy Hole,20,"console.log(calculateTime(n, h, x, m, y));
+",0.8695064862963792
+Hair Dyeing,0,"
+
+Sample Input
+4 2
+1 2 3 4
+2 0
+3 1
+
+Sample Output
+16
+8
+12
+
+To solve this problem, we need to calculate the number of valid hair-dyeing plans given a sequence of daily discounts on hair dyes. A valid plan is one where no two consecutive days have the same discounted color. We also need to handle updates to the schedule and recompute the number of valid plans after each update.
+
+Here's a step-by-step breakdown of how to approach this problem:
+
+1. **Dynamic Programming Approach**:
+   - We'll use dynamic programming to keep track of the number of valid plans up to each day.
+   - Let `dp[i][j]` represent the number of valid plans up to day `i` where the last chosen color was `j`.
+   - Initialize `dp[0][j]` to 1 for all colors `j` except the discounted color on day 0, which is set to 0 because the friend cannot dye their hair on the first day if the discount is on their natural color.
+
+2. **Transition**:
+   - For each day `i` and each color `j`, if `j` is the discounted color on day `i`, then:
+     \[
+     dp[i][j] = \sum_{k \neq j} dp[i-1][k]
+     \]
+   - If `j` is not the discounted color on day `i`, then:
+     \[
+     dp[i][j] = dp[i-1][j]
+     \]
+
+3. **Result Calculation**:
+   - The total number of valid plans for day `N` is the sum of `dp[N][j]` for all colors `j`.
+
+4. **Handling Updates**:
+   - When the discount changes on day `i`, we need to recompute the `dp` values starting from day `i` onwards.
+
+5. **Modulo Operation**:
+   - Since the result can be very large, we take all results modulo \(2^{64}\).
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.9996260057861306
+Hair Dyeing,1,"function countPlans(N: number, Q: number, discounts: number[], updates: [number, number][]): number[] {
+",0.8955559070934664
+Hair Dyeing,2,"    const MOD = BigInt(2 ** 64);
+",0.8449283409903673
+Hair Dyeing,3,"    
+",0.1382020115852356
+Hair Dyeing,4,"    // Initialize dp array
+",0.9999985694885254
+Hair Dyeing,5,"    let dp: bigint[][] = Array.from({ length: N + 1 }, () => Array(10).fill(BigInt(0)));
+",0.932212233838367
+Hair Dyeing,6,"    
+",0.941792905330658
+Hair Dyeing,7,"    // Base case initialization
+",0.9999994039535522
+Hair Dyeing,8,"    for (let j = 0; j < 10; j++) {
+",0.9923088917640998
+Hair Dyeing,9,"        if (j !== discounts[0]) {
+",0.987333261332248
+Hair Dyeing,10,"            dp[0][j] = BigInt(1);
+",0.941989299554144
+Hair Dyeing,11,"        }
+",0.9979461585346627
+Hair Dyeing,12,"    }
+",0.9978778232145904
+Hair Dyeing,13,"    
+",0.9998158812522888
+Hair Dyeing,14,"    // Fill dp table for the initial schedule
+",0.9999982118606567
+Hair Dyeing,15,"    for (let i = 1; i <= N; i++) {
+",0.9718929749231445
+Hair Dyeing,16,"        for (let j = 0; j < 10; j++) {
+",0.9533061644482282
+Hair Dyeing,17,"            if (j === discounts[i - 1]) {
+",0.9716606073773197
+Hair Dyeing,18,"                for (let k = 0; k < 10; k++) {
+",0.9567984971946747
+Hair Dyeing,19,"                    if (k !== j) {
+",0.9986554330123081
+Hair Dyeing,20,"                        dp[i][j] = (dp[i][j] + dp[i - 1][k]) % MOD;
+",0.994836505601234
+Hair Dyeing,21,"                    }
+",0.9999954700468834
+Hair Dyeing,22,"                }
+",0.9999986886977013
+Hair Dyeing,23,"            } else {
+",0.9997662048870622
+Hair Dyeing,24,"                dp[i][j] = dp[i - 1][j];
+",0.9977024981542569
+Hair Dyeing,25,"            }
+",0.9998898745502806
+Hair Dyeing,26,"        }
+",0.9999498117691636
+Hair Dyeing,27,"    }
+",0.99967309052805
+Hair Dyeing,28,"    
+",0.9999951124191284
+Hair Dyeing,29,"    // Calculate the initial result
+",0.9999995231628418
+Hair Dyeing,30,"    let result: bigint = BigInt(0);
+",0.9060275829801677
+Hair Dyeing,31,"    for (let j = 0; j < 10; j++) {
+",0.9999853832007883
+Hair Dyeing,32,"        result = (result + dp[N][j]) % MOD;
+",0.9998538834672204
+Hair Dyeing,33,"    }
+",0.9995064124466939
+Hair Dyeing,34,"    
+",0.9868035912513733
+Hair Dyeing,35,"    const results: number[] = [Number(result)];
+",0.8634721786942965
+Hair Dyeing,36,"    
+",0.9997902512550354
+Hair Dyeing,37,"    // Process updates
+",0.9999990463256836
+Hair Dyeing,38,"    for (const [i, v] of updates) {
+",0.9767480687998013
+Hair Dyeing,39,"        // Reinitialize dp from day i
+",0.9999233484268188
+Hair Dyeing,40,"        for (let j = 0; j < 10; j++) {
+",0.9733489675809522
+Hair Dyeing,41,"            if (j !== discounts[i - 1]) {
+",0.958514920101216
+Hair Dyeing,42,"                dp[i - 1][j] = BigInt(1);
+",0.9910755041031458
+Hair Dyeing,43,"            } else {
+",0.9951594518097867
+Hair Dyeing,44,"                dp[i - 1][j] = BigInt(0);
+",0.9999975221408466
+Hair Dyeing,45,"            }
+",0.99999707937239
+Hair Dyeing,46,"        }
+",0.9998838893967534
+Hair Dyeing,47,"        
+",0.9944409728050232
+Hair Dyeing,48,"        // Recompute dp from day i onwards
+",0.9999990463256836
+Hair Dyeing,49,"        for (let j = i; j <= N; j++) {
+",0.9608646856780519
+Hair Dyeing,50,"            for (let k = 0; k < 10; k++) {
+",0.9803813871565948
+Hair Dyeing,51,"                if (k === discounts[j - 1]) {
+",0.9733580455305948
+Hair Dyeing,52,"                    for (let l = 0; l < 10; l++) {
+",0.9577221323801619
+Hair Dyeing,53,"                        if (l !== k) {
+",0.9999718955861214
+Hair Dyeing,54,"                            dp[j][k] = (dp[j][k] + dp[j - 1][l]) % MOD;
+",0.9999576838478293
+Hair Dyeing,55,"                        }
+",0.9999955892562866
+Hair Dyeing,56,"                    }
+",0.9999988675117475
+Hair Dyeing,57,"                } else {
+",0.999994665374642
+Hair Dyeing,58,"                    dp[j][k] = dp[j - 1][k];
+",0.9999791055160485
+Hair Dyeing,59,"                }
+",0.9999976158140953
+Hair Dyeing,60,"            }
+",0.999991059301891
+Hair Dyeing,61,"        }
+",0.9973440707642988
+Hair Dyeing,62,"        
+",0.9996738433837891
+Hair Dyeing,63,"        // Calculate the new result
+",0.9999990463256836
+Hair Dyeing,64,"        result = BigInt(0);
+",0.9577239314528546
+Hair Dyeing,65,"        for (let j = 0; j < 10; j++) {
+",0.9992085268869177
+Hair Dyeing,66,"            result = (result + dp[N][j]) % MOD;
+",0.9999985183969969
+Hair Dyeing,67,"        }
+",0.9999899864046425
+Hair Dyeing,68,"        
+",0.8393343687057495
+Hair Dyeing,69,"        results.push(Number(result));
+",0.999770774013846
+Hair Dyeing,70,"    }
+",0.7826859633070818
+Hair Dyeing,71,"    
+",0.9999977350234985
+Hair Dyeing,72,"    return results;
+",0.9999895989178188
+Hair Dyeing,73,"}
+
+",0.9998899698257446
+Hair Dyeing,75,"const N = 4;
+",0.9089568698712363
+Hair Dyeing,76,"const Q = 2;
+",0.999973116614689
+Hair Dyeing,77,"const discounts = [1, 2, 3, 4];
+",0.9999391611214283
+Hair Dyeing,78,"const updates: [number, number][] = [[2, 0], [3, 1]];
+",0.9391014550208202
+Hair Dyeing,79,"console.log(countPlans(N, Q, discounts, updates)); // Output: [16, 8, 12]
+",0.9592668690266836
+Date Picker,0,"333333333333334
+
+Explanation
+In the sample input, we need to select 2 days and 5 hours. There are 6 available days (days 1, 3, 4, 5, 6, 7) and 12 available hours (hours 2, 3, 5, 6, 7, 9, 10, 12, 13, 15, 16, 17). The optimal choice is to pick the 2 days with the most available hours and the 5 hours with the most availability across the selected days. In this case, the best choice would be days 3 and 4, and hours 2, 3, 5, 6, 7. This results in 10 available time slots out of 10 possible combinations (2 days * 5 hours), giving a probability of 1.0.
+
+To solve this problem, we need to determine the optimal way to select `d` days and `h` hours from the given availability matrix such that the probability of attending a randomly chosen meeting time is maximized. Here's a step-by-step approach to achieve this:
+
+1. **Parse the Input**: Read the 7 lines representing the availability matrix and the integers `d` and `h`.
+
+2. **Count Available Days and Hours**:
+   - Count the number of available days (rows with at least one '.').
+   - Count the number of available hours (columns with at least one '.').
+   - Create lists of available days and hours sorted by their availability (number of '.'s).
+
+3. **Select Optimal Days and Hours**:
+   - Select the top `d` days with the highest availability.
+   - Select the top `h` hours with the highest availability.
+
+4. **Calculate the Probability**:
+   - For each combination of the selected days and hours, count the total number of available time slots.
+   - Calculate the probability as the ratio of available time slots to the total number of possible combinations (`d * h`).
+
+Here's the implementation of the above approach in TypeScript:
+
+```typescript
+",0.9999257301138078
+Date Picker,1,"function parseInput(input: string): { matrix: string[][], d: number, h: number } {
+",0.8854170579252062
+Date Picker,2,"    const lines = input.trim().split('\n');
+",0.9789611526978819
+Date Picker,3,"    const matrix = lines.slice(0, 7).map(line => line.split(''));
+",0.9570047567787882
+Date Picker,4,"    const [d, h] = lines[7].split(' ').map(Number);
+",0.9698311476286822
+Date Picker,5,"    return { matrix, d, h };
+",0.9999926619381794
+Date Picker,6,"}
+
+",0.9999994039535522
+Date Picker,7,"function countAvailableDaysAndHours(matrix: string[][]): { availableDays: number[], availableHours: number[] } {
+",0.9447076524514847
+Date Picker,8,"    const availableDays: number[] = [];
+",0.9682226434276695
+Date Picker,9,"    const availableHours: number[] = [];
+
+",0.9889968275994663
+Date Picker,10,"    // Count available days
+",0.9999997615814209
+Date Picker,11,"    for (let i = 0; i < 7; i++) {
+",0.9509168859310095
+Date Picker,12,"        let count = 0;
+",0.8852449422524786
+Date Picker,13,"        for (let j = 0; j < 24; j++) {
+",0.9999783516618849
+Date Picker,14,"            if (matrix[i][j] === '.') {
+",0.9931713934774329
+Date Picker,15,"                count++;
+",0.9999539434111301
+Date Picker,16,"            }
+",0.9999853967999116
+Date Picker,17,"        }
+",0.9999995827674848
+Date Picker,18,"        if (count > 0) {
+",0.9941016255838689
+Date Picker,19,"            availableDays.push(count);
+",0.9104219198348982
+Date Picker,20,"        }
+",0.9997472278458746
+Date Picker,21,"    }
+
+",0.9782178095686782
+Date Picker,22,"    // Count available hours
+",0.9999997615814209
+Date Picker,23,"    for (let j = 0; j < 24; j++) {
+",0.9999864717008927
+Date Picker,24,"        let count = 0;
+",0.9999998467309038
+Date Picker,25,"        for (let i = 0; i < 7; i++) {
+",0.9999983240386044
+Date Picker,26,"            if (matrix[i][j] === '.') {
+",0.9999981251508803
+Date Picker,27,"                count++;
+",0.99999888737929
+Date Picker,28,"            }
+",0.9999988675117333
+Date Picker,29,"        }
+",0.9999991655349447
+Date Picker,30,"        if (count > 0) {
+",0.9999864094310184
+Date Picker,31,"            availableHours.push(count);
+",0.9999976952853712
+Date Picker,32,"        }
+",0.9999991059302413
+Date Picker,33,"    }
+
+",0.9999973773930648
+Date Picker,34,"    availableDays.sort((a, b) => b - a);
+",0.9180112465499213
+Date Picker,35,"    availableHours.sort((a, b) => b - a);
+
+",0.9995857960558344
+Date Picker,36,"    return { availableDays, availableHours };
+",0.9999772703368166
+Date Picker,37,"}
+
+",0.9999985694885254
+Date Picker,38,"function calculateProbability(matrix: string[][], d: number, h: number, availableDays: number[], availableHours: number[]): number {
+",0.9798136329739584
+Date Picker,39,"    const selectedDays = availableDays.slice(0, d);
+",0.9426251651232017
+Date Picker,40,"    const selectedHours = availableHours.slice(0, h);
+
+",0.9894051751997889
+Date Picker,41,"    let availableTimeSlots = 0;
+
+",0.8164602876991776
+Date Picker,42,"    for (const dayCount of selectedDays) {
+",0.8489451365189257
+Date Picker,43,"        for (const hourCount of selectedHours) {
+",0.9986339987043925
+Date Picker,44,"            availableTimeSlots += Math.min(dayCount, hourCount);
+",0.9867344571612638
+Date Picker,45,"        }
+",0.9999824164934908
+Date Picker,46,"    }
+
+",0.9999990463254278
+Date Picker,47,"    const totalCombinations = d * h;
+",0.9431799039984092
+Date Picker,48,"    return totalCombinations > 0 ? availableTimeSlots / totalCombinations : 0;
+",0.918620706000337
+Date Picker,49,"}
+
+",0.9999991655349731
+Date Picker,50,"function main(input: string): number {
+",0.7929293457659383
+Date Picker,51,"    const { matrix, d, h } = parseInput(input);
+",0.9999956232241672
+Date Picker,52,"    const { availableDays, availableHours } = countAvailableDaysAndHours(matrix);
+",0.9999923563619493
+Date Picker,53,"    return calculateProbability(matrix, d, h, availableDays, availableHours);
+",0.984679256347221
+Date Picker,54,"}
+
+",0.9999988079071045
+Date Picker,56,"const input = `
+",0.9261914712798553
+Date Picker,57,"xxxxxx..xx..xxxxxxxxxxxx
+",0.9996024767007143
+Date Picker,58,"xxxxxxxxxxxxx....xxxxxxx
+",0.9999883173484093
+Date Picker,59,"xxxxxxxxxxxxxxxxxxxxxxxx
+",0.9999908804707027
+Date Picker,60,"xxxxxx..xx..xxxxxxxxxxxx
+",0.9999962448853822
+Date Picker,61,"xxxxxxxxxxxxx...x..xxxxx
+",0.9999883174132124
+Date Picker,62,"xxxxxxxxxxxxxxxxxxxxxxxx
+",0.9999977350217399
+Date Picker,63,"xxxxxxxxxxxxxxxxxxxxxxxx
+",0.9999876617995204
+Date Picker,64,"2 5
+",0.9932589626644714
+Date Picker,65,"`;
+
+",0.6521587371826172
+Date Picker,66,"console.log(main(input)); // Output: 0.8333333333333334
+",0.9319732048475965
+Contrarianism,0,"
+
+Sample Output
+foo
+
+Sample Output
+bar
+
+Sample Output
+
+Sample Output
+baz
+
+Here is a simple solution in Python:
+
+```python
+",0.9991041594007943
+Contrarianism,1,"def generate_response(input_string):
+",0.6678615030066838
+Contrarianism,2,"    if input_string == """":
+",0.8252178650021119
+Contrarianism,3,"        return ""not empty""
+",0.7411729571414083
+Contrarianism,4,"    elif input_string == ""not empty"":
+",0.8282058623522954
+Contrarianism,5,"        return ""empty""
+",0.8943494305867378
+Contrarianism,6,"    else:
+",0.9642793014009107
+Contrarianism,7,"        return ""something else""
+
+",0.7840115404395225
+Contrarianism,8,"# Example usage
+",0.6088795468550013
+Contrarianism,9,"input_string = input().strip()
+",0.9210889405407711
+Contrarianism,10,"output_string = generate_response(input_string)
+",0.9167278961397741
+Contrarianism,11,"print(output_string)
+",0.9971691298006511
+Mouse Pursuit,0,"
+
+Explanation
+Brandon caught a mouse 1 second ago, earning 6 pieces of cheese and 5 units of glory.
+Brandon missed a mouse 4 seconds ago, losing 1 piece of cheese and 2 units of glory.
+Brandon caught a mouse 8 seconds ago, earning 0 pieces of cheese and 3 units of glory.
+In the last 5 seconds, only the first two events occurred, so Brandon earned 5 pieces of cheese and 3 units of glory.
+
+To solve this problem, we need to keep track of Brandon's events and calculate the total cheese and glory earned in the last k seconds. Since we can't use any built-in functions or libraries that simplify algorithmic steps, we'll implement a custom solution.
+
+Here's a step-by-step approach:
+
+1. **Parse the Input**: Read the number of events `n`, followed by `n` lines of events, and finally the integer `k`.
+2. **Store Events**: Use a list to store each event along with its timestamp, type (caught or miss), cheese, and glory.
+3. **Sort Events**: Sort the events based on their timestamps in descending order.
+4. **Calculate Total Cheese and Glory**: Iterate through the sorted events and sum up the cheese and glory values for events that occurred within the last `k` seconds.
+5. **Output the Result**: Print the total cheese and glory earned in the last `k` seconds.
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.99986096394989
+Mouse Pursuit,1,"type Event = {
+",0.7690635858948479
+Mouse Pursuit,2,"    timestamp: number;
+",0.9468903790655452
+Mouse Pursuit,3,"    type: 'CAUGHT' | 'MISS';
+",0.9250156957144969
+Mouse Pursuit,4,"    cheese: number;
+",0.9999510605127424
+Mouse Pursuit,5,"    glory: number;
+",0.9999994993208549
+Mouse Pursuit,6,"};
+
+",0.9933915138244629
+Mouse Pursuit,7,"function parseInput(input: string): [Event[], number] {
+",0.7802588380772262
+Mouse Pursuit,8,"    const lines = input.trim().split('\n');
+",0.974677310830262
+Mouse Pursuit,9,"    const n = parseInt(lines[0], 10);
+",0.9969253851823929
+Mouse Pursuit,10,"    const events: Event[] = [];
+
+",0.8980984779803358
+Mouse Pursuit,11,"    for (let i = 1; i <= n; i++) {
+",0.9996523289856877
+Mouse Pursuit,12,"        const [type, s, c, g] = lines[i].trim().split(' ');
+",0.862468912175203
+Mouse Pursuit,13,"        const timestamp = parseInt(s, 10);
+",0.8954847948377506
+Mouse Pursuit,14,"        const cheese = parseInt(c, 10);
+",0.999966450862902
+Mouse Pursuit,15,"        const glory = parseInt(g, 10);
+",0.9920905470328338
+Mouse Pursuit,16,"        events.push({ timestamp, type: type as 'CAUGHT' | 'MISS', cheese, glory });
+",0.9879020089596974
+Mouse Pursuit,17,"    }
+
+",0.9999828933286736
+Mouse Pursuit,18,"    const k = parseInt(lines[n + 1], 10);
+",0.9891564310957015
+Mouse Pursuit,19,"    return [events, k];
+",0.9999875168908625
+Mouse Pursuit,20,"}
+
+",0.999996542930603
+Mouse Pursuit,21,"function sortEvents(events: Event[]): Event[] {
+",0.922811060585028
+Mouse Pursuit,22,"    // Custom sort function to sort events by timestamp in descending order
+",0.9999990463256836
+Mouse Pursuit,23,"    for (let i = 0; i < events.length; i++) {
+",0.9434417363423335
+Mouse Pursuit,24,"        for (let j = i + 1; j < events.length; j++) {
+",0.9962949884120915
+Mouse Pursuit,25,"            if (events[i].timestamp < events[j].timestamp) {
+",0.9994871231163205
+Mouse Pursuit,26,"                const temp = events[i];
+",0.9185445270591523
+Mouse Pursuit,27,"                events[i] = events[j];
+",0.9999998807906998
+Mouse Pursuit,28,"                events[j] = temp;
+",0.9999994891028261
+Mouse Pursuit,29,"            }
+",0.9999962449020057
+Mouse Pursuit,30,"        }
+",0.9999995231628134
+Mouse Pursuit,31,"    }
+",0.9998167586858172
+Mouse Pursuit,32,"    return events;
+",0.9999988675116125
+Mouse Pursuit,33,"}
+
+",0.9999980926513672
+Mouse Pursuit,34,"function calculateTotalCheeseAndGlory(events: Event[], k: number): [number, number] {
+",0.922950356057171
+Mouse Pursuit,35,"    let totalCheese = 0;
+",0.9974974877207832
+Mouse Pursuit,36,"    let totalGlory = 0;
+
+",0.9880826199967868
+Mouse Pursuit,37,"    for (const event of events) {
+",0.9971159303975602
+Mouse Pursuit,38,"        if (event.timestamp > k) {
+",0.8574962807518345
+Mouse Pursuit,39,"            continue;
+",0.7600917869872263
+Mouse Pursuit,40,"        }
+",0.9945688013844047
+Mouse Pursuit,41,"        if (event.type === 'CAUGHT') {
+",0.9976902051433335
+Mouse Pursuit,42,"            totalCheese += event.cheese;
+",0.9999970197515023
+Mouse Pursuit,43,"            totalGlory += event.glory;
+",0.9999889926808614
+Mouse Pursuit,44,"        } else if (event.type === 'MISS') {
+",0.9564657867001369
+Mouse Pursuit,45,"            totalCheese -= event.cheese;
+",0.9999919770978117
+Mouse Pursuit,46,"            totalGlory -= event.glory;
+",0.9999989138704225
+Mouse Pursuit,47,"        }
+",0.99993818808772
+Mouse Pursuit,48,"    }
+
+",0.8680149015838013
+Mouse Pursuit,49,"    return [totalCheese, totalGlory];
+",0.9999986019985929
+Mouse Pursuit,50,"}
+
+",0.9999977350234985
+Mouse Pursuit,51,"function main(input: string) {
+",0.8371803966883982
+Mouse Pursuit,52,"    const [events, k] = parseInput(input);
+",0.9999793207964027
+Mouse Pursuit,53,"    const sortedEvents = sortEvents(events);
+",0.9997052780309785
+Mouse Pursuit,54,"    const [totalCheese, totalGlory] = calculateTotalCheeseAndGlory(sortedEvents, k);
+",0.9986279496930418
+Mouse Pursuit,55,"    console.log(`${totalCheese} ${totalGlory}`);
+",0.9494446866145856
+Mouse Pursuit,56,"}
+
+",0.9999849796295166
+Mouse Pursuit,58,"const sampleInput = `
+",0.6509092487610298
+Mouse Pursuit,59,"3
+",0.9998758659591986
+Mouse Pursuit,60,"CAUGHT 1 6 5
+",0.9999982515944968
+Mouse Pursuit,61,"MISS 4 1 2
+",0.9999986439927576
+Mouse Pursuit,62,"CAUGHT 8 0 3
+",0.9999996158811437
+Mouse Pursuit,63,"5
+",0.9996125951889767
+Mouse Pursuit,64,"`;
+
+",0.4887963533401489
+Mouse Pursuit,65,"main(sampleInput);
+",0.9456927888376745
+Aggressive Cows,0," It can be shown that no other arrangement allows for a larger minimum distance.
+
+To solve this problem, we need to find the largest minimum distance that can be achieved by placing C cows in N stalls such that no two cows are placed in stalls that are closer than this minimum distance.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Sort the Stalls**: First, sort the stall positions in ascending order. This will help us easily check the distances between consecutive stalls.
+
+2. **Binary Search for Minimum Distance**: We will use binary search to find the largest minimum distance. The search range will be from 1 (the smallest possible distance) to the difference between the maximum and minimum stall positions (the largest possible distance).
+
+3. **Check Feasibility**: For each midpoint in the binary search, we need to check if it's possible to place all C cows such that the minimum distance between any two cows is at least the midpoint. We do this by iterating through the sorted stall positions and trying to place cows as far apart as possible.
+
+4. **Adjust Search Range**: If it's possible to place all cows with the current midpoint distance, we move the lower bound of our search range up to try for a larger distance. Otherwise, we move the upper bound down.
+
+5. **Return the Result**: The largest minimum distance found during the binary search is the answer.
+
+Here's the implementation of the above approach in TypeScript:
+
+```typescript
+",0.99993568528356
+Aggressive Cows,1,"function largestMinimumDistance(t: number, testCases: { N: number, C: number, stalls: number[] }[]): number[] {
+",0.9195416429894384
+Aggressive Cows,2,"    const results: number[] = [];
+
+",0.9934566961554752
+Aggressive Cows,3,"    for (let i = 0; i < t; i++) {
+",0.9923764816051208
+Aggressive Cows,4,"        const { N, C, stalls } = testCases[i];
+
+",0.9787329210872299
+Aggressive Cows,5,"        // Sort the stalls
+",0.999996542930603
+Aggressive Cows,6,"        stalls.sort((a, b) => a - b);
+
+",0.933054342122751
+Aggressive Cows,7,"        // Binary search for the largest minimum distance
+",0.9999995231628418
+Aggressive Cows,8,"        let low = 1;
+",0.9880504400982523
+Aggressive Cows,9,"        let high = stalls[N - 1] - stalls[0];
+",0.9942000293863115
+Aggressive Cows,10,"        let result = 0;
+
+",0.9739075966741887
+Aggressive Cows,11,"        while (low <= high) {
+",0.9999338903314663
+Aggressive Cows,12,"            const mid = Math.floor((low + high) / 2);
+",0.9492134804439281
+Aggressive Cows,13,"            let count = 1; // Place the first cow in the first stall
+",0.7043308424599241
+Aggressive Cows,14,"            let lastPosition = stalls[0];
+
+",0.9951634598931256
+Aggressive Cows,15,"            for (let j = 1; j < N; j++) {
+",0.9995173279844493
+Aggressive Cows,16,"                if (stalls[j] - lastPosition >= mid) {
+",0.9999788565142799
+Aggressive Cows,17,"                    count++;
+",0.9990863443380269
+Aggressive Cows,18,"                    lastPosition = stalls[j];
+",0.9996910683549992
+Aggressive Cows,19,"                }
+",0.9115200411657266
+Aggressive Cows,20,"            }
+
+",0.9448415310697029
+Aggressive Cows,21,"            if (count >= C) {
+",0.999316891171567
+Aggressive Cows,22,"                result = mid;
+",0.9610342555106185
+Aggressive Cows,23,"                low = mid + 1;
+",0.9719979011681124
+Aggressive Cows,24,"            } else {
+",0.9999999701976763
+Aggressive Cows,25,"                high = mid - 1;
+",0.9999999105930244
+Aggressive Cows,26,"            }
+",0.9999997615814138
+Aggressive Cows,27,"        }
+
+",0.9999995827673995
+Aggressive Cows,28,"        results.push(result);
+",0.999999523162748
+Aggressive Cows,29,"    }
+
+",0.9999991655347173
+Aggressive Cows,30,"    return results;
+",0.9999997615814102
+Aggressive Cows,31,"}
+
+",0.9999326467514038
+Aggressive Cows,33,"const input = [
+",0.9004982840597504
+Aggressive Cows,34,"    { N: 5, C: 3, stalls: [1, 2, 8, 4, 9] }
+",0.9696773138088887
+Aggressive Cows,35,"];
+
+",0.48635831475257874
+Aggressive Cows,36,"console.log(largestMinimumDistance(1, input)); // Output: [3]
+",0.8840442016067173
+MKTHNUM - K-th Number,0,"
+
+To solve this problem, we need to efficiently find the k-th order statistic in a subarray segment without sorting the entire segment. This can be achieved using a selection algorithm, specifically the Quickselect algorithm, which is a variation of the QuickSort algorithm. Quickselect allows us to find the k-th smallest element in an unordered list in average linear time.
+
+Here's how we can implement this in TypeScript:
+
+```typescript
+",0.9999572036987132
+MKTHNUM - K-th Number,1,"function quickSelect(arr: number[], left: number, right: number, k: number): number {
+",0.8877172078350142
+MKTHNUM - K-th Number,2,"    if (left === right) {
+",0.9839327963267825
+MKTHNUM - K-th Number,3,"        return arr[left];
+",0.9999907731707488
+MKTHNUM - K-th Number,4,"    }
+
+",0.9983756164094191
+MKTHNUM - K-th Number,5,"    const pivotIndex = partition(arr, left, right);
+
+",0.9693732184896856
+MKTHNUM - K-th Number,6,"    if (k === pivotIndex) {
+",0.9962161767327075
+MKTHNUM - K-th Number,7,"        return arr[k];
+",0.999941115826392
+MKTHNUM - K-th Number,8,"    } else if (k < pivotIndex) {
+",0.9999855963886374
+MKTHNUM - K-th Number,9,"        return quickSelect(arr, left, pivotIndex - 1, k);
+",0.999960850963277
+MKTHNUM - K-th Number,10,"    } else {
+",0.9999996423720674
+MKTHNUM - K-th Number,11,"        return quickSelect(arr, pivotIndex + 1, right, k);
+",0.9999997615812966
+MKTHNUM - K-th Number,12,"    }
+",0.999998807906529
+MKTHNUM - K-th Number,13,"}
+
+",0.9999992847442627
+MKTHNUM - K-th Number,14,"function partition(arr: number[], left: number, right: number): number {
+",0.9999157224785951
+MKTHNUM - K-th Number,15,"    const pivot = arr[right];
+",0.9967999582448095
+MKTHNUM - K-th Number,16,"    let i = left;
+
+",0.9424608944695552
+MKTHNUM - K-th Number,17,"    for (let j = left; j < right; j++) {
+",0.9999226794657584
+MKTHNUM - K-th Number,18,"        if (arr[j] < pivot) {
+",0.9963401586079744
+MKTHNUM - K-th Number,19,"            [arr[i], arr[j]] = [arr[j], arr[i]];
+",0.9938556983329702
+MKTHNUM - K-th Number,20,"            i++;
+",0.9999788597873877
+MKTHNUM - K-th Number,21,"        }
+",0.9999993443487636
+MKTHNUM - K-th Number,22,"    }
+
+",0.9796599790690936
+MKTHNUM - K-th Number,23,"    [arr[i], arr[right]] = [arr[right], arr[i]];
+",0.9998750065472067
+MKTHNUM - K-th Number,24,"    return i;
+",0.9999955296242696
+MKTHNUM - K-th Number,25,"}
+
+",0.9999990463256836
+MKTHNUM - K-th Number,26,"function solveKthOrderStatistics(n: number, m: number, array: number[], queries: number[][]): number[] {
+",0.8315790963938119
+MKTHNUM - K-th Number,27,"    const results: number[] = [];
+
+",0.9742616332100302
+MKTHNUM - K-th Number,28,"    for (const [i, j, k] of queries) {
+",0.9954253459621514
+MKTHNUM - K-th Number,29,"        const subArray = array.slice(i - 1, j);
+",0.9132527787540337
+MKTHNUM - K-th Number,30,"        const kthElement = quickSelect(subArray, 0, subArray.length - 1, k - 1);
+",0.9860294618866796
+MKTHNUM - K-th Number,31,"        results.push(kthElement);
+",0.9999997104916829
+MKTHNUM - K-th Number,32,"    }
+
+",0.9999981522558681
+MKTHNUM - K-th Number,33,"    return results;
+",0.9999998509883867
+MKTHNUM - K-th Number,34,"}
+
+",0.9999908208847046
+MKTHNUM - K-th Number,36,"const input = `7 3
+",0.9222445345944572
+MKTHNUM - K-th Number,37,"1 5 2 6 3 7 4
+",0.9998681453058664
+MKTHNUM - K-th Number,38,"2 5 3
+",0.9999989271149846
+MKTHNUM - K-th Number,39,"4 4 1
+",0.9999988079061382
+MKTHNUM - K-th Number,40,"1 7 3`;
+
+",0.9727720394563082
+MKTHNUM - K-th Number,41,"const lines = input.split('\n');
+",0.9696249818562441
+MKTHNUM - K-th Number,42,"const [n, m] = lines[0].split(' ').map(Number);
+",0.9991944171018495
+MKTHNUM - K-th Number,43,"const array = lines[1].split(' ').map(Number);
+",0.9998781023663608
+MKTHNUM - K-th Number,44,"const queries = lines.slice(2).map(line => line.split(' ').map(Number));
+
+",0.9353478669876538
+MKTHNUM - K-th Number,45,"const results = solveKthOrderStatistics(n, m, array, queries);
+",0.9994727214687686
+MKTHNUM - K-th Number,46,"console.log(results.join('\n')); // Output: 5 6 3
+",0.8469067675728132
+HOTELS - Hotels Along the Croatian Coast,0,"
+
+To solve this problem efficiently, we can use a sliding window approach. This approach allows us to maintain a window of consecutive hotels whose total value does not exceed \( M \) and maximize this total value.
+
+Here's a step-by-step explanation of the approach:
+
+1. **Initialize Variables**:
+   - `maxValue` to store the maximum sum of consecutive hotels that does not exceed \( M \).
+   - `currentSum` to store the sum of the current window of hotels.
+   - `left` pointer to mark the start of the window.
+
+2. **Iterate Through Hotels**:
+   - Use a `right` pointer to iterate through each hotel.
+   - Add the value of the hotel at the `right` pointer to `currentSum`.
+
+3. **Adjust Window**:
+   - If `currentSum` exceeds \( M \), move the `left` pointer to the right until `currentSum` is less than or equal to \( M \). This involves subtracting the value of the hotel at the `left` pointer from `currentSum` and incrementing the `left` pointer.
+
+4. **Update Maximum Value**:
+   - After adjusting the window, update `maxValue` if `currentSum` is greater than the current `maxValue`.
+
+5. **Output the Result**:
+   - After iterating through all hotels, `maxValue` will contain the greatest possible total value of consecutive hotels that does not exceed \( M \).
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.9999636405813987
+HOTELS - Hotels Along the Croatian Coast,1,"function maxHotelValue(N: number, M: number, hotelValues: number[]): number {
+",0.9701516498982579
+HOTELS - Hotels Along the Croatian Coast,2,"    let maxValue = 0;
+",0.9996155305923922
+HOTELS - Hotels Along the Croatian Coast,3,"    let currentSum = 0;
+",0.9999984502720647
+HOTELS - Hotels Along the Croatian Coast,4,"    let left = 0;
+
+",0.9999785750461214
+HOTELS - Hotels Along the Croatian Coast,5,"    for (let right = 0; right < N; right++) {
+",0.9999124755002309
+HOTELS - Hotels Along the Croatian Coast,6,"        currentSum += hotelValues[right];
+
+",0.9955301011867363
+HOTELS - Hotels Along the Croatian Coast,7,"        while (currentSum > M && left <= right) {
+",0.8312036020805886
+HOTELS - Hotels Along the Croatian Coast,8,"            currentSum -= hotelValues[left];
+",0.9999975412922878
+HOTELS - Hotels Along the Croatian Coast,9,"            left++;
+",0.9994359810157313
+HOTELS - Hotels Along the Croatian Coast,10,"        }
+
+",0.9999998211860639
+HOTELS - Hotels Along the Croatian Coast,11,"        if (currentSum > maxValue) {
+",0.9964960888478576
+HOTELS - Hotels Along the Croatian Coast,12,"            maxValue = currentSum;
+",0.9999997814496088
+HOTELS - Hotels Along the Croatian Coast,13,"        }
+",0.9999992251393177
+HOTELS - Hotels Along the Croatian Coast,14,"    }
+
+",0.9999998211860497
+HOTELS - Hotels Along the Croatian Coast,15,"    return maxValue;
+",0.9999929963968817
+HOTELS - Hotels Along the Croatian Coast,16,"}
+
+",0.9999967813491821
+HOTELS - Hotels Along the Croatian Coast,18,"const input1 = ""5 12\n2 1 3 4 5"";
+",0.9471398389834393
+HOTELS - Hotels Along the Croatian Coast,19,"const input2 = ""4 9\n7 3 5 6"";
+
+",0.9992512033117388
+HOTELS - Hotels Along the Croatian Coast,20,"function parseInput(input: string): [number, number, number[]] {
+",0.9961562914557726
+HOTELS - Hotels Along the Croatian Coast,21,"    const lines = input.split('\n');
+",0.9749439456216242
+HOTELS - Hotels Along the Croatian Coast,22,"    const [N, M] = lines[0].split(' ').map(Number);
+",0.9997820086990141
+HOTELS - Hotels Along the Croatian Coast,23,"    const hotelValues = lines[1].split(' ').map(Number);
+",0.999981802928012
+HOTELS - Hotels Along the Croatian Coast,24,"    return [N, M, hotelValues];
+",0.9999990701664732
+HOTELS - Hotels Along the Croatian Coast,25,"}
+
+",0.9999998807907104
+HOTELS - Hotels Along the Croatian Coast,26,"console.log(maxHotelValue(...parseInput(input1))); // Output: 12
+",0.8976125961258842
+HOTELS - Hotels Along the Croatian Coast,27,"console.log(maxHotelValue(...parseInput(input2))); // Output: 8
+",0.9999993064179251
+LCA - Lowest Common Ancestor,0,"
+
+To solve the problem of finding the Lowest Common Ancestor (LCA) in a tree, we can use a technique called ""Binary Lifting"". This method allows us to preprocess the tree so that we can answer LCA queries efficiently.
+
+Here's a step-by-step breakdown of the approach:
+
+1. **Tree Representation**: Represent the tree using an adjacency list.
+2. **Preprocessing**:
+   - Compute the depth of each node.
+   - Use binary lifting to compute the 2^k-th ancestor for each node up to a certain level (typically log(N)).
+3. **Query Processing**:
+   - For each query, bring both nodes to the same depth.
+   - Use binary lifting to find the LCA by comparing ancestors at increasing powers of 2.
+
+Let's implement this in TypeScript:
+
+```typescript
+",0.9999030228250664
+LCA - Lowest Common Ancestor,1,"function readInput(): string[] {
+",0.6580632113391837
+LCA - Lowest Common Ancestor,2,"    return require('fs').readFileSync('/dev/stdin', 'utf8').trim().split('\n');
+",0.9157631237892119
+LCA - Lowest Common Ancestor,3,"}
+
+",0.9999548196792603
+LCA - Lowest Common Ancestor,4,"function parseInput(input: string[]): { testCases: TestCase[] } {
+",0.7193515966530846
+LCA - Lowest Common Ancestor,5,"    let index = 0;
+",0.8669351319832473
+LCA - Lowest Common Ancestor,6,"    const testCases: TestCase[] = [];
+
+",0.9211698741974489
+LCA - Lowest Common Ancestor,7,"    const numTestCases = parseInt(input[index++], 10);
+
+",0.8913452937754978
+LCA - Lowest Common Ancestor,8,"    for (let i = 0; i < numTestCases; i++) {
+",0.9621299563611253
+LCA - Lowest Common Ancestor,9,"        const N = parseInt(input[index++], 10);
+",0.9536579130673811
+LCA - Lowest Common Ancestor,10,"        const tree: number[][] = [];
+",0.8552621135032336
+LCA - Lowest Common Ancestor,11,"        for (let j = 0; j < N; j++) {
+",0.967779931837978
+LCA - Lowest Common Ancestor,12,"            const [M, ...children] = input[index++].split(' ').map(Number);
+",0.9756555611626799
+LCA - Lowest Common Ancestor,13,"            tree.push(children);
+",0.9411123978833605
+LCA - Lowest Common Ancestor,14,"        }
+",0.9509056027561177
+LCA - Lowest Common Ancestor,15,"        const Q = parseInt(input[index++], 10);
+",0.9996671818024117
+LCA - Lowest Common Ancestor,16,"        const queries: [number, number][] = [];
+",0.9925175711854722
+LCA - Lowest Common Ancestor,17,"        for (let j = 0; j < Q; j++) {
+",0.9996716429403188
+LCA - Lowest Common Ancestor,18,"            const [v, w] = input[index++].split(' ').map(Number);
+",0.9950748071936322
+LCA - Lowest Common Ancestor,19,"            queries.push([v, w]);
+",0.9682127938138264
+LCA - Lowest Common Ancestor,20,"        }
+",0.9894603611175671
+LCA - Lowest Common Ancestor,21,"        testCases.push({ N, tree, Q, queries });
+",0.9959229313569811
+LCA - Lowest Common Ancestor,22,"    }
+
+",0.998199310744714
+LCA - Lowest Common Ancestor,23,"    return { testCases };
+",0.9999887743457062
+LCA - Lowest Common Ancestor,24,"}
+
+",0.9999889135360718
+LCA - Lowest Common Ancestor,25,"interface TestCase {
+",0.8625099438161524
+LCA - Lowest Common Ancestor,26,"    N: number;
+",0.998607890708884
+LCA - Lowest Common Ancestor,27,"    tree: number[][];
+",0.9999935825484544
+LCA - Lowest Common Ancestor,28,"    Q: number;
+",0.9999988794318807
+LCA - Lowest Common Ancestor,29,"    queries: [number, number][];
+",0.9995128579428048
+LCA - Lowest Common Ancestor,30,"}
+
+",0.9999799728393555
+LCA - Lowest Common Ancestor,31,"function preprocessTree(N: number, tree: number[][]): { depth: number[], parent: number[][] } {
+",0.8349264688374792
+LCA - Lowest Common Ancestor,32,"    const depth: number[] = new Array(N + 1).fill(0);
+",0.9791662087941264
+LCA - Lowest Common Ancestor,33,"    const parent: number[][] = Array.from({ length: N + 1 }, () => new Array(20).fill(-1));
+
+",0.9452984666904657
+LCA - Lowest Common Ancestor,34,"    const dfs = (node: number, d: number, par: number) => {
+",0.823126824225382
+LCA - Lowest Common Ancestor,35,"        depth[node] = d;
+",0.995080788797593
+LCA - Lowest Common Ancestor,36,"        parent[node][0] = par;
+
+",0.9050352394861437
+LCA - Lowest Common Ancestor,37,"        for (let k = 1; k < 20; k++) {
+",0.9393412036433034
+LCA - Lowest Common Ancestor,38,"            if (parent[node][k - 1] !== -1) {
+",0.9971185418676247
+LCA - Lowest Common Ancestor,39,"                parent[node][k] = parent[parent[node][k - 1]][k - 1];
+",0.9995619978906873
+LCA - Lowest Common Ancestor,40,"            }
+",0.8170833744508573
+LCA - Lowest Common Ancestor,41,"        }
+
+",0.9999410496832637
+LCA - Lowest Common Ancestor,42,"        for (const child of tree[node]) {
+",0.8981370712415292
+LCA - Lowest Common Ancestor,43,"            dfs(child, d + 1, node);
+",0.9693031321082185
+LCA - Lowest Common Ancestor,44,"        }
+",0.9999978542313954
+LCA - Lowest Common Ancestor,45,"    };
+
+",0.9988458357517895
+LCA - Lowest Common Ancestor,46,"    dfs(1, 0, -1);
+
+",0.9528734608051735
+LCA - Lowest Common Ancestor,47,"    return { depth, parent };
+",0.9999880108350426
+LCA - Lowest Common Ancestor,48,"}
+
+",0.9999948740005493
+LCA - Lowest Common Ancestor,49,"function lca(u: number, v: number, depth: number[], parent: number[][]): number {
+",0.9347198863903504
+LCA - Lowest Common Ancestor,50,"    if (depth[u] > depth[v]) {
+",0.9460862105883541
+LCA - Lowest Common Ancestor,51,"        [u, v] = [v, u];
+",0.9975445267747354
+LCA - Lowest Common Ancestor,52,"    }
+
+",0.9999069826478617
+LCA - Lowest Common Ancestor,53,"    // Bring v to the same depth as u
+",0.9999955892562866
+LCA - Lowest Common Ancestor,54,"    for (let k = 19; k >= 0; k--) {
+",0.9776154939117422
+LCA - Lowest Common Ancestor,55,"        if (parent[v][k] !== -1 && depth[parent[v][k]] >= depth[u]) {
+",0.9828653483314366
+LCA - Lowest Common Ancestor,56,"            v = parent[v][k];
+",0.9999996721743565
+LCA - Lowest Common Ancestor,57,"        }
+",0.9999995827674422
+LCA - Lowest Common Ancestor,58,"    }
+
+",0.9999986886974668
+LCA - Lowest Common Ancestor,59,"    if (u === v) return u;
+
+",0.9089476332213112
+LCA - Lowest Common Ancestor,60,"    // Now u and v are at the same depth, move them up until they are just below the LCA
+",0.9999988079071045
+LCA - Lowest Common Ancestor,61,"    for (let k = 19; k >= 0; k--) {
+",0.999999476803427
+LCA - Lowest Common Ancestor,62,"        if (parent[u][k] !== -1 && parent[u][k] !== parent[v][k]) {
+",0.9627456097798773
+LCA - Lowest Common Ancestor,63,"            u = parent[u][k];
+",0.9999603724479487
+LCA - Lowest Common Ancestor,64,"            v = parent[v][k];
+",0.999999836087211
+LCA - Lowest Common Ancestor,65,"        }
+",0.9999995231627778
+LCA - Lowest Common Ancestor,66,"    }
+
+",0.9999976754169193
+LCA - Lowest Common Ancestor,67,"    // The parent of u or v is the LCA
+",0.9999955892562866
+LCA - Lowest Common Ancestor,68,"    return parent[u][0];
+",0.9994571517023269
+LCA - Lowest Common Ancestor,69,"}
+
+",0.9999948740005493
+LCA - Lowest Common Ancestor,70,"function solve(testCases: TestCase[]) {
+",0.7128981738681651
+LCA - Lowest Common Ancestor,71,"    const results: string[] = [];
+
+",0.8679510121427684
+LCA - Lowest Common Ancestor,72,"    for (let i = 0; i < testCases.length; i++) {
+",0.9772160913490903
+LCA - Lowest Common Ancestor,73,"        const { N, tree, Q, queries } = testCases[i];
+",0.9979593427729611
+LCA - Lowest Common Ancestor,74,"        const { depth, parent } = preprocessTree(N, tree);
+",0.9685733823494602
+LCA - Lowest Common Ancestor,75,"        const caseResults: string[] = [`Case ${i + 1}:`];
+
+",0.8428397303604455
+LCA - Lowest Common Ancestor,76,"        for (const [u, v] of queries) {
+",0.9562277356923071
+LCA - Lowest Common Ancestor,77,"            const result = lca(u, v, depth, parent);
+",0.9049174964390637
+LCA - Lowest Common Ancestor,78,"            caseResults.push(result.toString());
+",0.9954465757615599
+LCA - Lowest Common Ancestor,79,"        }
+
+",0.9999093671377887
+LCA - Lowest Common Ancestor,80,"        results.push(caseResults.join('\n'));
+",0.9754312506988592
+LCA - Lowest Common Ancestor,81,"    }
+
+",0.9999792575234765
+LCA - Lowest Common Ancestor,82,"    console.log(results.join('\n'));
+",0.9656215499770732
+LCA - Lowest Common Ancestor,83,"}
+
+",0.9999656677246094
+LCA - Lowest Common Ancestor,84,"const input = readInput();
+",0.9551581314815396
+LCA - Lowest Common Ancestor,85,"const parsedInput = parseInput(input);
+",0.9232300739821385
+LCA - Lowest Common Ancestor,86,"solve(parsedInput.testCases);
+",0.99981297384713
+QTREE - Query on a tree,0," ```typescript
+",0.9433552512987489
+QTREE - Query on a tree,1,"function solve() {
+",0.5709183142962181
+QTREE - Query on a tree,2,"    const input = `1
+
+",0.8810034106847726
+QTREE - Query on a tree,3,"3
+",0.9605768346991963
+QTREE - Query on a tree,4,"1 2 1
+",0.9999779460776865
+QTREE - Query on a tree,5,"2 3 2
+",0.9999714486582723
+QTREE - Query on a tree,6,"QUERY 1 2
+",0.9999916950508735
+QTREE - Query on a tree,7,"CHANGE 1 3
+",0.9999884167980525
+QTREE - Query on a tree,8,"QUERY 1 2
+",0.9994818644835741
+QTREE - Query on a tree,9,"DONE`;
+
+",0.9674060182708991
+QTREE - Query on a tree,10,"    const lines = input.split('\n');
+",0.8272783173291937
+QTREE - Query on a tree,11,"    let index = 0;
+
+",0.9396158460621435
+QTREE - Query on a tree,12,"    function readLine() {
+",0.7337954384635206
+QTREE - Query on a tree,13,"        return lines[index++];
+",0.9872671786035112
+QTREE - Query on a tree,14,"    }
+
+",0.9999713893713916
+QTREE - Query on a tree,15,"    function readInt() {
+",0.8356346874443672
+QTREE - Query on a tree,16,"        return parseInt(readLine(), 10);
+",0.9241260742830417
+QTREE - Query on a tree,17,"    }
+
+",0.9999861716395332
+QTREE - Query on a tree,18,"    function readIntArray() {
+",0.907188079832299
+QTREE - Query on a tree,19,"        return readLine().split(' ').map(Number);
+",0.9681822642966262
+QTREE - Query on a tree,20,"    }
+
+",0.9999833105919631
+QTREE - Query on a tree,21,"    const t = readInt();
+
+",0.8957469911790237
+QTREE - Query on a tree,22,"    for (let test = 0; test < t; test++) {
+",0.9300089980854597
+QTREE - Query on a tree,23,"        const N = readInt();
+",0.9550439765405493
+QTREE - Query on a tree,24,"        const edges: { u: number, v: number, cost: number }[] = [];
+",0.8814377095850437
+QTREE - Query on a tree,25,"        const adjacencyList: Map<number, { neighbor: number, edgeIndex: number }[]> = new Map();
+
+",0.7796437747061626
+QTREE - Query on a tree,26,"        for (let i = 0; i < N - 1; i++) {
+",0.9990884058317318
+QTREE - Query on a tree,27,"            const [u, v, cost] = readIntArray();
+",0.9308880187888825
+QTREE - Query on a tree,28,"            edges.push({ u, v, cost });
+",0.9993781603619944
+QTREE - Query on a tree,29,"            if (!adjacencyList.has(u)) adjacencyList.set(u, []);
+",0.9623999978820671
+QTREE - Query on a tree,30,"            if (!adjacencyList.has(v)) adjacencyList.set(v, []);
+",0.9801921105880803
+QTREE - Query on a tree,31,"            adjacencyList.get(u)!.push({ neighbor: v, edgeIndex: i });
+",0.9979774108736877
+QTREE - Query on a tree,32,"            adjacencyList.get(v)!.push({ neighbor: u, edgeIndex: i });
+",0.9999937149331096
+QTREE - Query on a tree,33,"        }
+
+",0.9999800919393897
+QTREE - Query on a tree,34,"        while (true) {
+",0.81045978915962
+QTREE - Query on a tree,35,"            const command = readLine();
+",0.8613134612404879
+QTREE - Query on a tree,36,"            if (command === 'DONE') break;
+
+",0.8556803568365584
+QTREE - Query on a tree,37,"            if (command.startsWith('CHANGE')) {
+",0.9643869848165876
+QTREE - Query on a tree,38,"                const [_, i, ti] = readIntArray();
+",0.9028666619970754
+QTREE - Query on a tree,39,"                edges[i - 1].cost = ti;
+",0.9978471439495662
+QTREE - Query on a tree,40,"            } else if (command.startsWith('QUERY')) {
+",0.9978235554573104
+QTREE - Query on a tree,41,"                const [_, a, b] = readIntArray();
+",0.998545292112363
+QTREE - Query on a tree,42,"                const maxCost = findMaxEdgeCost(a, b, edges, adjacencyList);
+",0.8560123856877828
+QTREE - Query on a tree,43,"                console.log(maxCost);
+",0.9998298821576783
+QTREE - Query on a tree,44,"            }
+",0.9998646596051418
+QTREE - Query on a tree,45,"        }
+",0.9601843787941504
+QTREE - Query on a tree,46,"    }
+",0.8193269443730048
+QTREE - Query on a tree,47,"}
+
+",0.9997583031654358
+QTREE - Query on a tree,48,"function findMaxEdgeCost(a: number, b: number, edges: { u: number, v: number, cost: number }[], adjacencyList: Map<number, { neighbor: number, edgeIndex: number }[]>): number {
+",0.9899021460301675
+QTREE - Query on a tree,49,"    const visited = new Set<number>();
+",0.9275414165394954
+QTREE - Query on a tree,50,"    const queue: { node: number, maxCost: number }[] = [{ node: a, maxCost: 0 }];
+
+",0.9182169846430762
+QTREE - Query on a tree,51,"    while (queue.length > 0) {
+",0.9988857133380813
+QTREE - Query on a tree,52,"        const { node, maxCost } = queue.shift()!;
+",0.9958021584319189
+QTREE - Query on a tree,53,"        if (node === b) return maxCost;
+
+",0.9202586331042224
+QTREE - Query on a tree,54,"        visited.add(node);
+
+",0.9618267968293556
+QTREE - Query on a tree,55,"        for (const { neighbor, edgeIndex } of adjacencyList.get(node)!) {
+",0.947416317388345
+QTREE - Query on a tree,56,"            if (!visited.has(neighbor)) {
+",0.997234647159434
+QTREE - Query on a tree,57,"                const currentEdgeCost = edges[edgeIndex].cost;
+",0.7780305201503436
+QTREE - Query on a tree,58,"                queue.push({ node: neighbor, maxCost: Math.max(maxCost, currentEdgeCost) });
+",0.9701281273130106
+QTREE - Query on a tree,59,"            }
+",0.9999481427470168
+QTREE - Query on a tree,60,"        }
+",0.9999958276666518
+QTREE - Query on a tree,61,"    }
+
+",0.9998702621055873
+QTREE - Query on a tree,62,"    return 0; // Should never reach here as the graph is connected
+",0.7999105735741522
+QTREE - Query on a tree,63,"}
+
+",0.9300123453140259
+QTREE - Query on a tree,64,"solve();
+",0.9903503684326891
+UPDATEIT - Update the array!,0," To solve this problem efficiently without using any built-in functions or libraries that simplify algorithmic steps, we can use a technique called the ""difference array."" This technique allows us to perform range updates in constant time and then compute the final values of the array in linear time.
+
+Here's a step-by-step explanation of the approach:
+
+1. **Initialize the Array**: Start with an array of size `n` filled with zeros.
+2. **Difference Array Technique**:
+   - For each update operation `(l, r, val)`, increment the element at index `l` by `val` and decrement the element at index `r+1` by `val` (if `r+1` is within bounds).
+   - This marks the start and end of the range update.
+3. **Compute Final Values**:
+   - Iterate through the array and compute the cumulative sum to get the final values after all updates.
+4. **Handle Queries**:
+   - For each query, simply output the value at the specified index.
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.999977886581998
+UPDATEIT - Update the array!,1,"function processTestCase(input: string): string[] {
+",0.6732977530961247
+UPDATEIT - Update the array!,2,"    const lines = input.split('\n');
+",0.91071392069708
+UPDATEIT - Update the array!,3,"    let index = 0;
+
+",0.9122554725634668
+UPDATEIT - Update the array!,4,"    const t = parseInt(lines[index++]);
+",0.9157093021028848
+UPDATEIT - Update the array!,5,"    const results: string[] = [];
+
+",0.9941542284290988
+UPDATEIT - Update the array!,6,"    for (let tc = 0; tc < t; tc++) {
+",0.915587977590953
+UPDATEIT - Update the array!,7,"        const [n, u] = lines[index++].split(' ').map(Number);
+",0.9981815587795283
+UPDATEIT - Update the array!,8,"        const updates: [number, number, number][] = [];
+",0.9100821190503176
+UPDATEIT - Update the array!,9,"        const queries: number[] = [];
+
+",0.9139348956979707
+UPDATEIT - Update the array!,10,"        for (let i = 0; i < u; i++) {
+",0.9992708056975701
+UPDATEIT - Update the array!,11,"            const [l, r, val] = lines[index++].split(' ').map(Number);
+",0.9938703963459752
+UPDATEIT - Update the array!,12,"            updates.push([l, r, val]);
+",0.9997904186481353
+UPDATEIT - Update the array!,13,"        }
+
+",0.9967157989332709
+UPDATEIT - Update the array!,14,"        const q = parseInt(lines[index++]);
+",0.9996395764251034
+UPDATEIT - Update the array!,15,"        for (let i = 0; i < q; i++) {
+",0.9999735987663282
+UPDATEIT - Update the array!,16,"            queries.push(parseInt(lines[index++]));
+",0.9616565948431071
+UPDATEIT - Update the array!,17,"        }
+
+",0.9999957680627158
+UPDATEIT - Update the array!,18,"        // Initialize the array
+",0.999998927116394
+UPDATEIT - Update the array!,19,"        const arr = new Array(n).fill(0);
+
+",0.9554347982621479
+UPDATEIT - Update the array!,20,"        // Apply updates using difference array technique
+",0.9999997615814209
+UPDATEIT - Update the array!,21,"        for (const [l, r, val] of updates) {
+",0.9995134026509797
+UPDATEIT - Update the array!,22,"            arr[l] += val;
+",0.9999166524795884
+UPDATEIT - Update the array!,23,"            if (r + 1 < n) {
+",0.9998047673763455
+UPDATEIT - Update the array!,24,"                arr[r + 1] -= val;
+",0.9999994754789551
+UPDATEIT - Update the array!,25,"            }
+",0.9999995827674848
+UPDATEIT - Update the array!,26,"        }
+
+",0.9999997019767743
+UPDATEIT - Update the array!,27,"        // Compute the final values
+",0.9999998807907104
+UPDATEIT - Update the array!,28,"        for (let i = 1; i < n; i++) {
+",0.9883693484106814
+UPDATEIT - Update the array!,29,"            arr[i] += arr[i - 1];
+",0.9999945595922036
+UPDATEIT - Update the array!,30,"        }
+
+",0.9999995827674422
+UPDATEIT - Update the array!,31,"        // Handle queries
+",1.0
+UPDATEIT - Update the array!,32,"        const answers: number[] = [];
+",0.7186201771752391
+UPDATEIT - Update the array!,33,"        for (const query of queries) {
+",0.9968172457890458
+UPDATEIT - Update the array!,34,"            answers.push(arr[query]);
+",0.9999956573529037
+UPDATEIT - Update the array!,35,"        }
+
+",0.9984906582281201
+UPDATEIT - Update the array!,36,"        results.push(...answers.map(String));
+",0.9032731811188484
+UPDATEIT - Update the array!,37,"    }
+
+",0.9999912380929012
+UPDATEIT - Update the array!,38,"    return results;
+",0.999997287982135
+UPDATEIT - Update the array!,39,"}
+
+",0.9999878406524658
+UPDATEIT - Update the array!,41,"const input = `1
+",0.9666180424343855
+UPDATEIT - Update the array!,42,"5 3
+",0.9999744287386229
+UPDATEIT - Update the array!,43,"0 1 7
+",0.9999985496195538
+UPDATEIT - Update the array!,44,"2 4 6
+",0.9999977946212089
+UPDATEIT - Update the array!,45,"1 3 2
+",0.9999989271155391
+UPDATEIT - Update the array!,46,"3
+",0.9999951124190645
+UPDATEIT - Update the array!,47,"0
+",0.9999775290145979
+UPDATEIT - Update the array!,48,"3
+",0.9999878406437617
+UPDATEIT - Update the array!,49,"4`;
+",0.5253935474747337
+UPDATEIT - Update the array!,50,"const output = processTestCase(input);
+",0.9489222584156253
+UPDATEIT - Update the array!,51,"console.log(output.join('\n'));
+",0.9073787723973826
+A. Way Too Long Words,0,"
+To solve this problem, we need to iterate through each word provided in the input, check its length, and apply the abbreviation rule if necessary. Here's a step-by-step breakdown of how we can achieve this:
+
+1. **Read the Input**: First, read the number of words `n` and then read each word.
+2. **Process Each Word**: For each word, check if its length is greater than 10.
+   - If the length is greater than 10, create the abbreviation by taking the first letter, the number of letters between the first and last letters, and the last letter.
+   - If the length is 10 or less, keep the word unchanged.
+3. **Output the Result**: Print each processed word on a new line.
+
+Here's the TypeScript code implementing the above logic:
+
+```typescript
+",0.9999837874987556
+A. Way Too Long Words,1,"function main() {
+",0.48643879554365893
+A. Way Too Long Words,2,"    // Read the number of words
+",0.9992659687995911
+A. Way Too Long Words,3,"    const n = parseInt(readline(), 10);
+
+",0.8419410307535218
+A. Way Too Long Words,4,"    // Array to store the results
+",0.9999997615814209
+A. Way Too Long Words,5,"    const results: string[] = [];
+
+",0.9937190600881616
+A. Way Too Long Words,6,"    // Process each word
+",0.9999997615814209
+A. Way Too Long Words,7,"    for (let i = 0; i < n; i++) {
+",0.9999968260314133
+A. Way Too Long Words,8,"        const word = readline();
+",0.9736133240952781
+A. Way Too Long Words,9,"        const length = word.length;
+
+",0.8293445839483232
+A. Way Too Long Words,10,"        if (length > 10) {
+",0.9981194625373667
+A. Way Too Long Words,11,"            // Create the abbreviation
+",0.9999998807907104
+A. Way Too Long Words,12,"            const firstLetter = word[0];
+",0.9247372121206002
+A. Way Too Long Words,13,"            const lastLetter = word[length - 1];
+",0.9995412454813141
+A. Way Too Long Words,14,"            const middleCount = length - 2; // Number of letters between the first and last
+",0.9216469232113657
+A. Way Too Long Words,15,"            const abbreviatedWord = firstLetter + middleCount.toString() + lastLetter;
+",0.9084135090349604
+A. Way Too Long Words,16,"            results.push(abbreviatedWord);
+",0.9999930261924213
+A. Way Too Long Words,17,"        } else {
+",0.9999999403953534
+A. Way Too Long Words,18,"            // Keep the word unchanged
+",1.0
+A. Way Too Long Words,19,"            results.push(word);
+",0.999999928474416
+A. Way Too Long Words,20,"        }
+",0.9999998211860497
+A. Way Too Long Words,21,"    }
+
+",0.9999990463254278
+A. Way Too Long Words,22,"    // Output the results
+",1.0
+A. Way Too Long Words,23,"    results.forEach(result => console.log(result));
+",0.9543627257189973
+A. Way Too Long Words,24,"}
+
+",0.996884286403656
+A. Way Too Long Words,26,"function readline(): string {
+",0.8331866080724513
+A. Way Too Long Words,27,"    // This function would normally read from standard input
+",0.9999982118606567
+A. Way Too Long Words,28,"    // For testing, we can simulate it with predefined inputs
+",0.9999998807907104
+A. Way Too Long Words,29,"    const inputs = [
+",0.9696528451835856
+A. Way Too Long Words,30,"        ""4"",
+",0.9937975450073034
+A. Way Too Long Words,31,"        ""word"",
+",0.9999988079063051
+A. Way Too Long Words,32,"        ""localization"",
+",0.9999997138976748
+A. Way Too Long Words,33,"        ""internationalization"",
+",0.9999995470045593
+A. Way Too Long Words,34,"        ""pneumonoultramicroscopicsilicovolcanoconiosis""
+",0.999989869269053
+A. Way Too Long Words,35,"    ];
+",0.9871950465406826
+A. Way Too Long Words,36,"    return inputs.shift()!;
+",0.9707265977636509
+A. Way Too Long Words,37,"}
+
+",0.9996908903121948
+A. Way Too Long Words,39,"main();
+",0.9999763368925695
+C. Dijkstra?,0," ```typescript
+",0.9544069955008894
+C. Dijkstra?,1,"type Edge = {
+",0.6251061217104142
+C. Dijkstra?,2,"    to: number;
+",0.8147946115504167
+C. Dijkstra?,3,"    weight: number;
+",0.9998133886336689
+C. Dijkstra?,4,"};
+
+",0.9434316158294678
+C. Dijkstra?,5,"function dijkstra(n: number, edges: Edge[][], start: number, end: number): number[] {
+",0.901134482289035
+C. Dijkstra?,6,"    const distances: number[] = new Array(n + 1).fill(Infinity);
+",0.8956167259115917
+C. Dijkstra?,7,"    const previousVertices: number[] = new Array(n + 1).fill(-1);
+",0.8622050259357281
+C. Dijkstra?,8,"    const priorityQueue: { vertex: number; distance: number }[] = [];
+
+",0.8477984982756632
+C. Dijkstra?,9,"    distances[start] = 0;
+",0.9921246188785369
+C. Dijkstra?,10,"    priorityQueue.push({ vertex: start, distance: 0 });
+
+",0.9997340868766952
+C. Dijkstra?,11,"    while (priorityQueue.length > 0) {
+",0.999113390070834
+C. Dijkstra?,12,"        let minIndex = 0;
+",0.8612306371303972
+C. Dijkstra?,13,"        for (let i = 1; i < priorityQueue.length; i++) {
+",0.9992906081935294
+C. Dijkstra?,14,"            if (priorityQueue[i].distance < priorityQueue[minIndex].distance) {
+",0.9998388464646184
+C. Dijkstra?,15,"                minIndex = i;
+",0.9999974171279866
+C. Dijkstra?,16,"            }
+",0.9999923705986403
+C. Dijkstra?,17,"        }
+
+",0.7176818173772636
+C. Dijkstra?,18,"        const currentVertex = priorityQueue.splice(minIndex, 1)[0].vertex;
+
+",0.9228918951435532
+C. Dijkstra?,19,"        if (currentVertex === end) {
+",0.9897210154797096
+C. Dijkstra?,20,"            break;
+",0.9880575678080277
+C. Dijkstra?,21,"        }
+
+",0.9999660845004965
+C. Dijkstra?,22,"        for (const neighbor of edges[currentVertex]) {
+",0.9316550581693224
+C. Dijkstra?,23,"            const distance = distances[currentVertex] + neighbor.weight;
+",0.9196228927559925
+C. Dijkstra?,24,"            if (distance < distances[neighbor.to]) {
+",0.9999645215559761
+C. Dijkstra?,25,"                distances[neighbor.to] = distance;
+",0.9999963044993903
+C. Dijkstra?,26,"                previousVertices[neighbor.to] = currentVertex;
+",0.998250090984395
+C. Dijkstra?,27,"                priorityQueue.push({ vertex: neighbor.to, distance: distance });
+",0.9696087814372988
+C. Dijkstra?,28,"            }
+",0.9999298439479963
+C. Dijkstra?,29,"        }
+",0.9982031252338657
+C. Dijkstra?,30,"    }
+
+",0.9999701975343342
+C. Dijkstra?,31,"    if (distances[end] === Infinity) {
+",0.9707964435483805
+C. Dijkstra?,32,"        return [-1];
+",0.9990714206673134
+C. Dijkstra?,33,"    }
+
+",0.98576131916529
+C. Dijkstra?,34,"    const path: number[] = [];
+",0.9967155219593338
+C. Dijkstra?,35,"    let at = end;
+",0.6032760572756799
+C. Dijkstra?,36,"    while (at !== -1) {
+",0.99668487491283
+C. Dijkstra?,37,"        path.unshift(at);
+",0.9663964782083895
+C. Dijkstra?,38,"        at = previousVertices[at];
+",0.9999816068029966
+C. Dijkstra?,39,"    }
+
+",0.9978753419337423
+C. Dijkstra?,40,"    return path;
+",0.9998372076540114
+C. Dijkstra?,41,"}
+
+",0.999733030796051
+C. Dijkstra?,42,"function main() {
+",0.8506659551945095
+C. Dijkstra?,43,"    const input = `5 6
+",0.9717098898921986
+C. Dijkstra?,44,"1 2 2
+",0.9589903676383026
+C. Dijkstra?,45,"2 5 5
+",0.9999923904451918
+C. Dijkstra?,46,"2 3 4
+",0.9999959667371918
+C. Dijkstra?,47,"1 4 1
+",0.9999968806816985
+C. Dijkstra?,48,"4 3 3
+",0.9999974767311824
+C. Dijkstra?,49,"3 5 1`;
+
+",0.975913149975984
+C. Dijkstra?,50,"    const [firstLine, ...lines] = input.split('\n');
+",0.8226331411402432
+C. Dijkstra?,51,"    const [n, m] = firstLine.split(' ').map(Number);
+
+",0.9439116236848966
+C. Dijkstra?,52,"    const edges: Edge[][] = Array.from({ length: n + 1 }, () => []);
+
+",0.9751959060869774
+C. Dijkstra?,53,"    for (const line of lines) {
+",0.9922662911195426
+C. Dijkstra?,54,"        const [ai, bi, wi] = line.split(' ').map(Number);
+",0.9929304308347355
+C. Dijkstra?,55,"        edges[ai].push({ to: bi, weight: wi });
+",0.999991313434313
+C. Dijkstra?,56,"        edges[bi].push({ to: ai, weight: wi });
+",0.9993517226943929
+C. Dijkstra?,57,"    }
+
+",0.9999933838709846
+C. Dijkstra?,58,"    const result = dijkstra(n, edges, 1, n);
+",0.9685245925726217
+C. Dijkstra?,59,"    console.log(result.join(' '));
+",0.9953983471008575
+C. Dijkstra?,60,"}
+
+",0.9990980625152588
+C. Dijkstra?,61,"main();
+",0.996683583661335
+G. Game of Chance,0,"
+
+To solve this problem, we need to simulate the tournament and calculate the probability of each participant winning. Here's a step-by-step breakdown of how we can achieve this:
+
+1. **Initialization**: We start by reading the number of participants `n` and their respective luckiness values `a`.
+
+2. **Tournament Simulation**:
+   - In each round, participants are paired up and the loser is eliminated.
+   - We need to keep track of the probabilities of each participant winning the tournament.
+   - For each round, we update the probabilities based on the outcomes of the matches.
+
+3. **Probability Calculation**:
+   - When two participants with luckiness `x` and `y` play, the probability of the participant with luckiness `x` winning is `x / (x + y)`.
+   - We use these probabilities to update the overall probability of each participant winning the tournament.
+
+4. **Output**:
+   - After simulating all rounds, we output the probabilities of each participant winning the tournament.
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.9998704418857448
+G. Game of Chance,1,"function tournamentProbabilities(n: number, a: number[]): number[] {
+",0.8736189761251747
+G. Game of Chance,2,"    // Initialize probabilities array
+",0.9997068047523499
+G. Game of Chance,3,"    const probabilities = new Array(n).fill(1);
+
+",0.8044889034819528
+G. Game of Chance,4,"    // Function to calculate the probability of a participant winning
+",0.9999996423721313
+G. Game of Chance,5,"    function calculateWinProbability(x: number, y: number): number {
+",0.8182187612299882
+G. Game of Chance,6,"        return x / (x + y);
+",0.999715045849624
+G. Game of Chance,7,"    }
+
+",0.999997138972958
+G. Game of Chance,8,"    // Simulate the tournament
+",0.9999997615814209
+G. Game of Chance,9,"    let participants = a.slice();
+",0.7595246817239695
+G. Game of Chance,10,"    let remaining = n;
+
+",0.6142281154153131
+G. Game of Chance,11,"    while (remaining > 1) {
+",0.9967840327227137
+G. Game of Chance,12,"        const nextRoundParticipants: number[] = [];
+",0.810090039586715
+G. Game of Chance,13,"        const nextRoundProbabilities: number[] = [];
+
+",0.9728916184111098
+G. Game of Chance,14,"        for (let i = 0; i < remaining; i += 2) {
+",0.9820800397880245
+G. Game of Chance,15,"            const x = participants[i];
+",0.8898933730741881
+G. Game of Chance,16,"            const y = participants[i + 1];
+",0.9987119720761273
+G. Game of Chance,17,"            const px = probabilities[i];
+",0.973744392448705
+G. Game of Chance,18,"            const py = probabilities[i + 1];
+
+",0.9913316441808907
+G. Game of Chance,19,"            const winProbX = calculateWinProbability(x, y);
+",0.89205993792148
+G. Game of Chance,20,"            const winProbY = 1 - winProbX;
+
+",0.975578067688663
+G. Game of Chance,21,"            if (winProbX > winProbY) {
+",0.8958874113848865
+G. Game of Chance,22,"                nextRoundParticipants.push(x);
+",0.9999605748414861
+G. Game of Chance,23,"                nextRoundProbabilities.push(px * winProbX);
+",0.9924638733264787
+G. Game of Chance,24,"            } else {
+",0.9971805938783089
+G. Game of Chance,25,"                nextRoundParticipants.push(y);
+",0.9999965769713072
+G. Game of Chance,26,"                nextRoundProbabilities.push(py * winProbY);
+",0.9999899962178884
+G. Game of Chance,27,"            }
+",0.9997351739612822
+G. Game of Chance,28,"        }
+
+",0.9999952912308867
+G. Game of Chance,29,"        participants = nextRoundParticipants;
+",0.9996716725069853
+G. Game of Chance,30,"        probabilities = nextRoundProbabilities;
+",0.9810090020956712
+G. Game of Chance,31,"        remaining /= 2;
+",0.8316950936904479
+G. Game of Chance,32,"    }
+
+",0.999991655322418
+G. Game of Chance,33,"    // Normalize probabilities to ensure they sum up to 1
+",0.9999996423721313
+G. Game of Chance,34,"    const totalProbability = probabilities.reduce((sum, prob) => sum + prob, 0);
+",0.9803629303015153
+G. Game of Chance,35,"    const normalizedProbabilities = probabilities.map(prob => prob / totalProbability);
+
+",0.9502891706014679
+G. Game of Chance,36,"    return normalizedProbabilities;
+",0.9996665730893664
+G. Game of Chance,37,"}
+
+",0.9999918937683105
+G. Game of Chance,39,"const n = 5;
+",0.9945777550097777
+G. Game of Chance,40,"const a = [1, 4, 1, 1, 4];
+",0.9978954560222171
+G. Game of Chance,41,"const result = tournamentProbabilities(n, a);
+",0.9860458214999204
+G. Game of Chance,42,"console.log(result.join(' ')); // Output: 0.026 0.3584 0.0676 0.0616 0.4864
+",0.8768108547389927
+E. Organizing a Race,0,"
+To solve this problem, we need to determine the most beautiful race that can be organized by maximizing the number of cities \( r - l + 1 \) such that the cars do not run out of gas during both stages of the race.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Understanding the Problem:**
+   - We have \( n \) cities connected by \( n-1 \) roads.
+   - Each city \( i \) provides \( g_i \) liters of gas when entered.
+   - We can distribute \( k \) presents to increase the gas provided by any city.
+   - We need to find the longest contiguous segment \( [l, r] \) such that the car can travel from \( l \) to \( r \) and back to \( l \) without running out of gas.
+
+2. **Constraints and Observations:**
+   - The car starts with an empty tank and refuels at each city.
+   - The car consumes 1 liter of gas per kilometer.
+   - We need to ensure that the total gas collected along the path is sufficient to cover the distance traveled.
+
+3. **Approach:**
+   - Use a sliding window technique to find the longest valid segment.
+   - For each segment, calculate the total gas needed and compare it with the total gas available.
+   - Adjust the gas levels by distributing the presents optimally.
+
+4. **Implementation Steps:**
+   - Calculate the prefix sums of gas levels to quickly compute the total gas available in any segment.
+   - Use a sliding window to find the longest valid segment where the car can complete both stages without running out of gas.
+   - Distribute the presents to maximize the gas levels in critical segments.
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.9998091887759827
+E. Organizing a Race,1,"function mostBeautifulRace(n: number, k: number, w: number[], g: number[]): number {
+",0.9427547079776962
+E. Organizing a Race,2,"    // Calculate prefix sums of gas levels
+",0.9999071359634399
+E. Organizing a Race,3,"    const gasPrefixSum = new Array(n + 1).fill(0);
+",0.8428476821222588
+E. Organizing a Race,4,"    for (let i = 1; i <= n; i++) {
+",0.9547536980480998
+E. Organizing a Race,5,"        gasPrefixSum[i] = gasPrefixSum[i - 1] + g[i - 1];
+",0.9999861519967518
+E. Organizing a Race,6,"    }
+
+",0.9996569167429361
+E. Organizing a Race,7,"    let maxBeauty = 0;
+
+",0.7967656075037868
+E. Organizing a Race,8,"    // Try to find the longest valid segment
+",0.9999994039535522
+E. Organizing a Race,9,"    for (let l = 1; l <= n; l++) {
+",0.9866514174506913
+E. Organizing a Race,10,"        let remainingGas = gasPrefixSum[l];
+",0.6492305011790325
+E. Organizing a Race,11,"        let currentBeauty = 0;
+
+",0.7045640843526929
+E. Organizing a Race,12,"        for (let r = l; r <= n; r++) {
+",0.9979609789408225
+E. Organizing a Race,13,"            currentBeauty = r - l + 1;
+",0.9502369507466594
+E. Organizing a Race,14,"            const distanceToR = gasPrefixSum[r] - gasPrefixSum[l - 1];
+",0.9050695638838455
+E. Organizing a Race,15,"            const distanceBackToL = gasPrefixSum[r] - gasPrefixSum[l - 1];
+
+",0.9555763690259012
+E. Organizing a Race,16,"            if (remainingGas >= distanceToR + distanceBackToL) {
+",0.9338961069920462
+E. Organizing a Race,17,"                maxBeauty = Math.max(maxBeauty, currentBeauty);
+",0.9993612726452189
+E. Organizing a Race,18,"            } else {
+",0.9385083729761787
+E. Organizing a Race,19,"                break;
+",0.7041348717300516
+E. Organizing a Race,20,"            }
+",0.5036590011357231
+E. Organizing a Race,21,"        }
+",0.8973884645324351
+E. Organizing a Race,22,"    }
+
+",0.9999663824813513
+E. Organizing a Race,23,"    return maxBeauty;
+",0.7250717197753248
+E. Organizing a Race,24,"}
+
+",0.9999493360519409
+E. Organizing a Race,26,"const n = 4;
+",0.9008402409081033
+E. Organizing a Race,27,"const k = 4;
+",0.999998509882377
+E. Organizing a Race,28,"const w = [2, 2, 2];
+",0.9999723962362131
+E. Organizing a Race,29,"const g = [1, 1, 1, 1];
+",0.9960793044741488
+E. Organizing a Race,30,"console.log(mostBeautifulRace(n, k, w, g)); // Output: 4
+
+",0.9999964236853423
+E. Organizing a Race,31,"const n2 = 8;
+",0.9997026409608174
+E. Organizing a Race,32,"const k2 = 5;
+",0.9999995401925811
+E. Organizing a Race,33,"const w2 = [2, 2, 2, 3, 7, 3, 1];
+",0.9999994325630394
+E. Organizing a Race,34,"const g2 = [1, 3, 1, 5, 4, 0, 2, 5];
+",0.9999997615813292
+E. Organizing a Race,35,"console.log(mostBeautifulRace(n2, k2, w2, g2)); // Output: 7
+",0.9999895617992037
+A+B Again?,0,"
+```typescript
+",0.7940328318981843
+A+B Again?,1,"function sumOfDigits(n: number): number {
+",0.9425273597360025
+A+B Again?,2,"    // Extract the tens digit
+",0.9699001312255859
+A+B Again?,3,"    const tensDigit = Math.floor(n / 10);
+",0.9658732791530821
+A+B Again?,4,"    // Extract the units digit
+",0.745341420173645
+A+B Again?,5,"    const unitsDigit = n % 10;
+",0.9992675730297804
+A+B Again?,6,"    // Return the sum of the digits
+",0.9975215792655945
+A+B Again?,7,"    return tensDigit + unitsDigit;
+",0.9999944567344747
+A+B Again?,8,"}
+
+",0.9996553659439087
+A+B Again?,9,"function processTestCases(t: number, testCases: number[]): void {
+",0.7324657782249956
+A+B Again?,10,"    for (let i = 0; i < t; i++) {
+",0.9956857869248779
+A+B Again?,11,"        const result = sumOfDigits(testCases[i]);
+",0.8763597054630455
+A+B Again?,12,"        console.log(result);
+",0.9999190899631749
+A+B Again?,13,"    }
+",0.9999884366986578
+A+B Again?,14,"}
+
+",0.9998376369476318
+A+B Again?,16,"const input = `8
+",0.847416676923329
+A+B Again?,17,"77
+",0.9989628623151708
+A+B Again?,18,"21
+",0.9999969402937346
+A+B Again?,19,"40
+",0.999996542929523
+A+B Again?,20,"34
+",0.9999952713621888
+A+B Again?,21,"19
+",0.9999938408365173
+A+B Again?,22,"84
+",0.9999934434752284
+A+B Again?,23,"10
+",0.9999933640150007
+A+B Again?,24,"99`;
+
+",0.9688677473791697
+A+B Again?,25,"const lines = input.split('\n');
+",0.9756555585748635
+A+B Again?,26,"const t = parseInt(lines[0], 10);
+",0.9827033788589086
+A+B Again?,27,"const testCases = lines.slice(1).map(line => parseInt(line, 10));
+
+",0.9582371649643928
+A+B Again?,28,"processTestCases(t, testCases);
+",0.9997924268930717
+Party,0,"
+
+To solve this problem, we need to maximize the total happiness of the employees by assigning them to clubs on either Friday or Saturday. The constraints are that each club can only have one employee per week, and exactly half of the employees must go clubbing on Friday and the other half on Saturday.
+
+Given the constraints (N ≤ 20), a brute-force approach is feasible. We can use a backtracking algorithm to explore all possible assignments and keep track of the maximum happiness.
+
+Here's a step-by-step breakdown of the solution:
+
+1. **Initialize Variables**:
+   - `N`: Number of employees.
+   - `friday_matrix`: Matrix representing how much each employee likes each club on Friday.
+   - `saturday_matrix`: Matrix representing how much each employee likes each club on Saturday.
+   - `max_happiness`: Variable to store the maximum happiness found.
+
+2. **Backtracking Function**:
+   - This function will try to assign employees to clubs on Friday and Saturday.
+   - It will use two arrays (`friday_club` and `saturday_club`) to keep track of which club each employee has been assigned to.
+   - It will also use a counter to ensure that exactly half of the employees are assigned to Friday and the other half to Saturday.
+
+3. **Base Case**:
+   - If all employees have been assigned, calculate the total happiness and update `max_happiness` if the current assignment is better.
+
+4. **Recursive Case**:
+   - For each unassigned employee, try assigning them to each unassigned club on Friday and Saturday.
+   - Ensure that no club is assigned more than one employee.
+   - Recursively call the backtracking function with the updated assignments.
+
+5. **Output the Result**:
+   - After exploring all possible assignments, output the `max_happiness`.
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.9998983990668547
+Party,1,"function maxHappiness(N: number, friday_matrix: number[][], saturday_matrix: number[][]): number {
+",0.9881461800942218
+Party,2,"    let max_happiness = 0;
+
+",0.9166699475356512
+Party,3,"    // Arrays to keep track of which club each employee is assigned to
+",0.9999996423721313
+Party,4,"    const friday_club = new Array(N).fill(-1);
+",0.9665088839542697
+Party,5,"    const saturday_club = new Array(N).fill(-1);
+
+",0.9946572991150421
+Party,6,"    // Counter for the number of employees assigned to Friday
+",0.9999996423721313
+Party,7,"    let friday_count = 0;
+
+",0.9959881167705731
+Party,8,"    // Backtracking function
+",0.9999992847442627
+Party,9,"    function backtrack(employee: number): void {
+",0.9532919480933719
+Party,10,"        if (employee === N) {
+",0.9758166849717028
+Party,11,"            // Calculate total happiness
+",0.9999990463256836
+Party,12,"            let total_happiness = 0;
+",0.9856441221910559
+Party,13,"            for (let i = 0; i < N; i++) {
+",0.9986659124175001
+Party,14,"                total_happiness += friday_matrix[i][friday_club[i]];
+",0.9689641362916892
+Party,15,"                total_happiness += saturday_matrix[i][saturday_club[i]];
+",0.9988850928358584
+Party,16,"            }
+",0.9918951864196632
+Party,17,"            // Update max_happiness if the current assignment is better
+",0.9996870756149292
+Party,18,"            if (total_happiness > max_happiness) {
+",0.9862813368188583
+Party,19,"                max_happiness = total_happiness;
+",0.9999994171989491
+Party,20,"            }
+",0.9999977946268483
+Party,21,"            return;
+",0.9996964808323424
+Party,22,"        }
+
+",0.9999930858373033
+Party,23,"        // Try assigning the current employee to each club on Friday
+",0.9999995231628418
+Party,24,"        for (let club = 0; club < N; club++) {
+",0.9952492764807828
+Party,25,"            if (friday_club[club] === -1) {
+",0.9760281797716516
+Party,26,"                friday_club[club] = employee;
+",0.9657167638505333
+Party,27,"                friday_count++;
+",0.9543791030642458
+Party,28,"                // Ensure that exactly half of the employees are assigned to Friday
+",0.9965750575065613
+Party,29,"                if (friday_count <= N / 2) {
+",0.9754746744956883
+Party,30,"                    backtrack(employee + 1);
+",0.997601927423646
+Party,31,"                }
+",0.9808904258156174
+Party,32,"                friday_club[club] = -1;
+",0.9370943271298262
+Party,33,"                friday_count--;
+",0.9999948739850628
+Party,34,"            }
+",0.9988435599751391
+Party,35,"        }
+
+",0.9988264656527359
+Party,36,"        // Try assigning the current employee to each club on Saturday
+",0.9999991655349731
+Party,37,"        for (let club = 0; club < N; club++) {
+",0.9996037827487361
+Party,38,"            if (saturday_club[club] === -1) {
+",0.998317826599451
+Party,39,"                saturday_club[club] = employee;
+",0.9999855747921912
+Party,40,"                backtrack(employee + 1);
+",0.9442549332776295
+Party,41,"                saturday_club[club] = -1;
+",0.9999991854027513
+Party,42,"            }
+",0.9999962449043931
+Party,43,"        }
+",0.9999788997381411
+Party,44,"    }
+
+",0.9999994039535451
+Party,45,"    // Start the backtracking process
+",0.9999997615814209
+Party,46,"    backtrack(0);
+
+",0.9922185536572966
+Party,47,"    return max_happiness;
+",0.9996804375971079
+Party,48,"}
+
+",0.9999802112579346
+Party,50,"const N = 4;
+",0.9863184663885135
+Party,51,"const friday_matrix = [
+",0.999080836454749
+Party,52,"    [1, 2, 3, 4],
+",0.9999918294422313
+Party,53,"    [2, 3, 4, 1],
+",0.9999987803910724
+Party,54,"    [3, 4, 1, 2],
+",0.9999995506725554
+Party,55,"    [4, 1, 2, 3]
+",0.9999677569956621
+Party,56,"];
+",0.9959293007850647
+Party,57,"const saturday_matrix = [
+",0.9999994039534954
+Party,58,"    [5, 8, 7, 1],
+",0.9999908208339819
+Party,59,"    [6, 9, 81, 3],
+",0.9995229022173272
+Party,60,"    [55, 78, 1, 6],
+",0.9999969323372665
+Party,61,"    [1, 1, 1, 1]
+",0.9999990554952755
+Party,62,"];
+
+",0.9913797378540039
+Party,63,"console.log(maxHappiness(N, friday_matrix, saturday_matrix)); // Output: 167
+",0.9997144001666465
+Zebra-like Numbers,0,"80223878
+To solve this problem, we need to determine the number of integers \( x \) within a given range \([l, r]\) such that the zebra value of \( x \) equals \( k \). The zebra value of a number \( e \) is defined as the minimum number of zebra-like numbers whose sum equals \( e \).
+
+A zebra-like number is a positive integer whose binary representation alternates between 1s and 0s, starting with 1 and ending with 1. For example, 1 (binary: 1), 5 (binary: 101), and 21 (binary: 10101) are zebra-like numbers.
+
+### Steps to Solve the Problem:
+
+1. **Identify Zebra-Like Numbers**: 
+   - Generate zebra-like numbers up to a reasonable limit. Since the maximum value for \( r \) is \( 10^{18} \), we need to consider zebra-like numbers that can contribute to sums up to this limit.
+   - Zebra-like numbers are of the form \( 2^{2i} + 1 \) for non-negative integers \( i \).
+
+2. **Dynamic Programming Approach**:
+   - Use dynamic programming to find the minimum number of zebra-like numbers required to represent each number from 1 to \( r \).
+   - Let `dp[i]` represent the minimum number of zebra-like numbers needed to represent the integer \( i \).
+   - Initialize `dp[0] = 0` and `dp[i] = infinity` for all other \( i \).
+   - Iterate over each zebra-like number and update the `dp` array accordingly.
+
+3. **Count Valid Integers**:
+   - For each test case, count the number of integers \( x \) in the range \([l, r]\) such that `dp[x] == k`.
+
+### Implementation:
+
+```typescript
+",0.9982033071536992
+Zebra-like Numbers,1,"function countZebraValues(t: number, testCases: [number, number, number][]): number[] {
+",0.9269871415509945
+Zebra-like Numbers,2,"    const results: number[] = [];
+",0.8252303789337068
+Zebra-like Numbers,3,"    
+",0.5255857110023499
+Zebra-like Numbers,4,"    // Generate zebra-like numbers up to a reasonable limit
+",0.9999994039535522
+Zebra-like Numbers,5,"    const zebraLikeNumbers: number[] = [];
+",0.9777116819627517
+Zebra-like Numbers,6,"    let power = 1;
+",0.5063094064750326
+Zebra-like Numbers,7,"    while (power < 1e18) {
+",0.8516100430488048
+Zebra-like Numbers,8,"        zebraLikeNumbers.push(power);
+",0.872587984350605
+Zebra-like Numbers,9,"        power *= 4; // 2^(2i) + 1
+",0.8526942854084847
+Zebra-like Numbers,10,"    }
+",0.9606075027578893
+Zebra-like Numbers,11,"    
+",0.9938210844993591
+Zebra-like Numbers,12,"    // Precompute dp array for numbers up to r
+",0.999998927116394
+Zebra-like Numbers,13,"    const dp: number[] = Array(1e18 + 1).fill(Infinity);
+",0.8917085515288391
+Zebra-like Numbers,14,"    dp[0] = 0;
+",0.9994541275729035
+Zebra-like Numbers,15,"    
+",0.9815826416015625
+Zebra-like Numbers,16,"    for (const num of zebraLikeNumbers) {
+",0.899499798934432
+Zebra-like Numbers,17,"        for (let i = dp.length - 1; i >= num; i--) {
+",0.9589019289381105
+Zebra-like Numbers,18,"            dp[i] = Math.min(dp[i], dp[i - num] + 1);
+",0.991419179791739
+Zebra-like Numbers,19,"        }
+",0.9999950528078738
+Zebra-like Numbers,20,"    }
+",0.9997601659795143
+Zebra-like Numbers,21,"    
+",0.99998939037323
+Zebra-like Numbers,22,"    for (const [l, r, k] of testCases) {
+",0.9754998510749039
+Zebra-like Numbers,23,"        let count = 0;
+",0.9998435649188173
+Zebra-like Numbers,24,"        for (let x = l; x <= r; x++) {
+",0.9937556393901666
+Zebra-like Numbers,25,"            if (dp[x] === k) {
+",0.9994031797968513
+Zebra-like Numbers,26,"                count++;
+",0.9999357620712334
+Zebra-like Numbers,27,"            }
+",0.9999668596860785
+Zebra-like Numbers,28,"        }
+",0.9999425394920666
+Zebra-like Numbers,29,"        results.push(count);
+",0.9999958753372833
+Zebra-like Numbers,30,"    }
+",0.9999962449040947
+Zebra-like Numbers,31,"    
+",0.9999983310699463
+Zebra-like Numbers,32,"    return results;
+",0.9999994933604825
+Zebra-like Numbers,33,"}
+
+",0.9999771118164062
+Zebra-like Numbers,35,"const input = [
+",0.8081352518521688
+Zebra-like Numbers,36,"    [1, 100, 3],
+",0.9891462686526178
+Zebra-like Numbers,37,"    [1, 1, 1],
+",0.9999983549096672
+Zebra-like Numbers,38,"    [15, 77, 2],
+",0.9999985198153004
+Zebra-like Numbers,39,"    [2, 10, 100],
+",0.9999968730400688
+Zebra-like Numbers,40,"    [1234567, 123456789101112131, 12]
+",0.9998710910289786
+Zebra-like Numbers,41,"];
+
+",0.5087342262268066
+Zebra-like Numbers,42,"console.log(countZebraValues(5, input));
+",0.8573569752715537
+Morse Code,0,"
+
+
+To solve this problem, we need to design a Morse code encoding scheme that minimizes the expected transmission time. This is a classic problem that can be solved using a greedy algorithm known as Huffman coding. However, since we are not allowed to use any built-in functions or libraries that simplify algorithmic steps, we will implement the algorithm from scratch.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Initialize Nodes**: Each character is represented by a node with its frequency.
+2. **Priority Queue**: Use a priority queue (min-heap) to always select the two nodes with the smallest frequencies.
+3. **Merge Nodes**: Repeatedly merge the two nodes with the smallest frequencies into a new node with a frequency equal to the sum of the two merged nodes' frequencies. The new node becomes the parent of the two merged nodes.
+4. **Assign Codes**: Once all nodes are merged into a single tree, traverse the tree to assign Morse codes. Assign a dot (.) to the left child and a dash (-) to the right child.
+5. **Output the Codes**: Print the Morse code for each character.
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.9999664422849175
+Morse Code,1,"class Node {
+",0.8639445818360845
+Morse Code,2,"    char: string;
+",0.8527226457690487
+Morse Code,3,"    freq: number;
+",0.9122054928947823
+Morse Code,4,"    left: Node | null;
+",0.9858039354253367
+Morse Code,5,"    right: Node | null;
+
+",0.9978397783224031
+Morse Code,6,"    constructor(char: string, freq: number) {
+",0.9894878331876652
+Morse Code,7,"        this.char = char;
+",0.9999958872541277
+Morse Code,8,"        this.freq = freq;
+",0.9999988476425425
+Morse Code,9,"        this.left = null;
+",0.9999797135690595
+Morse Code,10,"        this.right = null;
+",0.9999997019767599
+Morse Code,11,"    }
+",0.996901603753001
+Morse Code,12,"}
+
+",0.9999982118606567
+Morse Code,13,"function huffmanCoding(n: number, frequencies: number[]): string[] {
+",0.7435734571354321
+Morse Code,14,"    // Step 1: Initialize nodes
+",0.9999988079071045
+Morse Code,15,"    const nodes: Node[] = [];
+",0.9882161002240822
+Morse Code,16,"    for (let i = 0; i < n; i++) {
+",0.999514759348393
+Morse Code,17,"        nodes.push(new Node(String.fromCharCode(65 + i), frequencies[i]));
+",0.9246414202066157
+Morse Code,18,"    }
+
+",0.9999920725805378
+Morse Code,19,"    // Step 2: Priority queue (min-heap)
+",0.9999998807907104
+Morse Code,20,"    function minHeapify(arr: Node[], n: number, i: number): void {
+",0.8104592726471023
+Morse Code,21,"        let smallest = i;
+",0.9995236708655956
+Morse Code,22,"        const left = 2 * i + 1;
+",0.9971019710352762
+Morse Code,23,"        const right = 2 * i + 2;
+
+",0.9999963044580404
+Morse Code,24,"        if (left < n && arr[left].freq < arr[smallest].freq) {
+",0.9988150037704772
+Morse Code,25,"            smallest = left;
+",0.9999998807906934
+Morse Code,26,"        }
+
+",0.9703869678958793
+Morse Code,27,"        if (right < n && arr[right].freq < arr[smallest].freq) {
+",0.9999996125694816
+Morse Code,28,"            smallest = right;
+",0.9999998807906934
+Morse Code,29,"        }
+
+",0.9999998211860639
+Morse Code,30,"        if (smallest !== i) {
+",0.9999229805038398
+Morse Code,31,"            [arr[i], arr[smallest]] = [arr[smallest], arr[i]];
+",0.9949111149556886
+Morse Code,32,"            minHeapify(arr, n, smallest);
+",0.9999995350835741
+Morse Code,33,"        }
+",0.9999995231627281
+Morse Code,34,"    }
+
+",0.999999165534625
+Morse Code,35,"    function buildMinHeap(arr: Node[]): void {
+",0.9961811045167416
+Morse Code,36,"        const n = arr.length;
+",0.9769306115308141
+Morse Code,37,"        for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+",0.9998246565915584
+Morse Code,38,"            minHeapify(arr, n, i);
+",0.9999975561891654
+Morse Code,39,"        }
+",0.9999839662239187
+Morse Code,40,"    }
+
+",0.9999966621398286
+Morse Code,41,"    // Step 3: Merge nodes
+",0.9999926090240479
+Morse Code,42,"    while (nodes.length > 1) {
+",0.9633936435559024
+Morse Code,43,"        buildMinHeap(nodes);
+",0.9873086333109521
+Morse Code,44,"        const left = nodes.shift()!;
+",0.9266221829193051
+Morse Code,45,"        const right = nodes.shift()!;
+",0.9188841024736647
+Morse Code,46,"        const newNode = new Node('', left.freq + right.freq);
+",0.930939339643299
+Morse Code,47,"        newNode.left = left;
+",0.9998602331100469
+Morse Code,48,"        newNode.right = right;
+",0.9999441826199177
+Morse Code,49,"        nodes.push(newNode);
+",0.9980383490666748
+Morse Code,50,"    }
+
+",0.9898789557273866
+Morse Code,51,"    // Step 4: Assign codes
+",0.9999988079071045
+Morse Code,52,"    const codes: string[] = new Array(n).fill('');
+",0.884671438610662
+Morse Code,53,"    function assignCodes(node: Node | null, code: string): void {
+",0.9357220345840962
+Morse Code,54,"        if (node === null) return;
+",0.8203655941473403
+Morse Code,55,"        if (node.char !== '') {
+",0.9744730640713734
+Morse Code,56,"            codes[node.char.charCodeAt(0) - 65] = code;
+",0.98289509611147
+Morse Code,57,"        }
+",0.9542387094306193
+Morse Code,58,"        assignCodes(node.left, code + '.');
+",0.9991943381567413
+Morse Code,59,"        assignCodes(node.right, code + '-');
+",0.9999951481301824
+Morse Code,60,"    }
+
+",0.9143137021061601
+Morse Code,61,"    assignCodes(nodes[0], '');
+
+",0.9995611430562988
+Morse Code,62,"    // Step 5: Output the codes
+",0.9999996423721313
+Morse Code,63,"    return codes;
+",0.9909197992031857
+Morse Code,64,"}
+
+",0.9999885559082031
+Morse Code,66,"const n = 3;
+",0.978780436496576
+Morse Code,67,"const frequencies = [0.3000, 0.6000, 0.1000];
+",0.999290858767356
+Morse Code,68,"const result = huffmanCoding(n, frequencies);
+",0.9609191533340053
+Morse Code,69,"console.log(result.join('\n'));
+",0.9161699688041274
+Set of Strangers,0,"
+To solve this problem, we need to determine the minimum number of steps required to make the entire table the same color. The key observation here is that we can only paint a set of ""stranger"" cells (cells that do not share a side) if they all have the same color. 
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Identify Stranger Cells**: For each cell, identify all cells that are strangers (i.e., do not share a side).
+2. **Group Cells by Color**: Group all cells by their color.
+3. **Painting Strategy**: For each color group, determine the minimum number of steps required to paint all cells of that color into a single color.
+
+### Detailed Steps:
+
+1. **Initialize Data Structures**:
+   - Use a dictionary to map each color to a list of cells that have that color.
+   - Use a set to keep track of all unique colors in the table.
+
+2. **Identify Stranger Cells**:
+   - For each cell `(i, j)`, check all possible stranger cells `(x, y)` where `x` and `y` are within bounds and do not share a side with `(i, j)`.
+
+3. **Group Cells by Color**:
+   - Iterate through each cell and add it to the corresponding color group.
+
+4. **Determine Minimum Painting Steps**:
+   - For each color group, determine the minimum number of steps required to paint all cells of that color into a single color. This can be done by finding the largest connected component of cells that are all the same color and painting the rest.
+
+5. **Output the Result**:
+   - For each test case, output the minimum number of steps required to make the entire table the same color.
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.999915835394271
+Set of Strangers,1,"function minStepsToUniformColor(t: number, testCases: { n: number, m: number, grid: number[][] }[]): number[] {
+",0.8614118802036225
+Set of Strangers,2,"    const results: number[] = [];
+
+",0.9906682924719816
+Set of Strangers,3,"    for (const { n, m, grid } of testCases) {
+",0.9197041636740213
+Set of Strangers,4,"        // Step 1: Identify Stranger Cells and Group Cells by Color
+",0.9999850988388062
+Set of Strangers,5,"        const colorGroups: Map<number, { x: number, y: number }[]> = new Map();
+",0.8845553444355039
+Set of Strangers,6,"        const uniqueColors = new Set<number>();
+
+",0.8820223591499938
+Set of Strangers,7,"        for (let i = 0; i < n; i++) {
+",0.9969852230929573
+Set of Strangers,8,"            for (let j = 0; j < m; j++) {
+",0.9999957456361458
+Set of Strangers,9,"                const color = grid[i][j];
+",0.9997459279315264
+Set of Strangers,10,"                uniqueColors.add(color);
+",0.8660321943395054
+Set of Strangers,11,"                if (!colorGroups.has(color)) {
+",0.9973906620188786
+Set of Strangers,12,"                    colorGroups.set(color, []);
+",0.9999735760648306
+Set of Strangers,13,"                }
+",0.9999987483016763
+Set of Strangers,14,"                colorGroups.get(color)!.push({ x: i, y: j });
+",0.9988759843162214
+Set of Strangers,15,"            }
+",0.9999792573830705
+Set of Strangers,16,"        }
+
+",0.9999819992352641
+Set of Strangers,17,"        // Step 2: Determine Minimum Painting Steps
+",0.9999984502792358
+Set of Strangers,18,"        let minSteps = 0;
+
+",0.9205646767022154
+Set of Strangers,19,"        for (const [color, cells] of colorGroups.entries()) {
+",0.9175486082198879
+Set of Strangers,20,"            const visited = Array.from({ length: n }, () => Array(m).fill(false));
+",0.8669264208974407
+Set of Strangers,21,"            let maxComponentSize = 0;
+
+",0.9396878990980067
+Set of Strangers,22,"            for (const { x, y } of cells) {
+",0.9404337364858324
+Set of Strangers,23,"                if (!visited[x][y]) {
+",0.9923535352145327
+Set of Strangers,24,"                    let componentSize = 0;
+",0.9549797452317907
+Set of Strangers,25,"                    const queue: { x: number, y: number }[] = [{ x, y }];
+",0.9392873549891075
+Set of Strangers,26,"                    visited[x][y] = true;
+",0.9746737523008703
+Set of Strangers,27,"                    componentSize++;
+
+",0.9991257650999474
+Set of Strangers,28,"                    while (queue.length > 0) {
+",0.9999050233787176
+Set of Strangers,29,"                        const { x, y } = queue.shift()!;
+",0.9440724593286283
+Set of Strangers,30,"                        for (let dx = -1; dx <= 1; dx++) {
+",0.9529556008900367
+Set of Strangers,31,"                            for (let dy = -1; dy <= 1; dy++) {
+",0.9999913466490196
+Set of Strangers,32,"                                if (dx === 0 && dy === 0) continue; // Skip the cell itself
+",0.8901418474073535
+Set of Strangers,33,"                                const nx = x + dx;
+",0.982845309273924
+Set of Strangers,34,"                                const ny = y + dy;
+",0.9999796438415823
+Set of Strangers,35,"                                if (nx >= 0 && nx < n && ny >= 0 && ny < m && !visited[nx][ny] && grid[nx][ny] === color) {
+",0.9834407306369184
+Set of Strangers,36,"                                    visited[nx][ny] = true;
+",0.9908292317034084
+Set of Strangers,37,"                                    queue.push({ x: nx, y: ny });
+",0.9847839934281085
+Set of Strangers,38,"                                    componentSize++;
+",0.999998420476262
+Set of Strangers,39,"                                }
+",0.9999820589776056
+Set of Strangers,40,"                            }
+",0.9999943971514468
+Set of Strangers,41,"                        }
+",0.9999982118606283
+Set of Strangers,42,"                    }
+",0.9752070137652497
+Set of Strangers,43,"                    maxComponentSize = Math.max(maxComponentSize, componentSize);
+",0.9996867720024758
+Set of Strangers,44,"                }
+",0.9999969601618215
+Set of Strangers,45,"            }
+
+",0.9638684196884507
+Set of Strangers,46,"            minSteps += cells.length - maxComponentSize;
+",0.9888654922783822
+Set of Strangers,47,"        }
+
+",0.9999915361399873
+Set of Strangers,48,"        results.push(minSteps);
+",0.9985336845367531
+Set of Strangers,49,"    }
+
+",0.9999972581863332
+Set of Strangers,50,"    return results;
+",0.9999992847441455
+Set of Strangers,51,"}
+
+",0.9946221113204956
+Set of Strangers,53,"const input = [
+",0.9157239980148105
+Set of Strangers,54,"    { n: 1, m: 1, grid: [[1]] },
+",0.9989594497340913
+Set of Strangers,55,"    { n: 3, m: 3, grid: [
+",0.9626431455855936
+Set of Strangers,56,"        [1, 2, 1],
+",0.9998922830380446
+Set of Strangers,57,"        [2, 3, 2],
+",0.999997782702874
+Set of Strangers,58,"        [1, 3, 1]
+",0.9997034077647545
+Set of Strangers,59,"    ] },
+",0.9877815357421238
+Set of Strangers,60,"    { n: 1, m: 6, grid: [
+",0.9613272748349246
+Set of Strangers,61,"        [5, 4, 5, 4, 4, 5]
+",0.9999434317367014
+Set of Strangers,62,"    ] },
+",0.9999878405411595
+Set of Strangers,63,"    { n: 3, m: 4, grid: [
+",0.9995344668611545
+Set of Strangers,64,"        [1, 4, 2, 2],
+",0.999998248536987
+Set of Strangers,65,"        [1, 4, 3, 5],
+",0.9999992664037404
+Set of Strangers,66,"        [6, 6, 3, 5]
+",0.999993507501287
+Set of Strangers,67,"    ] }
+",0.9993341788593397
+Set of Strangers,68,"];
+
+",0.9991218447685242
+Set of Strangers,69,"console.log(minStepsToUniformColor(4, input)); // Output: [0, 2, 1, 10]
+",0.943780196395944
+Amusing numbers,0,"
+```typescript
+",0.8414469137416347
+Amusing numbers,1,"function findKthAmusingNumber(k: number): string {
+",0.8817420608092412
+Amusing numbers,2,"    let count = 0;
+",0.6517277587158941
+Amusing numbers,3,"    let queue: string[] = ['5', '6'];
+",0.7746623936809514
+Amusing numbers,4,"    
+",0.4621506631374359
+Amusing numbers,5,"    while (true) {
+",0.9647389496453386
+Amusing numbers,6,"        const current = queue.shift()!;
+",0.8998085529495914
+Amusing numbers,7,"        
+",0.7581306099891663
+Amusing numbers,8,"        if (count === k - 1) {
+",0.9214484559987958
+Amusing numbers,9,"            return current;
+",0.9999812838900957
+Amusing numbers,10,"        }
+",0.9994728667869102
+Amusing numbers,11,"        
+",0.9995038509368896
+Amusing numbers,12,"        count++;
+",0.8664713647923997
+Amusing numbers,13,"        
+",0.7430481314659119
+Amusing numbers,14,"        // Generate next amusing numbers by appending '5' and '6'
+",0.9999755620956421
+Amusing numbers,15,"        queue.push(current + '5');
+",0.9987107176135094
+Amusing numbers,16,"        queue.push(current + '6');
+",0.9999956637402911
+Amusing numbers,17,"    }
+",0.9999299642707987
+Amusing numbers,18,"}
+
+",0.9991057515144348
+Amusing numbers,19,"function main() {
+",0.9715039514856328
+Amusing numbers,20,"    const input = `2
+",0.9680472349924581
+Amusing numbers,21,"1
+",0.9510465425868537
+Amusing numbers,22,"5`;
+",0.9112443950690802
+Amusing numbers,23,"    const lines = input.split('\n');
+",0.9738965165511817
+Amusing numbers,24,"    const N = parseInt(lines[0], 10);
+",0.9510537858701055
+Amusing numbers,25,"    
+",0.6731570363044739
+Amusing numbers,26,"    for (let i = 1; i <= N; i++) {
+",0.9982396809179745
+Amusing numbers,27,"        const k = parseInt(lines[i], 10);
+",0.9999801907708133
+Amusing numbers,28,"        console.log(findKthAmusingNumber(k));
+",0.9459653951428485
+Amusing numbers,29,"    }
+",0.9999961853024786
+Amusing numbers,30,"}
+
+",0.9999347925186157
+Amusing numbers,31,"main();
+",0.9956666119711127
+Time to live,0,"
+To solve this problem, we need to determine the optimal TTL for a given network. The optimal TTL is the minimum of the maximum distances from any node to all other nodes in the network. This is essentially finding the radius of the network.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Parse the Input**: Read the number of test cases and for each test case, read the number of nodes and the edges.
+2. **Build the Graph**: Represent the network as an adjacency list.
+3. **Calculate Distances**: For each node, calculate the distance to all other nodes using Breadth-First Search (BFS).
+4. **Determine the Radius**: For each node, find the maximum distance to any other node. The optimal TTL is the minimum of these maximum distances across all nodes.
+
+Let's implement this in TypeScript:
+
+```typescript
+",0.9999817013690641
+Time to live,1,"function readInput(): string[] {
+",0.8173058861615995
+Time to live,2,"    return require('fs').readFileSync(0, 'utf8').trim().split('\n');
+",0.8799525162692866
+Time to live,3,"}
+
+",0.9999955892562866
+Time to live,4,"function parseInput(input: string[]): { testCases: number[], networks: { n: number, edges: [number, number][] }[] } {
+",0.8156186411438494
+Time to live,5,"    const testCases: number[] = [];
+",0.9189003971893384
+Time to live,6,"    const networks: { n: number, edges: [number, number][] }[] = [];
+",0.9953421437585112
+Time to live,7,"    let index = 0;
+
+",0.8659186143476906
+Time to live,8,"    const c = parseInt(input[index++]);
+",0.8652041921604652
+Time to live,9,"    for (let i = 0; i < c; i++) {
+",0.9713121829604517
+Time to live,10,"        const n = parseInt(input[index++]);
+",0.9993421600404475
+Time to live,11,"        const edges: [number, number][] = [];
+",0.9823882503132668
+Time to live,12,"        for (let j = 0; j < n - 1; j++) {
+",0.9999678379116614
+Time to live,13,"            const [a, b] = input[index++].split(' ').map(Number);
+",0.998371508437595
+Time to live,14,"            edges.push([a, b]);
+",0.9999194532495673
+Time to live,15,"        }
+",0.9997846562749784
+Time to live,16,"        testCases.push(n);
+",0.9630922967443235
+Time to live,17,"        networks.push({ n, edges });
+",0.9999800464601276
+Time to live,18,"    }
+
+",0.998963536365931
+Time to live,19,"    return { testCases, networks };
+",0.9999967664381986
+Time to live,20,"}
+
+",0.9999982118606567
+Time to live,21,"function buildGraph(n: number, edges: [number, number][]): Map<number, number[]> {
+",0.9481641722984954
+Time to live,22,"    const graph = new Map<number, number[]>();
+",0.9968626219338264
+Time to live,23,"    for (let i = 0; i < n; i++) {
+",0.9999062716162859
+Time to live,24,"        graph.set(i, []);
+",0.999995668709929
+Time to live,25,"    }
+",0.9941664956554469
+Time to live,26,"    for (const [a, b] of edges) {
+",0.9996392299753342
+Time to live,27,"        graph.get(a)!.push(b);
+",0.9954997320807135
+Time to live,28,"        graph.get(b)!.push(a);
+",0.9999850587563177
+Time to live,29,"    }
+",0.999999284744149
+Time to live,30,"    return graph;
+",0.9999997913837384
+Time to live,31,"}
+
+",0.9999980926513672
+Time to live,32,"function bfs(graph: Map<number, number[]>, start: number): number[] {
+",0.9921655181438657
+Time to live,33,"    const distances = new Array(graph.size).fill(-1);
+",0.8872671295172778
+Time to live,34,"    distances[start] = 0;
+",0.8925767925452734
+Time to live,35,"    const queue: number[] = [start];
+
+",0.9925117203975609
+Time to live,36,"    while (queue.length > 0) {
+",0.9999210563859092
+Time to live,37,"        const node = queue.shift()!;
+",0.9316293219111558
+Time to live,38,"        for (const neighbor of graph.get(node)!) {
+",0.9876336068865966
+Time to live,39,"            if (distances[neighbor] === -1) {
+",0.9997820360681686
+Time to live,40,"                distances[neighbor] = distances[node] + 1;
+",0.9991992882504358
+Time to live,41,"                queue.push(neighbor);
+",0.9999996821085051
+Time to live,42,"            }
+",0.9999992847442343
+Time to live,43,"        }
+",0.9999997615814138
+Time to live,44,"    }
+
+",0.8677967766716402
+Time to live,45,"    return distances;
+",0.9999888836733336
+Time to live,46,"}
+
+",0.9999992847442627
+Time to live,47,"function findOptimalTTL(n: number, edges: [number, number][]): number {
+",0.9569135381983874
+Time to live,48,"    const graph = buildGraph(n, edges);
+",0.9997686192234424
+Time to live,49,"    let minMaxDistance = Infinity;
+
+",0.9366568324769599
+Time to live,50,"    for (let i = 0; i < n; i++) {
+",0.989400372569335
+Time to live,51,"        const distances = bfs(graph, i);
+",0.999996821070738
+Time to live,52,"        const maxDistance = Math.max(...distances);
+",0.9957400853334506
+Time to live,53,"        if (maxDistance < minMaxDistance) {
+",0.9713141208473876
+Time to live,54,"            minMaxDistance = maxDistance;
+",0.9999988824105658
+Time to live,55,"        }
+",0.9999992847442343
+Time to live,56,"    }
+
+",0.9999949335941077
+Time to live,57,"    return minMaxDistance;
+",0.9998426859619518
+Time to live,58,"}
+
+",0.999998927116394
+Time to live,59,"function main() {
+",0.9593562304056117
+Time to live,60,"    const input = readInput();
+",0.9948377418964521
+Time to live,61,"    const { testCases, networks } = parseInput(input);
+
+",0.9666171602944841
+Time to live,62,"    for (let i = 0; i < testCases.length; i++) {
+",0.9866241661365821
+Time to live,63,"        const n = testCases[i];
+",0.9342024069021222
+Time to live,64,"        const { edges } = networks[i];
+",0.9710938224217357
+Time to live,65,"        const optimalTTL = findOptimalTTL(n, edges);
+",0.9959676831181992
+Time to live,66,"        console.log(optimalTTL);
+",0.9998097757438505
+Time to live,67,"    }
+",0.9999979138367916
+Time to live,68,"}
+
+",0.9999915361404419
+Time to live,69,"main();
+",0.9946705317576876
+New Distinct Substrings,0," To solve the problem of finding the total number of distinct substrings in a given string, we can use a Trie (prefix tree) data structure. The Trie will help us efficiently store and count all unique substrings.
+
+Here's a step-by-step explanation of the approach:
+
+1. **Initialize a Trie Node**: Each node in the Trie will represent a character in the string. The root node represents an empty prefix.
+
+2. **Insert Substrings into the Trie**: For each starting position in the string, insert all possible substrings starting from that position into the Trie.
+
+3. **Count Distinct Substrings**: While inserting substrings into the Trie, keep track of the number of new nodes created. Each new node represents a new distinct substring.
+
+4. **Handle Duplicates**: If a substring already exists in the Trie, no new node will be created for it, thus ensuring that only distinct substrings are counted.
+
+5. **Repeat for Each Test Case**: For each test case, reset the Trie and repeat the insertion process.
+
+Here's the implementation in TypeScript:
+
+```typescript
+",0.9999783634879382
+New Distinct Substrings,1,"class TrieNode {
+",0.9516952777791362
+New Distinct Substrings,2,"    children: { [key: string]: TrieNode };
+",0.9691878883720166
+New Distinct Substrings,3,"    isEndOfWord: boolean;
+
+",0.9704424938051854
+New Distinct Substrings,4,"    constructor() {
+",0.9999974071934603
+New Distinct Substrings,5,"        this.children = {};
+",0.9999891040979112
+New Distinct Substrings,6,"        this.isEndOfWord = false;
+",0.9999895093402364
+New Distinct Substrings,7,"    }
+",0.9990459645344046
+New Distinct Substrings,8,"}
+
+",0.9999949932098389
+New Distinct Substrings,9,"class Trie {
+",0.9755299565135299
+New Distinct Substrings,10,"    root: TrieNode;
+
+",0.9326002668819525
+New Distinct Substrings,11,"    constructor() {
+",0.99999937415109
+New Distinct Substrings,12,"        this.root = new TrieNode();
+",0.9999994784590723
+New Distinct Substrings,13,"    }
+
+",0.9999210830809198
+New Distinct Substrings,14,"    insert(word: string): number {
+",0.9359984411963844
+New Distinct Substrings,15,"        let currentNode = this.root;
+",0.9723202083468332
+New Distinct Substrings,16,"        let newNodesCount = 0;
+
+",0.9472039651265727
+New Distinct Substrings,17,"        for (let char of word) {
+",0.9575419910046185
+New Distinct Substrings,18,"            if (!currentNode.children[char]) {
+",0.9950542244211776
+New Distinct Substrings,19,"                currentNode.children[char] = new TrieNode();
+",0.9998239923668644
+New Distinct Substrings,20,"                newNodesCount++;
+",0.9910858880000515
+New Distinct Substrings,21,"            }
+",0.9996838170073168
+New Distinct Substrings,22,"            currentNode = currentNode.children[char];
+",0.9999918766776466
+New Distinct Substrings,23,"        }
+
+",0.9625458727280932
+New Distinct Substrings,24,"        return newNodesCount;
+",0.8652405408296059
+New Distinct Substrings,25,"    }
+",0.9895775526881033
+New Distinct Substrings,26,"}
+
+",0.9999945163726807
+New Distinct Substrings,27,"function countDistinctSubstrings(s: string): number {
+",0.9308933718781436
+New Distinct Substrings,28,"    const trie = new Trie();
+",0.9976170076057561
+New Distinct Substrings,29,"    let distinctCount = 0;
+
+",0.9852900111072781
+New Distinct Substrings,30,"    for (let i = 0; i < s.length; i++) {
+",0.999608475099073
+New Distinct Substrings,31,"        distinctCount += trie.insert(s.substring(i));
+",0.981604861485338
+New Distinct Substrings,32,"    }
+
+",0.9999922513869705
+New Distinct Substrings,33,"    return distinctCount;
+",0.9911418552778058
+New Distinct Substrings,34,"}
+
+",0.9999985694885254
+New Distinct Substrings,35,"function main() {
+",0.8978424318364827
+New Distinct Substrings,36,"    const input = `2
+",0.9822205750068195
+New Distinct Substrings,37,"CCCCC
+",0.9968079497915262
+New Distinct Substrings,38,"ABABA`;
+
+",0.9876924157533375
+New Distinct Substrings,39,"    const lines = input.split('\n');
+",0.9825392877691607
+New Distinct Substrings,40,"    const T = parseInt(lines[0], 10);
+",0.8493211413309227
+New Distinct Substrings,41,"    let index = 1;
+
+",0.9617991081146191
+New Distinct Substrings,42,"    for (let i = 0; i < T; i++) {
+",0.9932442098326054
+New Distinct Substrings,43,"        const s = lines[index++];
+",0.9807613286180703
+New Distinct Substrings,44,"        console.log(countDistinctSubstrings(s));
+",0.9789227623785768
+New Distinct Substrings,45,"    }
+",0.9999935626886368
+New Distinct Substrings,46,"}
+
+",0.9999951124191284
+New Distinct Substrings,47,"main();
+",0.9993878879556325

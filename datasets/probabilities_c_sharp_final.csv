@@ -1,0 +1,4311 @@
+title,line_number,line_text,token_prob
+Sports Rank,0,"
+
+Explanation:
+- For the first dataset, all participants have the same score, so they all have the same rank in both systems.
+- For the second dataset, participants with scores 50 and 60 benefit from dense ranking as they have a higher rank in dense ranking.
+- For the third dataset, all participants have the same score, so they all have the same rank in both systems.
+
+To solve this problem, we need to implement both competition ranking and dense ranking systems and then compare the rankings to determine how many participants benefit from dense ranking.
+
+Here's a step-by-step plan:
+
+1. **Read Input**: First, read the number of datasets. For each dataset, read the number of scores and the scores themselves.
+2. **Implement Competition Ranking**:
+   - Sort the scores in descending order.
+   - Assign ranks based on the position in the sorted list.
+3. **Implement Dense Ranking**:
+   - Sort the scores in descending order.
+   - Assign ranks such that ties get the same rank.
+4. **Compare Rankings**:
+   - Count how many participants have a higher rank in dense ranking than in competition ranking.
+5. **Output the Result**:
+   - For each dataset, output the count of participants who benefit from dense ranking.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9995040888664019
+Sports Rank,1,"using System;
+
+",0.9454344980763422
+Sports Rank,2,"class Program
+",0.9846957687978706
+Sports Rank,3,"{
+",0.9999990463256836
+Sports Rank,4,"    static void Main()
+",0.9946909013219775
+Sports Rank,5,"    {
+",0.9999975562068624
+Sports Rank,6,"        int d = int.Parse(Console.ReadLine());
+",0.9396029626072159
+Sports Rank,7,"        
+",0.23420123755931854
+Sports Rank,8,"        for (int i = 0; i < d; i++)
+",0.9985036652052329
+Sports Rank,9,"        {
+",0.9999985098827704
+Sports Rank,10,"            string[] input = Console.ReadLine().Split(' ');
+",0.9567500887433661
+Sports Rank,11,"            int n = int.Parse(input[0]);
+",0.9999395192351526
+Sports Rank,12,"            int[] scores = new int[n];
+",0.9957100103044284
+Sports Rank,13,"            
+",0.8216849565505981
+Sports Rank,14,"            for (int j = 0; j < n; j++)
+",0.9906964267651863
+Sports Rank,15,"            {
+",0.999791451627191
+Sports Rank,16,"                scores[j] = int.Parse(input[j + 1]);
+",0.9998450289547094
+Sports Rank,17,"            }
+",0.9993006255822708
+Sports Rank,18,"            
+",0.9999150037765503
+Sports Rank,19,"            int[] competitionRanks = GetCompetitionRanking(scores);
+",0.8484552630528038
+Sports Rank,20,"            int[] denseRanks = GetDenseRanking(scores);
+",0.9999801848793257
+Sports Rank,21,"            
+",0.9361303448677063
+Sports Rank,22,"            int benefitCount = 0;
+",0.9370290038061773
+Sports Rank,23,"            for (int j = 0; j < n; j++)
+",0.9689004636759573
+Sports Rank,24,"            {
+",0.9999971985787095
+Sports Rank,25,"                if (denseRanks[j] < competitionRanks[j])
+",0.9982602467112531
+Sports Rank,26,"                {
+",0.9998914838950562
+Sports Rank,27,"                    benefitCount++;
+",0.9999936818920645
+Sports Rank,28,"                }
+",0.9999989271162804
+Sports Rank,29,"            }
+",0.999995470043558
+Sports Rank,30,"            
+",0.999840259552002
+Sports Rank,31,"            Console.WriteLine(benefitCount);
+",0.9999971900571989
+Sports Rank,32,"        }
+",0.999996244907079
+Sports Rank,33,"    }
+",0.9987814317937592
+Sports Rank,34,"    
+",0.999994158744812
+Sports Rank,35,"    static int[] GetCompetitionRanking(int[] scores)
+",0.9996153281568595
+Sports Rank,36,"    {
+",0.9999989867205255
+Sports Rank,37,"        int n = scores.Length;
+",0.977761676870239
+Sports Rank,38,"        int[] sortedScores = new int[n];
+",0.9766257045532614
+Sports Rank,39,"        Array.Copy(scores, sortedScores, n);
+",0.9023197581329658
+Sports Rank,40,"        
+",0.498638391494751
+Sports Rank,41,"        // Sort in descending order
+",0.9999977350234985
+Sports Rank,42,"        for (int i = 0; i < n - 1; i++)
+",0.9805925686145388
+Sports Rank,43,"        {
+",0.9999974966033207
+Sports Rank,44,"            for (int j = i + 1; j < n; j++)
+",0.9661320105373083
+Sports Rank,45,"            {
+",0.9999990463256765
+Sports Rank,46,"                if (sortedScores[i] < sortedScores[j])
+",0.9979321200949953
+Sports Rank,47,"                {
+",0.9999995231627778
+Sports Rank,48,"                    int temp = sortedScores[i];
+",0.9931547411309085
+Sports Rank,49,"                    sortedScores[i] = sortedScores[j];
+",0.9999997258186126
+Sports Rank,50,"                    sortedScores[j] = temp;
+",0.9999987334005561
+Sports Rank,51,"                }
+",0.9999992251396019
+Sports Rank,52,"            }
+",0.9999992251396161
+Sports Rank,53,"        }
+",0.9999883174227683
+Sports Rank,54,"        
+",0.9999897480010986
+Sports Rank,55,"        int[] ranks = new int[n];
+",0.9922692403726675
+Sports Rank,56,"        for (int i = 0; i < n; i++)
+",0.9832346226457542
+Sports Rank,57,"        {
+",0.9999966621373275
+Sports Rank,58,"            ranks[i] = 1;
+",0.8254131296935523
+Sports Rank,59,"            for (int j = 0; j < i; j++)
+",0.9705448517889976
+Sports Rank,60,"            {
+",0.9999939203159726
+Sports Rank,61,"                if (sortedScores[j] > sortedScores[i])
+",0.9730540192525748
+Sports Rank,62,"                {
+",0.9998293373798004
+Sports Rank,63,"                    ranks[i]++;
+",0.9964019406717743
+Sports Rank,64,"                }
+",0.9998347646959038
+Sports Rank,65,"            }
+",0.988441136500287
+Sports Rank,66,"        }
+",0.9999446860585233
+Sports Rank,67,"        
+",0.994128942489624
+Sports Rank,68,"        return ranks;
+",0.8530468603090383
+Sports Rank,69,"    }
+",0.9999721642916514
+Sports Rank,70,"    
+",0.9999954700469971
+Sports Rank,71,"    static int[] GetDenseRanking(int[] scores)
+",0.9999994406331825
+Sports Rank,72,"    {
+",0.9999995231627778
+Sports Rank,73,"        int n = scores.Length;
+",0.9999987057260742
+Sports Rank,74,"        int[] sortedScores = new int[n];
+",0.9999891399816148
+Sports Rank,75,"        Array.Copy(scores, sortedScores, n);
+",0.9998798498615613
+Sports Rank,76,"        
+",0.999687910079956
+Sports Rank,77,"        // Sort in descending order
+",0.999998927116394
+Sports Rank,78,"        for (int i = 0; i < n - 1; i++)
+",0.9999988145258568
+Sports Rank,79,"        {
+",0.9999995827674706
+Sports Rank,80,"            for (int j = i + 1; j < n; j++)
+",0.9999984362522346
+Sports Rank,81,"            {
+",0.999999225139403
+Sports Rank,82,"                if (sortedScores[i] < sortedScores[j])
+",0.9999948044203204
+Sports Rank,83,"                {
+",0.9999996423721029
+Sports Rank,84,"                    int temp = sortedScores[i];
+",0.9999987483015076
+Sports Rank,85,"                    sortedScores[i] = sortedScores[j];
+",0.999999105930102
+Sports Rank,86,"                    sortedScores[j] = temp;
+",0.9999976456114497
+Sports Rank,87,"                }
+",0.9999992251396161
+Sports Rank,88,"            }
+",0.9999992847442343
+Sports Rank,89,"        }
+",0.9999957680622469
+Sports Rank,90,"        
+",0.9999934434890747
+Sports Rank,91,"        int[] ranks = new int[n];
+",0.999653633485998
+Sports Rank,92,"        ranks[0] = 1;
+",0.9281271965258306
+Sports Rank,93,"        for (int i = 1; i < n; i++)
+",0.9957567178497748
+Sports Rank,94,"        {
+",0.9999996423721242
+Sports Rank,95,"            if (sortedScores[i] == sortedScores[i - 1])
+",0.9706348303236434
+Sports Rank,96,"            {
+",0.999975502190926
+Sports Rank,97,"                ranks[i] = ranks[i - 1];
+",0.9999995990229743
+Sports Rank,98,"            }
+",0.9999982118599462
+Sports Rank,99,"            else
+",0.9999972581794575
+Sports Rank,100,"            {
+",0.9999988079069269
+Sports Rank,101,"                ranks[i] = ranks[i - 1] + 1;
+",0.9998503879815445
+Sports Rank,102,"            }
+",0.9999995231628134
+Sports Rank,103,"        }
+",0.999990820852808
+Sports Rank,104,"        
+",0.9999352693557739
+Sports Rank,105,"        return ranks;
+",0.962338655878118
+Sports Rank,106,"    }
+",0.9999967217415513
+Sports Rank,107,"}
+",0.9999730587005615
+Solidus Fraction,0,"
+
+Sample Input 3
+  -7
+ -----
+  -7
+
+Sample Output 3
+1
+
+To solve this problem, we need to parse the input to extract the numerator and denominator, then reduce the fraction by finding the greatest common divisor (GCD) of the two numbers. Finally, we output the reduced fraction in the correct format.
+
+Here's a step-by-step approach to achieve this:
+
+1. **Read Input**: Read the three lines of input.
+2. **Extract Numerator and Denominator**: Remove any leading or trailing whitespace from the first and third lines to get the actual numbers.
+3. **Calculate GCD**: Implement a function to calculate the GCD of two numbers using the Euclidean algorithm.
+4. **Reduce Fraction**: Divide both the numerator and the denominator by their GCD to get the reduced fraction.
+5. **Format Output**: Determine whether to use a solidus or just print the integer part of the fraction.
+
+Here's the C# code implementing the above logic:
+
+```csharp
+",0.9998348304101164
+Solidus Fraction,1,"using System;
+
+",0.9902807375901693
+Solidus Fraction,2,"class Program
+",0.9051129474312875
+Solidus Fraction,3,"{
+",0.9999988079071045
+Solidus Fraction,4,"    static void Main()
+",0.9988302527180881
+Solidus Fraction,5,"    {
+",0.9999991059299287
+Solidus Fraction,6,"        // Read the input lines
+",0.9999961853027344
+Solidus Fraction,7,"        string numeratorLine = Console.ReadLine();
+",0.9437793045518007
+Solidus Fraction,8,"        string vinculumLine = Console.ReadLine();
+",0.9942084661632573
+Solidus Fraction,9,"        string denominatorLine = Console.ReadLine();
+
+",0.9991525515251957
+Solidus Fraction,10,"        // Extract the numerator and denominator by trimming whitespace
+",0.9999980926513672
+Solidus Fraction,11,"        long n = long.Parse(numeratorLine.Trim());
+",0.7675057318745665
+Solidus Fraction,12,"        long d = long.Parse(denominatorLine.Trim());
+
+",0.9997792336849427
+Solidus Fraction,13,"        // Calculate the GCD of the numerator and denominator
+",0.9999994039535522
+Solidus Fraction,14,"        long gcd = GCD(Math.Abs(n), Math.Abs(d));
+
+",0.9732036931172589
+Solidus Fraction,15,"        // Reduce the fraction
+",0.9999995231628418
+Solidus Fraction,16,"        n /= gcd;
+",0.9280493310176101
+Solidus Fraction,17,"        d /= gcd;
+
+",0.9999961614573368
+Solidus Fraction,18,"        // Determine the sign of the result
+",0.9999992847442627
+Solidus Fraction,19,"        bool isNegative = (n < 0 && d > 0) || (n > 0 && d < 0);
+
+",0.8633112320965407
+Solidus Fraction,20,"        // If the denominator is 1, it's an integer
+",0.9999994039535522
+Solidus Fraction,21,"        if (d == 1)
+",0.9837221351837495
+Solidus Fraction,22,"        {
+",0.9999904632113608
+Solidus Fraction,23,"            Console.WriteLine(isNegative ? ""-"" + Math.Abs(n) : Math.Abs(n).ToString());
+",0.9207310479829979
+Solidus Fraction,24,"        }
+",0.9999910592713871
+Solidus Fraction,25,"        else
+",0.9903841639551866
+Solidus Fraction,26,"        {
+",0.999981462807109
+Solidus Fraction,27,"            Console.WriteLine(isNegative ? ""-"" + Math.Abs(n) + ""/"" + Math.Abs(d) : n + ""/"" + d);
+",0.9592038777018969
+Solidus Fraction,28,"        }
+",0.9999603621397557
+Solidus Fraction,29,"    }
+
+",0.9999950528094939
+Solidus Fraction,30,"    // Function to calculate the GCD using the Euclidean algorithm
+",0.9999988079071045
+Solidus Fraction,31,"    static long GCD(long a, long b)
+",0.9999679398330092
+Solidus Fraction,32,"    {
+",0.9999999403953534
+Solidus Fraction,33,"        while (b != 0)
+",0.9998810473663757
+Solidus Fraction,34,"        {
+",1.0
+Solidus Fraction,35,"            long temp = b;
+",0.999121094365468
+Solidus Fraction,36,"            b = a % b;
+",0.9999986205744207
+Solidus Fraction,37,"            a = temp;
+",0.9999989747986615
+Solidus Fraction,38,"        }
+",0.9999982118592641
+Solidus Fraction,39,"        return a;
+",0.9999675437254428
+Solidus Fraction,40,"    }
+",0.9999954104318203
+Solidus Fraction,41,"}
+",0.9999614953994751
+Breakout,0,"
+
+```csharp
+",0.9468019828783127
+Breakout,1,"using System;
+
+",0.8934955029050303
+Breakout,2,"class BreakoutGame {
+",0.7010062983630698
+Breakout,3,"    static void Main(string[] args) {
+",0.9273813600667761
+Breakout,4,"        // Read input
+",0.9965211153030396
+Breakout,5,"        string[] input = Console.ReadLine().Split(' ');
+",0.8851470898202022
+Breakout,6,"        int b = int.Parse(input[0]);
+",0.9814721662203709
+Breakout,7,"        int w = int.Parse(input[1]);
+",0.9999554072365863
+Breakout,8,"        int h = int.Parse(input[2]);
+
+",0.9899073641975575
+Breakout,9,"        // Initialize the wall
+",0.9998047947883606
+Breakout,10,"        char[,] wall = new char[h, w];
+",0.9240979681872528
+Breakout,11,"        for (int i = 0; i < h; i++) {
+",0.9958582421288483
+Breakout,12,"            for (int j = 0; j < w; j++) {
+",0.999985768966135
+Breakout,13,"                wall[i, j] = 'x';
+",0.9772372873754548
+Breakout,14,"            }
+",0.9999896883951589
+Breakout,15,"        }
+
+",0.9997701090511841
+Breakout,16,"        // Process each ball
+",0.9999213218688965
+Breakout,17,"        for (int i = 0; i < b; i++) {
+",0.9890108606950818
+Breakout,18,"            input = Console.ReadLine().Split(' ');
+",0.9952439775872828
+Breakout,19,"            int t = int.Parse(input[0]);
+",0.9818481520551745
+Breakout,20,"            int p = int.Parse(input[1]);
+",0.9999370734509577
+Breakout,21,"            int d = int.Parse(input[2]);
+
+",0.9885593112230818
+Breakout,22,"            int bricksBounced = 0;
+
+",0.748144607157021
+Breakout,23,"            while (t >= 0 && t < w) {
+",0.9222441583592698
+Breakout,24,"                bool destroyedBrick = false;
+
+",0.546239734585099
+Breakout,25,"                // Check and destroy bricks within power range
+",0.9999734163284302
+Breakout,26,"                for (int j = Math.Max(0, t - p); j <= Math.Min(w - 1, t + p); j++) {
+",0.977588885678591
+Breakout,27,"                    if (wall[h - 1, j] == 'x') {
+",0.9882335432240247
+Breakout,28,"                        wall[h - 1, j] = ' ';
+",0.9762239602618642
+Breakout,29,"                        bricksBounced++;
+",0.8156328199737114
+Breakout,30,"                        destroyedBrick = true;
+",0.9970012947646237
+Breakout,31,"                    }
+",0.9976873847472292
+Breakout,32,"                }
+
+",0.9998292196736205
+Breakout,33,"                // If no brick was destroyed, the ball disappears
+",0.999994158744812
+Breakout,34,"                if (!destroyedBrick) {
+",0.9673661825160242
+Breakout,35,"                    break;
+",0.997378847676662
+Breakout,36,"                }
+
+",0.9999051944752648
+Breakout,37,"                // Adjust target for the next bounce
+",0.999990701675415
+Breakout,38,"                t += d;
+
+",0.991311923174943
+Breakout,39,"                // Let bricks fall down
+",0.9999843835830688
+Breakout,40,"                for (int col = 0; col < w; col++) {
+",0.9486027047669788
+Breakout,41,"                    int emptyRow = h - 1;
+",0.8780308261309689
+Breakout,42,"                    while (emptyRow >= 0 && wall[emptyRow, col] != ' ') {
+",0.8901124228902094
+Breakout,43,"                        emptyRow--;
+",0.9999806879104752
+Breakout,44,"                    }
+
+",0.7073936990751742
+Breakout,45,"                    if (emptyRow >= 0) {
+",0.891247976476211
+Breakout,46,"                        for (int row = emptyRow - 1; row >= 0; row--) {
+",0.9632479035271948
+Breakout,47,"                            if (wall[row, col] != ' ') {
+",0.9839294251033406
+Breakout,48,"                                wall[row + 1, col] = wall[row, col];
+",0.9415984425558027
+Breakout,49,"                                wall[row, col] = ' ';
+",0.9999575073888812
+Breakout,50,"                            }
+",0.93286562521481
+Breakout,51,"                        }
+",0.999458062221686
+Breakout,52,"                    }
+",0.9998997429306582
+Breakout,53,"                }
+",0.9919324518502889
+Breakout,54,"            }
+
+",0.9996878153354481
+Breakout,55,"            Console.WriteLine(bricksBounced);
+",0.8513209123549246
+Breakout,56,"        }
+",0.9991284751537626
+Breakout,57,"    }
+",0.9998039499268351
+Breakout,58,"}
+",0.9965530633926392
+Passport Dates,0,"
+
+To solve this problem, we need to parse the input string, extract the day, month, and year, and then convert it into the ISO-8601 format. Here's a step-by-step approach to achieve this:
+
+1. **Extract the Day**: The day is the first two characters of the input string.
+2. **Extract the Month Abbreviation**: The month abbreviation in Icelandic is between the third and sixth characters.
+3. **Extract the Year**: The year is the last two characters of the input string.
+4. **Convert the Month Abbreviation to a Number**: We need to map the Icelandic month abbreviation to its corresponding number.
+5. **Format the Date**: Combine the year, month, and day into the ISO-8601 format.
+
+Here's the C# code to perform these steps:
+
+```csharp
+",0.9998922517110053
+Passport Dates,1,"using System;
+
+",0.9971109584616659
+Passport Dates,2,"class Program
+",0.9564369739858867
+Passport Dates,3,"{
+",0.999998927116394
+Passport Dates,4,"    static void Main()
+",0.9971190699233412
+Passport Dates,5,"    {
+",0.9999978542304859
+Passport Dates,6,"        // Sample input
+",0.9999964237213135
+Passport Dates,7,"        string input = ""08 OKT /OCT 24"";
+
+",0.9806464009760233
+Passport Dates,8,"        // Extract day
+",0.9999994039535522
+Passport Dates,9,"        string day = input.Substring(0, 2);
+
+",0.9915903865234666
+Passport Dates,10,"        // Extract month abbreviation in Icelandic
+",0.9999990463256836
+Passport Dates,11,"        string icelandicMonth = input.Substring(3, 3);
+
+",0.9360086286928271
+Passport Dates,12,"        // Extract year
+",0.9999990463256836
+Passport Dates,13,"        string year = input.Substring(input.Length - 2, 2);
+
+",0.8639465202787692
+Passport Dates,14,"        // Map Icelandic month abbreviation to its corresponding number
+",0.9999988079071045
+Passport Dates,15,"        int monthNumber = GetMonthNumber(icelandicMonth);
+
+",0.8966249870771684
+Passport Dates,16,"        // Format the date in ISO-8601 format
+",0.9999991655349731
+Passport Dates,17,"        string isoDate = $""20{year}-{monthNumber:D2}-{day:D2}"";
+
+",0.8733720584422511
+Passport Dates,18,"        // Output the result
+",0.9999996423721313
+Passport Dates,19,"        Console.WriteLine(isoDate);
+",0.9999716345038911
+Passport Dates,20,"    }
+
+",0.9999972581857648
+Passport Dates,21,"    static int GetMonthNumber(string icelandicMonth)
+",0.9780095457253861
+Passport Dates,22,"    {
+",0.9999999403953534
+Passport Dates,23,"        switch (icelandicMonth)
+",0.9090857551785957
+Passport Dates,24,"        {
+",0.9999999403953534
+Passport Dates,25,"            case ""JAN"": return 1;
+",0.9889639272324398
+Passport Dates,26,"            case ""FEB"": return 2;
+",0.9998183267476065
+Passport Dates,27,"            case ""MAR"": return 3;
+",0.9998177636190198
+Passport Dates,28,"            case ""APR"": return 4;
+",0.9999065138435297
+Passport Dates,29,"            case ""MAÍ"": return 5;
+",0.9957436857517671
+Passport Dates,30,"            case ""JÚN"": return 6;
+",0.9999334514498119
+Passport Dates,31,"            case ""JÚL"": return 7;
+",0.999999252232434
+Passport Dates,32,"            case ""ÁGÚ"": return 8;
+",0.999832022703741
+Passport Dates,33,"            case ""SEP"": return 9;
+",0.9999993642169788
+Passport Dates,34,"            case ""OKT"": return 10;
+",0.9999401447080495
+Passport Dates,35,"            case ""NÓV"": return 11;
+",0.9999984900110302
+Passport Dates,36,"            case ""DES"": return 12;
+",0.9999912498744983
+Passport Dates,37,"            default: throw new ArgumentException(""Invalid month abbreviation"");
+",0.9416026804246789
+Passport Dates,38,"        }
+",0.999998807906394
+Passport Dates,39,"    }
+",0.9999967813443789
+Passport Dates,40,"}
+",0.9999886751174927
+Weather Forecast,0,"
+
+To solve this problem, we need to predict the weather based on historical data. The key steps involve:
+
+1. **Parsing the Input**: Extract the number of data points, the number of predictions needed, and the metadata about the location and initial date/time.
+2. **Processing the Data**: Handle the missing data (`-`), parse the numeric values, and store them in a suitable data structure.
+3. **Predicting the Weather**: Implement a simple forecasting method based on the historical data. This could involve calculating averages, trends, or using more sophisticated statistical methods.
+4. **Generating the Output**: Format the predicted values according to the input format and print them.
+
+### Step-by-Step Solution
+
+#### 1. Parsing the Input
+
+We'll start by reading the input and parsing the necessary information.
+
+```csharp
+",0.9992973972536621
+Weather Forecast,1,"using System;
+",0.9564872882879736
+Weather Forecast,2,"using System.Collections.Generic;
+
+",0.9246380672992525
+Weather Forecast,3,"class Program
+",0.7995569947592389
+Weather Forecast,4,"{
+",0.9999966621398926
+Weather Forecast,5,"    static void Main()
+",0.9836309452561692
+Weather Forecast,6,"    {
+",0.9999955892494583
+Weather Forecast,7,"        string[] input = Console.ReadLine().Split(' ');
+",0.8501187988736172
+Weather Forecast,8,"        int n = int.Parse(input[0]);
+",0.9990383985920741
+Weather Forecast,9,"        int m = int.Parse(input[1]);
+
+",0.995522970322995
+Weather Forecast,10,"        // Read the metadata line
+",0.9999831914901733
+Weather Forecast,11,"        Console.ReadLine();
+
+",0.8351154496256056
+Weather Forecast,12,"        // List to store the data points
+",0.9999942779541016
+Weather Forecast,13,"        List<WeatherData> dataPoints = new List<WeatherData>();
+
+",0.9084816407709855
+Weather Forecast,14,"        for (int i = 0; i < n; i++)
+",0.9401145022937838
+Weather Forecast,15,"        {
+",0.9999987483024153
+Weather Forecast,16,"            string[] line = Console.ReadLine().Split(' ');
+",0.9208182080925281
+Weather Forecast,17,"            if (line.Length == 4)
+",0.7640018584566863
+Weather Forecast,18,"            {
+",0.9995520072144682
+Weather Forecast,19,"                double temperature = ParseDouble(line[0]);
+",0.8485872975330427
+Weather Forecast,20,"                int windDirection = ParseInt(line[1]);
+",0.9853584214288142
+Weather Forecast,21,"                double windSpeed = ParseDouble(line[2]);
+",0.999971382908475
+Weather Forecast,22,"                int humidity = ParseInt(line[3]);
+
+",0.9873879063978849
+Weather Forecast,23,"                dataPoints.Add(new WeatherData(temperature, windDirection, windSpeed, humidity));
+",0.9363208161545872
+Weather Forecast,24,"            }
+",0.9999719857541702
+Weather Forecast,25,"            else
+",0.8496606045471018
+Weather Forecast,26,"            {
+",0.9999514221867511
+Weather Forecast,27,"                // Handle invalid lines (if any)
+",0.9999920129776001
+Weather Forecast,28,"                dataPoints.Add(new WeatherData(-1, -1, -1, -1));
+",0.9504160855561422
+Weather Forecast,29,"            }
+",0.9999740719576357
+Weather Forecast,30,"        }
+
+",0.9601118420476402
+Weather Forecast,31,"        // Predict the weather
+",0.9999885559082031
+Weather Forecast,32,"        List<WeatherData> predictions = PredictWeather(dataPoints, m);
+
+",0.9459973143905583
+Weather Forecast,33,"        // Print the predictions
+",0.9999979734420776
+Weather Forecast,34,"        foreach (var prediction in predictions)
+",0.9907331685435408
+Weather Forecast,35,"        {
+",0.9999970793688089
+Weather Forecast,36,"            Console.WriteLine($""{prediction.Temperature:F1} {prediction.WindDirection} {prediction.WindSpeed:F1} {prediction.Humidity}"");
+",0.9736138718764772
+Weather Forecast,37,"        }
+",0.9997759517173471
+Weather Forecast,38,"    }
+
+",0.9991764452156796
+Weather Forecast,39,"    static double ParseDouble(string value)
+",0.9574333048849388
+Weather Forecast,40,"    {
+",0.9999974369985676
+Weather Forecast,41,"        return value == ""-"" ? -1 : double.Parse(value);
+",0.8037398713890707
+Weather Forecast,42,"    }
+
+",0.9999832509662769
+Weather Forecast,43,"    static int ParseInt(string value)
+",0.999994978288339
+Weather Forecast,44,"    {
+",0.9999994635581952
+Weather Forecast,45,"        return value == ""-"" ? -1 : int.Parse(value);
+",0.9999701878542304
+Weather Forecast,46,"    }
+",0.9856426415377864
+Weather Forecast,47,"}
+
+",0.3838111460208893
+Weather Forecast,48,"class WeatherData
+",0.9820537982901819
+Weather Forecast,49,"{
+",0.9999998807907104
+Weather Forecast,50,"    public double Temperature { get; }
+",0.8837150754703486
+Weather Forecast,51,"    public int WindDirection { get; }
+",0.9999794025851295
+Weather Forecast,52,"    public double WindSpeed { get; }
+",0.9999979204565107
+Weather Forecast,53,"    public int Humidity { get; }
+
+",0.9999279315122254
+Weather Forecast,54,"    public WeatherData(double temperature, int windDirection, double windSpeed, int humidity)
+",0.9998515906079644
+Weather Forecast,55,"    {
+",0.9999994039534386
+Weather Forecast,56,"        Temperature = temperature;
+",0.9994058936843202
+Weather Forecast,57,"        WindDirection = windDirection;
+",0.9999964747902023
+Weather Forecast,58,"        WindSpeed = windSpeed;
+",0.9999988249366528
+Weather Forecast,59,"        Humidity = humidity;
+",0.9999984502780894
+Weather Forecast,60,"    }
+",0.994035970660089
+Weather Forecast,61,"}
+",0.9996464252471924
+Type Faster,0,"5
+
+Explanation
+You need to type faster than 85 words per minute to beat the top team's time penalty of 1274 minutes. If you type at 85 words per minute you will have a time penalty of 1274 minutes which is not good enough. If you type at 86 words per minute you will have a time penalty of 1273 minutes which is good enough.
+
+To solve this problem, we need to determine the minimum typing speed (in words per minute) required to achieve a time penalty strictly less than the top team's time penalty \( T \).
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Understanding Time Penalty Calculation**:
+   - For each problem, the time penalty is the ceiling of the number of words divided by the typing speed.
+   - Therefore, if a problem has \( w \) words and you type at \( v \) words per minute, the time penalty for that problem is \( \left\lceil \frac{w}{v} \right\rceil \).
+   - Since we cannot use any built-in functions for ceiling, we can calculate it as \( \frac{w + v - 1}{v} \).
+
+2. **Total Time Penalty Calculation**:
+   - The total time penalty is the sum of the time penalties for all problems.
+   - We need to find the smallest \( v \) such that the total time penalty is strictly less than \( T \).
+
+3. **Binary Search Approach**:
+   - We can use binary search to efficiently find the minimum \( v \).
+   - The search range for \( v \) starts from 1 (minimum possible typing speed) to the maximum number of words in any problem (since typing faster than this would not help).
+   - For each midpoint \( m \) in the binary search, calculate the total time penalty and check if it is less than \( T \).
+   - Adjust the search range based on whether the current \( m \) is too slow or fast.
+
+4. **Implementation**:
+   - Read the input values.
+   - Perform binary search to find the minimum typing speed.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9996086340488121
+Type Faster,1,"using System;
+",0.7066311851224913
+Type Faster,2,"using System.Collections.Generic;
+
+",0.9147882340779018
+Type Faster,3,"class Program
+",0.983975363816738
+Type Faster,4,"{
+",0.9999995231628418
+Type Faster,5,"    static void Main()
+",0.98836626559905
+Type Faster,6,"    {
+",0.9999995231628134
+Type Faster,7,"        string[] input = Console.ReadLine().Split();
+",0.9353441048957575
+Type Faster,8,"        int n = int.Parse(input[0]);
+",0.9997321679685918
+Type Faster,9,"        long T = long.Parse(input[1]);
+
+",0.9829060334813565
+Type Faster,10,"        long[] words = new long[n];
+",0.9280513654062772
+Type Faster,11,"        input = Console.ReadLine().Split();
+",0.9940672638179608
+Type Faster,12,"        for (int i = 0; i < n; i++)
+",0.9998943998942049
+Type Faster,13,"        {
+",0.9995052186487162
+Type Faster,14,"            words[i] = long.Parse(input[i]);
+",0.9999608334180412
+Type Faster,15,"        }
+
+",0.9998931273386851
+Type Faster,16,"        long low = 1;
+",0.7909171113681497
+Type Faster,17,"        long high = 0;
+",0.9174230167087157
+Type Faster,18,"        for (int i = 0; i < n; i++)
+",0.972614281341351
+Type Faster,19,"        {
+",0.9999993443489057
+Type Faster,20,"            if (words[i] > high)
+",0.966287168510228
+Type Faster,21,"            {
+",0.9861784765593252
+Type Faster,22,"                high = words[i];
+",0.9999978144875387
+Type Faster,23,"            }
+",0.9999985098836657
+Type Faster,24,"        }
+
+",0.9990729592471265
+Type Faster,25,"        while (low < high)
+",0.9403336192985409
+Type Faster,26,"        {
+",0.9999998807907033
+Type Faster,27,"            long mid = low + (high - low) / 2;
+",0.9764116740060157
+Type Faster,28,"            long totalTimePenalty = 0;
+",0.7128605970345624
+Type Faster,29,"            for (int i = 0; i < n; i++)
+",0.9872764567665415
+Type Faster,30,"            {
+",0.9999994039535238
+Type Faster,31,"                totalTimePenalty += (words[i] + mid - 1) / mid;
+",0.9928404753018574
+Type Faster,32,"            }
+
+",0.91132629076426
+Type Faster,33,"            if (totalTimePenalty < T)
+",0.9808165747206128
+Type Faster,34,"            {
+",0.999999284744149
+Type Faster,35,"                high = mid;
+",0.9999053787672474
+Type Faster,36,"            }
+",0.9999995231628347
+Type Faster,37,"            else
+",0.9999804095724166
+Type Faster,38,"            {
+",0.9999997019767743
+Type Faster,39,"                low = mid + 1;
+",0.9999912527699949
+Type Faster,40,"            }
+",0.9999982714652145
+Type Faster,41,"        }
+
+",0.9999965429246274
+Type Faster,42,"        Console.WriteLine(low);
+",0.993302172629828
+Type Faster,43,"    }
+",0.999990046005477
+Type Faster,44,"}
+",0.9999712705612183
+Marathon,0,"
+
+To solve this problem, we need to determine the optimal strategy for Konni to refill his water pouch at the refilling stations so that he can complete the marathon in the shortest time possible. Here's a step-by-step approach to solve the problem:
+
+1. **Initialize Variables**:
+   - Total distance of the marathon: 42195 meters.
+   - Number of refilling stations (N).
+   - Capacity of the water pouch (X ml).
+   - Time to fill the water pouch (Y seconds).
+   - Running speed (H meters per second).
+   - Jogging speed (S meters per second).
+
+2. **Input Parsing**:
+   - Read the number of refilling stations (N), the capacity of the water pouch (X), and the time to fill the water pouch (Y).
+   - Read the running speed (H) and jogging speed (S).
+   - Read the positions of the refilling stations.
+
+3. **Dynamic Programming Approach**:
+   - Use a dynamic programming array `dp` where `dp[i]` represents the minimum time to reach the i-th meter of the marathon.
+   - Initialize `dp[0]` to 0 because no time is needed to be at the starting point.
+   - For each meter from 1 to 42195, calculate the minimum time considering both running and jogging:
+     - If Konni can run to the current meter without needing to refill, update `dp[i]`.
+     - If Konni needs to jog to the current meter, consider the time taken to jog and the time to refill the pouch at the nearest refill station.
+
+4. **Calculate the Optimal Path**:
+   - Start from the end of the marathon and backtrack to find the optimal path by choosing the minimum time at each step.
+
+5. **Convert the Total Time to hh:mm:ss Format**:
+   - Convert the total time in seconds to hours, minutes, and seconds.
+
+Here is the implementation of the above approach in C#:
+
+```csharp
+",0.9998880524623468
+Marathon,1,"using System;
+",0.6949798422602438
+Marathon,2,"using System.Collections.Generic;
+
+",0.9591081046280207
+Marathon,3,"class Program
+",0.8447802669125893
+Marathon,4,"{
+",0.9999995231628418
+Marathon,5,"    static void Main()
+",0.9881250527250967
+Marathon,6,"    {
+",0.9999997615813925
+Marathon,7,"        string[] input = Console.ReadLine().Split(' ');
+",0.8092627648589661
+Marathon,8,"        int N = int.Parse(input[0]);
+",0.9994315815551968
+Marathon,9,"        int X = int.Parse(input[1]);
+",0.9999896881712066
+Marathon,10,"        int Y = int.Parse(input[2]);
+
+",0.9900934463710308
+Marathon,11,"        input = Console.ReadLine().Split(' ');
+",0.9993472799129618
+Marathon,12,"        int H = int.Parse(input[0]);
+",0.9999915002664702
+Marathon,13,"        int S = int.Parse(input[1]);
+
+",0.9999894497665538
+Marathon,14,"        List<int> refillStations = new List<int>();
+",0.9648977394467987
+Marathon,15,"        for (int i = 0; i < N; i++)
+",0.9995012688659387
+Marathon,16,"        {
+",0.9999849795202619
+Marathon,17,"            refillStations.Add(int.Parse(Console.ReadLine()));
+",0.998663070818598
+Marathon,18,"        }
+
+",0.9846842319355524
+Marathon,19,"        // Sort refill stations
+",0.9999943971633911
+Marathon,20,"        refillStations.Sort();
+
+",0.9994790549224185
+Marathon,21,"        // Dynamic programming array
+",0.9999980926513672
+Marathon,22,"        long[] dp = new long[42196];
+",0.951635899860984
+Marathon,23,"        for (int i = 1; i <= 42195; i++)
+",0.9773661830995984
+Marathon,24,"        {
+",0.999977707632633
+Marathon,25,"            dp[i] = long.MaxValue;
+",0.9984353818631824
+Marathon,26,"        }
+
+",0.9918773192809386
+Marathon,27,"        // Fill the dp array
+",0.9999966621398926
+Marathon,28,"        for (int i = 1; i <= 42195; i++)
+",0.9704126285674696
+Marathon,29,"        {
+",0.9999988675114491
+Marathon,30,"            // Check if we can run directly to this point
+",0.9999979734420776
+Marathon,31,"            if (i <= H)
+",0.8563743860738381
+Marathon,32,"            {
+",0.9993670668173992
+Marathon,33,"                dp[i] = i / H;
+",0.8947173070768842
+Marathon,34,"            }
+",0.9438188199919495
+Marathon,35,"            else
+",0.992334080020641
+Marathon,36,"            {
+",0.9999632232839586
+Marathon,37,"                // Find the nearest refill station
+",0.9999982118606567
+Marathon,38,"                int j = refillStations.BinarySearch(i);
+",0.8177758913251251
+Marathon,39,"                if (j < 0)
+",0.870905086810691
+Marathon,40,"                {
+",0.9967134954675736
+Marathon,41,"                    j = ~j;
+",0.962321757120116
+Marathon,42,"                }
+
+",0.7380692362082999
+Marathon,43,"                // Check the previous refill station
+",0.9999992847442627
+Marathon,44,"                if (j > 0)
+",0.957383273835329
+Marathon,45,"                {
+",0.9999951720137812
+Marathon,46,"                    int prevStation = refillStations[j - 1];
+",0.9349320982723379
+Marathon,47,"                    long timeToRun = (i - prevStation) / H;
+",0.8104710234293608
+Marathon,48,"                    long timeToJog = (i - prevStation) / S;
+",0.9346203166128431
+Marathon,49,"                    long timeToRefill = (X / 1000.0 * Y) / H; // Assuming X ml takes X/1000 seconds to fill
+",0.5808804121702238
+Marathon,50,"                    dp[i] = Math.Min(dp[i], dp[prevStation] + timeToRun + timeToRefill);
+",0.9827864302043634
+Marathon,51,"                }
+
+",0.991232030491116
+Marathon,52,"                // Check the current refill station
+",0.9999983310699463
+Marathon,53,"                if (j < refillStations.Count)
+",0.9688189060440026
+Marathon,54,"                {
+",0.9999998211860639
+Marathon,55,"                    int currStation = refillStations[j];
+",0.8998545293720939
+Marathon,56,"                    long timeToRun = (currStation - i) / H;
+",0.966871131102108
+Marathon,57,"                    long timeToJog = (currStation - i) / S;
+",0.9996375131572119
+Marathon,58,"                    long timeToRefill = (X / 1000.0 * Y) / H;
+",0.9631164195964248
+Marathon,59,"                    dp[i] = Math.Min(dp[i], dp[currStation] + timeToRun + timeToRefill);
+",0.9924112627905586
+Marathon,60,"                }
+",0.9722660926056297
+Marathon,61,"            }
+",0.987664847046607
+Marathon,62,"        }
+
+",0.9999775884761806
+Marathon,63,"        // Convert the total time to hh:mm:ss format
+",0.9999966621398926
+Marathon,64,"        long totalTime = dp[42195];
+",0.9596021221256823
+Marathon,65,"        int hours = (int)(totalTime / 3600);
+",0.9941633391426934
+Marathon,66,"        int minutes = (int)((totalTime % 3600) / 60);
+",0.9987401232055158
+Marathon,67,"        int seconds = (int)(totalTime % 60);
+
+",0.999259687919953
+Marathon,68,"        Console.WriteLine($""{hours:D2}:{minutes:D2}:{seconds:D2}"");
+",0.9882085011493297
+Marathon,69,"    }
+",0.9999237631899353
+Marathon,70,"}
+",0.999957799911499
+Diggy Hole,0,"
+
+To solve this problem, we need to determine how long it takes for `m` workers to dig `y` cubic meters of soil given that `n` workers take `h` hours to dig `x` cubic meters.
+
+First, let's break down the problem:
+
+1. **Calculate the rate of work per worker per hour:**
+   - If `n` workers can dig `x` cubic meters in `h` hours, then the total work done by `n` workers in one hour is `x / h` cubic meters.
+   - Therefore, the rate of work per worker per hour is `(x / h) / n`.
+
+2. **Calculate the total work required:**
+   - We need to find out how much work `m` workers need to do to dig `y` cubic meters. This is simply `y` cubic meters.
+
+3. **Calculate the time required for `m` workers to complete the work:**
+   - Since each worker works at a rate of `(x / h) / n` cubic meters per hour, `m` workers working together will have a combined rate of `m * (x / h) / n` cubic meters per hour.
+   - The time required for `m` workers to dig `y` cubic meters is the total work divided by the combined rate: `y / (m * (x / h) / n)`.
+
+Now, let's implement this in C#:
+
+```csharp
+",0.9997784483180532
+Diggy Hole,1,"using System;
+
+",0.9988201119210065
+Diggy Hole,2,"class Program
+",0.9735772067042174
+Diggy Hole,3,"{
+",0.9999991655349731
+Diggy Hole,4,"    static void Main()
+",0.9987470702219096
+Diggy Hole,5,"    {
+",0.9999997019767317
+Diggy Hole,6,"        // Read input values
+",0.9999921321868896
+Diggy Hole,7,"        int n = int.Parse(Console.ReadLine());
+",0.9937156104570862
+Diggy Hole,8,"        int h = int.Parse(Console.ReadLine());
+",0.9999805808272904
+Diggy Hole,9,"        int x = int.Parse(Console.ReadLine());
+",0.9998649834540203
+Diggy Hole,10,"        int m = int.Parse(Console.ReadLine());
+",0.9999982383485266
+Diggy Hole,11,"        int y = int.Parse(Console.ReadLine());
+
+",0.9985757253423211
+Diggy Hole,12,"        // Calculate the rate of work per worker per hour
+",0.9999912977218628
+Diggy Hole,13,"        double workRatePerWorkerPerHour = (double)x / (h * n);
+
+",0.906947790972889
+Diggy Hole,14,"        // Calculate the combined rate of m workers
+",0.9999995231628418
+Diggy Hole,15,"        double combinedRateOfMWorkers = m * workRatePerWorkerPerHour;
+
+",0.9496530730357553
+Diggy Hole,16,"        // Calculate the time required for m workers to dig y cubic meters
+",0.9999998807907104
+Diggy Hole,17,"        double timeRequired = y / combinedRateOfMWorkers;
+
+",0.9386962403561674
+Diggy Hole,18,"        // Output the result
+",0.9999994039535522
+Diggy Hole,19,"        Console.WriteLine(timeRequired);
+",0.9721065795482514
+Diggy Hole,20,"    }
+",0.999998211860543
+Diggy Hole,21,"}
+",0.9999872446060181
+Hair Dyeing,0,"
+Explanation
+The plans are: { }, {0}, {0, 0}, {0, 0, 0}.
+
+Sample Input
+4 1
+0 1 2 3
+2 4
+
+Sample Output
+8
+16
+Explanation
+The plans are: { }, {0}, {1}, {2}, {3}, {0, 1}, {0, 2}, {0, 3}, {1, 2}, {1, 3}, {2, 3}, {0, 1, 2}, {0, 1, 3}, {0, 2, 3}, {1, 2, 3}.
+After the update, the plans are: { }, {0}, {1}, {2}, {3}, {4}, {0, 1}, {0, 2}, {0, 3}, {0, 4}, {1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}, {0, 1, 2}, {0, 1, 3}, {0, 1, 4}, {0, 2, 3}, {0, 2, 4}, {0, 3, 4}, {1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {2, 3, 4}, {0, 1, 2, 3}, {0, 1, 2, 4}, {0, 1, 3, 4}, {0, 2, 3, 4}, {1, 2, 3, 4}.
+
+To solve this problem, we need to count the number of valid hair-dyeing plans based on the given discount schedule and handle updates efficiently. Here's a step-by-step approach:
+
+1. **Initial Setup**:
+   - We start with a list of colors available for discount each day.
+   - We need to calculate the number of valid plans that can be formed from this list.
+
+2. **Dynamic Programming Approach**:
+   - Use dynamic programming to keep track of the number of valid plans ending with each color.
+   - Let `dp[i][j]` represent the number of valid plans up to day `i` that end with color `j`.
+   - Initialize `dp[0][j]` to 1 for all `j` (since there's one way to have a plan ending with any color on the first day).
+   - For each subsequent day, update `dp[i][j]` based on the previous day's values, ensuring no two consecutive days have the same color.
+
+3. **Handling Updates**:
+   - When a discount schedule is updated, we need to recalculate the plans starting from the updated day.
+   - This can be done by reapplying the dynamic programming logic from the updated day onwards.
+
+4. **Modulo Operation**:
+   - Since the result can be very large, we take results modulo \(2^{64}\).
+
+Here's the implementation of the above approach:
+
+```csharp
+",0.9959731048697384
+Hair Dyeing,1,"using System;
+
+",0.8849794372844509
+Hair Dyeing,2,"class Program
+",0.8052435907093064
+Hair Dyeing,3,"{
+",0.9999959468841553
+Hair Dyeing,4,"    static void Main()
+",0.9397800261998324
+Hair Dyeing,5,"    {
+",0.9999979734402586
+Hair Dyeing,6,"        string[] input = Console.ReadLine().Split();
+",0.8900060280424924
+Hair Dyeing,7,"        int N = int.Parse(input[0]);
+",0.9980956330208562
+Hair Dyeing,8,"        int Q = int.Parse(input[1]);
+
+",0.9903943145208864
+Hair Dyeing,9,"        int[] discounts = new int[N];
+",0.8608746237324798
+Hair Dyeing,10,"        input = Console.ReadLine().Split();
+",0.9823539620061297
+Hair Dyeing,11,"        for (int i = 0; i < N; i++)
+",0.9999050407997033
+Hair Dyeing,12,"        {
+",0.996840674179925
+Hair Dyeing,13,"            discounts[i] = int.Parse(input[i]);
+",0.9999902604214924
+Hair Dyeing,14,"        }
+
+",0.9999933242715712
+Hair Dyeing,15,"        long[] dp = new long[10];
+",0.8814861446890467
+Hair Dyeing,16,"        Array.Fill(dp, 1);
+
+",0.7029533289010927
+Hair Dyeing,17,"        for (int i = 1; i < N; i++)
+",0.9791603133505551
+Hair Dyeing,18,"        {
+",0.999998211860202
+Hair Dyeing,19,"            long[] newDp = new long[10];
+",0.9881921254902136
+Hair Dyeing,20,"            for (int j = 0; j < 10; j++)
+",0.9930422879529331
+Hair Dyeing,21,"            {
+",0.9999243590746384
+Hair Dyeing,22,"                if (j != discounts[i])
+",0.9111058732804455
+Hair Dyeing,23,"                {
+",0.9998328546868528
+Hair Dyeing,24,"                    foreach (int k in Enumerable.Range(0, 10))
+",0.8174230064710977
+Hair Dyeing,25,"                    {
+",0.9998523795800246
+Hair Dyeing,26,"                        if (k != j)
+",0.8798776189309369
+Hair Dyeing,27,"                        {
+",0.9983089395491921
+Hair Dyeing,28,"                            newDp[j] += dp[k];
+",0.9309644001395739
+Hair Dyeing,29,"                            newDp[j] %= (1UL << 64);
+",0.9178441238525203
+Hair Dyeing,30,"                        }
+",0.9999858140263019
+Hair Dyeing,31,"                    }
+",0.9999842643418825
+Hair Dyeing,32,"                }
+",0.9995969390430663
+Hair Dyeing,33,"            }
+",0.9808597598415347
+Hair Dyeing,34,"            dp = newDp;
+",0.9988197615897715
+Hair Dyeing,35,"        }
+
+",0.9997356254101416
+Hair Dyeing,36,"        long result = 0;
+",0.8536875953563131
+Hair Dyeing,37,"        foreach (long val in dp)
+",0.7198483578818355
+Hair Dyeing,38,"        {
+",0.99999332426475
+Hair Dyeing,39,"            result += val;
+",0.9998801243467396
+Hair Dyeing,40,"            result %= (1UL << 64);
+",0.9995965383681814
+Hair Dyeing,41,"        }
+
+",0.8376647442136561
+Hair Dyeing,42,"        Console.WriteLine(result);
+
+",0.9946711989216557
+Hair Dyeing,43,"        for (int q = 0; q < Q; q++)
+",0.9969465704653353
+Hair Dyeing,44,"        {
+",0.9999997019767317
+Hair Dyeing,45,"            input = Console.ReadLine().Split();
+",0.9995688208758332
+Hair Dyeing,46,"            int i = int.Parse(input[0]) - 1;
+",0.9975117651800373
+Hair Dyeing,47,"            int v = int.Parse(input[1]);
+
+",0.9936765155796231
+Hair Dyeing,48,"            discounts[i] = v;
+
+",0.872328216502834
+Hair Dyeing,49,"            dp = new long[10];
+",0.8791175201091423
+Hair Dyeing,50,"            Array.Fill(dp, 1);
+
+",0.9965014389416985
+Hair Dyeing,51,"            for (int j = 1; j <= i; j++)
+",0.9229026727317313
+Hair Dyeing,52,"            {
+",0.9999966621398926
+Hair Dyeing,53,"                long[] newDp = new long[10];
+",0.9999647921402306
+Hair Dyeing,54,"                for (int k = 0; k < 10; k++)
+",0.9989378859293996
+Hair Dyeing,55,"                {
+",0.9999994039535238
+Hair Dyeing,56,"                    if (k != discounts[j])
+",0.9724656030856369
+Hair Dyeing,57,"                    {
+",0.9999987483024153
+Hair Dyeing,58,"                        foreach (int l in Enumerable.Range(0, 10))
+",0.9974307107961413
+Hair Dyeing,59,"                        {
+",0.9999989271161382
+Hair Dyeing,60,"                            if (l != k)
+",0.9999671821961726
+Hair Dyeing,61,"                            {
+",0.9999981522550723
+Hair Dyeing,62,"                                newDp[k] += dp[l];
+",0.9999957084471061
+Hair Dyeing,63,"                                newDp[k] %= (1UL << 64);
+",0.9999986330659436
+Hair Dyeing,64,"                            }
+",0.9999976158137542
+Hair Dyeing,65,"                        }
+",0.9999962449062689
+Hair Dyeing,66,"                    }
+",0.9999964833237822
+Hair Dyeing,67,"                }
+",0.9999913573194572
+Hair Dyeing,68,"                dp = newDp;
+",0.9999979564095249
+Hair Dyeing,69,"            }
+
+",0.999939559648634
+Hair Dyeing,70,"            result = 0;
+",0.8978242498258852
+Hair Dyeing,71,"            foreach (long val in dp)
+",0.9996676100972625
+Hair Dyeing,72,"            {
+",0.9999995827674422
+Hair Dyeing,73,"                result += val;
+",0.99998702995585
+Hair Dyeing,74,"                result %= (1UL << 64);
+",0.9999986670199545
+Hair Dyeing,75,"            }
+
+",0.9995975406663513
+Hair Dyeing,76,"            Console.WriteLine(result);
+",0.9964502766509259
+Hair Dyeing,77,"        }
+",0.9999444472824003
+Hair Dyeing,78,"    }
+",0.9993301789226111
+Hair Dyeing,79,"}
+",0.9996882677078247
+Date Picker,0,"333333333333334
+
+Explanation
+In the sample input, you can pick Monday and Tuesday (any 2 days from the week) and 1, 6, 12, 17, and 23 (any 5 hours from the 24 hours of the day). There are 2 * 5 = 10 possible meeting times. Out of these, 8 of them are free, so the probability is 8 / 10 = 0.8.
+
+To solve this problem, we need to determine the optimal way to select `d` days and `h` hours from the given availability matrix such that the probability of attending a randomly chosen meeting time is maximized.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Parse the Input:**
+   - Read the 7 lines representing the availability matrix.
+   - Read the integers `d` and `h`.
+
+2. **Calculate Availability:**
+   - For each day, count the number of available hours (`.`).
+   - For each hour, count the number of available days (`.`).
+
+3. **Select Optimal Days and Hours:**
+   - Sort the days by their availability in descending order.
+   - Sort the hours by their availability in descending order.
+   - Select the top `d` days and the top `h` hours.
+
+4. **Calculate the Probability:**
+   - Calculate the total number of possible meeting times by multiplying the number of selected days and hours.
+   - Count the number of free meeting times by checking the availability matrix for each combination of selected days and hours.
+   - Compute the probability as the ratio of free meeting times to the total possible meeting times.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9997703926844566
+Date Picker,1,"using System;
+
+",0.9121706105524461
+Date Picker,2,"class Program
+",0.9785427951802388
+Date Picker,3,"{
+",0.9999992847442627
+Date Picker,4,"    static void Main()
+",0.9971661186386785
+Date Picker,5,"    {
+",0.9999993443486925
+Date Picker,6,"        string[] availability = new string[7];
+",0.8368597672543879
+Date Picker,7,"        for (int i = 0; i < 7; i++)
+",0.9977810866877843
+Date Picker,8,"        {
+",0.9997766663125937
+Date Picker,9,"            availability[i] = Console.ReadLine();
+",0.9957372225633287
+Date Picker,10,"        }
+",0.5955033255108384
+Date Picker,11,"        
+",0.46758416295051575
+Date Picker,12,"        string[] dh = Console.ReadLine().Split(' ');
+",0.8962404881926427
+Date Picker,13,"        int d = int.Parse(dh[0]);
+",0.9999608487187165
+Date Picker,14,"        int h = int.Parse(dh[1]);
+
+",0.905002229653774
+Date Picker,15,"        // Step 2: Calculate availability
+",0.9998775720596313
+Date Picker,16,"        int[] dayAvailability = new int[7];
+",0.9876624391373834
+Date Picker,17,"        int[] hourAvailability = new int[24];
+
+",0.9472074272883857
+Date Picker,18,"        for (int i = 0; i < 7; i++)
+",0.9743521518736471
+Date Picker,19,"        {
+",0.9999893307685407
+Date Picker,20,"            for (int j = 0; j < 24; j++)
+",0.9995588422738664
+Date Picker,21,"            {
+",0.9999988079068487
+Date Picker,22,"                if (availability[i][j] == '.')
+",0.9998972893243253
+Date Picker,23,"                {
+",0.9999995231628347
+Date Picker,24,"                    dayAvailability[i]++;
+",0.9999049432468383
+Date Picker,25,"                    hourAvailability[j]++;
+",0.9999634012471065
+Date Picker,26,"                }
+",0.9999956488582296
+Date Picker,27,"            }
+",0.9999973773938109
+Date Picker,28,"        }
+
+",0.9998544051082009
+Date Picker,29,"        // Step 3: Select optimal days and hours
+",0.9999961853027344
+Date Picker,30,"        Array.Sort(dayAvailability);
+",0.8797975558437241
+Date Picker,31,"        Array.Sort(hourAvailability);
+
+",0.9398100645462121
+Date Picker,32,"        int[] selectedDays = new int[d];
+",0.9825556211363679
+Date Picker,33,"        int[] selectedHours = new int[h];
+
+",0.9951387978694018
+Date Picker,34,"        for (int i = 0; i < d; i++)
+",0.9912682997741431
+Date Picker,35,"        {
+",0.9998453140381862
+Date Picker,36,"            selectedDays[i] = dayAvailability[6 - i]; // 6 - i to get descending order
+",0.8947679588953887
+Date Picker,37,"        }
+
+",0.9305482378691077
+Date Picker,38,"        for (int i = 0; i < h; i++)
+",0.9969260135612328
+Date Picker,39,"        {
+",0.9999996423721029
+Date Picker,40,"            selectedHours[i] = hourAvailability[23 - i]; // 23 - i to get descending order
+",0.999711314633188
+Date Picker,41,"        }
+
+",0.9999909400675546
+Date Picker,42,"        // Step 4: Calculate the probability
+",0.9999921321868896
+Date Picker,43,"        int totalPossibleMeetings = d * h;
+",0.9600802089337671
+Date Picker,44,"        int freeMeetings = 0;
+
+",0.9947607054953107
+Date Picker,45,"        for (int i = 0; i < d; i++)
+",0.996942226619003
+Date Picker,46,"        {
+",0.9999873041679853
+Date Picker,47,"            for (int j = 0; j < h; j++)
+",0.997519927892321
+Date Picker,48,"            {
+",0.9999975562078571
+Date Picker,49,"                if (availability[selectedDays[i]][selectedHours[j]] == '.')
+",0.8497297000779832
+Date Picker,50,"                {
+",0.999996602530258
+Date Picker,51,"                    freeMeetings++;
+",0.9999976396528171
+Date Picker,52,"                }
+",0.999998569488497
+Date Picker,53,"            }
+",0.9999966621373275
+Date Picker,54,"        }
+
+",0.9999911188705802
+Date Picker,55,"        double probability = (double)freeMeetings / totalPossibleMeetings;
+",0.9785871896322543
+Date Picker,56,"        Console.WriteLine(probability);
+",0.9860173422024003
+Date Picker,57,"    }
+",0.999983966294903
+Date Picker,58,"}
+",0.999954104423523
+Contrarianism,0,"
+
+Sample Output
+12345
+
+Sample Output
+67890
+
+Sample Output
+hello world
+
+Sample Output
+goodbye cruel world
+
+Sample Output
+(Empty Line)
+
+Sample Output
+anything
+
+Explanation:
+
+The program should output something different from the input. If the input is ""ja"", the output could be ""nei"". If the input is ""12345"", the output could be ""67890"". If the input is an empty line, the output could be ""anything"".
+
+To solve this problem, you need to read the input string and generate an output string that is different from the input. The output should be at most 10 characters long, including the newline character at the end. Here's a step-by-step approach to achieve this:
+
+1. Read the input string.
+2. Generate an output string that is different from the input.
+3. Ensure the output string is at most 10 characters long.
+4. Print the output string followed by a newline character.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9993244944806443
+Contrarianism,1,"using System;
+
+",0.9880565258340849
+Contrarianism,2,"class Program
+",0.9888943639355471
+Contrarianism,3,"{
+",0.9999992847442627
+Contrarianism,4,"    static void Main()
+",0.9980573262392579
+Contrarianism,5,"    {
+",0.9999995231627778
+Contrarianism,6,"        // Read the input string
+",0.9999877214431763
+Contrarianism,7,"        string input = Console.ReadLine();
+
+",0.872473625209174
+Contrarianism,8,"        // Generate an output string that is different from the input
+",0.999992847442627
+Contrarianism,9,"        string output = GenerateDifferentString(input);
+
+",0.7638542573092416
+Contrarianism,10,"        // Print the output string followed by a newline character
+",0.9999995231628418
+Contrarianism,11,"        Console.WriteLine(output);
+",0.9968274878734684
+Contrarianism,12,"    }
+
+",0.9997708849668454
+Contrarianism,13,"    static string GenerateDifferentString(string input)
+",0.9995980466684539
+Contrarianism,14,"    {
+",0.9999999403953534
+Contrarianism,15,"        // If the input is empty, return a simple string
+",0.9999994039535522
+Contrarianism,16,"        if (string.IsNullOrEmpty(input))
+",0.9186383348799388
+Contrarianism,17,"        {
+",0.9997009784304909
+Contrarianism,18,"            return ""anything"";
+",0.9561334644363622
+Contrarianism,19,"        }
+
+",0.9999642961803982
+Contrarianism,20,"        // Create a new string that is different from the input
+",0.9999996423721313
+Contrarianism,21,"        char[] outputChars = new char[input.Length];
+",0.8853075635773313
+Contrarianism,22,"        for (int i = 0; i < input.Length; i++)
+",0.996872218411032
+Contrarianism,23,"        {
+",0.9999998211860639
+Contrarianism,24,"            // Change each character to something different
+",0.9999995231628418
+Contrarianism,25,"            char c = input[i];
+",0.6639099866409145
+Contrarianism,26,"            if (char.IsLetter(c))
+",0.9056658606956755
+Contrarianism,27,"            {
+",0.999999225139474
+Contrarianism,28,"                // Toggle case and change the letter
+",0.9999996423721313
+Contrarianism,29,"                outputChars[i] = char.IsUpper(c) ? char.ToLower(c) : char.ToUpper(c);
+",0.9410230095503612
+Contrarianism,30,"                outputChars[i] = (char)(outputChars[i] + 1);
+",0.950470445041886
+Contrarianism,31,"            }
+",0.7962550513626465
+Contrarianism,32,"            else if (char.IsDigit(c))
+",0.9999353449093137
+Contrarianism,33,"            {
+",0.9999997615814138
+Contrarianism,34,"                // Increment the digit, wrapping around if necessary
+",0.9999998807907104
+Contrarianism,35,"                outputChars[i] = (char)((c - '0' + 1) % 10 + '0');
+",0.979396914909304
+Contrarianism,36,"            }
+",0.9999964237178744
+Contrarianism,37,"            else
+",0.9973598581195463
+Contrarianism,38,"            {
+",0.9999992251396019
+Contrarianism,39,"                // Replace spaces with a different character
+",0.9999997615814209
+Contrarianism,40,"                outputChars[i] = '*';
+",0.9125503120333684
+Contrarianism,41,"            }
+",0.9883586159101491
+Contrarianism,42,"        }
+
+",0.9999408707083337
+Contrarianism,43,"        // Convert the character array back to a string
+",0.9999995231628418
+Contrarianism,44,"        return new string(outputChars);
+",0.8277371231615008
+Contrarianism,45,"    }
+",0.9999449239010978
+Contrarianism,46,"}
+",0.9999254941940308
+Mouse Pursuit,0,"
+
+Explanation
+In the last 5 seconds, Brandon caught a mouse and gained 6 pieces of cheese and 5 units of glory. He also missed a mouse and lost 1 piece of cheese and 2 units of glory. Therefore, he gained 5 pieces of cheese and 3 units of glory in the last 5 seconds.
+
+To solve this problem, you need to efficiently track the events within the last k seconds and calculate the total cheese and glory gained. Here's a step-by-step approach to implement this:
+
+1. **Data Structure Choice**: Use a data structure that allows efficient insertion, deletion, and retrieval of events based on time. A balanced binary search tree (BST) or a priority queue can be used for this purpose.
+
+2. **Event Tracking**: As you process each event, add it to the data structure. Keep track of the current time and only consider events that occurred within the last k seconds.
+
+3. **Maintaining the Last k Seconds**: For each new event, remove events from the data structure that are older than k seconds relative to the current time.
+
+4. **Calculate Total Cheese and Glory**: Sum up the cheese and glory values of the events that remain in the data structure after removing the outdated ones.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9990468477928961
+Mouse Pursuit,1,"using System;
+",0.9703003069526669
+Mouse Pursuit,2,"using System.Collections.Generic;
+
+",0.9971249143825129
+Mouse Pursuit,3,"class Program
+",0.78224664845163
+Mouse Pursuit,4,"{
+",0.9999949932098389
+Mouse Pursuit,5,"    static void Main()
+",0.8856640983611355
+Mouse Pursuit,6,"    {
+",0.9999990463255699
+Mouse Pursuit,7,"        int n = int.Parse(Console.ReadLine());
+",0.9751137705224612
+Mouse Pursuit,8,"        List<Event> events = new List<Event>();
+",0.8895287066442674
+Mouse Pursuit,9,"        
+",0.24258461594581604
+Mouse Pursuit,10,"        for (int i = 0; i < n; i++)
+",0.9919657443583827
+Mouse Pursuit,11,"        {
+",0.9999991059303266
+Mouse Pursuit,12,"            string[] parts = Console.ReadLine().Split();
+",0.8493590318374653
+Mouse Pursuit,13,"            Event e = new Event
+",0.6699486678315946
+Mouse Pursuit,14,"            {
+",0.9999763368676856
+Mouse Pursuit,15,"                Type = parts[0],
+",0.9901580883215523
+Mouse Pursuit,16,"                Time = int.Parse(parts[1]),
+",0.9516578360837775
+Mouse Pursuit,17,"                Cheese = int.Parse(parts[2]),
+",0.9995617841227685
+Mouse Pursuit,18,"                Glory = int.Parse(parts[3])
+",0.9999135581407769
+Mouse Pursuit,19,"            };
+",0.9999867677113051
+Mouse Pursuit,20,"            events.Add(e);
+",0.9998066639798031
+Mouse Pursuit,21,"        }
+",0.9787115594259337
+Mouse Pursuit,22,"        
+",0.9998999834060669
+Mouse Pursuit,23,"        int k = int.Parse(Console.ReadLine());
+",0.9965763753535932
+Mouse Pursuit,24,"        
+",0.9169119000434875
+Mouse Pursuit,25,"        // Sort events by time in descending order
+",0.9999963045120239
+Mouse Pursuit,26,"        events.Sort((a, b) => b.Time.CompareTo(a.Time));
+",0.9892227368376267
+Mouse Pursuit,27,"        
+",0.9995384216308594
+Mouse Pursuit,28,"        // Use a priority queue to keep track of events within the last k seconds
+",0.9999980926513672
+Mouse Pursuit,29,"        PriorityQueue<Event> pq = new PriorityQueue<Event>(new EventComparer());
+",0.8055195320561409
+Mouse Pursuit,30,"        long totalCheese = 0;
+",0.7709010574073494
+Mouse Pursuit,31,"        long totalGlory = 0;
+",0.9998759803750839
+Mouse Pursuit,32,"        
+",0.7884357571601868
+Mouse Pursuit,33,"        foreach (var e in events)
+",0.8796757788575238
+Mouse Pursuit,34,"        {
+",0.999995589247078
+Mouse Pursuit,35,"            // Add the current event to the priority queue
+",0.9999938011169434
+Mouse Pursuit,36,"            pq.Enqueue(e);
+",0.9817607573292031
+Mouse Pursuit,37,"            totalCheese += e.Cheese;
+",0.9175698341346331
+Mouse Pursuit,38,"            totalGlory += e.Glory;
+",0.9995281145377609
+Mouse Pursuit,39,"            
+",0.9993240833282471
+Mouse Pursuit,40,"            // Remove events that are older than k seconds
+",0.9999958276748657
+Mouse Pursuit,41,"            while (pq.Count > 0 && pq.Peek().Time + k < e.Time)
+",0.8517702147100291
+Mouse Pursuit,42,"            {
+",0.999999284744149
+Mouse Pursuit,43,"                Event removedEvent = pq.Dequeue();
+",0.7985016676134212
+Mouse Pursuit,44,"                totalCheese -= removedEvent.Cheese;
+",0.9999768513586516
+Mouse Pursuit,45,"                totalGlory -= removedEvent.Glory;
+",0.9999977133434914
+Mouse Pursuit,46,"            }
+",0.9999601241867
+Mouse Pursuit,47,"        }
+",0.8985473479254391
+Mouse Pursuit,48,"        
+",0.9999337196350098
+Mouse Pursuit,49,"        Console.WriteLine(totalCheese + "" "" + totalGlory);
+",0.9736739810249
+Mouse Pursuit,50,"    }
+",0.9997894090661591
+Mouse Pursuit,51,"}
+
+",0.9854782819747925
+Mouse Pursuit,52,"class Event
+",0.9911763838078078
+Mouse Pursuit,53,"{
+",0.9999997615814209
+Mouse Pursuit,54,"    public string Type { get; set; }
+",0.9353017137636914
+Mouse Pursuit,55,"    public int Time { get; set; }
+",0.9999773849940073
+Mouse Pursuit,56,"    public int Cheese { get; set; }
+",0.9995695588609219
+Mouse Pursuit,57,"    public int Glory { get; set; }
+",0.9999564390427607
+Mouse Pursuit,58,"}
+
+",0.9916324019432068
+Mouse Pursuit,59,"class EventComparer : IComparer<Event>
+",0.9778529489086218
+Mouse Pursuit,60,"{
+",0.9999992847442627
+Mouse Pursuit,61,"    public int Compare(Event x, Event y)
+",0.9958062347876573
+Mouse Pursuit,62,"    {
+",0.99999946355811
+Mouse Pursuit,63,"        return x.Time.CompareTo(y.Time);
+",0.8534678976892187
+Mouse Pursuit,64,"    }
+",0.9999970197677328
+Mouse Pursuit,65,"}
+
+",0.9995293617248535
+Mouse Pursuit,66,"class PriorityQueue<T> where T : IComparable<T>
+",0.9159206084500775
+Mouse Pursuit,67,"{
+",0.9999990463256836
+Mouse Pursuit,68,"    private List<T> items = new List<T>();
+
+",0.7937765855366012
+Mouse Pursuit,69,"    public void Enqueue(T item)
+",0.9650419545039509
+Mouse Pursuit,70,"    {
+",0.9999995231627281
+Mouse Pursuit,71,"        items.Add(item);
+",0.9987855013974134
+Mouse Pursuit,72,"        int childIndex = items.Count - 1;
+",0.9043181219294033
+Mouse Pursuit,73,"        while (childIndex > 0)
+",0.9858107351692131
+Mouse Pursuit,74,"        {
+",0.9999982714641913
+Mouse Pursuit,75,"            int parentIndex = (childIndex - 1) / 2;
+",0.9997359743751824
+Mouse Pursuit,76,"            if (items[parentIndex].CompareTo(items[childIndex]) <= 0) break;
+
+",0.8580468589034965
+Mouse Pursuit,77,"            Swap(parentIndex, childIndex);
+",0.7860745149393262
+Mouse Pursuit,78,"            childIndex = parentIndex;
+",0.9999972070898014
+Mouse Pursuit,79,"        }
+",0.999988257818811
+Mouse Pursuit,80,"    }
+
+",0.9999212597612229
+Mouse Pursuit,81,"    public T Dequeue()
+",0.9993958511169928
+Mouse Pursuit,82,"    {
+",0.9999994039533746
+Mouse Pursuit,83,"        int lastIndex = items.Count - 1;
+",0.9179230682280858
+Mouse Pursuit,84,"        T frontItem = items[0];
+",0.8959852211137176
+Mouse Pursuit,85,"        items[0] = items[lastIndex];
+",0.9982754884320025
+Mouse Pursuit,86,"        items.RemoveAt(lastIndex);
+
+",0.8973635211808804
+Mouse Pursuit,87,"        RebuildHeap();
+
+",0.6780788971675651
+Mouse Pursuit,88,"        return frontItem;
+",0.9999966621290438
+Mouse Pursuit,89,"    }
+
+",0.9999678725955866
+Mouse Pursuit,90,"    public T Peek()
+",0.9918645288416317
+Mouse Pursuit,91,"    {
+",0.9999997019767317
+Mouse Pursuit,92,"        return items[0];
+",0.9601659031803293
+Mouse Pursuit,93,"    }
+
+",0.9999740120704096
+Mouse Pursuit,94,"    public int Count
+",0.9702796363638578
+Mouse Pursuit,95,"    {
+",0.9999997019767317
+Mouse Pursuit,96,"        get { return items.Count; }
+",0.9979881858561838
+Mouse Pursuit,97,"    }
+
+",0.9997894713561004
+Mouse Pursuit,98,"    private void RebuildHeap()
+",0.9808770562035634
+Mouse Pursuit,99,"    {
+",0.9999993443486925
+Mouse Pursuit,100,"        int index = 0;
+",0.7416543257231546
+Mouse Pursuit,101,"        while (index < items.Count / 2)
+",0.9483179938616201
+Mouse Pursuit,102,"        {
+",0.9999884366578722
+Mouse Pursuit,103,"            int leftChildIndex = index * 2 + 1;
+",0.9321005803790819
+Mouse Pursuit,104,"            int rightChildIndex = index * 2 + 2;
+",0.9928855439470519
+Mouse Pursuit,105,"            int smallerChild = leftChildIndex;
+
+",0.7195187768129777
+Mouse Pursuit,106,"            if (rightChildIndex < items.Count && items[rightChildIndex].CompareTo(items[leftChildIndex]) < 0)
+",0.9819608759684324
+Mouse Pursuit,107,"            {
+",0.9147606316171201
+Mouse Pursuit,108,"                smallerChild = rightChildIndex;
+",0.9998464095777416
+Mouse Pursuit,109,"            }
+
+",0.999067769276485
+Mouse Pursuit,110,"            if (items[index].CompareTo(items[smallerChild]) <= 0) break;
+
+",0.9842393046268302
+Mouse Pursuit,111,"            Swap(index, smallerChild);
+",0.9986677840505984
+Mouse Pursuit,112,"            index = smallerChild;
+",0.9999909797623604
+Mouse Pursuit,113,"        }
+",0.999969899233079
+Mouse Pursuit,114,"    }
+
+",0.9999597662102534
+Mouse Pursuit,115,"    private void Swap(int i, int j)
+",0.9029510438546272
+Mouse Pursuit,116,"    {
+",0.9999994039535238
+Mouse Pursuit,117,"        T temp = items[i];
+",0.9918868651031219
+Mouse Pursuit,118,"        items[i] = items[j];
+",0.9999997317790652
+Mouse Pursuit,119,"        items[j] = temp;
+",0.9999988589955112
+Mouse Pursuit,120,"    }
+",0.9998505901495717
+Mouse Pursuit,121,"}
+",0.9990377426147461
+Aggressive Cows,0," It can be shown that no other arrangement of 3 cows achieves a larger minimum distance.
+To solve this problem, we need to determine the largest minimum distance that can be achieved when placing C cows in N stalls. This is a classic binary search problem where we search for the maximum possible minimum distance.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Sort the Stalls**: First, sort the stall positions. This will help us easily check if a given minimum distance can be maintained.
+
+2. **Binary Search Setup**: We will use binary search to find the largest minimum distance. The search range will be from 0 to the difference between the maximum and minimum stall positions.
+
+3. **Feasibility Check**: For a given mid-point in the binary search (representing a potential minimum distance), we need to check if it's possible to place all C cows such that the minimum distance between any two cows is at least mid. This can be done by greedily placing cows starting from the first stall and moving to the next stall only if the distance between the current and the next stall is at least mid.
+
+4. **Adjust Search Range**: Based on the feasibility check, adjust the binary search range. If it's feasible to place all cows with the current mid-point as the minimum distance, then try for a larger distance by setting the lower bound to mid + 1. Otherwise, set the upper bound to mid - 1.
+
+5. **Result**: The largest minimum distance will be the highest value for which the feasibility check was successful.
+
+Here is the implementation of the above approach in C#:
+
+```csharp
+",0.9998159728324042
+Aggressive Cows,1,"using System;
+
+",0.9442506192784006
+Aggressive Cows,2,"class Program
+",0.9483787866990633
+Aggressive Cows,3,"{
+",0.9999988079071045
+Aggressive Cows,4,"    static void Main()
+",0.9935517132401238
+Aggressive Cows,5,"    {
+",0.9999996423720674
+Aggressive Cows,6,"        int t = int.Parse(Console.ReadLine());
+",0.9835740955851872
+Aggressive Cows,7,"        for (int i = 0; i < t; i++)
+",0.9808499318134386
+Aggressive Cows,8,"        {
+",0.9999992847442556
+Aggressive Cows,9,"            string[] input = Console.ReadLine().Split();
+",0.9523448830330901
+Aggressive Cows,10,"            int N = int.Parse(input[0]);
+",0.9988890653029189
+Aggressive Cows,11,"            int C = int.Parse(input[1]);
+
+",0.9321098770075131
+Aggressive Cows,12,"            int[] stalls = new int[N];
+",0.9964304077429982
+Aggressive Cows,13,"            for (int j = 0; j < N; j++)
+",0.9999920128111178
+Aggressive Cows,14,"            {
+",0.9998626316774545
+Aggressive Cows,15,"                stalls[j] = int.Parse(Console.ReadLine());
+",0.9999498751233639
+Aggressive Cows,16,"            }
+
+",0.9999076385763822
+Aggressive Cows,17,"            // Sort the stalls
+",0.9999897480010986
+Aggressive Cows,18,"            for (int j = 0; j < N - 1; j++)
+",0.9516752787874935
+Aggressive Cows,19,"            {
+",0.9999942779432941
+Aggressive Cows,20,"                for (int k = j + 1; k < N; k++)
+",0.9912119160202226
+Aggressive Cows,21,"                {
+",0.9999987483024579
+Aggressive Cows,22,"                    if (stalls[j] > stalls[k])
+",0.9993227058800543
+Aggressive Cows,23,"                    {
+",0.9999986886977013
+Aggressive Cows,24,"                        int temp = stalls[j];
+",0.9994361960226226
+Aggressive Cows,25,"                        stalls[j] = stalls[k];
+",0.9999995082614134
+Aggressive Cows,26,"                        stalls[k] = temp;
+",0.9999982970062541
+Aggressive Cows,27,"                    }
+",0.9999992847442627
+Aggressive Cows,28,"                }
+",0.9999993443488631
+Aggressive Cows,29,"            }
+
+",0.9999955296431846
+Aggressive Cows,30,"            // Binary search for the largest minimum distance
+",0.9999966621398926
+Aggressive Cows,31,"            int low = 0;
+",0.9900028587143642
+Aggressive Cows,32,"            int high = stalls[N - 1] - stalls[0];
+",0.9986512240123884
+Aggressive Cows,33,"            int result = 0;
+
+",0.9906633373559597
+Aggressive Cows,34,"            while (low <= high)
+",0.9999457866483205
+Aggressive Cows,35,"            {
+",0.9999997615814209
+Aggressive Cows,36,"                int mid = low + (high - low) / 2;
+",0.9714820977383679
+Aggressive Cows,37,"                if (CanPlaceCows(stalls, C, mid))
+",0.9879240878016566
+Aggressive Cows,38,"                {
+",1.0
+Aggressive Cows,39,"                    result = mid;
+",0.9995260094519768
+Aggressive Cows,40,"                    low = mid + 1;
+",0.999969009699911
+Aggressive Cows,41,"                }
+",0.9999998807907104
+Aggressive Cows,42,"                else
+",0.9999999205271339
+Aggressive Cows,43,"                {
+",0.9999997615814138
+Aggressive Cows,44,"                    high = mid - 1;
+",0.9999998807907016
+Aggressive Cows,45,"                }
+",0.9999997019767743
+Aggressive Cows,46,"            }
+
+",0.999995172012687
+Aggressive Cows,47,"            Console.WriteLine(result);
+",0.9999814743132591
+Aggressive Cows,48,"        }
+",0.9999904036148429
+Aggressive Cows,49,"    }
+
+",0.9999987483022448
+Aggressive Cows,50,"    static bool CanPlaceCows(int[] stalls, int C, int minDist)
+",0.9910162019897311
+Aggressive Cows,51,"    {
+",0.9999999403953534
+Aggressive Cows,52,"        int count = 1;
+",0.79836534082872
+Aggressive Cows,53,"        int lastPosition = stalls[0];
+
+",0.9829105267000326
+Aggressive Cows,54,"        for (int i = 1; i < stalls.Length; i++)
+",0.999718092377981
+Aggressive Cows,55,"        {
+",0.9999997615814209
+Aggressive Cows,56,"            if (stalls[i] - lastPosition >= minDist)
+",0.999922153201888
+Aggressive Cows,57,"            {
+",0.9999998807907104
+Aggressive Cows,58,"                count++;
+",0.999559101029337
+Aggressive Cows,59,"                lastPosition = stalls[i];
+",0.9959363081265966
+Aggressive Cows,60,"                if (count == C)
+",0.8789317859738798
+Aggressive Cows,61,"                {
+",0.9975821653402546
+Aggressive Cows,62,"                    return true;
+",0.999990671795122
+Aggressive Cows,63,"                }
+",0.999997138973292
+Aggressive Cows,64,"            }
+",0.9999997615814209
+Aggressive Cows,65,"        }
+
+",0.9993110907183549
+Aggressive Cows,66,"        return false;
+",0.9975950552995452
+Aggressive Cows,67,"    }
+",0.9999982714645181
+Aggressive Cows,68,"}
+",0.9999942779541016
+MKTHNUM - K-th Number,0,"
+
+To solve this problem efficiently, we need to implement a data structure that can handle range queries for the k-th smallest element in a subarray. Given the constraints (n up to 100,000 and m up to 5,000), a naive approach would be too slow. Instead, we can use a combination of a Fenwick Tree (also known as a Binary Indexed Tree) and a divide-and-conquer strategy.
+
+Here's a step-by-step breakdown of the approach:
+
+1. **Fenwick Tree Construction**: We'll build a Fenwick Tree to help us count the occurrences of elements within a range efficiently.
+2. **Binary Search for k-th Element**: For each query, we'll use binary search to find the k-th smallest element in the specified range. The Fenwick Tree will help us count how many elements are less than or equal to a given value in logarithmic time.
+3. **Handling Edge Cases**: Ensure that the indices are 1-based as per the problem statement.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9997640836923671
+MKTHNUM - K-th Number,1,"using System;
+
+",0.9049021825852547
+MKTHNUM - K-th Number,2,"class Program
+",0.9418471640843502
+MKTHNUM - K-th Number,3,"{
+",0.9999983310699463
+MKTHNUM - K-th Number,4,"    static void Main()
+",0.9342203270431432
+MKTHNUM - K-th Number,5,"    {
+",0.9999961256910392
+MKTHNUM - K-th Number,6,"        string[] input = Console.ReadLine().Split();
+",0.9131634333890818
+MKTHNUM - K-th Number,7,"        int n = int.Parse(input[0]);
+",0.9997896298733769
+MKTHNUM - K-th Number,8,"        int m = int.Parse(input[1]);
+
+",0.9971140891352961
+MKTHNUM - K-th Number,9,"        input = Console.ReadLine().Split();
+",0.9593125787445095
+MKTHNUM - K-th Number,10,"        int[] a = new int[n];
+",0.7864306596065728
+MKTHNUM - K-th Number,11,"        for (int i = 0; i < n; i++)
+",0.997050755898034
+MKTHNUM - K-th Number,12,"        {
+",0.9936640153900943
+MKTHNUM - K-th Number,13,"            a[i] = int.Parse(input[i]);
+",0.9999451722807687
+MKTHNUM - K-th Number,14,"        }
+
+",0.9998728283106447
+MKTHNUM - K-th Number,15,"        Query[] queries = new Query[m];
+",0.8429160867785441
+MKTHNUM - K-th Number,16,"        for (int i = 0; i < m; i++)
+",0.9984827352335988
+MKTHNUM - K-th Number,17,"        {
+",0.9999994039534386
+MKTHNUM - K-th Number,18,"            input = Console.ReadLine().Split();
+",0.9998333483522922
+MKTHNUM - K-th Number,19,"            int iQuery = int.Parse(input[0]) - 1;
+",0.7673851712837366
+MKTHNUM - K-th Number,20,"            int jQuery = int.Parse(input[1]) - 1;
+",0.9995542888895185
+MKTHNUM - K-th Number,21,"            int kQuery = int.Parse(input[2]);
+",0.9896808579212862
+MKTHNUM - K-th Number,22,"            queries[i] = new Query(iQuery, jQuery, kQuery);
+",0.9886239915275247
+MKTHNUM - K-th Number,23,"        }
+
+",0.9999868273734603
+MKTHNUM - K-th Number,24,"        SolveQueries(a, queries);
+",0.7148094266933268
+MKTHNUM - K-th Number,25,"    }
+
+",0.9995745178004343
+MKTHNUM - K-th Number,26,"    static void SolveQueries(int[] a, Query[] queries)
+",0.9940794140178473
+MKTHNUM - K-th Number,27,"    {
+",0.9999974369972886
+MKTHNUM - K-th Number,28,"        int n = a.Length;
+",0.9202090717067394
+MKTHNUM - K-th Number,29,"        int maxVal = 0;
+",0.6053374289772334
+MKTHNUM - K-th Number,30,"        foreach (var num in a)
+",0.6579708370378728
+MKTHNUM - K-th Number,31,"        {
+",0.9999248953895535
+MKTHNUM - K-th Number,32,"            if (num > maxVal)
+",0.9291404802800933
+MKTHNUM - K-th Number,33,"            {
+",0.8706374962199841
+MKTHNUM - K-th Number,34,"                maxVal = num;
+",0.9999844626981529
+MKTHNUM - K-th Number,35,"            }
+",0.9999979734416229
+MKTHNUM - K-th Number,36,"        }
+
+",0.9970528741306017
+MKTHNUM - K-th Number,37,"        FenwickTree tree = new FenwickTree(maxVal);
+
+",0.8614851572719664
+MKTHNUM - K-th Number,38,"        foreach (var query in queries)
+",0.8975654366438546
+MKTHNUM - K-th Number,39,"        {
+",0.9999977946272036
+MKTHNUM - K-th Number,40,"            int kthElement = FindKthSmallest(a, query.i, query.j, query.k, tree);
+",0.8179756989076066
+MKTHNUM - K-th Number,41,"            Console.WriteLine(kthElement);
+",0.9999654277529123
+MKTHNUM - K-th Number,42,"        }
+",0.9996294162668014
+MKTHNUM - K-th Number,43,"    }
+
+",0.999996960163072
+MKTHNUM - K-th Number,44,"    static int FindKthSmallest(int[] a, int left, int right, int k, FenwickTree tree)
+",0.9683008788041116
+MKTHNUM - K-th Number,45,"    {
+",0.9999963641104852
+MKTHNUM - K-th Number,46,"        int[] copy = new int[right - left + 1];
+",0.7882357581038086
+MKTHNUM - K-th Number,47,"        Array.Copy(a, left, copy, 0, copy.Length);
+
+",0.8557517552771717
+MKTHNUM - K-th Number,48,"        Array.Sort(copy);
+
+",0.7439543317782691
+MKTHNUM - K-th Number,49,"        int low = 0;
+",0.8613391596896458
+MKTHNUM - K-th Number,50,"        int high = copy.Length - 1;
+
+",0.965495314019953
+MKTHNUM - K-th Number,51,"        while (low <= high)
+",0.8470062728060586
+MKTHNUM - K-th Number,52,"        {
+",0.9999998211860497
+MKTHNUM - K-th Number,53,"            int mid = low + (high - low) / 2;
+",0.9926765238947511
+MKTHNUM - K-th Number,54,"            int count = tree.GetCount(copy[mid]);
+
+",0.7837085010107574
+MKTHNUM - K-th Number,55,"            if (count >= k)
+",0.8832595234724143
+MKTHNUM - K-th Number,56,"            {
+",0.999893630277033
+MKTHNUM - K-th Number,57,"                high = mid - 1;
+",0.9962799243320392
+MKTHNUM - K-th Number,58,"            }
+",0.9996688119472187
+MKTHNUM - K-th Number,59,"            else
+",0.999135483211526
+MKTHNUM - K-th Number,60,"            {
+",0.9999979734419
+MKTHNUM - K-th Number,61,"                low = mid + 1;
+",0.9999017090365374
+MKTHNUM - K-th Number,62,"            }
+",0.9870606681377326
+MKTHNUM - K-th Number,63,"        }
+
+",0.9997864869586084
+MKTHNUM - K-th Number,64,"        return copy[low];
+",0.9535756217380511
+MKTHNUM - K-th Number,65,"    }
+",0.7545912874930504
+MKTHNUM - K-th Number,66,"}
+
+",0.9999620914459229
+MKTHNUM - K-th Number,67,"class FenwickTree
+",0.9240716238624034
+MKTHNUM - K-th Number,68,"{
+",0.9999998807907104
+MKTHNUM - K-th Number,69,"    private int[] tree;
+
+",0.8297178824850834
+MKTHNUM - K-th Number,70,"    public FenwickTree(int size)
+",0.9714858284883401
+MKTHNUM - K-th Number,71,"    {
+",0.9999998211860497
+MKTHNUM - K-th Number,72,"        tree = new int[size + 1];
+",0.9990792436325832
+MKTHNUM - K-th Number,73,"    }
+
+",0.9972210985810445
+MKTHNUM - K-th Number,74,"    public void Update(int index, int delta)
+",0.8441604543916748
+MKTHNUM - K-th Number,75,"    {
+",0.9999998211860639
+MKTHNUM - K-th Number,76,"        while (index < tree.Length)
+",0.9620993590649501
+MKTHNUM - K-th Number,77,"        {
+",0.9999998807907104
+MKTHNUM - K-th Number,78,"            tree[index] += delta;
+",0.9999456959041338
+MKTHNUM - K-th Number,79,"            index += index & (-index);
+",0.7634008900434696
+MKTHNUM - K-th Number,80,"        }
+",0.9999964833201869
+MKTHNUM - K-th Number,81,"    }
+
+",0.9999969601614094
+MKTHNUM - K-th Number,82,"    public int GetCount(int index)
+",0.9951380345434254
+MKTHNUM - K-th Number,83,"    {
+",0.9999996423721242
+MKTHNUM - K-th Number,84,"        int sum = 0;
+",0.9448088926678299
+MKTHNUM - K-th Number,85,"        while (index > 0)
+",0.9998240017400597
+MKTHNUM - K-th Number,86,"        {
+",0.9999999403953534
+MKTHNUM - K-th Number,87,"            sum += tree[index];
+",0.9999979535720924
+MKTHNUM - K-th Number,88,"            index -= index & (-index);
+",0.998696619289663
+MKTHNUM - K-th Number,89,"        }
+",0.9998901724240378
+MKTHNUM - K-th Number,90,"        return sum;
+",0.9999879298727101
+MKTHNUM - K-th Number,91,"    }
+",0.9854048761851997
+MKTHNUM - K-th Number,92,"}
+
+",0.9999830722808838
+MKTHNUM - K-th Number,93,"class Query
+",0.9771126624084908
+MKTHNUM - K-th Number,94,"{
+",1.0
+MKTHNUM - K-th Number,95,"    public int i;
+",0.9846258215696022
+MKTHNUM - K-th Number,96,"    public int j;
+",0.9999989032740859
+MKTHNUM - K-th Number,97,"    public int k;
+
+",0.9999591676423658
+MKTHNUM - K-th Number,98,"    public Query(int i, int j, int k)
+",0.999926994838443
+MKTHNUM - K-th Number,99,"    {
+",0.9999999403953534
+MKTHNUM - K-th Number,100,"        this.i = i;
+",0.999992251341085
+MKTHNUM - K-th Number,101,"        this.j = j;
+",0.9999989867208048
+MKTHNUM - K-th Number,102,"        this.k = k;
+",0.9999975959412749
+MKTHNUM - K-th Number,103,"    }
+",0.999993443471311
+MKTHNUM - K-th Number,104,"}
+",0.999910831451416
+HOTELS - Hotels Along the Croatian Coast,0,"
+
+Example 3
+Input
+3 10
+1 2 8
+
+Output
+10
+
+To solve this problem efficiently, we can use a sliding window approach. This method allows us to find the maximum sum of a contiguous subarray that does not exceed a given value \( M \). Here's a step-by-step explanation of the approach:
+
+1. **Initialize Variables**:
+   - `max_sum`: This will store the maximum sum of the subarray found so far.
+   - `current_sum`: This will store the sum of the current subarray.
+   - `left`: This will mark the left boundary of the current subarray.
+
+2. **Iterate Through the Array**:
+   - For each hotel value at index `right`, add it to `current_sum`.
+   - While `current_sum` exceeds `M`, subtract the value at the `left` boundary from `current_sum` and move the `left` boundary one step to the right.
+   - Update `max_sum` if `current_sum` is greater than `max_sum`.
+
+3. **Output the Result**:
+   - After iterating through the array, `max_sum` will contain the greatest possible total value of the consecutive hotels that do not exceed \( M \).
+
+Here is the implementation of the above approach in C#:
+
+```csharp
+",0.9998819733468285
+HOTELS - Hotels Along the Croatian Coast,1,"using System;
+
+",0.9918870205679122
+HOTELS - Hotels Along the Croatian Coast,2,"class Program
+",0.9824986018141861
+HOTELS - Hotels Along the Croatian Coast,3,"{
+",0.9999997615814209
+HOTELS - Hotels Along the Croatian Coast,4,"    static void Main()
+",0.9976610875804951
+HOTELS - Hotels Along the Croatian Coast,5,"    {
+",0.9999997019767317
+HOTELS - Hotels Along the Croatian Coast,6,"        string[] input = Console.ReadLine().Split();
+",0.9175709183736677
+HOTELS - Hotels Along the Croatian Coast,7,"        int N = int.Parse(input[0]);
+",0.9992496666177219
+HOTELS - Hotels Along the Croatian Coast,8,"        int M = int.Parse(input[1]);
+
+",0.9905828985970244
+HOTELS - Hotels Along the Croatian Coast,9,"        input = Console.ReadLine().Split();
+",0.9483887657217477
+HOTELS - Hotels Along the Croatian Coast,10,"        int[] hotels = new int[N];
+",0.9032803311599195
+HOTELS - Hotels Along the Croatian Coast,11,"        for (int i = 0; i < N; i++)
+",0.9999654024461405
+HOTELS - Hotels Along the Croatian Coast,12,"        {
+",0.9999851583333134
+HOTELS - Hotels Along the Croatian Coast,13,"            hotels[i] = int.Parse(input[i]);
+",0.9999981641721275
+HOTELS - Hotels Along the Croatian Coast,14,"        }
+
+",0.9999980330454274
+HOTELS - Hotels Along the Croatian Coast,15,"        int max_sum = 0;
+",0.9917021764663171
+HOTELS - Hotels Along the Croatian Coast,16,"        int current_sum = 0;
+",0.9999977201156841
+HOTELS - Hotels Along the Croatian Coast,17,"        int left = 0;
+
+",0.9999883852562058
+HOTELS - Hotels Along the Croatian Coast,18,"        for (int right = 0; right < N; right++)
+",0.999995311063236
+HOTELS - Hotels Along the Croatian Coast,19,"        {
+",0.9999998211860497
+HOTELS - Hotels Along the Croatian Coast,20,"            current_sum += hotels[right];
+
+",0.9983107333206919
+HOTELS - Hotels Along the Croatian Coast,21,"            while (current_sum > M)
+",0.98407694809896
+HOTELS - Hotels Along the Croatian Coast,22,"            {
+",0.9999998807907033
+HOTELS - Hotels Along the Croatian Coast,23,"                current_sum -= hotels[left];
+",0.999994805820211
+HOTELS - Hotels Along the Croatian Coast,24,"                left++;
+",0.9999841051810577
+HOTELS - Hotels Along the Croatian Coast,25,"            }
+
+",0.9999989271163869
+HOTELS - Hotels Along the Croatian Coast,26,"            if (current_sum > max_sum)
+",0.9936979335031372
+HOTELS - Hotels Along the Croatian Coast,27,"            {
+",0.9999967217395476
+HOTELS - Hotels Along the Croatian Coast,28,"                max_sum = current_sum;
+",0.9999997956412063
+HOTELS - Hotels Along the Croatian Coast,29,"            }
+",0.9999943375465089
+HOTELS - Hotels Along the Croatian Coast,30,"        }
+
+",0.9999996423721029
+HOTELS - Hotels Along the Croatian Coast,31,"        Console.WriteLine(max_sum);
+",0.999987462875478
+HOTELS - Hotels Along the Croatian Coast,32,"    }
+",0.9999990463256196
+HOTELS - Hotels Along the Croatian Coast,33,"}
+",0.9999946355819702
+LCA - Lowest Common Ancestor,0,"
+
+Explanation:
+The tree structure is as follows:
+```
+",0.9977617263793945
+LCA - Lowest Common Ancestor,1,"        1
+",0.6766504126996828
+LCA - Lowest Common Ancestor,2,"       /|\
+",0.7079552340421934
+LCA - Lowest Common Ancestor,3,"      2 3 4
+",0.9618979239745518
+LCA - Lowest Common Ancestor,4,"         /|\
+",0.6868061932345642
+LCA - Lowest Common Ancestor,5,"        5 6 7
+",0.9952712429475541
+QTREE - Query on a tree,0," To solve this problem, we need to handle two types of operations efficiently: changing the cost of an edge and querying the maximum edge cost on a path between two nodes in a tree. Given the constraints, we need an efficient way to manage these operations without using built-in functions or libraries that simplify algorithmic steps.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Tree Representation**: Represent the tree using an adjacency list.
+2. **Union-Find Data Structure**: Use a union-find data structure to keep track of connected components and find paths efficiently.
+3. **Edge Management**: Maintain an array to store the current costs of all edges.
+4. **Query Processing**: For each query, use the union-find structure to find the path between two nodes and determine the maximum edge cost along that path.
+
+Let's implement this solution in C#:
+
+```csharp
+",0.9998246495024278
+QTREE - Query on a tree,1,"using System;
+",0.939357169355113
+QTREE - Query on a tree,2,"using System.Collections.Generic;
+
+",0.9849328416803088
+QTREE - Query on a tree,3,"class Program
+",0.9291759874343105
+QTREE - Query on a tree,4,"{
+",0.9999983310699463
+QTREE - Query on a tree,5,"    static void Main()
+",0.9585425057848319
+QTREE - Query on a tree,6,"    {
+",0.9999974966023544
+QTREE - Query on a tree,7,"        int t = int.Parse(Console.ReadLine());
+",0.9877089459022169
+QTREE - Query on a tree,8,"        for (int tc = 0; tc < t; tc++)
+",0.9291498412214625
+QTREE - Query on a tree,9,"        {
+",0.9999980926513672
+QTREE - Query on a tree,10,"            if (tc > 0)
+",0.696347970281235
+QTREE - Query on a tree,11,"            {
+",0.8383341521160591
+QTREE - Query on a tree,12,"                Console.WriteLine();
+",0.9255184240351018
+QTREE - Query on a tree,13,"            }
+",0.7650058166175974
+QTREE - Query on a tree,14,"            int n = int.Parse(Console.ReadLine());
+
+",0.6969143918277536
+QTREE - Query on a tree,15,"            List<int>[] adjList = new List<int>[n + 1];
+",0.796514632900526
+QTREE - Query on a tree,16,"            for (int i = 1; i <= n; i++)
+",0.9771262101801685
+QTREE - Query on a tree,17,"            {
+",0.9993147294278537
+QTREE - Query on a tree,18,"                adjList[i] = new List<int>();
+",0.9998971893305997
+QTREE - Query on a tree,19,"            }
+
+",0.9732568300279417
+QTREE - Query on a tree,20,"            int[] edgeCosts = new int[n];
+",0.9647243089547534
+QTREE - Query on a tree,21,"            for (int i = 0; i < n - 1; i++)
+",0.9621196698614235
+QTREE - Query on a tree,22,"            {
+",0.9999988079069269
+QTREE - Query on a tree,23,"                string[] parts = Console.ReadLine().Split();
+",0.8958073182007856
+QTREE - Query on a tree,24,"                int a = int.Parse(parts[0]);
+",0.9963922575847715
+QTREE - Query on a tree,25,"                int b = int.Parse(parts[1]);
+",0.9999991774555319
+QTREE - Query on a tree,26,"                int c = int.Parse(parts[2]);
+",0.9757611476705936
+QTREE - Query on a tree,27,"                adjList[a].Add(b);
+",0.9304441756033045
+QTREE - Query on a tree,28,"                adjList[b].Add(a);
+",0.9999525138559304
+QTREE - Query on a tree,29,"                edgeCosts[i] = c;
+",0.9997126868174889
+QTREE - Query on a tree,30,"            }
+
+",0.9983677722191561
+QTREE - Query on a tree,31,"            UnionFind uf = new UnionFind(n);
+",0.8556730896714668
+QTREE - Query on a tree,32,"            int[] maxEdgeOnPath = new int[n + 1];
+",0.7953494468716248
+QTREE - Query on a tree,33,"            Array.Fill(maxEdgeOnPath, int.MinValue);
+
+",0.8434278617812898
+QTREE - Query on a tree,34,"            for (int i = 0; i < n - 1; i++)
+",0.9564338420745268
+QTREE - Query on a tree,35,"            {
+",0.9999966621398855
+QTREE - Query on a tree,36,"                int u = i + 1;
+",0.7135926723398374
+QTREE - Query on a tree,37,"                int v = adjList[u][0];
+",0.8566030171909361
+QTREE - Query on a tree,38,"                int w = edgeCosts[i];
+",0.7898509348401282
+QTREE - Query on a tree,39,"                int rootU = uf.Find(u);
+",0.8825547201262163
+QTREE - Query on a tree,40,"                int rootV = uf.Find(v);
+",0.9850407697765262
+QTREE - Query on a tree,41,"                maxEdgeOnPath[rootU] = Math.Max(maxEdgeOnPath[rootU], w);
+",0.8868308858808828
+QTREE - Query on a tree,42,"                maxEdgeOnPath[rootV] = Math.Max(maxEdgeOnPath[rootV], w);
+",0.9979187810084693
+QTREE - Query on a tree,43,"                uf.Union(u, v);
+",0.9846156921460613
+QTREE - Query on a tree,44,"            }
+
+",0.9978922497945183
+QTREE - Query on a tree,45,"            while (true)
+",0.962871537447035
+QTREE - Query on a tree,46,"            {
+",0.9999996423721029
+QTREE - Query on a tree,47,"                string[] instruction = Console.ReadLine().Split();
+",0.7761453573279533
+QTREE - Query on a tree,48,"                if (instruction[0] == ""DONE"")
+",0.9955750526017727
+QTREE - Query on a tree,49,"                {
+",0.9986548631538765
+QTREE - Query on a tree,50,"                    break;
+",0.999997496601703
+QTREE - Query on a tree,51,"                }
+",0.9091099430839171
+QTREE - Query on a tree,52,"                if (instruction[0] == ""CHANGE"")
+",0.9582225406462376
+QTREE - Query on a tree,53,"                {
+",0.9999991655347173
+QTREE - Query on a tree,54,"                    int i = int.Parse(instruction[1]) - 1;
+",0.9581596496609055
+QTREE - Query on a tree,55,"                    int ti = int.Parse(instruction[2]);
+",0.9770389209278195
+QTREE - Query on a tree,56,"                    edgeCosts[i] = ti;
+",0.9675566224130548
+QTREE - Query on a tree,57,"                }
+",0.6965020679855941
+QTREE - Query on a tree,58,"                else if (instruction[0] == ""QUERY"")
+",0.998641990835737
+QTREE - Query on a tree,59,"                {
+",0.9999992847440851
+QTREE - Query on a tree,60,"                    int a = int.Parse(instruction[1]);
+",0.9997881320085734
+QTREE - Query on a tree,61,"                    int b = int.Parse(instruction[2]);
+",0.9962712369587557
+QTREE - Query on a tree,62,"                    int rootA = uf.Find(a);
+",0.9265031949734714
+QTREE - Query on a tree,63,"                    int rootB = uf.Find(b);
+",0.9978929865343741
+QTREE - Query on a tree,64,"                    if (rootA != rootB)
+",0.9134878137487139
+QTREE - Query on a tree,65,"                    {
+",0.9999617332609674
+QTREE - Query on a tree,66,"                        Console.WriteLine(-1); // No path exists
+",0.9100476943649322
+QTREE - Query on a tree,67,"                    }
+",0.9967634517342044
+QTREE - Query on a tree,68,"                    else
+",0.9998087507978399
+QTREE - Query on a tree,69,"                    {
+",0.999994933602208
+QTREE - Query on a tree,70,"                        Console.WriteLine(maxEdgeOnPath[rootA]);
+",0.8694304466780208
+QTREE - Query on a tree,71,"                    }
+",0.9999753831333411
+QTREE - Query on a tree,72,"                }
+",0.9999880194639682
+QTREE - Query on a tree,73,"            }
+",0.9996182778731014
+QTREE - Query on a tree,74,"        }
+",0.9999501703592123
+QTREE - Query on a tree,75,"    }
+
+",0.7817351208418607
+QTREE - Query on a tree,76,"    class UnionFind
+",0.9890721965753425
+QTREE - Query on a tree,77,"    {
+",0.9999995231628134
+QTREE - Query on a tree,78,"        private int[] parent;
+",0.8609973626379057
+QTREE - Query on a tree,79,"        private int[] rank;
+
+",0.9961748808304957
+QTREE - Query on a tree,80,"        public UnionFind(int n)
+",0.9382877184343282
+QTREE - Query on a tree,81,"        {
+",0.9999999403953534
+QTREE - Query on a tree,82,"            parent = new int[n + 1];
+",0.9998390710343467
+QTREE - Query on a tree,83,"            rank = new int[n + 1];
+",0.9978645374587887
+QTREE - Query on a tree,84,"            for (int i = 1; i <= n; i++)
+",0.9989282075284057
+QTREE - Query on a tree,85,"            {
+",0.9999967217395476
+QTREE - Query on a tree,86,"                parent[i] = i;
+",0.9999965940019524
+QTREE - Query on a tree,87,"                rank[i] = 0;
+",0.9700648514820637
+QTREE - Query on a tree,88,"            }
+",0.9999980926509124
+QTREE - Query on a tree,89,"        }
+
+",0.999999225139474
+QTREE - Query on a tree,90,"        public int Find(int x)
+",0.8896136443392513
+QTREE - Query on a tree,91,"        {
+",0.9999999403953534
+QTREE - Query on a tree,92,"            while (x != parent[x])
+",0.8169936634465983
+QTREE - Query on a tree,93,"            {
+",0.9999930858389233
+QTREE - Query on a tree,94,"                parent[x] = parent[parent[x]]; // Path compression
+",0.9572442142019811
+QTREE - Query on a tree,95,"                x = parent[x];
+",0.9999994039534575
+QTREE - Query on a tree,96,"            }
+",0.9999997019767743
+QTREE - Query on a tree,97,"            return x;
+",0.9999850091294559
+QTREE - Query on a tree,98,"        }
+
+",0.9999995827673995
+QTREE - Query on a tree,99,"        public void Union(int x, int y)
+",0.989819411817846
+QTREE - Query on a tree,100,"        {
+",0.9999998807907104
+QTREE - Query on a tree,101,"            int rootX = Find(x);
+",0.9999035036106924
+QTREE - Query on a tree,102,"            int rootY = Find(y);
+",0.9928755729688385
+QTREE - Query on a tree,103,"            if (rootX != rootY)
+",0.9717911085351221
+QTREE - Query on a tree,104,"            {
+",0.9999983310693707
+QTREE - Query on a tree,105,"                if (rank[rootX] > rank[rootY])
+",0.983482999991351
+QTREE - Query on a tree,106,"                {
+",0.9999920129475794
+QTREE - Query on a tree,107,"                    parent[rootY] = rootX;
+",0.9999947017601682
+QTREE - Query on a tree,108,"                }
+",0.999749033489548
+QTREE - Query on a tree,109,"                else if (rank[rootX] < rank[rootY])
+",0.9973061097926751
+QTREE - Query on a tree,110,"                {
+",0.9999997019767317
+QTREE - Query on a tree,111,"                    parent[rootX] = rootY;
+",0.9999989800977461
+QTREE - Query on a tree,112,"                }
+",0.9999993443488204
+QTREE - Query on a tree,113,"                else
+",0.999998609223021
+QTREE - Query on a tree,114,"                {
+",0.9999992847442343
+QTREE - Query on a tree,115,"                    parent[rootY] = rootX;
+",0.999883293713277
+QTREE - Query on a tree,116,"                    rank[rootX]++;
+",0.9981802035564542
+QTREE - Query on a tree,117,"                }
+",0.9999982118606496
+QTREE - Query on a tree,118,"            }
+",0.9999725219069858
+QTREE - Query on a tree,119,"        }
+",0.9999637001424342
+QTREE - Query on a tree,120,"    }
+",0.9999797938354733
+QTREE - Query on a tree,121,"}
+",0.9999741315841675
+UPDATEIT - Update the array!,0,"
+```csharp
+",0.8634829173814544
+UPDATEIT - Update the array!,1,"using System;
+
+",0.9360392530658026
+UPDATEIT - Update the array!,2,"class Program
+",0.9158836477977307
+UPDATEIT - Update the array!,3,"{
+",0.999958872795105
+UPDATEIT - Update the array!,4,"    static void Main()
+",0.9513652313203746
+UPDATEIT - Update the array!,5,"    {
+",0.9999599451176369
+UPDATEIT - Update the array!,6,"        int t = int.Parse(Console.ReadLine());
+",0.9442164076939826
+UPDATEIT - Update the array!,7,"        for (int i = 0; i < t; i++)
+",0.9320168887679035
+UPDATEIT - Update the array!,8,"        {
+",0.9999830126388906
+UPDATEIT - Update the array!,9,"            string[] input = Console.ReadLine().Split(' ');
+",0.9567061818208537
+UPDATEIT - Update the array!,10,"            int n = int.Parse(input[0]);
+",0.9997986733903186
+UPDATEIT - Update the array!,11,"            int u = int.Parse(input[1]);
+
+",0.9731162538352962
+UPDATEIT - Update the array!,12,"            int[] array = new int[n];
+",0.9114454077061427
+UPDATEIT - Update the array!,13,"            for (int j = 0; j < u; j++)
+",0.9980175800711707
+UPDATEIT - Update the array!,14,"            {
+",0.9999898075991336
+UPDATEIT - Update the array!,15,"                input = Console.ReadLine().Split(' ');
+",0.9615228175907548
+UPDATEIT - Update the array!,16,"                int l = int.Parse(input[0]);
+",0.9999405095323649
+UPDATEIT - Update the array!,17,"                int r = int.Parse(input[1]);
+",0.9999235683886564
+UPDATEIT - Update the array!,18,"                int val = int.Parse(input[2]);
+
+",0.9974200839218997
+UPDATEIT - Update the array!,19,"                for (int k = l; k <= r; k++)
+",0.9965963500416067
+UPDATEIT - Update the array!,20,"                {
+",0.9994811869083161
+UPDATEIT - Update the array!,21,"                    array[k] += val;
+",0.9999591101304643
+UPDATEIT - Update the array!,22,"                }
+",0.9999722836287428
+UPDATEIT - Update the array!,23,"            }
+
+",0.9996647595761476
+UPDATEIT - Update the array!,24,"            int q = int.Parse(Console.ReadLine());
+",0.9980843802692977
+UPDATEIT - Update the array!,25,"            for (int j = 0; j < q; j++)
+",0.9995349962419925
+UPDATEIT - Update the array!,26,"            {
+",0.9999983310695981
+UPDATEIT - Update the array!,27,"                int index = int.Parse(Console.ReadLine());
+",0.9989292524951646
+UPDATEIT - Update the array!,28,"                Console.WriteLine(array[index]);
+",0.9999774094517047
+UPDATEIT - Update the array!,29,"            }
+",0.9988518370187434
+UPDATEIT - Update the array!,30,"        }
+",0.9998191247593483
+UPDATEIT - Update the array!,31,"    }
+",0.9999684691427698
+UPDATEIT - Update the array!,32,"}
+",0.9988447427749634
+A. Way Too Long Words,0,"
+
+```csharp
+",0.9798889449035093
+A. Way Too Long Words,1,"using System;
+
+",0.9521799733732186
+A. Way Too Long Words,2,"class Program {
+",0.48678217857938383
+A. Way Too Long Words,3,"    static void Main(string[] args) {
+",0.9006914806274448
+A. Way Too Long Words,4,"        int n = Convert.ToInt32(Console.ReadLine());
+",0.8810129462225169
+A. Way Too Long Words,5,"        string[] words = new string[n];
+",0.8493476550476268
+A. Way Too Long Words,6,"        
+",0.5053943991661072
+A. Way Too Long Words,7,"        for (int i = 0; i < n; i++) {
+",0.9873263351019617
+A. Way Too Long Words,8,"            words[i] = Console.ReadLine();
+",0.9991522256095758
+A. Way Too Long Words,9,"        }
+",0.9164312686999199
+A. Way Too Long Words,10,"        
+",0.9962169528007507
+A. Way Too Long Words,11,"        for (int i = 0; i < n; i++) {
+",0.9805945581652085
+A. Way Too Long Words,12,"            if (words[i].Length > 10) {
+",0.9465088455930531
+A. Way Too Long Words,13,"                Console.Write(words[i][0]);
+",0.8781226476334902
+A. Way Too Long Words,14,"                Console.Write(words[i].Length - 2);
+",0.8772361169436813
+A. Way Too Long Words,15,"                Console.WriteLine(words[i][words[i].Length - 1]);
+",0.975547849281834
+A. Way Too Long Words,16,"            } else {
+",0.9943379458049766
+A. Way Too Long Words,17,"                Console.WriteLine(words[i]);
+",0.9999732762365636
+A. Way Too Long Words,18,"            }
+",0.9998591762626075
+A. Way Too Long Words,19,"        }
+",0.9993294866655431
+A. Way Too Long Words,20,"    }
+",0.9972966248906333
+A. Way Too Long Words,21,"}
+",0.9950661659240723
+C. Dijkstra?,0," ```csharp
+",0.956315207822286
+C. Dijkstra?,1,"using System;
+",0.8532536966506488
+C. Dijkstra?,2,"using System.Collections.Generic;
+
+",0.9764241633919264
+C. Dijkstra?,3,"class Program
+",0.8845343094833145
+C. Dijkstra?,4,"{
+",0.9999674558639526
+C. Dijkstra?,5,"    static void Main()
+",0.9369763275408411
+C. Dijkstra?,6,"    {
+",0.999964475184049
+C. Dijkstra?,7,"        string[] input = Console.ReadLine().Split();
+",0.8461190769170331
+C. Dijkstra?,8,"        int n = int.Parse(input[0]);
+",0.9993241563229005
+C. Dijkstra?,9,"        int m = int.Parse(input[1]);
+
+",0.9985486969641939
+C. Dijkstra?,10,"        List<List<(int, int)>> graph = new List<List<(int, int)>>();
+",0.846557336918673
+C. Dijkstra?,11,"        for (int i = 0; i <= n; i++)
+",0.9801019499449343
+C. Dijkstra?,12,"        {
+",0.9955020585177543
+C. Dijkstra?,13,"            graph.Add(new List<(int, int)>());
+",0.9941132941358888
+C. Dijkstra?,14,"        }
+
+",0.9996338124228746
+C. Dijkstra?,15,"        for (int i = 0; i < m; i++)
+",0.9993550726618496
+C. Dijkstra?,16,"        {
+",0.9999977350224754
+C. Dijkstra?,17,"            input = Console.ReadLine().Split();
+",0.9911028429951748
+C. Dijkstra?,18,"            int ai = int.Parse(input[0]);
+",0.920853079988727
+C. Dijkstra?,19,"            int bi = int.Parse(input[1]);
+",0.9999984383576597
+C. Dijkstra?,20,"            int wi = int.Parse(input[2]);
+
+",0.9341897265944729
+C. Dijkstra?,21,"            graph[ai].Add((bi, wi));
+",0.999691823106896
+C. Dijkstra?,22,"            graph[bi].Add((ai, wi));
+",0.9990468560413688
+C. Dijkstra?,23,"        }
+
+",0.9999415262570515
+C. Dijkstra?,24,"        int[] distances = new int[n + 1];
+",0.9549211198704703
+C. Dijkstra?,25,"        int[] previousVertices = new int[n + 1];
+
+",0.7262064473374736
+C. Dijkstra?,26,"        for (int i = 1; i <= n; i++)
+",0.9779157891088514
+C. Dijkstra?,27,"        {
+",0.9999961852989756
+C. Dijkstra?,28,"            distances[i] = int.MaxValue;
+",0.99647489811781
+C. Dijkstra?,29,"        }
+",0.3885184138136195
+C. Dijkstra?,30,"        distances[1] = 0;
+
+",0.9955808996873735
+C. Dijkstra?,31,"        PriorityQueue<int, int> priorityQueue = new PriorityQueue<int, int>();
+",0.7561978305375352
+C. Dijkstra?,32,"        priorityQueue.Enqueue(1, 0);
+
+",0.9903958912770919
+C. Dijkstra?,33,"        while (priorityQueue.Count > 0)
+",0.9995197101094279
+C. Dijkstra?,34,"        {
+",0.9999958276688901
+C. Dijkstra?,35,"            int currentVertex = priorityQueue.Dequeue();
+
+",0.9747270891769401
+C. Dijkstra?,36,"            foreach (var neighbor in graph[currentVertex])
+",0.9823390415255031
+C. Dijkstra?,37,"            {
+",0.9999962449073632
+C. Dijkstra?,38,"                int neighborVertex = neighbor.Item1;
+",0.972838677726077
+C. Dijkstra?,39,"                int weight = neighbor.Item2;
+
+",0.9544621554905486
+C. Dijkstra?,40,"                if (distances[currentVertex] + weight < distances[neighborVertex])
+",0.9661140334401678
+C. Dijkstra?,41,"                {
+",0.9999982118604791
+C. Dijkstra?,42,"                    distances[neighborVertex] = distances[currentVertex] + weight;
+",0.9999909910099847
+C. Dijkstra?,43,"                    previousVertices[neighborVertex] = currentVertex;
+",0.9886885033014738
+C. Dijkstra?,44,"                    priorityQueue.Enqueue(neighborVertex, distances[neighborVertex]);
+",0.9993019275486106
+C. Dijkstra?,45,"                }
+",0.9999784827186157
+C. Dijkstra?,46,"            }
+",0.9999808072542455
+C. Dijkstra?,47,"        }
+
+",0.9999641173728322
+C. Dijkstra?,48,"        if (distances[n] == int.MaxValue)
+",0.998917838003149
+C. Dijkstra?,49,"        {
+",0.9999944567590812
+C. Dijkstra?,50,"            Console.WriteLine(-1);
+",0.9801142576503322
+C. Dijkstra?,51,"        }
+",0.9934939617495753
+C. Dijkstra?,52,"        else
+",0.9999858935021017
+C. Dijkstra?,53,"        {
+",0.999996840953683
+C. Dijkstra?,54,"            List<int> path = new List<int>();
+",0.9815680892572206
+C. Dijkstra?,55,"            int currentVertex = n;
+",0.8030737879759676
+C. Dijkstra?,56,"            while (currentVertex != 0)
+",0.9713751922067151
+C. Dijkstra?,57,"            {
+",0.9999963641166243
+C. Dijkstra?,58,"                path.Insert(0, currentVertex);
+",0.7736110625690682
+C. Dijkstra?,59,"                currentVertex = previousVertices[currentVertex];
+",0.9999724931183195
+C. Dijkstra?,60,"            }
+
+",0.9635008289369758
+C. Dijkstra?,61,"            Console.WriteLine(string.Join("" "", path));
+",0.9385062068227193
+C. Dijkstra?,62,"        }
+",0.9994880189465195
+C. Dijkstra?,63,"    }
+",0.9493704630954309
+C. Dijkstra?,64,"}
+",0.7268238663673401
+G. Game of Chance,0,"
+
+To solve this problem, we need to simulate the tournament rounds and calculate the probability of each participant winning the tournament. Here's a step-by-step approach to achieve this:
+
+1. **Understand the Tournament Structure**:
+   - In the first round, participants from 1 to `k` (where `n - k/2` is a power of 2) participate.
+   - In subsequent rounds, all remaining participants take part.
+   - Participants are paired as described, and the loser of each pair is eliminated.
+
+2. **Calculate Probabilities**:
+   - For each round, calculate the probability of each participant winning their match.
+   - Update the probabilities for the next round based on the winners of the current round.
+
+3. **Simulate the Rounds**:
+   - Start with the initial list of participants and their luckiness values.
+   - For each round, determine the participants who will play, pair them, and calculate the probabilities of winning.
+   - Continue until only one participant remains.
+
+4. **Output the Results**:
+   - Print the probability of each participant winning the tournament.
+
+Here's the implementation of the above approach in C#:
+
+```csharp
+",0.9997725801143472
+G. Game of Chance,1,"using System;
+",0.9588376440894065
+G. Game of Chance,2,"using System.Collections.Generic;
+
+",0.9566623071398414
+G. Game of Chance,3,"class Program
+",0.9726036226630528
+G. Game of Chance,4,"{
+",0.9999983310699463
+G. Game of Chance,5,"    static void Main()
+",0.9851702436377041
+G. Game of Chance,6,"    {
+",0.9999990463254278
+G. Game of Chance,7,"        int n = int.Parse(Console.ReadLine());
+",0.9914063986418676
+G. Game of Chance,8,"        string[] luckinessStr = Console.ReadLine().Split(' ');
+",0.8574264412278281
+G. Game of Chance,9,"        long[] luckiness = new long[n];
+",0.9783359895658621
+G. Game of Chance,10,"        for (int i = 0; i < n; i++)
+",0.993802471608489
+G. Game of Chance,11,"        {
+",0.9958630227931017
+G. Game of Chance,12,"            luckiness[i] = long.Parse(luckinessStr[i]);
+",0.9999517030753414
+G. Game of Chance,13,"        }
+
+",0.999836494739484
+G. Game of Chance,14,"        double[] probabilities = new double[n];
+",0.8798929359239124
+G. Game of Chance,15,"        for (int i = 0; i < n; i++)
+",0.9981407204970788
+G. Game of Chance,16,"        {
+",0.9999659651807564
+G. Game of Chance,17,"            probabilities[i] = 1.0;
+",0.9949003416178369
+G. Game of Chance,18,"        }
+
+",0.9999903440283332
+G. Game of Chance,19,"        int k = n;
+",0.6567673225033437
+G. Game of Chance,20,"        while (k > 1)
+",0.9577924378758889
+G. Game of Chance,21,"        {
+",0.99999874830206
+G. Game of Chance,22,"            int roundSize = k;
+",0.5661664768600952
+G. Game of Chance,23,"            if ((roundSize & (roundSize - 1)) != 0)
+",0.848133833717382
+G. Game of Chance,24,"            {
+",0.9997667207862536
+G. Game of Chance,25,"                while ((roundSize & (roundSize - 1)) != 0)
+",0.9128917966582828
+G. Game of Chance,26,"                {
+",0.9925399348189968
+G. Game of Chance,27,"                    roundSize >>= 1;
+",0.8636615179257543
+G. Game of Chance,28,"                }
+",0.9998451960297137
+G. Game of Chance,29,"                roundSize <<= 1;
+",0.9838362458415845
+G. Game of Chance,30,"            }
+",0.7704805214329237
+G. Game of Chance,31,"            k = roundSize;
+
+",0.9294451447544825
+G. Game of Chance,32,"            for (int i = 0; i < k / 2; i++)
+",0.9030852268105312
+G. Game of Chance,33,"            {
+",0.9999991655349092
+G. Game of Chance,34,"                int player1 = i * 2;
+",0.752985860121861
+G. Game of Chance,35,"                int player2 = i * 2 + 1;
+",0.9482748172518056
+G. Game of Chance,36,"                long totalLuck = luckiness[player1] + luckiness[player2];
+",0.9026862709043849
+G. Game of Chance,37,"                double winProb1 = (double)luckiness[player1] / totalLuck;
+",0.9189591960014138
+G. Game of Chance,38,"                double winProb2 = (double)luckiness[player2] / totalLuck;
+
+",0.991754259563508
+G. Game of Chance,39,"                if (winProb1 > winProb2)
+",0.8039042894497712
+G. Game of Chance,40,"                {
+",0.9999985694884614
+G. Game of Chance,41,"                    probabilities[player2] = 0.0;
+",0.8830052685323894
+G. Game of Chance,42,"                    probabilities[player1] *= winProb1;
+",0.927110534634812
+G. Game of Chance,43,"                    luckiness[player2] = 0;
+",0.8505008327321452
+G. Game of Chance,44,"                }
+",0.8635691746330502
+G. Game of Chance,45,"                else
+",0.9930993899257838
+G. Game of Chance,46,"                {
+",0.9999997615814209
+G. Game of Chance,47,"                    probabilities[player1] = 0.0;
+",0.9999641587608183
+G. Game of Chance,48,"                    probabilities[player2] *= winProb2;
+",0.9999970793649166
+G. Game of Chance,49,"                    luckiness[player1] = 0;
+",0.9999947189612537
+G. Game of Chance,50,"                }
+",0.9995974996703152
+G. Game of Chance,51,"            }
+",0.9874439791086734
+G. Game of Chance,52,"        }
+
+",0.9974331110645741
+G. Game of Chance,53,"        for (int i = 0; i < n; i++)
+",0.9945138630476319
+G. Game of Chance,54,"        {
+",0.9999969601595193
+G. Game of Chance,55,"            Console.Write($""{probabilities[i]:F9} "");
+",0.9195497496163276
+G. Game of Chance,56,"        }
+",0.9998251483049094
+G. Game of Chance,57,"    }
+",0.7431601200317581
+G. Game of Chance,58,"}
+",0.9999421834945679
+E. Organizing a Race,0,"
+
+To solve this problem, we need to determine the most beautiful race that can be organized in Kekoland, considering the constraints on gas consumption and the ability to increase gas amounts in cities using presents.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Understand the Problem Constraints:**
+   - We have `n` cities connected by `n-1` roads.
+   - Each road has a specific length.
+   - Each city provides a certain amount of gas when visited.
+   - We can distribute `k` presents to increase the gas provided by any city.
+   - We need to find the longest possible race (in terms of the number of cities) that can be completed without running out of gas.
+
+2. **Calculate Gas Requirements:**
+   - For a race from city `l` to city `r`, the total distance is the sum of the lengths of roads between these cities.
+   - The total gas required for this race is equal to the total distance.
+   - During the race, the car will collect gas from each city it visits.
+
+3. **Optimize Gas Collection:**
+   - To maximize the beauty of the race, we should aim to find the longest possible segment `[l, r]` where the car can complete the race without running out of gas.
+   - We can use a sliding window approach to find such segments efficiently.
+
+4. **Use Presents Wisely:**
+   - Since we can distribute `k` presents to increase gas amounts, we should prioritize increasing gas in cities that are critical for maintaining the race without running out of gas.
+
+5. **Implement the Solution:**
+   - We will iterate over possible starting points `l` and calculate the maximum `r` for each `l` where the car can complete the race.
+   - We will keep track of the maximum beauty (number of cities) found.
+
+Here's the implementation of the solution:
+
+```csharp
+",0.9982180356536652
+E. Organizing a Race,1,"using System;
+
+",0.9356330665399784
+E. Organizing a Race,2,"class Program
+",0.8825026114933848
+E. Organizing a Race,3,"{
+",0.9999992847442627
+E. Organizing a Race,4,"    static void Main()
+",0.9895502320585174
+E. Organizing a Race,5,"    {
+",0.9999991059299287
+E. Organizing a Race,6,"        string[] input = Console.ReadLine().Split();
+",0.9119316128695478
+E. Organizing a Race,7,"        int n = int.Parse(input[0]);
+",0.9997546871098068
+E. Organizing a Race,8,"        int k = int.Parse(input[1]);
+
+",0.9650253334185743
+E. Organizing a Race,9,"        input = Console.ReadLine().Split();
+",0.9426301287609155
+E. Organizing a Race,10,"        long[] w = new long[n - 1];
+",0.9314483924520716
+E. Organizing a Race,11,"        for (int i = 0; i < n - 1; i++)
+",0.9997012718652993
+E. Organizing a Race,12,"        {
+",0.9936850682738804
+E. Organizing a Race,13,"            w[i] = long.Parse(input[i]);
+",0.999919129844679
+E. Organizing a Race,14,"        }
+
+",0.9999920129712051
+E. Organizing a Race,15,"        input = Console.ReadLine().Split();
+",0.9999959766665543
+E. Organizing a Race,16,"        long[] g = new long[n];
+",0.9972908081284007
+E. Organizing a Race,17,"        for (int i = 0; i < n; i++)
+",0.9998883738792753
+E. Organizing a Race,18,"        {
+",0.9999995827673995
+E. Organizing a Race,19,"            g[i] = long.Parse(input[i]);
+",0.9999943136687927
+E. Organizing a Race,20,"        }
+
+",0.9999889731147087
+E. Organizing a Race,21,"        // Calculate prefix sums for distances and gas
+",0.9999822378158569
+E. Organizing a Race,22,"        long[] distPrefixSum = new long[n];
+",0.7620207000021585
+E. Organizing a Race,23,"        long[] gasPrefixSum = new long[n + 1];
+
+",0.786841791247862
+E. Organizing a Race,24,"        for (int i = 1; i < n; i++)
+",0.9317048395655189
+E. Organizing a Race,25,"        {
+",0.9999967813443789
+E. Organizing a Race,26,"            distPrefixSum[i] = distPrefixSum[i - 1] + w[i - 1];
+",0.9999562328423983
+E. Organizing a Race,27,"        }
+
+",0.9268670505338414
+E. Organizing a Race,28,"        for (int i = 1; i <= n; i++)
+",0.9989422541264146
+E. Organizing a Race,29,"        {
+",0.9999997615813925
+E. Organizing a Race,30,"            gasPrefixSum[i] = gasPrefixSum[i - 1] + g[i - 1];
+",0.9999854799902615
+E. Organizing a Race,31,"        }
+
+",0.9999848603823617
+E. Organizing a Race,32,"        int maxBeauty = 0;
+
+",0.9332367892304921
+E. Organizing a Race,33,"        // Iterate over possible starting points l
+",0.9999970197677612
+E. Organizing a Race,34,"        for (int l = 0; l < n; l++)
+",0.9839727253913448
+E. Organizing a Race,35,"        {
+",0.9999991655349447
+E. Organizing a Race,36,"            int r = l;
+",0.9471650943303026
+E. Organizing a Race,37,"            long currentGas = gasPrefixSum[l + 1];
+",0.8490316206583913
+E. Organizing a Race,38,"            long currentDist = 0;
+
+",0.8547824856875721
+E. Organizing a Race,39,"            // Try to extend the range [l, r]
+",0.9999959468841553
+E. Organizing a Race,40,"            while (r < n - 1)
+",0.9225416207944658
+E. Organizing a Race,41,"            {
+",0.999999225139474
+E. Organizing a Race,42,"                r++;
+",0.9736185081477867
+E. Organizing a Race,43,"                currentDist += w[r - 1];
+",0.9808073411606382
+E. Organizing a Race,44,"                currentGas += g[r];
+
+",0.9802296828778141
+E. Organizing a Race,45,"                // If we run out of gas, break
+",0.9999970197677612
+E. Organizing a Race,46,"                if (currentGas < currentDist)
+",0.9793546212432743
+E. Organizing a Race,47,"                {
+",0.9983421974269714
+E. Organizing a Race,48,"                    break;
+",0.911370494188342
+E. Organizing a Race,49,"                }
+",0.792762539700847
+E. Organizing a Race,50,"            }
+
+",0.9993329562494799
+E. Organizing a Race,51,"            // Check if we can use presents to extend the range
+",0.9999966621398926
+E. Organizing a Race,52,"            int extraGasNeeded = (int)(currentDist - currentGas);
+",0.7241919068729313
+E. Organizing a Race,53,"            if (extraGasNeeded > 0)
+",0.8147555127880207
+E. Organizing a Race,54,"            {
+",0.9999988675113496
+E. Organizing a Race,55,"                int presentsUsed = Math.Min(extraGasNeeded, k);
+",0.8145253011106004
+E. Organizing a Race,56,"                currentGas += presentsUsed;
+",0.8591489137478574
+E. Organizing a Race,57,"                k -= presentsUsed;
+",0.9737507415787439
+E. Organizing a Race,58,"            }
+
+",0.9929672364856478
+E. Organizing a Race,59,"            // Calculate the beauty of the race
+",0.9999988079071045
+E. Organizing a Race,60,"            int beauty = r - l + 1;
+",0.9830579662564854
+E. Organizing a Race,61,"            maxBeauty = Math.Max(maxBeauty, beauty);
+",0.9348817149355655
+E. Organizing a Race,62,"        }
+
+",0.9999703165011439
+E. Organizing a Race,63,"        Console.WriteLine(maxBeauty);
+",0.9998027067973341
+E. Organizing a Race,64,"    }
+",0.9999953508325277
+E. Organizing a Race,65,"}
+",0.9999676942825317
+A+B Again?,0,"
+```csharp
+",0.8806449615092141
+A+B Again?,1,"using System;
+
+",0.9591266150241651
+A+B Again?,2,"class Program {
+",0.576685531844584
+A+B Again?,3,"    static void Main() {
+",0.9217669741255702
+A+B Again?,4,"        int t = int.Parse(Console.ReadLine());
+",0.8597811532655851
+A+B Again?,5,"        for (int i = 0; i < t; i++) {
+",0.972185988740399
+A+B Again?,6,"            int n = int.Parse(Console.ReadLine());
+",0.9892176640196184
+A+B Again?,7,"            int sum = SumOfDigits(n);
+",0.734643649343682
+A+B Again?,8,"            Console.WriteLine(sum);
+",0.9999004917354365
+A+B Again?,9,"        }
+",0.9997780445927014
+A+B Again?,10,"    }
+
+",0.9234431441982056
+A+B Again?,11,"    static int SumOfDigits(int n) {
+",0.9808129211829966
+A+B Again?,12,"        // Extract the tens digit
+",0.9992944002151489
+A+B Again?,13,"        int tens = n / 10;
+",0.9546076326661544
+A+B Again?,14,"        // Extract the units digit
+",0.9388841390609741
+A+B Again?,15,"        int units = n % 10;
+",0.9979895834173687
+A+B Again?,16,"        // Return the sum of the digits
+",0.9964732527732849
+A+B Again?,17,"        return tens + units;
+",0.9999709920104377
+A+B Again?,18,"    }
+",0.9997293054540001
+A+B Again?,19,"}
+",0.9968656897544861
+Party,0,"
+
+To solve this problem, we need to maximize the total happiness of the employees by assigning them to clubs on either Friday or Saturday, ensuring that each club has at most one employee on each day. Additionally, exactly half of the employees should go clubbing on Friday, and the other half on Saturday.
+
+Here's a step-by-step approach to solve this problem:
+
+1. **Define the Problem**: We have `N` employees and `N` clubs. Each employee has a preference score for each club on both Friday and Saturday. We need to assign each employee to a club on either day such that:
+   - No club has more than one employee on either day.
+   - Exactly `N/2` employees go clubbing on Friday, and the other `N/2` on Saturday.
+   - The total happiness (sum of preference scores) is maximized.
+
+2. **Constraints**:
+   - `2 ≤ N ≤ 20`
+   - `N` is even.
+   - Preference scores are non-negative integers.
+
+3. **Approach**:
+   - Use a backtracking approach to explore all possible assignments of employees to clubs on Friday and Saturday.
+   - Keep track of which clubs are already assigned on each day.
+   - Ensure that exactly `N/2` employees are assigned to clubs on each day.
+   - Calculate the total happiness for each valid assignment and keep track of the maximum happiness.
+
+4. **Implementation**:
+   - Use a recursive function to try assigning each employee to a club on either day.
+   - Use arrays to keep track of which clubs are already assigned on each day.
+   - Use a variable to keep track of the current happiness and update the maximum happiness when a valid assignment is found.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9998636269330959
+Party,1,"using System;
+
+",0.9831213952159752
+Party,2,"class Program
+",0.9795458183872576
+Party,3,"{
+",0.9999996423721313
+Party,4,"    static int N;
+",0.84923316562726
+Party,5,"    static int[,] fridayPreferences;
+",0.8620608836826605
+Party,6,"    static int[,] saturdayPreferences;
+",0.9999624534326995
+Party,7,"    static int[] fridayAssignments;
+",0.7476645764958224
+Party,8,"    static int[] saturdayAssignments;
+",0.9998444524362475
+Party,9,"    static int maxHappiness = 0;
+
+",0.8753779423095546
+Party,10,"    static void Main()
+",0.9854398654491892
+Party,11,"    {
+",0.9999997615814138
+Party,12,"        // Read input
+",0.9999986886978149
+Party,13,"        N = int.Parse(Console.ReadLine());
+",0.9918174811386729
+Party,14,"        fridayPreferences = new int[N, N];
+",0.9997944202225084
+Party,15,"        saturdayPreferences = new int[N, N];
+",0.9762795033422281
+Party,16,"        fridayAssignments = new int[N];
+",0.9791787087771441
+Party,17,"        saturdayAssignments = new int[N];
+
+",0.9945435431361411
+Party,18,"        for (int i = 0; i < N; i++)
+",0.9985750700740276
+Party,19,"        {
+",0.9996331580868176
+Party,20,"            string[] fridayLine = Console.ReadLine().Split();
+",0.894094909788075
+Party,21,"            for (int j = 0; j < N; j++)
+",0.9738092221903937
+Party,22,"            {
+",0.996022540247407
+Party,23,"                fridayPreferences[i, j] = int.Parse(fridayLine[j]);
+",0.9999966939041999
+Party,24,"            }
+",0.996140241272388
+Party,25,"        }
+
+",0.9975576134691244
+Party,26,"        for (int i = 0; i < N; i++)
+",0.9999990383773713
+Party,27,"        {
+",0.9999997019767601
+Party,28,"            string[] saturdayLine = Console.ReadLine().Split();
+",0.9999916452633678
+Party,29,"            for (int j = 0; j < N; j++)
+",0.9999996980030831
+Party,30,"            {
+",0.9999995231628134
+Party,31,"                saturdayPreferences[i, j] = int.Parse(saturdayLine[j]);
+",0.9999986886968308
+Party,32,"            }
+",0.9999516596150984
+Party,33,"        }
+
+",0.9999955296477179
+Party,34,"        // Start backtracking
+",0.9999983310699463
+Party,35,"        Backtrack(0, 0, 0);
+
+",0.9282730445903161
+Party,36,"        // Output the result
+",0.9999997615814209
+Party,37,"        Console.WriteLine(maxHappiness);
+",0.9999967813386783
+Party,38,"    }
+
+",0.999999105930284
+Party,39,"    static void Backtrack(int employeeIndex, int fridayCount, int currentHappiness)
+",0.8929158654212923
+Party,40,"    {
+",0.9999996423720674
+Party,41,"        if (employeeIndex == N)
+",0.9729095925805187
+Party,42,"        {
+",0.9999997019767601
+Party,43,"            if (fridayCount == N / 2)
+",0.9736488468444554
+Party,44,"            {
+",0.9998481159931027
+Party,45,"                maxHappiness = Math.Max(maxHappiness, currentHappiness);
+",0.9962753137964093
+Party,46,"            }
+",0.999993801106683
+Party,47,"            return;
+",0.9999108434557691
+Party,48,"        }
+
+",0.9999993443486925
+Party,49,"        // Try assigning to a club on Friday
+",0.9999983310699463
+Party,50,"        for (int club = 0; club < N; club++)
+",0.9842996302521799
+Party,51,"        {
+",0.9999991059301845
+Party,52,"            if (fridayAssignments[club] == 0)
+",0.9956361276732411
+Party,53,"            {
+",0.999999225139474
+Party,54,"                fridayAssignments[club] = 1;
+",0.9937428392326432
+Party,55,"                Backtrack(employeeIndex + 1, fridayCount + 1, currentHappiness + fridayPreferences[employeeIndex, club]);
+",0.9991280638492085
+Party,56,"                fridayAssignments[club] = 0;
+",0.9998286980773411
+Party,57,"            }
+",0.999786625690283
+Party,58,"        }
+
+",0.9999788401986031
+Party,59,"        // Try assigning to a club on Saturday
+",0.9999994039535522
+Party,60,"        for (int club = 0; club < N; club++)
+",0.9996178870903721
+Party,61,"        {
+",0.9999998211860639
+Party,62,"            if (saturdayAssignments[club] == 0)
+",0.9999788675085749
+Party,63,"            {
+",0.9999993443488204
+Party,64,"                saturdayAssignments[club] = 1;
+",0.9999989867201018
+Party,65,"                Backtrack(employeeIndex + 1, fridayCount, currentHappiness + saturdayPreferences[employeeIndex, club]);
+",0.9999982881497034
+Party,66,"                saturdayAssignments[club] = 0;
+",0.9999985794180647
+Party,67,"            }
+",0.9999992251395735
+Party,68,"        }
+",0.9999506461362241
+Party,69,"    }
+",0.9999967813450894
+Party,70,"}
+",0.9999920129776001
+Zebra-like Numbers,0,"3717245
+```csharp
+",0.885520771030076
+Zebra-like Numbers,1,"using System;
+
+",0.8133444476197289
+Zebra-like Numbers,2,"class ZebraValueCalculator {
+",0.5831580632595555
+Zebra-like Numbers,3,"    static void Main(string[] args) {
+",0.9344011986236416
+Zebra-like Numbers,4,"        int t = int.Parse(Console.ReadLine());
+",0.9716420758444495
+Zebra-like Numbers,5,"        for (int i = 0; i < t; i++) {
+",0.9840070958267485
+Zebra-like Numbers,6,"            string[] input = Console.ReadLine().Split(' ');
+",0.9469634612782529
+Zebra-like Numbers,7,"            long l = long.Parse(input[0]);
+",0.998842993159785
+Zebra-like Numbers,8,"            long r = long.Parse(input[1]);
+",0.999996566766474
+Zebra-like Numbers,9,"            long k = long.Parse(input[2]);
+",0.9865078382578872
+Zebra-like Numbers,10,"            Console.WriteLine(CalculateZebraValueInRange(l, r, k));
+",0.8887075572178165
+Zebra-like Numbers,11,"        }
+",0.9999636406601299
+Zebra-like Numbers,12,"    }
+
+",0.9954590064226749
+Zebra-like Numbers,13,"    static long CalculateZebraValueInRange(long l, long r, long k) {
+",0.9939557014343691
+Zebra-like Numbers,14,"        // Implement the logic to calculate the number of integers x such that l≤x≤r and the zebra value of x equals k.
+",0.9998005032539368
+Zebra-like Numbers,15,"        // This is a placeholder implementation.
+",0.9807590842247009
+Zebra-like Numbers,16,"        return 0;
+",0.928165383860137
+Zebra-like Numbers,17,"    }
+",0.8762083391285651
+Zebra-like Numbers,18,"}
+",0.9596509337425232
+Morse Code,0,"
+
+
+To solve this problem, we need to construct a Morse code encoding scheme that minimizes the expected transmission time. This is a classic problem that can be solved using Huffman coding, which is a greedy algorithm designed to create a prefix-free binary code that optimizes for weighted path length.
+
+Here's a step-by-step approach to implement the solution:
+
+1. **Parse Input**: Read the number of characters `n` and their respective frequencies `f1, f2, ..., fn`.
+
+2. **Create Nodes**: Each character will be represented as a node in a binary tree. Each node will have a frequency and optionally left and right children.
+
+3. **Priority Queue**: Use a priority queue (min-heap) to always extract the two nodes with the smallest frequencies. This ensures that the most frequent characters get shorter codes.
+
+4. **Build the Tree**:
+   - Extract the two nodes with the smallest frequencies from the priority queue.
+   - Create a new internal node with a frequency equal to the sum of the frequencies of the two extracted nodes.
+   - Set the two extracted nodes as the left and right children of the new node.
+   - Insert the new node back into the priority queue.
+   - Repeat until only one node remains in the priority queue. This node will be the root of the Huffman tree.
+
+5. **Assign Codes**: Traverse the Huffman tree from the root to each leaf node, assigning a '0' for each left branch and a '1' for each right branch. Convert these binary codes to Morse code by replacing '0' with '.' and '1' with '-'.
+
+6. **Output the Result**: Print the Morse code sequence for each character.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9994943969474968
+Morse Code,1,"using System;
+",0.9995953157065588
+Morse Code,2,"using System.Collections.Generic;
+
+",0.9811807634421695
+Morse Code,3,"class Program
+",0.71638155084063
+Morse Code,4,"{
+",0.9999992847442627
+Morse Code,5,"    static void Main()
+",0.8241877077142103
+Morse Code,6,"    {
+",0.9999994039533746
+Morse Code,7,"        int n = int.Parse(Console.ReadLine());
+",0.9849035513708966
+Morse Code,8,"        string[] freqStrs = Console.ReadLine().Split(' ');
+",0.7109841871909734
+Morse Code,9,"        double[] frequencies = new double[n];
+",0.9694022951672402
+Morse Code,10,"        for (int i = 0; i < n; i++)
+",0.9939033254628318
+Morse Code,11,"        {
+",0.9913012638044691
+Morse Code,12,"            frequencies[i] = double.Parse(freqStrs[i]);
+",0.9994170573653817
+Morse Code,13,"        }
+
+",0.9999056717135182
+Morse Code,14,"        // Step 1: Create nodes
+",0.9999920129776001
+Morse Code,15,"        List<Node> nodes = new List<Node>();
+",0.970853159099529
+Morse Code,16,"        for (int i = 0; i < n; i++)
+",0.9999885160352883
+Morse Code,17,"        {
+",0.9999979138357258
+Morse Code,18,"            nodes.Add(new Node(frequencies[i], i));
+",0.8864745056076029
+Morse Code,19,"        }
+
+",0.9999729988770619
+Morse Code,20,"        // Step 2: Build the Huffman tree
+",0.9999982118606567
+Morse Code,21,"        while (nodes.Count > 1)
+",0.950045212053687
+Morse Code,22,"        {
+",0.9999995231627778
+Morse Code,23,"            nodes.Sort((a, b) => a.Frequency.CompareTo(b.Frequency));
+",0.9417466580120214
+Morse Code,24,"            Node left = nodes[0];
+",0.9967100151134355
+Morse Code,25,"            Node right = nodes[1];
+",0.9883740356351193
+Morse Code,26,"            Node parent = new Node(left.Frequency + right.Frequency, -1);
+",0.8732625028932445
+Morse Code,27,"            parent.Left = left;
+",0.9996351407012335
+Morse Code,28,"            parent.Right = right;
+",0.9981551103480554
+Morse Code,29,"            nodes.RemoveAt(0);
+",0.9627428495737748
+Morse Code,30,"            nodes.RemoveAt(0);
+",0.9996348065256024
+Morse Code,31,"            nodes.Add(parent);
+",0.9999759669800313
+Morse Code,32,"        }
+
+",0.9997634625971712
+Morse Code,33,"        // Step 3: Assign Morse codes
+",0.9999973773956299
+Morse Code,34,"        string[] morseCodes = new string[n];
+",0.8767208222379173
+Morse Code,35,"        AssignMorseCodes(nodes[0], """", morseCodes);
+
+",0.89442620654497
+Morse Code,36,"        // Step 4: Output the result
+",0.9999991655349731
+Morse Code,37,"        for (int i = 0; i < n; i++)
+",0.9942089008256002
+Morse Code,38,"        {
+",0.9999988079069908
+Morse Code,39,"            Console.WriteLine(morseCodes[i]);
+",0.9791400882491657
+Morse Code,40,"        }
+",0.9999434339535177
+Morse Code,41,"    }
+
+",0.9999956488594375
+Morse Code,42,"    static void AssignMorseCodes(Node node, string code, string[] morseCodes)
+",0.9958835056950647
+Morse Code,43,"    {
+",0.9999997019767317
+Morse Code,44,"        if (node.Left == null && node.Right == null)
+",0.961111728257626
+Morse Code,45,"        {
+",0.9999378304671838
+Morse Code,46,"            morseCodes[node.Index] = code.Replace('0', '.').Replace('1', '-');
+",0.964615345258291
+Morse Code,47,"            return;
+",0.9062945398534595
+Morse Code,48,"        }
+",0.9428102462787137
+Morse Code,49,"        if (node.Left != null)
+",0.9786256739009419
+Morse Code,50,"        {
+",0.9973502823195354
+Morse Code,51,"            AssignMorseCodes(node.Left, code + ""0"", morseCodes);
+",0.9790076443500392
+Morse Code,52,"        }
+",0.9999997019767601
+Morse Code,53,"        if (node.Right != null)
+",0.9999994337557561
+Morse Code,54,"        {
+",0.9999998211860639
+Morse Code,55,"            AssignMorseCodes(node.Right, code + ""1"", morseCodes);
+",0.9999992216331621
+Morse Code,56,"        }
+",0.9999995827674706
+Morse Code,57,"    }
+",0.9763441308742669
+Morse Code,58,"}
+
+",0.999990701675415
+Morse Code,59,"class Node
+",0.9986378616566947
+Morse Code,60,"{
+",1.0
+Morse Code,61,"    public double Frequency;
+",0.9423907320866174
+Morse Code,62,"    public int Index;
+",0.9983597742551111
+Morse Code,63,"    public Node Left;
+",0.9911584357111979
+Morse Code,64,"    public Node Right;
+
+",0.9999842162304756
+Morse Code,65,"    public Node(double frequency, int index)
+",0.9999086350379338
+Morse Code,66,"    {
+",0.9999999403953534
+Morse Code,67,"        Frequency = frequency;
+",0.996220567244541
+Morse Code,68,"        Index = index;
+",0.9999975681256768
+Morse Code,69,"    }
+",0.7631547498401946
+Morse Code,70,"}
+",0.999940037727356
+Set of Strangers,0,"
+
+To solve this problem, we need to determine the minimum number of steps required to make the entire table a single color by painting sets of strangers with the same color in each step.
+
+### Steps to Solve the Problem:
+
+1. **Identify Stranger Cells**: Two cells are strangers if they do not share a side. This means that for a cell `(i, j)`, its strangers include all cells that are not directly above, below, left, or right of it.
+
+2. **Determine Sets of Strangers**: A set of strangers is a group of cells where no two cells share a side. We need to find all such sets of cells that have the same color.
+
+3. **Painting Strategy**: For each set of strangers with the same color, we can paint them all in one step. The goal is to minimize the number of such steps.
+
+4. **Algorithm**:
+   - Iterate through each cell in the table.
+   - For each cell, check all possible sets of strangers that include this cell and have the same color.
+   - Track the minimum number of steps required to paint all cells the same color.
+
+### Implementation:
+
+Here is the implementation of the above strategy in C#:
+
+```csharp
+",0.9997622485435935
+Set of Strangers,1,"using System;
+",0.8286115241907223
+Set of Strangers,2,"using System.Collections.Generic;
+
+",0.9670494769276342
+Set of Strangers,3,"class Program
+",0.9705485096783043
+Set of Strangers,4,"{
+",0.999997615814209
+Set of Strangers,5,"    static void Main()
+",0.9805366666104651
+Set of Strangers,6,"    {
+",0.9999985098833672
+Set of Strangers,7,"        int t = int.Parse(Console.ReadLine());
+",0.9913935173533646
+Set of Strangers,8,"        for (int tc = 0; tc < t; tc++)
+",0.9136629130792889
+Set of Strangers,9,"        {
+",0.9999988079068487
+Set of Strangers,10,"            string[] nm = Console.ReadLine().Split();
+",0.9249616249720807
+Set of Strangers,11,"            int n = int.Parse(nm[0]);
+",0.9995956176636251
+Set of Strangers,12,"            int m = int.Parse(nm[1]);
+",0.9714895968106139
+Set of Strangers,13,"            int[,] table = new int[n, m];
+",0.944769836016589
+Set of Strangers,14,"            for (int i = 0; i < n; i++)
+",0.9966868170735846
+Set of Strangers,15,"            {
+",0.9999978542326105
+Set of Strangers,16,"                string[] row = Console.ReadLine().Split();
+",0.9859621909234798
+Set of Strangers,17,"                for (int j = 0; j < m; j++)
+",0.9999988079056769
+Set of Strangers,18,"                {
+",0.9999132417480777
+Set of Strangers,19,"                    table[i, j] = int.Parse(row[j]);
+",0.999673760297651
+Set of Strangers,20,"                }
+",0.9999979138363226
+Set of Strangers,21,"            }
+
+",0.5073322501439939
+Set of Strangers,22,"            Console.WriteLine(MinStepsToUniformColor(table, n, m));
+",0.8446019511766688
+Set of Strangers,23,"        }
+",0.9999918937483512
+Set of Strangers,24,"    }
+
+",0.9999865292792256
+Set of Strangers,25,"    static int MinStepsToUniformColor(int[,] table, int n, int m)
+",0.9997987161149493
+Set of Strangers,26,"    {
+",0.9999979138354984
+Set of Strangers,27,"        int maxColor = n * m;
+",0.7425468264546433
+Set of Strangers,28,"        bool[,] visited = new bool[n, m];
+",0.9040352470700412
+Set of Strangers,29,"        int steps = 0;
+
+",0.9147652621120506
+Set of Strangers,30,"        for (int i = 0; i < n; i++)
+",0.9890353967662993
+Set of Strangers,31,"        {
+",0.9999896883961537
+Set of Strangers,32,"            for (int j = 0; j < m; j++)
+",0.9999990701670876
+Set of Strangers,33,"            {
+",0.9999912380968803
+Set of Strangers,34,"                if (!visited[i, j])
+",0.9949852774304646
+Set of Strangers,35,"                {
+",0.9999990463254278
+Set of Strangers,36,"                    int currentColor = table[i, j];
+",0.8652274644171175
+Set of Strangers,37,"                    Queue<(int, int)> queue = new Queue<(int, int)>();
+",0.947531906005591
+Set of Strangers,38,"                    queue.Enqueue((i, j));
+",0.9955975473803752
+Set of Strangers,39,"                    visited[i, j] = true;
+",0.8855956691461734
+Set of Strangers,40,"                    bool needsPainting = false;
+
+",0.5863254332708131
+Set of Strangers,41,"                    while (queue.Count > 0)
+",0.9994772671844837
+Set of Strangers,42,"                    {
+",0.9999992251396161
+Set of Strangers,43,"                        (int x, int y) = queue.Dequeue();
+
+",0.8528442181807233
+Set of Strangers,44,"                        // Check all possible stranger cells
+",0.9999922513961792
+Set of Strangers,45,"                        for (int dx = -1; dx <= 1; dx++)
+",0.9628166279337689
+Set of Strangers,46,"                        {
+",0.999931036274792
+Set of Strangers,47,"                            for (int dy = -1; dy <= 1; dy++)
+",0.999954324614823
+Set of Strangers,48,"                            {
+",0.9999872445363769
+Set of Strangers,49,"                                if (dx == 0 && dy == 0) continue;
+",0.900086203169145
+Set of Strangers,50,"                                if (dx != 0 && dy != 0) continue; // Only side neighbors
+",0.8533352482049372
+Set of Strangers,51,"                                int nx = x + dx;
+",0.9955435868005148
+Set of Strangers,52,"                                int ny = y + dy;
+
+",0.8852677192931749
+Set of Strangers,53,"                                if (nx >= 0 && nx < n && ny >= 0 && ny < m && !visited[nx, ny] && table[nx, ny] == currentColor)
+",0.977737632702465
+Set of Strangers,54,"                                {
+",0.9999991059303124
+Set of Strangers,55,"                                    queue.Enqueue((nx, ny));
+",0.9888605944523484
+Set of Strangers,56,"                                    visited[nx, ny] = true;
+",0.999996614443158
+Set of Strangers,57,"                                }
+",0.9826006530885688
+Set of Strangers,58,"                                else if (nx >= 0 && nx < n && ny >= 0 && ny < m && table[nx, ny] != currentColor)
+",0.9820669744929343
+Set of Strangers,59,"                                {
+",0.999993085839712
+Set of Strangers,60,"                                    needsPainting = true;
+",0.9996312623148191
+Set of Strangers,61,"                                }
+",0.9998586996466864
+Set of Strangers,62,"                            }
+",0.9999443878430422
+Set of Strangers,63,"                        }
+",0.9998530343308187
+Set of Strangers,64,"                    }
+
+",0.9995154783125496
+Set of Strangers,65,"                    if (needsPainting)
+",0.9980139227596807
+Set of Strangers,66,"                    {
+",0.9996564396198573
+Set of Strangers,67,"                        steps++;
+",0.9993585689894021
+Set of Strangers,68,"                    }
+",0.995789692546659
+Set of Strangers,69,"                }
+",0.9998072804757036
+Set of Strangers,70,"            }
+",0.9999977946281415
+Set of Strangers,71,"        }
+
+",0.9983819151038296
+Set of Strangers,72,"        return steps;
+",0.9990627795467242
+Set of Strangers,73,"    }
+",0.999939201521216
+Set of Strangers,74,"}
+",0.9999088048934937
+Amusing numbers,0,"
+
+To solve this problem, we need to generate the k-th amusing number, which is defined as a number consisting only of the digits 5 and 6. The approach involves understanding the binary representation of numbers and mapping it to the digits 5 and 6.
+
+Here's a step-by-step explanation of the solution:
+
+1. **Binary Representation Insight**: 
+   - Consider the binary representation of numbers. For example, the first few numbers in binary are: 0, 1, 10, 11, 100, 101, etc.
+   - If we replace all 0s with 5s and all 1s with 6s, we get the sequence of amusing numbers.
+
+2. **Mapping Binary to Amusing Numbers**:
+   - To find the k-th amusing number, we can use the binary representation of k-1 (since indexing starts from 0).
+   - For each bit in the binary representation of k-1:
+     - If the bit is 0, append '5' to the result.
+     - If the bit is 1, append '6' to the result.
+
+3. **Implementation**:
+   - Read the number of test cases.
+   - For each test case, read the value of k.
+   - Convert k-1 to its binary representation.
+   - Generate the amusing number by replacing bits with '5' and '6'.
+   - Output the result.
+
+Here's the C# implementation of the above logic:
+
+```csharp
+",0.9999361022538328
+Amusing numbers,1,"using System;
+
+",0.955402652982122
+Amusing numbers,2,"class Program
+",0.9413977486198715
+Amusing numbers,3,"{
+",0.9999996423721313
+Amusing numbers,4,"    static void Main()
+",0.9963821504014958
+Amusing numbers,5,"    {
+",0.9999992847440069
+Amusing numbers,6,"        int n = int.Parse(Console.ReadLine());
+",0.8066286518516126
+Amusing numbers,7,"        
+",0.2651117444038391
+Amusing numbers,8,"        for (int i = 0; i < n; i++)
+",0.998703047391719
+Amusing numbers,9,"        {
+",0.9999989271158185
+Amusing numbers,10,"            long k = long.Parse(Console.ReadLine());
+",0.9990400418902098
+Amusing numbers,11,"            Console.WriteLine(GetKthAmusingNumber(k));
+",0.923754316891042
+Amusing numbers,12,"        }
+",0.9999989867206391
+Amusing numbers,13,"    }
+
+",0.903334979587282
+Amusing numbers,14,"    static string GetKthAmusingNumber(long k)
+",0.9998201820789809
+Amusing numbers,15,"    {
+",0.9999987483018185
+Amusing numbers,16,"        if (k == 1) return ""5""; // Special case for the first amusing number
+        
+",0.8696551409432548
+Amusing numbers,17,"        long num = k - 1;
+",0.8519128852842653
+Amusing numbers,18,"        string amusingNumber = """";
+",0.8951944129523992
+Amusing numbers,19,"        
+",0.9989689588546753
+Amusing numbers,20,"        while (num > 0)
+",0.9276629705144078
+Amusing numbers,21,"        {
+",0.9999996423720674
+Amusing numbers,22,"            if (num % 2 == 0)
+",0.9546460305044252
+Amusing numbers,23,"            {
+",0.9789252803815812
+Amusing numbers,24,"                amusingNumber = ""5"" + amusingNumber;
+",0.9954779252932295
+Amusing numbers,25,"            }
+",0.9999802111539019
+Amusing numbers,26,"            else
+",0.9999919334425227
+Amusing numbers,27,"            {
+",0.9999997615814138
+Amusing numbers,28,"                amusingNumber = ""6"" + amusingNumber;
+",0.9998581241264779
+Amusing numbers,29,"            }
+",0.999999463558181
+Amusing numbers,30,"            num /= 2;
+",0.9984608781768078
+Amusing numbers,31,"        }
+",0.9981074606335183
+Amusing numbers,32,"        
+",0.999963641166687
+Amusing numbers,33,"        return amusingNumber;
+",0.9902805618836603
+Amusing numbers,34,"    }
+",0.9999983906739498
+Amusing numbers,35,"}
+",0.9999779462814331
+Time to live,0,"
+
+To solve this problem, we need to determine the optimal TTL for a network, which is the maximum distance from a chosen router to any other node in the network. The goal is to minimize this maximum distance by selecting the best router node.
+
+Here's a step-by-step approach to solve the problem:
+
+1. **Parse Input**: Read the number of test cases and for each test case, read the number of nodes and the edges defining the network.
+2. **Build the Network**: Represent the network as an adjacency list.
+3. **Calculate Distances**: For each node, calculate the maximum distance to any other node using Depth-First Search (DFS).
+4. **Find Optimal Router**: Determine the node that minimizes the maximum distance to any other node.
+
+Let's implement this in C#:
+
+```csharp
+",0.9998546887503983
+Time to live,1,"using System;
+",0.9613989252629581
+Time to live,2,"using System.Collections.Generic;
+
+",0.9953248587092041
+Time to live,3,"class Program
+",0.8356713236877185
+Time to live,4,"{
+",0.9999994039535522
+Time to live,5,"    static void Main()
+",0.9837167172336136
+Time to live,6,"    {
+",0.9999989271160459
+Time to live,7,"        int c = int.Parse(Console.ReadLine());
+",0.9778131335252755
+Time to live,8,"        for (int i = 0; i < c; i++)
+",0.9705215263542912
+Time to live,9,"        {
+",0.9999868272913914
+Time to live,10,"            SolveTestcase();
+",0.4001029335413643
+Time to live,11,"        }
+",0.9995245705920124
+Time to live,12,"    }
+
+",0.999902750995491
+Time to live,13,"    static void SolveTestcase()
+",0.9996471033441314
+Time to live,14,"    {
+",0.999998867511108
+Time to live,15,"        int n = int.Parse(Console.ReadLine());
+",0.8011813416350555
+Time to live,16,"        List<int>[] network = new List<int>[n];
+",0.8975847069846505
+Time to live,17,"        for (int i = 0; i < n; i++)
+",0.9819769539494992
+Time to live,18,"        {
+",0.998748323925034
+Time to live,19,"            network[i] = new List<int>();
+",0.999997085974251
+Time to live,20,"        }
+
+",0.818712917675673
+Time to live,21,"        for (int i = 0; i < n - 1; i++)
+",0.9917464595855603
+Time to live,22,"        {
+",0.9999996423720674
+Time to live,23,"            string[] input = Console.ReadLine().Split(' ');
+",0.8160089932489286
+Time to live,24,"            int a = int.Parse(input[0]);
+",0.9998734618256506
+Time to live,25,"            int b = int.Parse(input[1]);
+",0.9999052661085158
+Time to live,26,"            network[a].Add(b);
+",0.9999962704482728
+Time to live,27,"            network[b].Add(a);
+",0.999995299696434
+Time to live,28,"        }
+
+",0.9999936222841636
+Time to live,29,"        int[] maxDistances = new int[n];
+",0.9476601119018835
+Time to live,30,"        for (int i = 0; i < n; i++)
+",0.9750849571599036
+Time to live,31,"        {
+",0.9999975562065782
+Time to live,32,"            int[] distances = new int[n];
+",0.7857414487926537
+Time to live,33,"            Array.Fill(distances, -1);
+",0.7858340233201672
+Time to live,34,"            distances[i] = 0;
+",0.9221152436595984
+Time to live,35,"            DFS(network, distances, i);
+
+",0.7106725556230342
+Time to live,36,"            int maxDistance = 0;
+",0.9036236176998487
+Time to live,37,"            for (int j = 0; j < n; j++)
+",0.9979061279259064
+Time to live,38,"            {
+",0.999997973440685
+Time to live,39,"                if (distances[j] > maxDistance)
+",0.995042456126778
+Time to live,40,"                {
+",0.9988571436764125
+Time to live,41,"                    maxDistance = distances[j];
+",0.999999029295634
+Time to live,42,"                }
+",0.9999978542322125
+Time to live,43,"            }
+",0.9820021595339062
+Time to live,44,"            maxDistances[i] = maxDistance;
+",0.9999828571832318
+Time to live,45,"        }
+
+",0.9999970197665604
+Time to live,46,"        int optimalTTL = int.MaxValue;
+",0.9822890800968932
+Time to live,47,"        for (int i = 0; i < n; i++)
+",0.9944785769860421
+Time to live,48,"        {
+",0.9999995827674848
+Time to live,49,"            if (maxDistances[i] < optimalTTL)
+",0.9999632708382716
+Time to live,50,"            {
+",0.9999940395177588
+Time to live,51,"                optimalTTL = maxDistances[i];
+",0.999999082086626
+Time to live,52,"            }
+",0.9999989271163656
+Time to live,53,"        }
+
+",0.9962876691147262
+Time to live,54,"        Console.WriteLine(optimalTTL);
+",0.9999902246811025
+Time to live,55,"    }
+
+",0.9999979138367916
+Time to live,56,"    static void DFS(List<int>[] network, int[] distances, int currentNode)
+",0.9617102839142185
+Time to live,57,"    {
+",0.9999997615814209
+Time to live,58,"        foreach (int neighbor in network[currentNode])
+",0.9964527031750074
+Time to live,59,"        {
+",0.9999997615814209
+Time to live,60,"            if (distances[neighbor] == -1)
+",0.9996926650731432
+Time to live,61,"            {
+",0.9999992847442556
+Time to live,62,"                distances[neighbor] = distances[currentNode] + 1;
+",0.9999874480675048
+Time to live,63,"                DFS(network, distances, neighbor);
+",0.9999995082614649
+Time to live,64,"            }
+",0.9999966025309828
+Time to live,65,"        }
+",0.999995172015316
+Time to live,66,"    }
+",0.9999867676875087
+Time to live,67,"}
+",0.9999595880508423
+New Distinct Substrings,0,"
+
+Explanation:
+For ""CCCCC"", the distinct substrings are ""C"", ""CC"", ""CCC"", ""CCCC"", ""CCCCC"".
+For ""ABABA"", the distinct substrings are ""A"", ""B"", ""AB"", ""BA"", ""ABA"", ""BAB"", ""ABAB"", ""BABA"", ""ABABA"".
+
+To solve this problem efficiently without using any built-in functions or libraries that simplify algorithmic steps, we can use a Trie (prefix tree) data structure. A Trie allows us to store and search for strings in an efficient manner, making it suitable for counting distinct substrings.
+
+Here's a step-by-step explanation of the approach:
+
+1. **Trie Node Structure**: Define a Trie node that contains an array of pointers to other Trie nodes (one for each possible character in the alphabet). We'll assume the input strings consist only of lowercase English letters ('a' to 'z'), so we'll have 26 pointers.
+
+2. **Insert Function**: Implement a function to insert a string into the Trie. This function will traverse the Trie, creating new nodes as necessary, until the entire string is inserted.
+
+3. **Count Distinct Substrings**: Implement a function to count the number of distinct substrings by traversing the Trie. Each path from the root to a leaf node represents a distinct substring.
+
+4. **Main Logic**: For each test case, read the input string, insert all possible substrings into the Trie, and then count the distinct substrings.
+
+Here's the implementation in C#:
+
+```csharp
+",0.9997768273740415
+New Distinct Substrings,1,"using System;
+
+",0.9326719251867294
+New Distinct Substrings,2,"class Program
+",0.867167750984873
+New Distinct Substrings,3,"{
+",0.9999995231628418
+New Distinct Substrings,4,"    static void Main()
+",0.7376482885192995
+New Distinct Substrings,5,"    {
+",0.9999984502782127
+New Distinct Substrings,6,"        int T = int.Parse(Console.ReadLine());
+",0.9823509591632319
+New Distinct Substrings,7,"        for (int t = 0; t < T; t++)
+",0.9564719976472327
+New Distinct Substrings,8,"        {
+",0.9999997019767601
+New Distinct Substrings,9,"            string s = Console.ReadLine();
+",0.7879407658602325
+New Distinct Substrings,10,"            Trie trie = new Trie();
+",0.8924493138727081
+New Distinct Substrings,11,"            int n = s.Length;
+",0.8276228733780499
+New Distinct Substrings,12,"            for (int i = 0; i < n; i++)
+",0.9938065931203958
+New Distinct Substrings,13,"            {
+",0.9995562944165391
+New Distinct Substrings,14,"                for (int j = i + 1; j <= n; j++)
+",0.9208367367629515
+New Distinct Substrings,15,"                {
+",0.9999827145557473
+New Distinct Substrings,16,"                    trie.Insert(s.Substring(i, j - i));
+",0.9648982170994217
+New Distinct Substrings,17,"                }
+",0.9999969601595193
+New Distinct Substrings,18,"            }
+",0.999953447786462
+New Distinct Substrings,19,"            Console.WriteLine(trie.CountDistinctSubstrings());
+",0.9880706970621004
+New Distinct Substrings,20,"        }
+",0.9999222131226796
+New Distinct Substrings,21,"    }
+",0.9667747633429637
+New Distinct Substrings,22,"}
+
+",0.999931812286377
+New Distinct Substrings,23,"class TrieNode
+",0.8125949614734282
+New Distinct Substrings,24,"{
+",0.9999998807907104
+New Distinct Substrings,25,"    public TrieNode[] children;
+",0.8534451648906358
+New Distinct Substrings,26,"    public bool isEndOfWord;
+
+",0.9025317222255441
+New Distinct Substrings,27,"    public TrieNode()
+",0.9999849317800601
+New Distinct Substrings,28,"    {
+",0.9999998211860497
+New Distinct Substrings,29,"        children = new TrieNode[26];
+",0.9663129598679163
+New Distinct Substrings,30,"        isEndOfWord = false;
+",0.9943254950569161
+New Distinct Substrings,31,"    }
+",0.9991647405111519
+New Distinct Substrings,32,"}
+
+",0.9999895095825195
+New Distinct Substrings,33,"class Trie
+",0.9999885558380383
+New Distinct Substrings,34,"{
+",1.0
+New Distinct Substrings,35,"    private TrieNode root;
+
+",0.9843606906117034
+New Distinct Substrings,36,"    public Trie()
+",0.999997496602326
+New Distinct Substrings,37,"    {
+",0.9999999403953534
+New Distinct Substrings,38,"        root = new TrieNode();
+",0.999993511516546
+New Distinct Substrings,39,"    }
+
+",0.9999973773954522
+New Distinct Substrings,40,"    public void Insert(string word)
+",0.9956323268546334
+New Distinct Substrings,41,"    {
+",0.9999998211860497
+New Distinct Substrings,42,"        TrieNode current = root;
+",0.9832150219351471
+New Distinct Substrings,43,"        for (int i = 0; i < word.Length; i++)
+",0.9817943604976213
+New Distinct Substrings,44,"        {
+",0.9999996423721029
+New Distinct Substrings,45,"            int index = word[i] - 'a';
+",0.9921535712161744
+New Distinct Substrings,46,"            if (current.children[index] == null)
+",0.9999891160735869
+New Distinct Substrings,47,"            {
+",0.9997950880879601
+New Distinct Substrings,48,"                current.children[index] = new TrieNode();
+",0.999999117850383
+New Distinct Substrings,49,"            }
+",0.9999650115064396
+New Distinct Substrings,50,"            current = current.children[index];
+",0.9999961171743278
+New Distinct Substrings,51,"        }
+",0.9996343490162952
+New Distinct Substrings,52,"        current.isEndOfWord = true;
+",0.998979754317971
+New Distinct Substrings,53,"    }
+
+",0.9999700781244097
+New Distinct Substrings,54,"    public int CountDistinctSubstrings()
+",0.9725100601587303
+New Distinct Substrings,55,"    {
+",0.9999996423721242
+New Distinct Substrings,56,"        return CountDistinctSubstrings(root);
+",0.8243496177351077
+New Distinct Substrings,57,"    }
+
+",0.9999977946270331
+New Distinct Substrings,58,"    private int CountDistinctSubstrings(TrieNode node)
+",0.9980024387802565
+New Distinct Substrings,59,"    {
+",0.9999996423721029
+New Distinct Substrings,60,"        int count = 0;
+",0.8779251779431521
+New Distinct Substrings,61,"        for (int i = 0; i < 26; i++)
+",0.9290130188251902
+New Distinct Substrings,62,"        {
+",0.9999994039535238
+New Distinct Substrings,63,"            if (node.children[i] != null)
+",0.9999911903085184
+New Distinct Substrings,64,"            {
+",0.9999986886974668
+New Distinct Substrings,65,"                count += 1 + CountDistinctSubstrings(node.children[i]);
+",0.9211860126762222
+New Distinct Substrings,66,"            }
+",0.9999887346639416
+New Distinct Substrings,67,"        }
+",0.99999862909287
+New Distinct Substrings,68,"        return count;
+",0.9999085473794893
+New Distinct Substrings,69,"    }
+",0.999995887273327
+New Distinct Substrings,70,"}
+",0.9999568462371826

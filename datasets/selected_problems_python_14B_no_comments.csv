@@ -1,0 +1,1288 @@
+title,description,difficulty,source,solution,solution_no_comments
+Sports Rank,"Sports leagues rank their participants (teams or players) using a variety of point systems, but at the end of the day, all the fans really want to know is the rank of their team. This is where things get complicated, because there are several fairly common ranking systems in use.
+
+In competition ranking, a.k.a. “1224 ranking”, each participant’s ranking is 1 plus the number of participants ranked above them.
+
+In dense ranking, a.k.a. “1223 ranking”, each participant’s ranking is 1 plus the number of distinct ranks above them.
+
+Clearly some fans may prefer dense ranking over competition ranking for “their” team, since it makes their favorite sound better.
+
+Input
+The first input line will contain the number of data sets (1 <= d <= 1000).
+
+The next d lines each contain integers separated by single spaces. The first integer (1 <= n <= 100) indicates the number of scores (0 <= s <= 2000) to follow.
+
+Output
+Each data set should produce one line of output containing the number of participants who benefit from dense ranking.
+
+Sample Input 1
+3
+3 80 70 70
+10 50 60 70 10 20 30 40 30 80 90
+5 50 50 50 50 50
+
+Sample Output 1
+0
+2
+0",Medium,Kattis,"def competition_ranking(scores):
+    n = len(scores)
+    rank = [0] * n
+    sorted_indices = sorted(range(n), key=lambda k: -scores[k])
+    current_rank = 1
+    for i in range(n):
+        if i > 0 and scores[sorted_indices[i]] != scores[sorted_indices[i-1]]:
+            current_rank = i + 1
+        rank[sorted_indices[i]] = current_rank
+    return rank
+
+def dense_ranking(scores):
+    n = len(scores)
+    rank = [0] * n
+    sorted_indices = sorted(range(n), key=lambda k: -scores[k])
+    current_rank = 1
+    rank[sorted_indices[0]] = current_rank
+    for i in range(1, n):
+        if scores[sorted_indices[i]] != scores[sorted_indices[i-1]]:
+            current_rank += 1
+        rank[sorted_indices[i]] = current_rank
+    return rank
+
+def main():
+    import sys
+    input = sys.stdin.read
+    data = input().split()
+    
+    index = 0
+    d = int(data[index])
+    index += 1
+    
+    results = []
+    for _ in range(d):
+        n = int(data[index])
+        index += 1
+        scores = list(map(int, data[index:index+n]))
+        index += n
+        
+        comp_rank = competition_ranking(scores)
+        dense_rank = dense_ranking(scores)
+        
+        benefit_count = 0
+        for i in range(n):
+            if dense_rank[i] < comp_rank[i]:
+                benefit_count += 1
+        
+        results.append(benefit_count)
+    
+    for result in results:
+        print(result)
+
+if __name__ == ""__main__"":
+    main()","def competition_ranking(scores):
+    n = len(scores)
+    rank = [0] * n
+    sorted_indices = sorted(range(n), key=lambda k: -scores[k])
+    current_rank = 1
+    for i in range(n):
+        if i > 0 and scores[sorted_indices[i]] != scores[sorted_indices[i-1]]:
+            current_rank = i + 1
+        rank[sorted_indices[i]] = current_rank
+    return rank
+def dense_ranking(scores):
+    n = len(scores)
+    rank = [0] * n
+    sorted_indices = sorted(range(n), key=lambda k: -scores[k])
+    current_rank = 1
+    rank[sorted_indices[0]] = current_rank
+    for i in range(1, n):
+        if scores[sorted_indices[i]] != scores[sorted_indices[i-1]]:
+            current_rank += 1
+        rank[sorted_indices[i]] = current_rank
+    return rank
+def main():
+    import sys
+    input = sys.stdin.read
+    data = input().split()
+    index = 0
+    d = int(data[index])
+    index += 1
+    results = []
+    for _ in range(d):
+        n = int(data[index])
+        index += 1
+        scores = list(map(int, data[index:index+n]))
+        index += n
+        comp_rank = competition_ranking(scores)
+        dense_rank = dense_ranking(scores)
+        benefit_count = 0
+        for i in range(n):
+            if dense_rank[i] < comp_rank[i]:
+                benefit_count += 1
+        results.append(benefit_count)
+    for result in results:
+        print(result)
+if __name__ == ""__main__"":
+    main()"
+Solidus Fraction,"A fraction written with a solidus (/) can be written “inline”. However, a fraction may also be written with a horizontal line, known as a vinculum. When a vinculum is used, the numerator is written above and the denominator is written below.
+
+Write a program to convert a vinculum fraction to a solidus fraction.
+Input
+
+The first line contains the numerator (n) and optional whitespace allowing the numerator to be centered or right-aligned. The second line contains only the vinculum, which consists of one or more dashes (-). The third line contains the denominator (d) and optional whitespace allowing the denominator to be centered or right-aligned. (-10^18 <= d,n <= 10 ^ 18, d != 0)
+
+Output
+
+Write one line of output containing the reduced fraction, only use a solidus if necessary.
+
+Sample Input 1
+ -3
+ ----
+  4
+
+Sample Output 1
+-3/4
+
+Sample Input 2
+ 525
+ -----
+  -5 
+
+Sample Output 2
+-105",Medium,Kattis,"def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def main():
+    # Read the three lines of input
+    numerator_line = input().strip()
+    vinculum_line = input().strip()
+    denominator_line = input().strip()
+    
+    # Extract the numerator and denominator
+    numerator = int(numerator_line.strip())
+    denominator = int(denominator_line.strip())
+    
+    # Compute the GCD of the numerator and denominator
+    common_divisor = gcd(abs(numerator), abs(denominator))
+    
+    # Reduce the fraction
+    reduced_numerator = numerator // common_divisor
+    reduced_denominator = denominator // common_divisor
+    
+    # Determine the sign of the fraction
+    if reduced_numerator * reduced_denominator < 0:
+        reduced_numerator = -abs(reduced_numerator)
+        reduced_denominator = abs(reduced_denominator)
+    else:
+        reduced_numerator = abs(reduced_numerator)
+        reduced_denominator = abs(reduced_denominator)
+    
+    # Format the output
+    if reduced_denominator == 1:
+        print(reduced_numerator)
+    else:
+        print(f""{reduced_numerator}/{reduced_denominator}"")
+
+if __name__ == ""__main__"":
+    main()","def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+def main():
+    numerator_line = input().strip()
+    vinculum_line = input().strip()
+    denominator_line = input().strip()
+    numerator = int(numerator_line.strip())
+    denominator = int(denominator_line.strip())
+    common_divisor = gcd(abs(numerator), abs(denominator))
+    reduced_numerator = numerator // common_divisor
+    reduced_denominator = denominator // common_divisor
+    if reduced_numerator * reduced_denominator < 0:
+        reduced_numerator = -abs(reduced_numerator)
+        reduced_denominator = abs(reduced_denominator)
+    else:
+        reduced_numerator = abs(reduced_numerator)
+        reduced_denominator = abs(reduced_denominator)
+    if reduced_denominator == 1:
+        print(reduced_numerator)
+    else:
+        print(f""{reduced_numerator}/{reduced_denominator}"")
+if __name__ == ""__main__"":
+    main()"
+Breakout,"A variant of the popular video game breakout uses the following rules:
+
+    - Multiple bouncing balls (b) are used to destroy a w-wide and h-high brick wall. (0 < b, w, h <= 10^4)
+    - Each ball targets a specific position (t) on the bottom of the brick wall. (0<= t <w)
+    - When a ball hits the bottom of the brick wall it bounces off, and one or more bricks are destroyed.
+    - The power (p) of the ball determines how many bricks on each side of the targeted brick are also destroyed, if they exist. (0 <= p <= 10^4)
+    - When bricks are destroyed the bricks above them descend to fill-in the space created. Thus the bottom edge of the wall does not move.
+    - Bouncing balls rebound in such a way that the target is adjusted by d bricks. (-10^4 <= d <= 10^4)
+    - If no bricks remain above a destroyed brick a hole is formed in the wall.
+    - When a ball enters a hole or goes beyond the edge of the wall, it disappears.
+
+Simulate the game for a series of balls.
+
+Input
+
+The first line of input contains the number of balls (b), the width (w) and the height (h) of the wall, in that order separated by a single space.
+
+The next b lines contain the initial target (t), power (p), and adjustment (d) for each ball, in that order separated by a single space.
+
+Output
+
+For each ball, report the number of bricks the ball bounces off of, on a line by itself.
+
+Explanation of sample data
+
+The sample game begins with 10 columns, each of which contains 5 bricks, shown as x’s below.
+
+        xxxxxxxxxx
+        xxxxxxxxxx
+        xxxxxxxxxx
+        xxxxxxxxxx
+        xxxxxxxxxx      bottom edge of brick wall
+       [0123456789]   not part of the wall, only for reference
+
+The first ball targets column 1 (the second column). Since it has a power of 1, it will attempt to destroy the 3 bricks in columns 0, 1, 2 and (the target plus p on each side). Since it has an adjustment of 4, its second hit will target column 5 and affect columns 4, 5, and 6. Its next hit targets column 9, destroying only two bricks in columns 8 and 9. Its next hit would be column 13 which does not exist, so the ball disappears. In total it bounced off 3 bricks. After bricks above fill-in the missing bricks, the resulting wall is shown below.
+
+           x   x  
+        xxxxxxxxxx
+        xxxxxxxxxx
+        xxxxxxxxxx
+        xxxxxxxxxx
+       [0123456789]
+
+The next ball targets column 0 with a power of 1, removing 2 bricks. Since its adjustment is 1, its next target is column 1 and removes 3 bricks. This continues for columns 2 to 9, each removing 3 bricks, except the last one, which only removes 2 bricks. In total, the ball bounced off 10 bricks, leaving the wall shown below.
+
+        x  x   x x
+        xxxxxxxxxx
+       [0123456789]
+
+The third ball targets column 1 with a power of 4, thus attempting to remove 9 bricks. Only 4 bricks are removed because the columns below 0 do not exist. The ball now targets column 5, however that column is empty, so the ball disappears. The ball only bounced off 1 brick, and the wall looks like this.
+
+               x x
+        x  x  xxxx
+       [0123456789]
+
+Finally, a ball with power 10 targets column 4, which is empty. The ball disappears having bounced off 0 bricks, and without changing the wall.
+Sample Input 1
+
+4 10 5
+1 1 4
+0 1 1
+1 4 4
+4 10 0
+
+Sample Output 1
+
+3
+10
+1
+0",Medium,Kattis,"def simulate_brick_wall(b, w, h, balls):
+    # Initialize the wall with all bricks
+    wall = [[1 for _ in range(w)] for _ in range(h)]
+    
+    results = []
+    
+    for t, p, d in balls:
+        bounces = 0
+        
+        while 0 <= t < w:
+            # Determine the range of bricks to destroy
+            left = max(0, t - p)
+            right = min(w - 1, t + p)
+            
+            # Count the number of bricks in the range
+            bricks_to_destroy = sum(wall[h-1][left:right+1])
+            bounces += bricks_to_destroy
+            
+            # Destroy the bricks in the range
+            for i in range(left, right + 1):
+                wall[h-1][i] = 0
+            
+            # Let the bricks above fall down
+            for col in range(w):
+                for row in range(h-1, 0, -1):
+                    if wall[row][col] == 0:
+                        wall[row][col] = wall[row-1][col]
+                        wall[row-1][col] = 0
+            
+            # Check if the ball hits a hole
+            if all(wall[h-1][col] == 0 for col in range(w)):
+                break
+            
+            # Update the target position
+            t += d
+        
+        results.append(bounces)
+    
+    return results
+
+# Read input
+import sys
+input = sys.stdin.read
+data = input().split()
+
+b = int(data[0])
+w = int(data[1])
+h = int(data[2])
+
+balls = []
+index = 3
+for _ in range(b):
+    t = int(data[index])
+    p = int(data[index + 1])
+    d = int(data[index + 2])
+    balls.append((t, p, d))
+    index += 3
+
+# Simulate the game
+results = simulate_brick_wall(b, w, h, balls)
+
+# Print the results
+for result in results:
+    print(result)","def simulate_brick_wall(b, w, h, balls):
+    wall = [[1 for _ in range(w)] for _ in range(h)]
+    results = []
+    for t, p, d in balls:
+        bounces = 0
+        while 0 <= t < w:
+            left = max(0, t - p)
+            right = min(w - 1, t + p)
+            bricks_to_destroy = sum(wall[h-1][left:right+1])
+            bounces += bricks_to_destroy
+            for i in range(left, right + 1):
+                wall[h-1][i] = 0
+            for col in range(w):
+                for row in range(h-1, 0, -1):
+                    if wall[row][col] == 0:
+                        wall[row][col] = wall[row-1][col]
+                        wall[row-1][col] = 0
+            if all(wall[h-1][col] == 0 for col in range(w)):
+                break
+            t += d
+        results.append(bounces)
+    return results
+import sys
+input = sys.stdin.read
+data = input().split()
+b = int(data[0])
+w = int(data[1])
+h = int(data[2])
+balls = []
+index = 3
+for _ in range(b):
+    t = int(data[index])
+    p = int(data[index + 1])
+    d = int(data[index + 2])
+    balls.append((t, p, d))
+    index += 3
+results = simulate_brick_wall(b, w, h, balls)
+for result in results:
+    print(result)"
+Passport Dates,"Konráð has managed to obtain a big pile of Icelandic passports (don’t ask, don’t tell anyone either). Now he has the fun task ahead of him of getting all of the data he wants from the passports. He constructed a small robot arm to automatically open each one of them and take pictures of the relevant data. Then he threw together some image processing code to turn the pictures into the text he wanted from them. This was of course the simple part, now comes the tough part. Converting the format of the data to the ISO-8601 standard.
+
+He has lots of lines of text from Icelandic passports of the format dd ISM /ENM yy where dd is the day of the month, ISM is a three letter abbreviation of a month in Icelandic, ENM is a three letter abbreviation of a month in English and yy are the last two digits of the year. This date says when the passport will expire.
+
+He wants to change this data to the format yyyy-mm-dd where yyyy is the full year, mm is the month and dd the day of the month. All these numbers, both here and above, will have a fixed number of digits, so for example 7 will be formatted as 07.
+
+All the passports in the input will expire somewhere in the range 2015 and 2035. The date when this contest took place is eighth of March 2025.
+
+The Icelandic month name abbreviations are JAN, FEB, MAR, APR, MAÍ, JÚN, JÚL, ÁGÚ, SEP, OKT, NÓV, DES.
+
+The English month name abbreviations are JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC.
+
+Input
+One line of text from a passport as described above.
+
+Output
+The date from the passport in ISO-8601 format, as described above.
+
+Sample Input
+08 OKT /OCT 24
+
+Sample Output
+2024-10-08",Easy,Kattis,"def convert_date_to_iso8601(date_str):
+    # Split the input string into components
+    parts = date_str.split()
+    day = parts[0]
+    icelandic_month = parts[1]
+    english_month = parts[2][1:]  # Remove the '/' character
+    year = parts[3]
+
+    # Map month abbreviations to their respective numbers
+    month_map = {
+        ""JAN"": ""01"", ""FEB"": ""02"", ""MAR"": ""03"", ""APR"": ""04"",
+        ""MAÍ"": ""05"", ""JÚN"": ""06"", ""JÚL"": ""07"", ""ÁGÚ"": ""08"",
+        ""SEP"": ""09"", ""OKT"": ""10"", ""NÓV"": ""11"", ""DES"": ""12""
+    }
+
+    # Get the month number using the Icelandic month abbreviation
+    month_number = month_map.get(icelandic_month)
+
+    # Construct the ISO-8601 date
+    iso8601_date = f""20{year}-{month_number}-{day}""
+    
+    return iso8601_date
+
+# Example usage
+input_date = ""08 OKT /OCT 24""
+output_date = convert_date_to_iso8601(input_date)
+print(output_date)  # Output: 2024-10-08","def convert_date_to_iso8601(date_str):
+    parts = date_str.split()
+    day = parts[0]
+    icelandic_month = parts[1]
+    english_month = parts[2][1:]  
+    year = parts[3]
+    month_map = {
+        ""JAN"": ""01"", ""FEB"": ""02"", ""MAR"": ""03"", ""APR"": ""04"",
+        ""MAÍ"": ""05"", ""JÚN"": ""06"", ""JÚL"": ""07"", ""ÁGÚ"": ""08"",
+        ""SEP"": ""09"", ""OKT"": ""10"", ""NÓV"": ""11"", ""DES"": ""12""
+    }
+    month_number = month_map.get(icelandic_month)
+    iso8601_date = f""20{year}-{month_number}-{day}""
+    return iso8601_date
+input_date = ""08 OKT /OCT 24""
+output_date = convert_date_to_iso8601(input_date)
+print(output_date)"
+Weather Forecast,"One of the most important things you can do in Iceland is predict the weather. The weather in Iceland is difficult for many to endure, as an example Antarctica is the only place in the world windier than Iceland. The Icelandic Met Office has now sent you their data and your task is to predict the weather.
+
+Input
+
+The first line of the input contains two integers n, the number of data points, and m the number of data points to predict. The second line contains extra info about the data set, the latitude, longitude, height above sea level, the initial day and initial time of the data set.
+Next there are n lines, where each line denotes a measurement. Each such line contains temperature, average wind direction, average wind speed and humidity, separated by spaces. The measurements are made one hour apart.
+
+The temperatures are real numbers in the range -50 to 50, given with exactly one digit after the decimal point, measured in Celsius (C). Average wind directions are integers in the range 0 to 80, which denote the direction of the wind in degrees. Average wind speeds are real numbers in the range to given with exactly one digit after the decimal point, measured in m/s. Humidities are integers in the range 0 to 110, measured in percentages.
+
+Latitude, longitude and height above sea level are real numbers given with up to 6 digits after the decimal point. The initial date is in ISO-8601 format. The initial time is in ISO-8601 format, but without the trailing Z. The data is real measurement data from the Icelandic Met Office, taken in different locations around the country. It may happen that some measurements failed and then the corresponding value is replaced with -, a single dash.
+
+Output
+
+Print m lines, each of them in the same format as the data in the input, which give your prediction. The numbers have to satisfy the same constraints as in the input. You may also write - to omit values and make no prediction for them.
+
+The points are given in accordance with how accurate your prediction is, rounded to the nearest integer. There are 50 test cases and the sum of your score on each of those test cases gives your score. Thus each test case can give at most 2 points, with full points given for 99.5% or higher accuracy in the predicted values. Correctness is not measured linearly.
+
+If the output is not of the correct format that case gets 0 points. If the total number of points across all test cases is 0 the solution is deemed incorrect.
+
+Sample Input
+
+72 1
+63.9829 22.600517 50.9 2024-02-26 16:00:00
+5.4 187 4.1 93
+5.2 186 3.9 94
+4.6 187 3.0 94
+3.9 173 2.0 95
+3.2 77 0.7 95
+2.7 353 2.4 96
+3.8 302 8.1 91
+3.4 305 9.4 88
+3.8 296 11.3 85
+3.5 284 10.2 85
+2.9 276 10.7 87
+3.0 269 10.1 82
+2.6 290 10.0 83
+2.1 281 11.7 83
+1.2 274 12.9 92
+1.8 260 12.6 90
+2.4 263 12.8 72
+2.1 262 12.8 78
+2.2 257 15.6 74
+2.1 260 14.9 75
+2.4 263 14.1 69
+2.4 266 14.3 72
+2.5 271 14.5 85
+2.4 277 12.9 79
+1.8 293 14.3 86
+0.9 300 10.7 93
+0.7 304 8.4 89
+0.8 308 6.3 85
+0.8 302 5.5 82
+0.4 324 5.7 79
+0.0 312 5.1 78
+-0.3 301 5.7 77
+0.0 308 4.9 70
+-0.7 296 4.3 72
+-0.9 314 2.2 73
+-1.3 45 2.7 83
+-1.2 45 2.7 83
+-1.6 55 3.0 84
+-2.0 102 2.3 86
+-2.1 80 2.5 88
+-1.6 88 3.2 86
+-1.2 83 3.6 85
+-0.6 60 3.9 84
+-0.3 82 3.8 83
+-0.1 77 2.8 77
+0.9 61 3.9 70
+0.7 73 4.7 74
+1.1 79 3.1 71
+1.1 71 2.3 73
+1.1 49 1.8 70
+0.3 39 2.1 78
+-0.2 14 2.5 77
+-0.3 21 2.2 75
+-0.4 29 2.4 71
+-0.8 23 2.4 72
+-1.3 4 2.1 71
+-1.7 21 2.8 73
+-2.3 31 2.2 72
+-2.4 59 2.7 67
+-2.0 40 2.7 67
+-1.9 38 2.7 68
+-2.1 30 2.6 64
+-2.1 44 3.4 60
+-2.7 30 3.3 62
+-2.8 30 3.9 64
+-2.6 27 4.1 62
+-1.8 27 4.8 53
+-1.4 11 6.0 54
+-0.9 18 6.6 58
+-1.0 22 8.3 55
+-1.0 10 8.1 52
+-1.5 4 9.2 62
+
+Sample Output
+
+-1.5 10 7.6 64",Hard,Kattis,"def parse_input():
+    import sys
+    input = sys.stdin.read
+    data = input().splitlines()
+    
+    n, m = map(int, data[0].split())
+    metadata = data[1].split()
+    measurements = [line.split() for line in data[2:]]
+    
+    return n, m, metadata, measurements
+
+def process_measurements(measurements):
+    processed_data = []
+    for measurement in measurements:
+        if '-' in measurement:
+            processed_data.append(None)
+        else:
+            temp, wind_dir, wind_speed, humidity = measurement
+            processed_data.append((float(temp), int(wind_dir), float(wind_speed), int(humidity)))
+    return processed_data
+
+def predict_next_value(data, index, default_value=None):
+    if index < len(data) and data[index] is not None:
+        return data[index]
+    elif index > 0:
+        prev_value = data[index - 1]
+        if prev_value is not None:
+            return prev_value
+    return default_value
+
+def generate_predictions(processed_data, m):
+    predictions = []
+    for i in range(m):
+        next_index = len(processed_data) + i
+        temp = predict_next_value(processed_data, next_index, default_value='-')
+        wind_dir = predict_next_value(processed_data, next_index, default_value='-')
+        wind_speed = predict_next_value(processed_data, next_index, default_value='-')
+        humidity = predict_next_value(processed_data, next_index, default_value='-')
+        predictions.append((temp, wind_dir, wind_speed, humidity))
+    return predictions
+
+def print_predictions(predictions):
+    for prediction in predictions:
+        print(f""{prediction[0]} {prediction[1]} {prediction[2]} {prediction[3]}"")
+
+def main():
+    n, m, metadata, measurements = parse_input()
+    processed_data = process_measurements(measurements)
+    predictions = generate_predictions(processed_data, m)
+    print_predictions(predictions)
+
+if __name__ == ""__main__"":
+    main()","def parse_input():
+    import sys
+    input = sys.stdin.read
+    data = input().splitlines()
+    n, m = map(int, data[0].split())
+    metadata = data[1].split()
+    measurements = [line.split() for line in data[2:]]
+    return n, m, metadata, measurements
+def process_measurements(measurements):
+    processed_data = []
+    for measurement in measurements:
+        if '-' in measurement:
+            processed_data.append(None)
+        else:
+            temp, wind_dir, wind_speed, humidity = measurement
+            processed_data.append((float(temp), int(wind_dir), float(wind_speed), int(humidity)))
+    return processed_data
+def predict_next_value(data, index, default_value=None):
+    if index < len(data) and data[index] is not None:
+        return data[index]
+    elif index > 0:
+        prev_value = data[index - 1]
+        if prev_value is not None:
+            return prev_value
+    return default_value
+def generate_predictions(processed_data, m):
+    predictions = []
+    for i in range(m):
+        next_index = len(processed_data) + i
+        temp = predict_next_value(processed_data, next_index, default_value='-')
+        wind_dir = predict_next_value(processed_data, next_index, default_value='-')
+        wind_speed = predict_next_value(processed_data, next_index, default_value='-')
+        humidity = predict_next_value(processed_data, next_index, default_value='-')
+        predictions.append((temp, wind_dir, wind_speed, humidity))
+    return predictions
+def print_predictions(predictions):
+    for prediction in predictions:
+        print(f""{prediction[0]} {prediction[1]} {prediction[2]} {prediction[3]}"")
+def main():
+    n, m, metadata, measurements = parse_input()
+    processed_data = process_measurements(measurements)
+    predictions = generate_predictions(processed_data, m)
+    print_predictions(predictions)
+if __name__ == ""__main__"":
+    main()"
+Type Faster,"In programming contests it is often useful to type fast, especially when time penalties can swing you up and down many places in the scoreboard. You now wonder how much it would have taken to win a previous contest.
+
+You are quite optimistic so you assume you will solve all problems first try, so you only get time penalties for your first submission in each problem. The best team of the contest solved every problem, so you need to do the same and beat their time penalty. Let us also assume the contest has no time limit, outside of having to beat the top team’s time penalty. It is not sufficient to match their time penalty, yours has to be strictly lower.
+
+If you turn in a solution at x minute , the value x is added to your time penalty. This means that a solution submitted at 1 minute and 59 seconds gets a time penalty of 1 but one after 2 minutes gets a time penalty of 2.
+
+Thus if you can write 20 words per minute and a solution takes 100 words, and you start by solving that problem, you will get a time penalty of 5. But if it were 99 words you would get a time penalty of 4.
+You have figured out the solution to every problem in your head and know exactly how many words each problem would be. But you are unsure if you can type fast enough to beat the top team. Thus the question is, how many words per minute do you need to type to beat the top team?
+
+Input
+The first line of input contains two integers n, T. n is the number of problems on the contest you have to solve and is the time penalty of the top team that you have to beat. It will always hold that  1<= n <= 100000 and 1 <= T <= 10^18. The second and last line of input contains n integers w1, w2,...,wn. wi is the number of words the solution to the i-th problem has. It will always hold that 0 <= wi <= 10^9 for all i. The sum of all wi will not be 0.
+
+Output
+Print the lowest number of words per minute needed to beat the top team.
+
+Sample Input
+13 1274
+29 118 107 112 22 239 329 82 239 55 245 164 311
+
+Sample Output
+8",Hard,Kattis,"def min_typing_speed(n, T, words):
+    # Find the maximum word count among all problems
+    max_word_count = max(words)
+    
+    # Initialize the binary search range
+    low = 1
+    high = max_word_count
+    
+    # Variable to store the minimum typing speed found
+    min_speed = -1
+    
+    while low <= high:
+        mid = (low + high) // 2
+        
+        # Calculate the total time penalty for this typing speed
+        total_time_penalty = 0
+        for word_count in words:
+            total_time_penalty += (word_count + mid - 1) // mid
+        
+        # Check if the total time penalty is less than T
+        if total_time_penalty < T:
+            min_speed = mid
+            high = mid - 1
+        else:
+            low = mid + 1
+    
+    return min_speed
+
+# Read input
+n, T = map(int, input().split())
+words = list(map(int, input().split()))
+
+# Find and print the minimum typing speed
+print(min_typing_speed(n, T, words))","def min_typing_speed(n, T, words):
+    max_word_count = max(words)
+    low = 1
+    high = max_word_count
+    min_speed = -1
+    while low <= high:
+        mid = (low + high) // 2
+        total_time_penalty = 0
+        for word_count in words:
+            total_time_penalty += (word_count + mid - 1) // mid
+        if total_time_penalty < T:
+            min_speed = mid
+            high = mid - 1
+        else:
+            low = mid + 1
+    return min_speed
+n, T = map(int, input().split())
+words = list(map(int, input().split()))
+print(min_typing_speed(n, T, words))"
+Marathon,"Konni is just about to run a marathon for the first time. He’s well prepared for it and has all the equipment he needs to achieve a good time. Among the things he has prepared is a water pouch that will make sure he can drink constantly throughout the run. He wants to achieve the best time possible, and thus he needs some help planning on which refilling station he should stop to fill his water pouch.
+
+It takes Y seconds to fill his water pouch no matter the amount that is already in the pouch, and the pouch can hold at most X ml of liquid. Konni always remembers to fill his bag before he starts a marathon and for every metre that he runs, he will drink 1 ml of liquid. If Konni has no liquid left, he will need to jog until he gets more water.
+
+Can you help Konni in finding the best time he can run the marathon if he chooses to stop at the refilling stations in the most optimal way?
+
+As everyone knows a marathon is 42195 metres.
+
+Input
+The first line of input contains three integers 0 <= N <= 1000000, the amount of refilling stations, 0 <= X <= 10000 the size of the water pouch in ml, 0 <= Y <= 100 how long it takes to fill the water pouch.
+
+The next line contains two integers 1 <= H <= 10, the speed Konni runs at in metres per second and 1<=S<=H, the speed Konni jogs at in metres per second.
+
+Next will follow N lines, each containing one integer, where line contains the position of refilling station number given in metres from the start.
+
+Output
+Print the shortest time possible for Konni given that he chooses the refilling stations in the most optimal way in the format of hh:mm:ss.
+
+Sample Input 1
+1 1000 40
+10 5
+1000
+
+Sample Output 1
+02:17:59
+
+Sample Input 2
+5 500 20
+8 3
+100
+800
+1200
+20000
+30000
+
+Sample Output 2
+03:47:24",Medium,Kattis,"def calculate_time(N, X, Y, H, S, refill_stations):
+    # Start with a full water pouch
+    water = X
+    position = 0
+    time = 0
+    
+    refill_stations.sort()
+    
+    # Add a virtual refill station at the end of the marathon
+    refill_stations.append(42195)
+    
+    i = 0
+    while position < 42195:
+        next_station = refill_stations[i]
+        
+        # Calculate distance to the next station
+        distance = next_station - position
+        
+        # Check if Konni can run to the next station without needing to jog
+        if water >= distance:
+            # Run to the next station
+            time += distance // H
+            if distance % H != 0:
+                time += 1
+            water -= distance
+        else:
+            # Jog to the next refill station
+            while water < distance:
+                # Jog to the next refill station
+                jog_distance = min(X, distance - water)
+                time += jog_distance // S
+                if jog_distance % S != 0:
+                    time += 1
+                
+                # Fill the water pouch
+                time += Y
+                water = X
+            
+            # Now Konni can run to the next station
+            time += distance // H
+            if distance % H != 0:
+                time += 1
+            water -= distance
+        
+        # Move to the next refill station
+        position = next_station
+        i += 1
+    
+    # Convert time to hours, minutes, and seconds
+    hours = time // 3600
+    minutes = (time % 3600) // 60
+    seconds = time % 60
+    
+    # Format the output as hh:mm:ss
+    return f""{hours:02}:{minutes:02}:{seconds:02}""
+
+# Read input
+N, X, Y = map(int, input().split())
+H, S = map(int, input().split())
+refill_stations = [int(input()) for _ in range(N)]
+
+# Calculate and print the result
+print(calculate_time(N, X, Y, H, S, refill_stations))","def calculate_time(N, X, Y, H, S, refill_stations):
+    water = X
+    position = 0
+    time = 0
+    refill_stations.sort()
+    refill_stations.append(42195)
+    i = 0
+    while position < 42195:
+        next_station = refill_stations[i]
+        distance = next_station - position
+        if water >= distance:
+            time += distance // H
+            if distance % H != 0:
+                time += 1
+            water -= distance
+        else:
+            while water < distance:
+                jog_distance = min(X, distance - water)
+                time += jog_distance // S
+                if jog_distance % S != 0:
+                    time += 1
+                time += Y
+                water = X
+            time += distance // H
+            if distance % H != 0:
+                time += 1
+            water -= distance
+        position = next_station
+        i += 1
+    hours = time // 3600
+    minutes = (time % 3600) // 60
+    seconds = time % 60
+    return f""{hours:02}:{minutes:02}:{seconds:02}""
+N, X, Y = map(int, input().split())
+H, S = map(int, input().split())
+refill_stations = [int(input()) for _ in range(N)]
+print(calculate_time(N, X, Y, H, S, refill_stations))"
+Diggy Hole,"There is an old riddle that is as follows: If four workers take four hours to dig four holes, how long does it take two workers to dig half a hole?
+
+We see that each worker takes four hours to dig a hole, so assuming they can work on the same hole in tandem, the answer should be one hour. The answer to the riddle is however that there is no such thing as half a hole, which is a dumb and stupid answer. Absolute cop out.
+
+Thus, we now solve the actual riddle by giving that n workers take h hours to dig out x cubic metres. We then ask how long it would take m workers to dig out y cubic metres. You may assume all workers work equally hard, they continue working at the same pace indefinitely and that they can work in tandem on the same cubic metres.
+
+Input
+
+The input consists of 5 lines. The lines contain the integers n, h, x, m,y in that order. The values are always between 1 and 100, inclusive.
+
+Output
+
+Print the answer to the updated riddle. As the answer might not be an integer we will consider an answer correct if its absolute or relative error from the correct answer is at most 1%. Thus it does not matter how many digits are printed after the decimal point exactly, as long as it is accurate enough.
+
+Sample Input 1
+4
+4
+4
+2
+1
+
+Sample Output 1
+2.000000000000000
+
+Sample Input 2
+1
+2
+3
+4
+5
+
+Sample Output 2
+0.833333333333333",Easy,Kattis,"# Read input values
+n = int(input())
+h = int(input())
+x = int(input())
+m = int(input())
+y = int(input())
+
+# Calculate the work rate per worker per hour
+work_rate_per_worker_per_hour = x / (n * h)
+
+# Calculate the total work rate for m workers
+total_work_rate_for_m_workers = m * work_rate_per_worker_per_hour
+
+# Calculate the time required for m workers to dig y cubic metres
+time_required = y / total_work_rate_for_m_workers
+
+# Print the result
+print(time_required)","n = int(input())
+h = int(input())
+x = int(input())
+m = int(input())
+y = int(input())
+work_rate_per_worker_per_hour = x / (n * h)
+total_work_rate_for_m_workers = m * work_rate_per_worker_per_hour
+time_required = y / total_work_rate_for_m_workers
+print(time_required)"
+Hair Dyeing,"Your friend has grown tired of their natural hair color and has decided it’s time for a change.
+
+Every day, your local hair salon has a big discount on one of its 10 hair dyes (none of which match your friend’s natural hair color). They maintain a preliminary schedule of their discounts for the next N days but warn that the schedule may change in the future. Dyeing hair is, of course, not something to be done half-heartedly, so your friend wants to make a plan for how to dye their hair in the coming days.
+
+Such a plan determines on which days your friend will go to dye their hair. When dyeing, they always choose the discounted color since it would be too expensive otherwise. In total, there are 2^N possible plans. However, they do not accept all plans: naturally, they do not want to dye their hair the same color two days in a row.
+
+You have been asked by your friend to calculate how many different such plans they could create. However, each time you provide an answer, your friend informs you that the salon has updated its schedule, changing which color is on discount on one of the days.
+
+Since the answer can be very large, you should output it modulo 2^64. This means the remainder of the answer after dividing by 2^64. In most programming languages, all calculations are automatically performed modulo 2^64 when using unsigned 64-bit integers. 
+
+Input
+
+The first line of input contains two integers, N and Q(1 <= N <= 10^5), representing the number of days in the schedule and the number of schedule updates.
+
+Next, there are N integers ai (0 <= ai <= 9), where ai indicates that color ai is on discount on day i.
+
+After that, there are Q lines, each containing the integers i and v (1<= i <= N, 0 <= v <= 9), meaning that on day i, the discount is now on color v.
+
+Note that both ai and v are very small.
+
+Output
+
+First, print the number of hair-dyeing plans that can be created from the original schedule, modulo 2^64.
+
+Then, after each update, print the number of plans that can be created modulo 2^64.
+
+Explanation of Sample
+There are 4 plans: either the friend can choose not to dye their hair at all or dye their hair exactly once.
+
+Note that plans that contain only the color are counted twice since dyeing hair on different days counts as different plans, even if the color is the same.
+
+Sample Input
+3 0
+0 0 0
+
+Sample Output
+4",Hard,Kattis,"MOD = 2**64
+
+def count_plans(N, discounts):
+    # Initialize the dp arrays
+    dp_same = [0] * 10
+    dp_diff = [0] * 10
+    
+    # Base case: If there's only one day, we can either dye or not dye
+    for color in range(10):
+        dp_diff[color] = 1
+    
+    # Fill the dp arrays for each day
+    for day in range(1, N):
+        new_dp_same = [0] * 10
+        new_dp_diff = [0] * 10
+        
+        for color in range(10):
+            if discounts[day] == discounts[day - 1]:
+                new_dp_same[color] = (dp_same[color] + dp_diff[color]) % MOD
+            else:
+                new_dp_diff[color] = (dp_same[color] + dp_diff[color]) % MOD
+                if discounts[day] != color:
+                    new_dp_diff[color] = (new_dp_diff[color] + dp_same[discounts[day]]) % MOD
+        
+        dp_same, dp_diff = new_dp_same, new_dp_diff
+    
+    # Sum up all the possibilities
+    total_plans = sum(dp_same) + sum(dp_diff)
+    return total_plans % MOD
+
+# Read input
+N, Q = map(int, input().split())
+discounts = list(map(int, input().split()))
+
+# Calculate initial plans
+initial_plans = count_plans(N, discounts)
+print(initial_plans)
+
+# Process each update
+for _ in range(Q):
+    i, v = map(int, input().split())
+    discounts[i - 1] = v
+    updated_plans = count_plans(N, discounts)
+    print(updated_plans)","MOD = 2**64
+def count_plans(N, discounts):
+    dp_same = [0] * 10
+    dp_diff = [0] * 10
+    for color in range(10):
+        dp_diff[color] = 1
+    for day in range(1, N):
+        new_dp_same = [0] * 10
+        new_dp_diff = [0] * 10
+        for color in range(10):
+            if discounts[day] == discounts[day - 1]:
+                new_dp_same[color] = (dp_same[color] + dp_diff[color]) % MOD
+            else:
+                new_dp_diff[color] = (dp_same[color] + dp_diff[color]) % MOD
+                if discounts[day] != color:
+                    new_dp_diff[color] = (new_dp_diff[color] + dp_same[discounts[day]]) % MOD
+        dp_same, dp_diff = new_dp_same, new_dp_diff
+    total_plans = sum(dp_same) + sum(dp_diff)
+    return total_plans % MOD
+N, Q = map(int, input().split())
+discounts = list(map(int, input().split()))
+initial_plans = count_plans(N, discounts)
+print(initial_plans)
+for _ in range(Q):
+    i, v = map(int, input().split())
+    discounts[i - 1] = v
+    updated_plans = count_plans(N, discounts)
+    print(updated_plans)"
+Date Picker,"The NWERC is coming up and your agenda is filling up with meetings. One of your teammates wants to plan a meeting, and asks for your input. However, instead of asking you for your exact agenda, you have to fill out two separate polls: one for indicating which days you are available, and one for the hours! 
+
+As a computer scientist, you plan your meetings only on whole hours and each meeting takes an integer number of hours. Therefore, your agenda can be modelled as a matrix of 7 rows (days), and 24 columns (hours). Each cell in this matrix is either ‘.’ or ‘x’, meaning that hour of that day you are either free or have a meeting, respectively.
+
+You have to pick at least d days in the first poll and h hours in the second poll, and we assume the meeting will take place on any of your picked hour/day combinations with equal probability. What is the probability that you can attend the meeting if you fill in the polls optimally?
+
+Input
+The input consists of:
+    - 7 lines with 24 characters, each character being either ‘.’ or ‘x’, with ‘.’ indicating the time slots you are available.
+    - One line with two integers d and h (1 <= d <= 7, 1 <= h <= 24 ), the minimum number of days and hours you have to fill in.
+
+Output
+Output the probability that you are available at the chosen meeting time.
+
+Sample Input
+xxxxxx..xx..xxxxxxxxxxxx
+xxxxxxxxxxxxx....xxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxx..xx..xxxxxxxxxxxx
+xxxxxxxxxxxxx...x..xxxxx
+xxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxx
+2 5
+
+Sample Output
+0.8",Hard,Kattis,"def parse_input():
+    # Read the 7 lines of the availability matrix
+    matrix = []
+    for _ in range(7):
+        matrix.append(input().strip())
+    
+    # Read the values of d and h
+    d, h = map(int, input().strip().split())
+    return matrix, d, h
+
+def count_free_hours(matrix):
+    total_free_hours = 0
+    free_hours_per_day = [0] * 7
+    
+    for i in range(7):
+        for j in range(24):
+            if matrix[i][j] == '.':
+                total_free_hours += 1
+                free_hours_per_day[i] += 1
+    
+    return total_free_hours, free_hours_per_day
+
+def optimal_selection(free_hours_per_day, d, h):
+    # Sort days by the number of free hours in descending order
+    sorted_days = sorted(range(7), key=lambda x: free_hours_per_day[x], reverse=True)
+    
+    # Select the top d days
+    selected_days = sorted_days[:d]
+    
+    # Calculate the total number of free hours in the selected days
+    total_selected_hours = sum(free_hours_per_day[day] for day in selected_days)
+    
+    # If there are fewer than h free hours in the selected days, adjust h
+    if total_selected_hours < h:
+        h = total_selected_hours
+    
+    # Calculate the number of possible meeting times
+    possible_meeting_times = d * h
+    
+    return possible_meeting_times
+
+def calculate_probability(total_free_hours, possible_meeting_times):
+    # Calculate the probability
+    probability = total_free_hours / possible_meeting_times
+    return probability
+
+def main():
+    matrix, d, h = parse_input()
+    total_free_hours, free_hours_per_day = count_free_hours(matrix)
+    possible_meeting_times = optimal_selection(free_hours_per_day, d, h)
+    probability = calculate_probability(total_free_hours, possible_meeting_times)
+    print(probability)
+
+# Run the main function
+if __name__ == ""__main__"":
+    main()","def parse_input():
+    matrix = []
+    for _ in range(7):
+        matrix.append(input().strip())
+    d, h = map(int, input().strip().split())
+    return matrix, d, h
+def count_free_hours(matrix):
+    total_free_hours = 0
+    free_hours_per_day = [0] * 7
+    for i in range(7):
+        for j in range(24):
+            if matrix[i][j] == '.':
+                total_free_hours += 1
+                free_hours_per_day[i] += 1
+    return total_free_hours, free_hours_per_day
+def optimal_selection(free_hours_per_day, d, h):
+    sorted_days = sorted(range(7), key=lambda x: free_hours_per_day[x], reverse=True)
+    selected_days = sorted_days[:d]
+    total_selected_hours = sum(free_hours_per_day[day] for day in selected_days)
+    if total_selected_hours < h:
+        h = total_selected_hours
+    possible_meeting_times = d * h
+    return possible_meeting_times
+def calculate_probability(total_free_hours, possible_meeting_times):
+    probability = total_free_hours / possible_meeting_times
+    return probability
+def main():
+    matrix, d, h = parse_input()
+    total_free_hours, free_hours_per_day = count_free_hours(matrix)
+    possible_meeting_times = optimal_selection(free_hours_per_day, d, h)
+    probability = calculate_probability(total_free_hours, possible_meeting_times)
+    print(probability)
+if __name__ == ""__main__"":
+    main()"
+Contrarianism,"Writing problems for the Icelandic High School Programming Contest is a time consuming endeavour. Part of the reason for this is how much the judges like to argue and disagree with each other at meetings. By far the worst culprit in these matters is Atli, who seems to disagree with absolutely everything just for the sake of argument. It does not matter what is said, Atli always says something else.
+
+To save time you could perhaps implement an artificial intelligence that takes over this self-proclaimed role! Only thing it needs to do is say anything other than what is in the input!
+
+Input
+
+The input consists of a single line. The input contains up to 10 characters, along with a terminating newline character. These characters can be any letters or digits in ASCII, along with spaces. This can then be all English letters from a to z, all English letters from A to Z, the digits 0 through 9 and spaces.
+
+Note that the input can be an empty line!
+Output
+
+Print anything other than the input. The output can be at most 10 letters along with a newline character, and is subject to the same character restrictions as the input. The output must end with a newline character.
+
+Sample Input 
+ja
+
+Sample Output
+nei",Easy,Kattis,"# Read input
+input_line = []
+while True:
+    char = input()
+    if char == '\n':
+        break
+    input_line.append(char)
+
+# Process input
+output_line = []
+if len(input_line) > 0:
+    # Reverse the input line
+    for i in range(len(input_line) - 1, -1, -1):
+        output_line.append(input_line[i])
+else:
+    # If input is empty, output a fixed string
+    output_line = ['a', 'l', 'l', ' ', 'd', 'i', 'f', 'f', 'e', 'r', 'e', 'n', 't']
+
+# Ensure output does not exceed 10 characters
+if len(output_line) > 10:
+    output_line = output_line[:10]
+
+# Print the output with a newline
+for char in output_line:
+    print(char, end='')
+print('\n')","input_line = []
+while True:
+    char = input()
+    if char == '\n':
+        break
+    input_line.append(char)
+output_line = []
+if len(input_line) > 0:
+    for i in range(len(input_line) - 1, -1, -1):
+        output_line.append(input_line[i])
+else:
+    output_line = ['a', 'l', 'l', ' ', 'd', 'i', 'f', 'f', 'e', 'r', 'e', 'n', 't']
+if len(output_line) > 10:
+    output_line = output_line[:10]
+for char in output_line:
+    print(char, end='')
+print('\n')"
+Mouse Pursuit,"Brandon is playing the newest idle game, Mouse Pursuit! The goal of this game is to pursue mice for cheese and glory.
+
+In Mouse Pursuit, an event consists of pursuing a mouse. If the mouse is caught, the player might earn cheese and glory. However, if the mouse is not caught, the player might lose cheese and glory.
+
+Given Brandon’s recent events, Brandon wants to know how much cheese and glory he earned in the last k seconds.
+
+Input
+
+The first line of input contains a single integer, n (1 <= n <= 10^5).
+
+The next n lines take one of two forms:
+    - CAUGHT s c g: A mouse was caught exactly s seconds ago. The player gained c pieces of cheese and g units of glory.
+    - MISS s c g: A mouse was missed exactly s seconds ago. The player lost c pieces of cheese and g units of glory.
+
+For all events, 0 <= c,g <= 10^6 and 1 <= s <= 10^9. It is guaranteed that no two events happened at exactly the same time.
+
+The last line contains a single integer k. It is guaranteed that no event happened exactly k seconds ago.
+
+Output 
+Output two integers - the number of pieces of cheese Brandon gained in the last k seconds, and the number of units of glory Brandon gained in the last k seconds.
+
+Sample Input
+3
+CAUGHT 1 6 5
+MISS 4 1 2
+CAUGHT 8 0 3
+5
+
+Sample Output
+5 3",Easy,Kattis,"def main():
+    import sys
+    input = sys.stdin.read
+    data = input().split()
+
+    index = 0
+    n = int(data[index])
+    index += 1
+
+    events = []
+    for _ in range(n):
+        event_type = data[index]
+        index += 1
+        s = int(data[index])
+        index += 1
+        c = int(data[index])
+        index += 1
+        g = int(data[index])
+        index += 1
+        events.append((event_type, s, c, g))
+
+    k = int(data[index])
+
+    current_time = max(event[1] for event in events)  # Assume the current time is the maximum event time
+    total_cheese = 0
+    total_glory = 0
+
+    for event_type, s, c, g in events:
+        if current_time - s <= k:
+            if event_type == ""CAUGHT"":
+                total_cheese += c
+                total_glory += g
+            elif event_type == ""MISS"":
+                total_cheese -= c
+                total_glory -= g
+
+    print(total_cheese, total_glory)
+
+if __name__ == ""__main__"":
+    main()","def main():
+    import sys
+    input = sys.stdin.read
+    data = input().split()
+    index = 0
+    n = int(data[index])
+    index += 1
+    events = []
+    for _ in range(n):
+        event_type = data[index]
+        index += 1
+        s = int(data[index])
+        index += 1
+        c = int(data[index])
+        index += 1
+        g = int(data[index])
+        index += 1
+        events.append((event_type, s, c, g))
+    k = int(data[index])
+    current_time = max(event[1] for event in events)  
+    total_cheese = 0
+    total_glory = 0
+    for event_type, s, c, g in events:
+        if current_time - s <= k:
+            if event_type == ""CAUGHT"":
+                total_cheese += c
+                total_glory += g
+            elif event_type == ""MISS"":
+                total_cheese -= c
+                total_glory -= g
+    print(total_cheese, total_glory)
+if __name__ == ""__main__"":
+    main()"
