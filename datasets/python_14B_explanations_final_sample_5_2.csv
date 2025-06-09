@@ -1,0 +1,720 @@
+title,sample_number,explanation
+Marathon,1,"``` [Line 1]: Explanation: The entry point of the program. It defines the main function which will contain all the logic.
+[Line 2]: Explanation: Reads the first line of input and splits it into three integers: N (number of refill stations), X (size of the water pouch in ml), and Y (time to fill the water pouch in seconds). These values are then unpacked into their respective variables.
+[Line 3]: Explanation: Reads the second line of input and splits it into two integers: H (running speed in metres per second) and S (jogging speed in metres per second). These values are then unpacked into their respective variables.
+[Line 4]: Explanation: Reads the next N lines of input, each containing the position of a refill station in metres from the start. It converts these positions into a list of integers called refill_stations.
+[Line 5]: Explanation: Initializes a variable current_position to 0, representing Konni's starting position at the beginning of the marathon.
+[Line 6]: Explanation: Initializes a variable water_amount to X, representing the initial amount of water in Konni's water pouch before the marathon starts.
+[Line 7]: Explanation: Initializes a variable total_time to 0, representing the total time taken by Konni to complete the marathon.
+[Line 8]: Explanation: Appends the final position of the marathon (42195 metres) to the list of refill stations. This ensures that the last segment of the marathon is considered.
+[Line 9]: Explanation: Starts a loop that iterates over the refill stations. The loop variable i represents the index of the current refill station.
+[Line 10]: Explanation: Retrieves the position of the next refill station (or the end of the marathon) from the refill_stations list and assigns it to the variable next_station.
+[Line 11]: Explanation: Calculates the distance from the current position to the next refill station by subtracting current_position from next_station and assigns it to the variable distance_to_next.
+[Line 12]: Explanation: Determines the maximum distance Konni can run without needing to refill by using the current water_amount. This value is assigned to the variable max_run_distance.
+[Line 13]: Explanation: Checks if the maximum run distance (max_run_distance) is greater than or equal to the distance to the next refill station (distance_to_next).
+[Line 14]: Explanation: If Konni can run the entire distance to the next refill station without needing to refill, this line calculates the time taken to run that distance at the running speed H (in seconds) and adds it to the total_time.
+[Line 15]: Explanation: Decreases the water_amount by the distance_to_next, as Konni has consumed water during the run.
+[Line 16]: Explanation: If Konni cannot run the entire distance to the next refill station without needing to refill, this line calculates the time taken to run the maximum possible distance at the running speed H (in seconds) and adds it to the total_time.
+[Line 17]: Explanation: Decreases the water_amount by the max_run_distance, as Konni has consumed water during the run.
+[Line 18]: Explanation: Calculates the remaining distance that Konni needs to cover by jogging after running the maximum possible distance. This value is assigned to the variable jogging_distance.
+[Line 19]: Explanation: Calculates the time taken to jog the remaining distance at the jogging speed S (in seconds) and adds it to the total_time.
+[Line 20]: Explanation: Checks if the current refill station is not the last one (i.e., i < N).
+[Line 21]: Explanation: If Konni reaches a refill station, this line refills the water pouch to its maximum capacity X.
+[Line 22]: Explanation: Updates the current_position to the next_station, reflecting Konni's new position.
+[Line 23]: Explanation: After the loop completes, this line calculates the number of hours by performing integer division of total_time by 3600.
+[Line 24]: Explanation: Calculates the number of minutes by taking the remainder of total_time divided by 3600, then performing integer division by 60.
+[Line 25]: Explanation: Calculates the number of seconds by taking the remainder of total_time divided by 60.
+[Line 26]: Explanation: Formats and prints the total time taken to complete the marathon in the format of hh:mm:ss.
+[Line 27]: Explanation: Ensures that the main function is executed when the script is run directly."
+Marathon,2,"``` [Line 1]: Explanation: The main function is defined to encapsulate the logic of the program.
+[Line 2]: Explanation: The first line of input is read and split into three integers N, X, and Y. These represent the number of refilling stations, the capacity of the water pouch in ml, and the time it takes to fill the water pouch in seconds, respectively.
+[Line 3]: Explanation: The second line of input is read and split into two integers H and S. These represent Konni's running speed in metres per second and his jogging speed in metres per second, respectively.
+[Line 4]: Explanation: A list comprehension is used to read the next N lines of input, each containing an integer representing the position of a refilling station in metres from the start. These positions are stored in the list `refill_stations`.
+[Line 5]: Explanation: The variable `current_position` is initialized to 0, representing the starting point of the marathon.
+[Line 6]: Explanation: The variable `water_amount` is initialized to X, representing the initial amount of water in the pouch.
+[Line 7]: Explanation: The variable `total_time` is initialized to 0, representing the total time taken for the marathon.
+[Line 8]: Explanation: The position of the finish line, 42195 metres, is appended to the `refill_stations` list to handle the final segment of the race.
+[Line 9]: Explanation: A for loop iterates over the length of the `refill_stations` list.
+[Line 10]: Explanation: The variable `next_station` is assigned the value of the current refill station position from the list.
+[Line 11]: Explanation: The variable `distance_to_next` is calculated as the difference between the position of the next station and the current position.
+[Line 12]: Explanation: The variable `max_run_distance` is set to the current amount of water in the pouch, representing the maximum distance Konni can run without needing to jog.
+[Line 13]: Explanation: An if statement checks if the maximum run distance is greater than or equal to the distance to the next station.
+[Line 14]: Explanation: If the condition is true, the total time is increased by the distance to the next station divided by Konni's running speed H. This represents the time taken to run to the next station.
+[Line 15]: Explanation: The water amount is decreased by the distance to the next station, representing the water consumed during the run.
+[Line 16]: Explanation: If the condition in the if statement is false, the total time is increased by the maximum run distance divided by Konni's running speed H. This represents the time taken to run the maximum possible distance before needing to jog.
+[Line 17]: Explanation: The water amount is decreased by the maximum run distance, representing the water consumed during the run.
+[Line 18]: Explanation: The variable `jogging_distance` is calculated as the difference between the distance to the next station and the maximum run distance.
+[Line 19]: Explanation: The total time is increased by the jogging distance divided by Konni's jogging speed S. This represents the time taken to jog to the next station.
+[Line 20]: Explanation: An if statement checks if the current index is less than N, indicating that the current station is not the last one.
+[Line 21]: Explanation: If the condition is true, the water amount is reset to X, representing a full refill at the current station.
+[Line 22]: Explanation: The variable `current_position` is updated to the position of the next station.
+[Line 23]: Explanation: After the loop, the total time is converted to hours, minutes, and seconds.
+[Line 24]: Explanation: The variable `hours` is calculated by performing integer division of the total time by 3600.
+[Line 25]: Explanation: The variable `minutes` is calculated by taking the remainder of the total time divided by 3600 and then performing integer division by 60.
+[Line 26]: Explanation: The variable `seconds` is calculated by taking the remainder of the total time divided by 60.
+[Line 27]: Explanation: The total time is printed in the format ""hh:mm:ss"".
+[Line 28]: Explanation: An if statement checks if the script is being run as the main module.
+[Line 29]: Explanation: If the condition is true, the `main` function is called to execute the program.```"
+Marathon,3,"[Line 1]: Explanation: Define the main function to encapsulate the program logic.
+[Line 2]: Explanation: Read the first line of input, split it into three integers, and assign them to N, X, and Y respectively. These represent the number of refill stations, the capacity of the water pouch in milliliters, and the time it takes to refill the pouch in seconds.
+[Line 3]: Explanation: Read the next line of input, split it into two integers, and assign them to H and S respectively. These represent Konni's running speed in meters per second and his jogging speed in meters per second.
+[Line 4]: Explanation: Read the next N lines of input, convert each line to an integer, and store them in the list refill_stations. These represent the positions of the refill stations in meters from the start.
+[Line 5]: Explanation: Initialize the variable current_position to 0, representing the starting position.
+[Line 6]: Explanation: Initialize the variable water_amount to X, representing the initial amount of water in the pouch.
+[Line 7]: Explanation: Initialize the variable total_time to 0, representing the total time taken to complete the marathon.
+[Line 8]: Explanation: Append the final position of the marathon, 42195 meters, to the list of refill stations. This ensures that the loop processes the entire distance of the marathon.
+[Line 9]: Explanation: Start a loop that iterates over the refill stations.
+[Line 10]: Explanation: Assign the current refill station position to the variable next_station.
+[Line 11]: Explanation: Calculate the distance from the current position to the next refill station and assign it to the variable distance_to_next.
+[Line 12]: Explanation: Assign the maximum distance Konni can run with the current water amount to the variable max_run_distance.
+[Line 13]: Explanation: Check if the maximum run distance is greater than or equal to the distance to the next refill station.
+[Line 14]: Explanation: If true, add the time taken to run the distance to the next refill station to the total time. The time is calculated by dividing the distance by Konni's running speed H.
+[Line 15]: Explanation: Subtract the distance run from the current water amount.
+[Line 16]: Explanation: If false, add the time taken to run the maximum possible distance to the total time.
+[Line 17]: Explanation: Subtract the maximum possible distance run from the current water amount.
+[Line 18]: Explanation: Calculate the remaining distance that needs to be covered by jogging and assign it to the variable jogging_distance.
+[Line 19]: Explanation: Add the time taken to jog the remaining distance to the total time.
+[Line 20]: Explanation: Check if the current refill station is not the last one.
+[Line 21]: Explanation: If true, refill the water pouch to its full capacity.
+[Line 22]: Explanation: Update the current position to the next refill station.
+[Line 23]: Explanation: Calculate the number of hours by performing integer division of the total time by 3600.
+[Line 24]: Explanation: Calculate the number of minutes by taking the remainder of the total time divided by 3600, then performing integer division by 60.
+[Line 25]: Explanation: Calculate the number of seconds by taking the remainder of the total time divided by 60.
+[Line 26]: Explanation: Print the total time in the format of hours, minutes, and seconds, ensuring that each component is two digits wide.
+[Line 27]: Explanation: Check if the script is being run as the main module.
+[Line 28]: Explanation: If true, call the main function to execute the program."
+Marathon,4,"[Line 1]: Explanation: The main function is defined to encapsulate the logic of the program.
+[Line 2]: Explanation: The first line of input is read and split into three integers: N (number of refill stations), X (size of the water pouch in ml), and Y (time to fill the water pouch in seconds).
+[Line 3]: Explanation: The second line of input is read and split into two integers: H (running speed in metres per second) and S (jogging speed in metres per second).
+[Line 4]: Explanation: A list comprehension is used to read the next N lines of input, each containing the position of a refill station in metres from the start, and store these positions in the `refill_stations` list.
+[Line 5]: Explanation: The variable `current_position` is initialized to 0, representing the starting position of Konni.
+[Line 6]: Explanation: The variable `water_amount` is initialized to X, representing the full capacity of the water pouch.
+[Line 7]: Explanation: The variable `total_time` is initialized to 0, which will be used to accumulate the total time taken for the marathon.
+[Line 8]: Explanation: The position of the finish line (42195 metres) is appended to the `refill_stations` list to ensure Konni reaches the end of the marathon.
+[Line 9]: Explanation: A for loop iterates over the `refill_stations` list.
+[Line 10]: Explanation: The variable `next_station` is assigned the value of the current refill station position.
+[Line 11]: Explanation: The variable `distance_to_next` is calculated as the difference between the position of the next station and the current position.
+[Line 12]: Explanation: The variable `max_run_distance` is set to the current `water_amount`, representing the maximum distance Konni can run without needing to jog.
+[Line 13]: Explanation: An if statement checks if the `max_run_distance` is greater than or equal to the `distance_to_next`.
+[Line 14]: Explanation: If Konni can run the entire distance to the next station without needing to jog, the time taken to run this distance is added to `total_time`. The time is calculated by dividing the `distance_to_next` by the running speed `H`.
+[Line 15]: Explanation: The `water_amount` is decreased by the `distance_to_next` since Konni has consumed water while running.
+[Line 16]: Explanation: If the else block is executed, it means Konni cannot run the entire distance to the next station without needing to jog.
+[Line 17]: Explanation: The time taken to run the maximum possible distance (`max_run_distance`) is added to `total_time`.
+[Line 18]: Explanation: The `water_amount` is decreased by the `max_run_distance` since Konni has consumed water while running.
+[Line 19]: Explanation: The variable `jogging_distance` is calculated as the difference between the `distance_to_next` and the `max_run_distance`, representing the distance Konni needs to jog.
+[Line 20]: Explanation: The time taken to jog the `jogging_distance` is added to `total_time`.
+[Line 21]: Explanation: An if statement checks if the current index `i` is less than `N`, meaning there are more refill stations after the current one.
+[Line 22]: Explanation: If there are more refill stations, Konni refills his water pouch to its full capacity `X` before moving to the next station.
+[Line 23]: Explanation: The `current_position` is updated to the `next_station` position.
+[Line 24]: Explanation: The variable `hours` is calculated by performing integer division of `total_time` by 3600, representing the total hours taken.
+[Line 25]: Explanation: The variable `minutes` is calculated by taking the remainder of `total_time` divided by 3600, then performing integer division by 60, representing the total minutes taken.
+[Line 26]: Explanation: The variable `seconds` is calculated by taking the remainder of `total_time` divided by 60, representing the total seconds taken.
+[Line 27]: Explanation: The total time taken for the marathon is printed in the format of hours, minutes, and seconds.
+[Line 28]: Explanation: The if statement checks if the script is being run as the main module.
+[Line 29]: Explanation: The `main()` function is called to execute the program."
+Marathon,5,"[Line 1]: Explanation: Defines the main function where the execution of the program begins.
+[Line 2]: Explanation: Reads the first line of input, splits it into three integers, and assigns them to N, X, and Y respectively. N represents the number of refilling stations, X is the capacity of the water pouch in ml, and Y is the time in seconds it takes to fill the pouch.
+[Line 3]: Explanation: Reads the second line of input, splits it into two integers, and assigns them to H and S respectively. H is Konni's running speed in meters per second, and S is his jogging speed in meters per second.
+[Line 4]: Explanation: Reads the next N lines of input, converts each line to an integer, and stores them in a list called refill_stations. Each element in the list represents the position of a refilling station in meters from the start of the marathon.
+[Line 5]: Explanation: Initializes a variable current_position to 0, representing Konni's starting position at the beginning of the marathon.
+[Line 6]: Explanation: Initializes a variable water_amount to X, representing the initial amount of water in Konni's water pouch before he starts the marathon.
+[Line 7]: Explanation: Initializes a variable total_time to 0, representing the total time taken by Konni to complete the marathon.
+[Line 8]: Explanation: Appends the final position of the marathon, which is 42195 meters, to the refill_stations list. This ensures that Konni will consider reaching the end of the marathon as a refilling point.
+[Line 9]: Explanation: Starts a loop that iterates over the refill_stations list. The loop variable i represents the index of the current refilling station.
+[Line 10]: Explanation: Retrieves the position of the current refilling station from the refill_stations list and assigns it to the variable next_station.
+[Line 11]: Explanation: Calculates the distance between the current position and the next refilling station by subtracting current_position from next_station and assigns it to the variable distance_to_next.
+[Line 12]: Explanation: Sets the maximum distance Konni can run without needing to refill his water pouch to the current amount of water in his pouch, stored in the variable water_amount, and assigns it to the variable max_run_distance.
+[Line 13]: Explanation: Checks if the maximum distance Konni can run (max_run_distance) is greater than or equal to the distance to the next refilling station (distance_to_next).
+[Line 14]: Explanation: If Konni can run the entire distance to the next refilling station without needing to jog, this line calculates the time taken to run that distance by dividing distance_to_next by H (Konni's running speed) and adds it to the total_time.
+[Line 15]: Explanation: Subtracts the distance Konni ran from his current water amount, updating the water_amount variable.
+[Line 16]: Explanation: If Konni cannot run the entire distance to the next refilling station without needing to jog, this line calculates the time taken to run the maximum possible distance (max_run_distance) by dividing max_run_distance by H and adds it to the total_time.
+[Line 17]: Explanation: Subtracts the distance Konni ran from his current water amount, updating the water_amount variable.
+[Line 18]: Explanation: Calculates the remaining distance that Konni needs to jog by subtracting max_run_distance from distance_to_next and assigns it to the variable jogging_distance.
+[Line 19]: Explanation: Adds the time taken to jog the remaining distance to the total_time by dividing jogging_distance by S (Konni's jogging speed).
+[Line 20]: Explanation: Checks if the current refilling station is not the last one in the list (i.e., i < N).
+[Line 21]: Explanation: If Konni reaches a refilling station, this line refills his water pouch to its full capacity by setting water_amount to X.
+[Line 22]: Explanation: Updates the current_position variable to the position of the next refilling station.
+[Line 23]: Explanation: After the loop completes, calculates the number of hours taken by dividing total_time by 3600 and assigns it to the variable hours.
+[Line 24]: Explanation: Calculates the number of minutes taken by taking the remainder of total_time divided by 3600, then dividing that remainder by 60, and assigns it to the variable minutes.
+[Line 25]: Explanation: Calculates the number of seconds taken by taking the remainder of total_time divided by 60 and assigns it to the variable seconds.
+[Line 26]: Explanation: Prints the total time taken in the format of hours:minutes:seconds using formatted string literals.
+[Line 27]: Explanation: Checks if the script is being run as the main module and, if so, calls the main() function to execute the program."
+Diggy Hole,1,"[Line 1]: Explanation: Read the first line of input and convert it to an integer, storing it in the variable `n`.
+        [Line 2]: Explanation: Read the second line of input and convert it to an integer, storing it in the variable `h`.
+        [Line 3]: Explanation: Read the third line of input and convert it to an integer, storing it in the variable `x`.
+        [Line 4]: Explanation: Read the fourth line of input and convert it to an integer, storing it in the variable `m`.
+        [Line 5]: Explanation: Read the fifth line of input and convert it to an integer, storing it in the variable `y`.
+        [Line 6]: Explanation: Calculate the digging rate per worker per hour by dividing the total volume `x` by the product of the number of workers `n` and the time `h` they take. Store this rate in the variable `rate_per_worker_per_hour`.
+        [Line 7]: Explanation: Calculate the total digging rate for `m` workers by multiplying the rate per worker per hour (`rate_per_worker_per_hour`) by the number of workers `m`. Store this rate in the variable `total_rate_m_workers`.
+        [Line 8]: Explanation: Calculate the time required for `m` workers to dig `y` cubic metres by dividing the volume `y` by the total rate of `m` workers (`total_rate_m_workers`). Store this time in the variable `time_required`.
+        [Line 9]: Explanation: Print the value of `time_required` formatted to 16 decimal places using an f-string."
+Diggy Hole,2,"``` [Line 1]: Explanation: Read the first line of input and convert it to an integer, storing it in the variable 'n'. This represents the number of workers in the initial scenario.
+[Line 2]: Explanation: Read the second line of input and convert it to an integer, storing it in the variable 'h'. This represents the number of hours it takes for 'n' workers to dig 'x' cubic metres.
+[Line 3]: Explanation: Read the third line of input and convert it to an integer, storing it in the variable 'x'. This represents the number of cubic metres dug by 'n' workers in 'h' hours.
+[Line 4]: Explanation: Read the fourth line of input and convert it to an integer, storing it in the variable 'm'. This represents the number of workers in the scenario we want to solve.
+[Line 5]: Explanation: Read the fifth line of input and convert it to an integer, storing it in the variable 'y'. This represents the number of cubic metres we want 'm' workers to dig.
+[Line 6]: Explanation: Calculate the rate at which each worker digs per hour. This is done by dividing the total cubic metres 'x' by the product of the number of workers 'n' and the number of hours 'h'. The result is stored in the variable 'rate_per_worker_per_hour'.
+[Line 7]: Explanation: Calculate the total digging rate for 'm' workers. This is done by multiplying the rate per worker per hour ('rate_per_worker_per_hour') by the number of workers 'm'. The result is stored in the variable 'total_rate_m_workers'.
+[Line 8]: Explanation: Calculate the time required for 'm' workers to dig 'y' cubic metres. This is done by dividing the total cubic metres 'y' by the total digging rate for 'm' workers ('total_rate_m_workers'). The result is stored in the variable 'time_required'.
+[Line 9]: Explanation: Print the value of 'time_required' formatted to 16 decimal places. This ensures the output is precise and meets the problem's requirements regarding accuracy.```"
+Diggy Hole,3,"``` [Line 1]: Explanation: Read the number of workers (n) from the input and convert it to an integer.
+[Line 2]: Explanation: Read the number of hours (h) from the input and convert it to an integer.
+[Line 3]: Explanation: Read the volume of cubic metres (x) from the input and convert it to an integer.
+[Line 4]: Explanation: Read the number of workers (m) from the input and convert it to an integer.
+[Line 5]: Explanation: Read the volume of cubic metres (y) from the input and convert it to an integer.
+[Line 6]: Explanation: Calculate the digging rate per worker per hour by dividing the total volume (x) by the product of the number of workers (n) and the number of hours (h).
+[Line 7]: Explanation: Calculate the total digging rate for m workers by multiplying the rate per worker per hour by the number of workers (m).
+[Line 8]: Explanation: Calculate the time required for m workers to dig y cubic metres by dividing the volume (y) by the total rate of m workers.
+[Line 9]: Explanation: Print the calculated time required with 16 decimal places using formatted string output.```"
+Diggy Hole,4,"[Line 1]: Explanation: Read the first input value, which represents the number of workers (n), and convert it to an integer.
+         [Line 2]: Explanation: Read the second input value, which represents the number of hours (h), and convert it to an integer.
+         [Line 3]: Explanation: Read the third input value, which represents the volume of cubic metres (x) dug by n workers in h hours, and convert it to an integer.
+         [Line 4]: Explanation: Read the fourth input value, which represents the number of workers (m) for the new scenario, and convert it to an integer.
+         [Line 5]: Explanation: Read the fifth input value, which represents the volume of cubic metres (y) to be dug by m workers, and convert it to an integer.
+         [Line 6]: Explanation: Calculate the rate at which one worker can dig per hour by dividing the total volume (x) by the product of the number of workers (n) and the number of hours (h).
+         [Line 7]: Explanation: Calculate the combined rate at which m workers can dig per hour by multiplying the rate per worker per hour (rate_per_worker_per_hour) by the number of workers (m).
+         [Line 8]: Explanation: Calculate the time required for m workers to dig y cubic metres by dividing the target volume (y) by the total rate of m workers (total_rate_m_workers).
+         [Line 9]: Explanation: Print the calculated time required with 16 decimal places of precision using formatted string output."
+Diggy Hole,5,"[Line 1]: Explanation: Read the number of workers (n) from the input and convert it to an integer.
+         [Line 2]: Explanation: Read the number of hours (h) from the input and convert it to an integer.
+         [Line 3]: Explanation: Read the volume of cubic metres (x) from the input and convert it to an integer.
+         [Line 4]: Explanation: Read the number of workers needed (m) from the input and convert it to an integer.
+         [Line 5]: Explanation: Read the volume of cubic metres needed (y) from the input and convert it to an integer.
+         [Line 6]: Explanation: Calculate the digging rate per worker per hour by dividing the total volume (x) by the product of the number of workers (n) and the number of hours (h).
+         [Line 7]: Explanation: Calculate the total digging rate for m workers by multiplying the rate per worker per hour (rate_per_worker_per_hour) by the number of workers needed (m).
+         [Line 8]: Explanation: Calculate the time required for m workers to dig y cubic metres by dividing the required volume (y) by the total rate of m workers (total_rate_m_workers).
+         [Line 9]: Explanation: Print the calculated time required with 16 decimal places using formatted string output."
+Hair Dyeing,1,```
+Hair Dyeing,2,"[Line 1]: Explanation: Define the constant MOD as 2^64, which will be used to take modulo of results to prevent overflow and meet the problem's requirements.
+         [Line 2]: Explanation: Define a function `count_plans` that takes two parameters, `N` (number of days) and `schedule` (list of discounted colors for each day).
+         [Line 3]: Explanation: Initialize a list `dp_same` with 10 zeros. This list will store the number of ways to dye hair on the current day with the same color as the previous day.
+         [Line 4]: Explanation: Initialize a list `dp_diff` with 10 zeros. This list will store the number of ways to dye hair on the current day with a different color than the previous day.
+         [Line 5]: Explanation: Start a loop from 0 to 9 (inclusive) to initialize the base case.
+         [Line 6]: Explanation: Set `dp_same[i]` to 1 for all colors i (0 to 9). This represents the initial state where there is one way to dye hair with each color on the first day.
+         [Line 7]: Explanation: Start a loop from 1 to N-1 (inclusive) to iterate over each day starting from the second day.
+         [Line 8]: Explanation: Get the color that is on discount on the current day.
+         [Line 9]: Explanation: Initialize a new list `new_dp_same` with 10 zeros. This list will store the updated number of ways to dye hair on the current day with the same color as the previous day.
+         [Line 10]: Explanation: Initialize a new list `new_dp_diff` with 10 zeros. This list will store the updated number of ways to dye hair on the current day with a different color than the previous day.
+         [Line 11]: Explanation: Start a loop from 0 to 9 (inclusive) to iterate over each color.
+         [Line 12]: Explanation: Check if the current color is the same as the discounted color on the current day.
+         [Line 13]: Explanation: If the current color is the same as the discounted color, update `new_dp_same[color]` to the sum of `dp_diff` modulo MOD. This represents the number of ways to dye hair with the same color as the previous day.
+         [Line 14]: Explanation: If the current color is different from the discounted color, update `new_dp_diff[color]` to `dp_same[color]`. This represents the number of ways to dye hair with a different color than the previous day.
+         [Line 15]: Explanation: Assign the updated values of `new_dp_same` to `dp_same`.
+         [Line 16]: Explanation: Assign the updated values of `new_dp_diff` to `dp_diff`.
+         [Line 17]: Explanation: Calculate the total number of plans by summing up `dp_same` and `dp_diff`.
+         [Line 18]: Explanation: Return the total number of plans modulo MOD.
+         [Line 19]: Explanation: Read the input values for N and Q (number of days and number of updates).
+         [Line 20]: Explanation: Read the input values for the schedule (discounted colors for each day).
+         [Line 21]: Explanation: Call the `count_plans` function with the initial schedule to get the number of plans.
+         [Line 22]: Explanation: Print the initial number of plans.
+         [Line 23]: Explanation: Start a loop from 0 to Q-1 (inclusive) to process each update.
+         [Line 24]: Explanation: Read the input values for the update (day i and new color v).
+         [Line 25]: Explanation: Update the schedule with the new color for the specified day.
+         [Line 26]: Explanation: Call the `count_plans` function with the updated schedule to get the new number of plans.
+         [Line 27]: Explanation: Print the new number of plans after each update."
+Hair Dyeing,3,```
+Hair Dyeing,4,"``` [Line 1]: Explanation: Define a constant MOD with the value of 2 raised to the power of 64. This constant is used to perform modulo operations throughout the program to ensure that the results do not exceed 2^64, as required by the problem statement.
+[Line 2]: Explanation: Define a function named count_plans that takes two parameters: N (the number of days) and schedule (a list representing the discount schedule).
+[Line 3]: Explanation: Initialize a list dp_same with 10 elements, all set to 0. This list will store the number of plans where the last day's hair color is the same as the current day's discount color.
+[Line 4]: Explanation: Initialize a list dp_diff with 10 elements, all set to 0. This list will store the number of plans where the last day's hair color is different from the current day's discount color.
+[Line 5]: Explanation: Start a loop that iterates over the range from 0 to 9 (inclusive). This loop initializes the dp_same list such that each element is set to 1. This initialization assumes that on the first day, the friend can choose any of the 10 colors without restrictions.
+[Line 6]: Explanation: Inside the loop, set each element of dp_same to 1. This step effectively initializes the dp_same list with all values set to 1, representing the possibility of choosing any color on the first day.
+[Line 7]: Explanation: Start a loop that iterates over the range from 1 to N-1 (inclusive). This loop processes each day's discount schedule starting from the second day.
+[Line 8]: Explanation: Retrieve the discount color for the current day from the schedule list and store it in the variable current_discount.
+[Line 9]: Explanation: Initialize a new list new_dp_same with 10 elements, all set to 0. This list will temporarily store the updated values of dp_same for the current day.
+[Line 10]: Explanation: Initialize a new list new_dp_diff with 10 elements, all set to 0. This list will temporarily store the updated values of dp_diff for the current day.
+[Line 11]: Explanation: Start a loop that iterates over the range from 0 to 9 (inclusive). This loop processes each possible color for the current day.
+[Line 12]: Explanation: Check if the current color is equal to the current day's discount color.
+[Line 13]: Explanation: If the current color matches the discount color, update the corresponding element of new_dp_same by summing up all the values in dp_diff and taking the result modulo MOD. This step accounts for the plans where the last day's hair color is different from the current day's discount color.
+[Line 14]: Explanation: If the current color does not match the discount color, update the corresponding element of new_dp_diff by copying the value from dp_same for the same color. This step accounts for the plans where the last day's hair color is the same as the current day's discount color.
+[Line 15]: Explanation: After processing all colors for the current day, update the dp_same list with the values from new_dp_same.
+[Line 16]: Explanation: Similarly, update the dp_diff list with the values from new_dp_diff.
+[Line 17]: Explanation: Calculate the total number of plans by summing up all the values in dp_same and dp_diff, representing the plans where the last day's hair color is the same or different from the current day's discount color, respectively.
+[Line 18]: Explanation: Return the total number of plans modulo MOD to ensure the result fits within the required range.
+[Line 19]: Explanation: Read the first line of input, which contains two integers N and Q, representing the number of days and the number of schedule updates, respectively. Split the input into two variables using the map function and convert them to integers.
+[Line 20]: Explanation: Read the second line of input, which contains N integers representing the discount schedule for each day. Split the input into a list of integers using the map function.
+[Line 21]: Explanation: Call the count_plans function with the values of N and schedule to calculate the initial number of hair-dyeing plans based on the original schedule.
+[Line 22]: Explanation: Print the initial number of plans.
+[Line 23]: Explanation: Start a loop that iterates Q times, where Q is the number of schedule updates.
+[Line 24]: Explanation: Read each line of input, which contains two integers i and v, representing the day to be updated and the new discount color, respectively. Split the input into two variables using the map function and convert them to integers.
+[Line 25]: Explanation: Update the schedule list by setting the element at index i-1 (since indices are zero-based) to the new discount color v.
+[Line 26]: Explanation: Call the count_plans function again with the updated schedule to calculate the new number of hair-dyeing plans.
+[Line 27]: Explanation: Print the updated number of plans after each schedule update."
+Hair Dyeing,5,"[Line 1]: Explanation: Define the constant MOD as 2^64, which will be used to take modulo operations to prevent overflow.
+         [Line 2]: Explanation: Define a function `count_plans` that takes two parameters, `N` (the number of days) and `schedule` (a list of integers representing the discounted colors for each day).
+         [Line 3]: Explanation: Initialize a list `dp_same` with 10 elements, all set to 0. This list will keep track of the number of plans where the hair color on the current day is the same as the previous day.
+         [Line 4]: Explanation: Initialize a list `dp_diff` with 10 elements, all set to 0. This list will keep track of the number of plans where the hair color on the current day is different from the previous day.
+         [Line 5]: Explanation: Start a loop that iterates over each color from 0 to 9.
+         [Line 6]: Explanation: Set the value of `dp_same[i]` to 1. This represents the initial state where the friend can choose to dye their hair with any color on the first day.
+         [Line 7]: Explanation: Start a loop that iterates over each day from 1 to N-1 (since we already processed the first day).
+         [Line 8]: Explanation: Get the discounted color for the current day from the `schedule` list.
+         [Line 9]: Explanation: Initialize a new list `new_dp_same` with 10 elements, all set to 0. This list will store the updated values for `dp_same` after processing the current day.
+         [Line 10]: Explanation: Initialize a new list `new_dp_diff` with 10 elements, all set to 0. This list will store the updated values for `dp_diff` after processing the current day.
+         [Line 11]: Explanation: Start a loop that iterates over each color from 0 to 9.
+         [Line 12]: Explanation: Check if the current color is the same as the discounted color for the current day.
+         [Line 13]: Explanation: If the current color is the same as the discounted color, update `new_dp_same[color]` to be the sum of all values in `dp_diff` modulo `MOD`. This represents the plans where the hair color changes from a different color to the current color.
+         [Line 14]: Explanation: If the current color is different from the discounted color, update `new_dp_diff[color]` to be the value of `dp_same[color]`. This represents the plans where the hair color remains the same as the previous day.
+         [Line 15]: Explanation: Update `dp_same` to be the new values stored in `new_dp_same`.
+         [Line 16]: Explanation: Update `dp_diff` to be the new values stored in `new_dp_diff`.
+         [Line 17]: Explanation: Calculate the total number of plans by summing up all values in `dp_same` and `dp_diff`.
+         [Line 18]: Explanation: Return the total number of plans modulo `MOD`.
+         [Line 19]: Explanation: Read the first line of input, which contains two integers `N` and `Q`, representing the number of days and the number of updates, respectively.
+         [Line 20]: Explanation: Read the second line of input, which contains `N` integers representing the discounted colors for each day, and convert them into a list called `schedule`.
+         [Line 21]: Explanation: Call the `count_plans` function with `N` and `schedule` as arguments to calculate the initial number of plans and store the result in `initial_plans`.
+         [Line 22]: Explanation: Print the value of `initial_plans`, which represents the number of plans that can be created from the original schedule.
+         [Line 23]: Explanation: Start a loop that iterates `Q` times, once for each update.
+         [Line 24]: Explanation: Read each update from the input, which contains two integers `i` and `v`, representing the day and the new discounted color, respectively.
+         [Line 25]: Explanation: Update the `schedule` list at index `i-1` to be the new discounted color `v`.
+         [Line 26]: Explanation: Call the `count_plans` function again with the updated `schedule` to calculate the new number of plans and store the result in `updated_plans`.
+         [Line 27]: Explanation: Print the value of `updated_plans`, which represents the number of plans that can be created after the update.
+         [Line 28]: Explanation: End the loop after processing all updates."
+Date Picker,1,"[Line 1]: Explanation: Define a function named `parse_input` to read and process the input data.
+         [Line 2]: Explanation: Initialize an empty list named `matrix` to store the availability matrix.
+         [Line 3]: Explanation: Start a loop that runs 7 times, corresponding to the 7 days of the week.
+         [Line 4]: Explanation: Read a line of input, strip any leading/trailing whitespace, and append it to the `matrix` list.
+         [Line 5]: Explanation: Read another line of input, split it into two parts, convert them to integers, and assign them to variables `d` and `h`.
+         [Line 6]: Explanation: Return the `matrix`, `d`, and `h` as a tuple.
+         [Line 7]: Explanation: Define a function named `count_available_hours_per_day` to count the number of available hours for each day.
+         [Line 8]: Explanation: Initialize an empty list named `available_hours_per_day` to store the count of available hours for each day.
+         [Line 9]: Explanation: Iterate over each row in the `matrix`.
+         [Line 10]: Explanation: Initialize a variable `count` to zero to keep track of the number of available hours in the current day.
+         [Line 11]: Explanation: Iterate over each character in the current row.
+         [Line 12]: Explanation: Check if the character is a period ('.').
+         [Line 13]: Explanation: If the character is a period, increment the `count` by 1.
+         [Line 14]: Explanation: Append the `count` to the `available_hours_per_day` list.
+         [Line 15]: Explanation: Return the `available_hours_per_day` list.
+         [Line 16]: Explanation: Define a function named `count_available_days_per_hour` to count the number of available days for each hour.
+         [Line 17]: Explanation: Initialize a list named `available_days_per_hour` with 24 zeros to store the count of available days for each hour.
+         [Line 18]: Explanation: Iterate over each column index from 0 to 23, corresponding to the 24 hours of the day.
+         [Line 19]: Explanation: Iterate over each row in the `matrix`.
+         [Line 20]: Explanation: Check if the character at the current column in the current row is a period ('.').
+         [Line 21]: Explanation: If the character is a period, increment the count of available days for the current hour by 1.
+         [Line 22]: Explanation: Return the `available_days_per_hour` list.
+         [Line 23]: Explanation: Define a function named `select_top_k_elements` to select the top k elements from a list based on their values.
+         [Line 24]: Explanation: Sort the enumerated elements of the list in descending order based on their values using the `sorted` function and a lambda function as the key.
+         [Line 25]: Explanation: Extract the indices of the top k elements from the sorted list.
+         [Line 26]: Explanation: Return the list of top k indices.
+         [Line 27]: Explanation: Define a function named `calculate_probability` to calculate the probability of being available at the chosen meeting time.
+         [Line 28]: Explanation: Call the `count_available_hours_per_day` function with the `matrix` and store the result in `available_hours_per_day`.
+         [Line 29]: Explanation: Call the `count_available_days_per_hour` function with the `matrix` and store the result in `available_days_per_hour`.
+         [Line 30]: Explanation: Call the `select_top_k_elements` function with `available_hours_per_day` and `d` to select the top d days with the most available hours.
+         [Line 31]: Explanation: Call the `select_top_k_elements` function with `available_days_per_hour` and `h` to select the top h hours with the most available days.
+         [Line 32]: Explanation: Calculate the total number of possible combinations of selected days and hours by multiplying `d` and `h`.
+         [Line 33]: Explanation: Initialize a variable `total_available_combinations` to zero to keep track of the number of available combinations.
+         [Line 34]: Explanation: Iterate over each selected day.
+         [Line 35]: Explanation: Iterate over each selected hour.
+         [Line 36]: Explanation: Check if the character at the intersection of the current selected day and hour in the `matrix` is a period ('.').
+         [Line 37]: Explanation: If the character is a period, increment the `total_available_combinations` by 1.
+         [Line 38]: Explanation: Calculate the probability of being available at the chosen meeting time by dividing `total_available_combinations` by `total_possible_combinations`.
+         [Line 39]: Explanation: Return the calculated probability.
+         [Line 40]: Explanation: Check if the script is run as the main module.
+         [Line 41]: Explanation: Call the `parse_input` function to read and process the input data.
+         [Line 42]: Explanation: Call the `calculate_probability` function with the processed input data to calculate the probability.
+         [Line 43]: Explanation: Print the calculated probability."
+Date Picker,2,"[Line 1]: Explanation: Define a function named `parse_input` to read and process the input data.
+        [Line 2]: Explanation: Initialize an empty list named `matrix` to store the availability matrix.
+        [Line 3]: Explanation: Start a loop that will run 7 times (once for each day).
+        [Line 4]: Explanation: Read a line from the input, strip any leading/trailing whitespace, and append it to the `matrix` list.
+        [Line 5]: Explanation: Read the last line of input, split it into two parts, convert them to integers, and assign them to variables `d` and `h`.
+        [Line 6]: Explanation: Return the `matrix`, `d`, and `h` as a tuple.
+        [Line 7]: Explanation: Define a function named `count_available_hours_per_day` to count the number of available hours for each day.
+        [Line 8]: Explanation: Initialize an empty list named `available_hours_per_day` to store the count of available hours for each day.
+        [Line 9]: Explanation: Iterate over each row in the `matrix` (representing each day).
+        [Line 10]: Explanation: Initialize a counter variable `count` to zero.
+        [Line 11]: Explanation: Iterate over each character in the current row (representing each hour).
+        [Line 12]: Explanation: Check if the current character is '.' (indicating availability).
+        [Line 13]: Explanation: If the character is '.', increment the `count` by one.
+        [Line 14]: Explanation: Append the `count` to the `available_hours_per_day` list after processing all hours for the current day.
+        [Line 15]: Explanation: Return the `available_hours_per_day` list.
+        [Line 16]: Explanation: Define a function named `count_available_days_per_hour` to count the number of available days for each hour.
+        [Line 17]: Explanation: Initialize a list named `available_days_per_hour` with 24 zeros, representing each hour of the day.
+        [Line 18]: Explanation: Iterate over each column in the `matrix` (representing each hour).
+        [Line 19]: Explanation: Iterate over each row in the `matrix` (representing each day).
+        [Line 20]: Explanation: Check if the current character is '.' (indicating availability).
+        [Line 21]: Explanation: If the character is '.', increment the corresponding entry in the `available_days_per_hour` list by one.
+        [Line 22]: Explanation: Return the `available_days_per_hour` list.
+        [Line 23]: Explanation: Define a function named `select_top_k_elements` to select the top `k` elements from a list based on their values.
+        [Line 24]: Explanation: Sort the enumerated `elements` list in descending order based on their values.
+        [Line 25]: Explanation: Extract the indices of the top `k` elements from the sorted list.
+        [Line 26]: Explanation: Return the list of top `k` indices.
+        [Line 27]: Explanation: Define a function named `calculate_probability` to calculate the probability of being available at the chosen meeting time.
+        [Line 28]: Explanation: Call the `count_available_hours_per_day` function to get the count of available hours for each day.
+        [Line 29]: Explanation: Call the `count_available_days_per_hour` function to get the count of available days for each hour.
+        [Line 30]: Explanation: Call the `select_top_k_elements` function to select the top `d` days with the most available hours.
+        [Line 31]: Explanation: Call the `select_top_k_elements` function to select the top `h` hours with the most available days.
+        [Line 32]: Explanation: Calculate the total number of possible combinations by multiplying `d` and `h`.
+        [Line 33]: Explanation: Initialize a counter variable `total_available_combinations` to zero.
+        [Line 34]: Explanation: Iterate over each selected day.
+        [Line 35]: Explanation: Iterate over each selected hour.
+        [Line 36]: Explanation: Check if the current combination of day and hour is available ('.').
+        [Line 37]: Explanation: If the combination is available, increment the `total_available_combinations` by one.
+        [Line 38]: Explanation: Calculate the probability by dividing `total_available_combinations` by `total_possible_combinations`.
+        [Line 39]: Explanation: Return the calculated probability.
+        [Line 40]: Explanation: Check if the script is being run as the main module.
+        [Line 41]: Explanation: Call the `parse_input` function to read and parse the input data.
+        [Line 42]: Explanation: Call the `calculate_probability` function with the parsed input to calculate the probability.
+        [Line 43]: Explanation: Print the calculated probability."
+Date Picker,3,"[Line 1]: Explanation: Define a function named `parse_input` to read and process the input data.
+         [Line 2]: Explanation: Initialize an empty list named `matrix` to store the availability information for each day.
+         [Line 3]: Explanation: Start a loop that will iterate 7 times, once for each day of the week.
+         [Line 4]: Explanation: Read a line of input, strip any leading or trailing whitespace, and append it to the `matrix` list.
+         [Line 5]: Explanation: Read another line of input, split it into two parts, convert both parts to integers, and assign them to variables `d` and `h`, respectively. These represent the minimum number of days and hours to be selected.
+         [Line 6]: Explanation: Return the `matrix`, `d`, and `h` from the function.
+         [Line 7]: Explanation: Define a function named `count_available_hours_per_day` that takes `matrix` as an argument to count the number of available hours for each day.
+         [Line 8]: Explanation: Initialize an empty list named `available_hours_per_day` to store the count of available hours for each day.
+         [Line 9]: Explanation: Start a loop that iterates over each row in the `matrix`.
+         [Line 10]: Explanation: Initialize a variable `count` to zero. This will be used to count the number of available hours in the current day.
+         [Line 11]: Explanation: Start a loop that iterates over each character in the current row.
+         [Line 12]: Explanation: Check if the current character is `'.'`, which indicates an available hour.
+         [Line 13]: Explanation: If the character is `'.'`, increment the `count` by 1.
+         [Line 14]: Explanation: Append the `count` (number of available hours for the current day) to the `available_hours_per_day` list.
+         [Line 15]: Explanation: Return the `available_hours_per_day` list from the function.
+         [Line 16]: Explanation: Define a function named `count_available_days_per_hour` that takes `matrix` as an argument to count the number of available days for each hour.
+         [Line 17]: Explanation: Initialize a list named `available_days_per_hour` with 24 zeros. This list will store the count of available days for each hour.
+         [Line 18]: Explanation: Start a loop that iterates over each hour (from 0 to 23).
+         [Line 19]: Explanation: Start a loop that iterates over each row in the `matrix`.
+         [Line 20]: Explanation: Check if the current hour in the current day is available (`'.'`).
+         [Line 21]: Explanation: If the hour is available, increment the corresponding count in the `available_days_per_hour` list by 1.
+         [Line 22]: Explanation: Return the `available_days_per_hour` list from the function.
+         [Line 23]: Explanation: Define a function named `select_top_k_elements` that takes `elements` and `k` as arguments to select the top `k` elements based on their values.
+         [Line 24]: Explanation: Sort the `elements` list in descending order based on their values using the `sorted` function. The `enumerate` function is used to keep track of the original indices of the elements. The `key` parameter specifies a lambda function that returns the value of each element for sorting purposes.
+         [Line 25]: Explanation: Extract the indices of the top `k` elements from the sorted list using a list comprehension. The `sorted_elements` list contains tuples of `(index, value)`, so `[index for index, value in sorted_elements[:k]]` extracts the first `k` indices.
+         [Line 26]: Explanation: Return the `top_k_indices` list from the function.
+         [Line 27]: Explanation: Define a function named `calculate_probability` that takes `matrix`, `d`, and `h` as arguments to calculate the probability of being available at a randomly chosen meeting time.
+         [Line 28]: Explanation: Call the `count_available_hours_per_day` function with the `matrix` as an argument and store the result in the `available_hours_per_day` variable.
+         [Line 29]: Explanation: Call the `count_available_days_per_hour` function with the `matrix` as an argument and store the result in the `available_days_per_hour` variable.
+         [Line 30]: Explanation: Call the `select_top_k_elements` function with `available_hours_per_day` and `d` as arguments to select the top `d` days with the most available hours. Store the result in the `selected_days` variable.
+         [Line 31]: Explanation: Call the `select_top_k_elements` function with `available_days_per_hour` and `h` as arguments to select the top `h` hours with the most available days. Store the result in the `selected_hours` variable.
+         [Line 32]: Explanation: Calculate the total number of possible combinations of days and hours by multiplying `d` and `h`. Store the result in the `total_possible_combinations` variable.
+         [Line 33]: Explanation: Initialize a variable `total_available_combinations` to zero. This will be used to count the number of available combinations of days and hours.
+         [Line 34]: Explanation: Start a loop that iterates over each selected day.
+         [Line 35]: Explanation: Start a loop that iterates over each selected hour.
+         [Line 36]: Explanation: Check if the current combination of day and hour is available (`'.'`) in the `matrix`.
+         [Line 37]: Explanation: If the combination is available, increment the `total_available_combinations` by 1.
+         [Line 38]: Explanation: Calculate the probability of being available at a randomly chosen meeting time by dividing `total_available_combinations` by `total_possible_combinations`. Store the result in the `probability` variable.
+         [Line 39]: Explanation: Return the `probability` from the function.
+         [Line 40]: Explanation: Check if the script is being run as the main program.
+         [Line 41]: Explanation: Call the `parse_input` function to read and parse the input data, and store the results in the `matrix`, `d`, and `h` variables.
+         [Line 42]: Explanation: Call the `calculate_probability` function with the `matrix`, `d`, and `h` as arguments to calculate the probability of being available at a randomly chosen meeting time. Store the result in the `probability` variable.
+         [Line 43]: Explanation: Print the calculated `probability` to the console."
+Date Picker,4,"``` [Line 1]: Explanation: Define a function named `parse_input` to read and process the input data.
+[Line 2]: Explanation: Initialize an empty list `matrix` to store the availability matrix.
+[Line 3]: Explanation: Loop 7 times to read each of the 7 lines of input.
+[Line 4]: Explanation: Append each stripped line (representing a day's availability) to the `matrix` list.
+[Line 5]: Explanation: Read the last line of input, split it into two parts, convert them to integers, and assign to variables `d` and `h`.
+[Line 6]: Explanation: Return the `matrix`, `d`, and `h` as a tuple.
+[Line 7]: Explanation: Define a function named `count_available_hours_per_day` to count available hours for each day.
+[Line 8]: Explanation: Initialize an empty list `available_hours_per_day` to store the count of available hours for each day.
+[Line 9]: Explanation: Loop through each row in the `matrix` (representing each day).
+[Line 10]: Explanation: Initialize a counter `count` to zero for the current day.
+[Line 11]: Explanation: Loop through each character in the current row (representing each hour).
+[Line 12]: Explanation: Check if the character is '.', indicating an available hour.
+[Line 13]: Explanation: Increment the `count` by 1 if the hour is available.
+[Line 14]: Explanation: Append the `count` (number of available hours for the current day) to the `available_hours_per_day` list.
+[Line 15]: Explanation: Return the `available_hours_per_day` list.
+[Line 16]: Explanation: Define a function named `count_available_days_per_hour` to count available days for each hour.
+[Line 17]: Explanation: Initialize a list `available_days_per_hour` of size 24 with all elements set to 0 to store the count of available days for each hour.
+[Line 18]: Explanation: Loop through each column index from 0 to 23 (representing each hour).
+[Line 19]: Explanation: Loop through each row in the `matrix` (representing each day).
+[Line 20]: Explanation: Check if the character at the current column (hour) in the current row (day) is '.', indicating an available day.
+[Line 21]: Explanation: Increment the count of available days for the current hour by 1.
+[Line 22]: Explanation: Return the `available_days_per_hour` list.
+[Line 23]: Explanation: Define a function named `select_top_k_elements` to select the top `k` elements from a list.
+[Line 24]: Explanation: Sort the enumerated elements of the list in descending order based on their values.
+[Line 25]: Explanation: Extract the indices of the top `k` elements from the sorted list.
+[Line 26]: Explanation: Return the list of top `k` indices.
+[Line 27]: Explanation: Define a function named `calculate_probability` to calculate the probability of being available at a chosen meeting time.
+[Line 28]: Explanation: Call `count_available_hours_per_day` to get the count of available hours for each day and store it in `available_hours_per_day`.
+[Line 29]: Explanation: Call `count_available_days_per_hour` to get the count of available days for each hour and store it in `available_days_per_hour`.
+[Line 30]: Explanation: Call `select_top_k_elements` to select the top `d` days with the most available hours and store the indices in `selected_days`.
+[Line 31]: Explanation: Call `select_top_k_elements` to select the top `h` hours with the most available days and store the indices in `selected_hours`.
+[Line 32]: Explanation: Calculate the total number of possible combinations by multiplying `d` (number of selected days) and `h` (number of selected hours).
+[Line 33]: Explanation: Initialize a counter `total_available_combinations` to zero to count the number of available combinations.
+[Line 34]: Explanation: Loop through each selected day index.
+[Line 35]: Explanation: Loop through each selected hour index.
+[Line 36]: Explanation: Check if the cell at the current day and hour in the `matrix` is '.', indicating an available time slot.
+[Line 37]: Explanation: Increment the `total_available_combinations` by 1 if the time slot is available.
+[Line 38]: Explanation: Calculate the probability by dividing the `total_available_combinations` by the `total_possible_combinations`.
+[Line 39]: Explanation: Return the calculated probability.
+[Line 40]: Explanation: Check if the script is run as the main module.
+[Line 41]: Explanation: Call `parse_input` to read the input and get the `matrix`, `d`, and `h`.
+[Line 42]: Explanation: Call `calculate_probability` with the `matrix`, `d`, and `h` to get the probability.
+[Line 43]: Explanation: Print the calculated probability.```"
+Date Picker,5,"[Line 1]: Explanation: Define a function named `parse_input` to read and process the input data.
+        [Line 2]: Explanation: Initialize an empty list `matrix` to store the availability information for each day.
+        [Line 3]: Explanation: Start a loop that will iterate 7 times, once for each day of the week.
+        [Line 4]: Explanation: Read a line of input, strip any leading or trailing whitespace, and append it to the `matrix` list.
+        [Line 5]: Explanation: Read another line of input, split it into two parts, convert these parts into integers, and assign them to `d` and `h` respectively.
+        [Line 6]: Explanation: Return the `matrix`, `d`, and `h` as a tuple from the function.
+        [Line 7]: Explanation: Define a function named `count_available_hours_per_day` that takes `matrix` as an argument.
+        [Line 8]: Explanation: Initialize an empty list `available_hours_per_day` to store the count of available hours for each day.
+        [Line 9]: Explanation: Start a loop to iterate over each row (day) in the `matrix`.
+        [Line 10]: Explanation: Initialize a variable `count` to zero for counting available hours in the current day.
+        [Line 11]: Explanation: Start a nested loop to iterate over each character (hour) in the current row.
+        [Line 12]: Explanation: Check if the current character is '.' (indicating availability).
+        [Line 13]: Explanation: If the character is '.', increment the `count` by one.
+        [Line 14]: Explanation: Append the `count` of available hours for the current day to the `available_hours_per_day` list.
+        [Line 15]: Explanation: Return the `available_hours_per_day` list from the function.
+        [Line 16]: Explanation: Define a function named `count_available_days_per_hour` that takes `matrix` as an argument.
+        [Line 17]: Explanation: Initialize a list `available_days_per_hour` with 24 zeros to store the count of available days for each hour.
+        [Line 18]: Explanation: Start a loop to iterate over each column (hour) in the `matrix`.
+        [Line 19]: Explanation: Start a nested loop to iterate over each row (day) in the `matrix`.
+        [Line 20]: Explanation: Check if the current character is '.' (indicating availability).
+        [Line 21]: Explanation: If the character is '.', increment the count of available days for the current hour in the `available_days_per_hour` list.
+        [Line 22]: Explanation: Return the `available_days_per_hour` list from the function.
+        [Line 23]: Explanation: Define a function named `select_top_k_elements` that takes `elements` and `k` as arguments.
+        [Line 24]: Explanation: Sort the `elements` list in descending order based on their values using `sorted` and `enumerate`, and store the result in `sorted_elements`.
+        [Line 25]: Explanation: Extract the indices of the top `k` elements from the sorted list and store them in `top_k_indices`.
+        [Line 26]: Explanation: Return the `top_k_indices` list from the function.
+        [Line 27]: Explanation: Define a function named `calculate_probability` that takes `matrix`, `d`, and `h` as arguments.
+        [Line 28]: Explanation: Call the `count_available_hours_per_day` function with `matrix` and store the result in `available_hours_per_day`.
+        [Line 29]: Explanation: Call the `count_available_days_per_hour` function with `matrix` and store the result in `available_days_per_hour`.
+        [Line 30]: Explanation: Call the `select_top_k_elements` function with `available_hours_per_day` and `d` to get the top `d` days with the most available hours, and store the result in `selected_days`.
+        [Line 31]: Explanation: Call the `select_top_k_elements` function with `available_days_per_hour` and `h` to get the top `h` hours with the most available days, and store the result in `selected_hours`.
+        [Line 32]: Explanation: Calculate the total possible combinations of days and hours by multiplying `d` and `h`, and store the result in `total_possible_combinations`.
+        [Line 33]: Explanation: Initialize a variable `total_available_combinations` to zero to count the number of available combinations of selected days and hours.
+        [Line 34]: Explanation: Start a loop to iterate over each selected day.
+        [Line 35]: Explanation: Start a nested loop to iterate over each selected hour.
+        [Line 36]: Explanation: Check if the current combination of day and hour is available (i.e., the corresponding character in `matrix` is '.').
+        [Line 37]: Explanation: If the combination is available, increment the `total_available_combinations` by one.
+        [Line 38]: Explanation: Calculate the probability of attending the meeting by dividing `total_available_combinations` by `total_possible_combinations`, and store the result in `probability`.
+        [Line 39]: Explanation: Return the `probability` from the function.
+        [Line 40]: Explanation: Check if the script is run as the main module.
+        [Line 41]: Explanation: Call the `parse_input` function to read the input and store the results in `matrix`, `d`, and `h`.
+        [Line 42]: Explanation: Call the `calculate_probability` function with `matrix`, `d`, and `h` to calculate the probability of attending the meeting, and store the result in `probability`.
+        [Line 43]: Explanation: Print the calculated `probability`."
+Contrarianism,1,"``` [Line 1]: Explanation: Define a function named `generate_response` that takes one parameter, `input_string`. This function will process the input string and generate a response that is different from the input.
+[Line 2]: Explanation: Check if the `input_string` is an empty string. If it is, return the string ""not empty\n"" followed by a newline character. This handles the case where the input is empty.
+[Line 3]: Explanation: Return statement for the condition when the input is empty. The function returns ""not empty\n"" to ensure the output is different from the input.
+[Line 4]: Explanation: Initialize an empty string variable named `response`. This variable will store the transformed characters of the input string.
+[Line 5]: Explanation: Start a loop that iterates over each character in the `input_string`.
+[Line 6]: Explanation: Check if the current character `char` is an alphabetic character using the `isalpha()` method.
+[Line 7]: Explanation: Check if the alphabetic character `char` is lowercase using the `islower()` method.
+[Line 8]: Explanation: If the character is lowercase, increment its ASCII value by 1, wrap around using modulo 26, and convert it back to a character. Append this new character to the `response` string.
+[Line 9]: Explanation: Start an `else` block to handle uppercase alphabetic characters.
+[Line 10]: Explanation: If the character is uppercase, increment its ASCII value by 1, wrap around using modulo 26, and convert it back to a character. Append this new character to the `response` string.
+[Line 11]: Explanation: Check if the current character `char` is a digit using the `isdigit()` method.
+[Line 12]: Explanation: If the character is a digit, increment its integer value by 1, wrap around using modulo 10, and convert it back to a string. Append this new digit to the `response` string.
+[Line 13]: Explanation: Start an `else` block to handle non-alphabetic, non-digit characters (e.g., spaces).
+[Line 14]: Explanation: If the character is neither alphabetic nor a digit, append it unchanged to the `response` string.
+[Line 15]: Explanation: After processing all characters in the input string, append a newline character to the `response` string and return it.
+[Line 16]: Explanation: Initialize an empty string variable named `input_string`. This variable will store the entire input read from the user.
+[Line 17]: Explanation: Start a loop that will run up to 11 times to read the input.
+[Line 18]: Explanation: Read a single line of input using the `input()` function and store it in the variable `input_char`.
+[Line 19]: Explanation: Check if the `input_char` is a newline character. If it is, break out of the loop, indicating the end of input.
+[Line 20]: Explanation: Return statement for the condition when a newline character is encountered. The loop breaks, and no further input is read.
+[Line 21]: Explanation: If the `input_char` is not a newline character, append it to the `input_string` variable.
+[Line 22]: Explanation: Call the `generate_response` function with the `input_string` as an argument and store the result in the variable `output`.
+[Line 23]: Explanation: Print the `output` string to the console, which is the transformed response based on the input."
+Contrarianism,2,"``` ``` [Line 1]: Explanation: Defines a function named `generate_response` that takes a single argument `input_string`.
+[Line 2]: Explanation: Checks if the `input_string` is an empty string.
+[Line 3]: Explanation: If the `input_string` is empty, returns the string ""not empty\n"".
+[Line 4]: Explanation: Initializes an empty string variable named `response`.
+[Line 5]: Explanation: Starts a for loop that iterates over each character in `input_string`.
+[Line 6]: Explanation: Checks if the current character `char` is an alphabetic character.
+[Line 7]: Explanation: Checks if the current character `char` is a lowercase letter.
+[Line 8]: Explanation: Converts the lowercase letter to the next letter in the alphabet using ASCII values, wrapping around if necessary, and appends it to `response`.
+[Line 9]: Explanation: If the current character `char` is an uppercase letter, this block is skipped.
+[Line 10]: Explanation: Converts the uppercase letter to the next letter in the alphabet using ASCII values, wrapping around if necessary, and appends it to `response`.
+[Line 11]: Explanation: Checks if the current character `char` is a digit.
+[Line 12]: Explanation: Converts the digit to the next digit (wrapping around from 9 to 0) and appends it to `response`.
+[Line 13]: Explanation: If the current character `char` is neither a letter nor a digit, this block is skipped.
+[Line 14]: Explanation: Appends the current character `char` to `response` as is.
+[Line 15]: Explanation: Returns the `response` string concatenated with a newline character.
+[Line 16]: Explanation: Initializes an empty string variable named `input_string`.
+[Line 17]: Explanation: Starts a for loop that will iterate up to 11 times.
+[Line 18]: Explanation: Reads a line of input from the user and assigns it to `input_char`.
+[Line 19]: Explanation: Checks if the `input_char` is a newline character.
+[Line 20]: Explanation: If the `input_char` is a newline character, breaks out of the loop.
+[Line 21]: Explanation: Appends the `input_char` to `input_string`.
+[Line 22]: Explanation: Calls the `generate_response` function with `input_string` as an argument and assigns the result to `output`.
+[Line 23]: Explanation: Prints the `output` string."
+Contrarianism,3,"[Line 1]: Explanation: Defines a function named `generate_response` that takes one parameter, `input_string`.
+[Line 2]: Explanation: Checks if the `input_string` is an empty string.
+[Line 3]: Explanation: If the `input_string` is empty, returns the string ""not empty\n"".
+[Line 4]: Explanation: Initializes an empty string variable `response`.
+[Line 5]: Explanation: Starts a loop that iterates over each character in `input_string`.
+[Line 6]: Explanation: Checks if the current character is an alphabetic character.
+[Line 7]: Explanation: Checks if the current alphabetic character is lowercase.
+[Line 8]: Explanation: If the character is lowercase, shifts it by one position in the alphabet using ASCII values, wrapping around if necessary, and appends the result to `response`.
+[Line 9]: Explanation: If the character is uppercase, shifts it by one position in the alphabet using ASCII values, wrapping around if necessary, and appends the result to `response`.
+[Line 10]: Explanation: Checks if the current character is a digit.
+[Line 11]: Explanation: If the character is a digit, increments it by one, wraps around to 0 if it exceeds 9, converts it back to a string, and appends the result to `response`.
+[Line 12]: Explanation: If the character is neither alphabetic nor a digit (e.g., a space), appends the character as is to `response`.
+[Line 13]: Explanation: Ends the loop after processing all characters in `input_string`.
+[Line 14]: Explanation: Appends a newline character to `response`.
+[Line 15]: Explanation: Returns the `response` string.
+[Line 16]: Explanation: Initializes an empty string variable `input_string`.
+[Line 17]: Explanation: Starts a loop that runs up to 11 times.
+[Line 18]: Explanation: Reads a line of input from the user.
+[Line 19]: Explanation: Checks if the read input is a newline character.
+[Line 20]: Explanation: If the input is a newline character, breaks out of the loop.
+[Line 21]: Explanation: If the input is not a newline character, appends it to `input_string`.
+[Line 22]: Explanation: Calls the `generate_response` function with `input_string` as an argument and stores the result in `output`.
+[Line 23]: Explanation: Prints the `output` string."
+Contrarianism,4,"[Line 1]: Explanation: Define a function named `generate_response` that takes one parameter, `input_string`.
+         [Line 2]: Explanation: Check if the `input_string` is an empty string.
+         [Line 3]: Explanation: If the `input_string` is empty, return the string ""not empty\n"".
+         [Line 4]: Explanation: Initialize an empty string variable named `response`.
+         [Line 5]: Explanation: Start a loop that iterates over each character in the `input_string`.
+         [Line 6]: Explanation: Check if the current character is an alphabetic character.
+         [Line 7]: Explanation: Check if the current character is a lowercase letter.
+         [Line 8]: Explanation: If the character is lowercase, shift it to the next letter in the alphabet. If it's 'z', wrap around to 'a'.
+         [Line 9]: Explanation: If the character is uppercase, shift it to the next letter in the alphabet. If it's 'Z', wrap around to 'A'.
+         [Line 10]: Explanation: Check if the current character is a digit.
+         [Line 11]: Explanation: If the character is a digit, increment it by 1. If it's '9', wrap around to '0'.
+         [Line 12]: Explanation: If the character is neither alphabetic nor a digit (e.g., a space), keep it unchanged.
+         [Line 13]: Explanation: Append the modified character to the `response` string.
+         [Line 14]: Explanation: After processing all characters, append a newline character to the `response` string.
+         [Line 15]: Explanation: Return the `response` string.
+         [Line 16]: Explanation: Initialize an empty string variable named `input_string`.
+         [Line 17]: Explanation: Start a loop that will run up to 11 times.
+         [Line 18]: Explanation: Read a line of input from the user.
+         [Line 19]: Explanation: Check if the input line is a newline character.
+         [Line 20]: Explanation: If the input line is a newline character, break out of the loop.
+         [Line 21]: Explanation: If the input line is not a newline character, append it to the `input_string`.
+         [Line 22]: Explanation: Call the `generate_response` function with the `input_string` and store the result in the `output` variable.
+         [Line 23]: Explanation: Print the `output` string."
+Contrarianism,5,"[Line 1]: Explanation: Defines a function named `generate_response` that takes one parameter, `input_string`.
+         [Line 2]: Explanation: Checks if the `input_string` is an empty string.
+         [Line 3]: Explanation: If the `input_string` is empty, returns the string ""not empty\n"".
+         [Line 4]: Explanation: Initializes an empty string variable `response` to store the generated response.
+         [Line 5]: Explanation: Starts a loop to iterate over each character in the `input_string`.
+         [Line 6]: Explanation: Checks if the current character `char` is an alphabetic character.
+         [Line 7]: Explanation: Checks if the alphabetic character `char` is lowercase.
+         [Line 8]: Explanation: If the character is lowercase, shifts it by one position in the alphabet using ASCII values, wrapping around if necessary, and appends the new character to `response`.
+         [Line 9]: Explanation: If the character is uppercase, shifts it by one position in the alphabet using ASCII values, wrapping around if necessary, and appends the new character to `response`.
+         [Line 10]: Explanation: Checks if the current character `char` is a digit.
+         [Line 11]: Explanation: If the character is a digit, increments its value by one, wraps around to 0 if it becomes 10, and appends the new digit to `response`.
+         [Line 12]: Explanation: If the character is neither a letter nor a digit (e.g., a space), simply appends the character to `response`.
+         [Line 13]: Explanation: Ends the loop after processing all characters in the `input_string`.
+         [Line 14]: Explanation: Appends a newline character to the `response` string.
+         [Line 15]: Explanation: Returns the final `response` string.
+         [Line 16]: Explanation: Initializes an empty string variable `input_string` to store the user input.
+         [Line 17]: Explanation: Starts a loop that will run up to 11 times to read input characters.
+         [Line 18]: Explanation: Reads a line of input using the `input()` function and assigns it to `input_char`.
+         [Line 19]: Explanation: Checks if the `input_char` is a newline character.
+         [Line 20]: Explanation: If a newline character is encountered, breaks out of the loop.
+         [Line 21]: Explanation: If the `input_char` is not a newline character, appends it to `input_string`.
+         [Line 22]: Explanation: Calls the `generate_response` function with the `input_string` and assigns the result to `output`.
+         [Line 23]: Explanation: Prints the `output` string."
+Mouse Pursuit,1,"``` [Line 1]: Explanation: Defines the main function which will contain the main logic of the program.
+[Line 2]: Explanation: Imports the sys module to use its functionalities.
+[Line 3]: Explanation: Redirects the standard input reading to read all input at once.
+[Line 4]: Explanation: Reads all input data and splits it into a list of strings.
+[Line 5]: Explanation: Converts the first element of the list to an integer, representing the number of events.
+[Line 6]: Explanation: Initializes an empty list to store the events.
+[Line 7]: Explanation: Sets an index variable to 1 to start reading from the second element of the list.
+[Line 8]: Explanation: Starts a loop that will iterate n times, where n is the number of events.
+[Line 9]: Explanation: Reads the type of the current event ('CAUGHT' or 'MISS') from the list.
+[Line 10]: Explanation: Reads the time since the event occurred (s) from the list and converts it to an integer.
+[Line 11]: Explanation: Reads the amount of cheese (c) from the list and converts it to an integer.
+[Line 12]: Explanation: Reads the amount of glory (g) from the list and converts it to an integer.
+[Line 13]: Explanation: Appends a tuple containing the time, event type, cheese, and glory to the events list.
+[Line 14]: Explanation: Increments the index by 4 to move to the next set of event data.
+[Line 15]: Explanation: Reads the value of k from the list and converts it to an integer, representing the time window.
+[Line 16]: Explanation: Sorts the events list in descending order based on the time since the event occurred.
+[Line 17]: Explanation: Initializes a variable to keep track of the total cheese earned.
+[Line 18]: Explanation: Initializes a variable to keep track of the total glory earned.
+[Line 19]: Explanation: Starts a loop to process each event in the sorted list.
+[Line 20]: Explanation: Unpacks the current event tuple into variables for time, event type, cheese, and glory.
+[Line 21]: Explanation: Checks if the time since the event occurred is greater than k.
+[Line 22]: Explanation: Skips the current iteration if the condition is true, as the event is outside the time window.
+[Line 23]: Explanation: Checks if the event type is 'CAUGHT'.
+[Line 24]: Explanation: Adds the cheese amount to the total cheese earned if the event is a 'CAUGHT'.
+[Line 25]: Explanation: Adds the glory amount to the total glory earned if the event is a 'CAUGHT'.
+[Line 26]: Explanation: Checks if the event type is 'MISS'.
+[Line 27]: Explanation: Subtracts the cheese amount from the total cheese earned if the event is a 'MISS'.
+[Line 28]: Explanation: Subtracts the glory amount from the total glory earned if the event is a 'MISS'.
+[Line 29]: Explanation: Prints the total cheese and glory earned in the last k seconds.
+[Line 30]: Explanation: Checks if the script is run as the main program.
+[Line 31]: Explanation: Calls the main function if the script is run as the main program."
+Mouse Pursuit,2,``` ```
+Mouse Pursuit,3,"``` [Line 1]: Explanation: Defines the main function where the execution of the program starts.
+[Line 2]: Explanation: Imports the sys module to access system-specific parameters and functions.
+[Line 3]: Explanation: Reads all input from standard input at once and assigns it to the variable 'input'.
+[Line 4]: Explanation: Splits the input string into a list of strings based on whitespace and assigns it to the variable 'data'.
+[Line 5]: Explanation: Converts the first element of 'data' (which represents the number of events) to an integer and assigns it to the variable 'n'.
+[Line 6]: Explanation: Initializes an empty list named 'events' to store the event data.
+[Line 7]: Explanation: Initializes a variable 'index' to 1 to keep track of the current position in the 'data' list.
+[Line 8]: Explanation: Starts a loop that will iterate 'n' times, once for each event.
+[Line 9]: Explanation: Retrieves the type of the current event (either 'CAUGHT' or 'MISS') from the 'data' list using the current 'index' and assigns it to the variable 'event_type'.
+[Line 10]: Explanation: Converts the second element of the current event (which represents the time elapsed since the event) to an integer and assigns it to the variable 's'.
+[Line 11]: Explanation: Converts the third element of the current event (which represents the amount of cheese gained or lost) to an integer and assigns it to the variable 'c'.
+[Line 12]: Explanation: Converts the fourth element of the current event (which represents the amount of glory gained or lost) to an integer and assigns it to the variable 'g'.
+[Line 13]: Explanation: Appends a tuple containing 's', 'event_type', 'c', and 'g' to the 'events' list.
+[Line 14]: Explanation: Increments the 'index' by 4 to move to the next set of event data in the 'data' list.
+[Line 15]: Explanation: Converts the last element of 'data' (which represents the time window 'k') to an integer and assigns it to the variable 'k'.
+[Line 16]: Explanation: Sorts the 'events' list in descending order based on the time elapsed since the events ('s').
+[Line 17]: Explanation: Initializes a variable 'cheese' to 0 to keep track of the total cheese gained.
+[Line 18]: Explanation: Initializes a variable 'glory' to 0 to keep track of the total glory gained.
+[Line 19]: Explanation: Starts a loop that iterates over each event in the sorted 'events' list.
+[Line 20]: Explanation: Unpacks the current event tuple into the variables 's', 'event_type', 'c', and 'g'.
+[Line 21]: Explanation: Checks if the time elapsed since the current event ('s') is greater than 'k'. If true, the loop continues to the next iteration.
+[Line 22]: Explanation: Continues to the next iteration of the loop if the condition in Line 21 is true.
+[Line 23]: Explanation: Checks if the current event type is 'CAUGHT'. If true, the code inside the if block is executed.
+[Line 24]: Explanation: Adds the amount of cheese gained ('c') to the 'cheese' variable.
+[Line 25]: Explanation: Adds the amount of glory gained ('g') to the 'glory' variable.
+[Line 26]: Explanation: Checks if the current event type is 'MISS'. If true, the code inside the if block is executed.
+[Line 27]: Explanation: Subtracts the amount of cheese lost ('c') from the 'cheese' variable.
+[Line 28]: Explanation: Subtracts the amount of glory lost ('g') from the 'glory' variable.
+[Line 29]: Explanation: Prints the final values of 'cheese' and 'glory', separated by a space.
+[Line 30]: Explanation: Checks if the script is being run as the main module.
+[Line 31]: Explanation: Calls the 'main' function if the script is being run as the main module.```"
+Mouse Pursuit,4,"[Line 1]: Explanation: Defines the main function where the execution of the program starts.
+        [Line 2]: Explanation: Imports the sys module which provides access to some variables used or maintained by the interpreter.
+        [Line 3]: Explanation: Assigns the read method of sys.stdin to the variable input. This allows reading from standard input efficiently.
+        [Line 4]: Explanation: Reads all input data at once and splits it into a list of strings based on whitespace.
+        [Line 5]: Explanation: Converts the first element of the data list (which represents the number of events) to an integer and assigns it to the variable n.
+        [Line 6]: Explanation: Initializes an empty list named events to store tuples representing each event.
+        [Line 7]: Explanation: Initializes the variable index to 1, which will be used to traverse the data list starting from the second element.
+        [Line 8]: Explanation: Starts a loop that will iterate n times, corresponding to the number of events.
+        [Line 9]: Explanation: Retrieves the event type (either 'CAUGHT' or 'MISS') from the data list using the current value of index.
+        [Line 10]: Explanation: Converts the string representation of the time elapsed since the event (s) to an integer and stores it in the variable s.
+        [Line 11]: Explanation: Converts the string representation of the cheese value (c) to an integer and stores it in the variable c.
+        [Line 12]: Explanation: Converts the string representation of the glory value (g) to an integer and stores it in the variable g.
+        [Line 13]: Explanation: Appends a tuple containing the time elapsed (s), event type (event_type), cheese value (c), and glory value (g) to the events list.
+        [Line 14]: Explanation: Increments the index by 4 to move to the next set of event data in the data list.
+        [Line 15]: Explanation: Converts the last element of the data list (which represents the value of k) to an integer and assigns it to the variable k.
+        [Line 16]: Explanation: Sorts the events list in descending order based on the time elapsed (s). This ensures that more recent events come first.
+        [Line 17]: Explanation: Initializes the variable cheese to 0, which will be used to accumulate the total cheese gained.
+        [Line 18]: Explanation: Initializes the variable glory to 0, which will be used to accumulate the total glory gained.
+        [Line 19]: Explanation: Starts a loop to iterate over each event in the sorted events list.
+        [Line 20]: Explanation: Unpacks the tuple representing the current event into the variables s, event_type, c, and g.
+        [Line 21]: Explanation: Checks if the time elapsed (s) for the current event is greater than k. If true, the event is skipped.
+        [Line 22]: Explanation: Continues to the next iteration of the loop if the condition in Line 21 is true.
+        [Line 23]: Explanation: Checks if the event type is 'CAUGHT'.
+        [Line 24]: Explanation: Adds the cheese value (c) to the total cheese accumulated.
+        [Line 25]: Explanation: Adds the glory value (g) to the total glory accumulated.
+        [Line 26]: Explanation: Checks if the event type is 'MISS'.
+        [Line 27]: Explanation: Subtracts the cheese value (c) from the total cheese accumulated.
+        [Line 28]: Explanation: Subtracts the glory value (g) from the total glory accumulated.
+        [Line 29]: Explanation: Prints the total cheese and glory accumulated in the last k seconds.
+        [Line 30]: Explanation: Checks if the script is being run as the main module.
+        [Line 31]: Explanation: Calls the main function to execute the program."
+Mouse Pursuit,5,"[Line 1]: Explanation: Define the main function which will contain the core logic of the program.
+        [Line 2]: Explanation: Import the sys module to use its functionalities.
+        [Line 3]: Explanation: Assign the read method of sys.stdin to the variable input. This allows reading input from standard input efficiently.
+        [Line 4]: Explanation: Read all input data at once and split it into a list of strings using whitespace as the delimiter.
+        [Line 5]: Explanation: Convert the first element of the data list (which represents n) to an integer and store it in the variable n.
+        [Line 6]: Explanation: Initialize an empty list named events to store the parsed event data.
+        [Line 7]: Explanation: Initialize a variable index to 1. This variable will be used to traverse the data list starting from the second element.
+        [Line 8]: Explanation: Start a loop that will iterate n times, where n is the number of events.
+        [Line 9]: Explanation: Extract the event type (either 'CAUGHT' or 'MISS') from the data list at the current index position.
+        [Line 10]: Explanation: Convert the string at the next position in the data list (index + 1) to an integer and store it in the variable s. This represents the time when the event occurred.
+        [Line 11]: Explanation: Convert the string at the next position in the data list (index + 2) to an integer and store it in the variable c. This represents the amount of cheese gained or lost.
+        [Line 12]: Explanation: Convert the string at the next position in the data list (index + 3) to an integer and store it in the variable g. This represents the amount of glory gained or lost.
+        [Line 13]: Explanation: Append a tuple containing the time s, event type, cheese amount c, and glory amount g to the events list.
+        [Line 14]: Explanation: Increment the index by 4 to move to the next set of event data in the data list.
+        [Line 15]: Explanation: Convert the string at the current index position to an integer and store it in the variable k. This represents the time window for which Brandon wants to calculate the cheese and glory earned.
+        [Line 16]: Explanation: Sort the events list in descending order based on the time s of each event. This ensures that more recent events are processed first.
+        [Line 17]: Explanation: Initialize a variable cheese to 0. This variable will keep track of the total cheese earned.
+        [Line 18]: Explanation: Initialize a variable glory to 0. This variable will keep track of the total glory earned.
+        [Line 19]: Explanation: Start a loop to iterate over each event in the sorted events list.
+        [Line 20]: Explanation: Unpack the tuple representing the current event into the variables s, event_type, c, and g.
+        [Line 21]: Explanation: Check if the time s of the current event is greater than k. If true, skip to the next iteration of the loop.
+        [Line 22]: Explanation: If the event type is 'CAUGHT', add the cheese amount c to the cheese variable and add the glory amount g to the glory variable.
+        [Line 23]: Explanation: If the event type is 'MISS', subtract the cheese amount c from the cheese variable and subtract the glory amount g from the glory variable.
+        [Line 24]: Explanation: Print the final values of cheese and glory, separated by a space.
+        [Line 25]: Explanation: Check if the script is being run as the main program.
+        [Line 26]: Explanation: If the script is the main program, call the main function to execute the program's logic."

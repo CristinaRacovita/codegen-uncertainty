@@ -1,0 +1,968 @@
+title,sample_number,explanation
+Sports Rank,1,"``` [Line 1]: Explanation: Defines a function named `read_input` to read input data.
+[Line 2]: Explanation: Imports the `sys` module to access system-specific parameters and functions.
+[Line 3]: Explanation: Uses `sys.stdin.read` to read all input data at once and stores it in the variable `input`.
+[Line 4]: Explanation: Splits the input string into a list of strings `data`, using whitespace as the delimiter.
+[Line 5]: Explanation: Initializes an index variable `index` to 0 to keep track of the current position in the `data` list.
+[Line 6]: Explanation: Converts the first element in `data` (which represents the number of datasets) to an integer and assigns it to `d`.
+[Line 7]: Explanation: Increments the `index` by 1 to move to the next element in `data`.
+[Line 8]: Explanation: Initializes an empty list `datasets` to store the scores for each dataset.
+[Line 9]: Explanation: Starts a loop that will iterate `d` times to process each dataset.
+[Line 10]: Explanation: Converts the current element in `data` (which represents the number of scores in the current dataset) to an integer and assigns it to `n`.
+[Line 11]: Explanation: Increments the `index` by 1 to move to the next element in `data`.
+[Line 12]: Explanation: Extracts the next `n` elements from `data`, converts them to integers, and stores them in the list `scores`.
+[Line 13]: Explanation: Increments the `index` by `n` to move past the scores of the current dataset.
+[Line 14]: Explanation: Appends the `scores` list to the `datasets` list.
+[Line 15]: Explanation: Returns the `datasets` list containing all the scores for each dataset.
+[Line 16]: Explanation: Defines a function named `competition_ranking` to calculate competition rankings based on the given scores.
+[Line 17]: Explanation: Sorts the scores in descending order along with their original indices and stores the result in `sorted_scores`.
+[Line 18]: Explanation: Initializes a list `ranks` of zeros with the same length as the input `scores` to store the competition rankings.
+[Line 19]: Explanation: Initializes a variable `current_rank` to 1, representing the initial rank.
+[Line 20]: Explanation: Iterates over the sorted scores and their original indices.
+[Line 21]: Explanation: Checks if the current score is different from the previous score.
+[Line 22]: Explanation: If the current score is different, updates the `current_rank` to the current position in the sorted list plus 1.
+[Line 23]: Explanation: Assigns the `current_rank` to the corresponding position in the `ranks` list using the original index.
+[Line 24]: Explanation: Returns the `ranks` list containing the competition rankings.
+[Line 25]: Explanation: Defines a function named `dense_ranking` to calculate dense rankings based on the given scores.
+[Line 26]: Explanation: Sorts the scores in descending order along with their original indices and stores the result in `sorted_scores`.
+[Line 27]: Explanation: Initializes a list `ranks` of zeros with the same length as the input `scores` to store the dense rankings.
+[Line 28]: Explanation: Initializes a variable `current_rank` to 1, representing the initial rank.
+[Line 29]: Explanation: Iterates over the sorted scores and their original indices.
+[Line 30]: Explanation: Checks if the current score is less than the previous score.
+[Line 31]: Explanation: If the current score is less, increments the `current_rank` by 1.
+[Line 32]: Explanation: Assigns the `current_rank` to the corresponding position in the `ranks` list using the original index.
+[Line 33]: Explanation: Returns the `ranks` list containing the dense rankings.
+[Line 34]: Explanation: Defines a function named `count_beneficiaries` to count the number of participants who benefit from dense ranking.
+[Line 35]: Explanation: Initializes a variable `count` to 0 to keep track of the number of beneficiaries.
+[Line 36]: Explanation: Iterates over pairs of competition ranks and dense ranks.
+[Line 37]: Explanation: Checks if the dense rank is less than the competition rank.
+[Line 38]: Explanation: If the dense rank is less, increments the `count` by 1.
+[Line 39]: Explanation: Returns the `count` representing the number of beneficiaries.
+[Line 40]: Explanation: Defines the main function named `main` to orchestrate the program flow.
+[Line 41]: Explanation: Calls the `read_input` function to read the datasets and stores the result in `datasets`.
+[Line 42]: Explanation: Initializes an empty list `results` to store the number of beneficiaries for each dataset.
+[Line 43]: Explanation: Iterates over each dataset in `datasets`.
+[Line 44]: Explanation: Calls the `competition_ranking` function to calculate the competition rankings for the current dataset and stores the result in `comp_ranks`.
+[Line 45]: Explanation: Calls the `dense_ranking` function to calculate the dense rankings for the current dataset and stores the result in `dense_ranks`.
+[Line 46]: Explanation: Calls the `count_beneficiaries` function to count the number of beneficiaries for the current dataset and stores the result in `beneficiaries`.
+[Line 47]: Explanation: Appends the `beneficiaries` count to the `results` list.
+[Line 48]: Explanation: Iterates over each result in `results`.
+[Line 49]: Explanation: Prints the result, which is the number of beneficiaries for each dataset.
+[Line 50]: Explanation: Checks if the script is run as the main module.
+[Line 51]: Explanation: If the script is run as the main module, calls the `main` function to execute the program."
+Sports Rank,2,"``` [Line 1]: Explanation: Defines a function named `read_input` which is responsible for reading the input data.
+[Line 2]: Explanation: Imports the `sys` module to access system-specific parameters and functions.
+[Line 3]: Explanation: Assigns the `read` method of `sys.stdin` to the variable `input`, allowing for efficient reading of input data.
+[Line 4]: Explanation: Reads all input data at once and splits it into a list of strings using whitespace as the delimiter.
+[Line 5]: Explanation: Initializes an index variable `index` to 0, which will be used to traverse the `data` list.
+[Line 6]: Explanation: Converts the first element of the `data` list (which represents the number of data sets) to an integer and assigns it to the variable `d`.
+[Line 7]: Explanation: Increments the `index` by 1 to move to the next element in the `data` list.
+[Line 8]: Explanation: Initializes an empty list `datasets` to store the scores for each data set.
+[Line 9]: Explanation: Starts a loop that will iterate `d` times, once for each data set.
+[Line 10]: Explanation: Converts the current element pointed to by `index` (which represents the number of scores in the current data set) to an integer and assigns it to the variable `n`.
+[Line 11]: Explanation: Increments the `index` by 1 to move to the next element in the `data` list.
+[Line 12]: Explanation: Extracts the next `n` elements from the `data` list, converts them to integers, and stores them in a list called `scores`.
+[Line 13]: Explanation: Increments the `index` by `n` to move past the scores of the current data set.
+[Line 14]: Explanation: Appends the `scores` list to the `datasets` list.
+[Line 15]: Explanation: Ends the loop after processing all data sets.
+[Line 16]: Explanation: Defines a function named `competition_ranking` which takes a list of scores as input and returns the competition ranking of each score.
+[Line 17]: Explanation: Sorts the scores in descending order along with their original indices using a list comprehension and the `sorted` function.
+[Line 18]: Explanation: Initializes a list `ranks` of the same length as the input scores, filled with zeros, to store the competition rankings.
+[Line 19]: Explanation: Initializes a variable `current_rank` to 1, which represents the current ranking being assigned.
+[Line 20]: Explanation: Starts a loop that iterates over the sorted scores and their original indices.
+[Line 21]: Explanation: Checks if the current score is different from the previous score.
+[Line 22]: Explanation: If the current score is different from the previous score, updates the `current_rank` to the position of the current score in the sorted list plus 1.
+[Line 23]: Explanation: Assigns the `current_rank` to the corresponding position in the `ranks` list based on the original index.
+[Line 24]: Explanation: Ends the loop after assigning rankings to all scores.
+[Line 25]: Explanation: Defines a function named `dense_ranking` which takes a list of scores as input and returns the dense ranking of each score.
+[Line 26]: Explanation: Sorts the scores in descending order along with their original indices using a list comprehension and the `sorted` function.
+[Line 27]: Explanation: Initializes a list `ranks` of the same length as the input scores, filled with zeros, to store the dense rankings.
+[Line 28]: Explanation: Initializes a variable `current_rank` to 1, which represents the current ranking being assigned.
+[Line 29]: Explanation: Starts a loop that iterates over the sorted scores and their original indices.
+[Line 30]: Explanation: Checks if the current score is less than the previous score.
+[Line 31]: Explanation: If the current score is less than the previous score, increments the `current_rank` by 1.
+[Line 32]: Explanation: Assigns the `current_rank` to the corresponding position in the `ranks` list based on the original index.
+[Line 33]: Explanation: Ends the loop after assigning rankings to all scores.
+[Line 34]: Explanation: Defines a function named `count_beneficiaries` which takes two lists of rankings (competition and dense) as input and returns the number of participants who benefit from dense ranking.
+[Line 35]: Explanation: Initializes a variable `count` to 0, which will be used to count the number of beneficiaries.
+[Line 36]: Explanation: Starts a loop that iterates over pairs of competition and dense rankings.
+[Line 37]: Explanation: Checks if the dense ranking is less than the competition ranking.
+[Line 38]: Explanation: If the dense ranking is less than the competition ranking, increments the `count` by 1.
+[Line 39]: Explanation: Ends the loop after checking all pairs of rankings.
+[Line 40]: Explanation: Defines the main function of the program, which orchestrates the reading of input, computation of rankings, and output of results.
+[Line 41]: Explanation: Calls the `read_input` function to read the input data and store it in the `datasets` variable.
+[Line 42]: Explanation: Initializes an empty list `results` to store the number of beneficiaries for each data set.
+[Line 43]: Explanation: Starts a loop that iterates over each data set in the `datasets` list.
+[Line 44]: Explanation: Calls the `competition_ranking` function to compute the competition rankings for the current data set and stores the result in the `comp_ranks` variable.
+[Line 45]: Explanation: Calls the `dense_ranking` function to compute the dense rankings for the current data set and stores the result in the `dense_ranks` variable.
+[Line 46]: Explanation: Calls the `count_beneficiaries` function to count the number of participants who benefit from dense ranking for the current data set and stores the result in the `beneficiaries` variable.
+[Line 47]: Explanation: Appends the `beneficiaries` count to the `results` list.
+[Line 48]: Explanation: Ends the loop after processing all data sets.
+[Line 49]: Explanation: Starts a loop that iterates over the `results` list.
+[Line 50]: Explanation: Prints each result (number of beneficiaries) to the standard output.
+[Line 51]: Explanation: Checks if the script is being run as the main program and, if so, calls the `main` function to execute the program."
+Sports Rank,3,"[Line 1]: Explanation: Define a function named `read_input` that will be used to read the input data.
+         [Line 2]: Explanation: Import the `sys` module which provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
+         [Line 3]: Explanation: Assign the `read` method of `sys.stdin` to the variable `input`. This method reads all input from standard input until EOF.
+         [Line 4]: Explanation: Call the `input` function and split the returned string into a list of strings, where each string is a word from the input. This list is stored in the variable `data`.
+         [Line 5]: Explanation: Initialize a variable `index` to 0. This variable will be used to keep track of the current position in the `data` list.
+         [Line 6]: Explanation: Convert the string at the current `index` in the `data` list to an integer and store it in the variable `d`. This integer represents the number of datasets.
+         [Line 7]: Explanation: Increment the `index` by 1 to move to the next element in the `data` list.
+         [Line 8]: Explanation: Initialize an empty list named `datasets` that will store the scores for each dataset.
+         [Line 9]: Explanation: Start a loop that will run `d` times, once for each dataset.
+         [Line 10]: Explanation: Convert the string at the current `index` in the `data` list to an integer and store it in the variable `n`. This integer represents the number of scores in the current dataset.
+         [Line 11]: Explanation: Increment the `index` by 1 to move to the next element in the `data` list.
+         [Line 12]: Explanation: Use the `map` function to convert each string in the slice of the `data` list from `index` to `index + n` to an integer. The result is converted to a list and stored in the variable `scores`. This list contains the scores for the current dataset.
+         [Line 13]: Explanation: Increment the `index` by `n` to move past the scores for the current dataset.
+         [Line 14]: Explanation: Append the `scores` list to the `datasets` list.
+         [Line 15]: Explanation: Return the `datasets` list after all datasets have been processed.
+         [Line 16]: Explanation: Define a function named `competition_ranking` that takes a list of scores as input and returns a list of ranks based on the competition ranking system.
+         [Line 17]: Explanation: Create a list of tuples where each tuple contains a score and its original index in the `scores` list. Sort this list in descending order based on the scores.
+         [Line 18]: Explanation: Initialize a list named `ranks` with zeros, having the same length as the `scores` list. This list will store the ranks for each score.
+         [Line 19]: Explanation: Initialize a variable `current_rank` to 1. This variable will be used to assign ranks to the scores.
+         [Line 20]: Explanation: Start a loop that will iterate over the sorted list of tuples.
+         [Line 21]: Explanation: Check if the current index `i` is greater than 0 and if the current score is different from the previous score.
+         [Line 22]: Explanation: If the condition in line 21 is true, update the `current_rank` to `i + 1`.
+         [Line 23]: Explanation: Assign the `current_rank` to the corresponding position in the `ranks` list using the original index from the tuple.
+         [Line 24]: Explanation: Return the `ranks` list after all scores have been ranked.
+         [Line 25]: Explanation: Define a function named `dense_ranking` that takes a list of scores as input and returns a list of ranks based on the dense ranking system.
+         [Line 26]: Explanation: Create a list of tuples where each tuple contains a score and its original index in the `scores` list. Sort this list in descending order based on the scores.
+         [Line 27]: Explanation: Initialize a list named `ranks` with zeros, having the same length as the `scores` list. This list will store the ranks for each score.
+         [Line 28]: Explanation: Initialize a variable `current_rank` to 1. This variable will be used to assign ranks to the scores.
+         [Line 29]: Explanation: Start a loop that will iterate over the sorted list of tuples.
+         [Line 30]: Explanation: Check if the current index `i` is greater than 0 and if the current score is less than the previous score.
+         [Line 31]: Explanation: If the condition in line 30 is true, increment the `current_rank` by 1.
+         [Line 32]: Explanation: Assign the `current_rank` to the corresponding position in the `ranks` list using the original index from the tuple.
+         [Line 33]: Explanation: Return the `ranks` list after all scores have been ranked.
+         [Line 34]: Explanation: Define a function named `count_beneficiaries` that takes two lists of ranks (competition ranks and dense ranks) as input and returns the count of participants who benefit from dense ranking.
+         [Line 35]: Explanation: Initialize a variable `count` to 0. This variable will be used to count the number of participants who benefit from dense ranking.
+         [Line 36]: Explanation: Start a loop that will iterate over pairs of ranks from the competition ranks and dense ranks lists.
+         [Line 37]: Explanation: Check if the dense rank is less than the competition rank.
+         [Line 38]: Explanation: If the condition in line 37 is true, increment the `count` by 1.
+         [Line 39]: Explanation: Return the `count` after all pairs of ranks have been compared.
+         [Line 40]: Explanation: Define the main function that will orchestrate the execution of the program.
+         [Line 41]: Explanation: Call the `read_input` function and store the result in the variable `datasets`.
+         [Line 42]: Explanation: Initialize an empty list named `results` that will store the results for each dataset.
+         [Line 43]: Explanation: Start a loop that will iterate over each dataset in the `datasets` list.
+         [Line 44]: Explanation: Call the `competition_ranking` function with the current dataset and store the result in the variable `comp_ranks`.
+         [Line 45]: Explanation: Call the `dense_ranking` function with the current dataset and store the result in the variable `dense_ranks`.
+         [Line 46]: Explanation: Call the `count_beneficiaries` function with the `comp_ranks` and `dense_ranks` lists and store the result in the variable `beneficiaries`.
+         [Line 47]: Explanation: Append the `beneficiaries` count to the `results` list.
+         [Line 48]: Explanation: Start a loop that will iterate over each result in the `results` list.
+         [Line 49]: Explanation: Print the current result.
+         [Line 50]: Explanation: Check if the script is being run as the main program.
+         [Line 51]: Explanation: If the condition in line 50 is true, call the `main` function to start the execution of the program."
+Sports Rank,4,"[Line 1]: Explanation: Define a function named `read_input` to read input data.
+         [Line 2]: Explanation: Import the `sys` module to access system-specific parameters and functions.
+         [Line 3]: Explanation: Assign the `read` method of `sys.stdin` to the variable `input`, which reads all input data at once.
+         [Line 4]: Explanation: Split the input data into a list of strings, `data`, using whitespace as the delimiter.
+         [Line 5]: Explanation: Initialize an index variable `index` to 0 to keep track of the current position in the `data` list.
+         [Line 6]: Explanation: Convert the first element of `data` to an integer and assign it to `d`, representing the number of datasets.
+         [Line 7]: Explanation: Increment the `index` by 1 to move to the next element in `data`.
+         [Line 8]: Explanation: Initialize an empty list `datasets` to store the scores for each dataset.
+         [Line 9]: Explanation: Start a loop that will run `d` times, once for each dataset.
+         [Line 10]: Explanation: Convert the current element of `data` to an integer and assign it to `n`, representing the number of scores in the current dataset.
+         [Line 11]: Explanation: Increment the `index` by 1 to move to the next element in `data`.
+         [Line 12]: Explanation: Use `map` to convert the next `n` elements of `data` to integers, create a list of tuples with each score and its original index, and assign it to `scores`.
+         [Line 13]: Explanation: Increment the `index` by `n` to move past the current dataset's scores in `data`.
+         [Line 14]: Explanation: Append the `scores` list to the `datasets` list.
+         [Line 15]: Explanation: Return the `datasets` list after all datasets have been processed.
+         [Line 16]: Explanation: Define a function named `competition_ranking` that takes a list of scores as input and returns a list of competition ranks.
+         [Line 17]: Explanation: Sort the scores in descending order along with their original indices and assign the result to `sorted_scores`.
+         [Line 18]: Explanation: Initialize a list `ranks` of the same length as `scores` to store the competition ranks.
+         [Line 19]: Explanation: Initialize a variable `current_rank` to 1, representing the rank of the highest score.
+         [Line 20]: Explanation: Start a loop that iterates over the sorted scores and their original indices.
+         [Line 21]: Explanation: Check if the current score is different from the previous score.
+         [Line 22]: Explanation: If the current score is different, update `current_rank` to be 1 plus the current index.
+         [Line 23]: Explanation: Assign the `current_rank` to the corresponding position in the `ranks` list based on the original index.
+         [Line 24]: Explanation: Return the `ranks` list after all scores have been ranked.
+         [Line 25]: Explanation: Define a function named `dense_ranking` that takes a list of scores as input and returns a list of dense ranks.
+         [Line 26]: Explanation: Sort the scores in descending order along with their original indices and assign the result to `sorted_scores`.
+         [Line 27]: Explanation: Initialize a list `ranks` of the same length as `scores` to store the dense ranks.
+         [Line 28]: Explanation: Initialize a variable `current_rank` to 1, representing the rank of the highest score.
+         [Line 29]: Explanation: Start a loop that iterates over the sorted scores and their original indices.
+         [Line 30]: Explanation: Check if the current score is less than the previous score.
+         [Line 31]: Explanation: If the current score is less, increment `current_rank` by 1.
+         [Line 32]: Explanation: Assign the `current_rank` to the corresponding position in the `ranks` list based on the original index.
+         [Line 33]: Explanation: Return the `ranks` list after all scores have been ranked.
+         [Line 34]: Explanation: Define a function named `count_beneficiaries` that takes two lists of ranks (competition and dense) as input and returns the count of participants who benefit from dense ranking.
+         [Line 35]: Explanation: Initialize a variable `count` to 0 to keep track of the number of beneficiaries.
+         [Line 36]: Explanation: Start a loop that iterates over pairs of competition and dense ranks.
+         [Line 37]: Explanation: Check if the dense rank is less than the competition rank.
+         [Line 38]: Explanation: If the dense rank is less, increment the `count` by 1.
+         [Line 39]: Explanation: Return the `count` after all pairs of ranks have been compared.
+         [Line 40]: Explanation: Define the main function named `main` to execute the program.
+         [Line 41]: Explanation: Call the `read_input` function to read and process the input data and assign the result to `datasets`.
+         [Line 42]: Explanation: Initialize an empty list `results` to store the number of beneficiaries for each dataset.
+         [Line 43]: Explanation: Start a loop that iterates over each dataset in `datasets`.
+         [Line 44]: Explanation: Call the `competition_ranking` function with the current dataset's scores and assign the result to `comp_ranks`.
+         [Line 45]: Explanation: Call the `dense_ranking` function with the current dataset's scores and assign the result to `dense_ranks`.
+         [Line 46]: Explanation: Call the `count_beneficiaries` function with `comp_ranks` and `dense_ranks` and assign the result to `beneficiaries`.
+         [Line 47]: Explanation: Append the `beneficiaries` count to the `results` list.
+         [Line 48]: Explanation: Start a loop that iterates over each result in `results`.
+         [Line 49]: Explanation: Print the current result.
+         [Line 50]: Explanation: Check if the script is being run as the main program.
+         [Line 51]: Explanation: If the script is the main program, call the `main` function to execute the program."
+Sports Rank,5,"``` [Line 1]: Explanation: Define a function named `read_input` that does not take any arguments.
+[Line 2]: Explanation: Import the `sys` module to access system-specific parameters and functions.
+[Line 3]: Explanation: Assign the `read` method of `sys.stdin` to the variable `input`. This allows reading input from standard input.
+[Line 4]: Explanation: Read all input at once and split it into a list of strings based on whitespace. Store this list in the variable `data`.
+[Line 5]: Explanation: Initialize a variable `index` to 0. This will be used to keep track of the current position in the `data` list.
+[Line 6]: Explanation: Convert the first element in `data` (which represents the number of datasets) to an integer and store it in the variable `d`.
+[Line 7]: Explanation: Increment the `index` by 1 to move to the next element in the `data` list.
+[Line 8]: Explanation: Initialize an empty list named `datasets` to store the scores for each dataset.
+[Line 9]: Explanation: Start a loop that will run `d` times, once for each dataset.
+[Line 10]: Explanation: Convert the current element in `data` (which represents the number of scores in the current dataset) to an integer and store it in the variable `n`.
+[Line 11]: Explanation: Increment the `index` by 1 to move to the next element in the `data` list.
+[Line 12]: Explanation: Use a list comprehension to convert the next `n` elements in `data` (which represent the scores) to integers. Store these integers in the list `scores`.
+[Line 13]: Explanation: Increment the `index` by `n` to move past the scores of the current dataset.
+[Line 14]: Explanation: Append the `scores` list to the `datasets` list.
+[Line 15]: Explanation: Return the `datasets` list after processing all datasets.
+[Line 16]: Explanation: Define a function named `competition_ranking` that takes a list of scores as an argument.
+[Line 17]: Explanation: Sort the scores in descending order along with their original indices using a list comprehension. Store the sorted list in the variable `sorted_scores`.
+[Line 18]: Explanation: Initialize a list named `ranks` with zeros, having the same length as the input `scores` list.
+[Line 19]: Explanation: Initialize a variable `current_rank` to 1. This will be used to assign ranks to the scores.
+[Line 20]: Explanation: Start a loop that will iterate over the `sorted_scores` list.
+[Line 21]: Explanation: Check if the current score is different from the previous score. If it is, update the `current_rank` to the current index plus 1.
+[Line 22]: Explanation: Assign the `current_rank` to the corresponding position in the `ranks` list using the original index.
+[Line 23]: Explanation: Return the `ranks` list after assigning ranks to all scores.
+[Line 24]: Explanation: Define a function named `dense_ranking` that takes a list of scores as an argument.
+[Line 25]: Explanation: Sort the scores in descending order along with their original indices using a list comprehension. Store the sorted list in the variable `sorted_scores`.
+[Line 26]: Explanation: Initialize a list named `ranks` with zeros, having the same length as the input `scores` list.
+[Line 27]: Explanation: Initialize a variable `current_rank` to 1. This will be used to assign ranks to the scores.
+[Line 28]: Explanation: Start a loop that will iterate over the `sorted_scores` list.
+[Line 29]: Explanation: Check if the current score is less than the previous score. If it is, increment the `current_rank` by 1.
+[Line 30]: Explanation: Assign the `current_rank` to the corresponding position in the `ranks` list using the original index.
+[Line 31]: Explanation: Return the `ranks` list after assigning ranks to all scores.
+[Line 32]: Explanation: Define a function named `count_beneficiaries` that takes two lists of ranks (`competition_ranks` and `dense_ranks`) as arguments.
+[Line 33]: Explanation: Initialize a variable `count` to 0. This will be used to count the number of participants who benefit from dense ranking.
+[Line 34]: Explanation: Start a loop that will iterate over pairs of ranks from the `competition_ranks` and `dense_ranks` lists using the `zip` function.
+[Line 35]: Explanation: Check if the dense rank is less than the competition rank. If it is, increment the `count` by 1.
+[Line 36]: Explanation: Return the `count` after checking all pairs of ranks.
+[Line 37]: Explanation: Define the main function named `main` that does not take any arguments.
+[Line 38]: Explanation: Call the `read_input` function to read and process the input data. Store the resulting list of datasets in the variable `datasets`.
+[Line 39]: Explanation: Initialize an empty list named `results` to store the results for each dataset.
+[Line 40]: Explanation: Start a loop that will iterate over each dataset in the `datasets` list.
+[Line 41]: Explanation: Call the `competition_ranking` function with the current dataset to calculate the competition ranks. Store the resulting ranks in the variable `comp_ranks`.
+[Line 42]: Explanation: Call the `dense_ranking` function with the current dataset to calculate the dense ranks. Store the resulting ranks in the variable `dense_ranks`.
+[Line 43]: Explanation: Call the `count_beneficiaries` function with the `comp_ranks` and `dense_ranks` to count the number of participants who benefit from dense ranking. Store the result in the variable `beneficiaries`.
+[Line 44]: Explanation: Append the `beneficiaries` count to the `results` list.
+[Line 45]: Explanation: Start a loop that will iterate over each result in the `results` list.
+[Line 46]: Explanation: Print the current result.
+[Line 47]: Explanation: Check if the script is being run as the main program. If it is, call the `main` function to execute the program.
+[Line 48]: Explanation: End of the `if __name__ == ""__main__"":` block.
+[Line 49]: Explanation: End of the `main` function.
+[Line 50]: Explanation: End of the script."
+Solidus Fraction,1,"[Line 1]: Explanation: Define a function named `gcd` that takes two arguments `a` and `b`.
+         [Line 2]: Explanation: Start a while loop that continues as long as `b` is not equal to 0.
+         [Line 3]: Explanation: Inside the loop, update `a` to be `b`, and `b` to be the remainder of `a` divided by `b` using the modulo operator `%`.
+         [Line 4]: Explanation: Once the loop ends, return the value of `a`, which will be the greatest common divisor (GCD) of the original `a` and `b`.
+         [Line 5]: Explanation: Define the main function where the execution of the program begins.
+         [Line 6]: Explanation: Read the first line of input, strip any leading or trailing whitespace, and store it in the variable `numerator_str`.
+         [Line 7]: Explanation: Read the second line of input, strip any leading or trailing whitespace, and store it in the variable `vinculum`.
+         [Line 8]: Explanation: Read the third line of input, strip any leading or trailing whitespace, and store it in the variable `denominator_str`.
+         [Line 9]: Explanation: Convert the string stored in `numerator_str` to an integer and store it in the variable `numerator`.
+         [Line 10]: Explanation: Convert the string stored in `denominator_str` to an integer and store it in the variable `denominator`.
+         [Line 11]: Explanation: Calculate the GCD of the absolute values of `numerator` and `denominator` using the `gcd` function and store it in the variable `gcd_value`.
+         [Line 12]: Explanation: Divide `numerator` by `gcd_value` using integer division and store the result in the variable `reduced_numerator`.
+         [Line 13]: Explanation: Divide `denominator` by `gcd_value` using integer division and store the result in the variable `reduced_denominator`.
+         [Line 14]: Explanation: Check if `reduced_denominator` is equal to 1.
+         [Line 15]: Explanation: If `reduced_denominator` is 1, print only the `reduced_numerator` as the output.
+         [Line 16]: Explanation: If `reduced_denominator` is not 1, print the reduced fraction in the format ""{reduced_numerator}/{reduced_denominator}"".
+         [Line 17]: Explanation: End the if-else statement.
+         [Line 18]: Explanation: Check if the script is being run directly (not imported).
+         [Line 19]: Explanation: If the script is being run directly, call the `main` function to execute the program."
+Solidus Fraction,2,"[Line 1]: Explanation: Define a function named 'gcd' that takes two parameters, 'a' and 'b', to calculate the greatest common divisor using the Euclidean algorithm.
+         [Line 2]: Explanation: Start a while loop that continues as long as 'b' is not equal to 0.
+         [Line 3]: Explanation: Inside the loop, update the values of 'a' and 'b'. Set 'a' to the current value of 'b', and 'b' to the remainder of 'a' divided by 'b'.
+         [Line 4]: Explanation: Once the loop ends, return the value of 'a', which is the greatest common divisor.
+         [Line 5]: Explanation: Define the main function where the program execution begins.
+         [Line 6]: Explanation: Read the first line of input, strip any leading or trailing whitespace, and store it in the variable 'numerator_str'.
+         [Line 7]: Explanation: Read the second line of input, strip any leading or trailing whitespace, and store it in the variable 'vinculum'.
+         [Line 8]: Explanation: Read the third line of input, strip any leading or trailing whitespace, and store it in the variable 'denominator_str'.
+         [Line 9]: Explanation: Convert the string stored in 'numerator_str' to an integer and store it in the variable 'numerator'.
+         [Line 10]: Explanation: Convert the string stored in 'denominator_str' to an integer and store it in the variable 'denominator'.
+         [Line 11]: Explanation: Calculate the greatest common divisor of the absolute values of 'numerator' and 'denominator' using the 'gcd' function and store the result in 'gcd_value'.
+         [Line 12]: Explanation: Divide 'numerator' by 'gcd_value' using integer division and store the result in 'reduced_numerator'.
+         [Line 13]: Explanation: Divide 'denominator' by 'gcd_value' using integer division and store the result in 'reduced_denominator'.
+         [Line 14]: Explanation: Check if 'reduced_denominator' is equal to 1.
+         [Line 15]: Explanation: If 'reduced_denominator' is 1, print the value of 'reduced_numerator' without a denominator.
+         [Line 16]: Explanation: If 'reduced_denominator' is not 1, print the reduced fraction in the format ""numerator/denominator"".
+         [Line 17]: Explanation: Use an f-string to format and print the reduced fraction.
+         [Line 18]: Explanation: Check if the script is run as the main module.
+         [Line 19]: Explanation: Call the 'main' function to execute the program."
+Solidus Fraction,3,"``` [Line 1]: Explanation: Define a function `gcd` that calculates the greatest common divisor of two numbers using the Euclidean algorithm.
+[Line 2]: Explanation: Start a while loop that continues as long as `b` is not equal to 0.
+[Line 3]: Explanation: Update `a` to the value of `b`, and `b` to the remainder of `a` divided by `b`.
+[Line 4]: Explanation: Return the value of `a`, which will be the greatest common divisor.
+[Line 5]: Explanation: Define the main function where the program logic will be implemented.
+[Line 6]: Explanation: Read the first line of input, strip any leading or trailing whitespace, and store it in `numerator_str`.
+[Line 7]: Explanation: Read the second line of input, strip any leading or trailing whitespace, and store it in `vinculum`. This line is not used further in the program.
+[Line 8]: Explanation: Read the third line of input, strip any leading or trailing whitespace, and store it in `denominator_str`.
+[Line 9]: Explanation: Convert `numerator_str` to an integer and store it in `numerator`.
+[Line 10]: Explanation: Convert `denominator_str` to an integer and store it in `denominator`.
+[Line 11]: Explanation: Calculate the greatest common divisor of the absolute values of `numerator` and `denominator` using the `gcd` function and store it in `gcd_value`.
+[Line 12]: Explanation: Divide `numerator` by `gcd_value` using integer division and store the result in `reduced_numerator`.
+[Line 13]: Explanation: Divide `denominator` by `gcd_value` using integer division and store the result in `reduced_denominator`.
+[Line 14]: Explanation: Check if `reduced_denominator` is equal to 1.
+[Line 15]: Explanation: If `reduced_denominator` is 1, print only the `reduced_numerator` since the fraction is a whole number.
+[Line 16]: Explanation: If `reduced_denominator` is not 1, print the reduced fraction in the format ""reduced_numerator/reduced_denominator"".
+[Line 17]: Explanation: Format the string to include the reduced numerator and denominator separated by a solidus.
+[Line 18]: Explanation: Check if the script is being run as the main module.
+[Line 19]: Explanation: Call the `main` function to execute the program logic.```"
+Solidus Fraction,4,"``` [Line 1]: Explanation: Define a function named `gcd` that takes two arguments `a` and `b`. This function will calculate the greatest common divisor of `a` and `b` using the Euclidean algorithm.
+[Line 2]: Explanation: Start a while loop that continues as long as `b` is not equal to 0. This is the core of the Euclidean algorithm for finding the GCD.
+[Line 3]: Explanation: Inside the while loop, update the values of `a` and `b` such that `a` takes the value of `b`, and `b` takes the value of `a % b` (the remainder when `a` is divided by `b`). This step reduces the problem size in each iteration.
+[Line 4]: Explanation: Once the loop exits (when `b` becomes 0), return the value of `a`, which is the GCD of the original inputs.
+[Line 5]: Explanation: Define the main function `main()` where the program's execution begins.
+[Line 6]: Explanation: Read the first line of input, which represents the numerator, and strip any leading or trailing whitespace from it. Store this in the variable `numerator_str`.
+[Line 7]: Explanation: Read the second line of input, which represents the vinculum, and strip any leading or trailing whitespace from it. Store this in the variable `vinculum`.
+[Line 8]: Explanation: Read the third line of input, which represents the denominator, and strip any leading or trailing whitespace from it. Store this in the variable `denominator_str`.
+[Line 9]: Explanation: Convert the string `numerator_str` to an integer and store it in the variable `numerator`.
+[Line 10]: Explanation: Convert the string `denominator_str` to an integer and store it in the variable `denominator`.
+[Line 11]: Explanation: Calculate the greatest common divisor (GCD) of the absolute values of `numerator` and `denominator` using the `gcd` function defined earlier. Store this in the variable `gcd_value`.
+[Line 12]: Explanation: Divide the `numerator` by `gcd_value` using integer division to get the reduced numerator. Store this in the variable `reduced_numerator`.
+[Line 13]: Explanation: Divide the `denominator` by `gcd_value` using integer division to get the reduced denominator. Store this in the variable `reduced_denominator`.
+[Line 14]: Explanation: Check if the `reduced_denominator` is equal to 1. If it is, it means the fraction is a whole number.
+[Line 15]: Explanation: If the `reduced_denominator` is 1, print only the `reduced_numerator` as the output.
+[Line 16]: Explanation: If the `reduced_denominator` is not 1, it means the fraction is not a whole number.
+[Line 17]: Explanation: Print the reduced fraction in the format ""numerator/denominator"" using an f-string.
+[Line 18]: Explanation: Check if the script is being run as the main module (not imported).
+[Line 19]: Explanation: If the script is the main module, call the `main()` function to execute the program."
+Solidus Fraction,5,"``` [Line 1]: Explanation: Define a function `gcd` to calculate the greatest common divisor using the Euclidean algorithm.
+[Line 2]: Explanation: Start a while loop that continues as long as `b` is not zero.
+[Line 3]: Explanation: Update `a` to the value of `b`, and `b` to the remainder of `a` divided by `b`.
+[Line 4]: Explanation: Return the value of `a` once `b` becomes zero, which is the greatest common divisor.
+[Line 5]: Explanation: Define the main function where the program execution begins.
+[Line 6]: Explanation: Read the first line of input, strip any leading or trailing whitespace, and store it in `numerator_str`.
+[Line 7]: Explanation: Read the second line of input, strip any leading or trailing whitespace, and store it in `vinculum`. This line is not used further.
+[Line 8]: Explanation: Read the third line of input, strip any leading or trailing whitespace, and store it in `denominator_str`.
+[Line 9]: Explanation: Convert the stripped numerator string to an integer and store it in `numerator`.
+[Line 10]: Explanation: Convert the stripped denominator string to an integer and store it in `denominator`.
+[Line 11]: Explanation: Calculate the greatest common divisor of the absolute values of `numerator` and `denominator` and store it in `gcd_value`.
+[Line 12]: Explanation: Divide `numerator` by `gcd_value` to get the reduced numerator and store it in `reduced_numerator`.
+[Line 13]: Explanation: Divide `denominator` by `gcd_value` to get the reduced denominator and store it in `reduced_denominator`.
+[Line 14]: Explanation: Check if the reduced denominator is equal to 1.
+[Line 15]: Explanation: If the reduced denominator is 1, print only the reduced numerator as the output.
+[Line 16]: Explanation: If the reduced denominator is not 1, print the reduced numerator followed by a solidus and then the reduced denominator.
+[Line 17]: Explanation: Use formatted string literals to format the output as a fraction.
+[Line 18]: Explanation: Check if the script is run as the main module.
+[Line 19]: Explanation: Call the `main` function to execute the program."
+Breakout,1,"``` [Line 1]: Explanation: Defines a function `simulate_brick_wall` that takes four parameters: `b` (number of balls), `w` (width of the wall), `h` (height of the wall), and `balls` (a list of tuples containing the target, power, and adjustment for each ball).
+[Line 2]: Explanation: Initializes a 2D list `wall` representing the brick wall, where each element is set to `True` indicating the presence of a brick. The wall has dimensions `h` (height) by `w` (width).
+[Line 3]: Explanation: Initializes an empty list `results` to store the number of bricks each ball bounces off.
+[Line 4]: Explanation: Iterates over each ball's target (`t`), power (`p`), and adjustment (`d`) from the `balls` list.
+[Line 5]: Explanation: Initializes a variable `bounces` to 0 to count the number of bricks the current ball bounces off.
+[Line 6]: Explanation: Starts a while loop that continues as long as the target `t` is within the valid range of the wall's width (`0 <= t < w`).
+[Line 7]: Explanation: Calculates the starting column `start` for the range of columns affected by the ball's power. It ensures that `start` is at least 0.
+[Line 8]: Explanation: Calculates the ending column `end` for the range of columns affected by the ball's power. It ensures that `end` is at most the wall's width `w`.
+[Line 9]: Explanation: Iterates over each column `x` in the range from `start` to `end`.
+[Line 10]: Explanation: Checks if there is a brick at the bottom row (`h-1`) of column `x`. If there is, it means the ball hits a brick.
+[Line 11]: Explanation: Increments the `bounces` counter by 1 because the ball has hit a brick.
+[Line 12]: Explanation: Marks the brick at the bottom row (`h-1`) of column `x` as destroyed by setting it to `False`.
+[Line 13]: Explanation: Adjusts the target column `t` by adding the adjustment value `d`.
+[Line 14]: Explanation: Checks if there are any bricks remaining in the column `t` at any row above the bottom row (`h-1`). If there are bricks, it means the ball continues bouncing.
+[Line 15]: Explanation: Continues the while loop because the ball still has bricks to bounce off.
+[Line 16]: Explanation: Executes if there are no bricks remaining in the column `t` at any row above the bottom row (`h-1`). This means the ball has disappeared.
+[Line 17]: Explanation: Breaks out of the while loop because the ball has disappeared.
+[Line 18]: Explanation: Iterates over each column `x` in the wall.
+[Line 19]: Explanation: Iterates over each row `y` in the wall from the second-to-last row up to the top row.
+[Line 20]: Explanation: Checks if the brick at row `y` and column `x` is destroyed (`False`).
+[Line 21]: Explanation: Marks the brick at row `y+1` and column `x` as destroyed by setting it to `False`.
+[Line 22]: Explanation: Executes if the brick at row `y` and column `x` is not destroyed (`True`).
+[Line 23]: Explanation: Moves the brick from row `y` to row `y+1` by setting the brick at row `y+1` and column `x` to `True`.
+[Line 24]: Explanation: Marks the brick at row `y` and column `x` as destroyed by setting it to `False`.
+[Line 25]: Explanation: Appends the number of bricks the current ball bounces off (`bounces`) to the `results` list.
+[Line 26]: Explanation: Returns the `results` list containing the number of bricks each ball bounces off.
+[Line 27]: Explanation: Imports the `sys` module to use the `stdin.read` method for reading input.
+[Line 28]: Explanation: Assigns the `stdin.read` method to the `input` variable.
+[Line 29]: Explanation: Reads all input data as a single string and splits it into a list of strings `data`.
+[Line 30]: Explanation: Converts the first element of `data` to an integer and assigns it to `b` (number of balls).
+[Line 31]: Explanation: Converts the second element of `data` to an integer and assigns it to `w` (width of the wall).
+[Line 32]: Explanation: Converts the third element of `data` to an integer and assigns it to `h` (height of the wall).
+[Line 33]: Explanation: Initializes an empty list `balls` to store the details of each ball.
+[Line 34]: Explanation: Initializes a variable `index` to 3, which points to the first element of the ball details in the `data` list.
+[Line 35]: Explanation: Starts a for loop that iterates `b` times, once for each ball.
+[Line 36]: Explanation: Converts the element at `index` in `data` to an integer and assigns it to `t` (target column).
+[Line 37]: Explanation: Converts the element at `index + 1` in `data` to an integer and assigns it to `p` (power of the ball).
+[Line 38]: Explanation: Converts the element at `index + 2` in `data` to an integer and assigns it to `d` (adjustment of the ball).
+[Line 39]: Explanation: Appends a tuple `(t, p, d)` to the `balls` list.
+[Line 40]: Explanation: Increments the `index` by 3 to point to the next ball's details.
+[Line 41]: Explanation: Calls the `simulate_brick_wall` function with the parameters `b`, `w`, `h`, and `balls`, and assigns the returned list to `results`.
+[Line 42]: Explanation: Iterates over each element in the `results` list.
+[Line 43]: Explanation: Prints each element in the `results` list, which represents the number of bricks each ball bounces off."
+Breakout,2,"[Line 1]: Explanation: Define a function `simulate_brick_wall` that takes four parameters: `b` (number of balls), `w` (width of the wall), `h` (height of the wall), and `balls` (a list of tuples containing the target, power, and adjustment for each ball).
+         [Line 2]: Explanation: Initialize a 2D list `wall` representing the brick wall, where each element is set to `True` indicating that the brick is present. The dimensions of the wall are `h` (height) by `w` (width).
+         [Line 3]: Explanation: Initialize an empty list `results` to store the number of bricks each ball bounces off.
+         [Line 4]: Explanation: Iterate over each ball's target (`t`), power (`p`), and adjustment (`d`) provided in the `balls` list.
+         [Line 5]: Explanation: Initialize a variable `bounces` to count the number of bricks the current ball bounces off.
+         [Line 6]: Explanation: Enter a while loop that continues as long as the target `t` is within the valid range of the wall's width (`0 <= t < w`).
+         [Line 7]: Explanation: Calculate the starting column index (`start`) for the range of columns that the ball will affect. It is the maximum of `0` and `t - p`, ensuring that it doesn't go below the left edge of the wall.
+         [Line 8]: Explanation: Calculate the ending column index (`end`) for the range of columns that the ball will affect. It is the minimum of `w` and `t + p + 1`, ensuring that it doesn't go beyond the right edge of the wall.
+         [Line 9]: Explanation: Iterate over each column index `x` from `start` to `end - 1`.
+         [Line 10]: Explanation: Check if the brick at the bottom row (`h-1`) and column `x` is present (`True`).
+         [Line 11]: Explanation: Increment the `bounces` counter since the ball bounces off this brick.
+         [Line 12]: Explanation: Set the brick at the bottom row (`h-1`) and column `x` to `False`, indicating that it has been destroyed.
+         [Line 13]: Explanation: Adjust the target column `t` by adding the adjustment value `d`.
+         [Line 14]: Explanation: Check if there are any bricks present in the column `t` above the bottom row (`h-1`).
+         [Line 15]: Explanation: If there are bricks above the bottom row in column `t`, continue the loop to handle the next bounce.
+         [Line 16]: Explanation: If there are no bricks above the bottom row in column `t`, break out of the loop since the ball has disappeared.
+         [Line 17]: Explanation: Iterate over each column `x` from `0` to `w-1`.
+         [Line 18]: Explanation: Iterate over each row `y` from `h-2` down to `0`.
+         [Line 19]: Explanation: Check if the brick at row `y` and column `x` is destroyed (`False`).
+         [Line 20]: Explanation: If the brick at row `y` and column `x` is destroyed, set the brick at row `y+1` and column `x` to `False` as well, maintaining the empty space.
+         [Line 21]: Explanation: If the brick at row `y` and column `x` is present (`True`), move the brick down to row `y+1` and set the original position to `False`.
+         [Line 22]: Explanation: Append the number of bounces for the current ball to the `results` list.
+         [Line 23]: Explanation: Return the `results` list containing the number of bounces for each ball.
+         [Line 24]: Explanation: Import the `sys` module to use the `stdin.read` method for reading input.
+         [Line 25]: Explanation: Read all input data as a single string and split it into a list of strings `data`.
+         [Line 26]: Explanation: Convert the first element of `data` to an integer and assign it to `b` (number of balls).
+         [Line 27]: Explanation: Convert the second element of `data` to an integer and assign it to `w` (width of the wall).
+         [Line 28]: Explanation: Convert the third element of `data` to an integer and assign it to `h` (height of the wall).
+         [Line 29]: Explanation: Initialize an empty list `balls` to store the details of each ball.
+         [Line 30]: Explanation: Initialize a variable `index` to `3` to keep track of the current position in the `data` list.
+         [Line 31]: Explanation: Iterate over the range of `b` to process each ball.
+         [Line 32]: Explanation: Convert the element at `index` in `data` to an integer and assign it to `t` (target column).
+         [Line 33]: Explanation: Convert the element at `index + 1` in `data` to an integer and assign it to `p` (power of the ball).
+         [Line 34]: Explanation: Convert the element at `index + 2` in `data` to an integer and assign it to `d` (adjustment value).
+         [Line 35]: Explanation: Append a tuple `(t, p, d)` representing the ball's details to the `balls` list.
+         [Line 36]: Explanation: Increment the `index` by `3` to move to the next set of ball details.
+         [Line 37]: Explanation: Call the `simulate_brick_wall` function with the parameters `b`, `w`, `h`, and `balls`, and store the returned results in the `results` list.
+         [Line 38]: Explanation: Iterate over each element in the `results` list.
+         [Line 39]: Explanation: Print each element in the `results` list, which represents the number of bricks each ball bounces off."
+Breakout,3,"[Line 1]: Explanation: Define a function `simulate_brick_wall` that takes four parameters: `b` (number of balls), `w` (width of the wall), `h` (height of the wall), and `balls` (a list of tuples containing the target (`t`), power (`p`), and adjustment (`d`) for each ball).
+         [Line 2]: Explanation: Create a 2D list `wall` with dimensions `h` by `w`, where each element is initialized to `True`, representing that the brick is present.
+         [Line 3]: Explanation: Initialize an empty list `results` to store the number of bricks each ball bounces off.
+         [Line 4]: Explanation: Iterate over each ball's target (`t`), power (`p`), and adjustment (`d`) from the `balls` list.
+         [Line 5]: Explanation: Initialize a variable `bounces` to count the number of bricks the current ball bounces off.
+         [Line 6]: Explanation: Enter a while loop that continues as long as the target `t` is within the bounds of the wall's width (`w`).
+         [Line 7]: Explanation: Calculate the starting index `start` for the range of bricks to be destroyed, ensuring it is not less than 0.
+         [Line 8]: Explanation: Calculate the ending index `end` for the range of bricks to be destroyed, ensuring it is not greater than the wall's width (`w`).
+         [Line 9]: Explanation: Iterate over the range from `start` to `end` (exclusive).
+         [Line 10]: Explanation: Check if the brick at the bottom row (`h-1`) and column `x` is present (`True`).
+         [Line 11]: Explanation: Increment the `bounces` counter since the ball has hit a brick.
+         [Line 12]: Explanation: Set the brick at the bottom row (`h-1`) and column `x` to `False`, indicating it has been destroyed.
+         [Line 13]: Explanation: Adjust the target `t` by adding the adjustment value `d`.
+         [Line 14]: Explanation: Check if there are any bricks remaining in the column `t` from the top row to the second-to-last row.
+         [Line 15]: Explanation: If there are bricks remaining, continue to the next iteration of the while loop.
+         [Line 16]: Explanation: If there are no bricks remaining, break out of the while loop.
+         [Line 17]: Explanation: Iterate over each column `x` of the wall.
+         [Line 18]: Explanation: Iterate over each row `y` from the second-to-last row up to the top row.
+         [Line 19]: Explanation: Check if the brick at row `y` and column `x` is not present (`False`).
+         [Line 20]: Explanation: Set the brick at row `y+1` and column `x` to `False`, indicating it has been destroyed.
+         [Line 21]: Explanation: If the brick at row `y` and column `x` is present (`True`), set the brick at row `y+1` and column `x` to `True`, indicating it has moved down.
+         [Line 22]: Explanation: Set the brick at row `y` and column `x` to `False`, indicating it has been destroyed.
+         [Line 23]: Explanation: Append the `bounces` count for the current ball to the `results` list.
+         [Line 24]: Explanation: Return the `results` list containing the number of bricks each ball bounces off.
+         [Line 25]: Explanation: Import the `sys` module to access system-specific parameters and functions.
+         [Line 26]: Explanation: Define a function `input` that reads all input from standard input.
+         [Line 27]: Explanation: Split the input string into a list of strings `data`.
+         [Line 28]: Explanation: Convert the first element of `data` to an integer and assign it to `b` (number of balls).
+         [Line 29]: Explanation: Convert the second element of `data` to an integer and assign it to `w` (width of the wall).
+         [Line 30]: Explanation: Convert the third element of `data` to an integer and assign it to `h` (height of the wall).
+         [Line 31]: Explanation: Initialize an empty list `balls` to store the target (`t`), power (`p`), and adjustment (`d`) for each ball.
+         [Line 32]: Explanation: Initialize a variable `index` to 3, which is the starting index for reading the balls' data.
+         [Line 33]: Explanation: Iterate over the range from 0 to `b` (number of balls).
+         [Line 34]: Explanation: Convert the element at index `index` of `data` to an integer and assign it to `t` (target).
+         [Line 35]: Explanation: Convert the element at index `index + 1` of `data` to an integer and assign it to `p` (power).
+         [Line 36]: Explanation: Convert the element at index `index + 2` of `data` to an integer and assign it to `d` (adjustment).
+         [Line 37]: Explanation: Append a tuple `(t, p, d)` to the `balls` list.
+         [Line 38]: Explanation: Increment the `index` by 3 to move to the next ball's data.
+         [Line 39]: Explanation: Call the `simulate_brick_wall` function with the parameters `b`, `w`, `h`, and `balls`, and assign the returned list to `results`.
+         [Line 40]: Explanation: Iterate over each result in the `results` list.
+         [Line 41]: Explanation: Print each result on a new line."
+Breakout,4,"``` [Line 1]: Explanation: Define a function `simulate_brick_wall` that takes the number of balls `b`, the width `w`, the height `h`, and a list of balls `balls` as arguments. Each ball is represented as a tuple `(t, p, d)` where `t` is the target position, `p` is the power, and `d` is the adjustment. [Line 2]: Explanation: Initialize a 2D list `wall` with dimensions `h` by `w`, filled with `True` values. This list represents the brick wall, where `True` indicates the presence of a brick and `False` indicates an empty space. [Line 3]: Explanation: Initialize an empty list `results` to store the number of bricks each ball bounces off. [Line 4]: Explanation: Iterate over each ball in the `balls` list. For each ball, extract the target position `t`, power `p`, and adjustment `d`. [Line 5]: Explanation: Initialize a variable `bounces` to 0. This variable will count the number of bricks the ball bounces off. [Line 6]: Explanation: Enter a while loop that continues as long as the target position `t` is within the bounds of the wall (i.e., `0 <= t < w`). [Line 7]: Explanation: Calculate the starting index `start` for the range of bricks to be destroyed. This is the maximum of 0 and `t - p`, ensuring that the range does not go below the left edge of the wall. [Line 8]: Explanation: Calculate the ending index `end` for the range of bricks to be destroyed. This is the minimum of `w` and `t + p + 1`, ensuring that the range does not exceed the right edge of the wall. [Line 9]: Explanation: Iterate over the range from `start` to `end` (inclusive) to check and destroy bricks. [Line 10]: Explanation: Check if there is a brick at the current position `(h-1, x)` on the bottom row of the wall. [Line 11]: Explanation: If a brick is present, increment the `bounces` counter and set the corresponding position in the `wall` list to `False`, indicating that the brick has been destroyed. [Line 12]: Explanation: Update the target position `t` by adding the adjustment `d`. This simulates the ball's rebound. [Line 13]: Explanation: Check if there are any bricks remaining in the column directly above the new target position `t`. If there are, continue the loop to simulate the next bounce. [Line 14]: Explanation: If there are no bricks remaining in the column directly above the new target position `t`, break out of the loop as the ball has disappeared. [Line 15]: Explanation: Start a nested loop to update the positions of the bricks after a bounce. This loop iterates over each column `x` from 0 to `w-1`. [Line 16]: Explanation: Start another loop to iterate over each row `y` from `h-2` down to 0. This loop processes each row from the second-to-last row up to the top row. [Line 17]: Explanation: Check if there is no brick at the current position `(y, x)`. If there is no brick, set the corresponding position in the next row `(y+1, x)` to `False`, indicating that the space remains empty. [Line 18]: Explanation: If there is a brick at the current position `(y, x)`, set the corresponding position in the next row `(y+1, x)` to `True`, indicating that a brick has moved down. [Line 19]: Explanation: Set the current position `(y, x)` to `False`, indicating that the brick has been moved down and the original position is now empty. [Line 20]: Explanation: Append the `bounces` count for the current ball to the `results` list. [Line 21]: Explanation: Return the `results` list containing the number of bricks each ball bounces off. [Line 22]: Explanation: Import the `sys` module to access system-specific parameters and functions. [Line 23]: Explanation: Redirect the standard input to read from the input stream. [Line 24]: Explanation: Read all input data as a single string and split it into a list of strings `data`. [Line 25]: Explanation: Convert the first element of `data` to an integer and assign it to `b`, representing the number of balls. [Line 26]: Explanation: Convert the second element of `data` to an integer and assign it to `w`, representing the width of the wall. [Line 27]: Explanation: Convert the third element of `data` to an integer and assign it to `h`, representing the height of the wall. [Line 28]: Explanation: Initialize an empty list `balls` to store the details of each ball. [Line 29]: Explanation: Initialize a variable `index` to 3, which points to the first element of the ball details in the `data` list. [Line 30]: Explanation: Iterate over the range of `b` to process each ball. [Line 31]: Explanation: Convert the element at the current `index` to an integer and assign it to `t`, representing the target position of the ball. [Line 32]: Explanation: Convert the element at the next position (`index + 1`) to an integer and assign it to `p`, representing the power of the ball. [Line 33]: Explanation: Convert the element at the next position (`index + 2`) to an integer and assign it to `d`, representing the adjustment of the ball. [Line 34]: Explanation: Append a tuple `(t, p, d)` representing the current ball to the `balls` list. [Line 35]: Explanation: Increment the `index` by 3 to move to the next set of ball details. [Line 36]: Explanation: Call the `simulate_brick_wall` function with the parameters `b`, `w`, `h`, and `balls`, and store the returned results in the `results` list. [Line 37]: Explanation: Iterate over each element in the `results` list. [Line 38]: Explanation: Print each element, representing the number of bricks each ball bounces off."
+Breakout,5,"[Line 1]: Explanation: Defines a function `simulate_brick_wall` that takes four parameters: `b` (number of balls), `w` (width of the wall), `h` (height of the wall), and `balls` (a list of tuples containing the target, power, and adjustment for each ball).
+[Line 2]: Explanation: Initializes a 2D list `wall` representing the brick wall, where each element is set to `True` indicating that the brick is present. The dimensions of the wall are `h` (height) by `w` (width).
+[Line 3]: Explanation: Initializes an empty list `results` to store the number of bricks each ball bounces off.
+[Line 4]: Explanation: Starts iterating over each ball's target (`t`), power (`p`), and adjustment (`d`) from the `balls` list.
+[Line 5]: Explanation: Initializes a variable `bounces` to count the number of bricks the current ball bounces off.
+[Line 6]: Explanation: Begins a while loop that continues as long as the ball's target `t` is within the valid range of the wall's width (`0 <= t < w`).
+[Line 7]: Explanation: Calculates the starting column index `start` for the range of columns that the ball's power affects, ensuring it doesn't go below 0.
+[Line 8]: Explanation: Calculates the ending column index `end` for the range of columns that the ball's power affects, ensuring it doesn't exceed the wall's width.
+[Line 9]: Explanation: Iterates over the range of columns from `start` to `end`.
+[Line 10]: Explanation: Checks if there is a brick at the bottom row (`h-1`) of the current column `x`.
+[Line 11]: Explanation: Increments the `bounces` counter since the ball bounces off a brick.
+[Line 12]: Explanation: Sets the brick at the bottom row (`h-1`) of the current column `x` to `False`, indicating that the brick is destroyed.
+[Line 13]: Explanation: Adjusts the target column `t` by adding the adjustment value `d`.
+[Line 14]: Explanation: Checks if there are any bricks remaining in the current target column `t` across all rows.
+[Line 15]: Explanation: Continues the while loop if there are bricks remaining in the current target column `t`.
+[Line 16]: Explanation: Breaks out of the while loop if there are no bricks remaining in the current target column `t`.
+[Line 17]: Explanation: Begins a nested loop to update the positions of the bricks after destruction.
+[Line 18]: Explanation: Iterates over each column `x` in the wall.
+[Line 19]: Explanation: Iterates over each row `y` in reverse order, starting from the second-to-last row down to the top row.
+[Line 20]: Explanation: Checks if there is no brick in the current row `y` of the current column `x`.
+[Line 21]: Explanation: Sets the brick in the row directly below (`y+1`) to `False`, creating a hole.
+[Line 22]: Explanation: If there is a brick in the current row `y` of the current column `x`, it proceeds to the next step.
+[Line 23]: Explanation: Moves the brick from the current row `y` to the row directly below (`y+1`).
+[Line 24]: Explanation: Sets the brick in the current row `y` to `False`, removing it from its original position.
+[Line 25]: Explanation: Appends the `bounces` count for the current ball to the `results` list.
+[Line 26]: Explanation: Returns the `results` list containing the number of bricks each ball bounces off.
+[Line 27]: Explanation: Imports the `sys` module to use standard input reading.
+[Line 28]: Explanation: Reads all input from standard input and splits it into a list of strings.
+[Line 29]: Explanation: Extracts the number of balls `b` from the input data.
+[Line 30]: Explanation: Extracts the width of the wall `w` from the input data.
+[Line 31]: Explanation: Extracts the height of the wall `h` from the input data.
+[Line 32]: Explanation: Initializes an empty list `balls` to store the details of each ball.
+[Line 33]: Explanation: Initializes an index variable `index` to 3 to start processing the ball details.
+[Line 34]: Explanation: Begins a loop to process each ball's details.
+[Line 35]: Explanation: Extracts the target column `t` for the current ball from the input data.
+[Line 36]: Explanation: Extracts the power `p` for the current ball from the input data.
+[Line 37]: Explanation: Extracts the adjustment `d` for the current ball from the input data.
+[Line 38]: Explanation: Appends a tuple containing the target `t`, power `p`, and adjustment `d` to the `balls` list.
+[Line 39]: Explanation: Increments the index by 3 to move to the next ball's details.
+[Line 40]: Explanation: Calls the `simulate_brick_wall` function with the extracted parameters and stores the results.
+[Line 41]: Explanation: Iterates over each result in the `results` list.
+[Line 42]: Explanation: Prints each result, which is the number of bricks a ball bounces off."
+Passport Dates,1,"[Line 1]: Explanation: Define a function named `convert_date_format` that takes a single argument `input_date`.
+         [Line 2]: Explanation: Split the `input_date` string by spaces and store the resulting list in the variable `parts`.
+         [Line 3]: Explanation: Assign the first element of the `parts` list to the variable `day`, which represents the day of the month.
+         [Line 4]: Explanation: Assign the second element of the `parts` list to the variable `icelandic_month_abbr`, which represents the three-letter abbreviation of the month in Icelandic.
+         [Line 5]: Explanation: Assign the third element of the `parts` list, excluding the leading '/', to the variable `english_month_abbr`, which represents the three-letter abbreviation of the month in English.
+         [Line 6]: Explanation: Assign the fourth element of the `parts` list to the variable `year`, which represents the last two digits of the year.
+         [Line 7]: Explanation: Create a dictionary named `month_mapping` that maps Icelandic month abbreviations to their corresponding two-digit month numbers.
+         [Line 8]: Explanation: Add key-value pairs to the `month_mapping` dictionary for January through December in Icelandic.
+         [Line 9]: Explanation: Add key-value pairs to the `month_mapping` dictionary for May in Icelandic.
+         [Line 10]: Explanation: Add key-value pairs to the `month_mapping` dictionary for June through August in Icelandic.
+         [Line 11]: Explanation: Add key-value pairs to the `month_mapping` dictionary for September through December in Icelandic.
+         [Line 12]: Explanation: Retrieve the corresponding two-digit month number from the `month_mapping` dictionary using `icelandic_month_abbr` as the key and assign it to the variable `month_number`.
+         [Line 13]: Explanation: Concatenate '20' with the `year` to form the full four-digit year and assign it to the variable `full_year`.
+         [Line 14]: Explanation: Format the date in ISO-8601 format using an f-string and assign it to the variable `iso_date`.
+         [Line 15]: Explanation: Return the `iso_date` string from the function.
+         [Line 16]: Explanation: Assign the sample input date ""08 OKT /OCT 24"" to the variable `input_date`.
+         [Line 17]: Explanation: Call the `convert_date_format` function with `input_date` as the argument and assign the returned value to the variable `output_date`.
+         [Line 18]: Explanation: Print the `output_date` string, which is the date in ISO-8601 format."
+Passport Dates,2,"[Line 1]: Explanation: Define a function named `convert_date_format` that takes a single argument `input_date`.
+         [Line 2]: Explanation: Split the input string `input_date` by spaces and store the resulting list in the variable `parts`.
+         [Line 3]: Explanation: Assign the first element of the `parts` list to the variable `day`, which represents the day of the month.
+         [Line 4]: Explanation: Assign the second element of the `parts` list to the variable `icelandic_month_abbr`, which represents the Icelandic month abbreviation.
+         [Line 5]: Explanation: Assign the third element of the `parts` list (excluding the first character '/') to the variable `english_month_abbr`, which represents the English month abbreviation.
+         [Line 6]: Explanation: Assign the fourth element of the `parts` list to the variable `year`, which represents the last two digits of the year.
+         [Line 7]: Explanation: Create a dictionary `month_mapping` that maps Icelandic month abbreviations to their corresponding month numbers in the format 'MM'.
+         [Line 8]: Explanation: Add an entry to the `month_mapping` dictionary for 'JAN' with the value '01'.
+         [Line 9]: Explanation: Add an entry to the `month_mapping` dictionary for 'FEB' with the value '02'.
+         [Line 10]: Explanation: Add an entry to the `month_mapping` dictionary for 'MAR' with the value '03'.
+         [Line 11]: Explanation: Add an entry to the `month_mapping` dictionary for 'APR' with the value '04'.
+         [Line 12]: Explanation: Add an entry to the `month_mapping` dictionary for 'MAÍ' with the value '05'.
+         [Line 13]: Explanation: Add an entry to the `month_mapping` dictionary for 'JÚN' with the value '06'.
+         [Line 14]: Explanation: Add an entry to the `month_mapping` dictionary for 'JÚL' with the value '07'.
+         [Line 15]: Explanation: Add an entry to the `month_mapping` dictionary for 'ÁGÚ' with the value '08'.
+         [Line 16]: Explanation: Add an entry to the `month_mapping` dictionary for 'SEP' with the value '09'.
+         [Line 17]: Explanation: Add an entry to the `month_mapping` dictionary for 'OKT' with the value '10'.
+         [Line 18]: Explanation: Add an entry to the `month_mapping` dictionary for 'NÓV' with the value '11'.
+         [Line 19]: Explanation: Add an entry to the `month_mapping` dictionary for 'DES' with the value '12'.
+         [Line 20]: Explanation: Retrieve the month number from the `month_mapping` dictionary using `icelandic_month_abbr` as the key and assign it to the variable `month_number`.
+         [Line 21]: Explanation: Concatenate '20' with the `year` to form the full year in the format 'YYYY' and assign it to the variable `full_year`.
+         [Line 22]: Explanation: Format the ISO-8601 date string using an f-string, combining `full_year`, `month_number`, and `day`, and assign it to the variable `iso_date`.
+         [Line 23]: Explanation: Return the `iso_date` string from the function.
+         [Line 24]: Explanation: Assign the string ""08 OKT /OCT 24"" to the variable `input_date`.
+         [Line 25]: Explanation: Call the `convert_date_format` function with `input_date` as the argument and assign the result to the variable `output_date`.
+         [Line 26]: Explanation: Print the value of `output_date`."
+Passport Dates,3,"``` [Line 1]: Explanation: Define a function named `convert_date_format` that takes a single argument `input_date`, which is expected to be a string representing a date in a specific format. [Line 2]: Explanation: Split the input string `input_date` into a list of substrings using whitespace as the delimiter. The resulting list is stored in the variable `parts`. [Line 3]: Explanation: Assign the first element of the `parts` list to the variable `day`, which represents the day of the month. [Line 4]: Explanation: Assign the second element of the `parts` list to the variable `icelandic_month_abbr`, which represents the three-letter abbreviation of the month in Icelandic. [Line 5]: Explanation: Extract the substring starting from the second character of the third element in the `parts` list and assign it to the variable `english_month_abbr`, which represents the three-letter abbreviation of the month in English. The `[1:]` slice operation removes the leading slash (`/`) from the English month abbreviation. [Line 6]: Explanation: Assign the fourth element of the `parts` list to the variable `year`, which represents the last two digits of the year. [Line 7]: Explanation: Create a dictionary named `month_mapping` that maps Icelandic month abbreviations to their corresponding two-digit month numbers. The keys are the Icelandic abbreviations, and the values are the month numbers as strings. [Line 8]: Explanation: Add an entry to the `month_mapping` dictionary for the month of January, mapping the Icelandic abbreviation 'JAN' to the month number '01'. [Line 9]: Explanation: Add an entry to the `month_mapping` dictionary for the month of February, mapping the Icelandic abbreviation 'FEB' to the month number '02'. [Line 10]: Explanation: Add an entry to the `month_mapping` dictionary for the month of March, mapping the Icelandic abbreviation 'MAR' to the month number '03'. [Line 11]: Explanation: Add an entry to the `month_mapping` dictionary for the month of April, mapping the Icelandic abbreviation 'APR' to the month number '04'. [Line 12]: Explanation: Add an entry to the `month_mapping` dictionary for the month of May, mapping the Icelandic abbreviation 'MAÍ' to the month number '05'. [Line 13]: Explanation: Add an entry to the `month_mapping` dictionary for the month of June, mapping the Icelandic abbreviation 'JÚN' to the month number '06'. [Line 14]: Explanation: Add an entry to the `month_mapping` dictionary for the month of July, mapping the Icelandic abbreviation 'JÚL' to the month number '07'. [Line 15]: Explanation: Add an entry to the `month_mapping` dictionary for the month of August, mapping the Icelandic abbreviation 'ÁGÚ' to the month number '08'. [Line 16]: Explanation: Add an entry to the `month_mapping` dictionary for the month of September, mapping the Icelandic abbreviation 'SEP' to the month number '09'. [Line 17]: Explanation: Add an entry to the `month_mapping` dictionary for the month of October, mapping the Icelandic abbreviation 'OKT' to the month number '10'. [Line 18]: Explanation: Add an entry to the `month_mapping` dictionary for the month of November, mapping the Icelandic abbreviation 'NÓV' to the month number '11'. [Line 19]: Explanation: Add an entry to the `month_mapping` dictionary for the month of December, mapping the Icelandic abbreviation 'DES' to the month number '12'. [Line 20]: Explanation: Retrieve the corresponding month number from the `month_mapping` dictionary using the `icelandic_month_abbr` as the key and assign it to the variable `month_number`. If the key is not found, `month_mapping.get()` returns `None`. [Line 21]: Explanation: Concatenate the string '20' with the `year` to form the full four-digit year and assign it to the variable `full_year`. This assumes that the year is within the range 2015 to 2035. [Line 22]: Explanation: Format the ISO-8601 date string using an f-string. The string consists of the `full_year`, `month_number`, and `day`, separated by hyphens. The result is assigned to the variable `iso_date`. [Line 23]: Explanation: Return the formatted ISO-8601 date string `iso_date` from the function. [Line 24]: Explanation: Assign the sample input date string ""08 OKT /OCT 24"" to the variable `input_date`. [Line 25]: Explanation: Call the `convert_date_format` function with the `input_date` as an argument and assign the returned ISO-8601 date string to the variable `output_date`. [Line 26]: Explanation: Print the `output_date` to the console, which will display the converted date in ISO-8601 format.```"
+Passport Dates,4,"[Line 1]: Explanation: Defines a function named `convert_date_format` that takes one parameter `input_date`.
+         [Line 2]: Explanation: Splits the input string `input_date` into parts using whitespace as the delimiter and stores the result in the list `parts`.
+         [Line 3]: Explanation: Assigns the first element of the `parts` list, which represents the day of the month, to the variable `day`.
+         [Line 4]: Explanation: Assigns the second element of the `parts` list, which represents the three-letter Icelandic month abbreviation, to the variable `icelandic_month_abbr`.
+         [Line 5]: Explanation: Assigns the third element of the `parts` list, which represents the three-letter English month abbreviation, to the variable `english_month_abbr`. The slice `[1:]` is used to remove the leading slash `/`.
+         [Line 6]: Explanation: Assigns the fourth element of the `parts` list, which represents the last two digits of the year, to the variable `year`.
+         [Line 7]: Explanation: Defines a dictionary named `month_mapping` that maps Icelandic month abbreviations to their corresponding two-digit month numbers.
+         [Line 8]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of January.
+         [Line 9]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of February.
+         [Line 10]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of March.
+         [Line 11]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of April.
+         [Line 12]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of May.
+         [Line 13]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of June.
+         [Line 14]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of July.
+         [Line 15]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of August.
+         [Line 16]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of September.
+         [Line 17]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of October.
+         [Line 18]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of November.
+         [Line 19]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of December.
+         [Line 20]: Explanation: Retrieves the corresponding two-digit month number from the `month_mapping` dictionary using the `icelandic_month_abbr` as the key and assigns it to the variable `month_number`.
+         [Line 21]: Explanation: Constructs the full year by concatenating the prefix `'20'` with the `year` and assigns it to the variable `full_year`.
+         [Line 22]: Explanation: Formats the date in ISO-8601 format using an f-string and assigns it to the variable `iso_date`.
+         [Line 23]: Explanation: Returns the formatted ISO-8601 date string from the function.
+         [Line 24]: Explanation: Assigns a sample input date string `""08 OKT /OCT 24""` to the variable `input_date`.
+         [Line 25]: Explanation: Calls the `convert_date_format` function with the `input_date` as an argument and assigns the returned ISO-8601 date string to the variable `output_date`.
+         [Line 26]: Explanation: Prints the `output_date` to the console.
+
+``` [Line 1]: Explanation: Defines a function named `convert_date_format` that takes one parameter `input_date`.
+[Line 2]: Explanation: Splits the input string `input_date` into parts using whitespace as the delimiter and stores the result in the list `parts`.
+[Line 3]: Explanation: Assigns the first element of the `parts` list, which represents the day of the month, to the variable `day`.
+[Line 4]: Explanation: Assigns the second element of the `parts` list, which represents the three-letter Icelandic month abbreviation, to the variable `icelandic_month_abbr`.
+[Line 5]: Explanation: Assigns the third element of the `parts` list, which represents the three-letter English month abbreviation, to the variable `english_month_abbr`. The slice `[1:]` is used to remove the leading slash `/`.
+[Line 6]: Explanation: Assigns the fourth element of the `parts` list, which represents the last two digits of the year, to the variable `year`.
+[Line 7]: Explanation: Defines a dictionary named `month_mapping` that maps Icelandic month abbreviations to their corresponding two-digit month numbers.
+[Line 8]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of January.
+[Line 9]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of February.
+[Line 10]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of March.
+[Line 11]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of April.
+[Line 12]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of May.
+[Line 13]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of June.
+[Line 14]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of July.
+[Line 15]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of August.
+[Line 16]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of September.
+[Line 17]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of October.
+[Line 18]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of November.
+[Line 19]: Explanation: Adds an entry to the `month_mapping` dictionary for the month of December.
+[Line 20]: Explanation: Retrieves the corresponding two-digit month number from the `month_mapping` dictionary using the `icelandic_month_abbr` as the key and assigns it to the variable `month_number`.
+[Line 21]: Explanation: Constructs the full year by concatenating the prefix `'20'` with the `year` and assigns it to the variable `full_year`.
+[Line 22]: Explanation: Formats the date in ISO-8601 format using an f-string and assigns it to the variable `iso_date`.
+[Line 23]: Explanation: Returns the formatted ISO-8601 date string from the function.
+[Line 24]: Explanation: Assigns a sample input date string `""08 OKT /OCT 24""` to the variable `input_date`.
+[Line 25]: Explanation: Calls the `convert_date_format` function with the `input_date` as an argument and assigns the returned ISO-8601 date string to the variable `output_date`.
+[Line 26]: Explanation: Prints the `output_date` to the console.```"
+Passport Dates,5,"[Line 1]: Explanation: Defines a function named `convert_date_format` that takes one argument `input_date`.
+         [Line 2]: Explanation: Splits the input string `input_date` into parts using whitespace as the delimiter and stores the result in the list `parts`.
+         [Line 3]: Explanation: Assigns the first element of the `parts` list, which represents the day of the month, to the variable `day`.
+         [Line 4]: Explanation: Assigns the second element of the `parts` list, which is the three-letter abbreviation of the month in Icelandic, to the variable `icelandic_month_abbr`.
+         [Line 5]: Explanation: Assigns the third element of the `parts` list, which is the three-letter abbreviation of the month in English but with the leading slash removed, to the variable `english_month_abbr`.
+         [Line 6]: Explanation: Assigns the fourth element of the `parts` list, which represents the last two digits of the year, to the variable `year`.
+         [Line 7]: Explanation: Creates a dictionary named `month_mapping` that maps Icelandic month abbreviations to their corresponding two-digit month numbers.
+         [Line 8]: Explanation: Adds key-value pairs to the `month_mapping` dictionary for the first four months of the year.
+         [Line 9]: Explanation: Adds key-value pairs to the `month_mapping` dictionary for the fifth month of the year.
+         [Line 10]: Explanation: Adds key-value pairs to the `month_mapping` dictionary for the sixth month of the year.
+         [Line 11]: Explanation: Adds key-value pairs to the `month_mapping` dictionary for the seventh month of the year.
+         [Line 12]: Explanation: Adds key-value pairs to the `month_mapping` dictionary for the eighth month of the year.
+         [Line 13]: Explanation: Adds key-value pairs to the `month_mapping` dictionary for the ninth month of the year.
+         [Line 14]: Explanation: Adds key-value pairs to the `month_mapping` dictionary for the tenth month of the year.
+         [Line 15]: Explanation: Adds key-value pairs to the `month_mapping` dictionary for the eleventh month of the year.
+         [Line 16]: Explanation: Adds key-value pairs to the `month_mapping` dictionary for the twelfth month of the year.
+         [Line 17]: Explanation: Retrieves the two-digit month number corresponding to the `icelandic_month_abbr` from the `month_mapping` dictionary and assigns it to the variable `month_number`.
+         [Line 18]: Explanation: Constructs the full year by concatenating '20' with the `year` variable and assigns the result to the variable `full_year`.
+         [Line 19]: Explanation: Formats the date in ISO-8601 format using an f-string, combining the `full_year`, `month_number`, and `day` variables, and assigns the result to the variable `iso_date`.
+         [Line 20]: Explanation: Returns the `iso_date` variable from the function.
+         [Line 21]: Explanation: Assigns a sample input date string to the variable `input_date`.
+         [Line 22]: Explanation: Calls the `convert_date_format` function with the `input_date` variable and assigns the returned value to the variable `output_date`.
+         [Line 23]: Explanation: Prints the `output_date` variable to the console."
+Weather Forecast,1,"[Line 1]: Explanation: Defines a function named `parse_input` to read and parse the input data.
+         [Line 2]: Explanation: Imports the `sys` module to access system-specific parameters and functions.
+         [Line 3]: Explanation: Reads all input from standard input and splits it into lines.
+         [Line 4]: Explanation: Splits the first line into two integers, `n` (number of data points) and `m` (number of data points to predict).
+         [Line 5]: Explanation: Stores the second line, which contains extra information about the dataset, in the variable `extra_info`.
+         [Line 6]: Explanation: Initializes an empty list `data` to store the parsed data points.
+         [Line 7]: Explanation: Starts a loop to iterate over the lines containing the data points.
+         [Line 8]: Explanation: Splits each data point line into its components.
+         [Line 9]: Explanation: Checks if the temperature component is not a missing value (`'-'`).
+         [Line 10]: Explanation: Converts the temperature component to a float if it's not missing.
+         [Line 11]: Explanation: If the temperature component is missing, sets it to `None`.
+         [Line 12]: Explanation: Checks if the wind direction component is not a missing value.
+         [Line 13]: Explanation: Converts the wind direction component to an integer if it's not missing.
+         [Line 14]: Explanation: If the wind direction component is missing, sets it to `None`.
+         [Line 15]: Explanation: Checks if the wind speed component is not a missing value.
+         [Line 16]: Explanation: Converts the wind speed component to a float if it's not missing.
+         [Line 17]: Explanation: If the wind speed component is missing, sets it to `None`.
+         [Line 18]: Explanation: Checks if the humidity component is not a missing value.
+         [Line 19]: Explanation: Converts the humidity component to an integer if it's not missing.
+         [Line 20]: Explanation: If the humidity component is missing, sets it to `None`.
+         [Line 21]: Explanation: Appends the processed row to the `data` list.
+         [Line 22]: Explanation: Ends the loop after processing all data points.
+         [Line 23]: Explanation: Returns the parsed values of `n`, `m`, `extra_info`, and `data`.
+         [Line 24]: Explanation: Defines a function named `calculate_moving_average` to compute the moving average of a list of values.
+         [Line 25]: Explanation: Initializes an empty list `averages` to store the computed averages.
+         [Line 26]: Explanation: Starts a loop to iterate over each index in the data list.
+         [Line 27]: Explanation: Creates a window of values centered around the current index, with a size determined by `window_size`.
+         [Line 28]: Explanation: Filters out any `None` values from the window to only include valid values.
+         [Line 29]: Explanation: Checks if there are any valid values in the window.
+         [Line 30]: Explanation: If there are valid values, computes their average and appends it to the `averages` list.
+         [Line 31]: Explanation: If there are no valid values, appends `None` to the `averages` list.
+         [Line 32]: Explanation: Ends the loop after processing all indices.
+         [Line 33]: Explanation: Returns the list of computed averages.
+         [Line 34]: Explanation: Defines a function named `predict_weather` to generate weather predictions based on the input data.
+         [Line 35]: Explanation: Sets the window size for computing moving averages to 24 hours.
+         [Line 36]: Explanation: Extracts the temperature column from the data and computes its moving average.
+         [Line 37]: Explanation: Extracts the wind direction column from the data and computes its moving average.
+         [Line 38]: Explanation: Extracts the wind speed column from the data and computes its moving average.
+         [Line 39]: Explanation: Extracts the humidity column from the data and computes its moving average.
+         [Line 40]: Explanation: Initializes an empty list `predictions` to store the generated predictions.
+         [Line 41]: Explanation: Starts a loop to generate predictions for the next `m` data points.
+         [Line 42]: Explanation: Retrieves the last computed temperature average, or uses `'-'` if it's `None`.
+         [Line 43]: Explanation: Retrieves the last computed wind direction average, or uses `'-'` if it's `None`.
+         [Line 44]: Explanation: Retrieves the last computed wind speed average, or uses `'-'` if it's `None`.
+         [Line 45]: Explanation: Retrieves the last computed humidity average, or uses `'-'` if it's `None`.
+         [Line 46]: Explanation: Formats the prediction as a string with the required format and appends it to the `predictions` list.
+         [Line 47]: Explanation: Ends the loop after generating all predictions.
+         [Line 48]: Explanation: Returns the list of generated predictions.
+         [Line 49]: Explanation: Defines the main function to execute the program.
+         [Line 50]: Explanation: Calls the `parse_input` function to read and parse the input data.
+         [Line 51]: Explanation: Calls the `predict_weather` function to generate weather predictions.
+         [Line 52]: Explanation: Iterates over the generated predictions and prints each one.
+         [Line 53]: Explanation: Ends the loop after printing all predictions.
+         [Line 54]: Explanation: Checks if the script is being run as the main program.
+         [Line 55]: Explanation: If true, calls the `main` function to execute the program.
+         [Line 56]: Explanation: Ends the conditional block.
+         [Line 57]: Explanation: Ends the script."
+Weather Forecast,2,"``` [Line 1]: Explanation: Define a function named `parse_input` to read and process the input data.
+[Line 2]: Explanation: Import the `sys` module to use the `stdin` method for reading input.
+[Line 3]: Explanation: Read all input lines and split them into a list of strings using `splitlines()`.
+[Line 4]: Explanation: Extract the first line, split it into two integers `n` and `m`, and convert them to integers using `map(int, ...)`.
+[Line 5]: Explanation: Store the second line, which contains extra information about the dataset, in the variable `extra_info`.
+[Line 6]: Explanation: Initialize an empty list `data` to store the parsed measurement data.
+[Line 7]: Explanation: Start a loop to iterate over the measurement data lines, starting from the third line (index 2) to the last line (`2 + n`).
+[Line 8]: Explanation: Split each line into a list of strings `row` based on spaces.
+[Line 9]: Explanation: Check if the first element of `row` (temperature) is not equal to '-'.
+[Line 10]: Explanation: Convert the temperature to a float if it is not '-'.
+[Line 11]: Explanation: If the temperature is '-', assign `None` to it.
+[Line 12]: Explanation: Check if the second element of `row` (wind direction) is not equal to '-'.
+[Line 13]: Explanation: Convert the wind direction to an integer if it is not '-'.
+[Line 14]: Explanation: If the wind direction is '-', assign `None` to it.
+[Line 15]: Explanation: Check if the third element of `row` (wind speed) is not equal to '-'.
+[Line 16]: Explanation: Convert the wind speed to a float if it is not '-'.
+[Line 17]: Explanation: If the wind speed is '-', assign `None` to it.
+[Line 18]: Explanation: Check if the fourth element of `row` (humidity) is not equal to '-'.
+[Line 19]: Explanation: Convert the humidity to an integer if it is not '-'.
+[Line 20]: Explanation: If the humidity is '-', assign `None` to it.
+[Line 21]: Explanation: Append the processed `row` to the `data` list.
+[Line 22]: Explanation: End the loop after processing all measurement data lines.
+[Line 23]: Explanation: Return the variables `n`, `m`, `extra_info`, and `data` from the function.
+[Line 24]: Explanation: Define a function named `calculate_moving_average` to compute the moving average of a list of data.
+[Line 25]: Explanation: Initialize an empty list `averages` to store the calculated averages.
+[Line 26]: Explanation: Start a loop to iterate over the indices of the input data list.
+[Line 27]: Explanation: Determine the window of data points to consider for the moving average, starting from the maximum of 0 and `i - window_size + 1` to `i + 1`.
+[Line 28]: Explanation: Filter out `None` values from the window to get `valid_values`.
+[Line 29]: Explanation: Check if there are any valid values in the window.
+[Line 30]: Explanation: If there are valid values, calculate the average and append it to the `averages` list.
+[Line 31]: Explanation: If there are no valid values, append `None` to the `averages` list.
+[Line 32]: Explanation: End the loop after processing all data points.
+[Line 33]: Explanation: Return the `averages` list from the function.
+[Line 34]: Explanation: Define a function named `predict_weather` to generate weather predictions based on the input data.
+[Line 35]: Explanation: Set the window size for the moving average to 24 hours.
+[Line 36]: Explanation: Calculate the moving average of temperatures using the `calculate_moving_average` function.
+[Line 37]: Explanation: Calculate the moving average of wind directions using the `calculate_moving_average` function.
+[Line 38]: Explanation: Calculate the moving average of wind speeds using the `calculate_moving_average` function.
+[Line 39]: Explanation: Calculate the moving average of humidities using the `calculate_moving_average` function.
+[Line 40]: Explanation: Initialize an empty list `predictions` to store the predicted weather data.
+[Line 41]: Explanation: Start a loop to iterate over the number of predictions to be generated (`m`).
+[Line 42]: Explanation: Assign the last temperature average to `temp` if it is not `None`; otherwise, assign '-'.
+[Line 43]: Explanation: Assign the last wind direction average to `wind_dir` if it is not `None`; otherwise, assign '-'.
+[Line 44]: Explanation: Assign the last wind speed average to `wind_speed` if it is not `None`; otherwise, assign '-'.
+[Line 45]: Explanation: Assign the last humidity average to `humidity` if it is not `None`; otherwise, assign '-'.
+[Line 46]: Explanation: Format the prediction string with the temperature, wind direction, wind speed, and humidity, ensuring the correct number of decimal places.
+[Line 47]: Explanation: Append the formatted prediction string to the `predictions` list.
+[Line 48]: Explanation: End the loop after generating all predictions.
+[Line 49]: Explanation: Return the `predictions` list from the function.
+[Line 50]: Explanation: Define the `main` function to orchestrate the program flow.
+[Line 51]: Explanation: Call the `parse_input` function to read and parse the input data.
+[Line 52]: Explanation: Call the `predict_weather` function to generate weather predictions based on the parsed data.
+[Line 53]: Explanation: Iterate over the generated predictions and print each one.
+[Line 54]: Explanation: End the loop after printing all predictions.
+[Line 55]: Explanation: Check if the script is being run as the main program.
+[Line 56]: Explanation: If true, call the `main` function to execute the program.
+[Line 57]: Explanation: End the conditional statement."
+Weather Forecast,3,"[Line 1]: Explanation: Define a function named `parse_input` to read and process the input data.
+         [Line 2]: Explanation: Import the `sys` module to access system-specific parameters and functions.
+         [Line 3]: Explanation: Read all input lines from standard input and split them into a list of strings using `splitlines()`.
+         [Line 4]: Explanation: Split the first line of input into two integers `n` and `m`, representing the number of data points and the number of predictions to make, respectively.
+         [Line 5]: Explanation: Store the second line of input, which contains extra information about the dataset, in the variable `extra_info`.
+         [Line 6]: Explanation: Initialize an empty list `data` to store the parsed data points.
+         [Line 7]: Explanation: Start a loop to iterate over the lines containing the actual data points, starting from the third line (index 2) to the end of the data points.
+         [Line 8]: Explanation: Split each data line into a list of strings `row`, representing the individual measurements.
+         [Line 9]: Explanation: Check if the first element of `row` (temperature) is not a dash (`'-'`), indicating a valid measurement.
+         [Line 10]: Explanation: Convert the temperature to a floating-point number and store it back in `row[0]`.
+         [Line 11]: Explanation: If the temperature is a dash, replace it with `None` to indicate a missing value.
+         [Line 12]: Explanation: Check if the second element of `row` (wind direction) is not a dash.
+         [Line 13]: Explanation: Convert the wind direction to an integer and store it back in `row[1]`.
+         [Line 14]: Explanation: If the wind direction is a dash, replace it with `None`.
+         [Line 15]: Explanation: Check if the third element of `row` (wind speed) is not a dash.
+         [Line 16]: Explanation: Convert the wind speed to a floating-point number and store it back in `row[2]`.
+         [Line 17]: Explanation: If the wind speed is a dash, replace it with `None`.
+         [Line 18]: Explanation: Check if the fourth element of `row` (humidity) is not a dash.
+         [Line 19]: Explanation: Convert the humidity to an integer and store it back in `row[3]`.
+         [Line 20]: Explanation: If the humidity is a dash, replace it with `None`.
+         [Line 21]: Explanation: Append the processed `row` to the `data` list.
+         [Line 22]: Explanation: End the loop after processing all data points.
+         [Line 23]: Explanation: Return the values of `n`, `m`, `extra_info`, and the `data` list from the `parse_input` function.
+         [Line 24]: Explanation: Define a function named `calculate_moving_average` to compute the moving average of a list of values.
+         [Line 25]: Explanation: Initialize an empty list `averages` to store the computed moving averages.
+         [Line 26]: Explanation: Start a loop to iterate over each index `i` in the range of the length of the input `data`.
+         [Line 27]: Explanation: Create a `window` of values from the `data` list, starting from `max(0, i - window_size + 1)` to `i + 1`. This ensures that the window size does not exceed the available data.
+         [Line 28]: Explanation: Filter out `None` values from the `window` to get a list of valid values `valid_values`.
+         [Line 29]: Explanation: Check if there are any valid values in `valid_values`.
+         [Line 30]: Explanation: If there are valid values, compute their average and append it to the `averages` list.
+         [Line 31]: Explanation: If there are no valid values, append `None` to the `averages` list to indicate a missing average.
+         [Line 32]: Explanation: End the loop after processing all indices.
+         [Line 33]: Explanation: Return the list of computed `averages` from the `calculate_moving_average` function.
+         [Line 34]: Explanation: Define a function named `predict_weather` to generate weather predictions based on the input data.
+         [Line 35]: Explanation: Set the `window_size` to 24, which represents the number of hours over which to calculate the moving average.
+         [Line 36]: Explanation: Extract the temperature values from the `data` list and compute their moving average using the `calculate_moving_average` function, storing the result in `temp_averages`.
+         [Line 37]: Explanation: Extract the wind direction values from the `data` list and compute their moving average, storing the result in `wind_dir_averages`.
+         [Line 38]: Explanation: Extract the wind speed values from the `data` list and compute their moving average, storing the result in `wind_speed_averages`.
+         [Line 39]: Explanation: Extract the humidity values from the `data` list and compute their moving average, storing the result in `humidity_averages`.
+         [Line 40]: Explanation: Initialize an empty list `predictions` to store the generated weather predictions.
+         [Line 41]: Explanation: Start a loop to iterate over the number of predictions `m`.
+         [Line 42]: Explanation: Retrieve the last computed temperature average from `temp_averages` and format it as a string with one decimal place. If the average is `None`, replace it with a dash.
+         [Line 43]: Explanation: Retrieve the last computed wind direction average from `wind_dir_averages` and convert it to a string. If the average is `None`, replace it with a dash.
+         [Line 44]: Explanation: Retrieve the last computed wind speed average from `wind_speed_averages` and format it as a string with one decimal place. If the average is `None`, replace it with a dash.
+         [Line 45]: Explanation: Retrieve the last computed humidity average from `humidity_averages` and convert it to a string. If the average is `None`, replace it with a dash.
+         [Line 46]: Explanation: Combine the formatted temperature, wind direction, wind speed, and humidity values into a single prediction string and append it to the `predictions` list.
+         [Line 47]: Explanation: End the loop after generating all predictions.
+         [Line 48]: Explanation: Return the list of generated `predictions` from the `predict_weather` function.
+         [Line 49]: Explanation: Define the `main` function to orchestrate the execution of the program.
+         [Line 50]: Explanation: Call the `parse_input` function to read and parse the input data, and unpack the returned values into `n`, `m`, `extra_info`, and `data`.
+         [Line 51]: Explanation: Call the `predict_weather` function with the parsed `data` and the number of predictions `m`, and store the resulting predictions in the `predictions` variable.
+         [Line 52]: Explanation: Iterate over each prediction in the `predictions` list.
+         [Line 53]: Explanation: Print each prediction string to the standard output.
+         [Line 54]: Explanation: End the loop after printing all predictions.
+         [Line 55]: Explanation: Check if the script is being run as the main program.
+         [Line 56]: Explanation: If the script is the main program, call the `main` function to execute the program.
+         [Line 57]: Explanation: End the `if __name__ == ""__main__"":` block."
+Weather Forecast,4,"[Line 1]: Explanation: Define a function named `parse_input` to read and process the input data.
+         [Line 2]: Explanation: Import the `sys` module to access system-specific parameters and functions.
+         [Line 3]: Explanation: Read the entire input from standard input and split it into lines using `splitlines()`.
+         [Line 4]: Explanation: Extract the first line of the input, split it into two parts, and convert them into integers `n` and `m`. `n` represents the number of data points, and `m` represents the number of data points to predict.
+         [Line 5]: Explanation: Store the second line of the input, which contains extra information about the data set, in the variable `extra_info`.
+         [Line 6]: Explanation: Initialize an empty list `data` to store the parsed data points.
+         [Line 7]: Explanation: Start a loop that iterates over the next `n` lines of the input, starting from the third line.
+         [Line 8]: Explanation: Split each line into individual components using `split()` and store them in the variable `row`.
+         [Line 9]: Explanation: Check if the first element of `row` (temperature) is not equal to `'-'`.
+         [Line 10]: Explanation: Convert the temperature from string to float and assign it back to the first element of `row`.
+         [Line 11]: Explanation: If the temperature is `'-'`, assign `None` to the first element of `row`.
+         [Line 12]: Explanation: Check if the second element of `row` (average wind direction) is not equal to `'-'`.
+         [Line 13]: Explanation: Convert the average wind direction from string to integer and assign it back to the second element of `row`.
+         [Line 14]: Explanation: If the average wind direction is `'-'`, assign `None` to the second element of `row`.
+         [Line 15]: Explanation: Check if the third element of `row` (average wind speed) is not equal to `'-'`.
+         [Line 16]: Explanation: Convert the average wind speed from string to float and assign it back to the third element of `row`.
+         [Line 17]: Explanation: If the average wind speed is `'-'`, assign `None` to the third element of `row`.
+         [Line 18]: Explanation: Check if the fourth element of `row` (humidity) is not equal to `'-'`.
+         [Line 19]: Explanation: Convert the humidity from string to integer and assign it back to the fourth element of `row`.
+         [Line 20]: Explanation: If the humidity is `'-'`, assign `None` to the fourth element of `row`.
+         [Line 21]: Explanation: Append the modified `row` to the `data` list.
+         [Line 22]: Explanation: End the loop after processing all `n` data points.
+         [Line 23]: Explanation: Return the values of `n`, `m`, `extra_info`, and `data` from the `parse_input` function.
+         [Line 24]: Explanation: Define a function named `calculate_moving_average` to compute the moving average of a given list of data points.
+         [Line 25]: Explanation: Initialize an empty list `averages` to store the computed moving averages.
+         [Line 26]: Explanation: Start a loop that iterates over each index `i` in the range of the length of the input `data`.
+         [Line 27]: Explanation: Determine the window of data points to consider for the moving average. The window starts from the maximum of 0 and `i - window_size + 1` to avoid negative indices, and ends at `i + 1`.
+         [Line 28]: Explanation: Filter out the `None` values from the window and store the valid values in the list `valid_values`.
+         [Line 29]: Explanation: Check if there are any valid values in `valid_values`.
+         [Line 30]: Explanation: If there are valid values, compute the average of these values and append it to the `averages` list.
+         [Line 31]: Explanation: If there are no valid values, append `None` to the `averages` list.
+         [Line 32]: Explanation: End the loop after processing all data points.
+         [Line 33]: Explanation: Return the `averages` list from the `calculate_moving_average` function.
+         [Line 34]: Explanation: Define a function named `predict_weather` to generate weather predictions based on the input data.
+         [Line 35]: Explanation: Set the `window_size` to 24, which represents the number of hours to consider for the moving average.
+         [Line 36]: Explanation: Extract the temperature data from each row in `data` and compute the moving average using the `calculate_moving_average` function. Store the result in `temp_averages`.
+         [Line 37]: Explanation: Extract the average wind direction data from each row in `data` and compute the moving average using the `calculate_moving_average` function. Store the result in `wind_dir_averages`.
+         [Line 38]: Explanation: Extract the average wind speed data from each row in `data` and compute the moving average using the `calculate_moving_average` function. Store the result in `wind_speed_averages`.
+         [Line 39]: Explanation: Extract the humidity data from each row in `data` and compute the moving average using the `calculate_moving_average` function. Store the result in `humidity_averages`.
+         [Line 40]: Explanation: Initialize an empty list `predictions` to store the generated weather predictions.
+         [Line 41]: Explanation: Start a loop that iterates `m` times to generate `m` predictions.
+         [Line 42]: Explanation: Retrieve the last element of `temp_averages` and check if it is not `None`. If it is not `None`, format it as a string with one decimal place and assign it to `temp`. Otherwise, assign `'-'` to `temp`.
+         [Line 43]: Explanation: Retrieve the last element of `wind_dir_averages` and check if it is not `None`. If it is not `None`, convert it to a string and assign it to `wind_dir`. Otherwise, assign `'-'` to `wind_dir`.
+         [Line 44]: Explanation: Retrieve the last element of `wind_speed_averages` and check if it is not `None`. If it is not `None`, format it as a string with one decimal place and assign it to `wind_speed`. Otherwise, assign `'-'` to `wind_speed`.
+         [Line 45]: Explanation: Retrieve the last element of `humidity_averages` and check if it is not `None`. If it is not `None`, convert it to a string and assign it to `humidity`. Otherwise, assign `'-'` to `humidity`.
+         [Line 46]: Explanation: Construct a prediction string using the formatted `temp`, `wind_dir`, `wind_speed`, and `humidity`, and append it to the `predictions` list.
+         [Line 47]: Explanation: End the loop after generating all `m` predictions.
+         [Line 48]: Explanation: Return the `predictions` list from the `predict_weather` function.
+         [Line 49]: Explanation: Define the `main` function to orchestrate the execution of the program.
+         [Line 50]: Explanation: Call the `parse_input` function to read and parse the input data, and store the returned values in `n`, `m`, `extra_info`, and `data`.
+         [Line 51]: Explanation: Call the `predict_weather` function with `data` and `m` as arguments to generate weather predictions, and store the result in `predictions`.
+         [Line 52]: Explanation: Iterate over each prediction in the `predictions` list.
+         [Line 53]: Explanation: Print each prediction to the standard output.
+         [Line 54]: Explanation: End the loop after printing all predictions.
+         [Line 55]: Explanation: Check if the script is executed as the main program.
+         [Line 56]: Explanation: If the script is executed as the main program, call the `main` function to start the program execution.
+         [Line 57]: Explanation: End the conditional statement."
+Weather Forecast,5,```
+Type Faster,1,"``` [Line 1]: Explanation: Define a function named `calculate_time_penalty` that takes two parameters: `words` (a list of integers representing the number of words for each problem) and `speed` (an integer representing the typing speed in words per minute). This function calculates the total time penalty based on the given typing speed.
+[Line 2]: Explanation: Initialize a variable `total_penalty` to 0. This variable will store the cumulative time penalty.
+[Line 3]: Explanation: Start a loop that iterates over each word count `w` in the `words` list.
+[Line 4]: Explanation: Check if the current word count `w` is greater than 0. This condition ensures that only non-zero word counts contribute to the time penalty calculation.
+[Line 5]: Explanation: Calculate the time penalty for the current problem using the formula `(w + speed - 1) // speed`. This formula effectively computes the ceiling of `w / speed` without using floating-point division. The result is added to `total_penalty`.
+[Line 6]: Explanation: Return the calculated `total_penalty` value.
+[Line 7]: Explanation: Define a function named `find_minimum_typing_speed` that takes three parameters: `n` (the number of problems), `T` (the time penalty of the top team), and `words` (a list of integers representing the number of words for each problem). This function determines the minimum typing speed required to beat the top team's time penalty.
+[Line 8]: Explanation: Initialize a variable `low` to 1. This variable represents the lower bound of the binary search range for the typing speed.
+[Line 9]: Explanation: Initialize a variable `high` to \(10^{18}\). This variable represents the upper bound of the binary search range for the typing speed.
+[Line 10]: Explanation: Start a while loop that continues as long as `low` is less than `high`. This loop implements a binary search to find the minimum typing speed.
+[Line 11]: Explanation: Calculate the middle point `mid` of the current search range using integer division `(low + high) // 2`.
+[Line 12]: Explanation: Call the `calculate_time_penalty` function with the current `words` list and `mid` as the typing speed. Store the result in `total_penalty`.
+[Line 13]: Explanation: Check if the calculated `total_penalty` is less than the top team's time penalty `T`. If true, it means the current typing speed `mid` is sufficient to beat the top team.
+[Line 14]: Explanation: Update the `high` variable to `mid`. This narrows down the search range to the lower half, potentially finding a smaller valid typing speed.
+[Line 15]: Explanation: If the calculated `total_penalty` is not less than `T`, update the `low` variable to `mid + 1`. This narrows down the search range to the upper half, searching for a larger typing speed.
+[Line 16]: Explanation: After exiting the while loop, return the value of `low`, which represents the minimum typing speed required to beat the top team.
+[Line 17]: Explanation: Read the first line of input, split it into two integers, and assign them to variables `n` and `T`. These represent the number of problems and the top team's time penalty, respectively.
+[Line 18]: Explanation: Read the second line of input, split it into a list of integers, and assign it to the variable `words`. This list represents the number of words for each problem.
+[Line 19]: Explanation: Call the `find_minimum_typing_speed` function with the values of `n`, `T`, and `words`. Store the result in the variable `result`.
+[Line 20]: Explanation: Print the value of `result`, which is the minimum typing speed required to beat the top team's time penalty."
+Type Faster,2,"``` [Line 1]: Explanation: Define a function `calculate_time_penalty` that takes a list of word counts (`words`) and a typing speed (`speed`). This function calculates the total time penalty based on the given speed.
+[Line 2]: Explanation: Initialize `total_penalty` to 0. This variable will accumulate the total time penalty.
+[Line 3]: Explanation: Iterate over each word count `w` in the `words` list.
+[Line 4]: Explanation: Check if the current word count `w` is greater than 0. This condition ensures that only non-zero word counts contribute to the time penalty.
+[Line 5]: Explanation: Calculate the time penalty for the current problem using the formula `(w + speed - 1) // speed`. This formula effectively computes the ceiling of `w / speed` without using floating-point division. It adds `speed - 1` to `w` before performing integer division, which rounds up the result.
+[Line 6]: Explanation: Return the accumulated `total_penalty`.
+[Line 7]: Explanation: Define a function `find_minimum_typing_speed` that takes the number of problems (`n`), the target time penalty (`T`), and a list of word counts (`words`). This function finds the minimum typing speed required to beat the target time penalty.
+[Line 8]: Explanation: Initialize `low` to 1. This variable represents the lower bound of the binary search range for the typing speed.
+[Line 9]: Explanation: Initialize `high` to `10**18`. This variable represents the upper bound of the binary search range for the typing speed.
+[Line 10]: Explanation: Enter a while loop that continues as long as `low` is less than `high`. This loop performs a binary search to find the minimum typing speed.
+[Line 11]: Explanation: Calculate the midpoint `mid` of the current search range using integer division.
+[Line 12]: Explanation: Call the `calculate_time_penalty` function with the current `mid` value as the typing speed and store the result in `total_penalty`.
+[Line 13]: Explanation: Check if the calculated `total_penalty` is less than the target time penalty `T`. If true, it means the current typing speed is sufficient to beat the target penalty.
+[Line 14]: Explanation: Update `high` to `mid`. This narrows the search range to the lower half, as the current speed is valid.
+[Line 15]: Explanation: If the calculated `total_penalty` is not less than `T`, update `low` to `mid + 1`. This narrows the search range to the upper half, as the current speed is insufficient.
+[Line 16]: Explanation: Continue the binary search loop until `low` is no longer less than `high`.
+[Line 17]: Explanation: Return the final value of `low`, which represents the minimum typing speed required to beat the target time penalty.
+[Line 18]: Explanation: Read the first line of input, split it into two integers, and assign them to `n` and `T`. These represent the number of problems and the target time penalty, respectively.
+[Line 19]: Explanation: Read the second line of input, split it into a list of integers, and assign it to `words`. This list contains the word counts for each problem.
+[Line 20]: Explanation: Call the `find_minimum_typing_speed` function with the values of `n`, `T`, and `words`, and store the result in `result`.
+[Line 21]: Explanation: Print the final result, which is the minimum typing speed required to beat the target time penalty."
+Type Faster,3,"[Line 1]: Explanation: Define a function named `calculate_time_penalty` that takes two parameters: `words`, a list of integers representing the number of words in each problem's solution, and `speed`, an integer representing the typing speed in words per minute.
+        [Line 2]: Explanation: Initialize a variable `total_penalty` to 0. This variable will accumulate the total time penalty based on the given typing speed.
+        [Line 3]: Explanation: Start a loop that iterates over each word count `w` in the `words` list.
+        [Line 4]: Explanation: Check if the current word count `w` is greater than 0. This condition ensures that only non-zero word counts contribute to the time penalty.
+        [Line 5]: Explanation: Calculate the time penalty for the current problem using the formula `(w + speed - 1) // speed`. This formula effectively computes the ceiling of `w / speed` without using floating-point division. It adds `speed - 1` to `w` before performing integer division to ensure that any remainder results in an additional minute being counted.
+        [Line 6]: Explanation: Add the calculated time penalty for the current problem to the `total_penalty`.
+        [Line 7]: Explanation: Define another function named `find_minimum_typing_speed` that takes three parameters: `n`, the number of problems; `T`, the time penalty of the top team; and `words`, a list of integers representing the number of words in each problem's solution.
+        [Line 8]: Explanation: Initialize a variable `low` to 1. This variable represents the lower bound of the binary search range for the minimum typing speed.
+        [Line 9]: Explanation: Initialize a variable `high` to \(10^{18}\). This variable represents the upper bound of the binary search range for the minimum typing speed.
+        [Line 10]: Explanation: Start a while loop that continues as long as `low` is less than `high`. This loop implements a binary search to find the minimum typing speed.
+        [Line 11]: Explanation: Calculate the midpoint `mid` of the current search range using integer division `(low + high) // 2`.
+        [Line 12]: Explanation: Call the `calculate_time_penalty` function with the current `words` list and `mid` as the typing speed, and store the result in `total_penalty`.
+        [Line 13]: Explanation: Check if the calculated `total_penalty` is less than `T`, the time penalty of the top team. If it is, update `high` to `mid` to search for a potentially lower typing speed.
+        [Line 14]: Explanation: If the calculated `total_penalty` is not less than `T`, update `low` to `mid + 1` to search for a higher typing speed.
+        [Line 15]: Explanation: After exiting the while loop, return the value of `low`, which represents the minimum typing speed needed to beat the top team.
+        [Line 16]: Explanation: Read the first line of input, split it into two integers `n` and `T`, and convert them to integers using the `map` function.
+        [Line 17]: Explanation: Read the second line of input, split it into a list of integers `words`, and convert each element to an integer using the `map` function.
+        [Line 18]: Explanation: Call the `find_minimum_typing_speed` function with the values of `n`, `T`, and `words`, and store the result in the variable `result`.
+        [Line 19]: Explanation: Print the value of `result`, which is the minimum typing speed needed to beat the top team."
+Type Faster,4,"[Line 1]: Explanation: Define a function `calculate_time_penalty` that takes two arguments: `words`, a list of integers representing the number of words in each problem's solution, and `speed`, an integer representing the typing speed in words per minute.
+         [Line 2]: Explanation: Initialize a variable `total_penalty` to 0. This variable will accumulate the total time penalty based on the given typing speed.
+         [Line 3]: Explanation: Start a loop that iterates over each word count `w` in the `words` list.
+         [Line 4]: Explanation: Check if the current word count `w` is greater than 0. This condition ensures that only non-zero word counts contribute to the time penalty.
+         [Line 5]: Explanation: Calculate the time penalty for the current problem using the formula `(w + speed - 1) // speed`. This formula effectively computes the ceiling of `w / speed` without using floating-point division, ensuring that the penalty is rounded up to the nearest whole minute.
+         [Line 6]: Explanation: Add the calculated time penalty for the current problem to `total_penalty`.
+         [Line 7]: Explanation: End the loop after processing all problems.
+         [Line 8]: Explanation: Define another function `find_minimum_typing_speed` that takes three arguments: `n`, the number of problems; `T`, the top team's time penalty; and `words`, a list of integers representing the number of words in each problem's solution.
+         [Line 9]: Explanation: Initialize a variable `low` to 1. This variable represents the lower bound of the binary search range for the minimum typing speed.
+         [Line 10]: Explanation: Initialize a variable `high` to \(10^{18}\). This variable represents the upper bound of the binary search range for the minimum typing speed.
+         [Line 11]: Explanation: Start a while loop that continues as long as `low` is less than `high`. This loop implements a binary search to find the minimum typing speed.
+         [Line 12]: Explanation: Calculate the middle point `mid` of the current search range using integer division `(low + high) // 2`.
+         [Line 13]: Explanation: Call the `calculate_time_penalty` function with the current `words` list and the `mid` speed to compute the total time penalty for this speed.
+         [Line 14]: Explanation: Check if the computed `total_penalty` is less than the top team's time penalty `T`. If it is, update `high` to `mid` to narrow the search range to the lower half.
+         [Line 15]: Explanation: If the computed `total_penalty` is not less than `T`, update `low` to `mid + 1` to narrow the search range to the upper half.
+         [Line 16]: Explanation: End the while loop after finding the minimum typing speed.
+         [Line 17]: Explanation: Return the value of `low`, which represents the minimum typing speed required to beat the top team.
+         [Line 18]: Explanation: Read the first line of input, split it into two integers `n` and `T`, and convert them to integers using `map(int, input().split())`.
+         [Line 19]: Explanation: Read the second line of input, split it into a list of integers `words`, and convert each element to an integer using `map(int, input().split())`.
+         [Line 20]: Explanation: Call the `find_minimum_typing_speed` function with the values of `n`, `T`, and `words` to compute the minimum typing speed required to beat the top team.
+         [Line 21]: Explanation: Print the result, which is the minimum typing speed required to beat the top team."
+Type Faster,5,"[Line 1]: Explanation: Defines a function `calculate_time_penalty` that takes a list of word counts (`words`) and a typing speed (`speed`). It calculates the total time penalty based on these inputs.
+[Line 2]: Explanation: Initializes a variable `total_penalty` to 0. This variable will accumulate the total time penalty.
+[Line 3]: Explanation: Starts a loop that iterates over each word count in the `words` list.
+[Line 4]: Explanation: Checks if the current word count (`w`) is greater than 0. This condition ensures that only non-zero word counts contribute to the time penalty.
+[Line 5]: Explanation: Calculates the time penalty for the current problem. It uses the formula `(w + speed - 1) // speed` to determine the ceiling division of `w` by `speed`. This formula effectively rounds up the division result, ensuring that any remaining words after complete divisions still contribute an additional minute to the penalty.
+[Line 6]: Explanation: Returns the accumulated `total_penalty` after processing all word counts.
+[Line 7]: Explanation: Defines a function `find_minimum_typing_speed` that takes three parameters: the number of problems (`n`), the target time penalty (`T`), and a list of word counts (`words`). This function aims to find the minimum typing speed required to achieve a time penalty strictly less than `T`.
+[Line 8]: Explanation: Initializes a variable `low` to 1. This variable represents the lower bound of the binary search range for the typing speed.
+[Line 9]: Explanation: Initializes a variable `high` to \(10^{18}\). This variable represents the upper bound of the binary search range for the typing speed.
+[Line 10]: Explanation: Begins a while loop that continues as long as `low` is less than `high`. This loop implements a binary search to efficiently find the minimum typing speed.
+[Line 11]: Explanation: Calculates the midpoint (`mid`) of the current search range. This is done using integer division to ensure `mid` is an integer.
+[Line 12]: Explanation: Calls the `calculate_time_penalty` function with the current `mid` value as the typing speed and the list of word counts (`words`). It stores the resulting total time penalty in the variable `total_penalty`.
+[Line 13]: Explanation: Checks if the calculated `total_penalty` is less than the target time penalty `T`. If it is, this means the current typing speed is sufficient to beat the top team.
+[Line 14]: Explanation: Updates the `high` variable to `mid`. This narrows the search range to the lower half, as any typing speed greater than `mid` would also result in a penalty less than `T`.
+[Line 15]: Explanation: Executes if the calculated `total_penalty` is not less than `T`. This means the current typing speed is insufficient to beat the top team.
+[Line 16]: Explanation: Updates the `low` variable to `mid + 1`. This narrows the search range to the upper half, as any typing speed less than or equal to `mid` would not result in a penalty less than `T`.
+[Line 17]: Explanation: Returns the final value of `low`, which represents the minimum typing speed required to achieve a time penalty strictly less than `T`.
+[Line 18]: Explanation: Reads the first line of input, splits it into two integers (`n` and `T`), and converts them to integers using the `map` function.
+[Line 19]: Explanation: Reads the second line of input, splits it into a list of strings, converts each string to an integer, and stores the resulting list in the variable `words`.
+[Line 20]: Explanation: Calls the `find_minimum_typing_speed` function with the values of `n`, `T`, and `words`. It stores the result in the variable `result`.
+[Line 21]: Explanation: Prints the value of `result`, which is the minimum typing speed required to beat the top team."

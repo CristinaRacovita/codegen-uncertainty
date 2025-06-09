@@ -1,0 +1,40 @@
+title,issue_code,line_row,line_column,fix_availability,fix_applicability,fix_complexity,fix_description,issue_frequency,issues_per_line
+SportsRank,PLC0415,2,15,False,,,`import` should be at the top-level of a file,1,1
+SportsRank,A001,3,10,False,,,Variable `input` is shadowing a Python builtin,1,1
+SportsRank,E302,16,4,True,safe,1,"Expected 2 blank lines, found 0",4,2
+SportsRank,ANN001,16,31,False,,,Missing type annotation for function argument `scores`,4,2
+SportsRank,E302,25,4,True,safe,1,"Expected 2 blank lines, found 0",4,2
+SportsRank,ANN001,25,25,False,,,Missing type annotation for function argument `scores`,4,2
+SportsRank,E302,34,4,True,safe,1,"Expected 2 blank lines, found 0",4,3
+SportsRank,ANN001,34,42,False,,,Missing type annotation for function argument `competition_ranks`,4,3
+SportsRank,ANN001,34,55,False,,,Missing type annotation for function argument `dense_ranks`,4,3
+SportsRank,B905,36,52,True,safe,1,`zip()` without an explicit `strict=` parameter,1,1
+SportsRank,E302,40,4,True,safe,1,"Expected 2 blank lines, found 0",4,1
+SportsRank,E305,50,3,True,safe,1,"Expected 2 blank lines after class or function definition, found (0)",1,1
+SportsRank,W292,51,11,True,safe,1,No newline at end of file,1,1
+SportsRank,PLC0415,2,15,False,,,`import` should be at the top-level of a file,1,1
+SportsRank,A001,3,10,False,,,Variable `input` is shadowing a Python builtin,1,1
+SportsRank,E302,16,4,True,safe,1,"Expected 2 blank lines, found 0",4,2
+SportsRank,ANN001,16,31,False,,,Missing type annotation for function argument `scores`,4,2
+SportsRank,E302,25,4,True,safe,1,"Expected 2 blank lines, found 0",4,2
+SportsRank,ANN001,25,25,False,,,Missing type annotation for function argument `scores`,4,2
+SportsRank,E302,34,4,True,safe,1,"Expected 2 blank lines, found 0",4,3
+SportsRank,ANN001,34,42,False,,,Missing type annotation for function argument `competition_ranks`,4,3
+SportsRank,ANN001,34,55,False,,,Missing type annotation for function argument `dense_ranks`,4,3
+SportsRank,B905,36,52,True,safe,1,`zip()` without an explicit `strict=` parameter,1,1
+SportsRank,E302,40,4,True,safe,1,"Expected 2 blank lines, found 0",4,1
+SportsRank,E305,50,3,True,safe,1,"Expected 2 blank lines after class or function definition, found (0)",1,1
+SportsRank,W292,51,11,True,safe,1,No newline at end of file,1,1
+SportsRank,PLC0415,2,15,False,,,`import` should be at the top-level of a file,1,1
+SportsRank,A001,3,10,False,,,Variable `input` is shadowing a Python builtin,1,1
+SportsRank,E302,16,4,True,safe,1,"Expected 2 blank lines, found 0",4,2
+SportsRank,ANN001,16,31,False,,,Missing type annotation for function argument `scores`,4,2
+SportsRank,E302,25,4,True,safe,1,"Expected 2 blank lines, found 0",4,2
+SportsRank,ANN001,25,25,False,,,Missing type annotation for function argument `scores`,4,2
+SportsRank,E302,34,4,True,safe,1,"Expected 2 blank lines, found 0",4,3
+SportsRank,ANN001,34,42,False,,,Missing type annotation for function argument `competition_ranks`,4,3
+SportsRank,ANN001,34,55,False,,,Missing type annotation for function argument `dense_ranks`,4,3
+SportsRank,B905,36,52,True,safe,1,`zip()` without an explicit `strict=` parameter,1,1
+SportsRank,E302,40,4,True,safe,1,"Expected 2 blank lines, found 0",4,1
+SportsRank,E305,50,3,True,safe,1,"Expected 2 blank lines after class or function definition, found (0)",1,1
+SportsRank,W292,51,11,True,safe,1,No newline at end of file,1,1
