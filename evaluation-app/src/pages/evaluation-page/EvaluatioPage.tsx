@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Box, Stepper, Step, StepLabel, Paper, Container, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import DeveloperProfile, { DeveloperProfileData } from '../../components/developer-profile/DeveloperProfile';
+import ParticipantConsent, { ParticipantConsentData } from '../../components/participant-consent/ParticipantConsent';
 import CodeChallenge from '../../components/code-challenge/CodeChallenge';
 
 const STORAGE_KEY = 'evaluationProfileData';
@@ -16,13 +16,10 @@ export default function EvaluationPage() {
     });
     
     // Initialize profile from localStorage or default values
-    const [profile, setProfile] = useState<DeveloperProfileData>(() => {
+    const [profile, setProfile] = useState<ParticipantConsentData>(() => {
         const savedProfile = localStorage.getItem(STORAGE_KEY);
         return savedProfile ? JSON.parse(savedProfile) : {
-            evaluationId: '',
-            pythonExperience: '',
-            pythonFrequency: '',
-            aiUsage: ''
+            consent: false
         };
     });
 
@@ -35,7 +32,7 @@ export default function EvaluationPage() {
         localStorage.setItem(CODE_STORAGE_KEY, code);
     }, [code]);
 
-    const steps = ['Developer Profile', 'Code Challenge'];
+    const steps = ['Participant Consent', 'Code Challenge'];
 
     const handleNext = () => {
         setActiveStep((prevStep) => prevStep + 1);
@@ -61,7 +58,7 @@ export default function EvaluationPage() {
         });
     };
 
-    const handleProfileUpdate = (newProfile: DeveloperProfileData) => {
+    const handleProfileUpdate = (newProfile: ParticipantConsentData) => {
         setProfile(newProfile);
     };
 
@@ -81,7 +78,7 @@ export default function EvaluationPage() {
             case 0:
                 return (
                     <Paper sx={{ p: 3, mt: 2 }}>
-                        <DeveloperProfile onProfileUpdate={handleProfileUpdate} />
+                        <ParticipantConsent onProfileUpdate={handleProfileUpdate}/>
                     </Paper>
                 );
             case 1:
@@ -121,7 +118,7 @@ export default function EvaluationPage() {
                             <Button
                                 variant="contained"
                                 onClick={handleNext}
-                                disabled={!profile.evaluationId || !profile.pythonExperience || !profile.pythonFrequency || !profile.aiUsage}
+                                disabled={!profile.consent}
                             >
                                 Next
                             </Button>
