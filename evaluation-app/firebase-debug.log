@@ -1,0 +1,157 @@
+[debug] [2025-07-18T12:19:24.705Z] ----------------------------------------------------------------------
+[debug] [2025-07-18T12:19:24.709Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Cristina Racovita\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --debug
+[debug] [2025-07-18T12:19:24.709Z] CLI Version:   14.11.0
+[debug] [2025-07-18T12:19:24.709Z] Platform:      win32
+[debug] [2025-07-18T12:19:24.709Z] Node Version:  v21.7.1
+[debug] [2025-07-18T12:19:24.710Z] Time:          Fri Jul 18 2025 14:19:24 GMT+0200 (Ora de vară a Europei Centrale)
+[debug] [2025-07-18T12:19:24.710Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-07-18T12:19:25.034Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-18T12:19:25.035Z] > authorizing via signed-in user (cristina.racovita98@gmail.com)
+[debug] [2025-07-18T12:19:25.036Z] [iam] checking project codegen-uncertainty for permissions ["firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2025-07-18T12:19:25.039Z] Checked if tokens are valid: false, expires at: 1752841790382
+[debug] [2025-07-18T12:19:25.040Z] Checked if tokens are valid: false, expires at: 1752841790382
+[debug] [2025-07-18T12:19:25.041Z] > refreshing access token with scopes: []
+[debug] [2025-07-18T12:19:25.043Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-07-18T12:19:25.044Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-07-18T12:19:25.198Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-07-18T12:19:25.199Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-07-18T12:19:25.225Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/codegen-uncertainty:testIamPermissions [none]
+[debug] [2025-07-18T12:19:25.226Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/codegen-uncertainty:testIamPermissions x-goog-quota-user=projects/codegen-uncertainty
+[debug] [2025-07-18T12:19:25.226Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/codegen-uncertainty:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2025-07-18T12:19:25.890Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/codegen-uncertainty:testIamPermissions 200
+[debug] [2025-07-18T12:19:25.892Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/codegen-uncertainty:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2025-07-18T12:19:25.897Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:25.898Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:25.901Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/codegen-uncertainty [none]
+[debug] [2025-07-18T12:19:26.125Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/codegen-uncertainty 200
+[debug] [2025-07-18T12:19:26.125Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/codegen-uncertainty {"projectId":"codegen-uncertainty","projectNumber":"905454948743","displayName":"codegen-uncertainty","name":"projects/codegen-uncertainty","resources":{"hostingSite":"codegen-uncertainty"},"state":"ACTIVE","etag":"1_18cd0509-024f-403e-9825-6ad7781e95b4"}
+[info] 
+[info] === Deploying to 'codegen-uncertainty'...
+[info] 
+[info] i  deploying storage, hosting 
+[info] i  storage: ensuring required API firebasestorage.googleapis.com is enabled... 
+[debug] [2025-07-18T12:19:26.132Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:26.132Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:26.133Z] >>> [apiv2][query] GET https://firebasestorage.googleapis.com/v1alpha/projects/codegen-uncertainty/defaultBucket [none]
+[debug] [2025-07-18T12:19:26.487Z] <<< [apiv2][status] GET https://firebasestorage.googleapis.com/v1alpha/projects/codegen-uncertainty/defaultBucket 200
+[debug] [2025-07-18T12:19:26.493Z] <<< [apiv2][body] GET https://firebasestorage.googleapis.com/v1alpha/projects/codegen-uncertainty/defaultBucket {"name":"projects/codegen-uncertainty/defaultBucket","location":"US-CENTRAL1","bucket":{"name":"projects/codegen-uncertainty/buckets/codegen-uncertainty.firebasestorage.app"},"storageClass":"REGIONAL"}
+[info] i  firebase.storage: checking storage.rules for compilation errors... 
+[debug] [2025-07-18T12:19:26.501Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:26.502Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:26.504Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty:test [none]
+[debug] [2025-07-18T12:19:26.505Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty:test [omitted]
+[debug] [2025-07-18T12:19:27.229Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty:test 200
+[debug] [2025-07-18T12:19:27.230Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty:test {}
+[info] +  firebase.storage: rules file storage.rules compiled successfully 
+[debug] [2025-07-18T12:19:27.234Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:27.235Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:27.235Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/versions [none]
+[debug] [2025-07-18T12:19:27.236Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2025-07-18T12:19:27.895Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/versions 200
+[debug] [2025-07-18T12:19:27.896Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/versions {"name":"projects/905454948743/sites/codegen-uncertainty/versions/034a61f0ffd33bed","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2025-07-18T12:19:27.898Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:27.899Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:27.901Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty/releases pageSize=10&pageToken=
+[debug] [2025-07-18T12:19:28.589Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty/releases 200
+[debug] [2025-07-18T12:19:28.589Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty/releases {"releases":[{"name":"projects/codegen-uncertainty/releases/firebase.storage/codegen-uncertainty.firebasestorage.app","rulesetName":"projects/codegen-uncertainty/rulesets/4760212a-9f9f-4f65-ab66-e85ac5d1c60b","createTime":"2025-07-18T11:39:54.776558Z","updateTime":"2025-07-18T11:59:24.933001Z"}]}
+[debug] [2025-07-18T12:19:28.590Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:28.590Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:28.590Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty/rulesets/4760212a-9f9f-4f65-ab66-e85ac5d1c60b [none]
+[debug] [2025-07-18T12:19:28.789Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty/rulesets/4760212a-9f9f-4f65-ab66-e85ac5d1c60b 200
+[debug] [2025-07-18T12:19:28.791Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty/rulesets/4760212a-9f9f-4f65-ab66-e85ac5d1c60b [omitted]
+[info] i  storage: latest version of storage.rules already up to date, skipping upload... 
+[info] i  hosting[codegen-uncertainty]: beginning deploy... 
+[info] i  hosting[codegen-uncertainty]: found 17 files in build 
+[debug] [2025-07-18T12:19:28.874Z] [hosting] uploading with 200 concurrency
+[debug] [2025-07-18T12:19:29.442Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:29.442Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:29.444Z] [hosting] hash cache [YnVpbGQ] stored for 17 files
+[debug] [2025-07-18T12:19:29.444Z] [hosting][hash queue][FINAL] {"max":561,"min":18,"avg":55.64705882352941,"active":0,"complete":17,"success":17,"errored":0,"retried":0,"total":17,"elapsed":568}
+[debug] [2025-07-18T12:19:29.445Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/905454948743/sites/codegen-uncertainty/versions/034a61f0ffd33bed:populateFiles [none]
+[debug] [2025-07-18T12:19:29.445Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/905454948743/sites/codegen-uncertainty/versions/034a61f0ffd33bed:populateFiles {"files":{"/manifest.json":"4368aeaf848ae2e048765562c289452f33ad2a175c4b1951ea8bdf2ada0d5b10","/index.html":"73ac56a021fff490af8859fced29e0cea04a4e43b934eb6ac70cad15a30e8449","/logo192.png":"79e2b749561016bc8af300ea19f48347ceed3cb1a54f48ae456172eca45e08f0","/favicon.ico":"27edce7be5922cf0bef7d4136f69b5bfbdd5bf8c13c7b026f71187d41a00aa7d","/asset-manifest.json":"b90fdd3967a0de6927a3ef72245d6cdcb3a323e1a1d14058d8c3abb7e3bc1052","/static/media/code_logo.427f08d0fe9a4fc0d685.png":"78445028f99c1c69b23c0d5cf5050a9f26d65c5b44328417cbb20b7f1655b5bb","/static/js/main.11db75f3.js.LICENSE.txt":"61d9ef21cc848b2167e5a201a41b8f7c793454693eba6521ce93189bf08ba837","/static/js/453.d0d042cf.chunk.js":"00a3c2b84b9b7578b4d81d870c69ccee032e3177f3ce63e312121424b04acc7e","/static/js/453.d0d042cf.chunk.js.map":"a6c8d4b1fa3068655845c93d68187b29fedf6e494d1da19996f7df25c6048276","/static/css/main.0bb52ddf.css.map":"1bd658070a8dc6ad8c017162be3fda202d1e12af7cbc1aa5db4b658585db7fe4","/static/css/main.0bb52ddf.css":"14a8396fc07a3786f349d7f3d1a31a7be2d3b1fecc15aa700ffc7f7ab9a85b2c","/logo512.png":"212b102aa09e51b3b3e06647e81f7801a61333e171f6582e8124379aabccb41d","/robots.txt":"b2090cf9761ef60aa06e4fab97679bd43dfa5e5df073701ead5879d7c68f1ec5","/code_logo.png":"9c595dd44cc53c5913a930c6654abc45499a861f07825fba5db809c28654bd20","/static/media/explanation_code.f42ed4938777bc533547.png":"1d8060e6f340236c72ae9c52df6c57809f06d59257ce6e01ee755528bf7a05b4","/static/js/main.11db75f3.js":"6e0e2b3fadf0b265dfb2b0b4999d1a37eff500b7df38dae8ee74be987bc8d1bc","/static/js/main.11db75f3.js.map":"850bbb7032495bd306ba854db4ad052267745c690d3479e897f6a3efa0ce7d46"}}
+[debug] [2025-07-18T12:19:29.714Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/905454948743/sites/codegen-uncertainty/versions/034a61f0ffd33bed:populateFiles 200
+[debug] [2025-07-18T12:19:29.715Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/905454948743/sites/codegen-uncertainty/versions/034a61f0ffd33bed:populateFiles {"uploadRequiredHashes":["b90fdd3967a0de6927a3ef72245d6cdcb3a323e1a1d14058d8c3abb7e3bc1052","73ac56a021fff490af8859fced29e0cea04a4e43b934eb6ac70cad15a30e8449","850bbb7032495bd306ba854db4ad052267745c690d3479e897f6a3efa0ce7d46","6e0e2b3fadf0b265dfb2b0b4999d1a37eff500b7df38dae8ee74be987bc8d1bc"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files"}
+[debug] [2025-07-18T12:19:29.719Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:29.720Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:29.722Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:29.723Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:29.725Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:29.726Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:29.727Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:29.727Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:29.729Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/b90fdd3967a0de6927a3ef72245d6cdcb3a323e1a1d14058d8c3abb7e3bc1052 [none]
+[debug] [2025-07-18T12:19:29.729Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/b90fdd3967a0de6927a3ef72245d6cdcb3a323e1a1d14058d8c3abb7e3bc1052 [stream]
+[debug] [2025-07-18T12:19:29.733Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/73ac56a021fff490af8859fced29e0cea04a4e43b934eb6ac70cad15a30e8449 [none]
+[debug] [2025-07-18T12:19:29.733Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/73ac56a021fff490af8859fced29e0cea04a4e43b934eb6ac70cad15a30e8449 [stream]
+[debug] [2025-07-18T12:19:29.738Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/850bbb7032495bd306ba854db4ad052267745c690d3479e897f6a3efa0ce7d46 [none]
+[debug] [2025-07-18T12:19:29.739Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/850bbb7032495bd306ba854db4ad052267745c690d3479e897f6a3efa0ce7d46 [stream]
+[debug] [2025-07-18T12:19:29.741Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/6e0e2b3fadf0b265dfb2b0b4999d1a37eff500b7df38dae8ee74be987bc8d1bc [none]
+[debug] [2025-07-18T12:19:29.742Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/6e0e2b3fadf0b265dfb2b0b4999d1a37eff500b7df38dae8ee74be987bc8d1bc [stream]
+[debug] [2025-07-18T12:19:29.744Z] [hosting][populate queue][FINAL] {"max":286,"min":286,"avg":286,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":303}
+[debug] [2025-07-18T12:19:29.744Z] [hosting] uploads queued: 4
+[info] i  hosting: uploading new files [0/4] (0%) 
+[debug] [2025-07-18T12:19:31.014Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/6e0e2b3fadf0b265dfb2b0b4999d1a37eff500b7df38dae8ee74be987bc8d1bc 200
+[debug] [2025-07-18T12:19:31.015Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/6e0e2b3fadf0b265dfb2b0b4999d1a37eff500b7df38dae8ee74be987bc8d1bc [stream]
+[debug] [2025-07-18T12:19:31.414Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/b90fdd3967a0de6927a3ef72245d6cdcb3a323e1a1d14058d8c3abb7e3bc1052 200
+[debug] [2025-07-18T12:19:31.414Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/b90fdd3967a0de6927a3ef72245d6cdcb3a323e1a1d14058d8c3abb7e3bc1052 [stream]
+[debug] [2025-07-18T12:19:31.422Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/73ac56a021fff490af8859fced29e0cea04a4e43b934eb6ac70cad15a30e8449 200
+[debug] [2025-07-18T12:19:31.423Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/73ac56a021fff490af8859fced29e0cea04a4e43b934eb6ac70cad15a30e8449 [stream]
+[debug] [2025-07-18T12:19:31.646Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/850bbb7032495bd306ba854db4ad052267745c690d3479e897f6a3efa0ce7d46 200
+[debug] [2025-07-18T12:19:31.648Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/codegen-uncertainty/versions/034a61f0ffd33bed/files/850bbb7032495bd306ba854db4ad052267745c690d3479e897f6a3efa0ce7d46 [stream]
+[debug] [2025-07-18T12:19:31.650Z] [hosting][upload queue][FINAL] {"max":1926,"min":1290,"avg":1654,"active":0,"complete":4,"success":4,"errored":0,"retried":0,"total":4,"elapsed":1932}
+[info] i  hosting: upload complete 
+[info] +  hosting[codegen-uncertainty]: file upload complete 
+[debug] [2025-07-18T12:19:31.656Z] [hosting] deploy completed after 2844ms
+[debug] [2025-07-18T12:19:31.659Z] [rules] releasing firebase.storage/codegen-uncertainty.firebasestorage.app with ruleset projects/codegen-uncertainty/rulesets/4760212a-9f9f-4f65-ab66-e85ac5d1c60b
+[debug] [2025-07-18T12:19:31.663Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:31.664Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:31.665Z] >>> [apiv2][query] PATCH https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty/releases/firebase.storage/codegen-uncertainty.firebasestorage.app [none]
+[debug] [2025-07-18T12:19:31.667Z] >>> [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty/releases/firebase.storage/codegen-uncertainty.firebasestorage.app {"release":{"name":"projects/codegen-uncertainty/releases/firebase.storage/codegen-uncertainty.firebasestorage.app","rulesetName":"projects/codegen-uncertainty/rulesets/4760212a-9f9f-4f65-ab66-e85ac5d1c60b"}}
+[debug] [2025-07-18T12:19:32.572Z] <<< [apiv2][status] PATCH https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty/releases/firebase.storage/codegen-uncertainty.firebasestorage.app 200
+[debug] [2025-07-18T12:19:32.573Z] <<< [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/codegen-uncertainty/releases/firebase.storage/codegen-uncertainty.firebasestorage.app {"name":"projects/codegen-uncertainty/releases/firebase.storage/codegen-uncertainty.firebasestorage.app","rulesetName":"projects/codegen-uncertainty/rulesets/4760212a-9f9f-4f65-ab66-e85ac5d1c60b","createTime":"2025-07-18T11:39:54.776558Z","updateTime":"2025-07-18T12:19:34.846198Z"}
+[debug] [2025-07-18T12:19:32.574Z] [rules] updated release projects/codegen-uncertainty/releases/firebase.storage/codegen-uncertainty.firebasestorage.app
+[info] +  storage: released rules storage.rules to firebase.storage 
+[debug] [2025-07-18T12:19:32.576Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "codegen-uncertainty"
+    },
+    "version": "projects/905454948743/sites/codegen-uncertainty/versions/034a61f0ffd33bed"
+  }
+]
+[info] i  hosting[codegen-uncertainty]: finalizing version... 
+[debug] [2025-07-18T12:19:32.584Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:32.585Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:32.586Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/versions/034a61f0ffd33bed updateMask=status%2Cconfig
+[debug] [2025-07-18T12:19:32.587Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/versions/034a61f0ffd33bed {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2025-07-18T12:19:32.828Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/versions/034a61f0ffd33bed 200
+[debug] [2025-07-18T12:19:32.828Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/versions/034a61f0ffd33bed {"name":"projects/905454948743/sites/codegen-uncertainty/versions/034a61f0ffd33bed","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-07-18T12:19:29.970930Z","createUser":{"email":"cristina.racovita98@gmail.com"},"finalizeTime":"2025-07-18T12:19:35.126967Z","finalizeUser":{"email":"cristina.racovita98@gmail.com"}}
+[debug] [2025-07-18T12:19:32.829Z] [hosting] finalized version for codegen-uncertainty:[object Object]
+[info] +  hosting[codegen-uncertainty]: version finalized 
+[info] i  hosting[codegen-uncertainty]: releasing new version... 
+[debug] [2025-07-18T12:19:32.830Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:32.830Z] Checked if tokens are valid: true, expires at: 1752844764200
+[debug] [2025-07-18T12:19:32.831Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/channels/live/releases versionName=projects%2F905454948743%2Fsites%2Fcodegen-uncertainty%2Fversions%2F034a61f0ffd33bed
+[debug] [2025-07-18T12:19:32.831Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/channels/live/releases {}
+[debug] [2025-07-18T12:19:33.118Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/channels/live/releases 200
+[debug] [2025-07-18T12:19:33.119Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/codegen-uncertainty/channels/live/releases {"name":"projects/905454948743/sites/codegen-uncertainty/channels/live/releases/1752841174848000","version":{"name":"projects/905454948743/sites/codegen-uncertainty/versions/034a61f0ffd33bed","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-07-18T12:19:29.970930Z","createUser":{"email":"cristina.racovita98@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocLIck7Aw4ZulOCSxnEueQyPOfCJG9kNAGSuHFt2mygADJK7MBYP"},"finalizeTime":"2025-07-18T12:19:35.126967Z","finalizeUser":{"email":"cristina.racovita98@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocLIck7Aw4ZulOCSxnEueQyPOfCJG9kNAGSuHFt2mygADJK7MBYP"}},"type":"DEPLOY","releaseTime":"2025-07-18T12:19:34.848Z","releaseUser":{"email":"cristina.racovita98@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocLIck7Aw4ZulOCSxnEueQyPOfCJG9kNAGSuHFt2mygADJK7MBYP"}}
+[debug] [2025-07-18T12:19:33.119Z] [hosting] release: {"name":"projects/905454948743/sites/codegen-uncertainty/channels/live/releases/1752841174848000","version":{"name":"projects/905454948743/sites/codegen-uncertainty/versions/034a61f0ffd33bed","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-07-18T12:19:29.970930Z","createUser":{"email":"cristina.racovita98@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocLIck7Aw4ZulOCSxnEueQyPOfCJG9kNAGSuHFt2mygADJK7MBYP"},"finalizeTime":"2025-07-18T12:19:35.126967Z","finalizeUser":{"email":"cristina.racovita98@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocLIck7Aw4ZulOCSxnEueQyPOfCJG9kNAGSuHFt2mygADJK7MBYP"}},"type":"DEPLOY","releaseTime":"2025-07-18T12:19:34.848Z","releaseUser":{"email":"cristina.racovita98@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocLIck7Aw4ZulOCSxnEueQyPOfCJG9kNAGSuHFt2mygADJK7MBYP"}}
+[info] +  hosting[codegen-uncertainty]: release complete 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/codegen-uncertainty/overview
+[info] Hosting URL: https://codegen-uncertainty.web.app
