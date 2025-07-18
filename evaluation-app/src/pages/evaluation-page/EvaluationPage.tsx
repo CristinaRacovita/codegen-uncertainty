@@ -17,8 +17,7 @@ export default function EvaluationPage() {
 
     // Initialize profile from localStorage or default values
     const [profile, setProfile] = useState<ParticipantConsentData>(() => {
-        const savedProfile = localStorage.getItem(STORAGE_KEY);
-        return savedProfile ? JSON.parse(savedProfile) : {
+        return {
             consent: false
         };
     });
