@@ -3,6 +3,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import { python } from '@codemirror/lang-python';
 import { githubLight } from '@uiw/codemirror-theme-github';
 import { useState, useEffect } from 'react';
+import './CodeChallenge.css';
 
 interface CodeChallengeProps {
     problem: {

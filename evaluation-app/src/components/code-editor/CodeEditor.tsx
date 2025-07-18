@@ -11,18 +11,10 @@ interface CodeEditorProps {
 
 const lineHighlightExtension = EditorView.decorations.compute([], (state) => {
   const builder = new RangeSetBuilder<Decoration>();
-  const yellowLineNumbers = [1, 2, 12, 14, 15, 21, 33, 34];
-  const redLineNumbers = [9, 10, 16, 17, 25, 28];
-  const greenLineNumbers = [4, 5, 8, 23, 25, 30];
+  const redLineNumbers = [1, 2, 9, 10, 16, 17, 25, 28, 15, 21];
+  const greenLineNumbers = [4, 5, 8, 23, 25, 30, 12, 14, 33, 34];
 
   for (let i = 1; i <= state.doc.lines; i++) {
-    if (yellowLineNumbers.includes(i)) {
-      const line = state.doc.line(i);
-      const decoration = Decoration.line({ class: 'yellow-line' });
-      builder.add(line.from, line.from, decoration);
-      continue;
-    }
-
     if (redLineNumbers.includes(i)) {
       const line = state.doc.line(i);
       const decoration = Decoration.line({ class: 'red-line' });

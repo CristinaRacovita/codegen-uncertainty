@@ -14,7 +14,7 @@ export default function EvaluationPage() {
         const savedCode = localStorage.getItem(CODE_STORAGE_KEY);
         return savedCode ? savedCode : '';
     });
-    
+
     // Initialize profile from localStorage or default values
     const [profile, setProfile] = useState<ParticipantConsentData>(() => {
         const savedProfile = localStorage.getItem(STORAGE_KEY);
@@ -52,7 +52,7 @@ export default function EvaluationPage() {
         localStorage.removeItem(STORAGE_KEY);
         localStorage.removeItem(CODE_STORAGE_KEY);
         // Navigate to done page
-        navigate('/done', { 
+        navigate('/done', {
             replace: true,
             state: { fromEvaluation: true }
         });
@@ -78,14 +78,14 @@ export default function EvaluationPage() {
             case 0:
                 return (
                     <Paper sx={{ p: 3, mt: 2 }}>
-                        <ParticipantConsent onProfileUpdate={handleProfileUpdate}/>
+                        <ParticipantConsent onProfileUpdate={handleProfileUpdate} />
                     </Paper>
                 );
             case 1:
                 return (
                     <Paper sx={{ p: 3, mt: 2 }}>
-                        <CodeChallenge 
-                            problem={mockProblem} 
+                        <CodeChallenge
+                            problem={mockProblem}
                             onCodeChange={handleCodeChange}
                         />
                     </Paper>
@@ -105,9 +105,14 @@ export default function EvaluationPage() {
                         </Step>
                     ))}
                 </Stepper>
+                {activeStep === 1 && (
+                    <div className='task-description' title="These scores are estimates, not guarantees. Always verify the correctness of the code yourself. High confidence doesn't always mean correctness, and low confidence doesn't always mean an error.">
+                        <span className='task-introduction'>Your task is simple:</span> review the generated code, with or without explanations, and submit your solution. We'll measure how long it takes, how accurate your solution is, and how much of the original code you edit.
+                    </div>
+                )}
                 {renderStepContent(activeStep)}
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2, gap: 2 }}>
-                    <Button 
+                    <Button
                         onClick={handleBack}
                         variant="outlined"
                     >
@@ -120,7 +125,7 @@ export default function EvaluationPage() {
                                 onClick={handleNext}
                                 disabled={!profile.consent}
                             >
-                                Next
+                                Start
                             </Button>
                         )}
                         {activeStep === steps.length - 1 && (

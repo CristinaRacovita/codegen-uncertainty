@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import CodeEditor from '../code-editor/CodeEditor';
+import { useEffect, useState } from 'react';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -34,27 +35,38 @@ function a11yProps(index: number) {
 }
 
 export default function ExplanationSolutionTabs() {
-  const [value, setValue] = React.useState(1);
-  const [shouldHighlight, setShouldHighlight] = React.useState(true); // Boolean to control highlighting
-  
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+  const [value, setValue] = useState(0);
+
+  const [mode, setMode] = useState<number>(0);
+
+  useEffect(() => {
+    const mode = localStorage.getItem('mode') === "1" ? 1 : 0
+    setMode(mode);
+    setValue(mode);
+  }, []);
 
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab sx={{ color: '#203568', textTransform: 'none', fontWeight: 'bold', '&:hover': { color: '#01adee' }, '&.Mui-selected': { color: '#01adee' } }} label="Code Without AI Hints" {...a11yProps(0)} />
-          <Tab sx={{ color: '#203568', textTransform: 'none', fontWeight: 'bold', '&:hover': { color: '#01adee' }, '&.Mui-selected': { color: '#01adee' } }} label="Code With AI Hints" {...a11yProps(1)} />
+        <Tabs value={value} aria-label="basic tabs example">
+          {mode === 0 && (
+            <Tab sx={{ color: '#203568', textTransform: 'none', fontWeight: 'bold', '&:hover': { color: '#01adee' }, '&.Mui-selected': { color: '#01adee' } }} label="Code Without AI Hints" {...a11yProps(0)} />
+          )}
+          {mode === 1 && (
+            <Tab sx={{ color: '#203568', textTransform: 'none', fontWeight: 'bold', '&:hover': { color: '#01adee' }, '&.Mui-selected': { color: '#01adee' } }} label="Code With AI Hints" {...a11yProps(1)} />
+          )}
         </Tabs>
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        <CodeEditor shouldHighlight={false}/>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-      <CodeEditor shouldHighlight={true}/>
-      </CustomTabPanel>
+      {mode === 0 && (
+        <CustomTabPanel value={value} index={0}>
+          <CodeEditor shouldHighlight={false} />
+        </CustomTabPanel>
+      )}
+      {mode === 1 && (
+        <CustomTabPanel value={value} index={1}>
+          <CodeEditor shouldHighlight={true} />
+        </CustomTabPanel>
+      )}
     </Box>
   );
 }
