@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MainPage from './pages/main-page/MainPage';
-import EvaluationPage from './pages/evaluation-page/EvaluatioPage';
+import EvaluationPage from './pages/evaluation-page/EvaluationPage';
 import DonePage from './pages/done-page/DonePage';
 
 function App() {
