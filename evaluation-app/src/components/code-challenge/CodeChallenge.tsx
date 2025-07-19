@@ -36,7 +36,12 @@ export default function CodeChallenge({ problem, onCodeChange }: CodeChallengePr
     const lineHighlightExtension = EditorView.decorations.compute([], (state) => {
         const builder = new RangeSetBuilder<Decoration>();
         const redLineNumbers = [3, 5, 6, 8, 13, 14, 16, 17];
-        const greenLineNumbers = [1, 2, 4, 7, 9, 10, 11, 12, 15];
+        // const greenLineNumbers = [1, 2, 4, 7, 9, 10, 11, 12, 15];
+        const mode = localStorage.getItem('mode') === "1" ? 1 : 0;
+
+        if (mode === 0) {
+            return builder.finish();
+        }
 
         for (let i = 1; i <= state.doc.lines; i++) {
             if (redLineNumbers.includes(i)) {

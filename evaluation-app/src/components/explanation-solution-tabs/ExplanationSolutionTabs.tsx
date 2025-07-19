@@ -40,7 +40,7 @@ export default function ExplanationSolutionTabs() {
   const [mode, setMode] = useState<number>(0);
 
   useEffect(() => {
-    const mode = localStorage.getItem('mode') === "1" ? 1 : 0
+    const mode = localStorage.getItem('mode') === "1" ? 1 : 0;
     setMode(mode);
     setValue(mode);
   }, []);
