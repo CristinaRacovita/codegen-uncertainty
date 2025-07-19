@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Box, Stepper, Step, StepLabel, Paper, Container, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import ParticipantConsent, { ParticipantConsentData } from '../../components/participant-consent/ParticipantConsent';
+import ParticipantConsent, { ParticipantData } from '../../components/participant-consent/ParticipantConsent';
 import CodeChallenge from '../../components/code-challenge/CodeChallenge';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 const STORAGE_KEY = 'evaluationProfileData';
 const CODE_STORAGE_KEY = 'evaluationCodeContent';
@@ -15,11 +17,16 @@ export default function EvaluationPage() {
         return savedCode ? savedCode : '';
     });
 
-    // Initialize profile from localStorage or default values
-    const [profile, setProfile] = useState<ParticipantConsentData>(() => {
-        return {
-            consent: false
-        };
+    const [profile, setProfile] = useState<ParticipantData>(() => {
+        const savedProfile = localStorage.getItem(STORAGE_KEY);
+        return savedProfile
+            ? JSON.parse(savedProfile)
+            : {
+                consent: false,
+                startTime: '',
+                endTime: '',
+                codeText: ''
+            };
     });
 
     // Save profile to localStorage whenever it changes
@@ -34,6 +41,15 @@ export default function EvaluationPage() {
     const steps = ['Participant Consent', 'Code Challenge'];
 
     const handleNext = () => {
+        if (activeStep === 0) {
+            const updatedProfile = {
+                ...profile,
+                startTime: new Date().toISOString(),
+                consent: false
+            };
+            setProfile(updatedProfile);
+        }
+
         setActiveStep((prevStep) => prevStep + 1);
     };
 
@@ -46,10 +62,33 @@ export default function EvaluationPage() {
         }
     };
 
-    const handleFinish = () => {
+    const handleFinish = async () => {
+        const endTime = new Date().toISOString();
+
+        const start = new Date(profile.startTime);
+        const end = new Date(endTime);
+        const timeInSeconds = Math.round((end.getTime() - start.getTime()) / 1000);
+        const mode = localStorage.getItem('mode') === "1" ? "hints" : "no-hints"
+
+        const completedProfile = {
+            ...profile,
+            endTime: new Date().toISOString(),
+            codeText: code,
+            timeInSeconds ,
+            mode
+        };
+
+        try {
+            await addDoc(collection(db, 'evaluations'), completedProfile);
+            console.log('Evaluation data saved to Firebase:', completedProfile);
+        } catch (error) {
+            console.error('Error saving to Firebase:', error);
+        }
+
         // Clear the stored data
         localStorage.removeItem(STORAGE_KEY);
         localStorage.removeItem(CODE_STORAGE_KEY);
+
         // Navigate to done page
         navigate('/done', {
             replace: true,
@@ -57,7 +96,7 @@ export default function EvaluationPage() {
         });
     };
 
-    const handleProfileUpdate = (newProfile: ParticipantConsentData) => {
+    const handleProfileUpdate = (newProfile: ParticipantData) => {
         setProfile(newProfile);
     };
 

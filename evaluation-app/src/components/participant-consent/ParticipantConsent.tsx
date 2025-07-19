@@ -1,24 +1,27 @@
 import { Box, Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import { useState } from 'react';
 
-export interface ParticipantConsentData {
+export interface ParticipantData {
     consent: boolean;
+    startTime: string;
+    endTime: string;
+    codeText: string;
 }
 
 interface ParticipantConsentProps {
-    onProfileUpdate: (profile: ParticipantConsentData) => void;
+    onProfileUpdate: (profile: ParticipantData) => void;
 }
 
 export default function ParticipantConsent({ onProfileUpdate }: ParticipantConsentProps) {
     // Initialize profile from parent component's state
-    const [profile, setProfile] = useState<ParticipantConsentData>(() => {
+    const [profile, setProfile] = useState<ParticipantData>(() => {
         const savedProfile = localStorage.getItem('evaluationProfileData');
         return savedProfile ? JSON.parse(savedProfile) : {
             consent: false
         };
     });
 
-    const handleCheckboxChange = (field: keyof ParticipantConsentData) => (
+    const handleCheckboxChange = (field: keyof ParticipantData) => (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         const newProfile = {
