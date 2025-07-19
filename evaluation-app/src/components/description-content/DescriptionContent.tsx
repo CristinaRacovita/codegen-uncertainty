@@ -43,7 +43,7 @@ export default function DescriptionContent() {
                         <div className='task-description'>
                             <span className='task-introduction'>Line Colors Explanation:</span>
                             <ul>
-                                <li><strong>Green:</strong> High confidence – The model is very confident about this line.</li>
+                                <li><strong>No Color:</strong> High confidence – The model is confident enough about this line.</li>
                                 <li><strong>Red:</strong> Low confidence – The model has low confidence, and this line might need further review.</li>
                             </ul>
                             <p>These colors help you quickly see where the model is more or less certain about its output.</p>
