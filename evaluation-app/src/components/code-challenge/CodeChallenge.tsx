@@ -33,6 +33,23 @@ export default function CodeChallenge({ problem, onCodeChange }: CodeChallengePr
         onCodeChange(value);
     };
 
+    const lineHighlightExtension = EditorView.decorations.compute([], (state) => {
+        const builder = new RangeSetBuilder<Decoration>();
+        const redLineNumbers = [3, 5, 6, 8, 13, 14, 16, 17];
+        const greenLineNumbers = [1, 2, 4, 7, 9, 10, 11, 12, 15];
+
+        for (let i = 1; i <= state.doc.lines; i++) {
+            if (redLineNumbers.includes(i)) {
+                const line = state.doc.line(i);
+                const decoration = Decoration.line({ class: 'red-line' });
+                builder.add(line.from, line.from, decoration);
+                continue;
+            }
+        }
+
+        return builder.finish();
+    });
+
     return (
         <Box sx={{ display: 'flex', gap: 2, height: 'calc(100vh - 200px)' }}>
             <Paper sx={{ flex: 1, p: 2, overflow: 'auto' }}>
@@ -145,18 +162,18 @@ export default function CodeChallenge({ problem, onCodeChange }: CodeChallengePr
                 </Typography>
             </Paper>
             <Tooltip title="These line colors are estimates, not guarantees! You should always verify the correctness of the code yourself!" arrow>
-            <Paper sx={{ flex: 1, p: 2 }}>
-                <CodeMirror
-                    value={code}
-                    height="100%"
-                    theme={githubLight}
-                    extensions={[python()]}
-                    editable={true}
-                    onChange={handleCodeChange}
-                />
+                <Paper sx={{ flex: 1, p: 2 }}>
+                    <CodeMirror
+                        value={code}
+                        height="100%"
+                        theme={githubLight}
+                        extensions={[python(), lineHighlightExtension]}
+                        editable={true}
+                        onChange={handleCodeChange}
+                    />
+                </Paper>
             </Tooltip>
 
-            </Paper>
         </Box>
     );
 }
