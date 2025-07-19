@@ -55,12 +55,21 @@ export default function EvaluationPage() {
 
     const handleBack = () => {
         if (activeStep === 0) {
-            const mode = localStorage.getItem('mode');
-            navigate(mode === '1' ? '/hints' : '/no-hints', { replace: true });
+            const confirmLeave = window.confirm("Are you sure you want to go back? The study will be abandoned.");
+            if (confirmLeave) {
+                const mode = localStorage.getItem('mode');
+                navigate(mode === '1' ? '/hints' : '/no-hints', { replace: true });
+                clearProfileData();
+            }
         } else {
             setActiveStep((prevStep) => prevStep - 1);
         }
     };
+
+    const clearProfileData = () => {
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(CODE_STORAGE_KEY);
+    }
 
     const handleFinish = async () => {
         const endTime = new Date().toISOString();
@@ -75,7 +84,7 @@ export default function EvaluationPage() {
             consent: true,
             endTime: new Date().toISOString(),
             codeText: code,
-            timeInSeconds ,
+            timeInSeconds,
             mode
         };
 
@@ -135,7 +144,7 @@ export default function EvaluationPage() {
     };
 
     return (
-        <Container maxWidth="lg" style={{paddingBottom: 20}}>
+        <Container maxWidth="lg" style={{ paddingBottom: 20 }}>
             <Box sx={{ width: '100%', mt: 4 }}>
                 <Stepper activeStep={activeStep}>
                     {steps.map((label) => (
