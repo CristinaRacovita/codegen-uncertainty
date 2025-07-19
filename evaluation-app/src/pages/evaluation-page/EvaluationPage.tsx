@@ -72,6 +72,7 @@ export default function EvaluationPage() {
 
         const completedProfile = {
             ...profile,
+            consent: true,
             endTime: new Date().toISOString(),
             codeText: code,
             timeInSeconds ,
@@ -134,7 +135,7 @@ export default function EvaluationPage() {
     };
 
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" style={{paddingBottom: 20}}>
             <Box sx={{ width: '100%', mt: 4 }}>
                 <Stepper activeStep={activeStep}>
                     {steps.map((label) => (
