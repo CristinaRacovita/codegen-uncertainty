@@ -1,5 +1,5 @@
-import { Box, Paper, Typography } from '@mui/material';
-import CodeMirror from '@uiw/react-codemirror';
+import { Box, Paper, Tooltip, Typography } from '@mui/material';
+import CodeMirror, { Decoration, EditorView, RangeSetBuilder } from '@uiw/react-codemirror';
 import { python } from '@codemirror/lang-python';
 import { githubLight } from '@uiw/codemirror-theme-github';
 import { useState, useEffect } from 'react';
@@ -144,6 +144,7 @@ export default function CodeChallenge({ problem, onCodeChange }: CodeChallengePr
                     <div><span style={{ fontWeight: 'bolder' }}>Link: </span><span><a href='https://codeforces.com/contest/575/problem/C' target="_blank" rel="noopener noreferrer">here</a></span></div>
                 </Typography>
             </Paper>
+            <Tooltip title="These line colors are estimates, not guarantees! You should always verify the correctness of the code yourself!" arrow>
             <Paper sx={{ flex: 1, p: 2 }}>
                 <CodeMirror
                     value={code}
@@ -153,6 +154,8 @@ export default function CodeChallenge({ problem, onCodeChange }: CodeChallengePr
                     editable={true}
                     onChange={handleCodeChange}
                 />
+            </Tooltip>
+
             </Paper>
         </Box>
     );
