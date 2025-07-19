@@ -116,9 +116,24 @@ export default function EvaluationPage() {
 
     // Mock problem data - this would come from your backend
     const mockProblem = {
-        title: 'Sample Coding Problem',
-        description: 'Write a function that...',
-        generatedCode: '// Generated code will appear here\nfunction solution() {\n  // ...\n}',
+        title: 'Party',
+        generatedCode: `def max_happiness(N, friday_matrix, saturday_matrix):
+    def calculate_happiness(friday_perm, saturday_perm):
+        total_happiness = 0
+        for i in range(N // 2):
+            total_happiness += friday_matrix[i][friday_perm[i]]
+            total_happiness += saturday_matrix[i][saturday_perm[i]]
+        return total_happiness
+    from itertools import permutations
+    friday_perms = list(permutations(range(N // 2)))
+    saturday_perms = list(permutations(range(N // 2)))
+    max_happiness = 0
+    for friday_perm in friday_perms:
+        for saturday_perm in saturday_perms:
+            current_happiness = calculate_happiness(friday_perm, saturday_perm)
+            if current_happiness > max_happiness:
+                max_happiness = current_happiness
+    return max_happiness`,
     };
 
     const renderStepContent = (step: number) => {
@@ -131,7 +146,7 @@ export default function EvaluationPage() {
                 );
             case 1:
                 return (
-                    <Paper sx={{ p: 3, mt: 2 }}>
+                    <Paper sx={{ p: 3, mt: 2, textAlign: 'left' }}>
                         <CodeChallenge
                             problem={mockProblem}
                             onCodeChange={handleCodeChange}
