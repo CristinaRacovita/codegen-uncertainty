@@ -80,10 +80,10 @@ export default function CodeChallenge({ problem, onCodeChange }: CodeChallengePr
 
                     <div style={{ fontWeight: 'bold' }}>Output</div>
 
-                    Output should contain a single integer = maximum sum of happiness possible.
+                    Output should contain a single integer = maximum sum of happiness possible (if any of the constraints are violated, return 0).
 
-                    <div style={{ textDecorationLine: 'underline' }}>Example</div>
-                    <div>Input</div>
+                    <div style={{ fontWeight: 'bold' }}>Example</div>
+                    <div style={{ textDecorationLine: 'underline' }}>Input</div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                         <div>N = 4</div>
@@ -154,7 +154,7 @@ export default function CodeChallenge({ problem, onCodeChange }: CodeChallengePr
                     </div>
 
 
-                    <div>Output</div>
+                    <div style={{ textDecorationLine: 'underline' }}>Output</div>
                     167
 
                     <div><span style={{ fontWeight: 'bolder' }}>Link: </span><span><a href='https://codeforces.com/contest/575/problem/C' target="_blank" rel="noopener noreferrer">here</a></span></div>
