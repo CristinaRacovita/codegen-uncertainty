@@ -29,7 +29,6 @@ export default function EvaluationPage() {
             };
     });
 
-    // Save profile to localStorage whenever it changes
     useEffect(() => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
     }, [profile]);

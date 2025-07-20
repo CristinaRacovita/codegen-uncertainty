@@ -16,13 +16,13 @@ interface CodeChallengeProps {
 const STORAGE_KEY = 'evaluationCodeContent';
 
 export default function CodeChallenge({ problem, onCodeChange }: CodeChallengeProps) {
-    // Initialize code from localStorage or problem's generated code
     const [code, setCode] = useState(() => {
         const savedCode = localStorage.getItem(STORAGE_KEY);
         return savedCode || problem.generatedCode;
     });
 
-    // Sync with parent component on mount
+    const [highlightedCode] = useState(() => problem.generatedCode);
+
     useEffect(() => {
         onCodeChange(code);
     }, []);
@@ -36,12 +36,6 @@ export default function CodeChallenge({ problem, onCodeChange }: CodeChallengePr
     const lineHighlightExtension = EditorView.decorations.compute([], (state) => {
         const builder = new RangeSetBuilder<Decoration>();
         const redLineNumbers = [3, 5, 6, 8, 13, 14, 16, 17];
-        // const greenLineNumbers = [1, 2, 4, 7, 9, 10, 11, 12, 15];
-        const mode = localStorage.getItem('mode') === "1" ? 1 : 0;
-
-        if (mode === 0) {
-            return builder.finish();
-        }
 
         for (let i = 1; i <= state.doc.lines; i++) {
             if (redLineNumbers.includes(i)) {
@@ -170,12 +164,27 @@ export default function CodeChallenge({ problem, onCodeChange }: CodeChallengePr
                 <Paper sx={{ flex: 1, p: 2 }}>
                     <CodeMirror
                         value={code}
-                        height="100%"
+                        height="350px"
                         theme={githubLight}
-                        extensions={[python(), lineHighlightExtension]}
+                        extensions={[python()]}
                         editable={true}
                         onChange={handleCodeChange}
                     />
+                    {(localStorage.getItem('mode') === "1") && (
+                        <Typography variant="h6" gutterBottom fontWeight={'bold'}>
+                            Explanations
+                        </Typography>
+                    )}
+                    {(localStorage.getItem('mode') === "1") && (
+                        <CodeMirror
+                            value={highlightedCode}
+                            height="340px"
+                            theme={githubLight}
+                            extensions={[python(), lineHighlightExtension]}
+                            editable={false}
+                        />
+                    )}
+
                 </Paper>
             </Tooltip>
 
