@@ -4,6 +4,7 @@ import { python } from '@codemirror/lang-python';
 import { githubLight } from '@uiw/codemirror-theme-github';
 import { useState, useEffect } from 'react';
 import './CodeChallenge.css';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 interface CodeChallengeProps {
     problem: {
@@ -31,6 +32,11 @@ export default function CodeChallenge({ problem, onCodeChange }: CodeChallengePr
         setCode(value);
         localStorage.setItem(STORAGE_KEY, value);
         onCodeChange(value);
+    };
+
+    const handleRefresh = () => {
+        onCodeChange(problem.generatedCode);
+        setCode(problem.generatedCode);
     };
 
     const lineHighlightExtension = EditorView.decorations.compute([], (state) => {
@@ -161,32 +167,37 @@ export default function CodeChallenge({ problem, onCodeChange }: CodeChallengePr
                 </Typography>
             </Paper>
             <Tooltip title="These line colors are estimates, not guarantees! You should always verify the correctness of the code yourself!" arrow>
-                <Paper sx={{ flex: 1, p: 2 }}>
-                    <CodeMirror
-                        value={code}
-                        height="350px"
-                        theme={githubLight}
-                        extensions={[python()]}
-                        editable={true}
-                        onChange={handleCodeChange}
-                    />
-                    {(localStorage.getItem('mode') === "1") && (
-                        <Typography variant="h6" gutterBottom fontWeight={'bold'}>
-                            Explanations
-                        </Typography>
-                    )}
-                    {(localStorage.getItem('mode') === "1") && (
-                        <CodeMirror
-                            value={highlightedCode}
-                            height="340px"
-                            theme={githubLight}
-                            extensions={[python(), lineHighlightExtension]}
-                            editable={false}
-                        />
-                    )}
+                <Paper sx={{ flex: 1, p: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    <RefreshIcon sx={{ cursor: 'pointer' }} onClick={handleRefresh} />
 
+                    <Box sx={{ flex: 1, overflow: 'scroll' }}>
+                        <CodeMirror
+                            value={code}
+                            height="100%"
+                            theme={githubLight}
+                            extensions={[python()]}
+                            editable={true}
+                            onChange={handleCodeChange}
+                        />
+                    </Box>
+
+                    {localStorage.getItem('mode') === '1' && (
+                        <Box sx={{ flex: 1, overflow: 'scroll' }}>
+                            <Typography variant="h6" gutterBottom fontWeight="bold">
+                                Explanations
+                            </Typography>
+                            <CodeMirror
+                                value={highlightedCode}
+                                height="calc(100% - 32px)" // adjust to leave room for Typography
+                                theme={githubLight}
+                                extensions={[python(), lineHighlightExtension]}
+                                editable={false}
+                            />
+                        </Box>
+                    )}
                 </Paper>
             </Tooltip>
+
 
         </Box>
     );

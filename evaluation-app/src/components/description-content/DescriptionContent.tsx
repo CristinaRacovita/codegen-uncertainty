@@ -117,7 +117,7 @@ export default function DescriptionContent() {
                     -104 &le; nums[i] &le; 104
                 </div>
                 <div className='solutions-content'>
-                    <ExplanationSolutionTabs />
+                    <ExplanationSolutionTabs mode={mode} />
                 </div>
             </div>
 
