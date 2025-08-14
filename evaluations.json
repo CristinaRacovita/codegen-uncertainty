@@ -1,0 +1,200 @@
+[
+  {
+    "id": "0dbfGps84AV6cscrQbLB",
+    "mode": "hints",
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n        for i in range(N // 2):\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        return total_happiness\n    from itertools import permutations\n    friday_perms = list(permutations(range(N // 2)))\n    saturday_perms = list(permutations(range(N // 2)))\n    max_happiness = 0\n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness",
+    "consent": true,
+    "endTime": "2025-07-26T20:42:43.996Z",
+    "startTime": "2025-07-26T20:33:41.641Z",
+    "timeInSeconds": 542
+  },
+  {
+    "id": "3BpGnRgR7khSgbUeEuHO",
+    "consent": true,
+    "endTime": "2025-08-01T09:44:27.862Z",
+    "startTime": "2025-08-01T09:36:43.807Z",
+    "timeInSeconds": 464,
+    "mode": "no-hints",
+    "codeText": "from itertools import permutations\n\ndef max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        return sum(\n            friday_matrix[i][friday_perm[i]] + saturday_matrix[i][saturday_perm[i]]\n            for i in range(N // 2)\n        )\n\n    friday_perms = permutations(range(N // 2))\n    saturday_perms = permutations(range(N // 2))\n\n    return max(\n        calculate_happiness(fp, sp)\n        for fp in friday_perms\n        for sp in saturday_perms\n    )"
+  },
+  {
+    "id": "8ceK4XCsvOqM98tH8Seu",
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n  \n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n      \n        for i in range(N // 2):\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        return total_happiness\n      \n    from itertools import permutations\n  \n    friday_perms = list(permutations(range(N // 2)))\n    saturday_perms = list(permutations(range(N // 2)))\n    max_happiness = 0\n  \n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n              \n    return max_happiness",
+    "startTime": "2025-07-27T15:23:16.122Z",
+    "consent": true,
+    "timeInSeconds": 594,
+    "endTime": "2025-07-27T15:33:09.820Z",
+    "mode": "hints"
+  },
+  {
+    "id": "9D3sxM5ArXSv6u7ialMX",
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n        for i in range(N // 2):\n            if friday_perm[i] == saturday_perm[i]:\n              return 0\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        return total_happiness\n    from itertools import permutations\n    friday_perms = list(permutations(range(N // 2)))\n    saturday_perms = list(permutations(range(N // 2)))\n    max_happiness = 0\n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness",
+    "consent": true,
+    "startTime": "2025-08-05T16:26:59.061Z",
+    "endTime": "2025-08-05T16:30:20.612Z",
+    "mode": "no-hints",
+    "timeInSeconds": 202
+  },
+  {
+    "id": "IzTQJdjAmQlifXJd7f3o",
+    "endTime": "2025-07-30T15:57:19.539Z",
+    "timeInSeconds": 1458,
+    "mode": "no-hints",
+    "startTime": "2025-07-30T15:33:01.470Z",
+    "consent": true,
+    "codeText": "def max_happiness(N, friday, saturday):\n    max_total = 0\n\n    # Încercăm toate combinațiile posibile de N/2 persoane pentru Friday\n    for friday_people in combinations(range(N), N // 2):\n        saturday_people = [i for i in range(N) if i not in friday_people]\n\n        # Pentru fiecare astfel de împărțire, facem assignment optim de cluburi\n        def assign(person_idx, used_clubs, is_friday):\n            if person_idx == len(friday_people if is_friday else saturday_people):\n                return 0\n            \n            max_score = -sys.maxsize\n            person = (friday_people if is_friday else saturday_people)[person_idx]\n\n            for club in range(N):\n                if not used_clubs[club]:\n                    used_clubs[club] = True\n                    score = (friday if is_friday else saturday)[person][club]\n                    max_score = max(max_score, score + assign(person_idx + 1, used_clubs, is_friday))\n                    used_clubs[club] = False\n\n            return max_score\n\n        used_clubs = [False] * N\n        friday_score = assign(0, used_clubs, True)\n        used_clubs = [False] * N\n        saturday_score = assign(0, used_clubs, False)\n\n        max_total = max(max_total, friday_score + saturday_score)\n\n    return max_total"
+  },
+  {
+    "id": "NRyscjZGzl0TMxEUomTJ",
+    "endTime": "2025-07-23T09:36:21.376Z",
+    "consent": true,
+    "timeInSeconds": 990,
+    "mode": "hints",
+    "startTime": "2025-07-23T09:19:51.553Z",
+    "codeText": "from itertools import permutations\n\ndef calculate_happiness(friday_perm, saturday_perm):\n    total_happiness = 0\n  \n    for i in range(N):\n      if friday_perm[i] != saturday_perm[i]:\n        total_happiness += friday_matrix[i][friday_perm[i]]\n        total_happiness += saturday_matrix[i][saturday_perm[i]]\n      \n    return total_happiness\n\ndef max_happiness(N, friday_matrix, saturday_matrix):\n    friday_perms = list(permutations(range(N)))\n    saturday_perms = list(permutations(range(N)))\n    max_happiness = 0\n  \n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n          \n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n              \n    return max_happiness"
+  },
+  {
+    "id": "Rh1QJb0H83QFCcgWib9u",
+    "codeText": "from numpy import matrix\nfrom itertools import permutations\n\ndef max_happiness(N, friday_matrix, saturday_matrix):\n    # sanitizing the input\n    if N % 2 or N < 2 or N > 20:\n        return 0\n    if matrix(friday_matrix).shape != (N, N) or matrix(saturday_matrix).shape != (N, N):\n        return 0\n  \n    for friday_people in combinations(people, N // 2):\n        saturday_people = [p for p in people if p not in friday_people]\n\n        for friday_clubs in combinations(range(N), N // 2):\n            saturday_clubs = [c for c in range(N) if c not in friday_clubs]\n\n            for friday_assignment in permutations(friday_clubs):\n                for saturday_assignment in permutations(saturday_clubs):\n                    hapiness = 0\n                    for p, c in zip(friday_people, friday_assignment):\n                        hapiness += friday_matrix[p][c]\n                    for p, c in zip(saturday_people, saturday_assignment):\n                        hapiness += saturday_matrix[p][c]\n                    max_happines = max(max_happines, hapiness)\n    return max_happines",
+    "consent": true,
+    "startTime": "2025-07-30T16:19:27.923Z",
+    "timeInSeconds": 2200,
+    "mode": "hints",
+    "endTime": "2025-07-30T16:56:07.746Z"
+  },
+  {
+    "id": "UxkF1EHMvO9ya1F1MATL",
+    "timeInSeconds": 65,
+    "endTime": "2025-07-27T19:37:28.002Z",
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n        for i in range(N // 2):\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        return total_happiness\n    from itertools import permutations\n    friday_perms = list(permutations(range(N // 2)))\n    saturday_perms = list(permutations(range(N // 2)))\n    max_happiness = 0\n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness",
+    "mode": "hints",
+    "consent": true,
+    "startTime": "2025-07-27T19:36:23.272Z"
+  },
+  {
+    "id": "WhlDdySypRJQbBYn5P49",
+    "consent": true,
+    "startTime": "2025-08-03T20:09:00.093Z",
+    "mode": "hints",
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n        \n        \n        for i in range(N):\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n            \n        return total_happiness\n    \n    from itertools import permutations\n\n    people = list(range(N))\n    clubs = list(range(N))\n    friday_perms = list(permutations(people,clubs))\n    saturday_perms = [p for p in people if p not in friday_perms]\n\n    max_happiness = 0\n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness",
+    "endTime": "2025-08-03T21:23:42.573Z",
+    "timeInSeconds": 4482
+  },
+  {
+    "id": "bem9ormysAAakdo5oZWE",
+    "endTime": "2025-07-26T11:50:08.108Z",
+    "startTime": "2025-07-26T11:46:22.009Z",
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n        for i in range(N // 2):\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        return total_happiness\n    from itertools import permutations\n    friday_perms = list(permutations(range(N // 2)))\n    saturday_perms = list(permutations(range(N // 2)))\n    max_happiness = 0\n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness",
+    "consent": true,
+    "timeInSeconds": 226,
+    "mode": "hints"
+  },
+  {
+    "id": "evDwd4KMjwJFBPG1FtRS",
+    "consent": true,
+    "startTime": "2025-07-26T14:50:12.362Z",
+    "mode": "no-hints",
+    "timeInSeconds": 750,
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n        for i in range(N // 2):\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        return total_happiness\n    from itertools import permutations\n    friday_perms = list(permutations(range(N // 2)))\n    saturday_perms = list(permutations(range(N // 2)))\n    max_happiness = 0\n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness",
+    "endTime": "2025-07-26T15:02:41.914Z"
+  },
+  {
+    "id": "fDqYQ8e6ek8zoqClXWNW",
+    "codeText": "#Define max_happiness function and parameters\ndef max_happiness(N, friday_matrix, saturday_matrix):\n  #Define calculate_happiness function and parameters\n    def calculate_happiness(friday_perm, saturday_perm):\n#Initialize total_happiness index\n        total_happiness = 0\n        for i in range(N // 2):\n#Computing the total_happiness factor based on the friday and saturday matrix\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        #Return result\n        return total_happiness\n    #Import from library of permutation tools\n    from itertools import permutations\n  #Compute the list of Friday permutations\n    friday_perms = list(permutations(range(N // 2)))\n  #Compute the list of Saturday permutations\n    saturday_perms = list(permutations(range(N // 2)))\n  #Initializing the max_happiness factor\n    max_happiness = 0\n  #Iterating through friday permutation list\n    for friday_perm in friday_perms:\n      #Iterating through saturday permutation list\n        for saturday_perm in saturday_perms:\n          #Calling function to calculate happiness factor for each of the iterations\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n          #Setting up the max_happiness index based on the current happiness index\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    #Return of result\n    return max_happiness",
+    "timeInSeconds": 1007,
+    "endTime": "2025-07-29T17:39:05.695Z",
+    "consent": true,
+    "startTime": "2025-07-29T17:22:18.760Z",
+    "mode": "no-hints"
+  },
+  {
+    "id": "gMjrRSqiT8RbG39bvFdR",
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n        for i in range(N // 2):\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        return total_happiness\n    from itertools import permutations\n    friday_perms = list(permutations(range(N // 2)))\n    saturday_perms = list(permutations(range(N // 2)))\n    max_happiness = 0\n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness",
+    "consent": true,
+    "startTime": "2025-08-09T10:30:12.097Z",
+    "endTime": "2025-08-09T10:34:18.514Z",
+    "mode": "hints",
+    "timeInSeconds": 246
+  },
+  {
+    "id": "h8bi4dAuW1inZqXWhKcC",
+    "mode": "no-hints",
+    "timeInSeconds": 275,
+    "endTime": "2025-08-05T16:26:38.795Z",
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n        for i in range(N // 2):\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        return total_happiness\n    from itertools import permutations\n    friday_perms = list(permutations(range(N // 2)))\n    saturday_perms = list(permutations(range(N // 2)))\n    max_happiness = 0\n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness",
+    "consent": true,
+    "startTime": "2025-08-05T16:22:04.143Z"
+  },
+  {
+    "id": "jNgB5gXnthcbdsNvpdD2",
+    "timeInSeconds": 2137,
+    "startTime": "2025-07-27T15:26:26.448Z",
+    "endTime": "2025-07-27T16:02:03.588Z",
+    "consent": true,
+    "mode": "no-hints",
+    "codeText": "from itertools import permutations\n\ndef max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(employees, clubs, matrix):\n        return sum(matrix[employee][club] for employee, club in zip(employees, clubs))\n\n    total_happiness = 0\n    employees = list(range(N))\n    visited_groups = set()\n\n    for perm in permutations(employees):\n        friday_employees = tuple(sorted(perm[:N//2]))\n        if friday_employees in visited_groups:\n            continue\n        visited_groups.add(friday_employees)\n\n        friday_employees = list(perm[:N//2])\n        saturday_employees = list(perm[N//2:])\n\n        for friday_clubs in permutations(range(N), N//2):\n            unvisited_clubs = set(range(N)) - set(friday_clubs)\n            for saturday_clubs in permutations(unvisited_clubs, N//2):\n                fridays_happiness = calculate_happiness(friday_employees, friday_clubs, friday_matrix)\n                saturdays_happiness = calculate_happiness(saturday_employees, saturday_clubs, saturday_matrix)\n                total_happiness = max(total_happiness, fridays_happiness + saturdays_happiness)\n\n    return total_happiness"
+  },
+  {
+    "id": "khUT47OFK4WaBAR4Xvmg",
+    "startTime": "2025-07-30T19:23:13.634Z",
+    "mode": "no-hints",
+    "consent": true,
+    "timeInSeconds": 2234,
+    "endTime": "2025-07-30T20:00:27.457Z",
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(people_perm, clubs_perm):\n        total_happiness = 0\n        for i in range(N // 2):\n            total_happiness += friday_matrix[people_perm[i]][clubs_perm[i]]\n        for i in range(N // 2, N):\n            total_happiness += saturday_matrix[people_perm[i]][clubs_perm[i]]\n        return total_happiness\n    from itertools import permutations\n    people_perms = list(permutations(range(N)))\n    clubs_perms = list(permutations(range(N)))\n    max_happiness = 0\n    for people_perm in people_perms:\n        for clubs_perm in clubs_perms:\n            current_happiness = calculate_happiness(people_perm, clubs_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness"
+  },
+  {
+    "id": "mf6JB3EG0CgyUcBqKX0I",
+    "codeText": "def max_happiness(N, friday, saturday):\n    max_total = 0\n\n    # Încercăm toate combinațiile posibile de N/2 persoane pentru Friday\n    for friday_people in combinations(range(N), N // 2):\n        saturday_people = [i for i in range(N) if i not in friday_people]\n\n        # Pentru fiecare astfel de împărțire, facem assignment optim de cluburi\n        def assign(person_idx, used_clubs, is_friday):\n            if person_idx == len(friday_people if is_friday else saturday_people):\n                return 0\n            \n            max_score = -sys.maxsize\n            person = (friday_people if is_friday else saturday_people)[person_idx]\n\n            for club in range(N):\n                if not used_clubs[club]:\n                    used_clubs[club] = True\n                    score = (friday if is_friday else saturday)[person][club]\n                    max_score = max(max_score, score + assign(person_idx + 1, used_clubs, is_friday))\n                    used_clubs[club] = False\n\n            return max_score\n\n        used_clubs = [False] * N\n        friday_score = assign(0, used_clubs, True)\n        used_clubs = [False] * N\n        saturday_score = assign(0, used_clubs, False)\n\n        max_total = max(max_total, friday_score + saturday_score)\n\n    return max_total",
+    "mode": "no-hints",
+    "timeInSeconds": 1456,
+    "endTime": "2025-07-30T15:57:17.680Z",
+    "startTime": "2025-07-30T15:33:01.470Z",
+    "consent": true
+  },
+  {
+    "id": "ovNJ8JnsyWOvS0qHFReY",
+    "consent": true,
+    "mode": "hints",
+    "timeInSeconds": 4189,
+    "startTime": "2025-07-27T10:05:10.364Z",
+    "codeText": "from itertools import permutations, combinations\n\ndef max_happiness(N, friday_matrix, saturday_matrix):\n    \n    def calculate_happiness(friday_employees, friday_clubs, saturday_employees, saturday_clubs):\n        total_happiness = 0\n        for i in range(N // 2):\n          total_happiness += friday_matrix[friday_employees[i]][friday_clubs[i]]\n          total_happiness += saturday_matrix[saturday_employees[i]][saturday_clubs[i]]\n        return total_happiness\n      \n    max_happiness = 0\n    employees = list(range(N))\n    clubs = list(range(N))\n  \n    for friday_employees in combinations(employees, N // 2): # combine which employees go on friday clubs\n       saturday_employees = [e for e in employees if e not in friday_employees] # the rest of employees will go on saturday clubs\n\n       for friday_clubs in permutations(clubs, N // 2):\n         remaining_clubs = [c for c in clubs if c not in friday_clubs]\n         \n         for saturday_clubs in permutations(remaining_clubs, N // 2):\n           current_happiness = calculate_happiness(friday_employees, friday_clubs, saturday_employees, saturday_clubs)\n           if current_happiness > max_happiness:\n                  max_happiness = current_happiness\n              \n    return max_happiness",
+    "endTime": "2025-07-27T11:14:59.825Z"
+  },
+  {
+    "id": "pkK1xqDGGWh06idZSdht",
+    "timeInSeconds": 158,
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n        for i in range(N // 2):\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        return total_happiness\n    from itertools import permutations\n    friday_perms = list(permutations(range(N // 2)))\n    saturday_perms = list(permutations(range(N // 2)))\n    max_happiness = 0\n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness",
+    "mode": "no-hints",
+    "consent": true,
+    "startTime": "2025-07-29T08:23:51.311Z",
+    "endTime": "2025-07-29T08:26:29.497Z"
+  },
+  {
+    "id": "xwPzhqFvfRVu32vM0fmu",
+    "startTime": "2025-08-03T12:28:36.155Z",
+    "consent": true,
+    "timeInSeconds": 335,
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n        for i in range(N // 2):\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        return total_happiness\n    from itertools import permutations\n    friday_perms = list(permutations(range(N // 2)))\n    saturday_perms = list(permutations(range(N // 2)))\n    max_happiness = 0\n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness",
+    "mode": "hints",
+    "endTime": "2025-08-03T12:34:11.310Z"
+  },
+  {
+    "id": "yvoltz0r93Jpm0l7Fi0L",
+    "timeInSeconds": 2354,
+    "consent": true,
+    "startTime": "2025-07-31T14:57:23.832Z",
+    "mode": "hints",
+    "endTime": "2025-07-31T15:36:37.699Z",
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm, clubs_friday, clubs_saturday):\n        total_happiness = 0\n        for i in range(N // 2):\n            total_happiness += friday_matrix[friday_perm[i]][clubs_friday[i]]\n            total_happiness += saturday_matrix[saturday_perm[i]][clubs_saturday[i]]\n        return total_happiness\n    from itertools import combinations, permutations\n    friday_perms = list(combinations(range(N), N // 2))\n    clubs_friday_perms = list(permutations(range(N), N // 2)) \n    max_happiness = 0\n    for friday_perm in friday_perms:\n      saturday_perm = list(set(range(N)) - set(friday_perm))\n      for clubs_friday in clubs_friday_perms:\n        clubs_saturday_perms = list(permutations(list(set(range(N)) - set(clubs_friday)), N // 2))\n        for clubs_saturday in clubs_saturday_perms:\n          current_happiness = calculate_happiness(friday_perm, saturday_perm, clubs_friday, clubs_saturday)\n          if current_happiness > max_happiness:\n              max_happiness = current_happiness\n    return max_happiness"
+  },
+  {
+    "id": "zlCB6e4reiD4qw0ocXii",
+    "consent": true,
+    "startTime": "2025-07-27T14:52:53.877Z",
+    "endTime": "2025-07-27T15:02:37.372Z",
+    "codeText": "def max_happiness(N, friday_matrix, saturday_matrix):\n    def calculate_happiness(friday_perm, saturday_perm):\n        total_happiness = 0\n        for i in range(N):\n            total_happiness += friday_matrix[i][friday_perm[i]]\n            total_happiness += saturday_matrix[i][saturday_perm[i]]\n        return total_happiness\n    from itertools import permutations\n    friday_perms = list(permutations(range(N)))\n    saturday_perms = list(permutations(range(N)))\n    max_happiness = 0\n    for friday_perm in friday_perms:\n        for saturday_perm in saturday_perms:\n            current_happiness = calculate_happiness(friday_perm, saturday_perm)\n            if current_happiness > max_happiness:\n                max_happiness = current_happiness\n    return max_happiness",
+    "mode": "no-hints",
+    "timeInSeconds": 583
+  }
+]
